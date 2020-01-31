@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d08c2a0db7f67894991388da5387d426, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2583125428849194624
@@ -263,12 +263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f60971bf988e7d409369484624a084b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunTransform: {fileID: 2180012640987882278}
+  gunOriginTransform: {fileID: 2180012640987882278}
+  gunSprite: {fileID: 7048489503243427660}
   bulletSpawnTransfrom: {fileID: 2949304738085152771}
-  bulletPrefab: {fileID: 6371678020240817306, guid: 18fb6f30eeef24d46b7976b9a3653121,
-    type: 3}
-  delayBetweenShots: 0.1
   isGamepad: 0
+  playerNumber: 0
+  currentWeapon: {fileID: 0}
 --- !u!114 &2327445293856462399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +284,7 @@ MonoBehaviour:
   startinghealth: 3
   bloodSplatterParticle: {fileID: 8157379650156868562, guid: a8ef1dae9a131b14e9f7759c65cdb8f9,
     type: 3}
+  playerNumber: 0
 --- !u!1 &5800536179399466528
 GameObject:
   m_ObjectHideFlags: 0

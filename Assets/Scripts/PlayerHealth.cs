@@ -29,7 +29,6 @@ public class PlayerHealth : MonoBehaviour
         {
             if (projectilePlayerNumber != playerNumber)
             {
-                print(projectilePlayerNumber);
                 UIManager.instance.AwardKill(projectilePlayerNumber);
             }
             Death();

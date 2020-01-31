@@ -47,7 +47,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -57,15 +57,31 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Action
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 4dc71ddf-eb43-44f0-a78e-ddc043b8b299
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 9e7527f5-dbae-48ec-ab13-0a2b215d651c
+        m_Path: <Gamepad>/start
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Action
+        m_Flags: 0
+      - m_Name: 
+        m_Id: c780ad47-1bab-4a27-8456-97ed03e4415f
+        m_Path: <Keyboard>/enter
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Action
+        m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 2655954609655052927, guid: 36c09dfe29d2f9345a3188bc8047fffb,
+  m_PlayerPrefab: {fileID: 2658403829935921558, guid: 3a87fcd1f1abccf4ca594e0a7bf71c0b,
     type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
@@ -88,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee116612df1c5804ea5290c581bf4de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCount: 0

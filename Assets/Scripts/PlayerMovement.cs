@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -11,10 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     Rigidbody2D rigidbody;
     float horizontal;
+    Player player;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        player = GetComponentInParent<Player>();
+        player.playerMovement = this;
     }
 
     private void FixedUpdate()
@@ -22,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.velocity = new Vector2(horizontal * movementSpeed * Time.fixedDeltaTime , rigidbody.velocity.y);
     }
 
-    public void OnMove (float value)
+    public void Move (float value)
     {
         horizontal = value;
     }
 
-    public void OnJump ()
+    public void Jump ()
     {
         if (Physics2D.OverlapCircle(new Vector2(transform.position.x,transform.position.y - 0.5f),0.25f,groundLayer))
         {

@@ -9,6 +9,10 @@ public class PlayerStats : MonoBehaviour
     public int playerKills;
     public Text playerHealthText;
     public Text playerWinsText;
+    public Text currentWeaponText;
+    public Text ammoCountText;
+    public Text playerNumberText;
+
 
 
 }

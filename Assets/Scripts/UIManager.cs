@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public LayoutGroup layoutGroup;
     List<PlayerStats> playerStats = new List<PlayerStats>();
     public PlayerStats playerStatsPrefab;
-    
+
     void Awake()
     {
         if (instance == null)
@@ -20,14 +20,15 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
     }
 
 
-    public void CreateNewPlayerStats (int playerNumber)
+    public void CreateNewPlayerStats(int playerNumber)
     {
-        PlayerStats p = Instantiate(playerStatsPrefab,layoutGroup.transform);
+        PlayerStats p = Instantiate(playerStatsPrefab, layoutGroup.transform);
         p.playerNumber = playerNumber;
+        p.playerNumberText.text = "P" + playerNumber.ToString();
         playerStats.Add(p);
     }
 
@@ -44,7 +45,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateHealth (int playerNumber, int newHealth)
+    public void UpdateHealth(int playerNumber, int newHealth)
     {
         foreach (PlayerStats player in playerStats)
         {
@@ -55,7 +56,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void AwardKill (int playerNumber)
+    public void AwardKill(int playerNumber)
     {
         foreach (PlayerStats player in playerStats)
         {
@@ -63,6 +64,23 @@ public class UIManager : MonoBehaviour
             {
                 player.playerKills++;
                 player.playerWinsText.text = "Kills = " + player.playerKills.ToString();
+
+                if (player.playerKills >= LevelManager.instance.requiredKillsToWin)
+                {
+                    // display win screen of player number parameter
+                }
+            }
+        }
+    }
+
+    public void UpdateWeaponType(int playerNumber, string weaponName, int ammoCount)
+    {
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.ammoCountText.text = ammoCount.ToString();
+                player.currentWeaponText.text = weaponName;
             }
         }
     }

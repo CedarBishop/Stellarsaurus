@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public int playerCount = 0;
+    PlayerInputManager inputManager;
     void Awake()
     {
         if (instance == null)
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        inputManager = GetComponent<PlayerInputManager>();
     }
 
 
@@ -25,13 +28,16 @@ public class GameManager : MonoBehaviour
     void OnPlayerJoined()
     {
         playerCount++;
-        UIManager.instance.CreateNewPlayerStats(playerCount);
+        if (UIManager.instance != null)
+            UIManager.instance.CreateNewPlayerStats(playerCount);      
+
     }
 
     // called by player input manager when device leaves
     void OnPlayerLeft()
     {
-        UIManager.instance.RemovePlayerStats(playerCount);
+        if (UIManager.instance != null)
+            UIManager.instance.RemovePlayerStats(playerCount);
         playerCount--;
         
     }

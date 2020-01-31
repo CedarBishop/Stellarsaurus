@@ -47,6 +47,9 @@ MonoBehaviour:
   playerNumber: 0
   characterPrefab: {fileID: 2655954609655052927, guid: 36c09dfe29d2f9345a3188bc8047fffb,
     type: 3}
+  playerMovement: {fileID: 0}
+  playerShoot: {fileID: 0}
+  isGamepad: 0
 --- !u!114 &5103324323947291965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +77,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

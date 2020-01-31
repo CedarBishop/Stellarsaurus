@@ -244,9 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fd20485ffd7f84da48389dd32de60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialForce: 500
-  timeTillDestroysSelf: 3
+  initialForce: 800
   damage: 1
+  playerNumber: 0
 --- !u!58 &8902518856300708324
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+//using UnityEngine.InputSystem.UI;
 
 public class Player : MonoBehaviour
 {
     public int playerNumber;
     public GameObject characterPrefab;
-    PlayerMovement playerMovement;
-    PlayerShoot playerShoot;
+    public  PlayerMovement playerMovement;
+    public  PlayerShoot playerShoot;
     PlayerHealth playerHealth;
-    private bool isGamepad;
+    public bool isGamepad;
     PlayerInput playerInput;
+    GameObject currentCharacter;
+
+    //public Image cursorPrefab;
+    //public Image cursor;
+
 
     private void Start()
     {
@@ -21,13 +28,14 @@ public class Player : MonoBehaviour
         {
             isGamepad = true;
         }
+        //AssignUIInputModule();
         CreateNewCharacter();
     }
 
     void OnMove (InputValue value)
     {
         if (playerMovement != null)
-            playerMovement.OnMove(value.Get<float>());
+            playerMovement.Move(value.Get<float>());
     }
 
     void OnAim(InputValue value)
@@ -35,37 +43,47 @@ public class Player : MonoBehaviour
         if (isGamepad)
         {
             if (playerShoot != null)
-                playerShoot.OnAim(value.Get<Vector2>());
+                playerShoot.Aim(value.Get<Vector2>());
         }
     }
 
     void OnFire ()
     {
         if(playerShoot != null)
-            playerShoot.OnFire();
+            playerShoot.Fire();
     }
 
     void OnJump()
     {
         if (playerMovement != null)
-            playerMovement.OnJump();
+            playerMovement.Jump();
     }
     
     void OnSpecial ()
     {
         if (playerShoot != null)
-            playerShoot.OnSpecial();
+            playerShoot.Special();
     }
 
     public void CreateNewCharacter()
     {
-        GameObject go = Instantiate(characterPrefab,transform);
-        playerMovement = go.GetComponent<PlayerMovement>();
-        playerShoot = go.GetComponent<PlayerShoot>();
-        playerHealth = go.GetComponent<PlayerHealth>();
-        playerHealth.playerNumber = playerNumber;
-        playerShoot.isGamepad = isGamepad;
-        playerShoot.playerNumber = playerNumber;
+        if (currentCharacter != null)
+        {
+            Destroy(currentCharacter);
+        }
+        if (LevelManager.instance != null)
+        {
+            transform .position= LevelManager.instance.startingPositions[playerNumber - 1].position;
+        }
+        currentCharacter = Instantiate(characterPrefab,transform);
+        //playerMovement = currentCharacter.GetComponent<PlayerMovement>();
+        //playerShoot = currentCharacter.GetComponent<PlayerShoot>();
+        //playerHealth = currentCharacter.GetComponent<PlayerHealth>();
+        //playerHealth.playerNumber = playerNumber;
+        //playerShoot.isGamepad = isGamepad;
+        //playerShoot.playerNumber = playerNumber;
+        //playerInput.SwitchCurrentActionMap("Player");
+        
     }
 
     public void CharacterDied()
@@ -78,4 +96,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2);
         CreateNewCharacter();
     }
+
+    //void AssignUIInputModule ()
+    //{
+    //    playerInput.uiInputModule = FindObjectOfType<InputSystemUIInputModule>();
+        
+    //}
+
+   
+
+    
 }
