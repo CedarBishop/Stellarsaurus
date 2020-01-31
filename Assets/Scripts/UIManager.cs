@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
         PlayerStats p = Instantiate(playerStatsPrefab, layoutGroup.transform);
         p.playerNumber = playerNumber;
         p.playerNumberText.text = "P" + playerNumber.ToString();
+        p.playerNumberText.color = GameManager.currentPlayerColor;
         playerStats.Add(p);
     }
 

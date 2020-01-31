@@ -12,6 +12,9 @@ public class LevelManager : MonoBehaviour
 
     public int requiredKillsToWin = 5;
 
+    public Weapon weaponPrefab;
+    public float timeBetweenWeaponSpawns;
+
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +25,15 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator Start()
+    {
+        while (true)
+        {
+            Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 5), Quaternion.identity);
+            yield return new WaitForSeconds(timeBetweenWeaponSpawns);
+        }        
     }
 
     //public void SpawnPlayers()

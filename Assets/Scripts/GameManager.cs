@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public static Color currentPlayerColor;
     public int playerCount = 0;
     PlayerInputManager inputManager;
     void Awake()
@@ -28,8 +29,10 @@ public class GameManager : MonoBehaviour
     void OnPlayerJoined()
     {
         playerCount++;
+        currentPlayerColor = new Color(Random.Range(0,1.0f),Random.Range(0,1.0f),Random.Range(0,1.0f),1);
         if (UIManager.instance != null)
-            UIManager.instance.CreateNewPlayerStats(playerCount);      
+            UIManager.instance.CreateNewPlayerStats(playerCount);  
+        
 
     }
 
