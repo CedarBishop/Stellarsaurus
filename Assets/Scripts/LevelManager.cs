@@ -27,13 +27,19 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private IEnumerator Start()
+    private void Start()
+    {
+        StartCoroutine("SpawnWeapons");     
+    }
+
+
+    IEnumerator SpawnWeapons()
     {
         while (true)
         {
             Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 5), Quaternion.identity);
             yield return new WaitForSeconds(timeBetweenWeaponSpawns);
-        }        
+        }
     }
 
     //public void SpawnPlayers()

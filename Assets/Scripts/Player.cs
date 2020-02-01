@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public bool isGamepad;
     PlayerInput playerInput;
     GameObject currentCharacter;
-    Color playerColour;
 
     //public Image cursorPrefab;
     //public Image cursor;
@@ -24,7 +23,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerNumber = GameManager.instance.playerCount;
-        playerColour = GameManager.currentPlayerColor;
         playerInput = GetComponent<PlayerInput>();
         if (playerInput.currentControlScheme == "Gamepad")
         {
@@ -78,7 +76,6 @@ public class Player : MonoBehaviour
             transform .position= LevelManager.instance.startingPositions[playerNumber - 1].position;
         }
         currentCharacter = Instantiate(characterPrefab,transform);
-        currentCharacter.GetComponent<SpriteRenderer>().color = playerColour;
         //playerMovement = currentCharacter.GetComponent<PlayerMovement>();
         //playerShoot = currentCharacter.GetComponent<PlayerShoot>();
         //playerHealth = currentCharacter.GetComponent<PlayerHealth>();
