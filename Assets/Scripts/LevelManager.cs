@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 5), Quaternion.identity);
+            Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 4), Quaternion.identity);
             yield return new WaitForSeconds(timeBetweenWeaponSpawns);
         }
     }

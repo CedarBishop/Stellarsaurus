@@ -104,6 +104,9 @@ public class Player : MonoBehaviour
     //}
 
    
-
+    void OnFall (InputValue value)
+    {
+        playerMovement.Fall(value.Get<float>());
+    }
     
 }
