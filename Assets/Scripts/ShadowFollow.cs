@@ -11,15 +11,15 @@ public class ShadowFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit2D groundHit = Physics2D.Raycast(player.transform.position,Vector2.down,20,groundLayer);
+        //RaycastHit2D groundHit = Physics2D.Raycast(player.transform.position,Vector2.down,20,groundLayer);
         RaycastHit2D platformHit = Physics2D.Raycast(player.transform.position, Vector2.down, 20, platformLayer);
         if (platformHit != null)
         {
-            transform.position = platformHit.point;
+            transform.position = new Vector2( player.transform.position.x,platformHit.point.y);
         }
-        else if (groundHit != null)
+        else 
         {
-            transform.position = groundHit.point;
+            transform.position = new Vector2(player.transform.position.x, -4);
         }
     }
 }

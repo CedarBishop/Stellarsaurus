@@ -38,6 +38,12 @@ public class Weapon : MonoBehaviour
         int randomNum = Random.Range(0,weaponTypes.Length);
         weaponType = weaponTypes[randomNum];
     }
+
+    IEnumerator DestroySelf ()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+    }
 }
 
 [CreateAssetMenu]
