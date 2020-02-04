@@ -22,6 +22,8 @@ public class Weapon : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = weaponType.weaponSprite;
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
+
+        StartCoroutine("DestroySelf");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

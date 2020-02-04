@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public bool isGamepad;
     PlayerInput playerInput;
     GameObject currentCharacter;
+    CameraController cameraController;
 
     //public Image cursorPrefab;
     //public Image cursor;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         {
             isGamepad = true;
         }
+        cameraController = Camera.main.GetComponent<CameraController>();
         //AssignUIInputModule();
         CreateNewCharacter();
     }
@@ -76,18 +78,23 @@ public class Player : MonoBehaviour
             transform .position= LevelManager.instance.startingPositions[playerNumber - 1].position;
         }
         currentCharacter = Instantiate(characterPrefab,transform);
-        //playerMovement = currentCharacter.GetComponent<PlayerMovement>();
-        //playerShoot = currentCharacter.GetComponent<PlayerShoot>();
-        //playerHealth = currentCharacter.GetComponent<PlayerHealth>();
-        //playerHealth.playerNumber = playerNumber;
-        //playerShoot.isGamepad = isGamepad;
-        //playerShoot.playerNumber = playerNumber;
+        playerMovement = currentCharacter.GetComponent<PlayerMovement>();
+        playerShoot = currentCharacter.GetComponent<PlayerShoot>();
+        playerHealth = currentCharacter.GetComponent<PlayerHealth>();
+        playerShoot.isGamepad = isGamepad;
+        playerHealth.playerNumber = playerNumber;
+        playerShoot.playerNumber = playerNumber;
+        playerMovement.playerNumber = playerNumber;
+
+        cameraController.playersInGame.Add(playerMovement);
+
         //playerInput.SwitchCurrentActionMap("Player");
-        
+
     }
 
     public void CharacterDied()
     {
+        cameraController.playersInGame.Remove(playerMovement);
         StartCoroutine("Respawn");
     }
 
@@ -107,6 +114,11 @@ public class Player : MonoBehaviour
     void OnFall (InputValue value)
     {
         playerMovement.Fall(value.Get<float>());
+    }
+
+    void OnGrab()
+    {
+        playerShoot.Grab();
     }
     
 }

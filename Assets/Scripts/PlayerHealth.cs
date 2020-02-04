@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerParent = GetComponentInParent<Player>();
-        playerNumber = playerParent.playerNumber;
         health = startinghealth;
         UIManager.instance.UpdateHealth(playerNumber, health);
     }
@@ -37,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
-
         playerParent.CharacterDied();
 
         Destroy(gameObject);

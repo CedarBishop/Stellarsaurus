@@ -11,7 +11,6 @@ public class PlayerShoot : MonoBehaviour
     Camera mainCamera;
     public bool isGamepad;
     public int playerNumber;
-    Player player;
 
     public WeaponType currentWeapon;
 
@@ -24,17 +23,14 @@ public class PlayerShoot : MonoBehaviour
     float projectileDestroyTime;
     float sprayAmount;
     string weaponName;
+    bool isTriggeringWeapon;
+    Weapon triggeredWeapon;
 
 
     void Start()
     {
         mainCamera = Camera.main;
-        canShoot = true;
-        player = GetComponentInParent<Player>();
-        playerNumber = player.playerNumber;
-        player.playerShoot = this;
-        isGamepad = player.isGamepad;
-        
+        canShoot = true;        
     }
 
     void Update()
@@ -43,7 +39,8 @@ public class PlayerShoot : MonoBehaviour
         {
             Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 directionToTarget = target - new Vector2(transform.position.x, transform.position.y);
-            gunOriginTransform.right = directionToTarget;
+            gunOriginTransform.right = TranslateToEightDirection(directionToTarget.normalized);
+            //gunOriginTransform.right = directionToTarget;
         }
         
 
@@ -55,9 +52,74 @@ public class PlayerShoot : MonoBehaviour
         {
             if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
             {
-                gunOriginTransform.right = v;
+                gunOriginTransform.right = TranslateToEightDirection(v);
+                //gunOriginTransform.right = v;
             }
         }
+    }
+
+    Vector2 TranslateToEightDirection (Vector2 v)
+    {
+        Vector2 result = v;
+
+        if (Mathf.Abs(v.x) < 0.25f && Mathf.Abs(v.y) > 0.25f)
+        {
+            // Up & Down
+            if (v.y > 0)
+            {
+                result = Vector2.up;
+            }
+            else
+            {
+                result = Vector2.down;
+            }
+
+
+        }
+        else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) < 0.25f)
+        {
+            // Left & Right
+            if (v.x > 0)
+            {
+                result = Vector2.right;
+            }
+            else
+            {
+                result = Vector2.left;
+            }
+        }
+        else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) > 0.25f)
+        {
+            // Diagonals
+            if (v.x < -0.25f && v.y < -0.25f)
+            {
+                // down left
+                result = new Vector2(-1,-1);
+            }
+            else if (v.x > 0.25f && v.y < -0.25f)
+            {
+                // down right
+                result = new Vector2(1, -1);
+            }
+            else if (v.x > 0.25f && v.y > 0.25f)
+            {
+                // up right
+                result = new Vector2(1, 1);
+            }
+            else if (v.x < -0.25f && v.y > 0.25f)
+            {
+                // up left
+                result = new Vector2(-1, 1);
+            }
+
+        }
+        else
+        {
+            result = transform.right;
+        }
+
+
+        return result;
     }
 
     public void Fire ()
@@ -105,6 +167,17 @@ public class PlayerShoot : MonoBehaviour
              
     }
 
+
+    public void Grab ()
+    {
+        if (isTriggeringWeapon)
+        {
+            currentWeapon = triggeredWeapon.weaponType;
+            InitializeWeapon();
+            Destroy(triggeredWeapon.gameObject);
+        }
+    }
+
     public void Special ()
     {
 
@@ -117,13 +190,18 @@ public class PlayerShoot : MonoBehaviour
         canShoot = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
+        
         if (other.GetComponent<Weapon>())
+        {            
+            triggeredWeapon = other.GetComponent<Weapon>();
+            isTriggeringWeapon = true;
+        }
+        else
         {
-            currentWeapon = other.GetComponent<Weapon>().weaponType;
-            InitializeWeapon();
-            Destroy(other.gameObject);
+            isTriggeringWeapon = false;
+            triggeredWeapon = null;
         }
     }
 

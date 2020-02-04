@@ -14,17 +14,15 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask fallThroughLayer;
     Rigidbody2D rigidbody;
     float horizontal;
-    Player player;
     SpriteRenderer spriteRenderer;
     public Transform gunOrigin;
+    [HideInInspector] public int playerNumber;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        player = GetComponentInParent<Player>();
-        player.playerMovement = this;
+        rigidbody = GetComponent<Rigidbody2D>();        
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprites[player.playerNumber - 1];
+        spriteRenderer.sprite = sprites[playerNumber - 1];
     }
 
     private void FixedUpdate()

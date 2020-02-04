@@ -51,6 +51,14 @@
                     "id": "ed72c64e-5ba1-4b29-9a79-78bc9447ab91",
                     "expectedControlType": "Axis",
                     "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "840e1494-ee24-4c29-8dac-1b627c3469cc",
+                    "expectedControlType": "",
+                    "processors": "",
                     "interactions": "Press"
                 }
             ],
@@ -340,6 +348,28 @@
                     "action": "Fall",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "2547199c-cb8a-4856-8fe7-85eb583326c4",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15a2104e-4d58-4782-b788-4361307e7aaa",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
