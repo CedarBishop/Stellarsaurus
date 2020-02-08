@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 2655954609655052918}
   - component: {fileID: 2327445293856462399}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Max Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0baf27b52b58b5b4ab93bf1a09b41709, type: 3}
   - {fileID: 21300000, guid: 0f7de30397e86e245be4245a86823d01, type: 3}
   movementSpeed: 200
-  jumpHeight: 4
+  jumpHeight: 2.5
   defaultLayer:
     serializedVersion: 2
     m_Bits: 1
