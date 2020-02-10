@@ -15,7 +15,6 @@ public class PlayerShoot : MonoBehaviour
     public WeaponType currentWeapon;
 
     Sprite weaponSprite;
-    bool isSpray;
     float fireRate;
     Projectile projectileType;
     int ammoCount;
@@ -25,6 +24,10 @@ public class PlayerShoot : MonoBehaviour
     string weaponName;
     bool isTriggeringWeapon;
     Weapon triggeredWeapon;
+    WeaponUseType weaponUseType;
+    int damageOfCurrentWeapon;
+    float explosionSize;
+    float initialForceOfProjectile;
 
 
     void Start()
@@ -134,25 +137,33 @@ public class PlayerShoot : MonoBehaviour
         }
         if (canShoot)
         {
-            if (isSpray)
+            switch (weaponUseType)
             {
-                float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((bulletsFiredPerShot / 2) * sprayAmount);
-                for (int i = 0; i < bulletsFiredPerShot; i++)
-                {
-                    gunOriginTransform.rotation = Quaternion.Euler(0,0,baseZRotation);
+                case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                    projectile.playerNumber = playerNumber;
-                    projectile.SetDestroyTime(projectileDestroyTime);
+                    projectile.InitialiseProjectile(projectileDestroyTime, 1, playerNumber, initialForceOfProjectile);
+                    break;
+                case WeaponUseType.Multishot:
+                    float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((bulletsFiredPerShot / 2) * sprayAmount);
+                    for (int i = 0; i < bulletsFiredPerShot; i++)
+                    {
+                        gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
+                        Projectile multiProjectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
+                        multiProjectile.InitialiseProjectile(projectileDestroyTime,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile);
 
-                    baseZRotation += sprayAmount;
-                    
-                }
-            }
-            else
-            {
-                Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                projectile.playerNumber = playerNumber;
-                projectile.SetDestroyTime(projectileDestroyTime);
+                        baseZRotation += sprayAmount;
+
+                    }
+                    break;
+                case WeaponUseType.Throwable:
+                    Projectile g = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
+                    Grenade grenade = g.GetComponent<Grenade>();
+                    grenade.InitGrenade(projectileDestroyTime,explosionSize,damageOfCurrentWeapon,playerNumber, initialForceOfProjectile);
+                    break;
+                case WeaponUseType.Consumable:
+                    break;
+                default:
+                    break;
             }
 
             ammoCount--;
@@ -209,7 +220,6 @@ public class PlayerShoot : MonoBehaviour
     void InitializeWeapon ()
     {
         gunSprite.sprite = currentWeapon.weaponSprite;
-        isSpray = currentWeapon.isSpray;
         ammoCount = currentWeapon.ammoCount;
         projectileType = currentWeapon.projectileType;
         fireRate = currentWeapon.fireRate;
@@ -217,6 +227,11 @@ public class PlayerShoot : MonoBehaviour
         bulletsFiredPerShot = currentWeapon.bulletsFiredPerShot;
         sprayAmount = currentWeapon.sprayAmount;
         weaponName = currentWeapon.weaponName;
+        weaponUseType = currentWeapon.weaponUseType;
+        damageOfCurrentWeapon = currentWeapon.damage;
+        explosionSize = currentWeapon.explosionSize;
+        initialForceOfProjectile = currentWeapon.initialForce;
+
 
         if (UIManager.instance != null)
             UIManager.instance.UpdateWeaponType(playerNumber,weaponName,ammoCount);

@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Shotgun
+  m_Name: Grenade
   m_EditorClassIdentifier: Assembly-CSharp::WeaponType
-  weaponUseType: 1
-  weaponName: Shotgun
-  weaponSprite: {fileID: -8202503593910133345, guid: 24b6d685264f00d4ca7898ae743331f3,
-    type: 3}
-  projectileType: {fileID: 6371678020240817306, guid: 18fb6f30eeef24d46b7976b9a3653121,
+  weaponUseType: 2
+  weaponName: Frag Grenade
+  weaponSprite: {fileID: 21300000, guid: 0d6d6e0eb8e0d6d44b8f3ea128be2a35, type: 3}
+  projectileType: {fileID: 998929494644019891, guid: 15129a18301b1d14f894798aa46568cf,
     type: 3}
   fireRate: 0.5
-  ammoCount: 4
-  destroyTime: 0.2
-  damage: 1
-  initialForce: 800
-  bulletsFiredPerShot: 5
-  sprayAmount: 0.2
-  explosionSize: 0
+  ammoCount: 1
+  destroyTime: 3
+  damage: 3
+  initialForce: 400
+  bulletsFiredPerShot: 0
+  sprayAmount: 0
+  explosionSize: 2

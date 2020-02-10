@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponType
+  weaponUseType: 0
   weaponName: Rifle
   weaponSprite: {fileID: -5296145868589639280, guid: 7c29f7bd64c3d174aa1df246226d3644,
     type: 3}
-  isSpray: 0
-  bulletsFiredPerShot: 0
-  fireRate: 2
-  projectileType: {fileID: 6371678020240817306, guid: c9707b171e314b045a46e74e578011f5,
+  projectileType: {fileID: 6371678020240817306, guid: 18fb6f30eeef24d46b7976b9a3653121,
     type: 3}
+  fireRate: 2
   ammoCount: 3
   destroyTime: 10
+  damage: 3
+  initialForce: 1200
+  bulletsFiredPerShot: 0
   sprayAmount: 0
+  explosionSize: 0

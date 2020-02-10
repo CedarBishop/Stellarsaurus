@@ -48,16 +48,25 @@ public class Weapon : MonoBehaviour
     }
 }
 
+
+public enum WeaponUseType { SingleShot, Multishot, Throwable, Consumable }
+
 [CreateAssetMenu]
 public class WeaponType : ScriptableObject
 {
+    [Header ("Universal Weapon Parameters")]
+    public WeaponUseType weaponUseType;
     public string weaponName;
     public Sprite weaponSprite;
-    public bool isSpray;
-    public int bulletsFiredPerShot;
-    public float fireRate;
     public Projectile projectileType;
+    public float fireRate;
     public int ammoCount;
     public float destroyTime;
+    public int damage;
+    public float initialForce;
+    [Header("Multishot Parameters")]
+    public int bulletsFiredPerShot;
     public float sprayAmount;
+    [Header("Throwable Parameters")]
+    public float explosionSize;
 }

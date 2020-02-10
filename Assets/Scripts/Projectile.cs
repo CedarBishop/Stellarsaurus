@@ -6,39 +6,49 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
-    private Rigidbody2D rigidbody;
-    public float initialForce;
-    public int damage = 1;
-    public int playerNumber;
+    protected Rigidbody2D rigidbody;
+    protected float initialForce;
+    protected int damage;
+    protected int playerNumber;
     float destroyTime;
-    void Start()
-    {
-        rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.AddForce(transform.right * initialForce);
-    }
+    protected bool explodesOnImpact;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Projectile>())
+       
+        if (explodesOnImpact)
         {
-            if (collision.gameObject.GetComponent<Projectile>().playerNumber == playerNumber)
+            if (collision.gameObject.GetComponent<Projectile>())
             {
-                return;
+                if (collision.gameObject.GetComponent<Projectile>().playerNumber == playerNumber)
+                {
+                    return;
+                }
             }
-        }
-        if (collision.gameObject.GetComponent<PlayerHealth>())
-        {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage,playerNumber);
+            if (collision.gameObject.GetComponent<PlayerHealth>())
+            {
+                collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage, playerNumber);
+            }
+
+
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
     }
 
-    public void SetDestroyTime(float time)
+    public void InitialiseProjectile(float time, int _Damage, int _PlayerNumber, float force)
     {
         destroyTime = time;
+        damage = _Damage;
+        playerNumber = _PlayerNumber;
+        initialForce = force;
+        explodesOnImpact = true;
+        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.AddForce(transform.right * initialForce);
         StartCoroutine("DestroySelf");
     }
+
 
     IEnumerator DestroySelf ()
     {

@@ -73,6 +73,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -124,4 +125,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6841b0d0f05db43458aa08456731e86c, type: 2}
   - {fileID: 11400000, guid: 3b07c37780979ed43a0bccebd99ca578, type: 2}
   - {fileID: 11400000, guid: 2d52791f5b6335641980726db9a9ec3a, type: 2}
+  - {fileID: 11400000, guid: cea8c4823cd86f640a9bd98c0ca7bad6, type: 2}
   weaponType: {fileID: 11400000, guid: 3b07c37780979ed43a0bccebd99ca578, type: 2}
