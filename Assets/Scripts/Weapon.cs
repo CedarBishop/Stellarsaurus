@@ -18,12 +18,7 @@ public class Weapon : MonoBehaviour
     {
         ChooseWeaponType();
 
-        boxCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = weaponType.weaponSprite;
-        rigidbody = gameObject.AddComponent<Rigidbody2D>();
-
-        StartCoroutine("DestroySelf");
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,6 +34,12 @@ public class Weapon : MonoBehaviour
     {
         int randomNum = Random.Range(0,weaponTypes.Length);
         weaponType = weaponTypes[randomNum];
+        boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = weaponType.weaponSprite;
+        rigidbody = gameObject.AddComponent<Rigidbody2D>();
+
+        StartCoroutine("DestroySelf");
     }
 
     IEnumerator DestroySelf ()

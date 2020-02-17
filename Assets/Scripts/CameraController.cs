@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         camera = GetComponent<Camera>();
+        camera.orthographicSize = maxOrthographicSize;
     }
 
 

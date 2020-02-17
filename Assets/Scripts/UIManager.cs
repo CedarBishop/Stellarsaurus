@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
     public LayoutGroup layoutGroup;
     List<PlayerStats> playerStats = new List<PlayerStats>();
     public PlayerStats playerStatsPrefab;
+    public Text infoText;
+    public Text controlsText;
 
     void Awake()
     {
@@ -23,9 +26,16 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        infoText.gameObject.SetActive(true);
+        controlsText.gameObject.SetActive(false);
+    }
+
 
     public void CreateNewPlayerStats(int playerNumber)
     {
+        StartCoroutine("DelayClosingControlsText");
         PlayerStats p = Instantiate(playerStatsPrefab, layoutGroup.transform);
         p.playerNumber = playerNumber;
         p.playerNumberText.text = "P" + playerNumber.ToString();
@@ -83,6 +93,23 @@ public class UIManager : MonoBehaviour
                 player.ammoCountText.text = ammoCount.ToString();
                 player.currentWeaponText.text = weaponName;
             }
+        }
+    }
+
+    IEnumerator DelayClosingControlsText ()
+    {
+        infoText.gameObject.SetActive(false);
+        controlsText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5);
+        controlsText.gameObject.SetActive(false);
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
