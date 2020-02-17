@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: Assembly-CSharp::WeaponType
   weaponUseType: 2
-  weaponName: Frag Grenade
+  weaponName: Grenade
   weaponSprite: {fileID: 21300000, guid: 0d6d6e0eb8e0d6d44b8f3ea128be2a35, type: 3}
   projectileType: {fileID: 998929494644019891, guid: 15129a18301b1d14f894798aa46568cf,
     type: 3}
-  fireRate: 0.5
+  fireRate: 1
   ammoCount: 1
   destroyTime: 3
   damage: 3
