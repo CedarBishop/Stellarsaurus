@@ -43,6 +43,7 @@ public class PlayerShoot : MonoBehaviour
             Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 directionToTarget = target - new Vector2(transform.position.x, transform.position.y);
             gunOriginTransform.right = TranslateToEightDirection(directionToTarget.normalized);
+          
             //gunOriginTransform.right = directionToTarget;
         }
         
@@ -56,6 +57,7 @@ public class PlayerShoot : MonoBehaviour
             if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
             {
                 gunOriginTransform.right = TranslateToEightDirection(v);
+              
                 //gunOriginTransform.right = v;
             }
         }
@@ -88,7 +90,7 @@ public class PlayerShoot : MonoBehaviour
             }
             else
             {
-                result = Vector2.left;
+                result = new Vector2(-1,0.01f);
             }
         }
         else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) > 0.25f)
@@ -144,9 +146,12 @@ public class PlayerShoot : MonoBehaviour
                     projectile.InitialiseProjectile(projectileDestroyTime, 1, playerNumber, initialForceOfProjectile);
                     break;
                 case WeaponUseType.Multishot:
+
+
                     float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((bulletsFiredPerShot / 2) * sprayAmount);
                     for (int i = 0; i < bulletsFiredPerShot; i++)
                     {
+                        print(baseZRotation);
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
                         multiProjectile.InitialiseProjectile(projectileDestroyTime,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile);
@@ -241,6 +246,7 @@ public class PlayerShoot : MonoBehaviour
     {
         gunSprite.sprite = null;
         currentWeapon = null;
+        triggeredWeapon = null;
         ammoCount = 0;
         weaponName = "";
     }
