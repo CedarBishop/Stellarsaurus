@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 
     public Transform[] startingPositions;
     //public Player[] players;
-
+    public TeleporterPairs[] teleporterPairs;
 
     public int requiredKillsToWin = 5;
 
@@ -29,7 +29,16 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("SpawnWeapons");     
+        StartCoroutine("SpawnWeapons");
+
+        if (teleporterPairs != null)
+        {
+            for (int i = 0; i < teleporterPairs.Length; i++)
+            {
+                teleporterPairs[i].InitTeleporters(i);
+            }
+        }
+        
     }
 
 
@@ -41,6 +50,8 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenWeaponSpawns);
         }
     }
+
+
 
     //public void SpawnPlayers()
     //{

@@ -108,6 +108,22 @@ MonoBehaviour:
   startingPositions:
   - {fileID: 4383978370061006293}
   - {fileID: 4383978369472776752}
+  teleporterPairs:
+  - pairNumber: 0
+    teleporterOne: {fileID: 0}
+    teleporterTwo: {fileID: 0}
+  - pairNumber: 0
+    teleporterOne: {fileID: 0}
+    teleporterTwo: {fileID: 0}
+  - pairNumber: 0
+    teleporterOne: {fileID: 0}
+    teleporterTwo: {fileID: 0}
+  - pairNumber: 0
+    teleporterOne: {fileID: 0}
+    teleporterTwo: {fileID: 0}
+  - pairNumber: 0
+    teleporterOne: {fileID: 0}
+    teleporterTwo: {fileID: 0}
   requiredKillsToWin: 5
   weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
     type: 3}
