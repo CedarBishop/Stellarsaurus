@@ -56,18 +56,18 @@ public enum WeaponUseType { SingleShot, Multishot, Throwable, Consumable }
 public class WeaponType : ScriptableObject
 {
     [Header ("Universal Weapon Parameters")]
-    public WeaponUseType weaponUseType;
-    public string weaponName;
-    public Sprite weaponSprite;
-    public Projectile projectileType;
-    public float fireRate;
-    public int ammoCount;
-    public float destroyTime;
-    public int damage;
-    public float initialForce;
+    [SerializeField] public WeaponUseType weaponUseType;
+    [SerializeField] public string weaponName;
+    [SerializeField] public Sprite weaponSprite;
+    [SerializeField] public Projectile projectileType;
+    [SerializeField] public float fireRate;
+    [SerializeField] public int ammoCount;
+    [SerializeField] public float destroyTime;
+    [SerializeField] public int damage;
+    [SerializeField] public float initialForce;
     [Header("Multishot Parameters")]
-    public int bulletsFiredPerShot;
-    public float sprayAmount;
+    [SerializeField] public int bulletsFiredPerShot;
+    [SerializeField] public float sprayAmount;
     [Header("Throwable Parameters")]
-    public float explosionSize;
+    [SerializeField] public float explosionSize;
 }
