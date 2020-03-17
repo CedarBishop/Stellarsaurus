@@ -226,7 +226,7 @@ public class PlayerShoot : MonoBehaviour
     {
         gunSprite.sprite = currentWeapon.weaponSprite;
         ammoCount = currentWeapon.ammoCount;
-        projectileType = currentWeapon.projectileType;
+        projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
         fireRate = currentWeapon.fireRate;
         projectileDestroyTime = currentWeapon.destroyTime;
         bulletsFiredPerShot = currentWeapon.bulletsFiredPerShot;

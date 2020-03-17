@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 public class DesignMaster : EditorWindow
 {
-    string myString = "Hello World";
-    bool groupEnabled;
-    bool myBool = true;
-    float myFloat = 1.23f;
     Vector2 scrollPosition;
 
-    List<WeaponType> weaponTypes = new List<WeaponType>();
+     [SerializeField]
+     static List<WeaponType> weaponTypes = new List<WeaponType>();
+
+
 
 
     [MenuItem("Window/Design Master")]
     static void Init()
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster));
-        LoadFromJSON();
+        weaponTypes = LoadFromJSON();
         designMaster.Show();
     }
 
@@ -31,11 +31,17 @@ public class DesignMaster : EditorWindow
         {
             CreateWeapon();
         }
+        if (GUILayout.Button("Load From JSON"))
+        {
+            weaponTypes = LoadFromJSON();
+        }
         if (GUILayout.Button("Save To JSON"))
         {
             SaveToJSON();
         }
+        EditorGUILayout.EndVertical();
         EditorGUILayout.EndScrollView();
+
     }
 
     void CreateWeapon ()
@@ -53,7 +59,10 @@ public class DesignMaster : EditorWindow
         {
             for (int i = 0; i < weaponTypes.Count; i++)
             {
+                EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.BeginVertical();
+                
+                
 
                 GUILayout.Label(weaponTypes[i].weaponName, EditorStyles.boldLabel);
 
@@ -64,14 +73,16 @@ public class DesignMaster : EditorWindow
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Name", EditorStyles.boldLabel);
                 weaponTypes[i].weaponName = EditorGUILayout.TextField("Weapon Name", weaponTypes[i].weaponName);
+
                 EditorGUILayout.Space(8);
+                GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite", EditorStyles.boldLabel);
                 weaponTypes[i].weaponSprite = (Sprite)EditorGUILayout.ObjectField(weaponTypes[i].weaponSprite, typeof(Sprite), false);
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
-                weaponTypes[i].projectileType = (Projectile)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(Projectile), false);
+                weaponTypes[i].projectileType = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(GameObject), false);
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Damage", EditorStyles.boldLabel);
                 weaponTypes[i].damage = EditorGUILayout.IntField(weaponTypes[i].damage);
@@ -109,6 +120,11 @@ public class DesignMaster : EditorWindow
                 weaponTypes[i].explosionSize = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionSize);
                 EditorGUILayout.Space(16);
 
+                if (GUILayout.Button("Delete Weapon"))
+                {
+                    weaponTypes.Remove(weaponTypes[i]);
+                }
+
                 EditorGUILayout.EndVertical();
             }
         }
@@ -116,11 +132,45 @@ public class DesignMaster : EditorWindow
 
     void SaveToJSON ()
     {
-        Debug.Log(EditorJsonUtility.ToJson(weaponTypes[0]));
+
+        //string json = "[";
+
+        //for (int i = 0; i < weaponTypes.Count; i++)
+        //{
+        //    json += JsonUtility.ToJson(weaponTypes[i]);
+        //    if (i < weaponTypes.Count - 1)
+        //    {
+        //        json += ",";
+        //    }
+        //}
+        //json += "]";
+        //Debug.Log(json);
+
+
+
+        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes };
+        string json = JsonUtility.ToJson(saveObject);
+        Debug.Log(json);
+
+        File.WriteAllText(Application.dataPath + "/DesignMaster.txt", json);
     }
 
-    static void LoadFromJSON()
+    static List<WeaponType> LoadFromJSON()
     {
+ 
+        string file = Application.dataPath + "/DesignMaster.txt";
+        File.ReadAllText(file);
+        Debug.Log(File.ReadAllText(file));
+        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
+        return saveObject.savedWeapons;
+
 
     }
 }
+
+[System.Serializable]
+public class SaveObject
+{
+    public  List<WeaponType> savedWeapons;
+}
+
