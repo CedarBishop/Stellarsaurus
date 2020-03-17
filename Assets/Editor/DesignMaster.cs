@@ -7,11 +7,7 @@ using System.IO;
 public class DesignMaster : EditorWindow
 {
     Vector2 scrollPosition;
-
-     [SerializeField]
-     static List<WeaponType> weaponTypes = new List<WeaponType>();
-
-
+    [SerializeField] static List<WeaponType> weaponTypes = new List<WeaponType>();
 
 
     [MenuItem("Window/Design Master")]
@@ -25,8 +21,7 @@ public class DesignMaster : EditorWindow
     private void OnGUI()
     {
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
-        DisplayWeaponTypes();
-
+        EditorGUILayout.BeginVertical();
         if (GUILayout.Button("Create New Weapon Type"))
         {
             CreateWeapon();
@@ -39,6 +34,13 @@ public class DesignMaster : EditorWindow
         {
             SaveToJSON();
         }
+
+
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginHorizontal();
+        DisplayWeaponTypes();
+
+       
         EditorGUILayout.EndVertical();
         EditorGUILayout.EndScrollView();
 
@@ -59,10 +61,10 @@ public class DesignMaster : EditorWindow
         {
             for (int i = 0; i < weaponTypes.Count; i++)
             {
-                EditorGUILayout.BeginHorizontal();
+             
                 EditorGUILayout.BeginVertical();
-                
-                
+              
+
 
                 GUILayout.Label(weaponTypes[i].weaponName, EditorStyles.boldLabel);
 
@@ -77,24 +79,31 @@ public class DesignMaster : EditorWindow
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite", EditorStyles.boldLabel);
                 weaponTypes[i].weaponSprite = (Sprite)EditorGUILayout.ObjectField(weaponTypes[i].weaponSprite, typeof(Sprite), false);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
                 weaponTypes[i].projectileType = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(GameObject), false);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Damage", EditorStyles.boldLabel);
                 weaponTypes[i].damage = EditorGUILayout.IntField(weaponTypes[i].damage);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
                 weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Ammo Count", EditorStyles.boldLabel);
                 weaponTypes[i].ammoCount = EditorGUILayout.IntField(weaponTypes[i].ammoCount);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Destroy Time", EditorStyles.boldLabel);
                 weaponTypes[i].destroyTime = EditorGUILayout.FloatField(weaponTypes[i].destroyTime);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Initial Force", EditorStyles.boldLabel);
                 weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);
@@ -126,28 +135,15 @@ public class DesignMaster : EditorWindow
                 }
 
                 EditorGUILayout.EndVertical();
+              
+
             }
+              
         }
     }
 
     void SaveToJSON ()
     {
-
-        //string json = "[";
-
-        //for (int i = 0; i < weaponTypes.Count; i++)
-        //{
-        //    json += JsonUtility.ToJson(weaponTypes[i]);
-        //    if (i < weaponTypes.Count - 1)
-        //    {
-        //        json += ",";
-        //    }
-        //}
-        //json += "]";
-        //Debug.Log(json);
-
-
-
         SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes };
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
