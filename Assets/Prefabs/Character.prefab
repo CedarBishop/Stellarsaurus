@@ -339,8 +339,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 281cd93e1ccb90e4894df9b6ff20c7dc, type: 3}
   - {fileID: 21300000, guid: 0baf27b52b58b5b4ab93bf1a09b41709, type: 3}
   - {fileID: 21300000, guid: 0f7de30397e86e245be4245a86823d01, type: 3}
-  movementSpeed: 200
+  groundMovementSpeed: 200
+  airMovementSpeed: 200
+  inAir: 0
   jumpHeight: 4
+  onWall: 0
+  wallJumpHeight: 0
+  wallFriction: 0
   defaultLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -388,7 +393,22 @@ MonoBehaviour:
   bulletSpawnTransfrom: {fileID: 2949304738085152771}
   isGamepad: 0
   playerNumber: 0
-  currentWeapon: {fileID: 0}
+  currentWeapon:
+    weaponUseType: 0
+    weaponName: 
+    spriteName: 
+    weaponSprite: {fileID: 0}
+    projectileName: 
+    projectileType: {fileID: 0}
+    fireRate: 0
+    ammoCount: 0
+    range: 0
+    damage: 0
+    initialForce: 0
+    bulletsFiredPerShot: 0
+    sprayAmount: 0
+    explosionSize: 0
+    explosionTime: 0
 --- !u!114 &2327445293856462399
 MonoBehaviour:
   m_ObjectHideFlags: 0

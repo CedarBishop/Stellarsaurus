@@ -6,8 +6,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Sprite[] sprites;
-    public float movementSpeed;
+    public float groundMovementSpeed;
+    public float airMovementSpeed;
+    public bool inAir;
     public float jumpHeight;
+    [Header("Doesnt do anything yet")]
+    public bool onWall;
+    [Header("Doesnt do anything yet")]
+    public float wallJumpHeight;
+    [Header("Doesnt do anything yet")]
+    public float wallFriction;
     public LayerMask defaultLayer;
     public LayerMask groundLayer;
     public LayerMask platformLayer;
@@ -26,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {        
         if (gunOrigin.rotation.eulerAngles.z < -90 || gunOrigin.rotation.eulerAngles.z > 90)
         {
             spriteRenderer.flipX = true;
@@ -35,19 +43,33 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-        rigidbody.velocity = new Vector2(horizontal * movementSpeed * Time.fixedDeltaTime , rigidbody.velocity.y);
+        rigidbody.velocity = new Vector2(horizontal * ((inAir)? airMovementSpeed :groundMovementSpeed) * Time.fixedDeltaTime , rigidbody.velocity.y);
+
+        if (inAir)
+        {
+
+        }
+
+
+        if (inAir && rigidbody.velocity.y <= 0.0f)
+        {
+            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
+            {
+                inAir = false;
+            }
+        }
     }
 
     public void Move (float value)
     {
-        horizontal = value;
-       
+        horizontal = value;       
     }
 
     public void Jump ()
     {
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x,transform.position.y - 0.5f),0.25f,groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
+        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
         {
+            inAir = true;
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
         }
