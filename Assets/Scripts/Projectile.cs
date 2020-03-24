@@ -10,7 +10,9 @@ public class Projectile : MonoBehaviour
     protected float initialForce;
     protected int damage;
     protected int playerNumber;
-    float destroyTime;
+    protected float range;
+    protected Vector2 startingPosition;
+
     protected bool explodesOnImpact;
 
 
@@ -37,9 +39,10 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void InitialiseProjectile(float time, int _Damage, int _PlayerNumber, float force)
+    public void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force)
     {
-        destroyTime = time;
+        startingPosition = new Vector2(transform.position.x,transform.position.y);
+        range = Range;
         damage = _Damage;
         playerNumber = _PlayerNumber;
         initialForce = force;
@@ -47,12 +50,23 @@ public class Projectile : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
         StartCoroutine("DestroySelf");
+        StartCoroutine("DistanceTracker");
     }
 
+    IEnumerator DistanceTracker ()
+    {
+        while (Vector2.Distance(startingPosition, new Vector2(transform.position.x,transform.position.y)) < range)
+        {
+            yield return new WaitForSeconds(0.05f);
+        }
+        StopCoroutine("DestroySelf");
+        //print(Vector2.Distance(startingPosition, new Vector2(transform.position.x, transform.position.y)));
+        Destroy(gameObject);
+    }
 
     IEnumerator DestroySelf ()
     {
-        yield return new WaitForSeconds(destroyTime);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
 

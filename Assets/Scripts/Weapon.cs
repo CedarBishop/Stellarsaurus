@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
 
         string file = Application.dataPath + "/DesignMaster.txt";
         File.ReadAllText(file);
-        Debug.Log(File.ReadAllText(file));
+       // Debug.Log(File.ReadAllText(file));
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
         return saveObject.savedWeapons;
 
@@ -75,12 +75,13 @@ public class WeaponType
     public GameObject projectileType;
     public float fireRate;
     public int ammoCount;
-    public float destroyTime;
+    public float range;
     public int damage;
     public float initialForce;
     public int bulletsFiredPerShot;
     public float sprayAmount;
     public float explosionSize;
+    public float explosionTime;
 }
 
 

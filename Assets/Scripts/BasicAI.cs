@@ -50,12 +50,12 @@ public class BasicAI : MonoBehaviour
             if (!Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y + 1.0f), (isMovingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) && !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (isMovingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
             {
                 Jump(smallJumpHeight);
-                print("Small Jump");
+                //print("Small Jump");
             }
             else if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (isMovingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) && !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (isMovingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
             {
                 Jump(largeJumpHeight);
-                print("Large Jump");
+                //print("Large Jump");
             }
             else
             {
