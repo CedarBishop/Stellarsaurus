@@ -101,8 +101,8 @@ public class DesignMaster : EditorWindow
                 weaponTypes[i].ammoCount = EditorGUILayout.IntField(weaponTypes[i].ammoCount);
 
                 EditorGUILayout.Space(8);
-                GUILayout.Label("Destroy Time", EditorStyles.boldLabel);
-                weaponTypes[i].destroyTime = EditorGUILayout.FloatField(weaponTypes[i].destroyTime);
+                GUILayout.Label("Range", EditorStyles.boldLabel);
+                weaponTypes[i].range = EditorGUILayout.FloatField(weaponTypes[i].range);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Initial Force", EditorStyles.boldLabel);
@@ -127,6 +127,10 @@ public class DesignMaster : EditorWindow
 
                 GUILayout.Label("Explosion Force", EditorStyles.boldLabel);
                 weaponTypes[i].explosionSize = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionSize);
+                EditorGUILayout.Space(8);
+
+                GUILayout.Label("Explosion Time", EditorStyles.boldLabel);
+                weaponTypes[i].explosionTime = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionTime);
                 EditorGUILayout.Space(16);
 
                 if (GUILayout.Button("Delete Weapon"))

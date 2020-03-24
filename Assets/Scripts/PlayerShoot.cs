@@ -19,7 +19,7 @@ public class PlayerShoot : MonoBehaviour
     Projectile projectileType;
     int ammoCount;
     int bulletsFiredPerShot;
-    float projectileDestroyTime;
+    float projectileRange;
     float sprayAmount;
     string weaponName;
     bool isTriggeringWeapon;
@@ -28,6 +28,7 @@ public class PlayerShoot : MonoBehaviour
     int damageOfCurrentWeapon;
     float explosionSize;
     float initialForceOfProjectile;
+    float explodeTime;
 
 
     void Start()
@@ -143,7 +144,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                    projectile.InitialiseProjectile(projectileDestroyTime, 1, playerNumber, initialForceOfProjectile);
+                    projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile);
                     break;
                 case WeaponUseType.Multishot:
 
@@ -151,10 +152,10 @@ public class PlayerShoot : MonoBehaviour
                     float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((bulletsFiredPerShot / 2) * sprayAmount);
                     for (int i = 0; i < bulletsFiredPerShot; i++)
                     {
-                        print(baseZRotation);
+
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                        multiProjectile.InitialiseProjectile(projectileDestroyTime,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile);
+                        multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile);
 
                         baseZRotation += sprayAmount;
 
@@ -163,7 +164,7 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
                     Grenade grenade = g.GetComponent<Grenade>();
-                    grenade.InitGrenade(projectileDestroyTime,explosionSize,damageOfCurrentWeapon,playerNumber, initialForceOfProjectile);
+                    grenade.InitGrenade(explodeTime,explosionSize,damageOfCurrentWeapon,playerNumber, initialForceOfProjectile);
                     break;
                 case WeaponUseType.Consumable:
                     break;
@@ -228,7 +229,7 @@ public class PlayerShoot : MonoBehaviour
         ammoCount = currentWeapon.ammoCount;
         projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
         fireRate = currentWeapon.fireRate;
-        projectileDestroyTime = currentWeapon.destroyTime;
+        projectileRange = currentWeapon.range;
         bulletsFiredPerShot = currentWeapon.bulletsFiredPerShot;
         sprayAmount = currentWeapon.sprayAmount;
         weaponName = currentWeapon.weaponName;
@@ -236,7 +237,7 @@ public class PlayerShoot : MonoBehaviour
         damageOfCurrentWeapon = currentWeapon.damage;
         explosionSize = currentWeapon.explosionSize;
         initialForceOfProjectile = currentWeapon.initialForce;
-
+        explodeTime = currentWeapon.explosionTime;
 
         if (UIManager.instance != null)
             UIManager.instance.UpdateWeaponType(playerNumber,weaponName,ammoCount);
