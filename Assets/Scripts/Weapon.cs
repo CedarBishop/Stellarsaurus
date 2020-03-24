@@ -18,6 +18,11 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         weaponTypes = LoadFromJSON();
+        foreach (WeaponType weapon in weaponTypes)
+        {
+           weapon.weaponSprite = Resources.Load<Sprite>("Weapon Sprites/" + weapon.spriteName);
+            weapon.projectileType = Resources.Load<GameObject>("Projectiles/" + weapon.projectileName);
+        }
         ChooseWeaponType();
 
         
@@ -71,7 +76,9 @@ public class WeaponType
 {
     public WeaponUseType weaponUseType;
     public string weaponName;
+    public string spriteName;
     public Sprite weaponSprite;
+    public string projectileName;
     public GameObject projectileType;
     public float fireRate;
     public int ammoCount;

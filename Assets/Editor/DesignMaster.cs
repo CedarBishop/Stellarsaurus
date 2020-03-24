@@ -82,11 +82,19 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                weaponTypes[i].weaponSprite = (Sprite)EditorGUILayout.ObjectField(weaponTypes[i].weaponSprite, typeof(Sprite), false);
+                weaponTypes[i].spriteName = EditorGUILayout.TextField("Sprite Name", weaponTypes[i].spriteName);
 
                 EditorGUILayout.Space(8);
-                GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
-                weaponTypes[i].projectileType = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(GameObject), false);
+                GUILayout.Label("Projectile", EditorStyles.boldLabel);
+                weaponTypes[i].projectileName = EditorGUILayout.TextField("Projectile Type", weaponTypes[i].projectileName);
+
+                //EditorGUILayout.Space(8);
+                //GUILayout.Label("Sprite", EditorStyles.boldLabel);
+                //weaponTypes[i].weaponSprite = (Sprite)EditorGUILayout.ObjectField(weaponTypes[i].weaponSprite, typeof(Sprite), false);
+
+                //EditorGUILayout.Space(8);
+                //GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
+                //weaponTypes[i].projectileType = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(GameObject), false);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Damage", EditorStyles.boldLabel);

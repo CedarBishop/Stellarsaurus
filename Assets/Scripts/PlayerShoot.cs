@@ -192,6 +192,9 @@ public class PlayerShoot : MonoBehaviour
             currentWeapon = triggeredWeapon.weaponType;
             InitializeWeapon();
             Destroy(triggeredWeapon.gameObject);
+
+            isTriggeringWeapon = false;
+            triggeredWeapon = null;
         }
     }
 
@@ -224,7 +227,9 @@ public class PlayerShoot : MonoBehaviour
 
 
     void InitializeWeapon ()
-    {
+    { 
+
+
         gunSprite.sprite = currentWeapon.weaponSprite;
         ammoCount = currentWeapon.ammoCount;
         projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
