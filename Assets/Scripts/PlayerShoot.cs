@@ -153,7 +153,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                    projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile);
+                    projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile,spread);
                     break;
                 case WeaponUseType.Multishot:
 
@@ -164,7 +164,7 @@ public class PlayerShoot : MonoBehaviour
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                        multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile);
+                        multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile,spread);
 
                         baseZRotation += sprayAmount;
 
