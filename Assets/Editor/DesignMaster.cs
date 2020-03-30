@@ -82,7 +82,7 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                weaponTypes[i].spriteName = EditorGUILayout.TextField("Sprite Name", weaponTypes[i].spriteName);
+                weaponTypes[i].spritePrefabName = EditorGUILayout.TextField("Sprite Prefab Name", weaponTypes[i].spritePrefabName);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Projectile", EditorStyles.boldLabel);

@@ -61,11 +61,6 @@ public class Player : MonoBehaviour
             playerMovement.Jump();
     }
     
-    void OnSpecial ()
-    {
-        if (playerShoot != null)
-            playerShoot.Special();
-    }
 
     public void CreateNewCharacter()
     {

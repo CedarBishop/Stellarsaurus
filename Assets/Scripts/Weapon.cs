@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
         weaponTypes = LoadFromJSON();
         foreach (WeaponType weapon in weaponTypes)
         {
-           weapon.weaponSprite = Resources.Load<Sprite>("Weapon Sprites/" + weapon.spriteName);
+            weapon.weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/" + weapon.spritePrefabName);
             weapon.projectileType = Resources.Load<GameObject>("Projectiles/" + weapon.projectileName);
         }
         ChooseWeaponType();
@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
         weaponType = weaponTypes[randomNum];
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = weaponType.weaponSprite;
+        spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
 
         StartCoroutine("DestroySelf");
@@ -76,8 +76,8 @@ public class WeaponType
 {
     public WeaponUseType weaponUseType;
     public string weaponName;
-    public string spriteName;
-    public Sprite weaponSprite;
+    public string spritePrefabName;
+    public WeaponSpritePrefab weaponSpritePrefab;
     public string projectileName;
     public GameObject projectileType;
     public float fireRate;

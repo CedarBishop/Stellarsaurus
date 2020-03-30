@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Special",
-                    "type": "Button",
-                    "id": "01d89fe5-01b3-4034-af73-7067c3ea88b1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "c8c784f0-27f1-4cfd-bfef-e3b2a076a9c3",
@@ -233,28 +225,6 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ab6e9a50-14bc-4fd1-8fd1-a103e7f7fc95",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Special",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a08052b5-45b6-4369-98be-b5e94631c6bc",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

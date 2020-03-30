@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public Transform gunOriginTransform;
-    public SpriteRenderer gunSprite;
     public Transform bulletSpawnTransfrom;
+    public SpriteRenderer gunSprite;
     bool canShoot;
     Camera mainCamera;
     public bool isGamepad;
@@ -152,9 +152,10 @@ public class PlayerShoot : MonoBehaviour
             switch (weaponUseType)
             {
                 case WeaponUseType.SingleShot:
-                    Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
+                    Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position , gunOriginTransform.rotation);
                     projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile,spread);
                     break;
+
                 case WeaponUseType.Multishot:
 
 
@@ -207,10 +208,6 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    public void Special ()
-    {
-
-    }
 
     IEnumerator DelayBetweenShots ()
     {
@@ -239,7 +236,8 @@ public class PlayerShoot : MonoBehaviour
     { 
 
 
-        gunSprite.sprite = currentWeapon.weaponSprite;
+        gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
+
         ammoCount = currentWeapon.ammoCount;
         projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
         fireRate = currentWeapon.fireRate;
