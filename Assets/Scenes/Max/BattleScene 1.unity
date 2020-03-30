@@ -14500,6 +14500,11 @@ PrefabInstance:
       propertyPath: ShapeModule.arc.spread
       value: 0.0625
       objectReference: {fileID: 0}
+    - target: {fileID: 8640615899250154137, guid: 94c13a22cf334074882174b4aa419d2e,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c13a22cf334074882174b4aa419d2e, type: 3}
 --- !u!1001 &8990490027879667144
@@ -14578,7 +14583,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 2658403829935921558, guid: f2f89d6f8048e714d9bf1a2b46e133d7,
+      objectReference: {fileID: 2658403829935921558, guid: 3a87fcd1f1abccf4ca594e0a7bf71c0b,
         type: 3}
     - target: {fileID: 8990490027761441423, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}
