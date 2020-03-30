@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnvironmentalHealth : MonoBehaviour
 {
+    [Header("Health Settings")]
     public int health;
-    public int healthMax;
+    private int healthMax;
+    [Header("Explosive Settings")]
     public bool isExplosive;
+
+    [ConditionalHide("isExplosive", true)]
+    public int damage;
+    [ConditionalHide("isExplosive", true)]
+    public float range;
+    [ConditionalHide("isExplosive", true)]
+    public float knockback;
 
     private void Start()
     {

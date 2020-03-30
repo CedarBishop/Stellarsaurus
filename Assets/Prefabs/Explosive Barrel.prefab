@@ -14506,8 +14506,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  healthMax: 0
   isExplosive: 1
+  damage: 3
+  range: 4
+  knockback: 5
 --- !u!1 &8640615899250154132
 GameObject:
   m_ObjectHideFlags: 0
