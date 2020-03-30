@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     protected int damage;
     protected int playerNumber;
     protected float range;
+    protected float spreadRange;
     protected Vector2 startingPosition;
 
     protected bool explodesOnImpact;
@@ -42,7 +43,7 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force)
+    public void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force, float Spread)
     {
         startingPosition = new Vector2(transform.position.x,transform.position.y);
         range = Range;
@@ -50,6 +51,12 @@ public class Projectile : MonoBehaviour
         playerNumber = _PlayerNumber;
         initialForce = force;
         explodesOnImpact = true;
+        spreadRange = Spread;
+
+        float zRotation = transform.rotation.z + Random.Range(-spreadRange,spreadRange);
+        transform.rotation = Quaternion.Euler(0,0,zRotation);
+
+
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
         StartCoroutine("DestroySelf");

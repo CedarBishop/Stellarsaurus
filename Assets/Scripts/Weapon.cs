@@ -85,6 +85,8 @@ public class WeaponType
     public float range;
     public int damage;
     public float initialForce;
+    public float spread;
+
     public int bulletsFiredPerShot;
     public float sprayAmount;
     public float explosionSize;

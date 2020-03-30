@@ -29,6 +29,7 @@ public class PlayerShoot : MonoBehaviour
     float explosionSize;
     float initialForceOfProjectile;
     float explodeTime;
+    float spread;
 
 
     void Start()
@@ -74,10 +75,12 @@ public class PlayerShoot : MonoBehaviour
             if (v.y > 0)
             {
                 result = Vector2.up;
+                gunSprite.flipY = false;
             }
             else
             {
                 result = Vector2.down;
+                gunSprite.flipY = true;
             }
 
 
@@ -88,10 +91,12 @@ public class PlayerShoot : MonoBehaviour
             if (v.x > 0)
             {
                 result = Vector2.right;
+                gunSprite.flipY = false;
             }
             else
             {
                 result = new Vector2(-1,0.01f);
+                gunSprite.flipY = true;
             }
         }
         else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) > 0.25f)
@@ -101,21 +106,25 @@ public class PlayerShoot : MonoBehaviour
             {
                 // down left
                 result = new Vector2(-1,-1);
+                gunSprite.flipY = true;
             }
             else if (v.x > 0.25f && v.y < -0.25f)
             {
                 // down right
                 result = new Vector2(1, -1);
+                gunSprite.flipY = false;
             }
             else if (v.x > 0.25f && v.y > 0.25f)
             {
                 // up right
                 result = new Vector2(1, 1);
+                gunSprite.flipY = false;
             }
             else if (v.x < -0.25f && v.y > 0.25f)
             {
                 // up left
                 result = new Vector2(-1, 1);
+                gunSprite.flipY = true;
             }
 
         }
@@ -144,7 +153,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                    projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile);
+                    projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile,spread);
                     break;
                 case WeaponUseType.Multishot:
 
@@ -155,7 +164,7 @@ public class PlayerShoot : MonoBehaviour
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
-                        multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile);
+                        multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile,spread);
 
                         baseZRotation += sprayAmount;
 
@@ -243,6 +252,7 @@ public class PlayerShoot : MonoBehaviour
         explosionSize = currentWeapon.explosionSize;
         initialForceOfProjectile = currentWeapon.initialForce;
         explodeTime = currentWeapon.explosionTime;
+        spread = currentWeapon.spread;
 
         if (UIManager.instance != null)
             UIManager.instance.UpdateWeaponType(playerNumber,weaponName,ammoCount);

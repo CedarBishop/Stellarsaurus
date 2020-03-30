@@ -116,6 +116,10 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Initial Force", EditorStyles.boldLabel);
                 weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);
 
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Bullet Spread", EditorStyles.boldLabel);
+                weaponTypes[i].spread = EditorGUILayout.FloatField(weaponTypes[i].spread);
+
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Multishot Parameters", EditorStyles.boldLabel);
                 EditorGUILayout.Space(16);
