@@ -69,7 +69,7 @@ public class Weapon : MonoBehaviour
 }
 
 
-public enum WeaponUseType { SingleShot, Multishot, Throwable, Consumable }
+public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable }
 
 [System.Serializable]
 public class WeaponType

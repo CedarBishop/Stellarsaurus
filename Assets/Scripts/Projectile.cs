@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
 
     public void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force, float Spread)
     {
-        print("init bullet");
+        
 
         startingPosition = new Vector2(transform.position.x,transform.position.y);
         range = Range;
@@ -55,8 +55,8 @@ public class Projectile : MonoBehaviour
         explodesOnImpact = true;
         spreadRange = Spread;
 
-       // float zRotation = transform.rotation.z + Random.Range(-spreadRange,spreadRange);
-        //transform.rotation = Quaternion.Euler(0,0,zRotation);
+        float zRotation = transform.rotation.eulerAngles.z + Random.Range(-spreadRange,spreadRange);
+        transform.rotation = Quaternion.Euler(0,0,zRotation);
 
 
         rigidbody = GetComponent<Rigidbody2D>();

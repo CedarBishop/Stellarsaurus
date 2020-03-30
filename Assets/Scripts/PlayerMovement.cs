@@ -25,12 +25,16 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Transform gunOrigin;
     [HideInInspector] public int playerNumber;
+    bool isFallingThroughPlatform;
+
+    CircleCollider2D circleCollider;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();        
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[playerNumber - 1];
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     private void FixedUpdate()
@@ -58,6 +62,22 @@ public class PlayerMovement : MonoBehaviour
                 inAir = false;
             }
         }
+
+        if (isFallingThroughPlatform)
+        {
+            if (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
+            {
+                circleCollider.isTrigger = false;
+                isFallingThroughPlatform = false;
+            }
+            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, groundLayer))
+            {
+                circleCollider.isTrigger = false;
+                isFallingThroughPlatform = false;
+            }
+        }
+
+       
     }
 
     public void Move (float value)
@@ -77,17 +97,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void Fall (float value)
     {
-        if (value < 0.5f)
+        if (value < -0.5f)
         {
-            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
+            if (isFallingThroughPlatform)
             {
-                gameObject.layer = fallThroughLayer;
-                print("Should be falling through");
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
+                {
+                    isFallingThroughPlatform = true;
+                    circleCollider.isTrigger = true;
+                }
             }
+           
         }
         else
         {
-            gameObject.layer = defaultLayer;
+            circleCollider.isTrigger = true;
         }
     }
+
+
 }

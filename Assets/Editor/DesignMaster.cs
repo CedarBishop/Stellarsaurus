@@ -39,9 +39,10 @@ public class DesignMaster : EditorWindow
         EditorGUILayout.EndVertical();
         EditorGUILayout.BeginHorizontal();
         DisplayWeaponTypes();
+        EditorGUILayout.Space(20);
 
-       
         EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(20);
         EditorGUILayout.EndScrollView();
 
     }
@@ -74,19 +75,24 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Name", EditorStyles.boldLabel);
-                weaponTypes[i].weaponName = EditorGUILayout.TextField("Weapon Name", weaponTypes[i].weaponName);
+                weaponTypes[i].weaponName = EditorGUILayout.TextField( weaponTypes[i].weaponName);
 
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Sprite Prefab Name", EditorStyles.boldLabel);
+                weaponTypes[i].spritePrefabName = EditorGUILayout.TextField( weaponTypes[i].spritePrefabName);
+                
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                weaponTypes[i].spritePrefabName = EditorGUILayout.TextField("Sprite Prefab Name", weaponTypes[i].spritePrefabName);
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
+                    weaponTypes[i].projectileName = EditorGUILayout.TextField(weaponTypes[i].projectileName);
+                }
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Projectile", EditorStyles.boldLabel);
-                weaponTypes[i].projectileName = EditorGUILayout.TextField("Projectile Type", weaponTypes[i].projectileName);
+                
 
                 //EditorGUILayout.Space(8);
                 //GUILayout.Label("Sprite", EditorStyles.boldLabel);
@@ -112,38 +118,55 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Range", EditorStyles.boldLabel);
                 weaponTypes[i].range = EditorGUILayout.FloatField(weaponTypes[i].range);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Initial Force", EditorStyles.boldLabel);
-                weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable )
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Initial Force", EditorStyles.boldLabel);
+                    weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Bullet Spread", EditorStyles.boldLabel);
-                weaponTypes[i].spread = EditorGUILayout.FloatField(weaponTypes[i].spread);
+                    
+                }
 
-                EditorGUILayout.Space(16);
-                GUILayout.Label("Multishot Parameters", EditorStyles.boldLabel);
-                EditorGUILayout.Space(16);
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Bullet Spread", EditorStyles.boldLabel);
+                    weaponTypes[i].spread = EditorGUILayout.FloatField(weaponTypes[i].spread);
 
-                GUILayout.Label("Bullets fired per shot", EditorStyles.boldLabel);
-                weaponTypes[i].bulletsFiredPerShot = EditorGUILayout.IntField(weaponTypes[i].bulletsFiredPerShot);
-                EditorGUILayout.Space(8);
-
-                GUILayout.Label("Spray Amount", EditorStyles.boldLabel);
-                weaponTypes[i].sprayAmount = EditorGUILayout.FloatField(weaponTypes[i].sprayAmount);
-                EditorGUILayout.Space(8);
+                }
 
 
-                EditorGUILayout.Space(16);
-                GUILayout.Label("Throwable Parameters", EditorStyles.boldLabel);
-                EditorGUILayout.Space(16);
+                    if (weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
+                {
+                    EditorGUILayout.Space(16);
+                    GUILayout.Label("Multishot Parameters", EditorStyles.boldLabel);
+                    EditorGUILayout.Space(16);
 
-                GUILayout.Label("Explosion Force", EditorStyles.boldLabel);
-                weaponTypes[i].explosionSize = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionSize);
-                EditorGUILayout.Space(8);
+                    GUILayout.Label("Bullets fired per shot", EditorStyles.boldLabel);
+                    weaponTypes[i].bulletsFiredPerShot = EditorGUILayout.IntField(weaponTypes[i].bulletsFiredPerShot);
+                    EditorGUILayout.Space(8);
 
-                GUILayout.Label("Explosion Time", EditorStyles.boldLabel);
-                weaponTypes[i].explosionTime = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionTime);
-                EditorGUILayout.Space(16);
+                    GUILayout.Label("Spray Amount", EditorStyles.boldLabel);
+                    weaponTypes[i].sprayAmount = EditorGUILayout.FloatField(weaponTypes[i].sprayAmount);
+                    EditorGUILayout.Space(8);
+                }
+
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
+                {
+                    EditorGUILayout.Space(16);
+                    GUILayout.Label("Throwable Parameters", EditorStyles.boldLabel);
+                    EditorGUILayout.Space(16);
+
+                    GUILayout.Label("Explosion Force", EditorStyles.boldLabel);
+                    weaponTypes[i].explosionSize = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionSize);
+                    EditorGUILayout.Space(8);
+
+                    GUILayout.Label("Explosion Time", EditorStyles.boldLabel);
+                    weaponTypes[i].explosionTime = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionTime);
+                }
+
+                    EditorGUILayout.Space(16);
+             
 
                 if (GUILayout.Button("Delete Weapon"))
                 {
@@ -151,8 +174,15 @@ public class DesignMaster : EditorWindow
                 }
 
                 EditorGUILayout.EndVertical();
-              
 
+                EditorGUILayout.Space(10);
+
+                if (i % 4 == 0 && i != 0)
+                {
+                    EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.Space(20);
+                    EditorGUILayout.BeginHorizontal();
+                }
             }
               
         }

@@ -128,8 +128,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2949304738085152771}
+  m_Children: []
   m_Father: {fileID: 2180012640987882278}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -183,36 +182,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2583125428849194624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2949304738085152771}
-  m_Layer: 0
-  m_Name: Bullet Spawnpoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2949304738085152771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2583125428849194624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.603, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 16093657663787743}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2655954609655052927
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,15 +358,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunOriginTransform: {fileID: 2180012640987882278}
+  bulletSpawnTransfrom: {fileID: 0}
   gunSprite: {fileID: 7048489503243427660}
-  bulletSpawnTransfrom: {fileID: 2949304738085152771}
   isGamepad: 0
   playerNumber: 0
   currentWeapon:
     weaponUseType: 0
     weaponName: 
-    spriteName: 
-    weaponSprite: {fileID: 0}
+    spritePrefabName: 
+    weaponSpritePrefab: {fileID: 0}
     projectileName: 
     projectileType: {fileID: 0}
     fireRate: 0
@@ -405,6 +374,7 @@ MonoBehaviour:
     range: 0
     damage: 0
     initialForce: 0
+    spread: 0
     bulletsFiredPerShot: 0
     sprayAmount: 0
     explosionSize: 0

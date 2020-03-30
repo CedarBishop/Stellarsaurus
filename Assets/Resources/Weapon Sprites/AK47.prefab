@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130121638697372316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.879, y: 0.152, z: 0}
+  m_LocalPosition: {x: 0.93, y: 0.152, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3955676450496735135}
@@ -126,5 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSprite: {fileID: 21300000, guid: 983c2bf9c9d747445ac1dc7663ce1bc0, type: 3}
-  firingPointTransform: {fileID: 4408895308850066308}
-  firingPoint: {x: 0.879, y: 0.152, z: 0}
+  firingPoint: {fileID: 4408895308850066308}

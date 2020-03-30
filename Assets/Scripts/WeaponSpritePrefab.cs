@@ -5,13 +5,20 @@ using UnityEngine;
 public class WeaponSpritePrefab : MonoBehaviour
 {
     public Sprite weaponSprite;
-    public Transform firingPointTransform;
-    public Vector3 firingPoint;
+    public Transform firingPoint;
+
 
     private void OnValidate()
     {
         weaponSprite = GetComponent<SpriteRenderer>().sprite;
-        firingPoint = firingPointTransform.position;
+        if (transform.childCount == 0)
+        {
+            firingPoint = transform;
+        }
+        else
+        {
+            firingPoint = transform.GetChild(0);
+        }
     }
 
 }

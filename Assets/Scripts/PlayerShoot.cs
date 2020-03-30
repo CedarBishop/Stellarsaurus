@@ -30,6 +30,7 @@ public class PlayerShoot : MonoBehaviour
     float initialForceOfProjectile;
     float explodeTime;
     float spread;
+    Vector3 firingPoint;
 
 
     void Start()
@@ -152,7 +153,7 @@ public class PlayerShoot : MonoBehaviour
             switch (weaponUseType)
             {
                 case WeaponUseType.SingleShot:
-                    Projectile projectile = Instantiate(projectileType, bulletSpawnTransfrom.position , gunOriginTransform.rotation);
+                    Projectile projectile = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
                     projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile,spread);
                     break;
 
@@ -164,7 +165,7 @@ public class PlayerShoot : MonoBehaviour
                     {
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
-                        Projectile multiProjectile = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
+                        Projectile multiProjectile = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
                         multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile,spread);
 
                         baseZRotation += sprayAmount;
@@ -172,10 +173,17 @@ public class PlayerShoot : MonoBehaviour
                     }
                     break;
                 case WeaponUseType.Throwable:
-                    Projectile g = Instantiate(projectileType, bulletSpawnTransfrom.position, gunOriginTransform.rotation);
+                    Projectile g = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
                     Grenade grenade = g.GetComponent<Grenade>();
                     grenade.InitGrenade(explodeTime,explosionSize,damageOfCurrentWeapon,playerNumber, initialForceOfProjectile);
                     break;
+
+                case WeaponUseType.Melee:
+
+
+
+                    break;
+
                 case WeaponUseType.Consumable:
                     break;
                 default:
@@ -237,7 +245,7 @@ public class PlayerShoot : MonoBehaviour
 
 
         gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
-
+        firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
         ammoCount = currentWeapon.ammoCount;
         projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
         fireRate = currentWeapon.fireRate;
