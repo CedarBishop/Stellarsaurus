@@ -23,6 +23,11 @@ public class DesignMaster : EditorWindow
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster));
         weaponTypes = LoadFromJSON(out aiTypes, out player);
 
+        for (int i = 0; i < weaponTypes.Count; i++)
+        {
+            CheckNullWeaponSprite(i);
+        }
+
         displayPerRow = 4;
         spacing = 10;
         designMaster.Show();
@@ -63,6 +68,12 @@ public class DesignMaster : EditorWindow
         if (GUILayout.Button("Load"))
         {
             weaponTypes = LoadFromJSON(out aiTypes, out player);
+            for (int i = 0; i < weaponTypes.Count; i++)
+            {
+                CheckNullWeaponSprite(i);
+            }
+            displayPerRow = 4;
+            spacing = 10;
         }
         EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical();
@@ -169,6 +180,11 @@ public class DesignMaster : EditorWindow
 
                 GUILayout.Label(weaponTypes[i].weaponName, EditorStyles.boldLabel);
 
+                if (weaponTypes[i].weaponSpritePrefab.weaponSprite != null)
+                {
+                    GUILayout.Box(weaponTypes[i].weaponSpritePrefab.weaponSprite.texture);
+                }
+
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Universal Parameters", EditorStyles.boldLabel);
                 EditorGUILayout.Space(16);
@@ -180,7 +196,14 @@ public class DesignMaster : EditorWindow
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite Prefab Name", EditorStyles.boldLabel);
                 weaponTypes[i].spritePrefabName = EditorGUILayout.TextField( weaponTypes[i].spritePrefabName);
+                if (GUILayout.Button("Check Sprite Prefab"))
+                {
+                    CheckNullWeaponSprite(i);                 
+                    
+                }
                 
+
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
@@ -192,11 +215,11 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].projectileName = EditorGUILayout.TextField(weaponTypes[i].projectileName);
                 }
 
-                
+
 
                 //EditorGUILayout.Space(8);
                 //GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                //weaponTypes[i].weaponSprite = (Sprite)EditorGUILayout.ObjectField(weaponTypes[i].weaponSprite, typeof(Sprite), false);
+                //weaponTypes[i].weaponSpritePrefab = (WeaponSpritePrefab)EditorGUILayout.ObjectField(weaponTypes[i].weaponSpritePrefab, typeof(WeaponSpritePrefab), false);
 
                 //EditorGUILayout.Space(8);
                 //GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
@@ -286,6 +309,18 @@ public class DesignMaster : EditorWindow
 
             }
               
+        }
+    }
+
+    static void CheckNullWeaponSprite (int i)
+    {
+        if (Resources.Load<WeaponSpritePrefab>("Weapon Sprites/" + weaponTypes[i].spritePrefabName) != null)
+        {
+            weaponTypes[i].weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/" + weaponTypes[i].spritePrefabName);
+        }
+        else
+        {
+            weaponTypes[i].weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/Null");
         }
     }
 
@@ -415,6 +450,8 @@ public class DesignMaster : EditorWindow
         Debug.Log(json);
 
         File.WriteAllText(Application.dataPath + "/Editor/DesignMaster.txt", json);
+
+      
     }
 
     static List<WeaponType> LoadFromJSON(out List <AIType> aITypes, out PlayerParams playerParams)
@@ -427,6 +464,8 @@ public class DesignMaster : EditorWindow
         aITypes = saveObject.savedAis;
         playerParams = saveObject.playerParams;
         return saveObject.savedWeapons;
+
+
 
 
     }
