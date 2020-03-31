@@ -98,4 +98,5 @@ public class WeaponType
 public class SaveObject
 {
     public List<WeaponType> savedWeapons;
+    public List<AIType> savedAis;
 }

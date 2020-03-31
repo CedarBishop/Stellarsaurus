@@ -4,41 +4,138 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
+public enum DisplayOptions { Weapons,AI,Player}
+
 public class DesignMaster : EditorWindow
 {
     Vector2 scrollPosition;
+    static int displayPerRow;
+    static float spacing;
     [SerializeField] static List<WeaponType> weaponTypes = new List<WeaponType>();
+    [SerializeField] static List<AIType> aiTypes = new List<AIType>();
 
+    DisplayOptions displayOptions;
 
     [MenuItem("Window/Design Master")]
     static void Init()
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster));
-        weaponTypes = LoadFromJSON();
+        weaponTypes = LoadFromJSON(out aiTypes);
+
+        displayPerRow = 4;
+        spacing = 10;
         designMaster.Show();
     }
 
     private void OnGUI()
     {
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+        EditorGUILayout.BeginHorizontal();
+        
+
+        switch (displayOptions)
+        {
+            case DisplayOptions.Weapons:
+                EditorGUILayout.BeginVertical();
+                if (GUILayout.Button("Create New Weapon Type"))
+                {
+                    CreateWeapon();
+                }
+                EditorGUILayout.EndVertical();
+                break;
+            case DisplayOptions.AI:
+                EditorGUILayout.BeginVertical();
+                if (GUILayout.Button("Create New AI Type"))
+                {
+                    CreateAI();
+                }
+                EditorGUILayout.EndVertical();
+                break;
+            case DisplayOptions.Player:
+                break;
+            default:
+                break;
+        }
+
+ 
         EditorGUILayout.BeginVertical();
-        if (GUILayout.Button("Create New Weapon Type"))
+        if (GUILayout.Button("Load"))
         {
-            CreateWeapon();
+            weaponTypes = LoadFromJSON(out aiTypes);
         }
-        if (GUILayout.Button("Load From JSON"))
-        {
-            weaponTypes = LoadFromJSON();
-        }
-        if (GUILayout.Button("Save To JSON"))
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical();
+        if (GUILayout.Button("Save"))
         {
             SaveToJSON();
         }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
 
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginVertical();
+        if (GUILayout.Button("Weapons"))
+        {
+            displayOptions = DisplayOptions.Weapons;
+        }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical();
+        if (GUILayout.Button("AI"))
+        {
+            displayOptions = DisplayOptions.AI;
+        }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical();
+        if (GUILayout.Button("Player"))
+        {
+            displayOptions = DisplayOptions.Player;
+        }
+        EditorGUILayout.EndVertical();
+
+
+        EditorGUILayout.EndHorizontal();
+
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginVertical();
+
+        GUILayout.Label("Objects Per Row", EditorStyles.boldLabel);
+        displayPerRow = EditorGUILayout.IntSlider(displayPerRow,1,8);
 
         EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.BeginHorizontal();
-        DisplayWeaponTypes();
+        EditorGUILayout.BeginVertical();
+
+        GUILayout.Label("Spacing", EditorStyles.boldLabel);
+        spacing = EditorGUILayout.Slider(spacing, 0.0f, 100.0f);
+
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
+
+
+        EditorGUILayout.Space(20);
+
+
+        EditorGUILayout.BeginHorizontal();
+
+        switch (displayOptions)
+        {
+            case DisplayOptions.Weapons:
+                DisplayWeaponTypes();
+                break;
+            case DisplayOptions.AI:
+                DisplayAITypes();
+                break;
+            case DisplayOptions.Player:
+                DisplayPlayerParams();
+                break;
+            default:
+                break;
+        }
+
+        
         EditorGUILayout.Space(20);
 
         EditorGUILayout.EndVertical();
@@ -51,9 +148,11 @@ public class DesignMaster : EditorWindow
     {
         WeaponType weaponType = new WeaponType();
         weaponType.weaponName = "New Weapon";
-        weaponTypes.Add(weaponType);
-        
+        weaponTypes.Add(weaponType);        
     }
+
+
+   
 
 
     void DisplayWeaponTypes()
@@ -175,44 +274,127 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.EndVertical();
 
-                EditorGUILayout.Space(10);
+                EditorGUILayout.Space(spacing);
 
-                if (i % 4 == 0 && i != 0)
+                if ((i + 1) % (displayPerRow) == 0)
+                {
+                    EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.Space(20);
+                    EditorGUILayout.BeginHorizontal();
+                }
+
+            }
+              
+        }
+    }
+
+
+    void CreateAI ()
+    {
+        AIType ai = new AIType();
+        ai.AIName = "New AI";
+        aiTypes.Add(ai);
+    }
+
+    void DisplayAITypes()
+    {
+        if (aiTypes != null)
+        {
+            for (int i = 0; i < aiTypes.Count; i++)
+            {
+
+                EditorGUILayout.BeginVertical();
+
+
+
+                GUILayout.Label(aiTypes[i].AIName, EditorStyles.boldLabel);
+
+                EditorGUILayout.Space(16);
+                GUILayout.Label("Universal Parameters", EditorStyles.boldLabel);
+                EditorGUILayout.Space(16);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Name", EditorStyles.boldLabel);
+                aiTypes[i].AIName = EditorGUILayout.TextField(aiTypes[i].AIName);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Sprite", EditorStyles.boldLabel);
+                aiTypes[i].spritePrefabName = EditorGUILayout.TextField(aiTypes[i].spritePrefabName);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Movement Speed", EditorStyles.boldLabel);
+                aiTypes[i].moveMentSpeed = EditorGUILayout.FloatField(aiTypes[i].moveMentSpeed);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Attack Damage", EditorStyles.boldLabel);
+                aiTypes[i].attackDamage = EditorGUILayout.IntField(aiTypes[i].attackDamage);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Attack Cooldown", EditorStyles.boldLabel);
+                aiTypes[i].attackCoolDown = EditorGUILayout.FloatField(aiTypes[i].attackCoolDown);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Behaviour", EditorStyles.boldLabel);
+                aiTypes[i].aiBehaviour = (AIBehaviour)EditorGUILayout.EnumPopup(aiTypes[i].aiBehaviour);
+
+
+
+
+
+
+                EditorGUILayout.Space(16);
+
+
+                if (GUILayout.Button("Delete AI"))
+                {
+                    aiTypes.Remove(aiTypes[i]);
+                }
+
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.Space(spacing);
+
+                if ((i + 1) % (displayPerRow) == 0)
                 {
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.Space(20);
                     EditorGUILayout.BeginHorizontal();
                 }
             }
-              
+
         }
     }
 
+
+    void DisplayPlayerParams()
+    {
+
+    }
+
+
+
+
     void SaveToJSON ()
     {
-        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes };
+        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes };
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
 
-        File.WriteAllText(Application.dataPath + "/DesignMaster.txt", json);
+        File.WriteAllText(Application.dataPath + "/Editor/DesignMaster.txt", json);
     }
 
-    static List<WeaponType> LoadFromJSON()
+    static List<WeaponType> LoadFromJSON(out List <AIType> aITypes)
     {
  
-        string file = Application.dataPath + "/DesignMaster.txt";
+        string file = Application.dataPath + "/Editor/DesignMaster.txt";
         File.ReadAllText(file);
         Debug.Log(File.ReadAllText(file));
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
+        aITypes = saveObject.savedAis;
         return saveObject.savedWeapons;
 
 
     }
 }
 
-[System.Serializable]
-public class SaveObject
-{
-    public  List<WeaponType> savedWeapons;
-}
 
