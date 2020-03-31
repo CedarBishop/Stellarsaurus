@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startinghealth = 3;
     public ParticleSystem bloodSplatterParticle;
 
+    [HideInInspector]public int playerNumber;
+    
     Player playerParent;
-    public int playerNumber;
+    PlayerParams playerParams;
     int health;
+    
     void Start()
     {
         playerParent = GetComponentInParent<Player>();
-        health = startinghealth;
         UIManager.instance.UpdateHealth(playerNumber, health);
+        playerParams = GameManager.instance.loader.saveObject.playerParams;
+        health = playerParams.startingHealth;
     }
 
     public void TakeDamage(int damage, int projectilePlayerNumber)

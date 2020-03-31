@@ -13,6 +13,7 @@ public class DesignMaster : EditorWindow
     static float spacing;
     [SerializeField] static List<WeaponType> weaponTypes = new List<WeaponType>();
     [SerializeField] static List<AIType> aiTypes = new List<AIType>();
+    [SerializeField] static PlayerParams player;
 
     DisplayOptions displayOptions;
 
@@ -20,7 +21,7 @@ public class DesignMaster : EditorWindow
     static void Init()
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster));
-        weaponTypes = LoadFromJSON(out aiTypes);
+        weaponTypes = LoadFromJSON(out aiTypes, out player);
 
         displayPerRow = 4;
         spacing = 10;
@@ -61,7 +62,7 @@ public class DesignMaster : EditorWindow
         EditorGUILayout.BeginVertical();
         if (GUILayout.Button("Load"))
         {
-            weaponTypes = LoadFromJSON(out aiTypes);
+            weaponTypes = LoadFromJSON(out aiTypes, out player);
         }
         EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical();
@@ -368,7 +369,40 @@ public class DesignMaster : EditorWindow
 
     void DisplayPlayerParams()
     {
+        EditorGUILayout.BeginVertical();
 
+
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Starting Health", EditorStyles.boldLabel);
+        player.startingHealth = EditorGUILayout.IntField(player.startingHealth);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Ground Speed", EditorStyles.boldLabel);
+        player.groundSpeed = EditorGUILayout.FloatField(player.groundSpeed);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Air Speed", EditorStyles.boldLabel);
+        player.airSpeed = EditorGUILayout.FloatField(player.airSpeed);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Jump Height", EditorStyles.boldLabel);
+        player.jumpHeight = EditorGUILayout.FloatField(player.jumpHeight);
+        EditorGUILayout.Space(8);
+
+
+        GUILayout.Label("Gravity Scale", EditorStyles.boldLabel);
+        player.gravityScale = EditorGUILayout.FloatField(player.gravityScale);
+        EditorGUILayout.Space(8);
+
+
+        EditorGUILayout.Space(16);
+
+
+
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space(spacing);
     }
 
 
@@ -376,14 +410,14 @@ public class DesignMaster : EditorWindow
 
     void SaveToJSON ()
     {
-        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes };
+        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes, playerParams = player };
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
 
         File.WriteAllText(Application.dataPath + "/Editor/DesignMaster.txt", json);
     }
 
-    static List<WeaponType> LoadFromJSON(out List <AIType> aITypes)
+    static List<WeaponType> LoadFromJSON(out List <AIType> aITypes, out PlayerParams playerParams)
     {
  
         string file = Application.dataPath + "/Editor/DesignMaster.txt";
@@ -391,6 +425,7 @@ public class DesignMaster : EditorWindow
         Debug.Log(File.ReadAllText(file));
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
         aITypes = saveObject.savedAis;
+        playerParams = saveObject.playerParams;
         return saveObject.savedWeapons;
 
 

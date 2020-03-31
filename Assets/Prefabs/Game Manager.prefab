@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8990490027761441408}
   - component: {fileID: 8990490027761441409}
   - component: {fileID: 421269320}
+  - component: {fileID: 59959285128919413}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 1
   m_PlayerJoinedEvent:
@@ -105,8 +106,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: 0
+  loader: {fileID: 59959285128919413}
   playerColours:
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &59959285128919413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae2dd21e8e390c479ffd62b3d92c210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveObject:
+    savedWeapons: []
+    savedAis: []

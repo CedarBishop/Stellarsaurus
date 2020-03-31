@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -17,7 +16,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        weaponTypes = LoadFromJSON();
+        weaponTypes = GameManager.instance.loader.saveObject.savedWeapons;
         foreach (WeaponType weapon in weaponTypes)
         {
             weapon.weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/" + weapon.spritePrefabName);
@@ -54,18 +53,6 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
-
-     List<WeaponType> LoadFromJSON()
-    {
-
-        string file = Application.dataPath + "/DesignMaster.txt";
-        File.ReadAllText(file);
-       // Debug.Log(File.ReadAllText(file));
-        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
-        return saveObject.savedWeapons;
-
-
-    }
 }
 
 
@@ -94,9 +81,3 @@ public class WeaponType
 }
 
 
-[System.Serializable]
-public class SaveObject
-{
-    public List<WeaponType> savedWeapons;
-    public List<AIType> savedAis;
-}

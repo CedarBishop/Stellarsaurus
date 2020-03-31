@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public int playerCount = 0;
     PlayerInputManager inputManager;
+    public Loader loader;
 
     public Color[] playerColours;
 

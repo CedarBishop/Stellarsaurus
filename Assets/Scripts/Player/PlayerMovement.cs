@@ -29,12 +29,19 @@ public class PlayerMovement : MonoBehaviour
 
     CircleCollider2D circleCollider;
 
+    PlayerParams playerParams;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();        
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[playerNumber - 1];
         circleCollider = GetComponent<CircleCollider2D>();
+        playerParams = GameManager.instance.loader.saveObject.playerParams;
+        groundMovementSpeed = playerParams.groundSpeed;
+        airMovementSpeed = playerParams.airSpeed;
+        jumpHeight = playerParams.jumpHeight;
+        rigidbody.gravityScale = playerParams.gravityScale;
     }
 
     private void FixedUpdate()
@@ -115,5 +122,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+}
+
+
+
+[System.Serializable]
+public class PlayerParams 
+{
+    public int startingHealth;
+    public float groundSpeed;
+    public float airSpeed;
+    public float jumpHeight;
+    public float gravityScale;
 
 }

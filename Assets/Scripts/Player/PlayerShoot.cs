@@ -5,14 +5,13 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public Transform gunOriginTransform;
-    public Transform bulletSpawnTransfrom;
     public SpriteRenderer gunSprite;
     bool canShoot;
     Camera mainCamera;
-    public bool isGamepad;
-    public int playerNumber;
+    [HideInInspector]public bool isGamepad;
+    [HideInInspector] public int playerNumber;
 
-    public WeaponType currentWeapon;
+    [HideInInspector] public WeaponType currentWeapon;
 
     Sprite weaponSprite;
     float fireRate;
