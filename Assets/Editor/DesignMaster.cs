@@ -26,6 +26,7 @@ public class DesignMaster : EditorWindow
         for (int i = 0; i < weaponTypes.Count; i++)
         {
             CheckNullWeaponSprite(i);
+            CheckNullProjectile(i);
         }
 
         displayPerRow = 4;
@@ -71,6 +72,7 @@ public class DesignMaster : EditorWindow
             for (int i = 0; i < weaponTypes.Count; i++)
             {
                 CheckNullWeaponSprite(i);
+                CheckNullProjectile(i);
             }
             displayPerRow = 4;
             spacing = 10;
@@ -180,11 +182,21 @@ public class DesignMaster : EditorWindow
 
                 GUILayout.Label(weaponTypes[i].weaponName, EditorStyles.boldLabel);
 
+                EditorGUILayout.Space(16);
+
+                EditorGUILayout.BeginHorizontal();
+
                 if (weaponTypes[i].weaponSpritePrefab.weaponSprite != null)
                 {
                     GUILayout.Box(weaponTypes[i].weaponSpritePrefab.weaponSprite.texture);
                 }
 
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
+                {
+                    GUILayout.Box(weaponTypes[i].projectileType.GetComponent<SpriteRenderer>().sprite.texture);
+                }
+
+                EditorGUILayout.EndHorizontal();
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Universal Parameters", EditorStyles.boldLabel);
                 EditorGUILayout.Space(16);
@@ -213,6 +225,11 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
                     weaponTypes[i].projectileName = EditorGUILayout.TextField(weaponTypes[i].projectileName);
+
+                    if (GUILayout.Button("Check Projectile Prefab"))
+                    {
+                        CheckNullProjectile(i);
+                    }
                 }
 
 
@@ -321,6 +338,18 @@ public class DesignMaster : EditorWindow
         else
         {
             weaponTypes[i].weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/Null");
+        }
+    }
+
+    static void CheckNullProjectile (int i)
+    {
+        if (Resources.Load<GameObject>("Projectiles/" + weaponTypes[i].projectileName) != null)
+        {
+            weaponTypes[i].projectileType = Resources.Load<GameObject>("Projectiles/" + weaponTypes[i].projectileName);
+        }
+        else
+        {
+            weaponTypes[i].projectileType = Resources.Load<GameObject>("Projectiles/Null");
         }
     }
 

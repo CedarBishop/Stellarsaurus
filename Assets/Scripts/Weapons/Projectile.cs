@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     protected Vector2 startingPosition;
 
     protected bool explodesOnImpact;
-
+    [HideInInspector] public Sprite sprite;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -82,4 +82,9 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    private void OnValidate()
+    {
+       sprite = GetComponent<SpriteRenderer>().sprite;
+    }
 }
