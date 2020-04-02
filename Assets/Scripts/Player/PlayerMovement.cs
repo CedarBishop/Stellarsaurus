@@ -70,19 +70,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (isFallingThroughPlatform)
-        {
-            if (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
-            {
-                circleCollider.isTrigger = false;
-                isFallingThroughPlatform = false;
-            }
-            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, groundLayer))
-            {
-                circleCollider.isTrigger = false;
-                isFallingThroughPlatform = false;
-            }
-        }
+        //if (isFallingThroughPlatform)
+        //{
+        //    if (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
+        //    {
+        //        circleCollider.isTrigger = false;
+        //        isFallingThroughPlatform = false;
+        //    }
+        //    if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, groundLayer))
+        //    {
+        //        circleCollider.isTrigger = false;
+        //        isFallingThroughPlatform = false;
+        //    }
+        //}
 
        
     }
@@ -104,22 +104,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Fall (float value)
     {
-        if (value < -0.5f)
-        {
-            if (isFallingThroughPlatform)
-            {
-                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
-                {
-                    isFallingThroughPlatform = true;
-                    circleCollider.isTrigger = true;
-                }
-            }
+        //if (value < -0.5f)
+        //{
+        //    if (isFallingThroughPlatform)
+        //    {
+        //        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
+        //        {
+        //            isFallingThroughPlatform = true;
+        //            circleCollider.isTrigger = true;
+        //        }
+        //    }
            
-        }
-        else
-        {
-            circleCollider.isTrigger = true;
-        }
+        //}
+        //else
+        //{
+        //    circleCollider.isTrigger = true;
+        //}
     }
 
 
