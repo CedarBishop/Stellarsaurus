@@ -16,12 +16,8 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        weaponTypes = GameManager.instance.loader.saveObject.savedWeapons;
-        foreach (WeaponType weapon in weaponTypes)
-        {
-            weapon.weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/" + weapon.spritePrefabName);
-            weapon.projectileType = Resources.Load<GameObject>("Projectiles/" + weapon.projectileName);
-        }
+        weaponTypes = GameManager.instance.loader.GetWeaponsByNames(LevelManager.instance.weaponsInThisLevel);
+        
         ChooseWeaponType();
 
         
@@ -29,6 +25,10 @@ public class Weapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.GetComponent<Projectile>() || collision.gameObject.GetComponent<PlayerMovement>())
+        {
+            return;
+        }
         if (rigidbody != null)
         {
             Destroy(rigidbody);

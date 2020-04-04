@@ -155,7 +155,6 @@ public class DesignMaster : EditorWindow
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(20);
         EditorGUILayout.EndScrollView();
-
     }
 
     void CreateWeapon ()
@@ -220,6 +219,7 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
 
+                
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
                 {
                     EditorGUILayout.Space(8);

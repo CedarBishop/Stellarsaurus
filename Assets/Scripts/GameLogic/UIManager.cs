@@ -76,10 +76,7 @@ public class UIManager : MonoBehaviour
                 player.playerKills++;
                 player.playerWinsText.text = "Kills = " + player.playerKills.ToString();
 
-                if (player.playerKills >= LevelManager.instance.requiredKillsToWin)
-                {
-                    // display win screen of player number parameter
-                }
+              
             }
         }
     }

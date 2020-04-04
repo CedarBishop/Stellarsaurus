@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -7,13 +6,18 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance = null;
 
     public Transform[] startingPositions;
-    //public Player[] players;
     public TeleporterPairs[] teleporterPairs;
 
-    public int requiredKillsToWin = 5;
-
+    
     public Weapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
+
+    [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
+
+
+
+    [Header("Doesn't spawn AI yet")]
+    [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisInThisLevel;
 
     private void Awake()
     {
