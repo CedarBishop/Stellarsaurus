@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Weapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
 
+
     [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
 
 

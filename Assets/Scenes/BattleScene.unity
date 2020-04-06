@@ -3811,7 +3811,7 @@ PrefabInstance:
     - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
         type: 3}
       propertyPath: weaponsInThisLevel.Array.size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
         type: 3}
@@ -3932,6 +3932,31 @@ PrefabInstance:
         type: 3}
       propertyPath: aisInThisLevel.Array.data[3]
       value: Test 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: weaponsInThisLevel.Array.data[5]
+      value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: weaponsInThisLevel.Array.data[6]
+      value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: weaponsInThisLevel.Array.data[7]
+      value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: weaponsInThisLevel.Array.data[8]
+      value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: weaponsInThisLevel.Array.data[9]
+      value: Grenade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3868574680a0db2429cbc48f0a4002ae, type: 3}
