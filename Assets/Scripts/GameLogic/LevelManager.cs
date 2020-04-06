@@ -8,10 +8,10 @@ public class LevelManager : MonoBehaviour
     public Transform[] startingPositions;
     public TeleporterPairs[] teleporterPairs;
 
-    
+    public bool isLobby;    
     public Weapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
-
+    
 
     [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
 
@@ -34,7 +34,11 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("SpawnWeapons");
+        if (isLobby == false)
+        {
+            StartCoroutine("SpawnWeapons");
+        }
+
 
         if (teleporterPairs != null)
         {

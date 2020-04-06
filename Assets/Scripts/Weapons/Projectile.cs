@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
             }
             if (collision.gameObject.GetComponent<PlayerHealth>())
             {
-                collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage, playerNumber);
+                collision.gameObject.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
             }
             else if(collision.gameObject.GetComponent<EnvironmentalHealth>())
             {

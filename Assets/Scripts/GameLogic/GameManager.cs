@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int playerCount = 0;
     PlayerInputManager inputManager;
     public Loader loader;
-
+    public RoundSystem roundSystem;
     public Color[] playerColours;
 
     void Awake()
@@ -28,13 +28,37 @@ public class GameManager : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        inputManager.EnableJoining();
+        SceneManager.activeSceneChanged += OnSceneChange;
+    }
+
+    private void OnSceneChange(Scene oldScene, Scene newScene)
+    {
+
+        if (oldScene.buildIndex == 0 && newScene.buildIndex != 0)
+        {
+            roundSystem.StartMatch();
+        }
+
+
+        if (newScene.buildIndex == 0)
+        {
+            inputManager.EnableJoining();
+        }
+        else
+        {
+            inputManager.DisableJoining();
+        }
+    }
+
     // called by player input manager when new device enters
     void OnPlayerJoined()
     {
         playerCount++;
         if (UIManager.instance != null)
-            UIManager.instance.CreateNewPlayerStats(playerCount);  
-        
+            UIManager.instance.CreateNewPlayerStats(playerCount);          
 
     }
 

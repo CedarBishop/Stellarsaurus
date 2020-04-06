@@ -15,12 +15,15 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerParent = GetComponentInParent<Player>();
-        UIManager.instance.UpdateHealth(playerNumber, health);
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.UpdateHealth(playerNumber, health);
+        }
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         health = playerParams.startingHealth;
     }
 
-    public void TakeDamage(int damage, int projectilePlayerNumber)
+    public void HitByAI(int damage)
     {
         health -= damage;
         UIManager.instance.UpdateHealth(playerNumber,health);
@@ -29,13 +32,28 @@ public class PlayerHealth : MonoBehaviour
         Destroy(p.gameObject,3);
         if (health <= 0)
         {
-            if (projectilePlayerNumber != playerNumber)
-            {
-                UIManager.instance.AwardKill(projectilePlayerNumber);
-            }
             Death();
         }
     }
+
+
+    public void HitByPlayer (int projectilePlayerNumber)
+    {
+        health = 0;
+
+        UIManager.instance.UpdateHealth(playerNumber, health);
+        ParticleSystem p = Instantiate(bloodSplatterParticle, transform.position, Quaternion.identity);
+        p.Play();
+        Destroy(p.gameObject, 3);
+
+        if (projectilePlayerNumber != playerNumber)
+        {
+            UIManager.instance.AwardKill(projectilePlayerNumber);
+        }
+        Death();
+
+    }
+
 
     void Death ()
     {

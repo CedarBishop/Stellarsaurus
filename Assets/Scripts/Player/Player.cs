@@ -70,8 +70,9 @@ public class Player : MonoBehaviour
         }
         if (LevelManager.instance != null)
         {
-            transform .position= LevelManager.instance.startingPositions[playerNumber - 1].position;
+            transform.position = LevelManager.instance.startingPositions[playerNumber - 1].position;
         }
+
         currentCharacter = Instantiate(characterPrefab,transform);
         playerMovement = currentCharacter.GetComponent<PlayerMovement>();
         playerShoot = currentCharacter.GetComponent<PlayerShoot>();
@@ -81,7 +82,10 @@ public class Player : MonoBehaviour
         playerShoot.playerNumber = playerNumber;
         playerMovement.playerNumber = playerNumber;
 
-        cameraController.playersInGame.Add(playerMovement);
+        if (cameraController != null)
+        {
+            cameraController.playersInGame.Add(playerMovement);
+        }
 
         //playerInput.SwitchCurrentActionMap("Player");
 
@@ -89,15 +93,25 @@ public class Player : MonoBehaviour
 
     public void CharacterDied()
     {
-        cameraController.playersInGame.Remove(playerMovement);
-        StartCoroutine("Respawn");
+        if (currentCharacter != null)
+        {
+            if (cameraController != null)
+            {
+                cameraController.playersInGame.Remove(playerMovement);
+            }
+            Destroy(currentCharacter);
+        }       
+        
     }
 
-    IEnumerator Respawn ()
-    {        
-        yield return new WaitForSeconds(2);
-        CreateNewCharacter();
-    }
+
+
+
+    //IEnumerator CoRespawn ()
+    //{        
+    //    yield return new WaitForSeconds(2);
+    //    CreateNewCharacter();
+    //}
 
     //void AssignUIInputModule ()
     //{
