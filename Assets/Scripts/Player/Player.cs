@@ -17,12 +17,12 @@ public class Player : MonoBehaviour
     GameObject currentCharacter;
     CameraController cameraController;
 
-    //public Image cursorPrefab;
-    //public Image cursor;
-
+    bool isHoldingShootButton;
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         playerNumber = GameManager.instance.playerCount;
         playerInput = GetComponent<PlayerInput>();
         if (playerInput.currentControlScheme == "Gamepad")
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
             isGamepad = true;
         }
         cameraController = Camera.main.GetComponent<CameraController>();
-        //AssignUIInputModule();
+
         CreateNewCharacter();
     }
 
@@ -51,12 +51,15 @@ public class Player : MonoBehaviour
 
     void OnFire ()
     {
+        isHoldingShootButton = !isHoldingShootButton;
+
         if(playerShoot != null)
             playerShoot.Fire();
     }
 
     void OnJump()
     {
+        print("Jump");
         if (playerMovement != null)
             playerMovement.Jump();
     }
@@ -87,11 +90,9 @@ public class Player : MonoBehaviour
             cameraController.playersInGame.Add(playerMovement);
         }
 
-        //playerInput.SwitchCurrentActionMap("Player");
-
     }
 
-    public void CharacterDied()
+    public void CharacterDied(bool diedInCombat)
     {
         if (currentCharacter != null)
         {
@@ -100,24 +101,14 @@ public class Player : MonoBehaviour
                 cameraController.playersInGame.Remove(playerMovement);
             }
             Destroy(currentCharacter);
-        }       
+        }
+
+        if (diedInCombat)
+        {
+            GameManager.instance.roundSystem.CheckIfLastPlayer();
+        }
         
     }
-
-
-
-
-    //IEnumerator CoRespawn ()
-    //{        
-    //    yield return new WaitForSeconds(2);
-    //    CreateNewCharacter();
-    //}
-
-    //void AssignUIInputModule ()
-    //{
-    //    playerInput.uiInputModule = FindObjectOfType<InputSystemUIInputModule>();
-        
-    //}
 
    
     void OnFall (InputValue value)

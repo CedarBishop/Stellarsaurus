@@ -57,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
-        playerParent.CharacterDied();
+        playerParent.CharacterDied(true);
 
         Destroy(gameObject);
     }

@@ -247,6 +247,10 @@ public class DesignMaster : EditorWindow
                 weaponTypes[i].damage = EditorGUILayout.IntField(weaponTypes[i].damage);
 
                 EditorGUILayout.Space(8);
+                GUILayout.Label("Is Semi-Automatic", EditorStyles.boldLabel);
+                weaponTypes[i].isSemiAutomatic = EditorGUILayout.Toggle(weaponTypes[i].isSemiAutomatic);
+
+                EditorGUILayout.Space(8);
                 GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
                 weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
 
@@ -276,7 +280,7 @@ public class DesignMaster : EditorWindow
                 }
 
 
-                    if (weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
                 {
                     EditorGUILayout.Space(16);
                     GUILayout.Label("Multishot Parameters", EditorStyles.boldLabel);
@@ -457,6 +461,14 @@ public class DesignMaster : EditorWindow
 
         GUILayout.Label("Gravity Scale", EditorStyles.boldLabel);
         player.gravityScale = EditorGUILayout.FloatField(player.gravityScale);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Low Jump Gravity Scaler", EditorStyles.boldLabel);
+        player.lowJumpGravityScaler = EditorGUILayout.FloatField(player.lowJumpGravityScaler);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Falling Gravity Scaler", EditorStyles.boldLabel);
+        player.fallingGravityScaler = EditorGUILayout.FloatField(player.fallingGravityScaler);
         EditorGUILayout.Space(8);
 
 

@@ -7,11 +7,14 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    public int playerCount = 0;
-    PlayerInputManager inputManager;
+    private PlayerInputManager inputManager;
+    
     public Loader loader;
     public RoundSystem roundSystem;
+    public int playerCount = 0;
     public Color[] playerColours;
+
+    List<PlayerStats> playerStats = new List<PlayerStats>(); 
 
     void Awake()
     {
@@ -36,13 +39,6 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneChange(Scene oldScene, Scene newScene)
     {
-
-        if (oldScene.buildIndex == 0 && newScene.buildIndex != 0)
-        {
-            roundSystem.StartMatch();
-        }
-
-
         if (newScene.buildIndex == 0)
         {
             inputManager.EnableJoining();
@@ -69,5 +65,11 @@ public class GameManager : MonoBehaviour
             UIManager.instance.RemovePlayerStats(playerCount);
         playerCount--;
         
+    }
+
+    public void StartMatch()
+    {
+        SceneManager.LoadScene("BattleScene");
+        roundSystem.StartMatch();
     }
 }

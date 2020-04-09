@@ -73,6 +73,7 @@ public class WeaponType
     public int damage;
     public float initialForce;
     public float spread;
+    public bool isSemiAutomatic;
 
     public int bulletsFiredPerShot;
     public float sprayAmount;

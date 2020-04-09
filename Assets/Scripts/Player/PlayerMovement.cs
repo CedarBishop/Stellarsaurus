@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float airMovementSpeed;
     public bool inAir;
     public float jumpHeight;
+    public float fallMultiplier;
+    public float lowJumpMultiplier;
     [Header("Doesnt do anything yet")]
     public bool onWall;
     [Header("Doesnt do anything yet")]
@@ -20,16 +22,22 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     public LayerMask fallThroughLayer;
+    public Transform gunOrigin;
+    
+    
+    
     Rigidbody2D rigidbody;
     float horizontal;
     SpriteRenderer spriteRenderer;
-    public Transform gunOrigin;
     [HideInInspector] public int playerNumber;
     bool isFallingThroughPlatform;
 
     CircleCollider2D circleCollider;
 
     PlayerParams playerParams;
+
+    bool isHoldingJumpKey;
+
 
     void Start()
     {
@@ -42,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
         airMovementSpeed = playerParams.airSpeed;
         jumpHeight = playerParams.jumpHeight;
         rigidbody.gravityScale = playerParams.gravityScale;
+        lowJumpMultiplier = playerParams.lowJumpGravityScaler;
+        fallMultiplier = playerParams.fallingGravityScaler;
     }
 
     private void FixedUpdate()
@@ -84,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         //    }
         //}
 
-       
+        BetterJump();
     }
 
     public void Move (float value)
@@ -94,6 +104,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump ()
     {
+        isHoldingJumpKey = !isHoldingJumpKey;
+
+        if (isHoldingJumpKey == false)
+        {
+            return;
+        }
         if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
         {
             inAir = true;
@@ -123,6 +139,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    void BetterJump ()
+    {
+        if (rigidbody.velocity.y < 0)
+        {
+            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (rigidbody.velocity.y > 0 && isHoldingJumpKey == false)
+        {
+            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
+
 }
 
 
@@ -135,5 +163,6 @@ public class PlayerParams
     public float airSpeed;
     public float jumpHeight;
     public float gravityScale;
-
+    public float lowJumpGravityScaler;
+    public float fallingGravityScaler;
 }

@@ -15,9 +15,15 @@ public class RoundSystem : MonoBehaviour
 
     public void StartMatch ()
     {
-        numOfPlayers = GameManager.instance.playerCount;
         players = FindObjectsOfType<Player>();
+        numOfPlayers = GameManager.instance.playerCount;
+        playersStillAliveThisRound = numOfPlayers;
+        roundNumber = 1;
         StartCoroutine("DelayBetweenRounds");
+        foreach (Player player in players)
+        {
+            player.CharacterDied(false);
+        }
 
     }
 
@@ -28,16 +34,14 @@ public class RoundSystem : MonoBehaviour
 
     public void EndRound ()
     {
-        //foreach (Player player in players)
-        //{
-        //    player.CharacterDied();
-        //}
         if (roundNumber >= numberOfRounds)
         {
             EndMatch();
         }
         else
         {
+            roundNumber++;
+            print("End Round");
             StartCoroutine("DelayBetweenRounds");
         }
 
@@ -45,12 +49,12 @@ public class RoundSystem : MonoBehaviour
 
     public void StartRound()
     {
-        roundNumber++;
+        playersStillAliveThisRound = numOfPlayers - playersEliminated;
+
         foreach (Player player in players)
         {
             player.CreateNewCharacter();
         }
-
 
     }
 
@@ -58,7 +62,7 @@ public class RoundSystem : MonoBehaviour
     {
         playersStillAliveThisRound--;
         if (playersStillAliveThisRound <= 1)
-        {
+        {     
             EndRound();
         }
     }
