@@ -30,7 +30,9 @@ public class PlayerShoot : MonoBehaviour
     float explodeTime;
     float spread;
     Vector3 firingPoint;
-
+    bool isSemiAutomatic;
+    bool isHoldingFireButton;
+    bool semiLimiter;
 
     void Start()
     {
@@ -48,7 +50,27 @@ public class PlayerShoot : MonoBehaviour
           
             //gunOriginTransform.right = directionToTarget;
         }
-        
+
+        if (isHoldingFireButton)
+        {
+            if (isSemiAutomatic)
+            {
+                if (semiLimiter)
+                {
+                    semiLimiter = false;
+                    Shoot();
+                }
+            }
+            else
+            {
+                Shoot();
+            }
+
+        }
+        else
+        {
+            semiLimiter = true;
+        }
 
     }
 
@@ -137,7 +159,13 @@ public class PlayerShoot : MonoBehaviour
         return result;
     }
 
+
     public void Fire ()
+    {
+        isHoldingFireButton = !isHoldingFireButton;
+    }
+
+    private void Shoot ()
     {
         if (currentWeapon == null)
         {
@@ -258,6 +286,7 @@ public class PlayerShoot : MonoBehaviour
         initialForceOfProjectile = currentWeapon.initialForce;
         explodeTime = currentWeapon.explosionTime;
         spread = currentWeapon.spread;
+        isSemiAutomatic = currentWeapon.isSemiAutomatic;
 
         if (UIManager.instance != null)
             UIManager.instance.UpdateWeaponType(playerNumber,weaponName,ammoCount);

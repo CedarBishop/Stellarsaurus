@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     GameObject currentCharacter;
     CameraController cameraController;
 
-    bool isHoldingShootButton;
 
     private void Start()
     {
@@ -51,8 +50,6 @@ public class Player : MonoBehaviour
 
     void OnFire ()
     {
-        isHoldingShootButton = !isHoldingShootButton;
-
         if(playerShoot != null)
             playerShoot.Fire();
     }
