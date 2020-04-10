@@ -311,9 +311,9 @@ MonoBehaviour:
   groundMovementSpeed: 450
   airMovementSpeed: 400
   inAir: 0
-  jumpHeight: 11
+  jumpHeight: 15
   fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  lowJumpMultiplier: 5
   onWall: 0
   wallJumpHeight: 0
   wallFriction: 0
