@@ -13,19 +13,31 @@ public class Weapon : MonoBehaviour
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody;
+    bool hasBeenDropped = false;
+    public int ammo;
 
     private void Start()
     {
-        weaponTypes = GameManager.instance.loader.GetWeaponsByNames(LevelManager.instance.weaponsInThisLevel);
-        
-        ChooseWeaponType();
+        if (hasBeenDropped == false)
+        {
+            weaponTypes = GameManager.instance.loader.GetWeaponsByNames(LevelManager.instance.weaponsInThisLevel);
+            ChooseWeaponType();
+            ammo = weaponType.ammoCount;
+        }
+    }
 
-        
+    public void OnDrop(string weaponName, int Ammo)
+    {
+        hasBeenDropped = true;
+        weaponTypes = GameManager.instance.loader.GetWeaponsByNames(new string[] { weaponName });
+        ChooseWeaponType();
+        ammo = Ammo;
+        rigidbody.AddForce(transform.right * 500);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Projectile>() || collision.gameObject.GetComponent<PlayerMovement>())
+        if (collision.gameObject.GetComponent<Projectile>() || collision.gameObject.GetComponent<PlayerMovement>() || collision.gameObject.tag == "Wall")
         {
             return;
         }
@@ -36,13 +48,22 @@ public class Weapon : MonoBehaviour
         }
     }
 
+
     void ChooseWeaponType()
     {
         int randomNum = Random.Range(0,weaponTypes.Count);
         weaponType = weaponTypes[randomNum];
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
+        if (weaponType.weaponSpritePrefab != null)
+        {
+            spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
+        }
+        else
+        {
+            Debug.LogError(weaponType.weaponName +  " sprite has not been set");
+        }
+
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
 
         StartCoroutine("DestroySelf");

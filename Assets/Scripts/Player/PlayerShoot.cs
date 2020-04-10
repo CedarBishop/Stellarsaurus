@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     public Transform gunOriginTransform;
     public SpriteRenderer gunSprite;
+    public Weapon weaponPrefab;
     bool canShoot;
     Camera mainCamera;
     [HideInInspector]public bool isGamepad;
@@ -37,7 +38,8 @@ public class PlayerShoot : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        canShoot = true;        
+        canShoot = true;
+        currentWeapon = null;
     }
 
     void Update()
@@ -207,7 +209,18 @@ public class PlayerShoot : MonoBehaviour
 
                 case WeaponUseType.Melee:
 
-
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), projectileRange);
+                    if (colliders != null)
+                    {
+                        foreach (Collider2D collider in colliders)
+                        {
+                            if (collider.GetComponent<PlayerHealth>())
+                            {
+                                collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                            }
+                        }
+                    }          
+                    
 
                     break;
 
@@ -232,7 +245,11 @@ public class PlayerShoot : MonoBehaviour
 
     public void Grab ()
     {
-        if (isTriggeringWeapon)
+        if (currentWeapon != null)
+        {
+            Drop();
+        }
+        else if (isTriggeringWeapon)
         {
             currentWeapon = triggeredWeapon.weaponType;
             InitializeWeapon();
@@ -243,6 +260,17 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+
+    public void Drop ()
+    {
+        Weapon weapon = Instantiate(
+            weaponPrefab,
+             new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+            gunOriginTransform.rotation
+            );
+        weapon.OnDrop(currentWeapon.weaponName, ammoCount);
+        DestroyWeapon();
+    }
 
     IEnumerator DelayBetweenShots ()
     {
@@ -273,8 +301,22 @@ public class PlayerShoot : MonoBehaviour
 
         gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
         firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
-        ammoCount = currentWeapon.ammoCount;
-        projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
+        ammoCount = triggeredWeapon.ammo;
+
+
+        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable )
+        {
+            if (currentWeapon.projectileType != null)
+            {
+                projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
+            }
+            else
+            {
+                Debug.LogError(currentWeapon.weaponName + " Projectile type has not been set");
+            }
+        }
+  
+
         fireRate = currentWeapon.fireRate;
         projectileRange = currentWeapon.range;
         bulletsFiredPerShot = currentWeapon.bulletsFiredPerShot;

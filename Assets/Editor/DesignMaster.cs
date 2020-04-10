@@ -185,14 +185,24 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.BeginHorizontal();
 
-                if (weaponTypes[i].weaponSpritePrefab.weaponSprite != null)
+                if (weaponTypes[i].weaponSpritePrefab != null)
                 {
-                    GUILayout.Box(weaponTypes[i].weaponSpritePrefab.weaponSprite.texture);
+                    if (weaponTypes[i].weaponSpritePrefab.weaponSprite != null)
+                    {
+                        GUILayout.Box(weaponTypes[i].weaponSpritePrefab.weaponSprite.texture);
+                    }
                 }
+
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
                 {
-                    GUILayout.Box(weaponTypes[i].projectileType.GetComponent<SpriteRenderer>().sprite.texture);
+                    if (weaponTypes[i].projectileType != null)
+                    {
+                        if (weaponTypes[i].projectileType.GetComponent<SpriteRenderer>().sprite != null)
+                        {
+                            GUILayout.Box(weaponTypes[i].projectileType.GetComponent<SpriteRenderer>().sprite.texture);
+                        }
+                    }                            
                 }
 
                 EditorGUILayout.EndHorizontal();

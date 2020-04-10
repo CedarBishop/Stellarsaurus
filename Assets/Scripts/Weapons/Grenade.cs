@@ -22,7 +22,7 @@ public class Grenade : Projectile
             {
                 if (colliders[i].GetComponent<PlayerHealth>())
                 {
-                    colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                    colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber, true);
                 }
             }
         }

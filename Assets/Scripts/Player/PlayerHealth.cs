@@ -37,8 +37,15 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void HitByPlayer (int projectilePlayerNumber)
+    public void HitByPlayer (int projectilePlayerNumber, bool canHurtSelf = false)
     {
+        if (canHurtSelf == false)
+        {
+            if (projectilePlayerNumber == playerNumber)
+            {
+                return;
+            }
+        }
         health = 0;
 
         UIManager.instance.UpdateHealth(playerNumber, health);

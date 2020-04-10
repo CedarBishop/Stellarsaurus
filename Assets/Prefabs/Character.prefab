@@ -361,6 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunOriginTransform: {fileID: 2180012640987882278}
   gunSprite: {fileID: 7048489503243427660}
+  weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
+    type: 3}
   isGamepad: 0
   playerNumber: 0
   currentWeapon:
@@ -376,6 +378,7 @@ MonoBehaviour:
     damage: 0
     initialForce: 0
     spread: 0
+    isSemiAutomatic: 0
     bulletsFiredPerShot: 0
     sprayAmount: 0
     explosionSize: 0
