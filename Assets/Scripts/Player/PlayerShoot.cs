@@ -162,9 +162,14 @@ public class PlayerShoot : MonoBehaviour
     }
 
 
-    public void Fire ()
+    public void StartFire ()
     {
-        isHoldingFireButton = !isHoldingFireButton;
+        isHoldingFireButton = true;
+    }
+
+    public void EndFire()
+    {
+        isHoldingFireButton = false;
     }
 
     private void Shoot ()

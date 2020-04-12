@@ -16,7 +16,8 @@ public class Weapon : MonoBehaviour
     public int ammo;
     private WeaponSpawnType weaponSpawnType;
     private WeaponSpawner weaponSpawner = null;
-
+    private bool isGoingUp;
+    private float target;
 
     public void Init (List<WeaponType> weapons, WeaponSpawnType spawnType, WeaponSpawner _WeaponSpawner = null)
     {
@@ -47,6 +48,16 @@ public class Weapon : MonoBehaviour
         PhysicsSetup();
         ammo = Ammo;
         rigidbody.AddForce(transform.right * 500);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (weaponType.weaponSpritePrefab != null)
+        {
+            spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
+        }
+        else
+        {
+            Debug.LogError(weaponType.weaponName + " sprite has not been set");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,17 +73,40 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (weaponSpawnType == WeaponSpawnType.Spawnpoint)
+        {
+
+            if ( Mathf.Abs(target - transform.position.y) < 0.01f)
+            {
+                if (isGoingUp)
+                {
+                    target -= 0.3f;
+                    isGoingUp = false;
+                }
+                else
+                {
+                    target += 0.3f;
+                    isGoingUp = true;
+                }
+
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y,target, 2 * Time.fixedDeltaTime), transform.position.z);
+            }
+                      
+
+        }
+    }
+
 
     void ChooseWeaponType()
     {
         int randomNum = Random.Range(0,weaponTypes.Count);
         weaponType = weaponTypes[randomNum];
-       
-    }
 
-    void PhysicsSetup ()
-    {
-        boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (weaponType.weaponSpritePrefab != null)
         {
@@ -82,6 +116,12 @@ public class Weapon : MonoBehaviour
         {
             Debug.LogError(weaponType.weaponName + " sprite has not been set");
         }
+
+    }
+
+    void PhysicsSetup ()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
 
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
 
@@ -92,18 +132,8 @@ public class Weapon : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.isTrigger = true;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (weaponType.weaponSpritePrefab != null)
-        {
-            spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
-        }
-        else
-        {
-            Debug.LogError(weaponType.weaponName + " sprite has not been set");
-        }
-
-
-        StartCoroutine("DestroySelf");
+        isGoingUp = true;
+        target = transform.position.y + 0.2f;
     }
 
 

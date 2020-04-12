@@ -317,18 +317,15 @@ MonoBehaviour:
   onWall: 0
   wallJumpHeight: 0
   wallFriction: 0
-  defaultLayer:
-    serializedVersion: 2
-    m_Bits: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   platformLayer:
     serializedVersion: 2
     m_Bits: 512
-  fallThroughLayer:
+  wallLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 8192
   gunOrigin: {fileID: 2180012640987882278}
   shadowSprite: {fileID: 7108118315063263377}
   playerNumber: 0

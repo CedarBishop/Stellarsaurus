@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float wallFriction;
     public LayerMask groundLayer;
     public LayerMask platformLayer;
+    public LayerMask wallLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
     
@@ -28,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontal;
     SpriteRenderer spriteRenderer;
     [HideInInspector] public int playerNumber;
-    bool isFallingThroughPlatform;
+
+    bool isTravellingRight;
 
     PlayerParams playerParams;
 
@@ -59,13 +61,18 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-        rigidbody.velocity = new Vector2(horizontal * ((inAir)? airMovementSpeed :groundMovementSpeed) * Time.fixedDeltaTime , rigidbody.velocity.y);
 
-        if (inAir)
+        if (rigidbody.velocity.y <= 0.0f)
         {
-
+            if (Physics2D.Raycast(transform.position, (isTravellingRight)? Vector2.right : Vector2.left ,0.5f,wallLayer) ||
+                Physics2D.Raycast(transform.position, (isTravellingRight) ? Vector2.right : Vector2.left, 0.5f, groundLayer) ||
+                Physics2D.Raycast(transform.position, (isTravellingRight) ? Vector2.right : Vector2.left, 0.5f, platformLayer))
+            {
+                horizontal *= 0.5f;
+            }
         }
 
+        rigidbody.velocity = new Vector2(horizontal * ((inAir)? airMovementSpeed :groundMovementSpeed) * Time.fixedDeltaTime , rigidbody.velocity.y);
 
         if (inAir && rigidbody.velocity.y <= 0.0f)
         {
@@ -81,12 +88,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move (float value)
     {
-        horizontal = value;       
+        horizontal = value;
+        isTravellingRight = (value > 0);
     }
 
-    public void Jump ()
+    public void StartJump ()
     {
-        isHoldingJumpKey = !isHoldingJumpKey;
+        isHoldingJumpKey = true;
 
         if (isHoldingJumpKey == false)
         {
@@ -101,16 +109,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Fall (float value)
+    public void EndJump()
     {
-        if (value < -0.5f)
-        {
-            gameObject.layer = 10;
-        }
-        else
-        {
-            gameObject.layer = 0;
-        }
+        isHoldingJumpKey = false;
+    }
+
+    public void StartFall ()
+    {
+        gameObject.layer = 10;
+    }
+
+    public void EndFall()
+    {
+        gameObject.layer = 0;
     }
 
 

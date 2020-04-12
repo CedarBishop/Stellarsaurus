@@ -53,19 +53,30 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnFire ()
+    void OnStartFire ()
     {
         if(playerShoot != null)
-            playerShoot.Fire();
+            playerShoot.StartFire();
     }
 
-    void OnJump()
+    void OnEndFire()
     {
-        print("Jump");
-        if (playerMovement != null)
-            playerMovement.Jump();
+        if (playerShoot != null)
+            playerShoot.EndFire();
     }
-    
+
+    void OnStartJump()
+    {
+        if (playerMovement != null)
+            playerMovement.StartJump();
+    }
+
+    void OnEndJump()
+    {
+        if (playerMovement != null)
+            playerMovement.EndJump();
+    }
+
 
     public void CreateNewCharacter()
     {
@@ -118,9 +129,16 @@ public class Player : MonoBehaviour
     }
 
    
-    void OnFall (InputValue value)
+    void OnStartFall ()
     {
-        playerMovement.Fall(value.Get<float>());
+        if (playerMovement != null)
+            playerMovement.StartFall();
+    }
+
+    void OnEndFall()
+    {
+        if (playerMovement != null)
+            playerMovement.EndFall();
     }
 
     void OnGrab()
