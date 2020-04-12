@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &908332174368264899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7797781623471768301}
+  m_Layer: 0
+  m_Name: Player Four Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7797781623471768301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908332174368264899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4383978371291451730}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4383978369472776755
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4383978369472776752}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Player Two Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4383978370061006293}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Player One Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +120,8 @@ Transform:
   m_Children:
   - {fileID: 4383978370061006293}
   - {fileID: 4383978369472776752}
+  - {fileID: 1311025823183145609}
+  - {fileID: 7797781623471768301}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,26 +137,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affcde2bef966584fae78a432d9acadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLobby: 0
   startingPositions:
   - {fileID: 4383978370061006293}
   - {fileID: 4383978369472776752}
-  teleporterPairs:
-  - pairNumber: 0
-    teleporterOne: {fileID: 0}
-    teleporterTwo: {fileID: 0}
-  - pairNumber: 0
-    teleporterOne: {fileID: 0}
-    teleporterTwo: {fileID: 0}
-  - pairNumber: 0
-    teleporterOne: {fileID: 0}
-    teleporterTwo: {fileID: 0}
-  - pairNumber: 0
-    teleporterOne: {fileID: 0}
-    teleporterTwo: {fileID: 0}
-  - pairNumber: 0
-    teleporterOne: {fileID: 0}
-    teleporterTwo: {fileID: 0}
-  requiredKillsToWin: 5
+  - {fileID: 1311025823183145609}
+  - {fileID: 7797781623471768301}
+  teleporterPairs: []
   weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
     type: 3}
   timeBetweenWeaponSpawns: 5
+  randomWeaponSpawnPositionParameters:
+    minX: -6
+    maxX: 6
+    y: 4
+  weaponsInThisLevel: []
+  aisInThisLevel: []
+--- !u!1 &7828744408156027752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311025823183145609}
+  m_Layer: 0
+  m_Name: Player Three Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1311025823183145609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828744408156027752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4383978371291451730}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2517,6 +2517,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1311025823183145609, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311025823183145609, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978369472776752, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978370061006293, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383978370061006293, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.32
+      objectReference: {fileID: 0}
     - target: {fileID: 4383978371291451730, guid: 3868574680a0db2429cbc48f0a4002ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2579,13 +2604,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
         type: 3}
-      propertyPath: teleporterPairs.Array.size
-      value: 0
+      propertyPath: isLobby
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4383978371291451733, guid: 3868574680a0db2429cbc48f0a4002ae,
         type: 3}
-      propertyPath: isLobby
-      value: 1
+      propertyPath: timeBetweenWeaponSpawns
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797781623471768301, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797781623471768301, guid: 3868574680a0db2429cbc48f0a4002ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3868574680a0db2429cbc48f0a4002ae, type: 3}
@@ -3166,8 +3201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RepeatDelay: 0.5
-  m_RepeatRate: 0.1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
   m_ActionsAsset: {fileID: -944628639613478452, guid: 7dac973a384550549bb14f68b6f3c36e,
     type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: 7dac973a384550549bb14f68b6f3c36e,
@@ -3190,8 +3225,8 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: 7dac973a384550549bb14f68b6f3c36e,
     type: 3}
-  m_TrackedDeviceSelectAction: {fileID: 2559092417903258184, guid: 7dac973a384550549bb14f68b6f3c36e,
-    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &1841938611
 MonoBehaviour:
   m_ObjectHideFlags: 0

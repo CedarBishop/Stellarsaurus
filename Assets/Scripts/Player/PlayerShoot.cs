@@ -6,13 +6,14 @@ public class PlayerShoot : MonoBehaviour
 {
     public Transform gunOriginTransform;
     public SpriteRenderer gunSprite;
-    public Weapon weaponPrefab;
-    bool canShoot;
-    Camera mainCamera;
+
+
     [HideInInspector]public bool isGamepad;
     [HideInInspector] public int playerNumber;
-
     [HideInInspector] public WeaponType currentWeapon;
+
+    bool canShoot;
+    Camera mainCamera;
 
     Sprite weaponSprite;
     float fireRate;
@@ -269,7 +270,7 @@ public class PlayerShoot : MonoBehaviour
     public void Drop ()
     {
         Weapon weapon = Instantiate(
-            weaponPrefab,
+            LevelManager.instance.weaponPrefab,
              new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
             gunOriginTransform.rotation
             );

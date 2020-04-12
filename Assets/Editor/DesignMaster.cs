@@ -500,7 +500,7 @@ public class DesignMaster : EditorWindow
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
 
-        File.WriteAllText(Application.dataPath + "/Editor/DesignMaster.txt", json);
+        File.WriteAllText(Application.dataPath + "/Resources/DesignMaster.txt", json);
 
       
     }
@@ -508,7 +508,7 @@ public class DesignMaster : EditorWindow
     static List<WeaponType> LoadFromJSON(out List <AIType> aITypes, out PlayerParams playerParams)
     {
  
-        string file = Application.dataPath + "/Editor/DesignMaster.txt";
+        string file = Application.dataPath + "/Resources/DesignMaster.txt";
         File.ReadAllText(file);
         Debug.Log(File.ReadAllText(file));
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));

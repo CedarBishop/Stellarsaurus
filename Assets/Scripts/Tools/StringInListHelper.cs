@@ -26,7 +26,7 @@ public static class StringInListHelper
     public static string[] AllWeaponNames ()
     {
 
-        string file = Application.dataPath + "/Editor/DesignMaster.txt";
+        string file = Application.dataPath + "/Resources/DesignMaster.txt";
         File.ReadAllText(file);
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
         
@@ -42,7 +42,7 @@ public static class StringInListHelper
 
     public static string[] AllAiNames ()
     {
-        string file = Application.dataPath + "/Editor/DesignMaster.txt";
+        string file = Application.dataPath + "/Resources/DesignMaster.txt";
         File.ReadAllText(file);
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
 

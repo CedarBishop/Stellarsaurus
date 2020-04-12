@@ -5,17 +5,21 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
+    public bool isLobby;    
 
     public Transform[] startingPositions;
     public TeleporterPairs[] teleporterPairs;
 
-    public bool isLobby;    
+    [Header("Weapons")]
+    [Header("")]
     public Weapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
-    
+    public SkyDrops randomWeaponSpawnPositionParameters;
+
     [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
 
     [Header("Doesn't spawn AI yet")]
+    [Header("")]
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisInThisLevel;
 
     private List<WeaponType> weaponTypes = new List<WeaponType>();
@@ -58,21 +62,24 @@ public class LevelManager : MonoBehaviour
     {
         while (true)
         {
-            Weapon weapon = Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 4), Quaternion.identity);
+            Weapon weapon = Instantiate(weaponPrefab,
+                new Vector2(Random.Range(randomWeaponSpawnPositionParameters.minX,
+                randomWeaponSpawnPositionParameters.maxX),
+                randomWeaponSpawnPositionParameters.y),
+                Quaternion.identity);
             weapon.Init(weaponTypes, WeaponSpawnType.FallFromSky);
             yield return new WaitForSeconds(timeBetweenWeaponSpawns);
         }
     }
-
-
-
-    //public void SpawnPlayers()
-    //{
-    //    players = FindObjectsOfType<Player>();
-    //    for (int i = 0; i < players.Length; i++)
-    //    {
-    //        players[i].transform.position = startingPositions[i].position;
-    //        players[i].CreateNewCharacter();
-    //    }
-    //}
 }
+
+[System.Serializable]
+public struct SkyDrops
+{
+    public float minX;
+    public float maxX;
+    public float y;
+}
+
+
+
