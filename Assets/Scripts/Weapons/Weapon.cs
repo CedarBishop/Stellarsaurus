@@ -8,29 +8,43 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     List<WeaponType> weaponTypes;
-
+    
     public WeaponType weaponType;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody;
-    bool hasBeenDropped = false;
     public int ammo;
+    private WeaponSpawnType weaponSpawnType;
+    private WeaponSpawner weaponSpawner = null;
 
-    private void Start()
+
+    public void Init (List<WeaponType> weapons, WeaponSpawnType spawnType, WeaponSpawner _WeaponSpawner = null)
     {
-        if (hasBeenDropped == false)
+        weaponTypes = weapons;
+        ChooseWeaponType();
+        switch (spawnType)
         {
-            weaponTypes = GameManager.instance.loader.GetWeaponsByNames(LevelManager.instance.weaponsInThisLevel);
-            ChooseWeaponType();
-            ammo = weaponType.ammoCount;
+            case WeaponSpawnType.FallFromSky:
+                PhysicsSetup();
+                break;
+            case WeaponSpawnType.Spawnpoint:
+                SpawnPointSetup();
+                break;
+            case WeaponSpawnType.Treasure:
+                break;
+            default:
+                break;
         }
+      
+        ammo = weaponType.ammoCount;
+        weaponSpawnType = spawnType;
+        weaponSpawner = _WeaponSpawner;
     }
 
-    public void OnDrop(string weaponName, int Ammo)
+    public void OnDrop(WeaponType weapon, int Ammo)
     {
-        hasBeenDropped = true;
-        weaponTypes = GameManager.instance.loader.GetWeaponsByNames(new string[] { weaponName });
-        ChooseWeaponType();
+        weaponType = weapon;
+        PhysicsSetup();
         ammo = Ammo;
         rigidbody.AddForce(transform.right * 500);
     }
@@ -53,6 +67,11 @@ public class Weapon : MonoBehaviour
     {
         int randomNum = Random.Range(0,weaponTypes.Count);
         weaponType = weaponTypes[randomNum];
+       
+    }
+
+    void PhysicsSetup ()
+    {
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (weaponType.weaponSpritePrefab != null)
@@ -61,7 +80,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            Debug.LogError(weaponType.weaponName +  " sprite has not been set");
+            Debug.LogError(weaponType.weaponName + " sprite has not been set");
         }
 
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
@@ -69,15 +88,55 @@ public class Weapon : MonoBehaviour
         StartCoroutine("DestroySelf");
     }
 
+    void SpawnPointSetup ()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider.isTrigger = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (weaponType.weaponSpritePrefab != null)
+        {
+            spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
+        }
+        else
+        {
+            Debug.LogError(weaponType.weaponName + " sprite has not been set");
+        }
+
+
+        StartCoroutine("DestroySelf");
+    }
+
+
     IEnumerator DestroySelf ()
     {
         yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+    }
+
+    public void OnPickup ()
+    {
+        switch (weaponSpawnType)
+        {
+            case WeaponSpawnType.FallFromSky:
+                break;
+            case WeaponSpawnType.Spawnpoint:
+                weaponSpawner.SpawnedWeaponIsGrabbed();
+                break;
+            case WeaponSpawnType.Treasure:
+                break;
+            default:
+                break;
+        }
+
         Destroy(gameObject);
     }
 }
 
 
 public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable }
+
+public enum WeaponSpawnType {FallFromSky, Spawnpoint, Treasure }
+
 
 [System.Serializable]
 public class WeaponType
@@ -101,5 +160,3 @@ public class WeaponType
     public float explosionSize;
     public float explosionTime;
 }
-
-

@@ -8,10 +8,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance = null;
     public LayoutGroup layoutGroup;
-    List<PlayerStats> playerStats = new List<PlayerStats>();
+    [HideInInspector] public List<PlayerStats> playerStats = new List<PlayerStats>();
     public PlayerStats playerStatsPrefab;
-    public Text infoText;
-    public Text controlsText;
+    public Text roundText;
 
     void Awake()
     {
@@ -26,16 +25,8 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-        infoText.gameObject.SetActive(true);
-        controlsText.gameObject.SetActive(false);
-    }
-
-
     public void CreateNewPlayerStats(int playerNumber)
     {
-        StartCoroutine("DelayClosingControlsText");
         PlayerStats p = Instantiate(playerStatsPrefab, layoutGroup.transform);
         p.playerNumber = playerNumber;
         p.playerNumberText.text = "P" + playerNumber.ToString();
@@ -74,9 +65,18 @@ public class UIManager : MonoBehaviour
             if (player.playerNumber == playerNumber)
             {
                 player.playerKills++;
-                player.playerWinsText.text = "Kills = " + player.playerKills.ToString();
+                player.playerWinsText.text = "Kills = " + player.playerKills.ToString();              
+            }
+        }
+    }
 
-              
+    public void AwardRoundWin (int playerNumber)
+    {
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.roundWins++;
             }
         }
     }
@@ -93,20 +93,42 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    IEnumerator DelayClosingControlsText ()
+    public void StartNewRound(int roundNumber)
     {
-        infoText.gameObject.SetActive(false);
-        controlsText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5);
-        controlsText.gameObject.SetActive(false);
-
+        roundText.text = "Round " + roundNumber.ToString();
     }
 
-    private void Update()
+    public void EndRound(int winningPlayerNumber, int roundNumber)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (winningPlayerNumber == 0)
         {
-            SceneManager.LoadScene(0);
+            roundText.text = "Nobody won round " + roundNumber.ToString();
         }
+        else
+        {
+            AwardRoundWin(winningPlayerNumber);
+            roundText.text = "Player " + winningPlayerNumber.ToString() + " won round " + roundNumber.ToString();
+        }
+        
+    }
+
+    public void EndMatch(List<int> winningPlayerNumbers)
+    {
+        string str = "";
+        if (winningPlayerNumbers.Count == 1)
+        {
+            str = "Player " + winningPlayerNumbers[0].ToString() + " won the match";
+        }
+        else if (winningPlayerNumbers.Count > 1)
+        {            
+            for (int i = 0; i < winningPlayerNumbers.Count - 1; i++) 
+            {
+                str += "Player " + winningPlayerNumbers[i].ToString() + " and ";
+            }
+            str += "Player " + winningPlayerNumbers[winningPlayerNumbers.Count - 1].ToString() + " won the match";
+
+        }
+
+        roundText.text = str;
     }
 }

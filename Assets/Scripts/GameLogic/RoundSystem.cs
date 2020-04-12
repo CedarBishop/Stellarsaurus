@@ -19,6 +19,7 @@ public class RoundSystem : MonoBehaviour
         numOfPlayers = GameManager.instance.playerCount;
         playersStillAliveThisRound = numOfPlayers;
         roundNumber = 1;
+
         StartCoroutine("DelayBetweenRounds");
         foreach (Player player in players)
         {
@@ -29,10 +30,31 @@ public class RoundSystem : MonoBehaviour
 
     void EndMatch ()
     {
+        List<PlayerStats> playerStats = UIManager.instance.playerStats;
+        int highestWins = 0;
+        List<int> currentBestPlayers = new List<int>() {0};
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.roundWins > highestWins)
+            {
+                currentBestPlayers.Clear();
+                currentBestPlayers.Add(player.playerNumber);
+                highestWins = player.roundWins;
+            }
+            else if (player.roundWins == highestWins)
+            {
+                currentBestPlayers.Add(player.playerNumber);
+            }
+        }
 
+        print(currentBestPlayers);
+
+        UIManager.instance.EndMatch(currentBestPlayers);
+        StartCoroutine("DelayAtEndOfMatch");
+            
     }
 
-    public void EndRound ()
+    public void EndRound (int winningPlayerNumber)
     {
         if (roundNumber >= numberOfRounds)
         {
@@ -40,6 +62,7 @@ public class RoundSystem : MonoBehaviour
         }
         else
         {
+            UIManager.instance.EndRound(winningPlayerNumber , roundNumber);
             roundNumber++;
             print("End Round");
             StartCoroutine("DelayBetweenRounds");
@@ -49,7 +72,16 @@ public class RoundSystem : MonoBehaviour
 
     public void StartRound()
     {
+        if (roundNumber == 1)
+        {
+            for (int i = 1; i <= numOfPlayers; i++)
+            {
+                UIManager.instance.CreateNewPlayerStats(i);
+            }
+        }
+
         playersStillAliveThisRound = numOfPlayers - playersEliminated;
+        UIManager.instance.StartNewRound(roundNumber);
 
         foreach (Player player in players)
         {
@@ -61,9 +93,21 @@ public class RoundSystem : MonoBehaviour
     public void CheckIfLastPlayer ()
     {
         playersStillAliveThisRound--;
-        if (playersStillAliveThisRound <= 1)
-        {     
-            EndRound();
+        if (playersStillAliveThisRound == 1)
+        {
+            int winningPlayerNumber = 0;
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].isStillAlive)
+                {
+                    winningPlayerNumber = players[i].playerNumber;
+                }
+            }
+            EndRound(winningPlayerNumber);
+        }
+        else if (playersStillAliveThisRound < 1)
+        {
+            EndRound(0);
         }
     }
 
@@ -71,5 +115,11 @@ public class RoundSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         StartRound();
+    }
+
+    IEnumerator DelayAtEndOfMatch ()
+    {
+        yield return new WaitForSeconds(3);
+        GameManager.instance.EndMatch();
     }
 }

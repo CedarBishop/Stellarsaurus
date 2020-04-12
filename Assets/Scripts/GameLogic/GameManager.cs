@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public int playerCount = 0;
     public Color[] playerColours;
 
-    List<PlayerStats> playerStats = new List<PlayerStats>(); 
 
     void Awake()
     {
@@ -52,9 +51,7 @@ public class GameManager : MonoBehaviour
     // called by player input manager when new device enters
     void OnPlayerJoined()
     {
-        playerCount++;
-        if (UIManager.instance != null)
-            UIManager.instance.CreateNewPlayerStats(playerCount);          
+        playerCount++;      
 
     }
 
@@ -71,5 +68,20 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("BattleScene");
         roundSystem.StartMatch();
+    }
+
+    public void EndMatch()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            return;
+        }
+
+        Player[] players = FindObjectsOfType<Player>();
+        SceneManager.LoadScene("MainMenu");
+        foreach (Player player in players)
+        {
+            player.CreateNewCharacter();
+        }
     }
 }

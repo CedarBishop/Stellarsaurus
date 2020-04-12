@@ -11,10 +11,12 @@ public class PlayerHealth : MonoBehaviour
     Player playerParent;
     PlayerParams playerParams;
     int health;
+    bool isAlive;
     
     void Start()
     {
         playerParent = GetComponentInParent<Player>();
+        isAlive = true;
         if (UIManager.instance != null)
         {
             UIManager.instance.UpdateHealth(playerNumber, health);
@@ -46,6 +48,11 @@ public class PlayerHealth : MonoBehaviour
                 return;
             }
         }
+        if (isAlive == false)  // Already dead so cant be killed again
+        {
+            return;
+        }
+        isAlive = false;
         health = 0;
 
         UIManager.instance.UpdateHealth(playerNumber, health);

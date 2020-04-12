@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -12,13 +13,13 @@ public class LevelManager : MonoBehaviour
     public Weapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
     
-
     [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
-
-
 
     [Header("Doesn't spawn AI yet")]
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisInThisLevel;
+
+    private List<WeaponType> weaponTypes = new List<WeaponType>();
+
 
     private void Awake()
     {
@@ -36,6 +37,8 @@ public class LevelManager : MonoBehaviour
     {
         if (isLobby == false)
         {
+            weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsInThisLevel);
+
             StartCoroutine("SpawnWeapons");
         }
 
@@ -55,7 +58,8 @@ public class LevelManager : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 4), Quaternion.identity);
+            Weapon weapon = Instantiate(weaponPrefab, new Vector2(Random.Range(-6, 6), 4), Quaternion.identity);
+            weapon.Init(weaponTypes, WeaponSpawnType.FallFromSky);
             yield return new WaitForSeconds(timeBetweenWeaponSpawns);
         }
     }

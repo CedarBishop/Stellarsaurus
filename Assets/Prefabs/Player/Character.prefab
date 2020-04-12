@@ -89,7 +89,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636936258857511193}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66ae4e71a29c2e6428d26d9a7b90dbed, type: 3}
   m_Name: 
@@ -330,6 +330,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   gunOrigin: {fileID: 2180012640987882278}
+  shadowSprite: {fileID: 7108118315063263377}
   playerNumber: 0
 --- !u!58 &2655954609655052922
 CircleCollider2D:

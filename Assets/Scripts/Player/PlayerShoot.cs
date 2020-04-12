@@ -253,7 +253,7 @@ public class PlayerShoot : MonoBehaviour
         {
             currentWeapon = triggeredWeapon.weaponType;
             InitializeWeapon();
-            Destroy(triggeredWeapon.gameObject);
+            triggeredWeapon.OnPickup();
 
             isTriggeringWeapon = false;
             triggeredWeapon = null;
@@ -268,7 +268,7 @@ public class PlayerShoot : MonoBehaviour
              new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
             gunOriginTransform.rotation
             );
-        weapon.OnDrop(currentWeapon.weaponName, ammoCount);
+        weapon.OnDrop(currentWeapon, ammoCount);
         DestroyWeapon();
     }
 

@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 {
     public int playerNumber;
     public int playerKills;
+    public int roundWins;
     public Text playerHealthText;
     public Text playerWinsText;
     public Text currentWeaponText;

@@ -18,12 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public float wallJumpHeight;
     [Header("Doesnt do anything yet")]
     public float wallFriction;
-    public LayerMask defaultLayer;
     public LayerMask groundLayer;
     public LayerMask platformLayer;
-    public LayerMask fallThroughLayer;
     public Transform gunOrigin;
-    
+    public SpriteRenderer shadowSprite;
     
     
     Rigidbody2D rigidbody;
@@ -31,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     [HideInInspector] public int playerNumber;
     bool isFallingThroughPlatform;
-
-    CircleCollider2D circleCollider;
 
     PlayerParams playerParams;
 
@@ -44,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();        
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[playerNumber - 1];
-        circleCollider = GetComponent<CircleCollider2D>();
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         groundMovementSpeed = playerParams.groundSpeed;
         airMovementSpeed = playerParams.airSpeed;
@@ -77,22 +72,9 @@ public class PlayerMovement : MonoBehaviour
             if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
             {
                 inAir = false;
+                shadowSprite.gameObject.SetActive(true);
             }
         }
-
-        //if (isFallingThroughPlatform)
-        //{
-        //    if (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
-        //    {
-        //        circleCollider.isTrigger = false;
-        //        isFallingThroughPlatform = false;
-        //    }
-        //    if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, groundLayer))
-        //    {
-        //        circleCollider.isTrigger = false;
-        //        isFallingThroughPlatform = false;
-        //    }
-        //}
 
         BetterJump();
     }
@@ -113,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
         {
             inAir = true;
+            shadowSprite.gameObject.SetActive(false);
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
         }
@@ -120,22 +103,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Fall (float value)
     {
-        //if (value < -0.5f)
-        //{
-        //    if (isFallingThroughPlatform)
-        //    {
-        //        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.5f, platformLayer))
-        //        {
-        //            isFallingThroughPlatform = true;
-        //            circleCollider.isTrigger = true;
-        //        }
-        //    }
-           
-        //}
-        //else
-        //{
-        //    circleCollider.isTrigger = true;
-        //}
+        if (value < -0.5f)
+        {
+            gameObject.layer = 10;
+        }
+        else
+        {
+            gameObject.layer = 0;
+        }
     }
 
 

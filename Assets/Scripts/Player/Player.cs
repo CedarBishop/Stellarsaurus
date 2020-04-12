@@ -9,13 +9,16 @@ public class Player : MonoBehaviour
 {
     public int playerNumber;
     public GameObject characterPrefab;
-    public  PlayerMovement playerMovement;
-    public  PlayerShoot playerShoot;
-    PlayerHealth playerHealth;
-    public bool isGamepad;
-    PlayerInput playerInput;
-    GameObject currentCharacter;
-    CameraController cameraController;
+    public PlayerMovement playerMovement;
+    public PlayerShoot playerShoot;
+
+    [HideInInspector] public bool isStillAlive;
+    [HideInInspector] public bool isGamepad;
+
+    private PlayerHealth playerHealth;
+    private PlayerInput playerInput;
+    private GameObject currentCharacter;
+    private CameraController cameraController;
 
 
     private void Start()
@@ -24,10 +27,12 @@ public class Player : MonoBehaviour
 
         playerNumber = GameManager.instance.playerCount;
         playerInput = GetComponent<PlayerInput>();
+
         if (playerInput.currentControlScheme == "Gamepad")
         {
             isGamepad = true;
         }
+
         cameraController = Camera.main.GetComponent<CameraController>();
 
         CreateNewCharacter();
@@ -82,6 +87,8 @@ public class Player : MonoBehaviour
         playerShoot.playerNumber = playerNumber;
         playerMovement.playerNumber = playerNumber;
 
+
+        isStillAlive = true;
         if (cameraController != null)
         {
             cameraController.playersInGame.Add(playerMovement);
@@ -100,10 +107,13 @@ public class Player : MonoBehaviour
             Destroy(currentCharacter);
         }
 
+        isStillAlive = false;
+
         if (diedInCombat)
         {
             GameManager.instance.roundSystem.CheckIfLastPlayer();
         }
+
         
     }
 
@@ -116,6 +126,11 @@ public class Player : MonoBehaviour
     void OnGrab()
     {
         playerShoot.Grab();
+    }
+
+    void OnLeaveMatch ()
+    {
+        GameManager.instance.EndMatch();
     }
     
 }
