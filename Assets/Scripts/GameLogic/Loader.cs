@@ -9,8 +9,16 @@ public class Loader : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        string file = Application.dataPath + "/Resources/DesignMaster.txt";
+        File.ReadAllText(file);
+        saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
+#else
         TextAsset textAsset =  Resources.Load<TextAsset>("DesignMaster");
         saveObject = JsonUtility.FromJson<SaveObject>(textAsset.text);
+
+#endif
+
     }
 
     public List<WeaponType> GetWeaponsByNames(string[] weaponNames)

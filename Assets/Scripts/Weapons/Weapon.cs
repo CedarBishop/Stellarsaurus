@@ -184,6 +184,9 @@ public class WeaponType
     public float initialForce;
     public float spread;
     public bool isSemiAutomatic;
+    public float cameraShakeDuration;
+    public float cameraShakeMagnitude;
+    public float knockBack;
 
     public int bulletsFiredPerShot;
     public float sprayAmount;

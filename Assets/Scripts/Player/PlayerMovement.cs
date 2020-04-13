@@ -137,6 +137,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Knockback (Vector2 direction, float magnitude)
+    {
+        Vector2 reverseDirection = new Vector2(direction.x * -1, direction.y * -1);
+        rigidbody.AddForce(reverseDirection * magnitude);
+    }
+
 }
 
 

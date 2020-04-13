@@ -289,6 +289,25 @@ public class DesignMaster : EditorWindow
 
                 }
 
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Camera Shake Duration!", EditorStyles.boldLabel);
+                    weaponTypes[i].cameraShakeDuration = EditorGUILayout.FloatField(weaponTypes[i].cameraShakeDuration);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Camera Shake Magnitude!!!", EditorStyles.boldLabel);
+                    weaponTypes[i].cameraShakeMagnitude = EditorGUILayout.FloatField(weaponTypes[i].cameraShakeMagnitude);
+                }
+
+                if (weaponTypes[i].weaponUseType != WeaponUseType.SingleShot || weaponTypes[i].weaponUseType != WeaponUseType.Multishot)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Self Inflicted Knockback", EditorStyles.boldLabel);
+                    weaponTypes[i].knockBack = EditorGUILayout.FloatField(weaponTypes[i].knockBack);
+
+                }
+
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
                 {

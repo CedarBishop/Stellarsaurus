@@ -14,25 +14,20 @@ public class PlayerShoot : MonoBehaviour
 
     bool canShoot;
     Camera mainCamera;
+    PlayerMovement playerMovement;
+    CameraShake cameraShake;
 
+    string weaponName;
     Sprite weaponSprite;
     float fireRate;
     Projectile projectileType;
     int ammoCount;
-    int bulletsFiredPerShot;
-    float projectileRange;
-    float sprayAmount;
-    string weaponName;
     bool isTriggeringWeapon;
     Weapon triggeredWeapon;
     WeaponUseType weaponUseType;
-    int damageOfCurrentWeapon;
-    float explosionSize;
-    float initialForceOfProjectile;
-    float explodeTime;
-    float spread;
     Vector3 firingPoint;
-    bool isSemiAutomatic;
+
+
     bool isHoldingFireButton;
     bool semiLimiter;
 
@@ -41,6 +36,8 @@ public class PlayerShoot : MonoBehaviour
         mainCamera = Camera.main;
         canShoot = true;
         currentWeapon = null;
+        playerMovement = GetComponent<PlayerMovement>();
+        cameraShake = mainCamera.GetComponent<CameraShake>();
     }
 
     void Update()
@@ -56,18 +53,21 @@ public class PlayerShoot : MonoBehaviour
 
         if (isHoldingFireButton)
         {
-            if (isSemiAutomatic)
+            if (currentWeapon != null)
             {
-                if (semiLimiter)
+                if (currentWeapon.isSemiAutomatic)
                 {
-                    semiLimiter = false;
+                    if (semiLimiter)
+                    {
+                        semiLimiter = false;
+                        Shoot();
+                    }
+                }
+                else
+                {
                     Shoot();
                 }
-            }
-            else
-            {
-                Shoot();
-            }
+            }          
 
         }
         else
@@ -189,33 +189,38 @@ public class PlayerShoot : MonoBehaviour
             {
                 case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
-                    projectile.InitialiseProjectile(projectileRange, 1, playerNumber, initialForceOfProjectile,spread);
+                    projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
+
+                    playerMovement.Knockback(gunOriginTransform.right, currentWeapon.knockBack);
+                    cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Multishot:
 
 
-                    float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((bulletsFiredPerShot / 2) * sprayAmount);
-                    for (int i = 0; i < bulletsFiredPerShot; i++)
+                    float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((currentWeapon.bulletsFiredPerShot / 2) * currentWeapon.sprayAmount);
+                    for (int i = 0; i < currentWeapon.bulletsFiredPerShot; i++)
                     {
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
-                        multiProjectile.InitialiseProjectile(projectileRange,damageOfCurrentWeapon , playerNumber, initialForceOfProjectile,spread);
+                        multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.initialForce);
 
-                        baseZRotation += sprayAmount;
+                        baseZRotation += currentWeapon.sprayAmount;
 
                     }
+                    playerMovement.Knockback(gunOriginTransform.right, currentWeapon.knockBack);
+                    cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
                     Grenade grenade = g.GetComponent<Grenade>();
-                    grenade.InitGrenade(explodeTime,explosionSize,damageOfCurrentWeapon,playerNumber, initialForceOfProjectile);
+                    grenade.InitGrenade(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Melee:
 
-                    Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), projectileRange);
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), currentWeapon.range);
                     if (colliders != null)
                     {
                         foreach (Collider2D collider in colliders)
@@ -223,6 +228,7 @@ public class PlayerShoot : MonoBehaviour
                             if (collider.GetComponent<PlayerHealth>())
                             {
                                 collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                                cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                             }
                         }
                     }          
@@ -302,12 +308,12 @@ public class PlayerShoot : MonoBehaviour
 
 
     void InitializeWeapon ()
-    { 
-
-
+    {
+        weaponName = currentWeapon.weaponName;
         gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
         firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
         ammoCount = triggeredWeapon.ammo;
+        fireRate = currentWeapon.fireRate;
 
 
         if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable )
@@ -321,23 +327,9 @@ public class PlayerShoot : MonoBehaviour
                 Debug.LogError(currentWeapon.weaponName + " Projectile type has not been set");
             }
         }
-  
-
-        fireRate = currentWeapon.fireRate;
-        projectileRange = currentWeapon.range;
-        bulletsFiredPerShot = currentWeapon.bulletsFiredPerShot;
-        sprayAmount = currentWeapon.sprayAmount;
-        weaponName = currentWeapon.weaponName;
-        weaponUseType = currentWeapon.weaponUseType;
-        damageOfCurrentWeapon = currentWeapon.damage;
-        explosionSize = currentWeapon.explosionSize;
-        initialForceOfProjectile = currentWeapon.initialForce;
-        explodeTime = currentWeapon.explosionTime;
-        spread = currentWeapon.spread;
-        isSemiAutomatic = currentWeapon.isSemiAutomatic;
 
         if (UIManager.instance != null)
-            UIManager.instance.UpdateWeaponType(playerNumber,weaponName,ammoCount);
+            UIManager.instance.UpdateWeaponType(playerNumber,currentWeapon.weaponName, ammoCount);
     }
 
     void DestroyWeapon()
@@ -346,6 +338,5 @@ public class PlayerShoot : MonoBehaviour
         currentWeapon = null;
         triggeredWeapon = null;
         ammoCount = 0;
-        weaponName = "";
     }
 }
