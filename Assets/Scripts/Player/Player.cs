@@ -109,6 +109,8 @@ public class Player : MonoBehaviour
 
     public void CharacterDied(bool diedInCombat)
     {
+        
+
         if (currentCharacter != null)
         {
             if (cameraController != null)
@@ -116,6 +118,12 @@ public class Player : MonoBehaviour
                 cameraController.playersInGame.Remove(playerMovement);
             }
             Destroy(currentCharacter);
+        }
+
+        if (LevelManager.instance.debugMode)
+        {
+            StartCoroutine("Respawn");
+            return;
         }
 
         isStillAlive = false;
@@ -127,6 +135,13 @@ public class Player : MonoBehaviour
 
         
     }
+
+    IEnumerator Respawn ()
+    {
+        yield return new WaitForSeconds(3);
+        CreateNewCharacter();
+    }
+
 
    
     void OnStartFall ()

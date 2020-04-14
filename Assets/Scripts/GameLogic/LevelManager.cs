@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
+    public bool debugMode;
     public bool isLobby;    
 
     public Transform[] startingPositions;

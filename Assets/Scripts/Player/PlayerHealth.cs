@@ -25,6 +25,14 @@ public class PlayerHealth : MonoBehaviour
         health = playerParams.startingHealth;
     }
 
+    private void Update()
+    {
+        if (transform.position.y < -13)
+        {
+            Death();
+        }
+    }
+
     public void HitByAI(int damage)
     {
         health -= damage;
