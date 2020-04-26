@@ -28,6 +28,7 @@ public class PlayerShoot : MonoBehaviour
     Vector3 firingPoint;
 
 
+
     bool isHoldingFireButton;
     bool semiLimiter;
 
@@ -188,7 +189,9 @@ public class PlayerShoot : MonoBehaviour
             switch (weaponUseType)
             {
                 case WeaponUseType.SingleShot:
-                    Projectile projectile = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
+                    Projectile projectile = Instantiate(projectileType,
+                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                        gunOriginTransform.rotation);
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
                     playerMovement.Knockback(gunOriginTransform.right, currentWeapon.knockBack);
@@ -203,7 +206,9 @@ public class PlayerShoot : MonoBehaviour
                     {
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
-                        Projectile multiProjectile = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
+                        Projectile multiProjectile = Instantiate(projectileType, 
+                            new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                            gunOriginTransform.rotation);
                         multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.initialForce);
 
                         baseZRotation += currentWeapon.sprayAmount;
@@ -213,7 +218,9 @@ public class PlayerShoot : MonoBehaviour
                     cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
                 case WeaponUseType.Throwable:
-                    Projectile g = Instantiate(projectileType, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), gunOriginTransform.rotation);
+                    Projectile g = Instantiate(projectileType,
+                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                        gunOriginTransform.rotation);
                     Grenade grenade = g.GetComponent<Grenade>();
                     grenade.InitGrenade(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
@@ -314,7 +321,7 @@ public class PlayerShoot : MonoBehaviour
         firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
         ammoCount = triggeredWeapon.ammo;
         fireRate = currentWeapon.fireRate;
-
+        weaponUseType = currentWeapon.weaponUseType;
 
         if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable )
         {
