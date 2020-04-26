@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495480490319677314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.488, y: 0.151, z: 0}
+  m_LocalPosition: {x: 0.542, y: 0.151, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3353993928419519895}
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 35332122d4265d44ab5fcc92fbfa55a0, type: 2}
+  m_Sprite: {fileID: 21300000, guid: eeb4d8b969ebb9e4ca8ff9ddab104688, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,5 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3859e0a097cc9ce4d871e1da08c17bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 21300000, guid: 35332122d4265d44ab5fcc92fbfa55a0, type: 2}
+  weaponSprite: {fileID: 21300000, guid: eeb4d8b969ebb9e4ca8ff9ddab104688, type: 3}
   firingPoint: {fileID: 5894840813463253897}

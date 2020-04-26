@@ -23,8 +23,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask wallLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
+
     
     
+    private Animator animator;
     Rigidbody2D rigidbody;
     float horizontal;
     SpriteRenderer spriteRenderer;
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();        
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[playerNumber - 1];
@@ -52,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {        
+    {
+        animator.SetFloat("Speed", Mathf.Abs(rigidbody.velocity.x));
         if (gunOrigin.rotation.eulerAngles.z < -90 || gunOrigin.rotation.eulerAngles.z > 90)
         {
             spriteRenderer.flipX = true;

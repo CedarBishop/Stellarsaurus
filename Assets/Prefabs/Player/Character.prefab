@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 2655954609655052922}
   - component: {fileID: 2655954609655052918}
   - component: {fileID: 2327445293856462399}
+  - component: {fileID: 1658128687321847298}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -359,8 +360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunOriginTransform: {fileID: 2180012640987882278}
   gunSprite: {fileID: 7048489503243427660}
-  weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
-    type: 3}
   isGamepad: 0
   playerNumber: 0
   currentWeapon:
@@ -377,6 +376,9 @@ MonoBehaviour:
     initialForce: 0
     spread: 0
     isSemiAutomatic: 0
+    cameraShakeDuration: 0
+    cameraShakeMagnitude: 0
+    knockBack: 0
     bulletsFiredPerShot: 0
     sprayAmount: 0
     explosionSize: 0
@@ -396,6 +398,25 @@ MonoBehaviour:
   bloodSplatterParticle: {fileID: 8157379650156868562, guid: a8ef1dae9a131b14e9f7759c65cdb8f9,
     type: 3}
   playerNumber: 0
+--- !u!95 &1658128687321847298
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655954609655052927}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5800536179399466528
 GameObject:
   m_ObjectHideFlags: 0

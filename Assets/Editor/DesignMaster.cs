@@ -284,7 +284,7 @@ public class DesignMaster : EditorWindow
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
                 {
                     EditorGUILayout.Space(8);
-                    GUILayout.Label("Bullet Spread", EditorStyles.boldLabel);
+                    GUILayout.Label("Bullet Deviation", EditorStyles.boldLabel);
                     weaponTypes[i].spread = EditorGUILayout.FloatField(weaponTypes[i].spread);
 
                 }
