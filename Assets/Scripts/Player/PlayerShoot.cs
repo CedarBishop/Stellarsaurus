@@ -26,6 +26,9 @@ public class PlayerShoot : MonoBehaviour
     Weapon triggeredWeapon;
     WeaponUseType weaponUseType;
     Vector3 firingPoint;
+    float knockback;
+    float cameraShakeMagnitude;
+    float cameraShakeDuration;
 
 
 
@@ -194,8 +197,8 @@ public class PlayerShoot : MonoBehaviour
                         gunOriginTransform.rotation);
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
-                    playerMovement.Knockback(gunOriginTransform.right, currentWeapon.knockBack);
-                    cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
+                    playerMovement.Knockback(gunOriginTransform.right, knockback);
+                    cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Multishot:
@@ -214,8 +217,8 @@ public class PlayerShoot : MonoBehaviour
                         baseZRotation += currentWeapon.sprayAmount;
 
                     }
-                    playerMovement.Knockback(gunOriginTransform.right, currentWeapon.knockBack);
-                    cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
+                    playerMovement.Knockback(gunOriginTransform.right, knockback);
+                    cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                     break;
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType,
@@ -235,7 +238,7 @@ public class PlayerShoot : MonoBehaviour
                             if (collider.GetComponent<PlayerHealth>())
                             {
                                 collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
-                                cameraShake.StartShake(currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
+                                cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                             }
                         }
                     }          
@@ -322,6 +325,9 @@ public class PlayerShoot : MonoBehaviour
         ammoCount = triggeredWeapon.ammo;
         fireRate = currentWeapon.fireRate;
         weaponUseType = currentWeapon.weaponUseType;
+        knockback = currentWeapon.knockBack;
+        cameraShakeDuration = currentWeapon.cameraShakeDuration;
+        cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
 
         if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable )
         {

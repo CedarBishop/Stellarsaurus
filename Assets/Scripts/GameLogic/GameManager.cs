@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void StartMatch()
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene(1);
         roundSystem.StartMatch();
     }
 
