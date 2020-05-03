@@ -492,12 +492,16 @@ public class DesignMaster : EditorWindow
         player.gravityScale = EditorGUILayout.FloatField(player.gravityScale);
         EditorGUILayout.Space(8);
 
-        GUILayout.Label("Low Jump Gravity Scaler", EditorStyles.boldLabel);
-        player.lowJumpGravityScaler = EditorGUILayout.FloatField(player.lowJumpGravityScaler);
+        GUILayout.Label("Jump Buffer Time", EditorStyles.boldLabel);
+        player.jumpBufferTime = EditorGUILayout.FloatField(player.jumpBufferTime);
         EditorGUILayout.Space(8);
 
-        GUILayout.Label("Falling Gravity Scaler", EditorStyles.boldLabel);
-        player.fallingGravityScaler = EditorGUILayout.FloatField(player.fallingGravityScaler);
+        GUILayout.Label("Kyote Time", EditorStyles.boldLabel);
+        player.kyoteTime = EditorGUILayout.FloatField(player.kyoteTime);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Cut Jump Height", EditorStyles.boldLabel);
+        player.cutJumpHeight = EditorGUILayout.Slider(player.cutJumpHeight, 0.0f, 1.0f);
         EditorGUILayout.Space(8);
 
 

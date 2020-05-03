@@ -5,40 +5,39 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [HideInInspector] public int playerNumber;
+
+
     public Sprite[] sprites;
     public float groundMovementSpeed;
     public float airMovementSpeed;
-    public bool inAir;
     public float jumpHeight;
-    public float fallMultiplier;
-    public float lowJumpMultiplier;
-    [Header("Doesnt do anything yet")]
-    public bool onWall;
-    [Header("Doesnt do anything yet")]
-    public float wallJumpHeight;
-    [Header("Doesnt do anything yet")]
-    public float wallFriction;
+    public float kyoteTime = 0.25f;
+    public float jumpBufferTime = 0.25f;
+    [Range(0,1.0f)]
+    public float cutJumpHeight = 0.5f;
+
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     public LayerMask wallLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
 
-    
-    
     private Animator animator;
-    Rigidbody2D rigidbody;
-    float horizontal;
-    SpriteRenderer spriteRenderer;
-    [HideInInspector] public int playerNumber;
+    private Rigidbody2D rigidbody;
+    private SpriteRenderer spriteRenderer;
+    
+    private PlayerParams playerParams;
+    
+    private float kyoteTimer;
+    private float jumpBufferTimer;
+    private bool isGrounded;
+    private float horizontal;
+    private bool isHoldingJumpKey;
 
-    bool isTravellingRight;
-
-    PlayerParams playerParams;
-
-    bool isHoldingJumpKey;
 
 
+    // Get components and initialise stats from design master here
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -50,13 +49,16 @@ public class PlayerMovement : MonoBehaviour
         airMovementSpeed = playerParams.airSpeed;
         jumpHeight = playerParams.jumpHeight;
         rigidbody.gravityScale = playerParams.gravityScale;
-        lowJumpMultiplier = playerParams.lowJumpGravityScaler;
-        fallMultiplier = playerParams.fallingGravityScaler;
+        kyoteTime = playerParams.kyoteTime;
+        jumpBufferTime = playerParams.jumpBufferTime;
+        cutJumpHeight = playerParams.cutJumpHeight;
     }
 
     private void FixedUpdate()
     {
+        // Sprite & animation Update starts here
         animator.SetFloat("Speed", Mathf.Abs(rigidbody.velocity.x));
+       
         if (gunOrigin.rotation.eulerAngles.z < -90 || gunOrigin.rotation.eulerAngles.z > 90)
         {
             spriteRenderer.flipX = true;
@@ -66,51 +68,47 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        if (rigidbody.velocity.y <= 0.0f)
-        {
-            if (Physics2D.Raycast(transform.position, (isTravellingRight)? Vector2.right : Vector2.left ,0.5f,wallLayer) ||
-                Physics2D.Raycast(transform.position, (isTravellingRight) ? Vector2.right : Vector2.left, 0.5f, groundLayer) ||
-                Physics2D.Raycast(transform.position, (isTravellingRight) ? Vector2.right : Vector2.left, 0.5f, platformLayer))
-            {
-                horizontal *= 0.5f;
-            }
-        }
+        // ends here
 
-        rigidbody.velocity = new Vector2(horizontal * ((inAir)? airMovementSpeed :groundMovementSpeed) * Time.fixedDeltaTime , rigidbody.velocity.y);
 
-        if (inAir && rigidbody.velocity.y <= 0.0f)
+        // Grounded & jump logic update starts here
+
+        isGrounded = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer);
+        
+        kyoteTimer -= Time.fixedDeltaTime;
+        jumpBufferTimer -= Time.fixedDeltaTime;
+
+        if (isGrounded)
         {
-            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
-            {
-                inAir = false;
-                shadowSprite.gameObject.SetActive(true);
-            }
+            kyoteTimer = kyoteTime;
         }
 
         BetterJump();
+
+        if (kyoteTimer > 0 && jumpBufferTimer > 0)
+        {
+            Jump();
+        }
+
+        // ends here
+
+        // movement update starts here
+
+        rigidbody.velocity = new Vector2(horizontal * ((isGrounded)? groundMovementSpeed :airMovementSpeed) * Time.fixedDeltaTime , rigidbody.velocity.y);
+    
+    
+        //ends here
     }
 
     public void Move (float value)
     {
         horizontal = value;
-        isTravellingRight = (value > 0);
     }
 
     public void StartJump ()
     {
         isHoldingJumpKey = true;
-
-        if (isHoldingJumpKey == false)
-        {
-            return;
-        }
-        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
-        {
-            inAir = true;
-            shadowSprite.gameObject.SetActive(false);
-            float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
-        }
+        jumpBufferTimer = jumpBufferTime;
     }
 
     public void EndJump()
@@ -128,16 +126,23 @@ public class PlayerMovement : MonoBehaviour
         gameObject.layer = 0;
     }
 
+    void Jump ()
+    {
+        kyoteTimer = 0;
+        jumpBufferTimer = 0;
+        shadowSprite.gameObject.SetActive(false);
+        float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rigidbody.gravityScale));
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
+    }
 
     void BetterJump ()
     {
-        if (rigidbody.velocity.y < 0)
+        if (isHoldingJumpKey == false)
         {
-            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
-        else if (rigidbody.velocity.y > 0 && isHoldingJumpKey == false)
-        {
-            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            if (rigidbody.velocity.y > 0)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y * cutJumpHeight);
+            }
         }
     }
 
@@ -159,6 +164,7 @@ public class PlayerParams
     public float airSpeed;
     public float jumpHeight;
     public float gravityScale;
-    public float lowJumpGravityScaler;
-    public float fallingGravityScaler;
+    public float kyoteTime;
+    public float jumpBufferTime;
+    public float cutJumpHeight;
 }
