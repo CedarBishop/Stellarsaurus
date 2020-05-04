@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
         playerShoot = currentCharacter.GetComponent<PlayerShoot>();
         playerHealth = currentCharacter.GetComponent<PlayerHealth>();
         playerShoot.isGamepad = isGamepad;
+        playerShoot.player = this;
         playerHealth.playerNumber = playerNumber;
         playerShoot.playerNumber = playerNumber;
         playerMovement.playerNumber = playerNumber;

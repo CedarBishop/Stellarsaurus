@@ -252,25 +252,29 @@ public class DesignMaster : EditorWindow
                 //GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
                 //weaponTypes[i].projectileType = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(GameObject), false);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Damage", EditorStyles.boldLabel);
-                weaponTypes[i].damage = EditorGUILayout.IntField(weaponTypes[i].damage);
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Damage", EditorStyles.boldLabel);
+                    weaponTypes[i].damage = EditorGUILayout.IntField(weaponTypes[i].damage);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Is Semi-Automatic", EditorStyles.boldLabel);
-                weaponTypes[i].isSemiAutomatic = EditorGUILayout.Toggle(weaponTypes[i].isSemiAutomatic);
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Is Semi-Automatic", EditorStyles.boldLabel);
+                    weaponTypes[i].isSemiAutomatic = EditorGUILayout.Toggle(weaponTypes[i].isSemiAutomatic);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
-                weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
+                    weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Range", EditorStyles.boldLabel);
+                    weaponTypes[i].range = EditorGUILayout.FloatField(weaponTypes[i].range);
+                }
+                
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Ammo Count", EditorStyles.boldLabel);
                 weaponTypes[i].ammoCount = EditorGUILayout.IntField(weaponTypes[i].ammoCount);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Range", EditorStyles.boldLabel);
-                weaponTypes[i].range = EditorGUILayout.FloatField(weaponTypes[i].range);
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable )
                 {
@@ -300,7 +304,7 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].cameraShakeMagnitude = EditorGUILayout.FloatField(weaponTypes[i].cameraShakeMagnitude);
                 }
 
-                if (weaponTypes[i].weaponUseType != WeaponUseType.SingleShot || weaponTypes[i].weaponUseType != WeaponUseType.Multishot)
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Self Inflicted Knockback", EditorStyles.boldLabel);
@@ -338,7 +342,26 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].explosionTime = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionTime);
                 }
 
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Consumable)
+                {
                     EditorGUILayout.Space(16);
+                    GUILayout.Label("Consumable Parameters", EditorStyles.boldLabel);
+                    EditorGUILayout.Space(16);
+
+                    GUILayout.Label("Consumable Type", EditorStyles.boldLabel);
+                    weaponTypes[i].consumableType = (ConsumableType)EditorGUILayout.EnumPopup(weaponTypes[i].consumableType);
+                    EditorGUILayout.Space(8);
+
+                    GUILayout.Label("Consumable Effect Duration", EditorStyles.boldLabel);
+                    weaponTypes[i].duration = EditorGUILayout.FloatField(weaponTypes[i].duration);
+                    EditorGUILayout.Space(8);
+
+                    GUILayout.Label("Consumable Effect Amount", EditorStyles.boldLabel);
+                    weaponTypes[i].amount = EditorGUILayout.FloatField(weaponTypes[i].amount);
+                }
+
+
+                EditorGUILayout.Space(16);
              
 
                 if (GUILayout.Button("Delete Weapon"))

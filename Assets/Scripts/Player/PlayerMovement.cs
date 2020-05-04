@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private float horizontal;
     private bool isHoldingJumpKey;
-
+    private bool canDoubleJump;
+    private int airJumps = 0;
 
 
     // Get components and initialise stats from design master here
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             kyoteTimer = kyoteTime;
+            airJumps = 0;
         }
 
         BetterJump();
@@ -109,6 +111,15 @@ public class PlayerMovement : MonoBehaviour
     {
         isHoldingJumpKey = true;
         jumpBufferTimer = jumpBufferTime;
+
+        if (isGrounded == false)
+        {
+            if (canDoubleJump && airJumps < 1)
+            {
+                airJumps++;
+                Jump();
+            }
+        }
     }
 
     public void EndJump()
@@ -150,6 +161,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 reverseDirection = new Vector2(direction.x * -1, direction.y * -1);
         rigidbody.AddForce(reverseDirection * magnitude);
+    }
+
+    public void CanDoubleJump(bool value)
+    {
+        canDoubleJump = value;
     }
 
 }

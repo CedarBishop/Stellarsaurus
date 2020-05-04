@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
     [HideInInspector]public bool isGamepad;
     [HideInInspector] public int playerNumber;
     [HideInInspector] public WeaponType currentWeapon;
+    [HideInInspector]public Player player;
 
     bool canShoot;
     Camera mainCamera;
@@ -198,7 +199,8 @@ public class PlayerShoot : MonoBehaviour
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
-                    cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+                    if (cameraShake != null)
+                        cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Multishot:
@@ -218,7 +220,8 @@ public class PlayerShoot : MonoBehaviour
 
                     }
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
-                    cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+                    if (cameraShake != null)
+                        cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                     break;
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType,
@@ -238,7 +241,8 @@ public class PlayerShoot : MonoBehaviour
                             if (collider.GetComponent<PlayerHealth>())
                             {
                                 collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
-                                cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+                                if (cameraShake != null)
+                                    cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                             }
                         }
                     }          
@@ -247,6 +251,15 @@ public class PlayerShoot : MonoBehaviour
                     break;
 
                 case WeaponUseType.Consumable:
+
+                    // Spawn a Empty gameobject then add a consumable component to it,
+                    GameObject go = Instantiate(new GameObject(), transform);
+                    Consumable consumable = go.AddComponent<Consumable>();
+
+                    // Activate Consumable effect with parameters of current weapon consumable
+                    consumable.Use(player, currentWeapon.consumableType, currentWeapon.duration, currentWeapon.amount);
+
+
                     break;
                 default:
                     break;
