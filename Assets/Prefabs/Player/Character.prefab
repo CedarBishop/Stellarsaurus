@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f181f2df687de5f489f64cc98b5635a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   sprites:
   - {fileID: 21300000, guid: 09fe56cdf69ea3943bd9a90d85e55bd3, type: 3}
   - {fileID: 21300000, guid: 281cd93e1ccb90e4894df9b6ff20c7dc, type: 3}
@@ -312,14 +313,9 @@ MonoBehaviour:
   groundMovementSpeed: 450
   airMovementSpeed: 400
   jumpHeight: 15
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 5
-  kyoteTime: 0.25
-  jumpBufferTime: 0.25
+  kyoteTime: 0.2
+  jumpBufferTime: 0.2
   cutJumpHeight: 0.5
-  onWall: 0
-  wallJumpHeight: 0
-  wallFriction: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -331,7 +327,6 @@ MonoBehaviour:
     m_Bits: 8192
   gunOrigin: {fileID: 2180012640987882278}
   shadowSprite: {fileID: 7108118315063263377}
-  playerNumber: 0
 --- !u!58 &2655954609655052922
 CircleCollider2D:
   m_ObjectHideFlags: 0
