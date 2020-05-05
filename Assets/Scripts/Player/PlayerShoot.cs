@@ -35,6 +35,7 @@ public class PlayerShoot : MonoBehaviour
 
     bool isHoldingFireButton;
     bool semiLimiter;
+    float chargeUpTimer;
 
     void Start()
     {
@@ -60,17 +61,49 @@ public class PlayerShoot : MonoBehaviour
         {
             if (currentWeapon != null)
             {
-                if (currentWeapon.isSemiAutomatic)
+
+                switch (currentWeapon.fireType)
                 {
-                    if (semiLimiter)
-                    {
-                        semiLimiter = false;
+                    case FireType.SemiAutomatic:
+
+                        if (semiLimiter)
+                        {
+                            semiLimiter = false;
+                            Shoot();
+                        }
+
+                        break;
+                    case FireType.Automatic:
                         Shoot();
-                    }
-                }
-                else
-                {
-                    Shoot();
+                        break;
+                    case FireType.ChargeUp:
+                        if (semiLimiter)
+                        {
+                            if (chargeUpTimer >= currentWeapon.chargeUpTime)
+                            {
+                                semiLimiter = false;
+                                Shoot();
+                            }
+                            else
+                            {
+                                chargeUpTimer += Time.deltaTime;
+                            }
+
+                        }
+                        break;
+                    case FireType.WindUp:
+
+                        if (chargeUpTimer >= currentWeapon.chargeUpTime)
+                        {
+                            Shoot();
+                        }
+                        else
+                        {
+                            chargeUpTimer += Time.deltaTime;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }          
 
@@ -78,6 +111,7 @@ public class PlayerShoot : MonoBehaviour
         else
         {
             semiLimiter = true;
+            chargeUpTimer = 0;
         }
 
     }

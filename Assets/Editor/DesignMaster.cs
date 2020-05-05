@@ -259,8 +259,15 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].damage = EditorGUILayout.IntField(weaponTypes[i].damage);
 
                     EditorGUILayout.Space(8);
-                    GUILayout.Label("Is Semi-Automatic", EditorStyles.boldLabel);
-                    weaponTypes[i].isSemiAutomatic = EditorGUILayout.Toggle(weaponTypes[i].isSemiAutomatic);
+                    GUILayout.Label("Weapon Fire Type", EditorStyles.boldLabel);
+                    weaponTypes[i].fireType = (FireType)EditorGUILayout.EnumPopup(weaponTypes[i].fireType);
+
+                    if (weaponTypes[i].fireType == FireType.ChargeUp || weaponTypes[i].fireType == FireType.WindUp)
+                    {
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Charge Up Time", EditorStyles.boldLabel);
+                        weaponTypes[i].chargeUpTime = EditorGUILayout.FloatField(weaponTypes[i].chargeUpTime);
+                    }
 
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Fire Rate", EditorStyles.boldLabel);

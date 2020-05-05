@@ -165,7 +165,10 @@ public class Weapon : MonoBehaviour
 
 public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable }
 
+public enum FireType {SemiAutomatic, Automatic, ChargeUp, WindUp }
+
 public enum WeaponSpawnType {FallFromSky, Spawnpoint, Treasure }
+
 
 
 [System.Serializable]
@@ -183,7 +186,8 @@ public class WeaponType
     public int damage;
     public float initialForce;
     public float spread;
-    public bool isSemiAutomatic;
+    public FireType fireType;
+    public float chargeUpTime;
     public float cameraShakeDuration;
     public float cameraShakeMagnitude;
     public float knockBack;
