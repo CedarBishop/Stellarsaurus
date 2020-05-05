@@ -21,7 +21,7 @@ public class PlayerShoot : MonoBehaviour
     string weaponName;
     Sprite weaponSprite;
     float fireRate;
-    Projectile projectileType;
+    GameObject projectileType;
     int ammoCount;
     bool isTriggeringWeapon;
     Weapon triggeredWeapon;
@@ -229,7 +229,7 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                        gunOriginTransform.rotation);
+                        gunOriginTransform.rotation).GetComponent<Projectile>();
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
@@ -247,7 +247,7 @@ public class PlayerShoot : MonoBehaviour
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, 
                             new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                            gunOriginTransform.rotation);
+                            gunOriginTransform.rotation).GetComponent<Projectile>();
                         multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.initialForce);
 
                         baseZRotation += currentWeapon.sprayAmount;
@@ -260,29 +260,35 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                        gunOriginTransform.rotation);
+                        gunOriginTransform.rotation).GetComponent<Projectile>();
                     Grenade grenade = g.GetComponent<Grenade>();
                     grenade.InitGrenade(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Melee:
 
-                    Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), currentWeapon.range);
-                    if (colliders != null)
-                    {
-                        foreach (Collider2D collider in colliders)
-                        {
-                            if (collider.GetComponent<PlayerHealth>())
-                            {
-                                collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
-                                if (cameraShake != null)
-                                    cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
-                            }
-                        }
-                    }          
-                    
+                    //Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), currentWeapon.range);
+                    //if (colliders != null)
+                    //{
+                    //    foreach (Collider2D collider in colliders)
+                    //    {
+                    //        if (collider.GetComponent<PlayerHealth>())
+                    //        {
+                    //            collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                    //            if (cameraShake != null)
+                    //                cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+                    //        }
+                    //    }
+                    //}          
 
-                    break;
+                    Melee melee = Instantiate(projectileType,
+                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                        gunOriginTransform.rotation).GetComponent<Melee>();
+                    melee.Init(playerNumber,currentWeapon.damage, currentWeapon.duration);
+                    if (cameraShake != null)
+                        cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+
+                        break;
 
                 case WeaponUseType.Consumable:
 
@@ -376,11 +382,11 @@ public class PlayerShoot : MonoBehaviour
         cameraShakeDuration = currentWeapon.cameraShakeDuration;
         cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
 
-        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable )
+        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable || currentWeapon.weaponUseType == WeaponUseType.Melee)
         {
             if (currentWeapon.projectileType != null)
             {
-                projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
+                projectileType = currentWeapon.projectileType;
             }
             else
             {

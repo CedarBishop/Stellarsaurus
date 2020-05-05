@@ -194,7 +194,7 @@ public class DesignMaster : EditorWindow
                 }
 
 
-                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable || weaponTypes[i].weaponUseType == WeaponUseType.Melee)
                 {
                     if (weaponTypes[i].projectileType != null)
                     {
@@ -242,6 +242,18 @@ public class DesignMaster : EditorWindow
                     }
                 }
 
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Melee)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Melee Type", EditorStyles.boldLabel);
+                    weaponTypes[i].projectileName = EditorGUILayout.TextField(weaponTypes[i].projectileName);
+
+                    if (GUILayout.Button("Check Projectile Prefab"))
+                    {
+                        CheckNullProjectile(i);
+                    }
+                }
+
 
 
                 //EditorGUILayout.Space(8);
@@ -272,6 +284,7 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
                     weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
+
 
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Range", EditorStyles.boldLabel);
@@ -365,6 +378,13 @@ public class DesignMaster : EditorWindow
 
                     GUILayout.Label("Consumable Effect Amount", EditorStyles.boldLabel);
                     weaponTypes[i].amount = EditorGUILayout.FloatField(weaponTypes[i].amount);
+                }
+
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Melee)
+                {
+                    GUILayout.Label("Melee Attack Duration", EditorStyles.boldLabel);
+                    weaponTypes[i].duration = EditorGUILayout.FloatField(weaponTypes[i].duration);
+                    EditorGUILayout.Space(8);
                 }
 
 
