@@ -21,7 +21,8 @@ public class PlayerShoot : MonoBehaviour
     string weaponName;
     Sprite weaponSprite;
     float fireRate;
-    GameObject projectileType;
+    Projectile projectileType;
+    Melee meleeType;
     int ammoCount;
     bool isTriggeringWeapon;
     Weapon triggeredWeapon;
@@ -229,7 +230,7 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.SingleShot:
                     Projectile projectile = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                        gunOriginTransform.rotation).GetComponent<Projectile>();
+                        gunOriginTransform.rotation);
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
@@ -247,7 +248,7 @@ public class PlayerShoot : MonoBehaviour
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Projectile multiProjectile = Instantiate(projectileType, 
                             new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                            gunOriginTransform.rotation).GetComponent<Projectile>();
+                            gunOriginTransform.rotation);
                         multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.initialForce);
 
                         baseZRotation += currentWeapon.sprayAmount;
@@ -260,7 +261,7 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                        gunOriginTransform.rotation).GetComponent<Projectile>();
+                        gunOriginTransform.rotation);
                     Grenade grenade = g.GetComponent<Grenade>();
                     grenade.InitGrenade(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
@@ -281,9 +282,9 @@ public class PlayerShoot : MonoBehaviour
                     //    }
                     //}          
 
-                    Melee melee = Instantiate(projectileType,
+                    Melee melee = Instantiate(meleeType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                        gunOriginTransform.rotation).GetComponent<Melee>();
+                        gunOriginTransform.rotation);
                     melee.Init(playerNumber,currentWeapon.damage, currentWeapon.duration);
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
@@ -382,15 +383,26 @@ public class PlayerShoot : MonoBehaviour
         cameraShakeDuration = currentWeapon.cameraShakeDuration;
         cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
 
-        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable || currentWeapon.weaponUseType == WeaponUseType.Melee)
+        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable)
         {
             if (currentWeapon.projectileType != null)
             {
-                projectileType = currentWeapon.projectileType;
+                projectileType = currentWeapon.projectileType.GetComponent<Projectile>();
             }
             else
             {
                 Debug.LogError(currentWeapon.weaponName + " Projectile type has not been set");
+            }
+        }
+        else if (currentWeapon.weaponUseType == WeaponUseType.Melee)
+        {
+            if (currentWeapon.meleeType != null)
+            {
+                meleeType = currentWeapon.meleeType.GetComponent<Melee>();
+            }
+            else
+            {
+                Debug.LogError(currentWeapon.weaponName + " Melee type has not been set");
             }
         }
 

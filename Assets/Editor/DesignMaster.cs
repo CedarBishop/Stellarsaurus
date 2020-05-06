@@ -26,7 +26,16 @@ public class DesignMaster : EditorWindow
         for (int i = 0; i < weaponTypes.Count; i++)
         {
             CheckNullWeaponSprite(i);
-            CheckNullProjectile(i);
+
+            if (weaponTypes[i].weaponUseType == WeaponUseType.Melee)
+            {
+                CheckNullMelee(i);
+            }
+            else
+            {
+                CheckNullProjectile(i);
+            }
+            
         }
 
         displayPerRow = 4;
@@ -72,7 +81,15 @@ public class DesignMaster : EditorWindow
             for (int i = 0; i < weaponTypes.Count; i++)
             {
                 CheckNullWeaponSprite(i);
-                CheckNullProjectile(i);
+
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Melee)
+                {
+                    CheckNullMelee(i);
+                }
+                else
+                {
+                    CheckNullProjectile(i);
+                }
             }
             displayPerRow = 4;
             spacing = 10;
@@ -248,9 +265,9 @@ public class DesignMaster : EditorWindow
                     GUILayout.Label("Melee Type", EditorStyles.boldLabel);
                     weaponTypes[i].projectileName = EditorGUILayout.TextField(weaponTypes[i].projectileName);
 
-                    if (GUILayout.Button("Check Projectile Prefab"))
+                    if (GUILayout.Button("Check Melee Prefab"))
                     {
-                        CheckNullProjectile(i);
+                        CheckNullMelee(i);
                     }
                 }
 
@@ -433,6 +450,18 @@ public class DesignMaster : EditorWindow
         else
         {
             weaponTypes[i].projectileType = Resources.Load<GameObject>("Projectiles/Null");
+        }
+    }
+
+    static void CheckNullMelee(int i)
+    {
+        if (Resources.Load<GameObject>("Melees/" + weaponTypes[i].projectileName) != null)
+        {
+            weaponTypes[i].projectileType = Resources.Load<GameObject>("Melees/" + weaponTypes[i].projectileName);
+        }
+        else
+        {
+            weaponTypes[i].projectileType = Resources.Load<GameObject>("Melees/Null");
         }
     }
 

@@ -8,6 +8,8 @@ public class Melee : MonoBehaviour
     private Collider2D collider;
     private float timeTillDestroy;
 
+    private float framesHasBeenAlive = 0;
+
     public void Init (int playerNum, int damage, float duration)
     {
         playerNumber = playerNum;
@@ -17,8 +19,19 @@ public class Melee : MonoBehaviour
         StartCoroutine("DestroySelf");
     }
 
+    private void FixedUpdate()
+    {
+        framesHasBeenAlive++;
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (framesHasBeenAlive >= 2)
+        {
+            return;
+        }
+
         if (collision.GetComponent<PlayerHealth>())
         {
             collision.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);

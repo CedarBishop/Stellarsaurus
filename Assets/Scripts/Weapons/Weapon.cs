@@ -201,4 +201,6 @@ public class WeaponType
     public float duration;
     public float amount;
 
+    public GameObject meleeType;
+
 }
