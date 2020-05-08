@@ -6,7 +6,7 @@ public class Teleport : MonoBehaviour
 {
     public Transform otherTeleporter;
     ParticleSystem[] particles;
-    public List<Rigidbody2D> recentlyTeleported;
+    [HideInInspector] public List<Rigidbody2D> recentlyTeleported;
     private Teleport otherTeleportScript;
 
 
@@ -21,21 +21,23 @@ public class Teleport : MonoBehaviour
         if (collision.GetComponent<Rigidbody2D>())
         {
             Rigidbody2D collisionRb = collision.GetComponent<Rigidbody2D>();
+            //if not on the check list (ie. is entering a tele)...
             if (!CheckList(collisionRb))
             {
-                collision.transform.position = otherTeleporter.position;
-                otherTeleportScript.AddRecentlyTeleported(collision.GetComponent<Rigidbody2D>());
+                collision.transform.position = otherTeleporter.position;                            // Set position of teleporting object to other teleporter
+                otherTeleportScript.AddRecentlyTeleported(collision.GetComponent<Rigidbody2D>());   // Add teleporting gameobject to other tele's list of teleported objects.
                 if (particles != null)
-                    foreach (ParticleSystem ps in particles)
-                        ps.Play();
+                    particles[0].Play();            // The "going" particle effect is the first child of the teleporter
                 else
                 {
                     Debug.Log("Particles not found for " + name + ", rediscovering...");
                     particles = GetComponentsInChildren<ParticleSystem>();
-                    foreach (ParticleSystem ps in particles)
-                        ps.Play();
+                    particles[0].Play();
                 }
             }
+            // The "arrival" particle effect is the second child of the teleporter
+            else
+                particles[1].Play();
         }
     }
 

@@ -15132,6 +15132,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.x.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.y.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.z.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710433686877504516, guid: e1eb26b5d619c504e8ae234962db7643,
+        type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6747166961715058529, guid: e1eb26b5d619c504e8ae234962db7643,
         type: 3}
       propertyPath: m_LocalPosition.x
