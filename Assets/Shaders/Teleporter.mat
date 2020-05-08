@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Teleport
-  m_Shader: {fileID: -6465566751694194690, guid: 3ce7568c1216189468eafa8dcc575b60,
+  m_Name: Teleporter
+  m_Shader: {fileID: -6465566751694194690, guid: e80475b671351e74c9579d087ddf82f8,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -21,13 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emmision:
-        m_Texture: {fileID: 2800000, guid: eb082d767841ffe4e81c828fdad1ca72, type: 3}
+        m_Texture: {fileID: 2800000, guid: 237da5aab80d0694fb3f6c01064c5c18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d1af74494f7884e4dbe2485b199694c8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7f06fafbca7701345bbf20e7f7a0cee5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_E36B9CD7: {r: 1.0592737, g: 1.0592737, b: 1.0592737, a: 0}
+    - Color_53E73246: {r: 0.09411765, g: 5.992157, b: 5.490196, a: 1}
