@@ -249,7 +249,7 @@ public class PlayerShoot : MonoBehaviour
                         Projectile multiProjectile = Instantiate(projectileType, 
                             new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
                             gunOriginTransform.rotation);
-                        multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.initialForce);
+                        multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.sprayAmount);
 
                         baseZRotation += currentWeapon.sprayAmount;
 
