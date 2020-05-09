@@ -40,7 +40,8 @@ public class Grenade : Projectile
         explosionSize = explodeSize;
         damage = _Damage;
         playerNumber = _PlayerNumber;
-        explodesOnImpact = false;
+        damagesOnHit = false;
+        destroysOnHit = false;
         cameraShake = Camera.main.GetComponent<CameraShake>();
         initialForce = force;
         duration = cameraShakeDuration;

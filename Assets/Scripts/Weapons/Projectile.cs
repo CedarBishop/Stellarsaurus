@@ -6,21 +6,24 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
+    [HideInInspector]public int damage;
+    
     protected Rigidbody2D rigidbody;
     protected float initialForce;
-    protected int damage;
     protected int playerNumber;
     protected float range;
     protected float spreadRange;
     protected Vector2 startingPosition;
 
-    protected bool explodesOnImpact;
+    protected bool damagesOnHit;
+    protected bool destroysOnHit;
+
     [HideInInspector] public Sprite sprite;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
-        if (explodesOnImpact)
+        if (damagesOnHit)
         {
             if (collision.gameObject.GetComponent<Projectile>())
             {
@@ -37,10 +40,13 @@ public class Projectile : MonoBehaviour
             {
                 collision.gameObject.GetComponent<EnvironmentalHealth>().TakeDamage(damage);
             }
-
+            
+            
+        }
+        if (destroysOnHit)
+        {
             Destroy(gameObject);
         }
-
     }
 
     public void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force, float Spread)
@@ -52,7 +58,8 @@ public class Projectile : MonoBehaviour
         damage = _Damage;
         playerNumber = _PlayerNumber;
         initialForce = force;
-        explodesOnImpact = true;
+        damagesOnHit = true;
+        destroysOnHit = true;
         spreadRange = Spread;
 
         float zRotation = transform.rotation.eulerAngles.z + Random.Range(-spreadRange,spreadRange);
@@ -72,7 +79,6 @@ public class Projectile : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         StopCoroutine("DestroySelf");
-        //print(Vector2.Distance(startingPosition, new Vector2(transform.position.x, transform.position.y)));
         Destroy(gameObject);
     }
 
