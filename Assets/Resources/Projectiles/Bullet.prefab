@@ -80,20 +80,38 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.046297073
-        inSlope: 0
-        outSlope: 0
+        value: 0.3482509
+        inSlope: -0.03267864
+        outSlope: -0.03267864
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.22572397
+      - serializedVersion: 3
+        time: 0.35054407
+        value: 0.26780835
+        inSlope: -0.5389206
+        outSlope: -0.5389206
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.16194777
+      - serializedVersion: 3
+        time: 0.9890909
+        value: 0.06667731
+        inSlope: -0.17595093
+        outSlope: -0.17595093
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.12622282
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0.2216981, b: 0.6426261, a: 0.4509804}
+      key0: {r: 0, g: 0.51614475, b: 1, a: 1}
+      key1: {r: 0.14391243, g: 0.6478593, b: 0.9245283, a: 0.4509804}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -101,7 +119,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 65342
       ctime2: 65535
       ctime3: 0
       ctime4: 0
@@ -203,7 +221,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4bbfe179b38515140a7e6a55a3e2e32b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.59460664, g: 0.9214133, b: 0.9622642, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
