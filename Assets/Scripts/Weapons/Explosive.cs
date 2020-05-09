@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : Projectile
+public class Explosive : Projectile
 {
     protected float timeTillExplode = 3;
     protected float explosionSize = 2;
@@ -10,10 +10,10 @@ public class Grenade : Projectile
     CameraShake cameraShake;
     float duration;
     float magnitude;
-  
+    protected Rigidbody2D rigidbody;
 
 
-   IEnumerator Explode ()
+    IEnumerator Explode ()
    {
         yield return new WaitForSeconds(timeTillExplode);
         cameraShake.StartShake(duration,magnitude);
@@ -34,7 +34,7 @@ public class Grenade : Projectile
         Destroy(gameObject);
    }
 
-    public void InitGrenade (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude)
+    public void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude)
     {
         timeTillExplode = explodeTime;
         explosionSize = explodeSize;

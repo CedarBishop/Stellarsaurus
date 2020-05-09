@@ -211,7 +211,7 @@ public class DesignMaster : EditorWindow
                 }
 
 
-                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable || weaponTypes[i].weaponUseType == WeaponUseType.Melee)
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee || weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
                 {
                     if (weaponTypes[i].projectileType != null)
                     {
@@ -247,7 +247,7 @@ public class DesignMaster : EditorWindow
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
 
                 
-                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable)
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee || weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
@@ -298,28 +298,42 @@ public class DesignMaster : EditorWindow
                         weaponTypes[i].chargeUpTime = EditorGUILayout.FloatField(weaponTypes[i].chargeUpTime);
                     }
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
-                    weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
-
+                    if (weaponTypes[i].weaponUseType != WeaponUseType.Boomerang || weaponTypes[i].weaponUseType != WeaponUseType.Throwable)
+                    {
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
+                        weaponTypes[i].fireRate = EditorGUILayout.FloatField(weaponTypes[i].fireRate);
+                    }
 
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Range", EditorStyles.boldLabel);
                     weaponTypes[i].range = EditorGUILayout.FloatField(weaponTypes[i].range);
                 }
-                
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Ammo Count", EditorStyles.boldLabel);
-                weaponTypes[i].ammoCount = EditorGUILayout.IntField(weaponTypes[i].ammoCount);
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Throwable || weaponTypes[i].weaponUseType == WeaponUseType.Boomerang)
+                {
+                    weaponTypes[i].ammoCount = 1;
+                }
+                else
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Ammo Count", EditorStyles.boldLabel);
+                    weaponTypes[i].ammoCount = EditorGUILayout.IntField(weaponTypes[i].ammoCount);
+                }
+               
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable )
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Initial Force", EditorStyles.boldLabel);
-                    weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);
+                    weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);                    
+                }
 
-                    
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Boomerang)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Lerp Speed", EditorStyles.boldLabel);
+                    weaponTypes[i].initialForce = EditorGUILayout.FloatField(weaponTypes[i].initialForce);
                 }
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot)

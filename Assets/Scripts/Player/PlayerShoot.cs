@@ -228,9 +228,9 @@ public class PlayerShoot : MonoBehaviour
             switch (weaponUseType)
             {
                 case WeaponUseType.SingleShot:
-                    Projectile projectile = Instantiate(projectileType,
+                    Bullet projectile = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                        gunOriginTransform.rotation);
+                        gunOriginTransform.rotation).GetComponent<Bullet>();
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
@@ -246,9 +246,9 @@ public class PlayerShoot : MonoBehaviour
                     {
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
-                        Projectile multiProjectile = Instantiate(projectileType, 
+                        Bullet multiProjectile = Instantiate(projectileType,
                             new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
-                            gunOriginTransform.rotation);
+                            gunOriginTransform.rotation).GetComponent<Bullet>();
                         multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.sprayAmount);
 
                         baseZRotation += currentWeapon.sprayAmount;
@@ -262,8 +262,8 @@ public class PlayerShoot : MonoBehaviour
                     Projectile g = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
                         gunOriginTransform.rotation);
-                    Grenade grenade = g.GetComponent<Grenade>();
-                    grenade.InitGrenade(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
+                    Explosive explosive = g.GetComponent<Explosive>();
+                    explosive.InitExplosive(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Melee:
@@ -299,8 +299,14 @@ public class PlayerShoot : MonoBehaviour
 
                     // Activate Consumable effect with parameters of current weapon consumable
                     consumable.Use(player, currentWeapon.consumableType, currentWeapon.duration, currentWeapon.amount);
+                    break;
 
+                case WeaponUseType.Boomerang:
 
+                    Boomerang boomerang = Instantiate(projectileType,
+                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                        gunOriginTransform.rotation).GetComponent<Boomerang>();
+                    boomerang.InitialiseBoomerang(currentWeapon, playerNumber, this);
                     break;
 
 
@@ -336,6 +342,16 @@ public class PlayerShoot : MonoBehaviour
             isTriggeringWeapon = false;
             triggeredWeapon = null;
         }
+    }
+
+    public void Grab(WeaponType type)
+    {
+        if (currentWeapon != null)
+        {
+            Drop();
+        }
+        currentWeapon = type;
+        InitializeWeapon();
     }
 
 
@@ -378,14 +394,23 @@ public class PlayerShoot : MonoBehaviour
         weaponName = currentWeapon.weaponName;
         gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
         firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
-        ammoCount = triggeredWeapon.ammo;
+        
+
+        if (currentWeapon.weaponUseType == WeaponUseType.Boomerang)
+        {
+            ammoCount = 1;
+        }
+        else
+        {
+            ammoCount = triggeredWeapon.ammo;
+        }
         fireRate = currentWeapon.fireRate;
         weaponUseType = currentWeapon.weaponUseType;
         knockback = currentWeapon.knockBack;
         cameraShakeDuration = currentWeapon.cameraShakeDuration;
         cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
 
-        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable)
+        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable || currentWeapon.weaponUseType == WeaponUseType.Boomerang)
         {
             if (currentWeapon.projectileType != null)
             {
