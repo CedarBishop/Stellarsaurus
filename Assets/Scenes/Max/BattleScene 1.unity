@@ -7451,7 +7451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGlobal: 1
-  priority: 0
+  priority: 10
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 0de0def5b92dc344b806a4adb4ab2b5a, type: 2}
@@ -11947,7 +11947,12 @@ PrefabInstance:
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
-      value: Uzi
+      value: Charge Up Laser Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: respawnTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -15170,7 +15175,7 @@ PrefabInstance:
     - target: {fileID: 6747166961715058529, guid: e1eb26b5d619c504e8ae234962db7643,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.67
+      value: -1.662
       objectReference: {fileID: 0}
     - target: {fileID: 6747166961715058529, guid: e1eb26b5d619c504e8ae234962db7643,
         type: 3}

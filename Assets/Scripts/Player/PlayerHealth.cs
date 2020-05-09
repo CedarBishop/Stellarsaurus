@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (transform.position.y < -13)
         {
+            Debug.Log("Player fell off the map");
             Death();
         }
     }
