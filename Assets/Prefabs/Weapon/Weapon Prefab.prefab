@@ -134,9 +134,23 @@ MonoBehaviour:
     damage: 0
     initialForce: 0
     spread: 0
-    isSemiAutomatic: 0
+    fireType: 0
+    chargeUpTime: 0
+    cameraShakeDuration: 0
+    cameraShakeMagnitude: 0
+    knockBack: 0
     bulletsFiredPerShot: 0
     sprayAmount: 0
     explosionSize: 0
     explosionTime: 0
+    consumableType: 0
+    duration: 0
+    amount: 0
+    meleeType: {fileID: 0}
+  groundLayermask:
+    serializedVersion: 2
+    m_Bits: 256
+  platformLayermask:
+    serializedVersion: 2
+    m_Bits: 512
   ammo: 0

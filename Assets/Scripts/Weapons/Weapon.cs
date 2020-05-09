@@ -10,6 +10,9 @@ public class Weapon : MonoBehaviour
     List<WeaponType> weaponTypes;
     
     public WeaponType weaponType;
+
+    public LayerMask groundLayermask;
+    public LayerMask platformLayermask;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody;
@@ -62,14 +65,23 @@ public class Weapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Projectile>() || collision.gameObject.GetComponent<PlayerMovement>() || collision.gameObject.tag == "Wall")
+        if (rigidbody == null)
         {
             return;
         }
-        if (rigidbody != null)
+        if (collision.gameObject.GetComponent<Projectile>() || collision.gameObject.tag == "Wall")
+        {
+            return;
+        }
+
+        if (Physics2D.Raycast(transform.position, Vector2.down,0.7f,platformLayermask) || Physics2D.Raycast(transform.position, Vector2.down, 0.7f, groundLayermask))
         {
             Destroy(rigidbody);
             boxCollider.isTrigger = true;
+        }
+        else if (collision.gameObject.GetComponent<PlayerShoot>())
+        {
+            collision.gameObject.GetComponent<PlayerShoot>().Disarm();
         }
     }
 

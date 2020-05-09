@@ -410,6 +410,14 @@ public class PlayerShoot : MonoBehaviour
             UIManager.instance.UpdateWeaponType(playerNumber,currentWeapon.weaponName, ammoCount);
     }
 
+
+    public void Disarm()
+    {
+        if (currentWeapon != null)
+        {
+            Drop();
+        }
+    }
     void DestroyWeapon()
     {
         gunSprite.sprite = null;
