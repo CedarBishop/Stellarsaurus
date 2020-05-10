@@ -327,6 +327,8 @@ MonoBehaviour:
     m_Bits: 8192
   gunOrigin: {fileID: 2180012640987882278}
   shadowSprite: {fileID: 7108118315063263377}
+  dustParticleFX: {fileID: 5660791939826079308, guid: 484bb44b0f4621a46a4f78439a0ce220,
+    type: 3}
 --- !u!58 &2655954609655052922
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -372,7 +374,8 @@ MonoBehaviour:
     damage: 0
     initialForce: 0
     spread: 0
-    isSemiAutomatic: 0
+    fireType: 0
+    chargeUpTime: 0
     cameraShakeDuration: 0
     cameraShakeMagnitude: 0
     knockBack: 0
@@ -380,6 +383,11 @@ MonoBehaviour:
     sprayAmount: 0
     explosionSize: 0
     explosionTime: 0
+    consumableType: 0
+    duration: 0
+    amount: 0
+    meleeType: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &2327445293856462399
 MonoBehaviour:
   m_ObjectHideFlags: 0

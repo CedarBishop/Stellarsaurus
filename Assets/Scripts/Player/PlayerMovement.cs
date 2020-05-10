@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask wallLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
+    public ParticleSystem dustParticleFX;
 
     private Animator animator;
     private Rigidbody2D rigidbody;
@@ -73,9 +74,14 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Grounded & jump logic update starts here
-
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer);
-        
+
+        if (wasGrounded == false && isGrounded == true)
+        {
+            Landing();
+        }
+
         kyoteTimer -= Time.fixedDeltaTime;
         jumpBufferTimer -= Time.fixedDeltaTime;
 
@@ -144,6 +150,20 @@ public class PlayerMovement : MonoBehaviour
         shadowSprite.gameObject.SetActive(false);
         float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rigidbody.gravityScale));
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
+        if (dustParticleFX != null)
+        {
+            ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);
+            Destroy(p.gameObject, 1);
+        }
+    }
+
+    void Landing()
+    {
+        if (dustParticleFX != null)
+        {
+            ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);
+            Destroy(p.gameObject, 1);
+        }
     }
 
     void BetterJump ()
