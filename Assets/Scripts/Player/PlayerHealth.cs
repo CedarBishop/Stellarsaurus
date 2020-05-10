@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     Player playerParent;
     PlayerParams playerParams;
     int health;
+    int maxHealth;
     bool isAlive;
     
     void Start()
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         }
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         health = playerParams.startingHealth;
+        maxHealth = health;
     }
 
     private void Update()
@@ -83,5 +85,15 @@ public class PlayerHealth : MonoBehaviour
         playerParent.CharacterDied(true);
 
         Destroy(gameObject);
+    }
+
+    public void Heal(int healingAmount)
+    {
+        health += healingAmount;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        UIManager.instance.UpdateHealth(playerNumber, health);
     }
 }

@@ -11,11 +11,11 @@ public class Player : MonoBehaviour
     public GameObject characterPrefab;
     public PlayerMovement playerMovement;
     public PlayerShoot playerShoot;
+    public PlayerHealth playerHealth;
 
     [HideInInspector] public bool isStillAlive;
     [HideInInspector] public bool isGamepad;
 
-    private PlayerHealth playerHealth;
     private PlayerInput playerInput;
     private GameObject currentCharacter;
     private CameraController cameraController;

@@ -26,6 +26,7 @@ public class Consumable : MonoBehaviour
                 player.playerMovement.CanDoubleJump(true);
                 break;
             case ConsumableType.Healing:
+                player.playerHealth.Heal((int)amount);
                 break;
             case ConsumableType.Shield:
                 break;
