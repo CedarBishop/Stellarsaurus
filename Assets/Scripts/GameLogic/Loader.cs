@@ -55,4 +55,5 @@ public class SaveObject
     public List<WeaponType> savedWeapons;
     public List<AIType> savedAis;
     public PlayerParams playerParams;
+    public LevelPlaylist levelPlaylist;
 }

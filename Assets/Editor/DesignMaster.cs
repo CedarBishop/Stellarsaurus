@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public enum DisplayOptions { Weapons,AI,Player}
+public enum DisplayOptions { Weapons, AI, Player, Levels}
 
 public class DesignMaster : EditorWindow
 {
@@ -14,6 +14,12 @@ public class DesignMaster : EditorWindow
     [SerializeField] static List<WeaponType> weaponTypes = new List<WeaponType>();
     [SerializeField] static List<AIType> aiTypes = new List<AIType>();
     [SerializeField] static PlayerParams player;
+    //[SerializeField] static LevelPlaylist levelPlaylist;
+    //[SerializeField] static List<string> freeForAllScenes = new List<string>();
+    //[SerializeField] static List<string> eliminiationScenes;
+    //[SerializeField] static List<string> extractionScenes;
+    //[SerializeField] static List<string> climbScenes;
+    //static List<SceneAsset> scenes = new List<SceneAsset>();
 
     DisplayOptions displayOptions;
 
@@ -69,6 +75,8 @@ public class DesignMaster : EditorWindow
                 break;
             case DisplayOptions.Player:
                 break;
+            case DisplayOptions.Levels:
+                break;
             default:
                 break;
         }
@@ -122,6 +130,12 @@ public class DesignMaster : EditorWindow
             displayOptions = DisplayOptions.Player;
         }
         EditorGUILayout.EndVertical();
+        //EditorGUILayout.BeginVertical();
+        //if (GUILayout.Button("Levels"))
+        //{
+        //    displayOptions = DisplayOptions.Levels;
+        //}
+        //EditorGUILayout.EndVertical();
 
 
         EditorGUILayout.EndHorizontal();
@@ -162,6 +176,9 @@ public class DesignMaster : EditorWindow
             case DisplayOptions.Player:
                 DisplayPlayerParams();
                 break;
+            //case DisplayOptions.Levels:
+            //    DisplayLevelPlaylist();
+            //    break;
             default:
                 break;
         }
@@ -608,7 +625,60 @@ public class DesignMaster : EditorWindow
     }
 
 
+    void DisplayLevelPlaylist()
+    {
 
+        //EditorGUILayout.BeginVertical();
+
+        //GUILayout.Label("Free for all levels", EditorStyles.boldLabel);
+        //if (GUILayout.Button("Add Free for All Level"))
+        //{
+        //    scenes.Add(null);
+        //    freeForAllScenes.Add("");
+        //}
+        //if (freeForAllScenes != null)
+        //{
+
+        //    if (freeForAllScenes.Count != 0)
+        //    {
+        //        for (int i = 0; i < freeForAllScenes.Count; i++)
+        //        {
+        //            scenes[i] = (SceneAsset)EditorGUILayout.ObjectField(scenes[i], typeof(SceneAsset), true);
+        //            freeForAllScenes[i] = scenes[i].name;
+
+
+        //            if (GUILayout.Button("Remove Level"))
+        //            {
+        //                freeForAllScenes.Remove(freeForAllScenes[i]);
+        //            }
+        //            EditorGUILayout.Space(8);
+        //        }
+        //    }
+            
+
+        //}
+
+
+        //EditorGUILayout.Space(8);
+        
+      
+        //for (int i = 0; i < levelPlaylist.eliminationScenes.Count; i++)
+        //{
+
+        //}
+
+        //for (int i = 0; i < levelPlaylist.extractionScenes.Count; i++)
+        //{
+
+        //}
+
+        //for (int i = 0; i < levelPlaylist.climbScenes.Count; i++)
+        //{
+
+        //}
+
+        EditorGUILayout.EndVertical();
+    }
 
     void SaveToJSON ()
     {
