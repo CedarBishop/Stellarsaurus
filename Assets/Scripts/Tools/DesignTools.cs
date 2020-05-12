@@ -40,9 +40,14 @@ public static class DesignTools
                 GameObject Camera = SceneAsset.FindObjectOfType<Camera>().gameObject;
                 SceneAsset.DestroyImmediate(Camera);
                 PrefabUtility.InstantiatePrefab(Resources.Load("Core/Camera Parent"));
-            }          
+            }
 
         }
+        if (SceneAsset.FindObjectOfType<Grid>() == null)
+        {
+            PrefabUtility.InstantiatePrefab(Resources.Load("Core/Basic Tilemap Grid"));
+        }
+        
         if (SceneAsset.FindObjectOfType<SoundManager>() == null)
         {
             PrefabUtility.InstantiatePrefab(Resources.Load("Core/Sound Manager"));
