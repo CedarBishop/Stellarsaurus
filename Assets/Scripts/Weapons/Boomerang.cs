@@ -82,6 +82,10 @@ public class Boomerang : Projectile
                 
             }
         }
+        else if (collision.GetComponent<AI>())
+        {
+            collision.GetComponent<AI>().TakeDamage(playerNumber, damage);
+        }
         
     }
 

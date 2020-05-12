@@ -74,19 +74,3 @@ public class BasicAI : MonoBehaviour
         }
     }
 }
-
-
-public enum AIBehaviour { Patrol, Guard, Fly}
-
-[System.Serializable]
-public class AIType
-{
-    public string AIName;
-    public string spritePrefabName;
-    public float moveMentSpeed;
-    public int attackDamage;
-    public float attackCoolDown;
-
-    public AIBehaviour aiBehaviour;
-
-}

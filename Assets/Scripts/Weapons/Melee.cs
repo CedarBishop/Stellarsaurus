@@ -7,12 +7,13 @@ public class Melee : MonoBehaviour
     private int playerNumber;
     private Collider2D collider;
     private float timeTillDestroy;
-
+    private int damage;
     private float framesHasBeenAlive = 0;
 
-    public void Init (int playerNum, int damage, float duration)
+    public void Init (int playerNum, int Damage, float duration)
     {
         playerNumber = playerNum;
+        damage = Damage;
         collider = GetComponent<Collider2D>();
         collider.isTrigger = true;
         timeTillDestroy = duration;
@@ -35,6 +36,10 @@ public class Melee : MonoBehaviour
         if (collision.GetComponent<PlayerHealth>())
         {
             collision.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+        }
+        if (collision.GetComponent<AI>())
+        {
+            collision.GetComponent<AI>().TakeDamage(playerNumber, damage);
         }
     }
 

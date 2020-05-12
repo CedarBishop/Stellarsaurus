@@ -26,6 +26,10 @@ public class Bullet : Projectile
             {
                 collision.gameObject.GetComponent<EnvironmentalHealth>().TakeDamage(damage);
             }
+            else if (collision.gameObject.GetComponent<AI>())
+            {
+                collision.gameObject.GetComponent<AI>().TakeDamage(playerNumber,damage);
+            }
 
 
         }
