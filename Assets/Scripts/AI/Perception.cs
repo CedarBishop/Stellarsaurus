@@ -7,9 +7,15 @@ public class Perception : MonoBehaviour
     public bool detectsTarget;
 
     public string detectionTag;
+    [Range(0f, 20f)]
     public float hearingRadius;
+    [Range(0f, 20f)]
     public float viewingDistance;
+    [Range(0f,360f)]
     public float fieldOfView;
+    [Range(4,12)]
+    public int numOfRays = 4;
+    public bool isFacingRight;
 
 
     private void FixedUpdate()
@@ -38,16 +44,28 @@ public class Perception : MonoBehaviour
 
     private bool Vision ()
     {
+        for (int i = 0; i < numOfRays; i++)
+        {
+            float viewScaler = -0.5f;
+            viewScaler += (i * (1.0f / ((float)numOfRays - 1)));
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance);
+            if (hit)
+            {
+                if (hit.collider.CompareTag(detectionTag))
+                {
+                    return true;
+                }
+            }
+        }
+
+
         return false;
     }
 
-    private Vector2 Endpoint ()
+    private Vector3 DirectionFromAngle (float angle)
     {
-        Vector2 v = new Vector2((float)Mathf.Cos(Mathf.Deg2Rad * fieldOfView), (float)Mathf.Cos(Mathf.Deg2Rad * fieldOfView));
-        v *= viewingDistance;
-        v += new Vector2(transform.position.x, transform.position.y);
-        return v;
-
+        angle += (isFacingRight) ? 90f : -90f;
+        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad) , 0);
     }
 
     private void OnDrawGizmos()
@@ -56,8 +74,12 @@ public class Perception : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, hearingRadius);
         Gizmos.color = Color.red;
 
-        Gizmos.DrawLine(transform.position, Endpoint());
-
+        for (int i = 0; i < numOfRays; i++)
+        {
+            float viewScaler = -0.5f;
+            viewScaler += (i *(1.0f / ((float)numOfRays - 1)));
+            Gizmos.DrawLine(transform.position, transform.position + (DirectionFromAngle(fieldOfView * viewScaler) * viewingDistance));
+        }            
     }
 
 
