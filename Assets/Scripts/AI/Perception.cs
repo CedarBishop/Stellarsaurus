@@ -5,6 +5,7 @@ using UnityEngine;
 public class Perception : MonoBehaviour
 {
     public bool detectsTarget;
+    public Transform targetTransform;
 
     public string detectionTag;
     [Range(0f, 20f)]
@@ -17,6 +18,10 @@ public class Perception : MonoBehaviour
     public int numOfRays = 4;
     public bool isFacingRight;
 
+    private void Start()
+    {
+        isFacingRight = true;
+    }
 
     private void FixedUpdate()
     {
@@ -33,6 +38,7 @@ public class Perception : MonoBehaviour
             {
                 if (colliders[i].CompareTag(detectionTag))
                 {
+                    targetTransform = colliders[i].transform;
                     return true;
                 }
             }
@@ -53,6 +59,7 @@ public class Perception : MonoBehaviour
             {
                 if (hit.collider.CompareTag(detectionTag))
                 {
+                    targetTransform = hit.transform;
                     return true;
                 }
             }
