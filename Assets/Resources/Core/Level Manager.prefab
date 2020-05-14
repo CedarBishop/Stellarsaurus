@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affcde2bef966584fae78a432d9acadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugMode: 0
   isLobby: 0
   startingPositions:
   - {fileID: 4383978370061006293}
@@ -153,6 +154,8 @@ MonoBehaviour:
     y: 4
   weaponsInThisLevel: []
   aisInThisLevel: []
+  aiPrefab: {fileID: 2765672809849141235, guid: 723051153006e9448bd94e2ffb423ca2,
+    type: 3}
 --- !u!1 &7828744408156027752
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,32 @@ public class Loader : MonoBehaviour
         }
         return weaponTypes;
     }
+
+    public List<AIType> GetAIsByName(string[] aiNames)
+    {
+        List<AIType> aiTypes = new List<AIType>();
+        print(aiNames[0]);
+        if (aiNames != null)
+        {
+            for (int i = 0; i < aiNames.Length; i++)
+            {
+                for (int j = 0; j < saveObject.savedAis.Count; j++)
+                {
+                    if (aiNames[i] == saveObject.savedAis[j].AIName)
+                    {
+                        aiTypes.Add(saveObject.savedAis[j]);
+                    }
+                }
+            }
+        }
+
+        foreach (AIType ai in aiTypes)
+        {
+            ai.aiSprite = Resources.Load<Sprite>("Ai Sprites/" + ai.spriteName);
+        }
+        print(aiTypes[0].spriteName);
+        return aiTypes;
+    }
 }
 
 [System.Serializable]

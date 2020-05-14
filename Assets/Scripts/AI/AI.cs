@@ -10,6 +10,11 @@ public class AI : MonoBehaviour
     public AnimatorController flyerController;
     public AnimatorController carrierController;
 
+    public LayerMask groundLayer;
+    public LayerMask platformLayer;
+    public LayerMask wallLayer;
+
+    [HideInInspector] public AIType aiType;
     [HideInInspector] public int health;
     [HideInInspector] public float moveMentSpeed;
     [HideInInspector] public int attackDamage;
@@ -24,15 +29,15 @@ public class AI : MonoBehaviour
 
 
 
-    public virtual void Initialise (AIType aiType, Sprite sprite)
+    public virtual void Initialise (AIType aIType)
     {
         animator = GetComponent<Animator>();
         perception = GetComponent<Perception>();
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-
-        spriteRenderer.sprite = sprite;
+        aiType = aIType;
+        spriteRenderer.sprite = aiType.aiSprite;
         health = aiType.health;
         moveMentSpeed = aiType.moveMentSpeed;
         attackDamage = aiType.attackDamage;
@@ -109,12 +114,16 @@ public enum AIBehaviour { Patrol, Guard, Fly, Carrier }
 public class AIType
 {
     public string AIName;
-    public string spritePrefabName;
+    public Sprite aiSprite;
+    public string spriteName;
     public int health;
     public float moveMentSpeed;
     public int attackDamage;
     public float attackCoolDown;
 
     public AIBehaviour aiBehaviour;
+
+    public float smallJumpHeight;
+    public float largeJumpHeight;
 
 }

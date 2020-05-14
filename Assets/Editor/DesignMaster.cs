@@ -527,7 +527,7 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                aiTypes[i].spritePrefabName = EditorGUILayout.TextField(aiTypes[i].spritePrefabName);
+                aiTypes[i].spriteName = EditorGUILayout.TextField(aiTypes[i].spriteName);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Movement Speed", EditorStyles.boldLabel);
@@ -545,9 +545,13 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Behaviour", EditorStyles.boldLabel);
                 aiTypes[i].aiBehaviour = (AIBehaviour)EditorGUILayout.EnumPopup(aiTypes[i].aiBehaviour);
 
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Small Jump Height", EditorStyles.boldLabel);
+                aiTypes[i].smallJumpHeight = EditorGUILayout.FloatField(aiTypes[i].smallJumpHeight);
 
-
-
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Large Jump Height", EditorStyles.boldLabel);
+                aiTypes[i].largeJumpHeight = EditorGUILayout.FloatField(aiTypes[i].largeJumpHeight);
 
 
                 EditorGUILayout.Space(16);
