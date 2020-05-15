@@ -14,6 +14,8 @@ public class AI : MonoBehaviour
     public LayerMask platformLayer;
     public LayerMask wallLayer;
 
+    public ParticleSystem bloodParticle;
+
     [HideInInspector] public AIType aiType;
     [HideInInspector] public int health;
     [HideInInspector] public float moveMentSpeed;
@@ -81,11 +83,15 @@ public class AI : MonoBehaviour
 
     public virtual void TakeDamage (int playerNumber,int damage)
     {
+        
         health -= damage;
         if (health <= 0)
         {
             Death(playerNumber);
         }
+        ParticleSystem p = Instantiate(bloodParticle, transform.position, Quaternion.identity);
+        p.Play();
+        Destroy(p, 1);
     }
 
     public virtual void Death (int playerNumber)
@@ -94,6 +100,9 @@ public class AI : MonoBehaviour
         {
 
         }
+        
+
+        Destroy(gameObject);
     }
 
     public void StartAttackCooldown()

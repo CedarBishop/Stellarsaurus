@@ -79,6 +79,12 @@ public class RaptorPatrol : StateMachineBehaviour
             {
                 perception.isFacingRight = !perception.isFacingRight;
             }
+
+           
+        }
+        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight)? new Vector2(1,-1): new Vector2(-1,-1),5,groundLayer ) && !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 5, platformLayer))
+        {
+            perception.isFacingRight = !perception.isFacingRight;
         }
     }
 

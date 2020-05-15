@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb36ba8bcc5b3e046ac99688c6dc6344, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddadd95583b57154f991e6fc8c74dcdc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -131,6 +131,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 8192
+  bloodParticle: {fileID: 8157379650156868562, guid: a8ef1dae9a131b14e9f7759c65cdb8f9,
+    type: 3}
   aiType:
     AIName: 
     aiSprite: {fileID: 0}
