@@ -19,7 +19,7 @@ public class DesignMaster : EditorWindow
     //[SerializeField] static List<string> eliminiationScenes;
     //[SerializeField] static List<string> extractionScenes;
     //[SerializeField] static List<string> climbScenes;
-    //static List<SceneAsset> scenes = new List<SceneAsset>();
+    //static List<SceneAsset> scenes = new List<SceneAsset>();    
 
     DisplayOptions displayOptions;
 
@@ -28,6 +28,7 @@ public class DesignMaster : EditorWindow
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster));
         weaponTypes = LoadFromJSON(out aiTypes, out player);
+        
 
         for (int i = 0; i < weaponTypes.Count; i++)
         {
@@ -42,6 +43,11 @@ public class DesignMaster : EditorWindow
                 CheckNullProjectile(i);
             }
             
+        }
+
+        for (int i = 0; i < aiTypes.Count; i++)
+        {
+            CheckAISprite(i);
         }
 
         displayPerRow = 4;
@@ -99,6 +105,12 @@ public class DesignMaster : EditorWindow
                     CheckNullProjectile(i);
                 }
             }
+
+            for (int i = 0; i < aiTypes.Count; i++)
+            {
+                CheckAISprite(i);
+            }
+
             displayPerRow = 4;
             spacing = 10;
         }
@@ -228,7 +240,7 @@ public class DesignMaster : EditorWindow
                 }
 
 
-                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee || weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee && weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
                 {
                     if (weaponTypes[i].projectileType != null)
                     {
@@ -248,6 +260,7 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Name", EditorStyles.boldLabel);
                 weaponTypes[i].weaponName = EditorGUILayout.TextField( weaponTypes[i].weaponName);
 
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Sprite Prefab Name", EditorStyles.boldLabel);
                 weaponTypes[i].spritePrefabName = EditorGUILayout.TextField( weaponTypes[i].spritePrefabName);
@@ -263,8 +276,9 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
 
-                
-                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee || weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
+
+
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee && weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
@@ -289,15 +303,6 @@ public class DesignMaster : EditorWindow
                 }
 
 
-
-                //EditorGUILayout.Space(8);
-                //GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                //weaponTypes[i].weaponSpritePrefab = (WeaponSpritePrefab)EditorGUILayout.ObjectField(weaponTypes[i].weaponSpritePrefab, typeof(WeaponSpritePrefab), false);
-
-                //EditorGUILayout.Space(8);
-                //GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
-                //weaponTypes[i].projectileType = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].projectileType, typeof(GameObject), false);
-
                 if (weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
                 {
                     EditorGUILayout.Space(8);
@@ -315,7 +320,7 @@ public class DesignMaster : EditorWindow
                         weaponTypes[i].chargeUpTime = EditorGUILayout.FloatField(weaponTypes[i].chargeUpTime);
                     }
 
-                    if (weaponTypes[i].weaponUseType != WeaponUseType.Boomerang || weaponTypes[i].weaponUseType != WeaponUseType.Throwable)
+                    if (weaponTypes[i].weaponUseType != WeaponUseType.Boomerang && weaponTypes[i].weaponUseType != WeaponUseType.Throwable)
                     {
                         EditorGUILayout.Space(8);
                         GUILayout.Label("Fire Rate", EditorStyles.boldLabel);
@@ -496,6 +501,18 @@ public class DesignMaster : EditorWindow
         }
     }
 
+    static void CheckAISprite(int i)
+    {
+        if (Resources.Load<Sprite>("Ai Sprites/" + aiTypes[i].spriteName) != null)
+        {
+            aiTypes[i].aiSprite = Resources.Load<Sprite>("Ai Sprites/" + aiTypes[i].spriteName);
+        }
+        else
+        {
+            aiTypes[i].aiSprite = Resources.Load<Sprite>("Ai Sprites/Null");
+        }
+    }
+
 
     void CreateAI ()
     {
@@ -517,9 +534,17 @@ public class DesignMaster : EditorWindow
 
                 GUILayout.Label(aiTypes[i].AIName, EditorStyles.boldLabel);
 
+                if (aiTypes[i].aiSprite != null)
+                {
+                    if (aiTypes[i].aiSprite != null)
+                    {               
+                        GUILayout.Box(aiTypes[i].aiSprite.texture );
+                    }
+                }
+
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Universal Parameters", EditorStyles.boldLabel);
-                EditorGUILayout.Space(16);
+                EditorGUILayout.Space(8);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Name", EditorStyles.boldLabel);
@@ -529,9 +554,18 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Sprite", EditorStyles.boldLabel);
                 aiTypes[i].spriteName = EditorGUILayout.TextField(aiTypes[i].spriteName);
 
+                if (GUILayout.Button("Check Sprite Prefab"))
+                {
+                    CheckAISprite(i);
+                }
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Health", EditorStyles.boldLabel);
+                aiTypes[i].health = EditorGUILayout.IntField(aiTypes[i].health);
+
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Movement Speed", EditorStyles.boldLabel);
-                aiTypes[i].moveMentSpeed = EditorGUILayout.FloatField(aiTypes[i].moveMentSpeed);
+                aiTypes[i].movementSpeed = EditorGUILayout.FloatField(aiTypes[i].movementSpeed);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Attack Damage", EditorStyles.boldLabel);
@@ -539,19 +573,52 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Attack Cooldown", EditorStyles.boldLabel);
-                aiTypes[i].attackCoolDown = EditorGUILayout.FloatField(aiTypes[i].attackCoolDown);
+                aiTypes[i].attackCooldown = EditorGUILayout.FloatField(aiTypes[i].attackCooldown);
+
+                EditorGUILayout.Space(16);
+                GUILayout.Label("Perception", EditorStyles.boldLabel);
+                EditorGUILayout.Space(8);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Viewing Distance", EditorStyles.boldLabel);
+                aiTypes[i].viewingDistance = EditorGUILayout.Slider(aiTypes[i].viewingDistance, 0.0f, 20.0f);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Field of View", EditorStyles.boldLabel);
+                aiTypes[i].fieldOfView = EditorGUILayout.Slider(aiTypes[i].fieldOfView, 0.0f, 360.0f);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Hearing Radius", EditorStyles.boldLabel);
+                aiTypes[i].hearingRadius = EditorGUILayout.Slider(aiTypes[i].hearingRadius,0.0f,20.0f);
+
+                EditorGUILayout.Space(16);
+                GUILayout.Label("Behaviours", EditorStyles.boldLabel);
+                EditorGUILayout.Space(8);
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Behaviour", EditorStyles.boldLabel);
                 aiTypes[i].aiBehaviour = (AIBehaviour)EditorGUILayout.EnumPopup(aiTypes[i].aiBehaviour);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Small Jump Height", EditorStyles.boldLabel);
-                aiTypes[i].smallJumpHeight = EditorGUILayout.FloatField(aiTypes[i].smallJumpHeight);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Large Jump Height", EditorStyles.boldLabel);
-                aiTypes[i].largeJumpHeight = EditorGUILayout.FloatField(aiTypes[i].largeJumpHeight);
+                if (aiTypes[i].aiBehaviour == AIBehaviour.Patrol)
+                {
+                    EditorGUILayout.Space(16);
+                    GUILayout.Label("Patrol", EditorStyles.boldLabel);
+                    EditorGUILayout.Space(8);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Small Jump Height", EditorStyles.boldLabel);
+                    aiTypes[i].smallJumpHeight = EditorGUILayout.FloatField(aiTypes[i].smallJumpHeight);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Large Jump Height", EditorStyles.boldLabel);
+                    aiTypes[i].largeJumpHeight = EditorGUILayout.FloatField(aiTypes[i].largeJumpHeight);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Jump Detection Distance", EditorStyles.boldLabel);
+                    aiTypes[i].jumpDetectionDistance = EditorGUILayout.Slider(aiTypes[i].jumpDetectionDistance,0.0f,5.0f);
+                }
+               
 
 
                 EditorGUILayout.Space(16);
@@ -710,6 +777,8 @@ public class DesignMaster : EditorWindow
 
 
     }
+
+
 }
 
 

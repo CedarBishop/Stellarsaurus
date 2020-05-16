@@ -7,8 +7,17 @@ public class RaptorChase : StateMachineBehaviour
     AI ai;
     Perception perception;
     Rigidbody2D rigidbody;
-    float movementSpeed;
     Transform targetTransform;
+    Transform transform;
+
+    LayerMask groundLayer;
+    LayerMask wallLayer;
+    LayerMask platformLayer;
+
+    float movementSpeed;
+    float smallJumpHeight;
+    float largeJumpHeight;
+    float jumpDetectionDistance;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,13 +25,33 @@ public class RaptorChase : StateMachineBehaviour
         ai = animator.GetComponent<AI>();
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        movementSpeed = ai.moveMentSpeed;
+        movementSpeed = ai.aiType.movementSpeed;
+        transform = animator.transform;
+        groundLayer = ai.groundLayer;
+        wallLayer = ai.wallLayer;
+        platformLayer = ai.platformLayer;
+        smallJumpHeight = ai.aiType.smallJumpHeight;
+        largeJumpHeight = ai.aiType.largeJumpHeight;
         targetTransform = perception.targetTransform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        TargetTracking(animator);
+        Chase();
+        CalculateWallAndLedge();
+
+    }
+
+    void TargetTracking(Animator animator)
+    {
+        if (targetTransform == null)
+        {
+            return;
+        }
+
         if (perception.detectsTarget == false)
         {
             animator.SetBool("TargetDetected", perception.detectsTarget);
@@ -31,8 +60,16 @@ public class RaptorChase : StateMachineBehaviour
         {
             animator.SetFloat("DistanceToTarget", Vector2.Distance(animator.transform.position, targetTransform.position));
         }
+    }
 
-        if (targetTransform.position.x - animator.transform.position.x > 0) // target is to the right
+    void Chase ()
+    {
+        if (targetTransform == null)
+        {
+            return;
+        }
+
+        if (targetTransform.position.x - transform.position.x > 0) // target is to the right
         {
             rigidbody.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);
         }
@@ -40,13 +77,32 @@ public class RaptorChase : StateMachineBehaviour
         {
             rigidbody.velocity = new Vector2(-movementSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);
         }
-
-
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    void CalculateWallAndLedge()
     {
+        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, jumpDetectionDistance, groundLayer) ||
+            Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, jumpDetectionDistance, wallLayer))   // Check if there is a wall in front of the ai
+        {
+            if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) && !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
+            {
+                Jump(smallJumpHeight);
+            }
+            else if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) && !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
+            {
+                Jump(largeJumpHeight);
+            }
+        }
+   
+    }
 
+    void Jump(float jumpHeight)
+    {
+        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) ||
+            Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer))
+        {
+            float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
+        }
     }
 }

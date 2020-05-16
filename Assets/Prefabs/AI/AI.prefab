@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2765672809849141196}
   - component: {fileID: 476984991}
   - component: {fileID: 1755103953086001632}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   detectsTarget: 0
   targetTransform: {fileID: 0}
   detectionTag: Player
-  hearingRadius: 4
+  hearingRadius: 2.6
   viewingDistance: 4
   fieldOfView: 60
   numOfRays: 12
@@ -141,6 +141,9 @@ MonoBehaviour:
     moveMentSpeed: 0
     attackDamage: 0
     attackCoolDown: 0
+    viewingDistance: 0
+    fieldOfView: 0
+    hearingRadius: 0
     aiBehaviour: 0
     smallJumpHeight: 0
     largeJumpHeight: 0

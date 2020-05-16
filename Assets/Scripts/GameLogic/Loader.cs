@@ -70,7 +70,6 @@ public class Loader : MonoBehaviour
         {
             ai.aiSprite = Resources.Load<Sprite>("Ai Sprites/" + ai.spriteName);
         }
-        print(aiTypes[0].spriteName);
         return aiTypes;
     }
 }

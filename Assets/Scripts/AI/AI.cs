@@ -18,9 +18,6 @@ public class AI : MonoBehaviour
 
     [HideInInspector] public AIType aiType;
     [HideInInspector] public int health;
-    [HideInInspector] public float moveMentSpeed;
-    [HideInInspector] public int attackDamage;
-    [HideInInspector] public float attackCoolDown;
 
     private Animator animator;
     private Perception perception;
@@ -41,9 +38,10 @@ public class AI : MonoBehaviour
         aiType = aIType;
         spriteRenderer.sprite = aiType.aiSprite;
         health = aiType.health;
-        moveMentSpeed = aiType.moveMentSpeed;
-        attackDamage = aiType.attackDamage;
-        attackCoolDown = aiType.attackCoolDown;
+
+        perception.viewingDistance = aiType.viewingDistance;
+        perception.fieldOfView = aiType.fieldOfView;
+        perception.hearingRadius = aiType.hearingRadius;
 
 
         behaviour = aiType.aiBehaviour;
@@ -69,6 +67,11 @@ public class AI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        DirectionChecker();
+    }
+
+    void DirectionChecker ()
+    {
         if (rigidbody.velocity.x > 0)
         {
             perception.isFacingRight = true;
@@ -82,8 +85,7 @@ public class AI : MonoBehaviour
     }
 
     public virtual void TakeDamage (int playerNumber,int damage)
-    {
-        
+    {        
         health -= damage;
         if (health <= 0)
         {
@@ -112,7 +114,7 @@ public class AI : MonoBehaviour
 
     IEnumerator CoAttackCooldown ()
     {
-        yield return new WaitForSeconds(attackCoolDown);
+        yield return new WaitForSeconds(aiType.attackCooldown);
         animator.SetBool("CanAttack", true);
     }
 }
@@ -126,13 +128,18 @@ public class AIType
     public Sprite aiSprite;
     public string spriteName;
     public int health;
-    public float moveMentSpeed;
+    public float movementSpeed;
     public int attackDamage;
-    public float attackCoolDown;
+    public float attackCooldown;
+
+    public float viewingDistance;
+    public float fieldOfView;
+    public float hearingRadius;
 
     public AIBehaviour aiBehaviour;
 
     public float smallJumpHeight;
     public float largeJumpHeight;
+    public float jumpDetectionDistance;
 
 }

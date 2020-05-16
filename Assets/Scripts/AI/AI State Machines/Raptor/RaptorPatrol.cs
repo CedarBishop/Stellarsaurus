@@ -11,6 +11,7 @@ public class RaptorPatrol : StateMachineBehaviour
     float movementSpeed;
     Transform transform;
 
+    float jumpDetectionDistance;
     float smallJumpHeight;
     float largeJumpHeight;
 
@@ -24,7 +25,7 @@ public class RaptorPatrol : StateMachineBehaviour
         ai = animator.GetComponent<AI>();
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        movementSpeed = ai.moveMentSpeed;
+        movementSpeed = ai.aiType.movementSpeed;
         transform = animator.transform;
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
@@ -65,13 +66,16 @@ public class RaptorPatrol : StateMachineBehaviour
 
     void CalculateWallAndLedge()
     {
-        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1, groundLayer) || Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1, wallLayer))   // Check if there is a wall in front of the ai
+        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, jumpDetectionDistance, groundLayer) ||
+            Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, jumpDetectionDistance, wallLayer))   // Check if there is a wall in front of the ai
         {
-            if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) && !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
+            if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) &&
+                !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
             {
                 Jump(smallJumpHeight);
             }
-            else if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) && !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
+            else if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, groundLayer) &&
+                !Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), (perception.isFacingRight) ? Vector2.right : Vector2.left, 1.5f, wallLayer))
             {
                 Jump(largeJumpHeight);
             }
@@ -82,7 +86,8 @@ public class RaptorPatrol : StateMachineBehaviour
 
            
         }
-        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight)? new Vector2(1,-1): new Vector2(-1,-1),5,groundLayer ) && !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 5, platformLayer))
+        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight)? new Vector2(1,-1): new Vector2(-1,-1),8,groundLayer ) &&
+            !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 8, platformLayer))
         {
             perception.isFacingRight = !perception.isFacingRight;
         }

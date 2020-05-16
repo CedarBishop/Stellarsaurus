@@ -38,7 +38,6 @@ public class AISpawner : MonoBehaviour
         
         if (ais.Count > 0)
         {
-            print("Spawn AI");
             AI ai = Instantiate(aiPrefab, transform.position, Quaternion.identity);
             ai.Initialise(ais[Random.Range(0,ais.Count)]);
         }

@@ -335,12 +335,16 @@ public class PlayerShoot : MonoBehaviour
         }
         else if (isTriggeringWeapon)
         {
-            currentWeapon = triggeredWeapon.weaponType;
-            InitializeWeapon();
-            triggeredWeapon.OnPickup();
+            if (triggeredWeapon != null)
+            {
+                currentWeapon = triggeredWeapon.weaponType;
+                InitializeWeapon();
+                triggeredWeapon.OnPickup();
 
-            isTriggeringWeapon = false;
-            triggeredWeapon = null;
+                isTriggeringWeapon = false;
+                triggeredWeapon = null;
+            }
+            
         }
     }
 
