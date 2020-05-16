@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ddadd95583b57154f991e6fc8c74dcdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 615ccc7729bf10449a7d40711aa6780d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   detectionTag: Player
   hearingRadius: 2.6
-  viewingDistance: 4
+  viewingDistance: 3.9
   fieldOfView: 60
   numOfRays: 12
   isFacingRight: 1
@@ -138,19 +138,17 @@ MonoBehaviour:
     aiSprite: {fileID: 0}
     spriteName: 
     health: 0
-    moveMentSpeed: 0
+    movementSpeed: 0
     attackDamage: 0
-    attackCoolDown: 0
+    attackCooldown: 0
     viewingDistance: 0
     fieldOfView: 0
     hearingRadius: 0
     aiBehaviour: 0
     smallJumpHeight: 0
     largeJumpHeight: 0
+    jumpDetectionDistance: 0
   health: 0
-  moveMentSpeed: 0
-  attackDamage: 0
-  attackCoolDown: 0
 --- !u!95 &2765672809849141196
 Animator:
   serializedVersion: 3

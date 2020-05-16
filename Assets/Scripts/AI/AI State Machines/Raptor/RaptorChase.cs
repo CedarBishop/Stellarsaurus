@@ -33,6 +33,8 @@ public class RaptorChase : StateMachineBehaviour
         smallJumpHeight = ai.aiType.smallJumpHeight;
         largeJumpHeight = ai.aiType.largeJumpHeight;
         targetTransform = perception.targetTransform;
+        jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
