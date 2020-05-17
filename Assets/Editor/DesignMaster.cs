@@ -576,6 +576,18 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Attack Cooldown", EditorStyles.boldLabel);
                 aiTypes[i].attackCooldown = EditorGUILayout.FloatField(aiTypes[i].attackCooldown);
 
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Attack Range", EditorStyles.boldLabel);
+                aiTypes[i].attackRange = EditorGUILayout.FloatField(aiTypes[i].attackRange);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Attack Size", EditorStyles.boldLabel);
+                aiTypes[i].attackSize = EditorGUILayout.FloatField(aiTypes[i].attackSize);
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Chance of Dropping Reward", EditorStyles.boldLabel);
+                aiTypes[i].chanceOfDroppingWeapon = EditorGUILayout.Slider(aiTypes[i].chanceOfDroppingWeapon, 0.0f, 1.0f);
+
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Perception", EditorStyles.boldLabel);
                 EditorGUILayout.Space(8);

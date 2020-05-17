@@ -102,7 +102,21 @@ public class AI : MonoBehaviour
         {
 
         }
-        
+
+        if (LevelManager.instance != null)
+        {
+            if (LevelManager.instance.weaponTypes.Count > 0)
+            {
+                float rand = Random.Range(0.0f,1.0f);
+                if (rand < aiType.chanceOfDroppingWeapon)
+                {
+                    Weapon weapon = Instantiate(LevelManager.instance.weaponPrefab,
+                    transform.position,
+                    Quaternion.identity);
+                    weapon.Init(LevelManager.instance.weaponTypes, WeaponSpawnType.FallFromSky);
+                }                
+            }
+        }
 
         Destroy(gameObject);
     }
@@ -131,10 +145,14 @@ public class AIType
     public float movementSpeed;
     public int attackDamage;
     public float attackCooldown;
+    public float attackRange;
+    public float attackSize;
 
     public float viewingDistance;
     public float fieldOfView;
     public float hearingRadius;
+
+    public float chanceOfDroppingWeapon;
 
     public AIBehaviour aiBehaviour;
 

@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisInThisLevel;
     public AI aiPrefab; 
 
-    private List<WeaponType> weaponTypes = new List<WeaponType>();
+    [HideInInspector] public List<WeaponType> weaponTypes = new List<WeaponType>();
 
 
     private void Awake()

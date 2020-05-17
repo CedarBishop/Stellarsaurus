@@ -60,7 +60,15 @@ public class RaptorChase : StateMachineBehaviour
         }
         else
         {
-            animator.SetFloat("DistanceToTarget", Vector2.Distance(animator.transform.position, targetTransform.position));
+            if (Vector2.Distance(animator.transform.position, targetTransform.position) < (ai.aiType.attackRange))
+            {
+                animator.SetBool("WithinAttackingDistance", true);
+            }
+            else
+            {
+                animator.SetBool("WithinAttackingDistance", false);
+            }
+
         }
     }
 

@@ -24,7 +24,8 @@ public class RaptorAttack : StateMachineBehaviour
 
     void Attack (Animator animator)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(animator.transform.position + ((perception.isFacingRight)? Vector3.right: Vector3.left), 1);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(animator.transform.position + (((perception.isFacingRight)? (Vector3.right): Vector3.left) * ai.aiType.attackRange), ai.aiType.attackSize);
+
         if (colliders != null)
         {
             foreach (Collider2D collider in colliders)
@@ -34,8 +35,7 @@ public class RaptorAttack : StateMachineBehaviour
                     collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
                 }
             }
-        }
-        
+        }      
         
         
         animator.SetBool("CanAttack",false);
