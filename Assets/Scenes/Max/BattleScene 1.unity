@@ -3852,6 +3852,11 @@ PrefabInstance:
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7105782740009057312, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 831469962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9481e4b3c7a0ed443b1fb165b6f32407, type: 3}
 --- !u!1 &550550723
@@ -4794,6 +4799,12 @@ Transform:
   m_Father: {fileID: 157696119}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &831469962 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+    type: 3}
+  m_PrefabInstance: {fileID: 448086287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &835523643
 GameObject:
   m_ObjectHideFlags: 0
