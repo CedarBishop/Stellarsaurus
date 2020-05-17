@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundSystem : MonoBehaviour
+public class FreeForAllGamemode : MonoBehaviour
 {
-    public int numOfPlayers;
     public int numberOfRounds;
-    public int roundNumber;
-    public int playersStillAliveThisRound;
-    public int playersEliminated;
+    
+    [HideInInspector] public int numOfPlayers;
+    [HideInInspector] public int roundNumber;
+    [HideInInspector] public int playersStillAliveThisRound;
+    [HideInInspector] public int playersEliminated;
 
-    Player[] players;
+    private Player[] players;
 
 
     public void StartMatch ()
@@ -115,6 +116,7 @@ public class RoundSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         StartRound();
+        GameManager.instance.levelSelector.GoToLevel(GameMode.FreeForAll);
     }
 
     IEnumerator DelayAtEndOfMatch ()

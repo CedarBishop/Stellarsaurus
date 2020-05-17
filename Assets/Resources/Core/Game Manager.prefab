@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 421269320}
   - component: {fileID: 59959285128919413}
   - component: {fileID: 1283880972}
+  - component: {fileID: 4921186234686291158}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -106,9 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee116612df1c5804ea5290c581bf4de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 0
   loader: {fileID: 59959285128919413}
-  roundSystem: {fileID: 1283880972}
+  freeForAllGamemode: {fileID: 1283880972}
+  levelSelector: {fileID: 4921186234686291158}
+  playerCount: 0
   playerColours:
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
@@ -135,6 +137,14 @@ MonoBehaviour:
       airSpeed: 0
       jumpHeight: 0
       gravityScale: 0
+      kyoteTime: 0
+      jumpBufferTime: 0
+      cutJumpHeight: 0
+    levelPlaylist:
+      freeForAllScenes: []
+      eliminationScenes: []
+      extractionScenes: []
+      climbScenes: []
 --- !u!114 &1283880972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +157,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7226330f25462b4296a5410946dbbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfRounds: 10
   numOfPlayers: 0
-  numberOfRounds: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
   playersEliminated: 0
+--- !u!114 &4921186234686291158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fe169509bc6814f9cfb61d0dc9412b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -43,9 +43,12 @@ public class LevelManager : MonoBehaviour
     {
         if (isLobby == false)
         {
-            weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsInThisLevel);
+            if (weaponsInThisLevel.Length > 0)
+            {
+                weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsInThisLevel);
 
-            StartCoroutine("SpawnWeapons");
+                StartCoroutine("SpawnWeapons");
+            }
         }
 
 

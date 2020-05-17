@@ -2120,6 +2120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f02cd70a0696514c8ca3d9c1fca1a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMode: 0
 --- !u!61 &640600105
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2444,10 +2445,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1283880972, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
-      propertyPath: numberOfRounds
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8990490027761441408, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}
       propertyPath: m_LocalPosition.x

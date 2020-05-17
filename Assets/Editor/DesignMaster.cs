@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using UnityEditor.VersionControl;
+using System.Linq;
 
 public enum DisplayOptions { Weapons, AI, Player, Levels}
 
@@ -14,12 +16,11 @@ public class DesignMaster : EditorWindow
     [SerializeField] static List<WeaponType> weaponTypes = new List<WeaponType>();
     [SerializeField] static List<AIType> aiTypes = new List<AIType>();
     [SerializeField] static PlayerParams player;
-    //[SerializeField] static LevelPlaylist levelPlaylist;
-    //[SerializeField] static List<string> freeForAllScenes = new List<string>();
-    //[SerializeField] static List<string> eliminiationScenes;
-    //[SerializeField] static List<string> extractionScenes;
-    //[SerializeField] static List<string> climbScenes;
-    //static List<SceneAsset> scenes = new List<SceneAsset>();    
+    [SerializeField] static List<SceneAsset> freeForAllScenes = new List<SceneAsset>();
+    [SerializeField] static List<SceneAsset> eliminationScenes = new List<SceneAsset>();
+    [SerializeField] static List<SceneAsset> extractionScenes = new List<SceneAsset>();
+    [SerializeField] static List<SceneAsset> climbScenes = new List<SceneAsset>();
+
 
     DisplayOptions displayOptions;
 
@@ -142,12 +143,12 @@ public class DesignMaster : EditorWindow
             displayOptions = DisplayOptions.Player;
         }
         EditorGUILayout.EndVertical();
-        //EditorGUILayout.BeginVertical();
-        //if (GUILayout.Button("Levels"))
-        //{
-        //    displayOptions = DisplayOptions.Levels;
-        //}
-        //EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical();
+        if (GUILayout.Button("Levels"))
+        {
+            displayOptions = DisplayOptions.Levels;
+        }
+        EditorGUILayout.EndVertical();
 
 
         EditorGUILayout.EndHorizontal();
@@ -188,9 +189,9 @@ public class DesignMaster : EditorWindow
             case DisplayOptions.Player:
                 DisplayPlayerParams();
                 break;
-            //case DisplayOptions.Levels:
-            //    DisplayLevelPlaylist();
-            //    break;
+            case DisplayOptions.Levels:
+                DisplayLevelPlaylist();
+                break;
             default:
                 break;
         }
@@ -699,61 +700,213 @@ public class DesignMaster : EditorWindow
     void DisplayLevelPlaylist()
     {
 
-        //EditorGUILayout.BeginVertical();
+        EditorGUILayout.BeginVertical();
 
-        //GUILayout.Label("Free for all levels", EditorStyles.boldLabel);
-        //if (GUILayout.Button("Add Free for All Level"))
-        //{
-        //    scenes.Add(null);
-        //    freeForAllScenes.Add("");
-        //}
-        //if (freeForAllScenes != null)
-        //{
+        GUILayout.Label("Free for all levels", EditorStyles.boldLabel);
+        EditorGUILayout.Space(8);
+        if (GUILayout.Button("Add Free for All Level"))
+        {
+            freeForAllScenes.Add(null);
+        }
+        EditorGUILayout.Space(8);
+        if (freeForAllScenes != null)
+        {
 
-        //    if (freeForAllScenes.Count != 0)
-        //    {
-        //        for (int i = 0; i < freeForAllScenes.Count; i++)
-        //        {
-        //            scenes[i] = (SceneAsset)EditorGUILayout.ObjectField(scenes[i], typeof(SceneAsset), true);
-        //            freeForAllScenes[i] = scenes[i].name;
-
-
-        //            if (GUILayout.Button("Remove Level"))
-        //            {
-        //                freeForAllScenes.Remove(freeForAllScenes[i]);
-        //            }
-        //            EditorGUILayout.Space(8);
-        //        }
-        //    }
-            
-
-        //}
+            if (freeForAllScenes.Count != 0)
+            {
+                for (int i = 0; i < freeForAllScenes.Count; i++)
+                {
+                    freeForAllScenes[i] = (SceneAsset)EditorGUILayout.ObjectField(freeForAllScenes[i], typeof(SceneAsset), true);
 
 
-        //EditorGUILayout.Space(8);
-        
-      
-        //for (int i = 0; i < levelPlaylist.eliminationScenes.Count; i++)
-        //{
+                    if (GUILayout.Button("Remove Level"))
+                    {
+                        freeForAllScenes.Remove(freeForAllScenes[i]);
+                    }
+                    EditorGUILayout.Space(8);
+                }
+            }
 
-        //}
 
-        //for (int i = 0; i < levelPlaylist.extractionScenes.Count; i++)
-        //{
+        }
 
-        //}
 
-        //for (int i = 0; i < levelPlaylist.climbScenes.Count; i++)
-        //{
+        EditorGUILayout.Space(16);
 
-        //}
+
+        GUILayout.Label("Elimination levels", EditorStyles.boldLabel);
+        EditorGUILayout.Space(8);
+        if (GUILayout.Button("Add Elimination Level"))
+        {
+            eliminationScenes.Add(null);
+        }
+        EditorGUILayout.Space(8);
+        if (eliminationScenes != null)
+        {
+
+            if (eliminationScenes.Count != 0)
+            {
+                for (int i = 0; i < eliminationScenes.Count; i++)
+                {
+                    eliminationScenes[i] = (SceneAsset)EditorGUILayout.ObjectField(eliminationScenes[i], typeof(SceneAsset), true);
+
+
+                    if (GUILayout.Button("Remove Level"))
+                    {
+                        eliminationScenes.Remove(eliminationScenes[i]);
+                    }
+                    EditorGUILayout.Space(8);
+                }
+            }
+
+
+        }
+
+
+        EditorGUILayout.Space(16);
+
+        GUILayout.Label("Extraction levels", EditorStyles.boldLabel);
+        EditorGUILayout.Space(8);
+        if (GUILayout.Button("Add Extraction Level"))
+        {
+            extractionScenes.Add(null);
+        }
+        EditorGUILayout.Space(8);
+        if (extractionScenes != null)
+        {
+
+            if (extractionScenes.Count != 0)
+            {
+                for (int i = 0; i < extractionScenes.Count; i++)
+                {
+                    extractionScenes[i] = (SceneAsset)EditorGUILayout.ObjectField(extractionScenes[i], typeof(SceneAsset), true);
+
+
+                    if (GUILayout.Button("Remove Level"))
+                    {
+                        extractionScenes.Remove(extractionScenes[i]);
+                    }
+                    EditorGUILayout.Space(8);
+                }
+            }
+
+
+        }
+
+
+        EditorGUILayout.Space(16);
+
+
+        GUILayout.Label("Climb levels", EditorStyles.boldLabel);
+        EditorGUILayout.Space(8);
+        if (GUILayout.Button("Add Climb Level"))
+        {
+            climbScenes.Add(null);
+        }
+        EditorGUILayout.Space(8);
+        if (climbScenes != null)
+        {
+
+            if (climbScenes.Count != 0)
+            {
+                for (int i = 0; i < climbScenes.Count; i++)
+                {
+                    climbScenes[i] = (SceneAsset)EditorGUILayout.ObjectField(climbScenes[i], typeof(SceneAsset), true);
+
+
+                    if (GUILayout.Button("Remove Level"))
+                    {
+                        climbScenes.Remove(climbScenes[i]);
+                    }
+                    EditorGUILayout.Space(8);
+                }
+            }
+
+
+        }
+
+
+        EditorGUILayout.Space(16);
 
         EditorGUILayout.EndVertical();
     }
 
+    LevelPlaylist CreateLevelPlaylistObject ()
+    {
+        LevelPlaylist levels = new LevelPlaylist();
+
+        levels.freeForAllScenes = new List<string>();
+        levels.eliminationScenes = new List<string>();
+        levels.extractionScenes = new List<string>();
+        levels.climbScenes = new List<string>();
+
+        List<EditorBuildSettingsScene> editorBuildSettingsScenes = new List<EditorBuildSettingsScene>();
+
+        foreach (var scene in EditorBuildSettings.scenes)
+        {            
+            editorBuildSettingsScenes.Add(new EditorBuildSettingsScene(scene.path, true));
+        }
+
+        List<string> scenePaths = new List<string>();
+
+
+
+        for (int i = 0; i < freeForAllScenes.Count; i++)
+        {
+            levels.freeForAllScenes.Add(freeForAllScenes[i].name);
+            scenePaths.Add(AssetDatabase.GetAssetPath(freeForAllScenes[i]));
+            
+        }
+        for (int i = 0; i < eliminationScenes.Count; i++)
+        {
+            levels.eliminationScenes.Add(eliminationScenes[i].name);
+            scenePaths.Add(AssetDatabase.GetAssetPath(freeForAllScenes[i]));
+
+
+        }
+        for (int i = 0; i < extractionScenes.Count; i++)
+        {
+            levels.extractionScenes.Add(extractionScenes[i].name);
+            scenePaths.Add(AssetDatabase.GetAssetPath(freeForAllScenes[i]));
+
+        }
+        for (int i = 0; i < climbScenes.Count; i++)
+        {
+            levels.climbScenes.Add(climbScenes[i].name);
+            scenePaths.Add(AssetDatabase.GetAssetPath(freeForAllScenes[i]));
+        }
+
+        foreach (var path in scenePaths)
+        {
+            bool inBuildSettings = false;
+            foreach (var scene in editorBuildSettingsScenes)
+            {
+                if (scene.path == path)
+                {
+                    inBuildSettings = true;
+                }
+            }
+
+            if (inBuildSettings == false)
+            {
+                editorBuildSettingsScenes.Add(new EditorBuildSettingsScene(path, true));
+            }
+        }
+
+
+        
+
+        // Set the Build Settings window Scene list
+        EditorBuildSettings.scenes = editorBuildSettingsScenes.ToArray();
+
+
+        return levels;
+    }
+
     void SaveToJSON ()
     {
-        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes, playerParams = player };
+        LevelPlaylist levels = CreateLevelPlaylistObject();
+        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes, playerParams = player, levelPlaylist = levels };
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
 
@@ -771,14 +924,69 @@ public class DesignMaster : EditorWindow
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
         aITypes = saveObject.savedAis;
         playerParams = saveObject.playerParams;
+        CompareAndLoadScenesFromBuildSettings(saveObject.levelPlaylist);
+
+        
+
+
         return saveObject.savedWeapons;
-
-
 
 
     }
 
+    static void CompareAndLoadScenesFromBuildSettings (LevelPlaylist levelPlaylist)
+    {
+        foreach (var scene in EditorBuildSettings.scenes)
+        {
+            string sceneName = Path.GetFileNameWithoutExtension(scene.path);
+            foreach (string name in levelPlaylist.freeForAllScenes)
+            {
+                if (sceneName == name)
+                {
+                    SceneAsset s = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
+                    if (!freeForAllScenes.Contains(s))
+                    {
+                        freeForAllScenes.Add(s);
+                    }
+
+                }
+            }
+            foreach (string name in levelPlaylist.eliminationScenes)
+            {
+                if (sceneName == name)
+                {
+                    SceneAsset s = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
+                    if (!eliminationScenes.Contains(s))
+                    {
+                        eliminationScenes.Add(s);
+                    }
+                }
+            }
+            foreach (string name in levelPlaylist.extractionScenes)
+            {
+                if (sceneName == name)
+                {
+                    SceneAsset s = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
+                    if (!extractionScenes.Contains(s))
+                    {
+                        extractionScenes.Add(s);
+                    }
+                }
+            }
+            foreach (string name in levelPlaylist.climbScenes)
+            {
+                if (sceneName == name)
+                {
+                    SceneAsset s = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
+                    if (!climbScenes.Contains(s))
+                    {
+                        climbScenes.Add(s);
+                    }
+                }
+            }
+
+        }
+    }
+
 
 }
-
-

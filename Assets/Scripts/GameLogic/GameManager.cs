@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     private PlayerInputManager inputManager;
     
     public Loader loader;
-    public RoundSystem roundSystem;
+    public FreeForAllGamemode freeForAllGamemode;
+    public LevelSelector levelSelector;
     public int playerCount = 0;
     public Color[] playerColours;
 
@@ -64,10 +65,27 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void StartMatch()
+    public void StartMatch(GameMode gameMode)
     {
-        SceneManager.LoadScene(1);
-        roundSystem.StartMatch();
+        levelSelector.GoToLevel(gameMode);
+
+        switch (gameMode)
+        {
+            case GameMode.FreeForAll:
+                freeForAllGamemode.StartMatch();
+                break;
+            case GameMode.Elimination:
+                break;
+            case GameMode.Extraction:
+                break;
+            case GameMode.Climb:
+                break;
+            default:
+                break;
+        }
+
+
+
     }
 
     public void EndMatch()

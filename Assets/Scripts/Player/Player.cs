@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
 
         if (diedInCombat)
         {
-            GameManager.instance.roundSystem.CheckIfLastPlayer();
+            GameManager.instance.freeForAllGamemode.CheckIfLastPlayer();
         }
 
         
