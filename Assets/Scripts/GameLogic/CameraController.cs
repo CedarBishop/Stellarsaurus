@@ -1,53 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
     public List<PlayerMovement> playersInGame = new List<PlayerMovement>();
-    public float minOrthographicSize;
-    public float maxOrthographicSize;
-    public float orthographicSizeScaler;
-    float furthestDistanceFromCentre;
-    Camera camera;
+    public Transform tracker;
+    private Vector3 middlePoint;
+    public CinemachineVirtualCamera cvc;
+    [SerializeField] private float cameraZoomSpeed;
+    [SerializeField] private float minZoom;
 
+    private Camera mainCam;
 
     private void Start()
     {
-        camera = GetComponent<Camera>();
-        camera.orthographicSize = maxOrthographicSize;
+        mainCam = GetComponent<Camera>();
+        GetAveragePositionOfPlayers();
     }
 
 
     void FixedUpdate()
     {
-        if (playersInGame == null)
+        GetAveragePositionOfPlayers();
+        UpdateOrthographicSize();
+    }
+
+    private void GetAveragePositionOfPlayers()
+    {
+        // Check if there are any players in the game.
+        if (playersInGame.Count != 0)
         {
-            return;
+            middlePoint = Vector3.zero;
+            foreach (PlayerMovement pm in playersInGame)     // for each player, add their positions together then divide for the middle point.
+            {
+                middlePoint += pm.transform.position;
+            }
+            middlePoint /= playersInGame.Count;
+
+            tracker.position = middlePoint;   // Set middle point to transform.
         }
+    }
 
-        furthestDistanceFromCentre = 0;
-
-
+    private void UpdateOrthographicSize()
+    {
+        if (playersInGame.Count <= 0)
+            return;
+        float dist = minZoom;
+        float temp;
         for (int i = 0; i < playersInGame.Count; i++)
         {
-            float currentPlayerDistance = Vector2.Distance(Vector2.zero,playersInGame[i].transform.position);
-            if (currentPlayerDistance > furthestDistanceFromCentre)
+            for (int m = i; m < playersInGame.Count; m++)
             {
-                furthestDistanceFromCentre = currentPlayerDistance;
+                temp = Vector3.Distance(playersInGame[i].transform.position, playersInGame[m].transform.position);
+                dist = (temp > dist) ? temp : dist;
             }
         }
+        cvc.m_Lens.OrthographicSize = Mathf.Lerp(cvc.m_Lens.OrthographicSize, dist / 3.5f * mainCam.aspect, cameraZoomSpeed * Time.deltaTime);
+        if (cvc.m_Lens.OrthographicSize < minZoom)
+            cvc.m_Lens.OrthographicSize = minZoom;
 
-        float size = furthestDistanceFromCentre * orthographicSizeScaler;
-        if (size > maxOrthographicSize)
-        {
-            size = maxOrthographicSize;
-        }
-        else if (size < minOrthographicSize)
-        {
-            size = minOrthographicSize;
-        }
-        camera.orthographicSize = size;
-
+        /// TODO:   Get Horizontal distances and find the largest
+        ///         Get Vertical distances and times by aspect ratio to find largest
+        ///         compart values
+        ///         set orthographic size accordingly with specific magic number for both hor/vert.
     }
 }
