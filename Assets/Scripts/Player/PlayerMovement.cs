@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [Range(0,1.0f)]
     public float cutJumpHeight = 0.5f;
 
+    public Vector2 groundCheckOffset;
+    public float groundCheckRadius;
+
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     public LayerMask wallLayer;
@@ -75,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Grounded & jump logic update starts here
         bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, groundLayer) || Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.25f, platformLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, groundLayer) ||
+            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, platformLayer);
 
         if (wasGrounded == false && isGrounded == true)
         {
@@ -186,6 +190,12 @@ public class PlayerMovement : MonoBehaviour
     public void CanDoubleJump(bool value)
     {
         canDoubleJump = value;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + new Vector3(groundCheckOffset.x, groundCheckOffset.y, 0), groundCheckRadius);
     }
 
 }

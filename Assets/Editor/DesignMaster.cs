@@ -24,7 +24,7 @@ public class DesignMaster : EditorWindow
 
     DisplayOptions displayOptions;
 
-    [MenuItem("Window/Design Master")]
+    [MenuItem("Tools/Design Tools/Design Master")]
     static void Init()
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster));
