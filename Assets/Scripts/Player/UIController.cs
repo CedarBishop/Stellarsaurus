@@ -6,9 +6,15 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    [HideInInspector]public int playerNumber;
+
+    public float movementSpeed;
+
     PlayerInput playerInput;
-    public int playerNumber;
     Cursor cursor;
+
+    Vector2 movementDirection;
+    bool isMoving;
 
     private void Start()
     {
@@ -25,8 +31,16 @@ public class UIController : MonoBehaviour
 
     void OnNavigate(InputValue value)
     {
-        cursor.Move(value.Get<Vector2>());
-        Debug.Log(value.Get<Vector2>());
+        movementDirection = value.Get<Vector2>();
+        isMoving = ((Mathf.Abs(movementDirection.x) > 0.3f || Mathf.Abs(movementDirection.y) > 0.3f));
+    }
+
+    private void Update()
+    {
+        if (isMoving)
+        {
+            cursor.Move(movementDirection);
+        }
     }
 
     void OnBack()
