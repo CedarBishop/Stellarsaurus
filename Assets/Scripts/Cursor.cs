@@ -9,7 +9,7 @@ public class Cursor : MonoBehaviour
     int playerNumber;
     private Image image;
     private UIController controller;
-
+    Button button;
     public void Initialise (UIController Controller)
     {
         controller = Controller;
@@ -18,10 +18,41 @@ public class Cursor : MonoBehaviour
         image.sprite = sprites[playerNumber - 1];
 
         controller.SetCursor(this);
+
+        
     }
 
     public void Move (Vector2 direction)
     {
+        // Left Bounds
+        if (transform.position.x < 0)
+        {
+            transform.position = new Vector3(0, transform.position.y, transform.position.z);
+        }
+        // Right Bounds
+        else if (transform.position.x > Screen.width)
+        {
+            transform.position = new Vector3(Screen.width, transform.position.y, transform.position.z);
+        }
+        // Bottom Bounds
+        else if (transform.position.y < 0)
+        {
+            transform.position = new Vector3( transform.position.x, 0, transform.position.z);
+        }
+        // Top Bounds
+        else if (transform.position.y > Screen.height)
+        {
+            transform.position = new Vector3(transform.position.x, Screen.height, transform.position.z);
+        }
+
         transform.Translate(direction);
+    }
+
+    private void Update()
+    {
+        //if (image.sprite.bounds.Intersects())
+        //{
+
+        //}
     }
 }
