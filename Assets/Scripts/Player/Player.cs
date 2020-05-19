@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private PlayerInput playerInput;
     private GameObject currentCharacter;
     private CameraController cameraController;
+    private UIController uiController;
 
 
     private void Start()
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
 
         playerNumber = GameManager.instance.playerCount;
         playerInput = GetComponent<PlayerInput>();
+        uiController = GetComponent<UIController>();
+        uiController.playerNumber = playerNumber;
 
         if (playerInput.currentControlScheme == "Gamepad")
         {
@@ -165,6 +168,11 @@ public class Player : MonoBehaviour
     void OnLeaveMatch ()
     {
         GameManager.instance.EndMatch();
+    }
+
+    void OnPause ()
+    {
+        GameManager.instance.Pause();
     }
     
 }

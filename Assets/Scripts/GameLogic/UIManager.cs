@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public PlayerStats playerStatsPrefab;
     public Text roundText;
 
+    public GameObject pauseMenuParent;
+    public Cursor cursorPrefab;
+
     void Awake()
     {
         if (instance == null)
@@ -23,6 +26,11 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    private void Start()
+    {
+        pauseMenuParent.SetActive(false);
     }
 
     public void CreateNewPlayerStats(int playerNumber)
@@ -130,5 +138,26 @@ public class UIManager : MonoBehaviour
         }
 
         roundText.text = str;
+    }
+
+    public void Pause (List<UIController> controllers)
+    {
+        pauseMenuParent.SetActive(true);
+
+        for (int i = 0; i < controllers.Count; i++)
+        {
+            Cursor c = Instantiate(cursorPrefab, pauseMenuParent.transform);
+            c.Initialise(controllers[i]);
+        }
+
+    }
+
+    public void UnPause ()
+    {
+        foreach (var cursor in FindObjectsOfType<Cursor>())
+        {
+            Destroy(cursor.gameObject);
+        }
+        pauseMenuParent.SetActive(false);
     }
 }

@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public int playerCount = 0;
     public Color[] playerColours;
 
+    public List<PlayerInput> playerInputs = new List<PlayerInput>();
+    public List<UIController> uIControllers = new List<UIController>();
+
 
     void Awake()
     {
@@ -101,5 +104,31 @@ public class GameManager : MonoBehaviour
         {
             player.CreateNewCharacter();
         }
+    }
+
+
+    public void Pause ()
+    {
+        Time.timeScale = 0;
+
+        foreach (PlayerInput player in playerInputs)
+        {
+            player.SwitchCurrentActionMap("UI");
+        }
+
+        UIManager.instance.Pause(uIControllers);       
+
+    }
+
+    public void UnPause ()
+    {
+        Time.timeScale = 1;
+
+        foreach (PlayerInput player in playerInputs)
+        {
+            player.SwitchCurrentActionMap("Player");
+        }
+
+        UIManager.instance.UnPause();
     }
 }
