@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Cursor : MonoBehaviour
@@ -9,7 +10,9 @@ public class Cursor : MonoBehaviour
     int playerNumber;
     private Image image;
     private UIController controller;
-    Button button;
+    Button[] buttons;
+    Button highlightedButton;
+
     public void Initialise (UIController Controller)
     {
         controller = Controller;
@@ -18,8 +21,7 @@ public class Cursor : MonoBehaviour
         image.sprite = sprites[playerNumber - 1];
 
         controller.SetCursor(this);
-
-        
+        buttons = FindObjectsOfType<Button>();
     }
 
     public void Move (Vector2 direction)
@@ -48,11 +50,34 @@ public class Cursor : MonoBehaviour
         transform.Translate(direction);
     }
 
+
+    public void Select ()
+    {
+        if (highlightedButton != null)
+        {
+            highlightedButton.onClick.Invoke();
+        }
+    }
+
     private void Update()
     {
-        //if (image.sprite.bounds.Intersects())
-        //{
-
-        //}
+        bool isHighlightingButton = false;
+        foreach (Button button in buttons)
+        {
+            if (Vector3.Distance(transform.position, button.transform.position) < 15 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
+            {
+                highlightedButton = button;
+                isHighlightingButton = true;
+                button.image.color = Color.red;
+            }
+        }
+        if (isHighlightingButton == false)
+        {
+            highlightedButton = null;
+            foreach (var button in buttons)
+            {
+                button.image.color = Color.white;
+            }
+        }
     }
 }

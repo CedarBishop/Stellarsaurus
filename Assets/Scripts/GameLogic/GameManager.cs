@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
         {
             player.CreateNewCharacter();
         }
+        Time.timeScale = 1;
     }
 
 

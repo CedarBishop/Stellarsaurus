@@ -160,4 +160,19 @@ public class UIManager : MonoBehaviour
         }
         pauseMenuParent.SetActive(false);
     }
+
+    public void Resume()
+    {
+        GameManager.instance.UnPause();
+    }
+
+    public void Settings ()
+    {
+        print("Open Settings");
+    }
+
+    public void MainMenu ()
+    {
+        GameManager.instance.EndMatch();
+    }
 }

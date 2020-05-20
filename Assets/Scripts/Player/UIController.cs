@@ -50,7 +50,7 @@ public class UIController : MonoBehaviour
 
     void OnSelect()
     {
-
+        cursor.Select();
     }
 
     void OnUnPause ()
