@@ -10,15 +10,19 @@ public class GameManager : MonoBehaviour
     private PlayerInputManager inputManager;
     
     public Loader loader;
-    public FreeForAllGamemode freeForAllGamemode;
     public LevelSelector levelSelector;
+    public FreeForAllGamemode freeForAllGamemode;
+    public ExtractionGamemode extractionGamemode;
     public int playerCount = 0;
     public Color[] playerColours;
 
-    public List<PlayerInput> playerInputs = new List<PlayerInput>();
-    public List<UIController> uIControllers = new List<UIController>();
+    [HideInInspector] public List<PlayerInput> playerInputs = new List<PlayerInput>();
+    [HideInInspector] public List<UIController> uIControllers = new List<UIController>();
 
 
+    private BaseGamemode selectedGamemode;
+
+    // Sets up this class as a singleton
     void Awake()
     {
         if (instance == null)
@@ -40,6 +44,9 @@ public class GameManager : MonoBehaviour
         SceneManager.activeSceneChanged += OnSceneChange;
     }
 
+
+    // This prevents players from being able to join the game whilst a match is underway
+    // Players can only join in the main menu
     private void OnSceneChange(Scene oldScene, Scene newScene)
     {
         if (newScene.buildIndex == 0)
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour
     }
 
     // called by player input manager when new device enters
+    // increments player count so that the next player who joins gets the appropriate player number
     void OnPlayerJoined()
     {
         playerCount++;      
@@ -60,6 +68,7 @@ public class GameManager : MonoBehaviour
     }
 
     // called by player input manager when device leaves
+    // Removes player stats ui for the player that left and changes the count of players so that new players can join
     void OnPlayerLeft()
     {
         if (UIManager.instance != null)
@@ -68,18 +77,24 @@ public class GameManager : MonoBehaviour
         
     }
 
+    // Called by game starter to start the match
     public void StartMatch(GameMode gameMode)
     {
+        // Goes to a random level from the playlist of the selected gamemode
         levelSelector.GoToLevel(gameMode);
 
+        // sets the selected gamemode and starts the match
         switch (gameMode)
         {
             case GameMode.FreeForAll:
                 freeForAllGamemode.StartMatch();
+                selectedGamemode = freeForAllGamemode;
                 break;
             case GameMode.Elimination:
                 break;
             case GameMode.Extraction:
+                extractionGamemode.StartMatch();
+                selectedGamemode = extractionGamemode;
                 break;
             case GameMode.Climb:
                 break;
@@ -91,6 +106,9 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Called when the match is over or the player leaves
+    // Returns back to the main menu scene and respawns all the characters 
+    // sets time scale back to 1 incase the players left through pause menu
     public void EndMatch()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -107,7 +125,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
+    // Called when a player presses the pause button
+    // This then tells all the players to switch controls to UI
+    // Also tells the UI manager to bring up the pause menu and cursors
     public void Pause ()
     {
         Time.timeScale = 0;
@@ -121,6 +141,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Tells all players to switch controls back to player
     public void UnPause ()
     {
         Time.timeScale = 1;

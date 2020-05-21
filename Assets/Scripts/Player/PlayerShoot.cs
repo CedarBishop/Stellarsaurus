@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviour
     float fireRate;
     Projectile projectileType;
     Melee meleeType;
-    int ammoCount;
+    [HideInInspector] public int ammoCount;
     bool isTriggeringWeapon;
     Weapon triggeredWeapon;
     WeaponUseType weaponUseType;
@@ -393,7 +393,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
 
-    void InitializeWeapon ()
+    public void InitializeWeapon ()
     {
         weaponName = currentWeapon.weaponName;
         gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
@@ -449,7 +449,7 @@ public class PlayerShoot : MonoBehaviour
             Drop();
         }
     }
-    void DestroyWeapon()
+    public void DestroyWeapon()
     {
         gunSprite.sprite = null;
         currentWeapon = null;

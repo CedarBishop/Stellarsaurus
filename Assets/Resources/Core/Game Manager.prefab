@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8990490027761441408}
   - component: {fileID: 8990490027761441409}
   - component: {fileID: 421269320}
-  - component: {fileID: 59959285128919413}
   - component: {fileID: 1283880972}
+  - component: {fileID: 2378037744067400863}
+  - component: {fileID: 59959285128919413}
   - component: {fileID: 4921186234686291158}
   m_Layer: 0
   m_Name: Game Manager
@@ -108,14 +109,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loader: {fileID: 59959285128919413}
-  freeForAllGamemode: {fileID: 1283880972}
   levelSelector: {fileID: 4921186234686291158}
+  freeForAllGamemode: {fileID: 1283880972}
+  extractionGamemode: {fileID: 2378037744067400863}
   playerCount: 0
   playerColours:
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
+  playerInputs: []
+  uIControllers: []
+--- !u!114 &1283880972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7226330f25462b4296a5410946dbbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRounds: 10
+  numOfPlayers: 0
+  roundNumber: 0
+  playersStillAliveThisRound: 0
+  playersEliminated: 0
+--- !u!114 &2378037744067400863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f77ae34c303fe54a9f9fc6024594b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRounds: 10
+  numOfPlayers: 0
+  roundNumber: 0
 --- !u!114 &59959285128919413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,23 +181,6 @@ MonoBehaviour:
       eliminationScenes: []
       extractionScenes: []
       climbScenes: []
---- !u!114 &1283880972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8990490027761441423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7226330f25462b4296a5410946dbbbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfRounds: 10
-  numOfPlayers: 0
-  roundNumber: 0
-  playersStillAliveThisRound: 0
-  playersEliminated: 0
 --- !u!114 &4921186234686291158
 MonoBehaviour:
   m_ObjectHideFlags: 0

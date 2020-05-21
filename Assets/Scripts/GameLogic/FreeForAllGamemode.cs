@@ -2,24 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreeForAllGamemode : MonoBehaviour
+public class FreeForAllGamemode : BaseGamemode
 {
-    public int numberOfRounds;
     
-    [HideInInspector] public int numOfPlayers;
-    [HideInInspector] public int roundNumber;
     [HideInInspector] public int playersStillAliveThisRound;
     [HideInInspector] public int playersEliminated;
 
-    private Player[] players;
+    
 
 
-    public void StartMatch ()
+    public override void StartMatch ()
     {
-        players = FindObjectsOfType<Player>();
-        numOfPlayers = GameManager.instance.playerCount;
+        base.StartMatch();
         playersStillAliveThisRound = numOfPlayers;
-        roundNumber = 1;
 
         StartCoroutine("DelayBetweenRounds");
         foreach (Player player in players)
@@ -29,7 +24,7 @@ public class FreeForAllGamemode : MonoBehaviour
 
     }
 
-    void EndMatch ()
+    protected override void EndMatch ()
     {
         List<PlayerStats> playerStats = UIManager.instance.playerStats;
         int highestWins = 0;
@@ -55,7 +50,7 @@ public class FreeForAllGamemode : MonoBehaviour
             
     }
 
-    public void EndRound (int winningPlayerNumber)
+    public override void EndRound (int winningPlayerNumber)
     {
         if (roundNumber >= numberOfRounds)
         {

@@ -165,10 +165,6 @@ public class Player : MonoBehaviour
         playerShoot.Grab();
     }
 
-    void OnLeaveMatch ()
-    {
-        GameManager.instance.EndMatch();
-    }
 
     void OnPause ()
     {
