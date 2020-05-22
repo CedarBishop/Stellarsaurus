@@ -7,6 +7,8 @@ public class ExtractionGamemode : BaseGamemode
     public override void StartMatch()
     {
         base.StartMatch();
+
+
     }
 
     protected override void EndMatch()
@@ -24,5 +26,16 @@ public class ExtractionGamemode : BaseGamemode
         base.EndRound(winningPlayerNumber);
     }
 
+    public override void PlayerWonRound (int playerNumber)
+    {
+        base.PlayerWonRound(playerNumber);
+    }
 
+    public override void PlayerDied ()
+    {
+        if (playersStillAliveThisRound <= 0)
+        {
+            
+        }
+    }
 }

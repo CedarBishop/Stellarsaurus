@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
 
         if (diedInCombat)
         {
-            GameManager.instance.freeForAllGamemode.CheckIfLastPlayer();
+            GameManager.instance.SelectedGamemode.PlayerDied();
         }
 
         

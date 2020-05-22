@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     
     public Loader loader;
     public LevelSelector levelSelector;
-    public FreeForAllGamemode freeForAllGamemode;
-    public ExtractionGamemode extractionGamemode;
     public int playerCount = 0;
     public Color[] playerColours;
 
@@ -21,6 +19,15 @@ public class GameManager : MonoBehaviour
 
 
     private BaseGamemode selectedGamemode;
+
+    public BaseGamemode SelectedGamemode
+    {
+        get { return selectedGamemode; }
+    }
+
+    private FreeForAllGamemode freeForAllGamemode;
+    private ExtractionGamemode extractionGamemode;
+
 
     // Sets up this class as a singleton
     void Awake()
@@ -35,6 +42,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         inputManager = GetComponent<PlayerInputManager>();
+        freeForAllGamemode = GetComponent<FreeForAllGamemode>();
+        extractionGamemode = GetComponent<ExtractionGamemode>();
     }
 
 
@@ -87,13 +96,13 @@ public class GameManager : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.FreeForAll:
-                freeForAllGamemode.StartMatch();
+                //freeForAllGamemode.StartMatch();
                 selectedGamemode = freeForAllGamemode;
                 break;
             case GameMode.Elimination:
                 break;
             case GameMode.Extraction:
-                extractionGamemode.StartMatch();
+                //extractionGamemode.StartMatch();
                 selectedGamemode = extractionGamemode;
                 break;
             case GameMode.Climb:
@@ -103,7 +112,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-
+        selectedGamemode.StartMatch();
     }
 
     // Called when the match is over or the player leaves
@@ -153,4 +162,6 @@ public class GameManager : MonoBehaviour
 
         UIManager.instance.UnPause();
     }
+
+   
 }

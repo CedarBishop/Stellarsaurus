@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        isMoving = false;
         playerInput = GetComponent<PlayerInput>();
         GameManager.instance.playerInputs.Add(playerInput);
         GameManager.instance.uIControllers.Add(this);

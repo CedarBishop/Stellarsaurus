@@ -5,7 +5,6 @@ using UnityEngine;
 public class FreeForAllGamemode : BaseGamemode
 {
     
-    [HideInInspector] public int playersStillAliveThisRound;
     [HideInInspector] public int playersEliminated;
 
     
@@ -14,14 +13,15 @@ public class FreeForAllGamemode : BaseGamemode
     public override void StartMatch ()
     {
         base.StartMatch();
+        Debug.Log("Free for all start match");
         playersStillAliveThisRound = numOfPlayers;
 
-        StartCoroutine("DelayBetweenRounds");
         foreach (Player player in players)
         {
             player.CharacterDied(false);
         }
 
+        StartRound();
     }
 
     protected override void EndMatch ()
@@ -50,22 +50,6 @@ public class FreeForAllGamemode : BaseGamemode
             
     }
 
-    public override void EndRound (int winningPlayerNumber)
-    {
-        if (roundNumber >= numberOfRounds)
-        {
-            EndMatch();
-        }
-        else
-        {
-            UIManager.instance.EndRound(winningPlayerNumber , roundNumber);
-            roundNumber++;
-            print("End Round");
-            StartCoroutine("DelayBetweenRounds");
-        }
-
-    }
-
     public void StartRound()
     {
         if (roundNumber == 1)
@@ -86,9 +70,28 @@ public class FreeForAllGamemode : BaseGamemode
 
     }
 
-    public void CheckIfLastPlayer ()
+    public override void EndRound (int winningPlayerNumber)
     {
-        playersStillAliveThisRound--;
+        if (roundNumber >= numberOfRounds)
+        {
+            EndMatch();
+        }
+        else
+        {
+            UIManager.instance.EndRound(winningPlayerNumber , roundNumber);
+            roundNumber++;
+            print("End Round");
+            StartCoroutine("DelayBetweenRounds");
+        }
+
+    }
+
+
+
+    public override void PlayerDied ()
+    {
+        base.PlayerDied();
+
         if (playersStillAliveThisRound == 1)
         {
             int winningPlayerNumber = 0;
@@ -107,6 +110,7 @@ public class FreeForAllGamemode : BaseGamemode
         }
     }
 
+
     IEnumerator DelayBetweenRounds ()
     {
         yield return new WaitForSeconds(3);
@@ -117,6 +121,12 @@ public class FreeForAllGamemode : BaseGamemode
     IEnumerator DelayAtEndOfMatch ()
     {
         yield return new WaitForSeconds(3);
+
+        for (int i = 1; i <= numOfPlayers; i++)
+        {
+            UIManager.instance.RemovePlayerStats(i);
+        }
+
         GameManager.instance.EndMatch();
     }
 }
