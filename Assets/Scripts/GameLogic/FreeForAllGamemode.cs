@@ -54,9 +54,9 @@ public class FreeForAllGamemode : BaseGamemode
     {
         if (roundNumber == 1)
         {
-            for (int i = 1; i <= numOfPlayers; i++)
+            foreach (var player in players)
             {
-                UIManager.instance.CreateNewPlayerStats(i);
+                UIManager.instance.CreateNewPlayerStats(player.playerNumber);
             }
         }
 

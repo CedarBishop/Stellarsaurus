@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int playerCount = 0;
     public Color[] playerColours;
 
+    [HideInInspector] public List<PlayerStats> playerStats = new List<PlayerStats>();
     [HideInInspector] public List<PlayerInput> playerInputs = new List<PlayerInput>();
     [HideInInspector] public List<UIController> uIControllers = new List<UIController>();
 
@@ -72,8 +73,8 @@ public class GameManager : MonoBehaviour
     // increments player count so that the next player who joins gets the appropriate player number
     void OnPlayerJoined()
     {
-        playerCount++;      
-
+        playerCount++;
+        PlayerStats playerStats = new PlayerStats();
     }
 
     // called by player input manager when device leaves
@@ -96,13 +97,11 @@ public class GameManager : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.FreeForAll:
-                //freeForAllGamemode.StartMatch();
                 selectedGamemode = freeForAllGamemode;
                 break;
             case GameMode.Elimination:
                 break;
             case GameMode.Extraction:
-                //extractionGamemode.StartMatch();
                 selectedGamemode = extractionGamemode;
                 break;
             case GameMode.Climb:
