@@ -316,7 +316,7 @@ MonoBehaviour:
   kyoteTime: 0.2
   jumpBufferTime: 0.2
   cutJumpHeight: 0.5
-  groundCheckOffset: {x: 0, y: -0.5}
+  groundCheckOffset: {x: 0, y: -0.61}
   groundCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2
@@ -324,6 +324,9 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 512
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 131072
   wallLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -390,6 +393,7 @@ MonoBehaviour:
     amount: 0
     meleeType: {fileID: 0}
   player: {fileID: 0}
+  ammoCount: 0
 --- !u!114 &2327445293856462399
 MonoBehaviour:
   m_ObjectHideFlags: 0

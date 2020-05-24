@@ -21,7 +21,7 @@ public class FreeForAllGamemode : BaseGamemode
             player.CharacterDied(false);
         }
 
-        StartCoroutine("DelayBetweenRounds");
+        StartCoroutine("DelayAtStartOfMatch");
     }
 
     protected override void EndMatch ()
@@ -109,6 +109,11 @@ public class FreeForAllGamemode : BaseGamemode
         }
     }
 
+    IEnumerator DelayAtStartOfMatch()
+    {
+        yield return new WaitForSeconds(1);
+        StartRound();
+    }
 
     IEnumerator DelayBetweenRounds ()
     {
