@@ -74,15 +74,20 @@ public class GameManager : MonoBehaviour
     void OnPlayerJoined()
     {
         playerCount++;
-        PlayerStats playerStats = new PlayerStats();
+        playerStats.Add(new PlayerStats(playerCount));
     }
 
     // called by player input manager when device leaves
     // Removes player stats ui for the player that left and changes the count of players so that new players can join
     void OnPlayerLeft()
     {
-        if (UIManager.instance != null)
-            UIManager.instance.RemovePlayerStats(playerCount);
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.playerNumber == playerCount)
+            {
+                playerStats.Remove(player);
+            }
+        }
         playerCount--;
         
     }
@@ -138,6 +143,10 @@ public class GameManager : MonoBehaviour
     // Also tells the UI manager to bring up the pause menu and cursors
     public void Pause ()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            return;
+        }
         Time.timeScale = 0;
 
         foreach (PlayerInput player in playerInputs)
@@ -152,6 +161,10 @@ public class GameManager : MonoBehaviour
     // Tells all players to switch controls back to player
     public void UnPause ()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            return;
+        }
         Time.timeScale = 1;
 
         foreach (PlayerInput player in playerInputs)
@@ -162,5 +175,34 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UnPause();
     }
 
-   
+    public void AwardKill(int playerNumber)
+    {
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.playerKills++;
+            }
+        }
+        foreach (PlayerMatchStats player in selectedGamemode.playerMatchStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.roundWins++;
+            }
+        }
+    }
+
+    public void AwardMatchWin(int playerNumber)
+    {
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.matchWins++;
+            }
+        }
+    }
+
+
 }

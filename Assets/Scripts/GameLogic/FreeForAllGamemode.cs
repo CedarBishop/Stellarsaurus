@@ -21,15 +21,14 @@ public class FreeForAllGamemode : BaseGamemode
             player.CharacterDied(false);
         }
 
-        StartRound();
+        StartCoroutine("DelayBetweenRounds");
     }
 
     protected override void EndMatch ()
     {
-        List<PlayerStats> playerStats = UIManager.instance.playerStats;
         int highestWins = 0;
         List<int> currentBestPlayers = new List<int>() {0};
-        foreach (PlayerStats player in playerStats)
+        foreach (PlayerMatchStats player in playerMatchStats)
         {
             if (player.roundWins > highestWins)
             {
@@ -45,6 +44,11 @@ public class FreeForAllGamemode : BaseGamemode
 
         print(currentBestPlayers);
 
+        foreach (int playerNum in currentBestPlayers)
+        {
+            GameManager.instance.AwardMatchWin(playerNum);
+        }
+
         UIManager.instance.EndMatch(currentBestPlayers);
         StartCoroutine("DelayAtEndOfMatch");
             
@@ -52,13 +56,7 @@ public class FreeForAllGamemode : BaseGamemode
 
     public void StartRound()
     {
-        if (roundNumber == 1)
-        {
-            foreach (var player in players)
-            {
-                UIManager.instance.CreateNewPlayerStats(player.playerNumber);
-            }
-        }
+       
 
         playersStillAliveThisRound = numOfPlayers - playersEliminated;
         UIManager.instance.StartNewRound(roundNumber);
@@ -102,6 +100,7 @@ public class FreeForAllGamemode : BaseGamemode
                     winningPlayerNumber = players[i].playerNumber;
                 }
             }
+            AwardRoundWin(winningPlayerNumber);
             EndRound(winningPlayerNumber);
         }
         else if (playersStillAliveThisRound < 1)
@@ -122,10 +121,7 @@ public class FreeForAllGamemode : BaseGamemode
     {
         yield return new WaitForSeconds(3);
 
-        for (int i = 1; i <= numOfPlayers; i++)
-        {
-            UIManager.instance.RemovePlayerStats(i);
-        }
+        Exit();
 
         GameManager.instance.EndMatch();
     }

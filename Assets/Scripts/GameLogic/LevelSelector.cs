@@ -25,6 +25,11 @@ public class LevelSelector : MonoBehaviour
 
     public void GoToLevel (GameMode gamemode)
     {
+        if (freeForAllScenes.Count <= 0)
+        {
+            ResetLists();
+        }
+
         string sceneName = "";
         int randNum = 0;
         switch (gamemode)
@@ -53,6 +58,7 @@ public class LevelSelector : MonoBehaviour
             default:
                 break;
         }
+
 
         SceneManager.LoadScene(sceneName);
     }
