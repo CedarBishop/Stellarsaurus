@@ -32,14 +32,14 @@ public class CameraController : MonoBehaviour
         // Check if there are any players in the game.
         if (playersInGame.Count != 0)
         {
-            middlePoint = Vector3.zero;
+            middlePoint = Vector2.zero;
             foreach (PlayerMovement pm in playersInGame)     // for each player, add their positions together then divide for the middle point.
             {
                 middlePoint += pm.transform.position;
             }
             middlePoint /= playersInGame.Count;
 
-            tracker.position = middlePoint;   // Set middle point to transform.
+            tracker.position = new Vector2(middlePoint.x, middlePoint.y);   // Set middle point to transform.
         }
     }
 
@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour
         {
             for (int m = i; m < playersInGame.Count; m++)
             {
-                temp = Vector3.Distance(playersInGame[i].transform.position, playersInGame[m].transform.position);
+                temp = Vector2.Distance(playersInGame[i].transform.position, playersInGame[m].transform.position);
                 dist = (temp > dist) ? temp : dist;
             }
         }
