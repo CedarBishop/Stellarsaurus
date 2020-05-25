@@ -32,7 +32,30 @@ public class BaseGamemode : MonoBehaviour
 
     protected virtual void EndMatch ()
     {
+        int highestWins = 0;
+        List<int> currentBestPlayers = new List<int>() { 0 };
+        foreach (PlayerMatchStats player in playerMatchStats)
+        {
+            if (player.roundWins > highestWins)
+            {
+                currentBestPlayers.Clear();
+                currentBestPlayers.Add(player.playerNumber);
+                highestWins = player.roundWins;
+            }
+            else if (player.roundWins == highestWins)
+            {
+                currentBestPlayers.Add(player.playerNumber);
+            }
+        }
 
+        print(currentBestPlayers);
+
+        foreach (int playerNum in currentBestPlayers)
+        {
+            GameManager.instance.AwardMatchWin(playerNum);
+        }
+
+        UIManager.instance.EndMatch(currentBestPlayers);
     }
 
     private void Update()

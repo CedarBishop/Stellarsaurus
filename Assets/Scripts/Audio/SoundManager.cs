@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Sound/Sound Manager")]
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance = null;
