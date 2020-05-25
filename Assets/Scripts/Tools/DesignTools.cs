@@ -6,6 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public static class DesignTools
 {
@@ -51,6 +52,10 @@ public static class DesignTools
         if (SceneAsset.FindObjectOfType<SoundManager>() == null)
         {
             PrefabUtility.InstantiatePrefab(Resources.Load("Core/Sound Manager"));
+        }
+        if (SceneAsset.FindObjectOfType<Light2D>() == null)
+        {
+            PrefabUtility.InstantiatePrefab(Resources.Load("Core/Global Light"));
         }
     }
 
