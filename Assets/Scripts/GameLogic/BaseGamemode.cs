@@ -10,6 +10,7 @@ public class BaseGamemode : MonoBehaviour
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
     [HideInInspector] public int playersStillAliveThisRound;
+    public List<PlayerMatchStats> playerMatchStats = new List<PlayerMatchStats>();
 
     protected Player[] players;
     protected bool roundIsUnderway;
@@ -22,6 +23,11 @@ public class BaseGamemode : MonoBehaviour
         players = FindObjectsOfType<Player>();
         numOfPlayers = GameManager.instance.playerCount;
         roundNumber = 1;
+
+        foreach (var player in players)
+        {
+            playerMatchStats.Add(new PlayerMatchStats( player.playerNumber));
+        }
     }
 
     protected virtual void EndMatch ()
@@ -59,4 +65,20 @@ public class BaseGamemode : MonoBehaviour
 
     }
 
+    protected virtual void Exit()
+    {
+        playerMatchStats.Clear();
+    }
+
+
+    public void AwardRoundWin(int playerNumber)
+    {
+        foreach (PlayerMatchStats player in playerMatchStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.roundWins++;
+            }
+        }
+    }
 }

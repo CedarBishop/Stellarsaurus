@@ -25,6 +25,11 @@ public class LevelSelector : MonoBehaviour
 
     public void GoToLevel (GameMode gamemode)
     {
+        if (freeForAllScenes.Count <= 0)
+        {
+            ResetLists();
+        }
+
         string sceneName = "";
         int randNum = 0;
         switch (gamemode)
@@ -32,27 +37,58 @@ public class LevelSelector : MonoBehaviour
             case GameMode.FreeForAll:
                 randNum = Random.Range(0, freeForAllScenes.Count);
                 sceneName = freeForAllScenes[randNum];
-                freeForAllScenes.Remove(freeForAllScenes[randNum]);
+                if (freeForAllScenes.Count > 1)
+                {
+                    freeForAllScenes.Remove(freeForAllScenes[randNum]);
+                }
+                else
+                {
+                    ResetLists();
+                }
+                
 
                 break;
             case GameMode.Elimination:
                 randNum = Random.Range(0, eliminationScenes.Count);
                 sceneName = eliminationScenes[randNum];
-                eliminationScenes.Remove(eliminationScenes[randNum]);
+                if (eliminationScenes.Count > 1)
+                {
+                    eliminationScenes.Remove(eliminationScenes[randNum]);
+                }
+                else
+                {
+                    ResetLists();
+                }
                 break;
             case GameMode.Extraction:
                 randNum = Random.Range(0, extractionScenes.Count);
                 sceneName = extractionScenes[randNum];
-                extractionScenes.Remove(extractionScenes[randNum]);
+                
+                if (extractionScenes.Count > 1)
+                {
+                    extractionScenes.Remove(extractionScenes[randNum]);
+                }
+                else
+                {
+                    ResetLists();
+                }
                 break;
             case GameMode.Climb:
                  randNum = Random.Range(0, climbScenes.Count);
                 sceneName = climbScenes[randNum];
-                climbScenes.Remove(climbScenes[randNum]);
+                if (climbScenes.Count > 1)
+                {
+                    climbScenes.Remove(climbScenes[randNum]);
+                }
+                else
+                {
+                    ResetLists();
+                }
                 break;
             default:
                 break;
         }
+
 
         SceneManager.LoadScene(sceneName);
     }

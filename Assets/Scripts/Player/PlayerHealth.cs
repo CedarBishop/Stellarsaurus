@@ -18,10 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerParent = GetComponentInParent<Player>();
         isAlive = true;
-        if (UIManager.instance != null)
-        {
-            UIManager.instance.UpdateHealth(playerNumber, health);
-        }
+
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         health = playerParams.startingHealth;
         maxHealth = health;
@@ -39,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
     public void HitByAI(int damage)
     {
         health -= damage;
-        UIManager.instance.UpdateHealth(playerNumber,health);
         ParticleSystem p = Instantiate(bloodSplatterParticle,transform.position,Quaternion.identity);
         p.Play();
         Destroy(p.gameObject,3);
@@ -66,14 +62,13 @@ public class PlayerHealth : MonoBehaviour
         isAlive = false;
         health = 0;
 
-        UIManager.instance.UpdateHealth(playerNumber, health);
         ParticleSystem p = Instantiate(bloodSplatterParticle, transform.position, Quaternion.identity);
         p.Play();
         Destroy(p.gameObject, 3);
 
         if (projectilePlayerNumber != playerNumber)
         {
-            UIManager.instance.AwardKill(projectilePlayerNumber);
+            GameManager.instance.AwardKill(projectilePlayerNumber);
         }
         Death();
 
@@ -94,6 +89,5 @@ public class PlayerHealth : MonoBehaviour
         {
             health = maxHealth;
         }
-        UIManager.instance.UpdateHealth(playerNumber, health);
     }
 }

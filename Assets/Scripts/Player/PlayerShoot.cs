@@ -319,8 +319,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 DestroyWeapon();
             }
-            if (UIManager.instance != null)
-                UIManager.instance.UpdateWeaponType(playerNumber, weaponName, ammoCount);
+
             StartCoroutine("DelayBetweenShots");
         }
              
@@ -437,8 +436,6 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        if (UIManager.instance != null)
-            UIManager.instance.UpdateWeaponType(playerNumber,currentWeapon.weaponName, ammoCount);
     }
 
 

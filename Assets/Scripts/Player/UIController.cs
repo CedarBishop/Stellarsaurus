@@ -40,7 +40,11 @@ public class UIController : MonoBehaviour
     {
         if (isMoving)
         {
-            cursor.Move(movementDirection);
+            if (cursor != null)
+            {
+                cursor.Move(movementDirection);
+            }
+            
         }
     }
 
