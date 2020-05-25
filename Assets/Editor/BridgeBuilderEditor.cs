@@ -8,7 +8,6 @@ public class BridgeBuilderEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
         DrawDefaultInspector();
 
         BridgeBuilder bridgeBuilder = (BridgeBuilder)target;

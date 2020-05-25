@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    public Transform cameraAnchor;
+
     public void StartShake(float duration, float magnitude)
     {
         StartCoroutine(Shake(duration, magnitude));
@@ -12,8 +14,8 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator Shake (float duration, float magnitude)
     {
-        Vector3 originalPosition = transform.position;
-        float originalZRotation = transform.rotation.z;
+        Vector2 originalPosition = new Vector2(cameraAnchor.position.x, cameraAnchor.position.y);
+        float originalZRotation = cameraAnchor.rotation.z;
 
         float timeElapsed = 0.0f;
 
@@ -21,14 +23,14 @@ public class CameraShake : MonoBehaviour
         {
             float x = Random.Range(-1.0f, 1.0f) * magnitude;
             float y = Random.Range(-1.0f, 1.0f) * magnitude;
-            float Z = Random.Range(-1.0f, 1.0f) * magnitude;
+            float Z = Random.Range(-1.0f, 1.0f) * magnitude;    // Rotation
 
-            transform.localPosition = new Vector3(x,y, originalPosition.z);
-            transform.localRotation = Quaternion.Euler(transform.localRotation.x,transform.localRotation.y, Z);
+            cameraAnchor.localPosition = new Vector3(x,y, cameraAnchor.localPosition.z);
+            cameraAnchor.localRotation = Quaternion.Euler(cameraAnchor.localRotation.x, cameraAnchor.localRotation.y, Z);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        transform.localRotation = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, originalZRotation);
-        transform.localPosition = originalPosition;
+        cameraAnchor.localRotation = Quaternion.Euler(cameraAnchor.localRotation.x, cameraAnchor.localRotation.y, originalZRotation);
+        cameraAnchor.localPosition = originalPosition;
     }
 }
