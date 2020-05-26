@@ -47,8 +47,43 @@ MonoBehaviour:
   mainMenuMusic: {fileID: 0}
   gameMusic: {fileID: 0}
   sounds:
-  - name: Shoot
+  - name: SFX_Jump
+    clip: {fileID: 8300000, guid: 80eccacc190b151459277b4b2edcf824, type: 3}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_JumpLand
+    clip: {fileID: 8300000, guid: 29e81bc53a004f148a50699a1b81eea3, type: 3}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_PlayerHurt
     clip: {fileID: 0}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_Shoot1
+    clip: {fileID: 8300000, guid: c84f0fb033ce6fc4f8810573694a7f79, type: 3}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_Shoot2
+    clip: {fileID: 8300000, guid: f6586f2dca2721743a593c73a329883a, type: 3}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_Shoot3
+    clip: {fileID: 8300000, guid: 96d6d8accaf1e3e4d80c04bcf7e8cf46, type: 3}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_Shoot4
+    clip: {fileID: 8300000, guid: 6c2d79eb5a6379f458a9343902c91508, type: 3}
+    source: {fileID: 0}
+    pitch: 0
+    volume: 1
+  - name: SFX_ShootLaser1
+    clip: {fileID: 8300000, guid: 5a00bdea9e970904f9f8201fee56a2ef, type: 3}
     source: {fileID: 0}
     pitch: 0
     volume: 1
