@@ -35,6 +35,11 @@ public class Explosive : Projectile
             }
         }
 
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_Explosion");
+        }
+
         Destroy(gameObject);
    }
 

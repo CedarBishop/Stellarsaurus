@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [AddComponentMenu("Sound/Sound Manager")]
 public class SoundManager : MonoBehaviour
@@ -31,6 +32,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         musicAudioSource = GetComponent<AudioSource>();
+
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
             musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
@@ -48,6 +50,38 @@ public class SoundManager : MonoBehaviour
             SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 1.0f));
         }
 
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            PlayMusic(true);
+        }
+        else
+        {
+            PlayMusic(false);
+        }
+
+        SceneManager.activeSceneChanged += OnSceneChange;
+
+    }
+
+    private void OnSceneChange(Scene oldScene, Scene newScene)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            PlayMusic(true);
+        }
+        else 
+        {
+            if (musicAudioSource.clip != gameMusic)
+            {
+                PlayMusic(false);
+            }
+        }
+
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= OnSceneChange;
     }
 
     public void PlaySFX(string soundName)
@@ -83,7 +117,6 @@ public class SoundManager : MonoBehaviour
         {
             if (mainMenuMusic != null)
             {
-                musicAudioSource.loop = true;
                 musicAudioSource.clip = mainMenuMusic;
                 musicAudioSource.Play();
             }
@@ -92,7 +125,6 @@ public class SoundManager : MonoBehaviour
         {
             if (gameMusic != null)
             {
-                musicAudioSource.loop = false;
                 musicAudioSource.clip = gameMusic;
                 musicAudioSource.Play();
             }

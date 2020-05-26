@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         {
             player.CreateNewCharacter();
         }
-        Time.timeScale = 1;
+        UnPause();
     }
 
     // Called when a player presses the pause button
@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+
         Time.timeScale = 0;
 
         foreach (PlayerInput player in playerInputs)
@@ -161,10 +162,7 @@ public class GameManager : MonoBehaviour
     // Tells all players to switch controls back to player
     public void UnPause ()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            return;
-        }
+
         Time.timeScale = 1;
 
         foreach (PlayerInput player in playerInputs)

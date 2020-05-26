@@ -233,13 +233,18 @@ public class PlayerShoot : MonoBehaviour
                         gunOriginTransform.rotation).GetComponent<Bullet>();
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
+
+                    if (SoundManager.instance != null)
+                    {
+                        SoundManager.instance.PlaySFX("SFX_Shot2");
+                    }
+
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Multishot:
-
 
                     float baseZRotation = gunOriginTransform.rotation.eulerAngles.z - ((currentWeapon.bulletsFiredPerShot / 2) * currentWeapon.sprayAmount);
                     for (int i = 0; i < currentWeapon.bulletsFiredPerShot; i++)
@@ -254,6 +259,11 @@ public class PlayerShoot : MonoBehaviour
                         baseZRotation += currentWeapon.sprayAmount;
 
                     }
+                    if (SoundManager.instance != null)
+                    {
+                        SoundManager.instance.PlaySFX("SFX_Shot2");
+                    }
+
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
@@ -289,7 +299,12 @@ public class PlayerShoot : MonoBehaviour
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
 
-                        break;
+
+                    if (SoundManager.instance != null)
+                    {
+                        SoundManager.instance.PlaySFX("MeleeSwing");
+                    }
+                    break;
 
                 case WeaponUseType.Consumable:
 

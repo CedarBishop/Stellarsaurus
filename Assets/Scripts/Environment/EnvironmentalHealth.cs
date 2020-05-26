@@ -37,6 +37,11 @@ public class EnvironmentalHealth : MonoBehaviour
             emissonModule.rateOverTime = new ParticleSystem.MinMaxCurve(1 * (healthMax - health));
         }
 
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_BulletToEnvironment");
+        }
+
         if (health <= 0)
         {
             StartDestructionSequence();
@@ -54,6 +59,11 @@ public class EnvironmentalHealth : MonoBehaviour
                 particle.transform.SetParent(null);
                 particle.Play();
                 particle.GetComponent<ParticleDestruction>().DestroyParticle();
+            }
+
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_Explosion");
             }
         }
         Destroy(gameObject);

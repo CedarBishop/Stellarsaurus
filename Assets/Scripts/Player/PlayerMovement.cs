@@ -156,6 +156,10 @@ public class PlayerMovement : MonoBehaviour
         shadowSprite.gameObject.SetActive(false);
         float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rigidbody.gravityScale));
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_JumpUp");
+        }
         if (dustParticleFX != null)
         {
             ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);
@@ -165,6 +169,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Landing()
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_JumpLand");
+        }
         if (dustParticleFX != null)
         {
             ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);

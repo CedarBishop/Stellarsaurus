@@ -51,7 +51,7 @@ public class Loader : MonoBehaviour
     public List<AIType> GetAIsByName(string[] aiNames)
     {
         List<AIType> aiTypes = new List<AIType>();
-        print(aiNames[0]);
+
         if (aiNames != null)
         {
             for (int i = 0; i < aiNames.Length; i++)
