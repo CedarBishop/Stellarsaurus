@@ -229,7 +229,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 case WeaponUseType.SingleShot:
                     Bullet projectile = Instantiate(projectileType,
-                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation).GetComponent<Bullet>();
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
@@ -268,6 +268,7 @@ public class PlayerShoot : MonoBehaviour
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
                     break;
+
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
@@ -276,21 +277,7 @@ public class PlayerShoot : MonoBehaviour
                     explosive.InitExplosive(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
 
-                case WeaponUseType.Melee:
-
-                    //Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0), currentWeapon.range);
-                    //if (colliders != null)
-                    //{
-                    //    foreach (Collider2D collider in colliders)
-                    //    {
-                    //        if (collider.GetComponent<PlayerHealth>())
-                    //        {
-                    //            collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
-                    //            if (cameraShake != null)
-                    //                cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
-                    //        }
-                    //    }
-                    //}          
+                case WeaponUseType.Melee:       
 
                     Melee melee = Instantiate(meleeType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
