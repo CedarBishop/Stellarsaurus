@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : Projectile
 {
     public ParticleSystem destructionParticles;
+    public GameObject muzzleFlash;
     protected Rigidbody2D rigidbody;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -66,6 +67,12 @@ public class Bullet : Projectile
         rigidbody.AddForce(transform.right * initialForce);
         StartCoroutine("DestroySelf");
         StartCoroutine("DistanceTracker");
+
+        if (muzzleFlash != null)
+        {
+            GameObject g = Instantiate(muzzleFlash, transform.position, Quaternion.identity);
+            Destroy(g,0.05f);
+        }
     }
 
     IEnumerator DistanceTracker()

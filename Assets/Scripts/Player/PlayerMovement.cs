@@ -64,8 +64,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Sprite & animation Update starts here
-        animator.SetFloat("Speed", Mathf.Abs(rigidbody.velocity.x));
-       
+        animator.SetFloat("Horizontal", Mathf.Abs(rigidbody.velocity.x));
+        animator.SetFloat("Vertical", Mathf.Abs(rigidbody.velocity.y));
+
         if (gunOrigin.rotation.eulerAngles.z < -90 || gunOrigin.rotation.eulerAngles.z > 90)
         {
             spriteRenderer.flipX = true;
