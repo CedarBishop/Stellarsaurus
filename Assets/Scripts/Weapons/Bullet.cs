@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : Projectile
 {
+    public ParticleSystem destructionParticles;
     protected Rigidbody2D rigidbody;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,6 +36,13 @@ public class Bullet : Projectile
         }
         if (destroysOnHit)
         {
+            if (destructionParticles != null)
+            {
+                print("Destruction particles are created");
+                ParticleSystem p = Instantiate(destructionParticles, transform.position,Quaternion.identity);
+                p.Play();
+                Destroy(p.gameObject, 1.0f);
+            }
             Destroy(gameObject);
         }
     }
