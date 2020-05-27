@@ -13,6 +13,7 @@ public class JumpPad : MonoBehaviour
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+            collision.GetComponent<PlayerMovement>().OnJumpPadBoost();
         }
     }
 

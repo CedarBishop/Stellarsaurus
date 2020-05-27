@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isHoldingJumpKey;
     private bool canDoubleJump;
     private int airJumps = 0;
+    private bool isJumpBoosted;
 
 
     // Get components and initialise stats from design master here
@@ -98,6 +99,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         BetterJump();
+
+        if (isJumpBoosted)
+        {
+            if (rigidbody.velocity.y < 0)
+            {
+                isJumpBoosted = false;
+            }
+        }
 
         if (kyoteTimer > 0 && jumpBufferTimer > 0)
         {
@@ -182,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
 
     void BetterJump ()
     {
-        if (isHoldingJumpKey == false)
+        if (isHoldingJumpKey == false && isJumpBoosted == false)
         {
             if (rigidbody.velocity.y > 0)
             {
@@ -206,6 +215,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + new Vector3(groundCheckOffset.x, groundCheckOffset.y, 0), groundCheckRadius);
+    }
+
+    public void OnJumpPadBoost ()
+    {
+        isJumpBoosted = true;
     }
 
 }
