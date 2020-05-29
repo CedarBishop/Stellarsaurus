@@ -8,15 +8,16 @@ public class PlayerShoot : MonoBehaviour
     public SpriteRenderer gunSprite;
 
 
-    [HideInInspector]public bool isGamepad;
+    [HideInInspector] public bool isGamepad;
     [HideInInspector] public int playerNumber;
     [HideInInspector] public WeaponType currentWeapon;
-    [HideInInspector]public Player player;
+    [HideInInspector] public Player player;
 
     bool canShoot;
     Camera mainCamera;
     PlayerMovement playerMovement;
     CameraShake cameraShake;
+    private PlayerAudio playerAudio;
 
     string weaponName;
     Sprite weaponSprite;
@@ -45,6 +46,7 @@ public class PlayerShoot : MonoBehaviour
         currentWeapon = null;
         playerMovement = GetComponent<PlayerMovement>();
         cameraShake = mainCamera.GetComponent<CameraShake>();
+        playerAudio = GetComponent<PlayerAudio>();
     }
 
     void Update()
@@ -234,11 +236,6 @@ public class PlayerShoot : MonoBehaviour
                     projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
 
 
-                    if (SoundManager.instance != null)
-                    {
-                        SoundManager.instance.PlaySFX("SFX_Shot2");
-                    }
-
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
@@ -258,10 +255,6 @@ public class PlayerShoot : MonoBehaviour
 
                         baseZRotation += currentWeapon.sprayAmount;
 
-                    }
-                    if (SoundManager.instance != null)
-                    {
-                        SoundManager.instance.PlaySFX("SFX_Shot2");
                     }
 
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
@@ -286,11 +279,6 @@ public class PlayerShoot : MonoBehaviour
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
 
-
-                    if (SoundManager.instance != null)
-                    {
-                        SoundManager.instance.PlaySFX("MeleeSwing");
-                    }
                     break;
 
                 case WeaponUseType.Consumable:
@@ -314,6 +302,11 @@ public class PlayerShoot : MonoBehaviour
 
                 default:
                     break;
+            }
+
+            if (currentWeapon.soundFX != null)
+            {
+                playerAudio.PlaySFX(currentWeapon.soundFX);
             }
 
             ammoCount--;

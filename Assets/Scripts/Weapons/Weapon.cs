@@ -204,6 +204,9 @@ public class WeaponType
     public float cameraShakeMagnitude;
     public float knockBack;
 
+    public AudioClip soundFX;
+    public string soundFxGuid;
+
     public int bulletsFiredPerShot;
     public float sprayAmount;
     public float explosionSize;

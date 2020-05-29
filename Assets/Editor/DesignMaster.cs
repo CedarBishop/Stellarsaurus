@@ -5,6 +5,7 @@ using UnityEditor;
 using System.IO;
 using UnityEditor.VersionControl;
 using System.Linq;
+using System;
 
 public enum DisplayOptions { Weapons, AI, Player, Levels}
 
@@ -50,6 +51,8 @@ public class DesignMaster : EditorWindow
         {
             CheckAISprite(i);
         }
+
+        LoadFromGuids();
 
         displayPerRow = 4;
         spacing = 10;
@@ -111,6 +114,8 @@ public class DesignMaster : EditorWindow
             {
                 CheckAISprite(i);
             }
+
+            LoadFromGuids();
 
             displayPerRow = 4;
             spacing = 10;
@@ -270,7 +275,10 @@ public class DesignMaster : EditorWindow
                     CheckNullWeaponSprite(i);                 
                     
                 }
-                
+
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Sound FX", EditorStyles.boldLabel);
+                weaponTypes[i].soundFX = (AudioClip)EditorGUILayout.ObjectField(weaponTypes[i].soundFX, typeof(AudioClip));
 
 
                 EditorGUILayout.Space(8);
@@ -887,7 +895,6 @@ public class DesignMaster : EditorWindow
             levels.climbScenes.Add(climbScenes[i].name);
             scenePaths.Add(AssetDatabase.GetAssetPath(freeForAllScenes[i]));
         }
-
         foreach (var path in scenePaths)
         {
             bool inBuildSettings = false;
@@ -915,8 +922,27 @@ public class DesignMaster : EditorWindow
         return levels;
     }
 
+    void SetGuids ()
+    {
+        for (int i = 0; i < weaponTypes.Count; i++)
+        {
+            weaponTypes[i].soundFxGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(weaponTypes[i].soundFX));
+        }
+    }
+
+    static void LoadFromGuids ()
+    {
+        for (int i = 0; i < weaponTypes.Count; i++)
+        {
+            weaponTypes[i].soundFX = AssetDatabase.LoadAssetAtPath<AudioClip>(AssetDatabase.GUIDToAssetPath(weaponTypes[i].soundFxGuid));
+        }
+    }
+
     void SaveToJSON ()
     {
+
+        SetGuids();
+
         LevelPlaylist levels = CreateLevelPlaylistObject();
         SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes, playerParams = player, levelPlaylist = levels };
         string json = JsonUtility.ToJson(saveObject);
