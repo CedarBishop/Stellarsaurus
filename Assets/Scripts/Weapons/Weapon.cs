@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 
 public class Weapon : MonoBehaviour
@@ -11,16 +10,13 @@ public class Weapon : MonoBehaviour
     
     public WeaponType weaponType;
 
-    public LayerMask groundLayermask;
-    public LayerMask platformLayermask;
-    private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
-    Rigidbody2D rigidbody;
     public int ammo;
     private WeaponSpawnType weaponSpawnType;
     private WeaponSpawner weaponSpawner = null;
     private bool isGoingUp;
     private float target;
+    private bool isDropped;
 
     public void Init (List<WeaponType> weapons, WeaponSpawnType spawnType, WeaponSpawner _WeaponSpawner = null)
     {
@@ -29,7 +25,7 @@ public class Weapon : MonoBehaviour
         switch (spawnType)
         {
             case WeaponSpawnType.FallFromSky:
-                PhysicsSetup();
+                StartCoroutine("DestroySelf");
                 break;
             case WeaponSpawnType.Spawnpoint:
                 SpawnPointSetup();
@@ -48,10 +44,11 @@ public class Weapon : MonoBehaviour
     public void OnDrop(WeaponType weapon, int Ammo)
     {
         weaponType = weapon;
-        PhysicsSetup();
+        StartCoroutine("DestroySelf");
         ammo = Ammo;
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * 500);
-
+        isDropped = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (weaponType.weaponSpritePrefab != null)
         {
@@ -63,25 +60,23 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (rigidbody == null)
+        if (isDropped)
         {
-            return;
-        }
-        if (collision.gameObject.GetComponent<Projectile>() || collision.gameObject.tag == "Wall")
-        {
-            return;
+            if (collision.GetComponent<PlayerShoot>())
+            {
+                collision.GetComponent<PlayerShoot>().Disarm();
+            }
         }
 
-        if (Physics2D.Raycast(transform.position, Vector2.down,0.7f,platformLayermask) || Physics2D.Raycast(transform.position, Vector2.down, 0.7f, groundLayermask))
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDropped)
         {
-            Destroy(rigidbody);
-            boxCollider.isTrigger = true;
-        }
-        else if (collision.gameObject.GetComponent<PlayerShoot>())
-        {
-            collision.gameObject.GetComponent<PlayerShoot>().Disarm();
+            isDropped = false;
         }
     }
 
@@ -108,8 +103,6 @@ public class Weapon : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y,target, 2 * Time.fixedDeltaTime), transform.position.z);
             }
-                      
-
         }
     }
 
@@ -131,19 +124,8 @@ public class Weapon : MonoBehaviour
 
     }
 
-    void PhysicsSetup ()
-    {
-        boxCollider = GetComponent<BoxCollider2D>();
-
-        rigidbody = gameObject.AddComponent<Rigidbody2D>();
-
-        StartCoroutine("DestroySelf");
-    }
-
     void SpawnPointSetup ()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.isTrigger = true;
         isGoingUp = true;
         target = transform.position.y + 0.2f;
     }

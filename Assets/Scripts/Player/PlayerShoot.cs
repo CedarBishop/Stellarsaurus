@@ -374,9 +374,9 @@ public class PlayerShoot : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         
-        if (other.GetComponent<Weapon>())
+        if (other.CompareTag("Weapon"))
         {            
-            triggeredWeapon = other.GetComponent<Weapon>();
+            triggeredWeapon = other.GetComponentInParent<Weapon>();
             isTriggeringWeapon = true;
         }
         else

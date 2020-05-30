@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     private CameraController cameraController;
     private UIController uiController;
 
-
     private void Start()
     {
         DontDestroyOnLoad(gameObject);

@@ -8,38 +8,40 @@ public class Bullet : Projectile
     public GameObject muzzleFlash;
     protected Rigidbody2D rigidbody;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<Projectile>())
+        {
+            if (collision.GetComponent<Projectile>().playerNumber == playerNumber)
+            {
+                return;
+            }
+        }
+
 
         if (damagesOnHit)
         {
-            if (collision.gameObject.GetComponent<Projectile>())
+            
+            if (collision.GetComponent<PlayerHealth>())
             {
-                if (collision.gameObject.GetComponent<Projectile>().playerNumber == playerNumber)
-                {
-                    return;
-                }
+                HitPlayer(collision.GetComponent<PlayerHealth>());
             }
-            if (collision.gameObject.GetComponent<PlayerHealth>())
+            else if (collision.GetComponent<EnvironmentalHealth>())
             {
-                collision.gameObject.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                collision.GetComponent<EnvironmentalHealth>().TakeDamage(damage);
             }
-            else if (collision.gameObject.GetComponent<EnvironmentalHealth>())
+            else if (collision.GetComponent<AI>())
             {
-                collision.gameObject.GetComponent<EnvironmentalHealth>().TakeDamage(damage);
-            }
-            else if (collision.gameObject.GetComponent<AI>())
-            {
-                collision.gameObject.GetComponent<AI>().TakeDamage(playerNumber,damage);
+                collision.GetComponent<AI>().TakeDamage(playerNumber,damage);
             }
 
 
         }
         if (destroysOnHit)
         {
+            print(collision.name);
             if (destructionParticles != null)
             {
-                print("Destruction particles are created");
                 ParticleSystem p = Instantiate(destructionParticles, transform.position,Quaternion.identity);
                 p.Play();
                 Destroy(p.gameObject, 1.0f);
@@ -48,7 +50,7 @@ public class Bullet : Projectile
         }
     }
 
-    public void InitialiseProjectile (float Range, int _Damage, int _PlayerNumber, float force, float Spread)
+    public virtual void InitialiseProjectile (float Range, int _Damage, int _PlayerNumber, float force, float Spread)
     {
         startingPosition = new Vector2(transform.position.x, transform.position.y);
         range = Range;
@@ -89,5 +91,10 @@ public class Bullet : Projectile
     {
         yield return new WaitForSeconds(10);
         Destroy(gameObject);
+    }
+
+    protected virtual void HitPlayer(PlayerHealth playerHealth)
+    {
+        playerHealth.HitByPlayer(playerNumber);
     }
 }

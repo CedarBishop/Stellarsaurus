@@ -8,11 +8,13 @@ public class PlayerHealth : MonoBehaviour
 
     [HideInInspector]public int playerNumber;
     
-    Player playerParent;
-    PlayerParams playerParams;
-    int health;
-    int maxHealth;
-    bool isAlive;
+    private Player playerParent;
+    private PlayerParams playerParams;
+    
+    private int health;
+    private int maxHealth;
+    private bool isAlive;
+    private bool isBurning;
     
     void Start()
     {
@@ -74,6 +76,45 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    public void HitByFlame(int projectilePlayerNumber, bool canHurtSelf = false)
+    {
+        if (canHurtSelf == false)
+        {
+            if (projectilePlayerNumber == playerNumber)
+            {
+                return;
+            }
+        }
+        if (isBurning)
+        {
+            return;
+        }
+        if (isAlive == false)  // Already dead so cant be killed again
+        {
+            return;
+        }
+
+        isBurning = true;
+        StartCoroutine(Burning(projectilePlayerNumber));
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+    IEnumerator Burning(int projectilePlayerNumber)
+    {
+        while (health > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            health--;
+            if (health <= 0)
+            {
+                if (projectilePlayerNumber != playerNumber)
+                {
+                    GameManager.instance.AwardKill(projectilePlayerNumber);
+                }
+                Death();
+            }
+        }
+    }
 
     void Death ()
     {

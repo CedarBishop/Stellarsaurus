@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Wall
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -25,9 +26,9 @@ TagManager:
   - Window
   - Enemy
   - Player
-  - 
-  - 
-  - 
+  - PlayerOnlyTrigger
+  - NonPlayerCollider
+  - NonProjectile
   - 
   - 
   - 
