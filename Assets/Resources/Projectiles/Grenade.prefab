@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 3293232359238586544}
   - component: {fileID: 8902518856300708324}
   - component: {fileID: 3965171965178940760}
+  - component: {fileID: 867320134522484753}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -266,3 +267,22 @@ MonoBehaviour:
   playerNumber: 0
   explodeParticle: {fileID: 3193550971113487539, guid: 4e154815f7475a44ab8fe31066c0886c,
     type: 3}
+--- !u!95 &867320134522484753
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202534769512080437}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3d7c25a1bf50b04d86a7fa04fd8248b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
