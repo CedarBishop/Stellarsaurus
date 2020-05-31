@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class CustomCreater : MonoBehaviour
+public class CustomCreater : Editor
 {
     [MenuItem("GameObject/2D Object/Bridges/2m")]
     private static void CreateBridge()

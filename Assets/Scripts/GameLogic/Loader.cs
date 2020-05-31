@@ -44,6 +44,7 @@ public class Loader : MonoBehaviour
             weapon.weaponSpritePrefab = Resources.Load<WeaponSpritePrefab>("Weapon Sprites/" + weapon.spritePrefabName);
             weapon.projectileType = Resources.Load<GameObject>("Projectiles/" + weapon.projectileName);
             weapon.meleeType = Resources.Load<GameObject>("Melees/" + weapon.projectileName);
+            weapon.soundFX = Resources.Load<AudioClip>("Sounds/SFX/" + weapon.soundFxName);
         }
         return weaponTypes;
     }

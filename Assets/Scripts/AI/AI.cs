@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    public AnimatorController patrolController;
-    public AnimatorController guardController;
-    public AnimatorController flyerController;
-    public AnimatorController carrierController;
+    public RuntimeAnimatorController patrolController;
+    public RuntimeAnimatorController guardController;
+    public RuntimeAnimatorController flyerController;
+    public RuntimeAnimatorController carrierController;
 
     public LayerMask groundLayer;
     public LayerMask platformLayer;
