@@ -64,7 +64,7 @@ public class Cursor : MonoBehaviour
         bool isHighlightingButton = false;
         foreach (Button button in buttons)
         {
-            if (Vector3.Distance(transform.position, button.transform.position) < 15 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
+            if (Vector3.Distance(transform.position, button.transform.position) < 20 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
             {
                 highlightedButton = button;
                 isHighlightingButton = true;

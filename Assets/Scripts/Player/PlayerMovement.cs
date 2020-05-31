@@ -82,8 +82,7 @@ public class PlayerMovement : MonoBehaviour
         // Grounded & jump logic update starts here
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, groundLayer) ||
-            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, platformLayer) ||
-            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, playerLayer);
+            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, platformLayer);
 
         if (wasGrounded == false && isGrounded == true)
         {
@@ -156,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void EndFall()
     {
-        gameObject.layer = 0;
+        gameObject.layer = 17;
     }
 
     void Jump ()

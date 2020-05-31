@@ -8,6 +8,7 @@ public class Flame : Bullet
 	{
 		base.InitialiseProjectile(Range, _Damage, _PlayerNumber, force, Spread);
 		destroysOnHit = false;
+		transform.rotation = Quaternion.identity;
 	}
 
 	protected override void HitPlayer(PlayerHealth playerHealth)

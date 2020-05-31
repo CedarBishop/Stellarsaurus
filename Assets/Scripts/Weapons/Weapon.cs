@@ -116,6 +116,9 @@ public class Weapon : MonoBehaviour
         if (weaponType.weaponSpritePrefab != null)
         {
             spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
+            BoxCollider2D collider = GetComponent<BoxCollider2D>();
+            collider.size = weaponType.weaponSpritePrefab.collider.size;
+            collider.offset = weaponType.weaponSpritePrefab.collider.offset;
         }
         else
         {
