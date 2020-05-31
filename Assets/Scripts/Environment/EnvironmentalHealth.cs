@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
 
 public class EnvironmentalHealth : MonoBehaviour
 {
@@ -18,9 +18,12 @@ public class EnvironmentalHealth : MonoBehaviour
     [ConditionalHide("isExplosive", true)]
     public float knockback;
 
+    private PlayerHealth[] players;
+
     private void Start()
     {
         healthMax = health;
+        players = FindObjectsOfType<PlayerHealth>();
     }
 
     // Call this method from outside when an object in question takes damage.
@@ -53,8 +56,17 @@ public class EnvironmentalHealth : MonoBehaviour
         // Play any events which should go off once an object is destroyed
         if (isExplosive)
         {
+            // Check if players are around
+            if (players == null)
+                players = FindObjectsOfType<PlayerHealth>();
+            foreach (PlayerHealth player in players)
+            {
+                if (Vector2.Distance(transform.position, player.transform.position) <= range / 2)
+                    player.HitByAI(damage);     // Should get changed to 'HitByPlayer' so that it can track the kill properly
+            }
+
             // Check and see if the object has any on death particles it needs to play
-            foreach(ParticleSystem particle in gameObject.GetComponentsInChildren<ParticleSystem>())
+            foreach (ParticleSystem particle in gameObject.GetComponentsInChildren<ParticleSystem>())
             {
                 particle.transform.SetParent(null);
                 particle.Play();
@@ -69,4 +81,12 @@ public class EnvironmentalHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (isExplosive)
+        {
+            Handles.color = Color.yellow;
+            Handles.DrawWireDisc(transform.position, new Vector3(0, 0, 1), range);
+        }
+    }
 }
