@@ -925,8 +925,13 @@ public class DesignMaster : EditorWindow
     void SetGuids ()
     {
         for (int i = 0; i < weaponTypes.Count; i++)
-        {
-            weaponTypes[i].soundFxGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(weaponTypes[i].soundFX));
+        {            
+            if (weaponTypes[i].soundFX != null)
+            {
+                weaponTypes[i].soundFxGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(weaponTypes[i].soundFX));
+                weaponTypes[i].soundFxName = weaponTypes[i].soundFX.name;
+            }
+            
         }
     }
 

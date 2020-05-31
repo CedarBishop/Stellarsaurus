@@ -1,16 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.EditorTools;
-using UnityEditor.SceneManagement;
-using UnityEngine.UI;
+﻿using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public static class DesignTools
+public class DesignTools : Editor
 {
-    [UnityEditor.MenuItem("Tools/Design Tools/Set Scene")]
+    [MenuItem("Tools/Design Tools/Set Scene")]
     public static void SetScene()
     {
         Debug.Log("Setting Scene");
@@ -59,7 +54,7 @@ public static class DesignTools
         }
     }
 
-    [UnityEditor.MenuItem("Tools/Design Tools/Open Documentation")]
+    [MenuItem("Tools/Design Tools/Open Documentation")]
     public static void OpenDocumentation()
     {
         Application.OpenURL("https://sites.google.com/student.sae.edu.au/stellarsaurus");

@@ -37,7 +37,7 @@ public class LevelSelector : MonoBehaviour
             case GameMode.FreeForAll:
                 randNum = Random.Range(0, freeForAllScenes.Count);
                 sceneName = freeForAllScenes[randNum];
-                if (freeForAllScenes.Count > 1)
+                if (freeForAllScenes.Count >= 1)
                 {
                     freeForAllScenes.Remove(freeForAllScenes[randNum]);
                 }
@@ -51,7 +51,7 @@ public class LevelSelector : MonoBehaviour
             case GameMode.Elimination:
                 randNum = Random.Range(0, eliminationScenes.Count);
                 sceneName = eliminationScenes[randNum];
-                if (eliminationScenes.Count > 1)
+                if (eliminationScenes.Count >= 1)
                 {
                     eliminationScenes.Remove(eliminationScenes[randNum]);
                 }
@@ -64,7 +64,7 @@ public class LevelSelector : MonoBehaviour
                 randNum = Random.Range(0, extractionScenes.Count);
                 sceneName = extractionScenes[randNum];
                 
-                if (extractionScenes.Count > 1)
+                if (extractionScenes.Count >= 1)
                 {
                     extractionScenes.Remove(extractionScenes[randNum]);
                 }
@@ -76,7 +76,7 @@ public class LevelSelector : MonoBehaviour
             case GameMode.Climb:
                  randNum = Random.Range(0, climbScenes.Count);
                 sceneName = climbScenes[randNum];
-                if (climbScenes.Count > 1)
+                if (climbScenes.Count >= 1)
                 {
                     climbScenes.Remove(climbScenes[randNum]);
                 }
