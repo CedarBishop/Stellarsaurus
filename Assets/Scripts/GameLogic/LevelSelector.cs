@@ -13,93 +13,69 @@ public class LevelSelector : MonoBehaviour
     private List<string> extractionScenes;
     private List<string> climbScenes;
 
+    private List<string> currentGamemodeScenes = new List<string>();
+    private GameMode currentGamemode;
 
 
     void Start()
     {
          loader = GetComponent<Loader>();
 
-         ResetLists();
-      
+        freeForAllScenes = loader.saveObject.levelPlaylist.freeForAllScenes;
+        eliminationScenes = loader.saveObject.levelPlaylist.eliminationScenes;
+        extractionScenes = loader.saveObject.levelPlaylist.extractionScenes;
+        climbScenes = loader.saveObject.levelPlaylist.climbScenes;
+
     }
+
 
     public void GoToLevel (GameMode gamemode)
     {
-        if (freeForAllScenes.Count <= 0)
+        if (currentGamemodeScenes.Count == 0 || currentGamemode != gamemode)
         {
-            ResetLists();
+            RefreshCurrentGamemodeScenesList(gamemode);
         }
 
-        string sceneName = "";
-        int randNum = 0;
+        int randNum = Random.Range(0, currentGamemodeScenes.Count);
+        string sceneName = currentGamemodeScenes[randNum];
+        
+        currentGamemodeScenes.RemoveAt(randNum);
+        SceneManager.LoadScene(sceneName);        
+    }
+
+
+    public void RefreshCurrentGamemodeScenesList(GameMode gamemode)
+    {
         switch (gamemode)
         {
             case GameMode.FreeForAll:
-                randNum = Random.Range(0, freeForAllScenes.Count);
-                sceneName = freeForAllScenes[randNum];
-                if (freeForAllScenes.Count >= 1)
+                foreach (var scene in freeForAllScenes)
                 {
-                    freeForAllScenes.Remove(freeForAllScenes[randNum]);
+                    currentGamemodeScenes.Add(scene);
                 }
-                else
-                {
-                    ResetLists();
-                }
-                
-
                 break;
             case GameMode.Elimination:
-                randNum = Random.Range(0, eliminationScenes.Count);
-                sceneName = eliminationScenes[randNum];
-                if (eliminationScenes.Count >= 1)
+                foreach (var scene in eliminationScenes)
                 {
-                    eliminationScenes.Remove(eliminationScenes[randNum]);
-                }
-                else
-                {
-                    ResetLists();
+                    currentGamemodeScenes.Add(scene);
                 }
                 break;
             case GameMode.Extraction:
-                randNum = Random.Range(0, extractionScenes.Count);
-                sceneName = extractionScenes[randNum];
-                
-                if (extractionScenes.Count >= 1)
+                foreach (var scene in extractionScenes)
                 {
-                    extractionScenes.Remove(extractionScenes[randNum]);
-                }
-                else
-                {
-                    ResetLists();
+                    currentGamemodeScenes.Add(scene);
                 }
                 break;
             case GameMode.Climb:
-                 randNum = Random.Range(0, climbScenes.Count);
-                sceneName = climbScenes[randNum];
-                if (climbScenes.Count >= 1)
+                foreach (var scene in climbScenes)
                 {
-                    climbScenes.Remove(climbScenes[randNum]);
-                }
-                else
-                {
-                    ResetLists();
+                    currentGamemodeScenes.Add(scene);
                 }
                 break;
             default:
                 break;
         }
-
-
-        SceneManager.LoadScene(sceneName);
-    }
-
-
-    public void ResetLists ()
-    {
-        freeForAllScenes = loader.saveObject.levelPlaylist.freeForAllScenes;
-        eliminationScenes = loader.saveObject.levelPlaylist.eliminationScenes;
-        extractionScenes = loader.saveObject.levelPlaylist.extractionScenes;
-        climbScenes = loader.saveObject.levelPlaylist.climbScenes;
+        currentGamemode = gamemode;
     }
 
 }

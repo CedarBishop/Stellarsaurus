@@ -249,7 +249,7 @@ public class PlayerShoot : MonoBehaviour
 
                         gunOriginTransform.rotation = Quaternion.Euler(0, 0, baseZRotation);
                         Bullet multiProjectile = Instantiate(projectileType,
-                            new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                            new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                             gunOriginTransform.rotation).GetComponent<Bullet>();
                         multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.sprayAmount);
 
@@ -264,7 +264,7 @@ public class PlayerShoot : MonoBehaviour
 
                 case WeaponUseType.Throwable:
                     Projectile g = Instantiate(projectileType,
-                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation);
                     Explosive explosive = g.GetComponent<Explosive>();
                     explosive.InitExplosive(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
@@ -273,7 +273,7 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.Melee:       
 
                     Melee melee = Instantiate(meleeType,
-                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation);
                     melee.Init(playerNumber,currentWeapon.damage, currentWeapon.duration);
                     if (cameraShake != null)
@@ -294,7 +294,7 @@ public class PlayerShoot : MonoBehaviour
                 case WeaponUseType.Boomerang:
 
                     Boomerang boomerang = Instantiate(projectileType,
-                        new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
+                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation).GetComponent<Boomerang>();
                     boomerang.InitialiseBoomerang(currentWeapon, playerNumber, this);
                     break;
