@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int playerNumber;
 
 
-    public Sprite[] sprites;
+    public RuntimeAnimatorController[] animatorControllers;
     public float groundMovementSpeed;
     public float airMovementSpeed;
     public float jumpHeight;
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();        
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprites[playerNumber - 1];
+        animator.runtimeAnimatorController = animatorControllers[playerNumber - 1];
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         groundMovementSpeed = playerParams.groundSpeed;
         airMovementSpeed = playerParams.airSpeed;

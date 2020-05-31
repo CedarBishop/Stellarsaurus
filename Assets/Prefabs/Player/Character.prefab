@@ -262,7 +262,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 281cd93e1ccb90e4894df9b6ff20c7dc, type: 3}
+  m_Sprite: {fileID: 1061934801919521073, guid: 5055d74b2ceed3d47bd645017b0d4ae4,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -307,11 +308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
-  sprites:
-  - {fileID: 21300000, guid: 09fe56cdf69ea3943bd9a90d85e55bd3, type: 3}
-  - {fileID: 21300000, guid: 281cd93e1ccb90e4894df9b6ff20c7dc, type: 3}
-  - {fileID: 21300000, guid: 0baf27b52b58b5b4ab93bf1a09b41709, type: 3}
-  - {fileID: 21300000, guid: 0f7de30397e86e245be4245a86823d01, type: 3}
+  animatorControllers:
+  - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
+  - {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
+  - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
+  - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
   groundMovementSpeed: 450
   airMovementSpeed: 400
   jumpHeight: 15
@@ -423,7 +424,7 @@ Animator:
   m_GameObject: {fileID: 2655954609655052927}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
+  m_Controller: {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
