@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ParallaxBackground : MonoBehaviour
 {
     [Header("Background Elements (Order from furthest back to closest)")]
-    [SerializeField] private Transform[] backgroundSprites;
+    [SerializeField] private RectTransform[] backgroundSprites;
     [SerializeField] [Range(0, 0.1f)] private float parallaxSpeedX;
     [SerializeField] [Range(0, 0.1f)] private float parallaxSpeedY;
 
@@ -29,14 +30,5 @@ public class ParallaxBackground : MonoBehaviour
 
         // Reset last camera position
         lastCameraPosition = cameraTransform.position;
-
-        // Adjust scale to camera's orthographic size
-        float size = Camera.main.orthographicSize * Camera.main.aspect / 9;
-        transform.localScale = new Vector2(size, size);
-    }
-
-    private void Update()
-    {
-
     }
 }

@@ -1569,6 +1569,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3790210918092879021, guid: acfde40a78b2bae439c8f78f4afcdb6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acfde40a78b2bae439c8f78f4afcdb6d, type: 3}
 --- !u!1001 &857813723
@@ -1578,6 +1583,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6741304689482931292, guid: 94c13a22cf334074882174b4aa419d2e,
+        type: 3}
+      propertyPath: range
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8640615898143685330, guid: 94c13a22cf334074882174b4aa419d2e,
         type: 3}
       propertyPath: m_Name
@@ -3653,12 +3663,12 @@ PrefabInstance:
     - target: {fileID: 2097256341612830421, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0012292862
+      value: -0.0012283325
       objectReference: {fileID: 0}
     - target: {fileID: 2097256341612830421, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.04769
+      value: -2.0476885
       objectReference: {fileID: 0}
     - target: {fileID: 2097256341612830421, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
