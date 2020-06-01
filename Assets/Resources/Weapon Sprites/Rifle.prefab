@@ -103,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 460d00259e87a414392fddcc2ae2ad74, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 7734378fe4ec32c47b695ea3618c4bcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3859e0a097cc9ce4d871e1da08c17bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 21300000, guid: 460d00259e87a414392fddcc2ae2ad74, type: 2}
+  weaponSprite: {fileID: 21300000, guid: 7734378fe4ec32c47b695ea3618c4bcf, type: 3}
   collider: {fileID: 5688897800238116164}
   firingPoint: {fileID: 8838638735230382951}
 --- !u!61 &5688897800238116164
@@ -142,16 +142,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.040820748, y: 0.041797698}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 0.734375}
+    oldSize: {x: 1.6666666, y: 0.6666667}
     newSize: {x: 1.75, y: 0.734375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.75, y: 0.734375}
+  m_Size: {x: 1.5893645, y: 0.5839039}
   m_EdgeRadius: 0
