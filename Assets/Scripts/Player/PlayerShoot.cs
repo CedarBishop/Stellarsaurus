@@ -33,7 +33,9 @@ public class PlayerShoot : MonoBehaviour
     float cameraShakeMagnitude;
     float cameraShakeDuration;
 
-
+    bool isTriggeringExtractionObjective;
+    ExtractionObjective triggeredExtractionObjective;
+    ExtractionObjective extractionObjective;
 
     bool isHoldingFireButton;
     bool semiLimiter;
@@ -323,9 +325,17 @@ public class PlayerShoot : MonoBehaviour
 
     public void Grab ()
     {
-        if (currentWeapon != null)
+        if (extractionObjective != null)
         {
-            Drop();
+            DropExtractionObject();
+        }
+        else if (currentWeapon != null)
+        {
+            DropWeapon();
+        }
+        else if (isTriggeringExtractionObjective)
+        {
+            PickupExtractionObject();
         }
         else if (isTriggeringWeapon)
         {
@@ -338,22 +348,25 @@ public class PlayerShoot : MonoBehaviour
                 isTriggeringWeapon = false;
                 triggeredWeapon = null;
             }
-            
-        }
+        }        
     }
 
     public void Grab(WeaponType type)
     {
         if (currentWeapon != null)
         {
-            Drop();
+            DropWeapon();
+        }
+        if (extractionObjective != null)
+        {
+            DropExtractionObject();
         }
         currentWeapon = type;
         InitializeWeapon();
     }
 
 
-    public void Drop ()
+    public void DropWeapon ()
     {
         Weapon weapon = Instantiate(
             LevelManager.instance.weaponPrefab,
@@ -362,6 +375,19 @@ public class PlayerShoot : MonoBehaviour
             );
         weapon.OnDrop(currentWeapon, ammoCount);
         DestroyWeapon();
+    }
+
+    public void DropExtractionObject()
+    {
+        extractionObjective.OnDrop(gunSprite.transform.position);
+        extractionObjective = null;
+        gunSprite.sprite = null;
+    }
+
+    void PickupExtractionObject()
+    {
+        extractionObjective = triggeredExtractionObjective;
+        gunSprite.sprite = extractionObjective.OnPickup(playerNumber);
     }
 
     IEnumerator DelayBetweenShots ()
@@ -383,6 +409,16 @@ public class PlayerShoot : MonoBehaviour
         {
             isTriggeringWeapon = false;
             triggeredWeapon = null;
+        }
+        if (other.CompareTag("Extraction"))
+        {
+            triggeredExtractionObjective = other.GetComponentInParent<ExtractionObjective>();
+            isTriggeringExtractionObjective = true;
+        }
+        else
+        {
+            isTriggeringExtractionObjective = false;
+            triggeredExtractionObjective = null;
         }
     }
 
@@ -438,7 +474,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (currentWeapon != null)
         {
-            Drop();
+            DropWeapon();
         }
     }
     public void DestroyWeapon()

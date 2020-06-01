@@ -8,7 +8,8 @@ public class ExtractionObjective : MonoBehaviour
     [Range(0.0f,1.0f)] public float chargeDownScaler;
 
     private SpriteRenderer spriteRenderer;
-
+    private Rigidbody2D rigidbody;
+    private CircleCollider2D collider;
 
     private float timer;
     private bool chargeCompleted;
@@ -18,6 +19,8 @@ public class ExtractionObjective : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -41,17 +44,26 @@ public class ExtractionObjective : MonoBehaviour
         }
     }
 
-    public void OnPickup (int num)
+    public Sprite OnPickup (int num)
     {
         isHeld = true;
-        spriteRenderer.enabled = false;
+        Sprite sprite = spriteRenderer.sprite;
         playerNumber = num;
+
+        spriteRenderer.enabled = false;
+        collider.enabled = false;
+
+        transform.position = new Vector3(1000,1000,0);
+
+        return sprite;
     }
 
-    public void OnDrop ()
+    public void OnDrop (Vector3 newPos)
     {
         isHeld = false;
+        transform.position = newPos;
         spriteRenderer.enabled = true;
+        collider.enabled = true;
     }
 
 
