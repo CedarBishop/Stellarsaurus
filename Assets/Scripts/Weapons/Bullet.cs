@@ -39,7 +39,7 @@ public class Bullet : Projectile
         }
         if (destroysOnHit)
         {
-            print(collision.name);
+            //print(collision.name);
             if (destructionParticles != null)
             {
                 ParticleSystem p = Instantiate(destructionParticles, transform.position,Quaternion.identity);

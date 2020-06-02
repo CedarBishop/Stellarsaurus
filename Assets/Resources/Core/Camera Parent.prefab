@@ -65,7 +65,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097256341612830249}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0012283325, y: -2.0476918, z: -10}
+  m_LocalPosition: {x: -0.0012264252, y: -2.045784, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2097256341266290071}
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0.1
+  m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
@@ -518,6 +518,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AspectRatio
       value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 752964077517739512, guid: e9dad5466eb1efa4ab73aee1c8292370,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752964077517739512, guid: e9dad5466eb1efa4ab73aee1c8292370,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752964077517739512, guid: e9dad5466eb1efa4ab73aee1c8292370,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4296108457331573818, guid: e9dad5466eb1efa4ab73aee1c8292370,
         type: 3}
