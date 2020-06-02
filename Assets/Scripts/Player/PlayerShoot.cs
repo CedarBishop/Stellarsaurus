@@ -51,6 +51,14 @@ public class PlayerShoot : MonoBehaviour
         playerAudio = GetComponent<PlayerAudio>();
     }
 
+    private void OnDestroy()
+    {
+        if (extractionObjective != null)
+        {
+            DropExtractionObject();
+        }
+    }
+
     void Update()
     {
         if (isGamepad == false)
@@ -380,12 +388,14 @@ public class PlayerShoot : MonoBehaviour
     public void DropExtractionObject()
     {
         extractionObjective.OnDrop(gunSprite.transform.position);
+        playerMovement.SetIsHoldingExtractionObject(false);
         extractionObjective = null;
         gunSprite.sprite = null;
     }
 
     void PickupExtractionObject()
     {
+        playerMovement.SetIsHoldingExtractionObject(true);
         extractionObjective = triggeredExtractionObjective;
         gunSprite.sprite = extractionObjective.OnPickup(playerNumber);
     }

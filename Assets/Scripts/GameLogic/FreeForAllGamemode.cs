@@ -31,7 +31,7 @@ public class FreeForAllGamemode : BaseGamemode
             
     }
 
-    public void StartRound()
+    public override void StartRound()
     {
        
 

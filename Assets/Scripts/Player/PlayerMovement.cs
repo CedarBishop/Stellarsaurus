@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem dustParticleFX;
 
     private Animator animator;
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
     
     private PlayerParams playerParams;
@@ -42,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canDoubleJump;
     private int airJumps = 0;
     private bool isJumpBoosted;
+    private bool isHoldingExtractionObject;
+    private float extractionWeightScaler = 0.5f;
 
 
     // Get components and initialise stats from design master here
@@ -117,7 +119,9 @@ public class PlayerMovement : MonoBehaviour
 
         // movement update starts here
 
-        rigidbody.velocity = new Vector2(horizontal * ((isGrounded)? groundMovementSpeed :airMovementSpeed) * Time.fixedDeltaTime , rigidbody.velocity.y);
+        Vector2 velocity = new Vector2(horizontal * ((isGrounded) ? groundMovementSpeed : airMovementSpeed) * ((isHoldingExtractionObject) ? extractionWeightScaler : 1.0f) * Time.fixedDeltaTime, rigidbody.velocity.y);
+
+        rigidbody.velocity = velocity;
     
     
         //ends here
@@ -220,6 +224,11 @@ public class PlayerMovement : MonoBehaviour
     public void OnJumpPadBoost ()
     {
         isJumpBoosted = true;
+    }
+
+    public void SetIsHoldingExtractionObject (bool value)
+    {
+        isHoldingExtractionObject = value;
     }
 
 }

@@ -8,8 +8,8 @@ public class ExtractionObjective : MonoBehaviour
     [Range(0.0f,1.0f)] public float chargeDownScaler;
 
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rigidbody;
-    private CircleCollider2D collider;
+    private new Rigidbody2D rigidbody;
+    private new CircleCollider2D collider;
 
     private float timer;
     private bool chargeCompleted;
