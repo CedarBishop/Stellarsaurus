@@ -36,17 +36,17 @@ public class EnvironmentalObjectHealth : MonoBehaviour
         // Play any events which should go off once an object is destroyed
         if (isExplosive)
         {
-            // Check if players are around
-            if (players == null)
-                players = FindObjectsOfType<PlayerHealth>();
-            foreach (PlayerHealth player in players)
-            {
-                Debug.Log(player.name + " Killed by barrel");
-                if (Vector2.Distance(transform.position, player.transform.position) <= range)
-                {
-                    player.HitByAI(damage);     // Should get changed to 'HitByPlayer' so that it can track the kill properly
-                }
-            }
+            //// Check if players are around
+            //if (players == null)
+            //    players = FindObjectsOfType<PlayerHealth>();
+            //foreach (PlayerHealth player in players)
+            //{
+            //    Debug.Log(player.name + " Killed by barrel");
+            //    if (Vector2.Distance(transform.position, player.transform.position) <= range)
+            //    {
+            //        player.HitByAI(damage);     // Should get changed to 'HitByPlayer' so that it can track the kill properly
+            //    }
+            //}
 
             // Check and see if the object has any on death particles it needs to play
             foreach (ParticleSystem particle in gameObject.GetComponentsInChildren<ParticleSystem>())
