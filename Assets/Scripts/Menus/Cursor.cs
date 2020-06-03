@@ -21,7 +21,8 @@ public class Cursor : MonoBehaviour
         image.sprite = sprites[playerNumber - 1];
 
         controller.SetCursor(this);
-        buttons = FindObjectsOfType<Button>();
+        GameObject pauseMenu = UIManager.instance.pauseMenuParent;
+        buttons = pauseMenu.GetComponentsInChildren<Button>(true);
     }
 
     public void Move (Vector2 direction)
@@ -68,6 +69,10 @@ public class Cursor : MonoBehaviour
         {
             highlightedButton.onClick.Invoke();
         }
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_JumpLand");
+        }
     }
 
     private void Update()
@@ -75,6 +80,11 @@ public class Cursor : MonoBehaviour
         bool isHighlightingButton = false;
         foreach (Button button in buttons)
         {
+            if (!button.IsActive()) // if this button is deactivated, skip to the next button
+            {
+                continue;
+            }
+
             if (Vector3.Distance(transform.position, button.transform.position) < 20 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
             {
                 highlightedButton = button;

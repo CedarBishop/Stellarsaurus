@@ -10,7 +10,12 @@ public class UIManager : MonoBehaviour
 
     public Text roundText;
     public GameObject pauseMenuParent;
+    public GameObject pauseMainParent;
+    public GameObject settingParent;
     public Cursor cursorPrefab;
+
+    public Text sfxVolumeText;
+    public Text musicVolumeText;
 
     void Awake()
     {
@@ -22,14 +27,14 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     private void Start()
     {
         pauseMenuParent.SetActive(false);
+        pauseMainParent.SetActive(false);
+        settingParent.SetActive(false);
     }
-
 
     public void StartNewRound(int roundNumber)
     {
@@ -45,8 +50,7 @@ public class UIManager : MonoBehaviour
         else
         {
             roundText.text = "Player " + winningPlayerNumber.ToString() + " won round " + roundNumber.ToString();
-        }
-        
+        }        
     }
 
     public void EndMatch(List<int> winningPlayerNumbers)
@@ -72,13 +76,14 @@ public class UIManager : MonoBehaviour
     public void Pause (List<UIController> controllers)
     {
         pauseMenuParent.SetActive(true);
+        pauseMainParent.SetActive(true);
+        settingParent.SetActive(false);
 
         for (int i = 0; i < controllers.Count; i++)
         {
             Cursor c = Instantiate(cursorPrefab, pauseMenuParent.transform);
             c.Initialise(controllers[i]);
         }
-
     }
 
     public void UnPause ()
@@ -88,6 +93,7 @@ public class UIManager : MonoBehaviour
             Destroy(cursor.gameObject);
         }
         pauseMenuParent.SetActive(false);
+        settingParent.SetActive(false);
     }
 
     public void Resume()
@@ -95,9 +101,30 @@ public class UIManager : MonoBehaviour
         GameManager.instance.UnPause();
     }
 
-    public void Settings ()
+    public void OpenSettings ()
     {
-        print("Open Settings");
+        pauseMainParent.SetActive(false);
+        settingParent.SetActive(true);
+        AddAmountToMusicVolume(0);
+        AddAmountToSfxVolume(0);
+    }
+
+    public void CloseSettings ()
+    {
+        pauseMainParent.SetActive(true);
+        settingParent.SetActive(false);
+    }
+
+    public void AddAmountToSfxVolume (float amount)
+    {
+        float volume = SoundManager.instance.SetSFXVolume(amount);
+        sfxVolumeText.text = "SFX Volume: " +  volume.ToString("F2");
+    }
+
+    public void AddAmountToMusicVolume (float amount)
+    {
+        float volume = SoundManager.instance.SetMusicVolume(amount);
+        musicVolumeText.text = "Music Volume: " + volume.ToString("F2");
     }
 
     public void MainMenu ()

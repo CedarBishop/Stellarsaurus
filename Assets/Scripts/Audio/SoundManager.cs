@@ -16,6 +16,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     Sound[] sounds;
 
+    public List<PlayerAudio> playerAudioList = new List<PlayerAudio>();
+
+    [Range(0.0f, 1.0f)] private float currentSfxVolume;
+    [Range(0.0f, 1.0f)] private float currentMusicVolume;
+
     private void Awake()
     {
         if (instance == null)
@@ -33,10 +38,10 @@ public class SoundManager : MonoBehaviour
     {
         musicAudioSource = GetComponent<AudioSource>();
 
-        if (PlayerPrefs.HasKey("MusicVolume"))
-        {
-            musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        }
+
+        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+        musicAudioSource.volume = currentMusicVolume;
+
 
         for (int i = 0; i < sounds.Length; i++)
         {
@@ -45,10 +50,10 @@ public class SoundManager : MonoBehaviour
             sounds[i].SetSource(_go.AddComponent<AudioSource>());
             sfx.Add(_go.GetComponent<AudioSource>());
         }
-        if (PlayerPrefs.HasKey("SFXVolume"))
-        {
-            SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 1.0f));
-        }
+
+        currentSfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
+        SetSFXVolume(currentSfxVolume);
+
 
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
@@ -96,19 +101,50 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void SetMusicVolume(float value)
+    public float SetMusicVolume(float value)
     {
-        PlayerPrefs.SetFloat("MusicVolume", value);
-        musicAudioSource.volume = value;
+        currentMusicVolume += value;
+        if (currentMusicVolume > 1.0f)
+        {
+            currentMusicVolume = 1.0f;
+        }
+        else if (currentMusicVolume < 0.0f)
+        {
+            currentMusicVolume = 0.0f;
+        }
+
+
+        print(currentMusicVolume);
+        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+        musicAudioSource.volume = currentMusicVolume;
+        return currentMusicVolume;
     }
 
-    public void SetSFXVolume(float value)
+    public float SetSFXVolume(float value)
     {
-        PlayerPrefs.SetFloat("SFXVolume", value);
+        currentSfxVolume += value;
+
+        if (currentSfxVolume > 1.0f)
+        {
+            currentSfxVolume = 1.0f;
+        }
+        else if (currentSfxVolume < 0.0f)
+        {
+            currentSfxVolume = 0.0f;
+        }
+
+        PlayerPrefs.SetFloat("SfxVolume", currentSfxVolume);
         foreach (AudioSource source in sfx)
         {
-            source.volume = value;
+            source.volume = currentSfxVolume;
         }
+
+        foreach (PlayerAudio audio in playerAudioList)
+        {
+            audio.SetVolume(currentSfxVolume);
+        }
+
+        return currentSfxVolume;
     }
 
     public void PlayMusic(bool isMainMenu)
