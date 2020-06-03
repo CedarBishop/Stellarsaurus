@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
         if (playerInput.currentControlScheme == "Gamepad")
         {
             isGamepad = true;
+            uiController.isGamepad = true;
         }
 
         cameraController = Camera.main.GetComponent<CameraController>();

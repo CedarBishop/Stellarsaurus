@@ -26,6 +26,20 @@ public class Cursor : MonoBehaviour
 
     public void Move (Vector2 direction)
     {
+        CheckScreenBorder();
+
+        transform.Translate(direction);
+    }
+
+
+    public void MoveTo (Vector3 newCursorPos)
+    {
+        transform.position = newCursorPos;
+        CheckScreenBorder();
+    }
+
+    void CheckScreenBorder ()
+    {
         // Left Bounds
         if (transform.position.x < 0)
         {
@@ -39,17 +53,14 @@ public class Cursor : MonoBehaviour
         // Bottom Bounds
         else if (transform.position.y < 0)
         {
-            transform.position = new Vector3( transform.position.x, 0, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
         // Top Bounds
         else if (transform.position.y > Screen.height)
         {
             transform.position = new Vector3(transform.position.x, Screen.height, transform.position.z);
         }
-
-        transform.Translate(direction);
     }
-
 
     public void Select ()
     {

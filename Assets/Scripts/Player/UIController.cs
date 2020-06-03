@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
 
     Vector2 movementDirection;
     bool isMoving;
+    [HideInInspector] public bool isGamepad;
 
     private void Start()
     {
@@ -38,13 +39,22 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving)
+        if (isGamepad)
+        {
+            if (isMoving)
+            {
+                if (cursor != null)
+                {
+                    cursor.Move(movementDirection);
+                }
+            }
+        }
+        else
         {
             if (cursor != null)
             {
-                cursor.Move(movementDirection);
-            }
-            
+                cursor.MoveTo(Input.mousePosition);
+            }            
         }
     }
 
