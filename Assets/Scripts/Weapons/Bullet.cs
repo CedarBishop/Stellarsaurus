@@ -6,6 +6,7 @@ public class Bullet : Projectile
 {
     public ParticleSystem destructionParticles;
     public GameObject muzzleFlash;
+    public Rigidbody2D bulletShell;
     protected Rigidbody2D rigidbody;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -74,6 +75,13 @@ public class Bullet : Projectile
         {
             GameObject g = Instantiate(muzzleFlash, transform.position, Quaternion.identity);
             Destroy(g,0.05f);
+        }
+
+        if (bulletShell != null)
+        {
+            Vector3 position = transform.position + (5f * (transform.right * -1));
+            Rigidbody2D shell = Instantiate(bulletShell, transform.position, transform.rotation);
+            shell.AddForce((Vector3.up + (transform.right * -1)) * 150);
         }
     }
 

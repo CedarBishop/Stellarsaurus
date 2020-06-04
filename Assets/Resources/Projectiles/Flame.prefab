@@ -168,9 +168,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.15
 --- !u!114 &3054837150328217194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +187,7 @@ MonoBehaviour:
   playerNumber: 0
   destructionParticles: {fileID: 0}
   muzzleFlash: {fileID: 0}
+  bulletShell: {fileID: 0}
 --- !u!95 &2131807305360108577
 Animator:
   serializedVersion: 3
