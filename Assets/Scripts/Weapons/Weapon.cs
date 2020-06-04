@@ -189,6 +189,7 @@ public class WeaponType
     public float cameraShakeDuration;
     public float cameraShakeMagnitude;
     public float knockBack;
+    public float recoilJitter;
 
     public AudioClip soundFX;
     public string soundFxGuid;

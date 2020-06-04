@@ -384,6 +384,14 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Camera Shake Magnitude!!!", EditorStyles.boldLabel);
                     weaponTypes[i].cameraShakeMagnitude = EditorGUILayout.FloatField(weaponTypes[i].cameraShakeMagnitude);
+
+                    if (weaponTypes[i].weaponUseType != WeaponUseType.Melee)
+                    {
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Jitter", EditorStyles.boldLabel);
+                        weaponTypes[i].recoilJitter = EditorGUILayout.FloatField(weaponTypes[i].recoilJitter);
+                    }
+
                 }
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot)

@@ -79,9 +79,11 @@ public class Bullet : Projectile
 
         if (bulletShell != null)
         {
-            Vector3 position = transform.position + (5f * (transform.right * -1));
-            Rigidbody2D shell = Instantiate(bulletShell, transform.position, transform.rotation);
-            shell.AddForce((Vector3.up + (transform.right * -1)) * 150);
+            Vector3 position = transform.position + (0.5f * (transform.right * -1));
+            Rigidbody2D shell = Instantiate(bulletShell, position, transform.rotation);
+
+            shell.AddForce((Vector3.up + (transform.right * -1)) * Random.Range(80.0f,200.0f));
+            shell.AddTorque(Random.Range(0.0f,0.5f),ForceMode2D.Impulse);
         }
     }
 

@@ -314,6 +314,11 @@ public class PlayerShoot : MonoBehaviour
                     break;
             }
 
+            if (currentWeapon.recoilJitter > 0)
+            {
+                StartCoroutine("WeaponJitter");
+            }
+
             if (currentWeapon.soundFX != null)
             {
                 playerAudio.PlaySFX(currentWeapon.soundFX);
@@ -330,6 +335,13 @@ public class PlayerShoot : MonoBehaviour
              
     }
 
+    IEnumerator WeaponJitter()
+    {
+        Vector3 originalPosition = gunSprite.transform.localPosition;
+        gunSprite.transform.localPosition += (gunSprite.transform.right * -1) * currentWeapon.recoilJitter;
+        yield return new WaitForSeconds(0.03f);
+        gunSprite.transform.localPosition = originalPosition;
+    }
 
     public void Grab ()
     {
