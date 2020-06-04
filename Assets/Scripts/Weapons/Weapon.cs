@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
         {
             case WeaponSpawnType.FallFromSky:
                 StartCoroutine("DestroySelf");
+                gameObject.AddComponent<Rigidbody2D>();
                 break;
             case WeaponSpawnType.Spawnpoint:
                 SpawnPointSetup();
@@ -43,10 +44,11 @@ public class Weapon : MonoBehaviour
 
     public void OnDrop(WeaponType weapon, int Ammo)
     {
+
         weaponType = weapon;
         StartCoroutine("DestroySelf");
         ammo = Ammo;
-        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * 500);
         isDropped = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -84,7 +86,6 @@ public class Weapon : MonoBehaviour
     {
         if (weaponSpawnType == WeaponSpawnType.Spawnpoint)
         {
-
             if ( Mathf.Abs(target - transform.position.y) < 0.01f)
             {
                 if (isGoingUp)
