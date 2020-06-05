@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2378037744067400863}
   - component: {fileID: 59959285128919413}
   - component: {fileID: 4921186234686291158}
+  - component: {fileID: 4071635882641137301}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -110,8 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loader: {fileID: 59959285128919413}
   levelSelector: {fileID: 4921186234686291158}
-  freeForAllGamemode: {fileID: 1283880972}
-  extractionGamemode: {fileID: 2378037744067400863}
   playerCount: 0
   playerColours:
   - {r: 0, g: 0, b: 1, a: 1}
@@ -152,6 +151,7 @@ MonoBehaviour:
   numberOfRounds: 10
   numOfPlayers: 0
   roundNumber: 0
+  playersStillAliveThisRound: 0
 --- !u!114 &59959285128919413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,5 +191,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51fe169509bc6814f9cfb61d0dc9412b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4071635882641137301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8857cbc489b2f54b98a894eb7dde2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

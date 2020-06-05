@@ -64,6 +64,8 @@ public class PlayerHealth : MonoBehaviour
         isAlive = false;
         health = 0;
 
+        JuiceManager.TimeSleep(0.5f,0.1f);
+
         ParticleSystem p = Instantiate(bloodSplatterParticle, transform.position, Quaternion.identity);
         p.Play();
         Destroy(p.gameObject, 3);
