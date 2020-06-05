@@ -7,8 +7,8 @@ public class ParallaxBackground : MonoBehaviour
 {
     [Header("Background Elements (Order from furthest back to closest)")]
     [SerializeField] private RectTransform[] backgroundSprites;
-    [SerializeField] [Range(0, 0.1f)] private float parallaxSpeedX;
-    [SerializeField] [Range(0, 0.1f)] private float parallaxSpeedY;
+    [SerializeField] [Range(0, 1f)] private float parallaxSpeedX;
+    [SerializeField] [Range(0, 1f)] private float parallaxSpeedY;
 
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
@@ -25,7 +25,7 @@ public class ParallaxBackground : MonoBehaviour
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
         for(int i = 0; i < backgroundSprites.Length; i++)
         {
-            backgroundSprites[i].position -= new Vector3(deltaMovement.x * parallaxSpeedX * i, deltaMovement.y * parallaxSpeedY * i);
+            backgroundSprites[i].position -= new Vector3(deltaMovement.x * parallaxSpeedX/100 * Mathf.Pow(2, i), deltaMovement.y * parallaxSpeedY/100 * Mathf.Pow(2, i));
         }
 
         // Reset last camera position

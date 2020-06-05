@@ -430,10 +430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &72901871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1499,10 +1497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &214460125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1902,10 +1898,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &383742057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2040,6 +2034,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 203246913269716553, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203246913269716553, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203246913269716553, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203246913269716553, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 922548885193505170, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_UnlimitedSoftZone
@@ -2074,6 +2088,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ScreenX
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 953413506889797217, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 953413506889797217, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 953413506889797217, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2028011152973497106, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
@@ -2242,10 +2271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &550550726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3429,10 +3456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &898463238
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3759,10 +3784,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &945839749
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4445,10 +4468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &1219959964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5519,10 +5540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &1462273186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5693,10 +5712,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &1498763208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6049,10 +6066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &1565594688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6511,7 +6526,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6609,19 +6624,19 @@ Tilemap:
   - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: b505524a42f68ab4282a031205cbf758, type: 2}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -223391217462372170, guid: 0fc3f83427403d74f9c296e517353454,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -6372113570220863614, guid: 7226ccc6039be164f88fa1049c0a4b33,
       type: 3}
@@ -6767,10 +6782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMax: 0
   isExplosive: 0
-  damage: 0
-  range: 0
-  knockback: 0
 --- !u!61 &1641489259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9546,7 +9559,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9619,9 +9632,8 @@ Tilemap:
   - m_RefCount: 17
     m_Data: {fileID: 7022915928988433511, guid: 7226ccc6039be164f88fa1049c0a4b33,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 7769017978755655707, guid: 0fc3f83427403d74f9c296e517353454,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 4
@@ -9639,8 +9651,9 @@ Tilemap:
   - m_RefCount: 47
     m_Data: {fileID: -4293226751833479062, guid: 0fc3f83427403d74f9c296e517353454,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 7769017978755655707, guid: 0fc3f83427403d74f9c296e517353454,
+      type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 7308263703601160288, guid: 7226ccc6039be164f88fa1049c0a4b33,
       type: 3}

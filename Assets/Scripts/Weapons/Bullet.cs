@@ -22,18 +22,41 @@ public class Bullet : Projectile
 
         if (damagesOnHit)
         {
-            
+            // Player Damage
             if (collision.GetComponent<PlayerHealth>())
             {
                 HitPlayer(collision.GetComponent<PlayerHealth>());
             }
+            // Environmental Object Damage
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
             {
-                collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage);
+                EnvironmentalObjectHealth EnvObjHealth = collision.GetComponent<EnvironmentalObjectHealth>();
+                // Check that object should explode
+                if (collision.GetComponent<ExplosiveObjectHealth>() != null)
+                {
+                    ExplosiveObjectHealth ExpObjHealth = collision.GetComponent<ExplosiveObjectHealth>();
+                    if (ExpObjHealth.health - damage <= 0)
+                    {
+                        // Do fancy explosive barrel checks for damaging players
+                        ExpObjHealth.DamageCharactersWithinRadius(playerNumber);
+                        ExpObjHealth.ExplosiveDestructionSequence();
+                    }
+                    else
+                    {
+                        // Deal damage to object and update particles
+                        ExpObjHealth.TakeDamage(damage);
+                        ExpObjHealth.UpdateParticles();
+                    }
+                }
+                else
+                {
+                    EnvObjHealth.TakeDamage(damage);
+                }
             }
+            // AI Damage
             else if (collision.GetComponent<AI>())
             {
-                collision.GetComponent<AI>().TakeDamage(playerNumber,damage);
+                collision.GetComponent<AI>().TakeDamage(playerNumber, damage);
             }
 
 
