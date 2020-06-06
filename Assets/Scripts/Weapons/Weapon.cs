@@ -9,9 +9,10 @@ public class Weapon : MonoBehaviour
     List<WeaponType> weaponTypes;
     
     public WeaponType weaponType;
+    public int ammo;
+    public BoxCollider2D childTrigger;
 
     private SpriteRenderer spriteRenderer;
-    public int ammo;
     private WeaponSpawnType weaponSpawnType;
     private WeaponSpawner weaponSpawner = null;
     private bool isGoingUp;
@@ -118,6 +119,8 @@ public class Weapon : MonoBehaviour
         {
             spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
             BoxCollider2D collider = GetComponent<BoxCollider2D>();
+            childTrigger.size = weaponType.weaponSpritePrefab.collider.size;
+            childTrigger.offset = weaponType.weaponSpritePrefab.collider.offset;
             collider.size = weaponType.weaponSpritePrefab.collider.size;
             collider.offset = weaponType.weaponSpritePrefab.collider.offset;
         }

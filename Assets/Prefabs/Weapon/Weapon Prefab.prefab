@@ -171,6 +171,7 @@ MonoBehaviour:
     cameraShakeDuration: 0
     cameraShakeMagnitude: 0
     knockBack: 0
+    recoilJitter: 0
     soundFX: {fileID: 0}
     soundFxGuid: 
     soundFxName: 
@@ -183,6 +184,7 @@ MonoBehaviour:
     amount: 0
     meleeType: {fileID: 0}
   ammo: 0
+  childTrigger: {fileID: 2419645911073938090}
 --- !u!61 &2230875963379332808
 BoxCollider2D:
   m_ObjectHideFlags: 0
