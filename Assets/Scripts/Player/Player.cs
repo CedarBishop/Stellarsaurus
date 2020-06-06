@@ -134,7 +134,10 @@ public class Player : MonoBehaviour
 
         if (diedInCombat)
         {
-            GameManager.instance.SelectedGamemode.PlayerDied();
+            if (GameManager.instance.SelectedGamemode != null)
+            {
+                GameManager.instance.SelectedGamemode.PlayerDied();
+            }            
         }
 
         

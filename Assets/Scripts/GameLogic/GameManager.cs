@@ -128,14 +128,20 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        
+        SceneManager.LoadScene("MainMenu");        
+        UnPause();
+        StartCoroutine("CoEndMatch");
+    }
 
+    IEnumerator CoEndMatch()
+    {
+        yield return new WaitForSeconds(0.1f);
         Player[] players = FindObjectsOfType<Player>();
-        SceneManager.LoadScene("MainMenu");
         foreach (Player player in players)
         {
             player.CreateNewCharacter();
         }
-        UnPause();
     }
 
     // Called when a player presses the pause button

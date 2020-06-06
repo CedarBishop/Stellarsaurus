@@ -72,7 +72,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (projectilePlayerNumber != playerNumber)
         {
-            GameManager.instance.AwardKill(projectilePlayerNumber);
+            if (GameManager.instance.SelectedGamemode != null)
+            {
+                GameManager.instance.AwardKill(projectilePlayerNumber);
+            }            
         }
         Death();
 
@@ -111,7 +114,10 @@ public class PlayerHealth : MonoBehaviour
             {
                 if (projectilePlayerNumber != playerNumber)
                 {
-                    GameManager.instance.AwardKill(projectilePlayerNumber);
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.AwardKill(projectilePlayerNumber);
+                    }
                 }
                 Death();
             }

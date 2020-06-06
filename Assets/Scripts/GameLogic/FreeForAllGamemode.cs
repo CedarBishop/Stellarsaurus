@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class FreeForAllGamemode : BaseGamemode
 {
-    
-    [HideInInspector] public int playersEliminated;
-
-    
-
-
     public override void StartMatch ()
     {
         base.StartMatch();
@@ -28,14 +22,13 @@ public class FreeForAllGamemode : BaseGamemode
     {
         base.EndMatch();
         StartCoroutine("DelayAtEndOfMatch");
-            
     }
 
     public override void StartRound()
     {
-       
+        base.StartRound();
 
-        playersStillAliveThisRound = numOfPlayers - playersEliminated;
+        playersStillAliveThisRound = numOfPlayers;
         UIManager.instance.StartNewRound(roundNumber);
 
         foreach (Player player in players)
@@ -47,6 +40,7 @@ public class FreeForAllGamemode : BaseGamemode
 
     public override void EndRound (int winningPlayerNumber)
     {
+        base.EndRound(winningPlayerNumber);
         if (roundNumber >= numberOfRounds)
         {
             EndMatch();
