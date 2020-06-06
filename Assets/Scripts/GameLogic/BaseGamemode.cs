@@ -75,10 +75,6 @@ public class BaseGamemode : MonoBehaviour
 
     public virtual void EndRound (int winningPlayerNumber)
     {
-        if (roundIsUnderway == false)
-        {
-            return;
-        }
         roundIsUnderway = false;
     }
 

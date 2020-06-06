@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-//using UnityEngine.InputSystem.UI;
 
 public class Player : MonoBehaviour
 {
@@ -104,17 +103,10 @@ public class Player : MonoBehaviour
 
 
         isStillAlive = true;
-        if (cameraController != null)
-        {
-            cameraController.playersInGame.Add(playerMovement);
-        }
-
     }
 
     public void CharacterDied(bool diedInCombat)
-    {
-        
-
+    {      
         if (currentCharacter != null)
         {
             if (cameraController != null)
@@ -124,7 +116,7 @@ public class Player : MonoBehaviour
             Destroy(currentCharacter);
         }
 
-        if (LevelManager.instance.debugMode)
+        if (GameManager.instance.SelectedGamemode == null)
         {
             StartCoroutine("Respawn");
             return;
@@ -136,11 +128,10 @@ public class Player : MonoBehaviour
         {
             if (GameManager.instance.SelectedGamemode != null)
             {
+                print("Called Player Died on gamemode");
                 GameManager.instance.SelectedGamemode.PlayerDied();
             }            
-        }
-
-        
+        }        
     }
 
     IEnumerator Respawn ()
@@ -148,8 +139,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(3);
         CreateNewCharacter();
     }
-
-
    
     void OnStartFall ()
     {
@@ -167,7 +156,6 @@ public class Player : MonoBehaviour
     {
         playerShoot.Grab();
     }
-
 
     void OnPause ()
     {

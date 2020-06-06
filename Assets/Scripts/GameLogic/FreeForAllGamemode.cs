@@ -15,7 +15,7 @@ public class FreeForAllGamemode : BaseGamemode
             player.CharacterDied(false);
         }
 
-        StartCoroutine("DelayAtStartOfMatch");
+        StartRound();
     }
 
     protected override void EndMatch ()
@@ -40,7 +40,11 @@ public class FreeForAllGamemode : BaseGamemode
 
     public override void EndRound (int winningPlayerNumber)
     {
-        base.EndRound(winningPlayerNumber);
+        if ( roundIsUnderway == false)
+        {
+            return;
+        }
+        roundIsUnderway = false;
         if (roundNumber >= numberOfRounds)
         {
             EndMatch();
@@ -82,15 +86,14 @@ public class FreeForAllGamemode : BaseGamemode
 
     IEnumerator DelayAtStartOfMatch()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         StartRound();
     }
 
     IEnumerator DelayBetweenRounds ()
     {
         yield return new WaitForSeconds(3);
-        StartRound();
-        GameManager.instance.levelSelector.GoToLevel(GameMode.FreeForAll);
+        GameManager.instance.levelSelector.GoToLevel(GameMode.FreeForAll, StartRound);
     }
 
     IEnumerator DelayAtEndOfMatch ()

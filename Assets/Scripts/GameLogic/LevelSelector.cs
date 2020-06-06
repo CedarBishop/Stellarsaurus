@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class LevelSelector : MonoBehaviour
     private List<string> currentGamemodeScenes = new List<string>();
     private GameMode currentGamemode;
 
+    private AsyncOperation sceneLoadOperation;
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class LevelSelector : MonoBehaviour
     }
 
 
-    public void GoToLevel (GameMode gamemode)
+    public void GoToLevel (GameMode gamemode, System.Action actionToDoneOnLevelLoad = null)
     {
         if (currentGamemodeScenes.Count == 0 || currentGamemode != gamemode)
         {
@@ -40,7 +42,27 @@ public class LevelSelector : MonoBehaviour
         string sceneName = currentGamemodeScenes[randNum];
         
         currentGamemodeScenes.RemoveAt(randNum);
-        SceneManager.LoadScene(sceneName);        
+        
+        sceneLoadOperation = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Single);
+        StartCoroutine("CoLoadScene", actionToDoneOnLevelLoad);
+    }
+
+    IEnumerator CoLoadScene(System.Action actionToDoneOnLevelLoad = null)
+    {
+        while (sceneLoadOperation.isDone == false)
+        {
+            yield return null;
+        }
+        if (actionToDoneOnLevelLoad != null)
+        {
+            actionToDoneOnLevelLoad();
+        }
+    }
+
+    public void GoToMainMenu(System.Action actionToDoneOnLevelLoad = null)
+    {
+        sceneLoadOperation = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        StartCoroutine("CoLoadScene", actionToDoneOnLevelLoad);
     }
 
 

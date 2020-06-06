@@ -95,8 +95,6 @@ public class GameManager : MonoBehaviour
     // Called by game starter to start the match
     public void StartMatch(GameMode gameMode)
     {
-        // Goes to a random level from the playlist of the selected gamemode
-        levelSelector.GoToLevel(gameMode);
 
         // sets the selected gamemode and starts the match
         switch (gameMode)
@@ -115,8 +113,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-
-        selectedGamemode.StartMatch();
+        // Goes to a random level from the playlist of the selected gamemode
+        levelSelector.GoToLevel(gameMode, selectedGamemode.StartMatch);
     }
 
     // Called when the match is over or the player leaves

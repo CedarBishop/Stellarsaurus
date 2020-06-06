@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isHoldingExtractionObject;
     private float extractionWeightScaler = 0.5f;
 
+    CameraController cameraController;
+
 
     // Get components and initialise stats from design master here
     void Start()
@@ -61,6 +63,21 @@ public class PlayerMovement : MonoBehaviour
         kyoteTime = playerParams.kyoteTime;
         jumpBufferTime = playerParams.jumpBufferTime;
         cutJumpHeight = playerParams.cutJumpHeight;
+
+
+        cameraController = Camera.main.GetComponent<CameraController>();
+        if (cameraController != null)
+        {
+            cameraController.playersInGame.Add(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (cameraController != null)
+        {
+            cameraController.playersInGame.Remove(this);
+        }
     }
 
     private void FixedUpdate()
