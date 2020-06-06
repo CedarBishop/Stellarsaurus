@@ -76,8 +76,8 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
     {
         if (isExplosive)
         {
-            Handles.color = Color.yellow;
-            Handles.DrawWireDisc(transform.position, new Vector3(0, 0, 1), range);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, range);
         }
     }
 }

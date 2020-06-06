@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
         pauseMenuParent.SetActive(false);
         pauseMainParent.SetActive(false);
         settingParent.SetActive(false);
+        roundText.gameObject.SetActive(true);
     }
 
     public void StartNewRound(int roundNumber)
@@ -78,7 +79,7 @@ public class UIManager : MonoBehaviour
         pauseMenuParent.SetActive(true);
         pauseMainParent.SetActive(true);
         settingParent.SetActive(false);
-
+        roundText.gameObject.SetActive(false);
         for (int i = 0; i < controllers.Count; i++)
         {
             Cursor c = Instantiate(cursorPrefab, pauseMenuParent.transform);
@@ -94,6 +95,7 @@ public class UIManager : MonoBehaviour
         }
         pauseMenuParent.SetActive(false);
         settingParent.SetActive(false);
+        roundText.gameObject.SetActive(true);
     }
 
     public void Resume()
