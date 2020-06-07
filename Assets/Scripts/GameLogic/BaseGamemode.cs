@@ -88,9 +88,11 @@ public class BaseGamemode : MonoBehaviour
 
     }
 
-    protected virtual void Exit()
+    public virtual void Exit()
     {
+
         playerMatchStats.Clear();
+        StopAllCoroutines();
     }
 
 

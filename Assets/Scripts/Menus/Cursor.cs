@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Cursor : MonoBehaviour
 {
+    public float movementSpeed;
     public Sprite[] sprites;
     int playerNumber;
     private Image image;
@@ -29,7 +30,7 @@ public class Cursor : MonoBehaviour
     {
         CheckScreenBorder();
 
-        transform.Translate(direction);
+        transform.Translate(direction * Time.unscaledDeltaTime * movementSpeed);
     }
 
 

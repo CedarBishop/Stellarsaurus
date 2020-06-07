@@ -126,10 +126,11 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        
+        selectedGamemode.Exit();
         SceneManager.LoadScene("MainMenu");        
         UnPause();
         StartCoroutine("CoEndMatch");
+
     }
 
     IEnumerator CoEndMatch()
