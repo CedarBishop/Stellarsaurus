@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   animatorControllers:
-  - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
+  - {fileID: 22100000, guid: 40436aeae1759c848a3e6b67e961fa58, type: 2}
   - {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
   - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
   - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
@@ -387,6 +387,7 @@ MonoBehaviour:
     cameraShakeDuration: 0
     cameraShakeMagnitude: 0
     knockBack: 0
+    recoilJitter: 0
     soundFX: {fileID: 0}
     soundFxGuid: 
     soundFxName: 
@@ -425,7 +426,7 @@ Animator:
   m_GameObject: {fileID: 2655954609655052927}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
+  m_Controller: {fileID: 22100000, guid: 40436aeae1759c848a3e6b67e961fa58, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

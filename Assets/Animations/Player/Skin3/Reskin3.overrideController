@@ -8,4 +8,12 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Reskin3
   m_Controller: {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2d8fdaf9646b78a43886eee88f188d0c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ecef25236da5c6147950714e01aca00c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 195528b7991d50043bccf7130eb88148, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c0cac54ce3312764a9a47a616badbe18, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 37e1c0d13b2c8334687241e596e393e0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c0cac54ce3312764a9a47a616badbe18, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d1f9c5a5bb3ce434ea58edcec967087a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c0cac54ce3312764a9a47a616badbe18, type: 2}
