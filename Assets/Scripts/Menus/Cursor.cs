@@ -85,7 +85,7 @@ public class Cursor : MonoBehaviour
                 continue;
             }
 
-            if (Vector3.Distance(transform.position, button.transform.position) < 20 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
+            if (Vector3.Distance(transform.position, button.transform.position) < 30 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
             {
                 highlightedButton = button;
                 isHighlightingButton = true;

@@ -147,17 +147,13 @@ public class GameManager : MonoBehaviour
     // Also tells the UI manager to bring up the pause menu and cursors
     public void Pause ()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            return;
-        }
-
         Time.timeScale = 0;
 
         foreach (PlayerInput player in playerInputs)
         {
             player.SwitchCurrentActionMap("UI");
         }
+
 
         UIManager.instance.Pause(uIControllers);       
 

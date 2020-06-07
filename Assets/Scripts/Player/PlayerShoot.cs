@@ -243,7 +243,7 @@ public class PlayerShoot : MonoBehaviour
                     Bullet projectile = Instantiate(projectileType,
                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x) , (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation).GetComponent<Bullet>();
-                    projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread);
+                    projectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage, playerNumber, currentWeapon.initialForce,currentWeapon.spread, true);
 
 
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
@@ -261,7 +261,7 @@ public class PlayerShoot : MonoBehaviour
                         Bullet multiProjectile = Instantiate(projectileType,
                             new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                             gunOriginTransform.rotation).GetComponent<Bullet>();
-                        multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.sprayAmount);
+                        multiProjectile.InitialiseProjectile(currentWeapon.range, currentWeapon.damage , playerNumber, currentWeapon.initialForce, currentWeapon.sprayAmount, (i == 0));
 
                         baseZRotation += currentWeapon.sprayAmount;
 

@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     public static UIManager instance = null;
 
     public Text roundText;
+    public GameObject mainMenuUiParent;
+    public GameObject gameUiParent;
     public GameObject pauseMenuParent;
     public GameObject pauseMainParent;
     public GameObject settingParent;
@@ -31,10 +33,25 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        pauseMenuParent.SetActive(false);
-        pauseMainParent.SetActive(false);
-        settingParent.SetActive(false);
-        roundText.gameObject.SetActive(true);
+        bool inMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
+
+        if (inMainMenu)
+        {
+            pauseMenuParent.SetActive(false);
+            pauseMainParent.SetActive(false);
+            settingParent.SetActive(false);
+            gameUiParent.SetActive(false);
+            mainMenuUiParent.SetActive(true);
+        }
+        else
+        {
+            pauseMenuParent.SetActive(false);
+            pauseMainParent.SetActive(false);
+            settingParent.SetActive(false);
+            gameUiParent.SetActive(true);
+            mainMenuUiParent.SetActive(false);
+        }
+        
     }
 
     public void StartNewRound(int roundNumber)
@@ -76,10 +93,15 @@ public class UIManager : MonoBehaviour
 
     public void Pause (List<UIController> controllers)
     {
+
         pauseMenuParent.SetActive(true);
         pauseMainParent.SetActive(true);
         settingParent.SetActive(false);
-        roundText.gameObject.SetActive(false);
+        gameUiParent.SetActive(false);
+        mainMenuUiParent.SetActive(false);
+
+
+
         for (int i = 0; i < controllers.Count; i++)
         {
             Cursor c = Instantiate(cursorPrefab, pauseMenuParent.transform);
@@ -89,13 +111,30 @@ public class UIManager : MonoBehaviour
 
     public void UnPause ()
     {
+        bool inMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
+
         foreach (var cursor in FindObjectsOfType<Cursor>())
         {
             Destroy(cursor.gameObject);
         }
-        pauseMenuParent.SetActive(false);
-        settingParent.SetActive(false);
-        roundText.gameObject.SetActive(true);
+
+        if (inMainMenu)
+        {
+            pauseMenuParent.SetActive(false);
+            pauseMainParent.SetActive(false);
+            settingParent.SetActive(false);
+            gameUiParent.SetActive(false);
+            mainMenuUiParent.SetActive(true);
+        }
+        else
+        {
+            pauseMenuParent.SetActive(false);
+            pauseMainParent.SetActive(false);
+            settingParent.SetActive(false);
+            gameUiParent.SetActive(true);
+            mainMenuUiParent.SetActive(false);
+        }
+
     }
 
     public void Resume()

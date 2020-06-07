@@ -74,7 +74,7 @@ public class Bullet : Projectile
         }
     }
 
-    public virtual void InitialiseProjectile (float Range, int _Damage, int _PlayerNumber, float force, float Spread)
+    public virtual void InitialiseProjectile (float Range, int _Damage, int _PlayerNumber, float force, float Spread, bool spawnBulletShell)
     {
         startingPosition = new Vector2(transform.position.x, transform.position.y);
         range = Range;
@@ -100,14 +100,17 @@ public class Bullet : Projectile
             Destroy(g,0.05f);
         }
 
-        if (bulletShell != null)
+        if (spawnBulletShell)
         {
-            Vector3 position = transform.position + (0.5f * (transform.right * -1));
-            Rigidbody2D shell = Instantiate(bulletShell, position, transform.rotation);
+            if (bulletShell != null)
+            {
+                Vector3 position = transform.position + (0.5f * (transform.right * -1));
+                Rigidbody2D shell = Instantiate(bulletShell, position, transform.rotation);
 
-            shell.AddForce((Vector3.up + (transform.right * -1)) * Random.Range(80.0f,200.0f));
-            shell.AddTorque(Random.Range(0.0f,0.5f),ForceMode2D.Impulse);
-        }
+                shell.AddForce((Vector3.up + (transform.right * -1)) * Random.Range(80.0f, 200.0f));
+                shell.AddTorque(Random.Range(0.0f, 0.5f), ForceMode2D.Impulse);
+            }
+        }       
     }
 
     IEnumerator DistanceTracker()
