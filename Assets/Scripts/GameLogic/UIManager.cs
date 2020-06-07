@@ -172,4 +172,14 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.EndMatch();
     }
+
+    public void OpenFeedback()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSdkB1fXMsRKr_n1OCdBN4P_Odjr9SBpwggDe6NBPKXx2OxEQA/viewform");
+    }
+
+    public void ButtonPause()
+    {
+        GameManager.instance.Pause();
+    }
 }

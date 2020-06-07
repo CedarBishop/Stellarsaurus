@@ -70,16 +70,16 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 9e7527f5-dbae-48ec-ab13-0a2b215d651c
-        m_Path: <Gamepad>/start
+        m_Id: c780ad47-1bab-4a27-8456-97ed03e4415f
+        m_Path: <Keyboard>/enter
         m_Interactions: 
         m_Processors: 
         m_Groups: 
         m_Action: Action
         m_Flags: 0
       - m_Name: 
-        m_Id: c780ad47-1bab-4a27-8456-97ed03e4415f
-        m_Path: <Keyboard>/enter
+        m_Id: cf78b18c-161b-4bfa-960f-28c8a57ee733
+        m_Path: <Gamepad>/buttonSouth
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -135,7 +135,6 @@ MonoBehaviour:
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
-  playersEliminated: 0
 --- !u!114 &2378037744067400863
 MonoBehaviour:
   m_ObjectHideFlags: 0
