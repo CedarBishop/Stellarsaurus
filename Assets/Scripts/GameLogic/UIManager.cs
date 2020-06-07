@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
     public Text sfxVolumeText;
     public Text musicVolumeText;
 
+    public Button mainMenuButton;
+    public Button quitButton;
+
     void Awake()
     {
         if (instance == null)
@@ -93,6 +96,8 @@ public class UIManager : MonoBehaviour
 
     public void Pause (List<UIController> controllers)
     {
+        bool inMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
+
 
         pauseMenuParent.SetActive(true);
         pauseMainParent.SetActive(true);
@@ -100,6 +105,16 @@ public class UIManager : MonoBehaviour
         gameUiParent.SetActive(false);
         mainMenuUiParent.SetActive(false);
 
+        if (inMainMenu)
+        {
+            mainMenuButton.gameObject.SetActive(false);
+            quitButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            mainMenuButton.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(false);
+        }
 
 
         for (int i = 0; i < controllers.Count; i++)
@@ -181,5 +196,10 @@ public class UIManager : MonoBehaviour
     public void ButtonPause()
     {
         GameManager.instance.Pause();
+    }
+
+    public void Quit ()
+    {
+        Application.Quit();
     }
 }
