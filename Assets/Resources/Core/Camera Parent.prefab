@@ -65,7 +65,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097256341612830249}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0012264252, y: -2.045784, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2097256341266290071}
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
   m_BoundingShape2D: {fileID: 4362119951789293873}
-  m_ConfineScreenEdges: 1
-  m_Damping: 0
+  m_ConfineScreenEdges: 0
+  m_Damping: 1
 --- !u!1 &5809856925086070458
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +532,11 @@ PrefabInstance:
     - target: {fileID: 752964077517739512, guid: e9dad5466eb1efa4ab73aee1c8292370,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752964077517739512, guid: e9dad5466eb1efa4ab73aee1c8292370,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4296108457331573818, guid: e9dad5466eb1efa4ab73aee1c8292370,

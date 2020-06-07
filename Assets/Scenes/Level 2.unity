@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2233,42 +2233,42 @@ PrefabInstance:
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: 15
+      value: 24.636864
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 10
+      value: 16.519564
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -15
+      value: -18.925655
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: 10
+      value: 16.565323
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: -10
+      value: -10.33842
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
-      value: -10
+      value: -10.619648
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: -15
+      value: -18.993343
       objectReference: {fileID: 0}
     - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
-      value: 15
+      value: 24.981873
       objectReference: {fileID: 0}
     - target: {fileID: 6505712157918480850, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
