@@ -183,12 +183,10 @@ public class GameManager : MonoBehaviour
                 player.playerKills++;
             }
         }
-        foreach (PlayerMatchStats player in selectedGamemode.playerMatchStats)
+
+        if (selectedGamemode != null)
         {
-            if (player.playerNumber == playerNumber)
-            {
-                player.roundWins++;
-            }
+            selectedGamemode.AwardPlayerKill(playerNumber);
         }
     }
 

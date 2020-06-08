@@ -6,6 +6,9 @@ public class BaseGamemode : MonoBehaviour
 {
 
     public int numberOfRounds;
+    public int extractionPointReward = 15;
+    public int playerKillsPointReward = 5;
+    public int aiKillsPointReward = 1;
 
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
@@ -28,34 +31,20 @@ public class BaseGamemode : MonoBehaviour
         {
             playerMatchStats.Add(new PlayerMatchStats( player.playerNumber));
         }
+
+        playersStillAliveThisRound = numOfPlayers;
+
+        foreach (Player player in players)
+        {
+            player.CharacterDied(false);
+        }
+
+        StartRound();
     }
 
     protected virtual void EndMatch ()
     {
-        int highestWins = 0;
-        List<int> currentBestPlayers = new List<int>() { 0 };
-        foreach (PlayerMatchStats player in playerMatchStats)
-        {
-            if (player.roundWins > highestWins)
-            {
-                currentBestPlayers.Clear();
-                currentBestPlayers.Add(player.playerNumber);
-                highestWins = player.roundWins;
-            }
-            else if (player.roundWins == highestWins)
-            {
-                currentBestPlayers.Add(player.playerNumber);
-            }
-        }
-
-        print(currentBestPlayers);
-
-        foreach (int playerNum in currentBestPlayers)
-        {
-            GameManager.instance.AwardMatchWin(playerNum);
-        }
-
-        UIManager.instance.EndMatch(currentBestPlayers);
+        
     }
 
     private void Update()
@@ -90,7 +79,6 @@ public class BaseGamemode : MonoBehaviour
 
     public virtual void Exit()
     {
-
         playerMatchStats.Clear();
         StopAllCoroutines();
     }
@@ -103,6 +91,46 @@ public class BaseGamemode : MonoBehaviour
             if (player.playerNumber == playerNumber)
             {
                 player.roundWins++;
+            }
+        }
+    }
+
+    public void AwardPlayerKill(int playerNumber)
+    {
+        foreach (PlayerMatchStats player in playerMatchStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.playerKills++;
+                player.points += playerKillsPointReward;
+            }
+        }
+    }
+
+    public void AwardExtraction(int playerNumber)
+    {
+        int winningPlayerNumber = 0;
+        foreach (PlayerMatchStats player in playerMatchStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.extractions++;
+                player.points += extractionPointReward;
+                winningPlayerNumber = player.playerNumber;
+            }
+        }
+
+        EndRound(winningPlayerNumber);
+    }
+
+    public void AwardAiKill(int playerNumber)
+    {
+        foreach (PlayerMatchStats player in playerMatchStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.aiKills++;
+                player.points += aiKillsPointReward;
             }
         }
     }

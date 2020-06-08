@@ -70,6 +70,6 @@ public class ExtractionObjective : MonoBehaviour
 
     void OnChargeComplete ()
     {
-        GameManager.instance.SelectedGamemode.PlayerWonRound(playerNumber);
+        GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
     }
 }

@@ -8,19 +8,35 @@ public class FreeForAllGamemode : BaseGamemode
     {
         base.StartMatch();
         Debug.Log("Free for all start match");
-        playersStillAliveThisRound = numOfPlayers;
-
-        foreach (Player player in players)
-        {
-            player.CharacterDied(false);
-        }
-
-        StartRound();
+        
     }
 
     protected override void EndMatch ()
     {
-        base.EndMatch();
+        int highestWins = 0;
+        List<int> currentBestPlayers = new List<int>() { 0 };
+        foreach (PlayerMatchStats player in playerMatchStats)
+        {
+            if (player.roundWins > highestWins)
+            {
+                currentBestPlayers.Clear();
+                currentBestPlayers.Add(player.playerNumber);
+                highestWins = player.roundWins;
+            }
+            else if (player.roundWins == highestWins)
+            {
+                currentBestPlayers.Add(player.playerNumber);
+            }
+        }
+
+        print(currentBestPlayers);
+
+        foreach (int playerNum in currentBestPlayers)
+        {
+            GameManager.instance.AwardMatchWin(playerNum);
+        }
+
+        UIManager.instance.EndMatch(currentBestPlayers);
         StartCoroutine("DelayAtEndOfMatch");
     }
 
@@ -60,7 +76,6 @@ public class FreeForAllGamemode : BaseGamemode
     }
 
 
-
     public override void PlayerDied ()
     {
         base.PlayerDied();
@@ -82,12 +97,6 @@ public class FreeForAllGamemode : BaseGamemode
         {
             EndRound(0);
         }
-    }
-
-    IEnumerator DelayAtStartOfMatch()
-    {
-        yield return new WaitForSeconds(0.5f);
-        StartRound();
     }
 
     IEnumerator DelayBetweenRounds ()

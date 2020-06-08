@@ -97,9 +97,9 @@ public class AI : MonoBehaviour
 
     public virtual void Death (int playerNumber)
     {
-        if (UIManager.instance != null)
+        if (GameManager.instance.SelectedGamemode != null)
         {
-
+            GameManager.instance.SelectedGamemode.AwardAiKill(playerNumber);
         }
 
         if (LevelManager.instance != null)

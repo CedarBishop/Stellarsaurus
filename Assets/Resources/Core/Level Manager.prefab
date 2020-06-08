@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 4383978371291451730}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2796814294608751611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5663284396826747291}
+  m_Layer: 0
+  m_Name: Extraction Object Spawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5663284396826747291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2796814294608751611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4383978371291451730}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4383978369472776755
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +152,7 @@ Transform:
   - {fileID: 4383978369472776752}
   - {fileID: 1311025823183145609}
   - {fileID: 7797781623471768301}
+  - {fileID: 5663284396826747291}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,13 +168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affcde2bef966584fae78a432d9acadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
   isLobby: 0
   startingPositions:
   - {fileID: 4383978370061006293}
   - {fileID: 4383978369472776752}
   - {fileID: 1311025823183145609}
   - {fileID: 7797781623471768301}
+  extractionObjectSpawnPosition: {fileID: 5663284396826747291}
+  extractionObjective: {fileID: 2987683498432540195, guid: 32a5f89bf28b76f47a99723955a4afca,
+    type: 3}
   teleporterPairs: []
   weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
     type: 3}
@@ -156,6 +189,7 @@ MonoBehaviour:
   aisInThisLevel: []
   aiPrefab: {fileID: 2765672809849141235, guid: 723051153006e9448bd94e2ffb423ca2,
     type: 3}
+  weaponTypes: []
 --- !u!1 &7828744408156027752
 GameObject:
   m_ObjectHideFlags: 0

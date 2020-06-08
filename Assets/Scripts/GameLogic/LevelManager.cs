@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     public bool isLobby;    
 
     public Transform[] startingPositions;
+    public Transform extractionObjectSpawnPosition;
+    public ExtractionObjective extractionObjective;
     public TeleporterPairs[] teleporterPairs;
 
     [Header("Weapons")]
@@ -74,6 +76,11 @@ public class LevelManager : MonoBehaviour
             weapon.Init(weaponTypes, WeaponSpawnType.FallFromSky);
             yield return new WaitForSeconds(timeBetweenWeaponSpawns);
         }
+    }
+
+    public void SpawnExtractionObject ()
+    {
+        Instantiate(extractionObjective, extractionObjectSpawnPosition.position, Quaternion.identity);
     }
 }
 
