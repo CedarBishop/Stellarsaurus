@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpBufferTimer;
     private bool isGrounded;
     private float horizontal;
+    private float counterForce;
     private bool isHoldingJumpKey;
     private bool canDoubleJump;
     private int airJumps = 0;
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         kyoteTime = playerParams.kyoteTime;
         jumpBufferTime = playerParams.jumpBufferTime;
         cutJumpHeight = playerParams.cutJumpHeight;
-
+        counterForce = playerParams.counterForce;
 
         cameraController = Camera.main.GetComponent<CameraController>();
         if (cameraController != null)
@@ -139,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = new Vector2(horizontal * ((isGrounded) ? groundMovementSpeed : airMovementSpeed) * ((isHoldingExtractionObject) ? extractionWeightScaler : 1.0f) * Time.fixedDeltaTime, rigidbody.velocity.y);
 
         rigidbody.velocity = velocity;
+        rigidbody.AddForce(new Vector2(rigidbody.velocity.x * -counterForce, 0));
     
     
         //ends here
@@ -263,4 +265,5 @@ public class PlayerParams
     public float kyoteTime;
     public float jumpBufferTime;
     public float cutJumpHeight;
+    public float counterForce;
 }

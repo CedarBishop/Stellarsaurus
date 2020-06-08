@@ -715,6 +715,10 @@ public class DesignMaster : EditorWindow
         EditorGUILayout.Space(8);
 
 
+        GUILayout.Label("Counter Force", EditorStyles.boldLabel);
+        player.counterForce = EditorGUILayout.Slider(player.counterForce, 0.0f, 3.0f);
+        EditorGUILayout.Space(8);
+
         EditorGUILayout.Space(16);
 
 
