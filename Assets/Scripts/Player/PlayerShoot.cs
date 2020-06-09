@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,6 +41,9 @@ public class PlayerShoot : MonoBehaviour
     bool isHoldingFireButton;
     bool semiLimiter;
     float chargeUpTimer;
+
+    float cookTime;
+    bool shootOnRelease;
 
     void Start()
     {
@@ -115,6 +119,23 @@ public class PlayerShoot : MonoBehaviour
                             chargeUpTimer += Time.deltaTime;
                         }
                         break;
+                    case FireType.Cook:
+
+                        if (semiLimiter)
+                        {
+                            if (cookTime >= currentWeapon.explosionTime)
+                            {
+                                semiLimiter = false;
+                                Shoot();
+                            }
+                            else
+                            {
+                                cookTime += Time.deltaTime;
+                                shootOnRelease = true;
+                            }
+
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -125,6 +146,14 @@ public class PlayerShoot : MonoBehaviour
         {
             semiLimiter = true;
             chargeUpTimer = 0;
+
+            if (shootOnRelease)
+            {
+                Shoot();
+                shootOnRelease = false;
+            }
+
+            cookTime = 0;
         }
 
     }
@@ -277,7 +306,7 @@ public class PlayerShoot : MonoBehaviour
                          new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation);
                     Explosive explosive = g.GetComponent<Explosive>();
-                    explosive.InitExplosive(currentWeapon.explosionTime,currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
+                    explosive.InitExplosive(( cookTime >= currentWeapon.explosionTime)? 0.01f: currentWeapon.explosionTime - cookTime, currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
                     break;
 
                 case WeaponUseType.Melee:       

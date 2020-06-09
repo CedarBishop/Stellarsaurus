@@ -166,7 +166,7 @@ public class Weapon : MonoBehaviour
 
 public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable, Boomerang }
 
-public enum FireType {SemiAutomatic, Automatic, ChargeUp, WindUp }
+public enum FireType {SemiAutomatic, Automatic, ChargeUp, WindUp, Cook}
 
 public enum WeaponSpawnType {FallFromSky, Spawnpoint, Treasure }
 

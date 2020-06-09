@@ -46,6 +46,7 @@ public class Explosive : Projectile
     public void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude)
     {
         timeTillExplode = explodeTime;
+        print(timeTillExplode);
         explosionSize = explodeSize;
         damage = _Damage;
         playerNumber = _PlayerNumber;
