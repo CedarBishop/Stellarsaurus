@@ -66,10 +66,11 @@ public class ExtractionGamemode : BaseGamemode
         if (roundNumber >= numberOfRounds)
         {
             EndMatch();
+            UIManager.instance.EndRound(playerMatchStats, roundNumber);
         }
         else
         {
-            UIManager.instance.EndRound(winningPlayerNumber, roundNumber);
+            UIManager.instance.EndRound(playerMatchStats, roundNumber);
             roundNumber++;
             print("End Round");
             StartCoroutine("DelayBetweenRounds");

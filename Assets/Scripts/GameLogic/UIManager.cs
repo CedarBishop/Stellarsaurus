@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public Button mainMenuButton;
     public Button quitButton;
 
+    public Text[] playerScoreTexts;
+
     void Awake()
     {
         if (instance == null)
@@ -60,9 +62,20 @@ public class UIManager : MonoBehaviour
     public void StartNewRound(int roundNumber)
     {
         roundText.text = "Round " + roundNumber.ToString();
+        StartCoroutine("DelayRoundTextFade");
+        foreach (var item in playerScoreTexts)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
-    public void EndRound(int winningPlayerNumber, int roundNumber)
+    IEnumerator DelayRoundTextFade()
+    {
+        yield return new WaitForSeconds(3);
+        roundText.text = "";
+    }
+
+    public void EndRound( int winningPlayerNumber, int roundNumber)
     {
         if (winningPlayerNumber == 0)
         {
@@ -72,6 +85,20 @@ public class UIManager : MonoBehaviour
         {
             roundText.text = "Player " + winningPlayerNumber.ToString() + " won round " + roundNumber.ToString();
         }        
+    }
+
+    public void EndRound(List<PlayerMatchStats> playerMatchStats, int roundNumber)
+    {
+        if (playerMatchStats == null || playerMatchStats.Count == 0)
+        {
+            return;
+        }
+        for (int i = 0; i < playerMatchStats.Count; i++)
+        {
+            playerScoreTexts[i].gameObject.SetActive(true);
+            playerScoreTexts[i].text = "P" + (i + 1) + ": " + playerMatchStats[i].points;
+            playerScoreTexts[i].color = GameManager.instance.playerColours[i];
+        }
     }
 
     public void EndMatch(List<int> winningPlayerNumbers)
