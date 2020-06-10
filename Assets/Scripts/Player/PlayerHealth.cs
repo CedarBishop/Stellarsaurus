@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
     private int maxHealth;
     private bool isAlive;
     private bool isBurning;
+
+    private bool hasShield;
+    private int shieldBlocksRemaining;
     
     void Start()
     {
@@ -37,6 +40,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void HitByAI(int damage)
     {
+        if (hasShield)
+        {
+            UseShield();
+            return;
+        }
         health -= damage;
         ParticleSystem p = Instantiate(bloodSplatterParticle,transform.position,Quaternion.identity);
         p.Play();
@@ -50,6 +58,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void HitByPlayer (int projectilePlayerNumber, bool canHurtSelf = false)
     {
+        if (hasShield)
+        {
+            UseShield();
+            return;
+        }
+
         if (canHurtSelf == false)
         {
             if (projectilePlayerNumber == playerNumber)
@@ -136,6 +150,22 @@ public class PlayerHealth : MonoBehaviour
         if (health > maxHealth)
         {
             health = maxHealth;
+        }
+    }
+
+    public void GainShield(bool value, int amount)
+    {
+        hasShield = value;
+        shieldBlocksRemaining = amount;
+         
+    }
+
+    public void UseShield()
+    {
+        shieldBlocksRemaining--;
+        if (shieldBlocksRemaining <= 0)
+        {
+            hasShield = false;
         }
     }
 }

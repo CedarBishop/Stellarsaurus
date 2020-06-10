@@ -79,6 +79,11 @@ public class RaptorChase : StateMachineBehaviour
             return;
         }
 
+        if (Mathf.Abs(targetTransform.position.x - transform.position.x) < (ai.aiType.attackRange * 0.75f))
+        {
+            return;
+        }
+
         if (targetTransform.position.x - transform.position.x > 0) // target is to the right
         {
             rigidbody.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);

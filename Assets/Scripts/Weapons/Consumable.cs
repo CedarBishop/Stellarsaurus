@@ -29,10 +29,12 @@ public class Consumable : MonoBehaviour
                 player.playerHealth.Heal((int)amount);
                 break;
             case ConsumableType.Shield:
+                player.playerHealth.GainShield(true, (int)amount);
                 break;
             case ConsumableType.SuperShield:
                 break;
             case ConsumableType.SpeedBoost:
+                player.playerMovement.IsSpeedBoosted(true, amount);
                 break;
             case ConsumableType.InfiniteAmmo:
                 break;
@@ -65,10 +67,12 @@ public class Consumable : MonoBehaviour
             case ConsumableType.Healing:
                 break;
             case ConsumableType.Shield:
+                player.playerHealth.GainShield(false, 0);
                 break;
             case ConsumableType.SuperShield:
                 break;
             case ConsumableType.SpeedBoost:
+                player.playerMovement.IsSpeedBoosted(false,1.0f);
                 break;
             case ConsumableType.InfiniteAmmo:
                 break;

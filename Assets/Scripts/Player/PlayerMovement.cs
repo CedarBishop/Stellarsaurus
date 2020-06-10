@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     private float counterForce;
     private bool isHoldingJumpKey;
     private bool canDoubleJump;
+    private bool isSpeedBoosted;
+    private float speedBoostAmount;
     private int airJumps = 0;
     private bool isJumpBoosted;
     private bool isHoldingExtractionObject;
@@ -137,7 +139,9 @@ public class PlayerMovement : MonoBehaviour
 
         // movement update starts here
 
-        Vector2 velocity = new Vector2(horizontal * ((isGrounded) ? groundMovementSpeed : airMovementSpeed) * ((isHoldingExtractionObject) ? extractionWeightScaler : 1.0f) * Time.fixedDeltaTime, rigidbody.velocity.y);
+        Vector2 velocity = new Vector2(horizontal * ((isGrounded) ? groundMovementSpeed : airMovementSpeed) * ((isHoldingExtractionObject) ? extractionWeightScaler : 1.0f)
+            * ((isSpeedBoosted)? speedBoostAmount: 1.0f)
+            * Time.fixedDeltaTime, rigidbody.velocity.y);
 
         rigidbody.velocity = velocity;
         rigidbody.AddForce(new Vector2(rigidbody.velocity.x * -counterForce, 0));
@@ -232,6 +236,11 @@ public class PlayerMovement : MonoBehaviour
     public void CanDoubleJump(bool value)
     {
         canDoubleJump = value;
+    }
+
+    public void IsSpeedBoosted(bool value, float boostAmount)
+    {
+        isSpeedBoosted = value;
     }
 
     private void OnDrawGizmosSelected()
