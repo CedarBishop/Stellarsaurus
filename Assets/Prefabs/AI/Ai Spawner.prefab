@@ -96,5 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aisSpawned:
   - Raptor
-  spawnTime: 5
+  timeBeforeSpawning: 0
+  timeBetweenSpawning: 0
+  amountOfSpawns: 0
   ais: []

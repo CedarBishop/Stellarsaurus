@@ -19,6 +19,6 @@ public class Flame : Bullet
 
 	protected override void HitAI(AI ai)
 	{
-		base.HitAI(ai);
+		ai.HitByFlame(playerNumber);
 	}
 }

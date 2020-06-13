@@ -23,8 +23,9 @@ public class AI : MonoBehaviour
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
 
-    private AIBehaviour behaviour;  
+    private AIBehaviour behaviour;
 
+    private bool isBurning;
 
 
     public virtual void Initialise (AIType aIType)
@@ -93,6 +94,32 @@ public class AI : MonoBehaviour
         ParticleSystem p = Instantiate(bloodParticle, transform.position, Quaternion.identity);
         p.Play();
         Destroy(p, 1);
+    }
+
+
+    public void HitByFlame(int projectilePlayerNumber)
+    {
+        if (isBurning)
+        {
+            return;
+        }
+
+        isBurning = true;
+        StartCoroutine(Burning(projectilePlayerNumber));
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+    IEnumerator Burning(int projectilePlayerNumber)
+    {
+        while (health > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            health--;
+            if (health <= 0)
+            {
+                Death(projectilePlayerNumber);
+            }
+        }
     }
 
     public virtual void Death (int playerNumber)

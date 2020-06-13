@@ -26,6 +26,7 @@ public class RaptorPatrol : StateMachineBehaviour
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
         movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed *= Random.Range(0.8f,1.2f);
         transform = animator.transform;
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
