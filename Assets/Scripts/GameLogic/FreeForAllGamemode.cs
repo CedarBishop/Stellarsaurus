@@ -7,8 +7,8 @@ public class FreeForAllGamemode : BaseGamemode
     public override void StartMatch ()
     {
         base.StartMatch();
-        Debug.Log("Free for all start match");
-        
+        UIManager.instance.EnableTimer(false);
+        Debug.Log("Free for all start match");        
     }
 
     protected override void EndMatch ()

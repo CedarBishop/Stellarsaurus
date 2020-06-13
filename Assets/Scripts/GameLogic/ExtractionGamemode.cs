@@ -7,6 +7,7 @@ public class ExtractionGamemode : BaseGamemode
     public override void StartMatch()
     {
         base.StartMatch();
+        UIManager.instance.EnableTimer(true);
         Debug.Log("Extraction gamemode");
     }
 
@@ -44,6 +45,7 @@ public class ExtractionGamemode : BaseGamemode
     public override void StartRound()
     {
         base.StartRound();
+        UIManager.instance.EnableTimer(true);
 
         playersStillAliveThisRound = numOfPlayers;
         UIManager.instance.StartNewRound(roundNumber);
@@ -99,5 +101,10 @@ public class ExtractionGamemode : BaseGamemode
         Exit();
 
         GameManager.instance.EndMatch();
+    }
+
+    protected override void TimerIsOver()
+    {
+        EndRound(0);
     }
 }

@@ -56,14 +56,11 @@ public class Bullet : Projectile
             // AI Damage
             else if (collision.GetComponent<AI>())
             {
-                collision.GetComponent<AI>().TakeDamage(playerNumber, damage);
+                HitAI(collision.GetComponent<AI>());             
             }
-
-
         }
         if (destroysOnHit)
         {
-            //print(collision.name);
             if (destructionParticles != null)
             {
                 ParticleSystem p = Instantiate(destructionParticles, transform.position,Quaternion.identity);
@@ -132,5 +129,10 @@ public class Bullet : Projectile
     protected virtual void HitPlayer(PlayerHealth playerHealth)
     {
         playerHealth.HitByPlayer(playerNumber);
+    }
+
+    protected virtual void HitAI (AI ai)
+    {
+        ai.TakeDamage(playerNumber,damage);
     }
 }

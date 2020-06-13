@@ -16,4 +16,9 @@ public class Flame : Bullet
 		print("Flame Hit Player");
 		playerHealth.HitByFlame(playerNumber, true);
 	}
+
+	protected override void HitAI(AI ai)
+	{
+		base.HitAI(ai);
+	}
 }

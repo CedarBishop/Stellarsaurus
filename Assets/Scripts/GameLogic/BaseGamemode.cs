@@ -9,6 +9,7 @@ public class BaseGamemode : MonoBehaviour
     public int extractionPointReward = 15;
     public int playerKillsPointReward = 5;
     public int aiKillsPointReward = 1;
+    public float roundTime;
 
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
@@ -18,6 +19,11 @@ public class BaseGamemode : MonoBehaviour
     protected Player[] players;
     protected bool roundIsUnderway;
     protected float timer;
+
+    private void Start()
+    {
+        timer = roundTime;
+    }
 
     public virtual void StartMatch()
     {
@@ -51,15 +57,24 @@ public class BaseGamemode : MonoBehaviour
     {
         if (roundIsUnderway)
         {
-            timer += Time.deltaTime;
+            if (timer <= 0)
+            {
+                TimerIsOver();
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+           
+            UIManager.instance.SetTimer(timer);
         }
     }
 
 
     public virtual void StartRound ()
     {
+        timer = roundTime;
         roundIsUnderway = true;
-        timer = 0;
     }
 
     public virtual void EndRound (int winningPlayerNumber)
@@ -133,5 +148,10 @@ public class BaseGamemode : MonoBehaviour
                 player.points += aiKillsPointReward;
             }
         }
+    }
+
+    protected virtual void TimerIsOver ()
+    {
+
     }
 }

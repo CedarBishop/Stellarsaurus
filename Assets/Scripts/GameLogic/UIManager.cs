@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance = null;
 
     public Text roundText;
+    public Text timerText;
     public GameObject mainMenuUiParent;
     public GameObject gameUiParent;
     public GameObject pauseMenuParent;
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
     public Button quitButton;
 
     public Text[] playerScoreTexts;
+
+    bool displayTimer;
 
     void Awake()
     {
@@ -125,7 +128,6 @@ public class UIManager : MonoBehaviour
     {
         bool inMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
 
-
         pauseMenuParent.SetActive(true);
         pauseMainParent.SetActive(true);
         settingParent.SetActive(false);
@@ -177,6 +179,21 @@ public class UIManager : MonoBehaviour
             mainMenuUiParent.SetActive(false);
         }
 
+    }
+
+    public void EnableTimer (bool value)
+    {
+        displayTimer = value;
+        timerText.gameObject.SetActive(value);
+    }
+
+    public void SetTimer (float value)
+    {
+        if (displayTimer == false)
+        {
+            return;
+        }
+        timerText.text = value.ToString("F1");
     }
 
     public void Resume()
