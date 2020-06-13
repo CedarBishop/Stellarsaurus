@@ -306,7 +306,7 @@ public class PlayerShoot : MonoBehaviour
                          new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation);
                     Explosive explosive = g.GetComponent<Explosive>();
-                    explosive.InitExplosive(( cookTime >= currentWeapon.explosionTime)? 0.01f: currentWeapon.explosionTime - cookTime, currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude);
+                    explosive.InitExplosive(currentWeapon.explosionTime, currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude, cookTime);
                     break;
 
                 case WeaponUseType.Melee:       
