@@ -241,6 +241,7 @@ public class PlayerMovement : MonoBehaviour
     public void IsSpeedBoosted(bool value, float boostAmount)
     {
         isSpeedBoosted = value;
+        speedBoostAmount = boostAmount;
     }
 
     private void OnDrawGizmosSelected()

@@ -48,7 +48,6 @@ public class Explosive : Projectile
         if (cookTime >= explodeTime)
         {
             animator.Play("Grenade",0, 0.99f);
-
         }
         else
         {
