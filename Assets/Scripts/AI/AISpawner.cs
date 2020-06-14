@@ -11,12 +11,14 @@ public class AISpawner : MonoBehaviour
 
     public List<AIType> ais = new List<AIType>();
     private AI aiPrefab;
+    private Animator animator;
 
     void Start()
     {
         ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
         aiPrefab = LevelManager.instance.aiPrefab;
-
+        animator = GetComponent<Animator>();
+        animator.Play("Spawner_Open");
         StartCoroutine("DelaySpawn");
     }
 
@@ -30,7 +32,8 @@ public class AISpawner : MonoBehaviour
             x++;
             yield return new WaitForSeconds(timeBetweenSpawning);
         }
-        Destroy(gameObject);
+        animator.SetTrigger("SpawnerEnd");
+        Destroy(gameObject,1.5f);
     }
 
    void SpawnAI ()
