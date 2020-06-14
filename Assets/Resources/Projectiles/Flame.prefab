@@ -183,6 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3bf5af8f14ff14ca74b767b311d4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagesOnHit: 0
+  destroysOnHit: 0
   damage: 0
   playerNumber: 0
   destructionParticles: {fileID: 0}

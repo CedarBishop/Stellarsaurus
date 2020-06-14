@@ -12,13 +12,18 @@ public class Explosive : Projectile
     float magnitude;
     protected Rigidbody2D rigidbody;
     Animator animator;
-    IEnumerator Explode ()
+    IEnumerator CoExplode ()
    {
         yield return new WaitForSeconds(timeTillExplode);
-        cameraShake.StartShake(duration,magnitude);
-        if(explodeParticle != null)
+        Explode();
+    }
+
+    void Explode ()
+    {
+        cameraShake.StartShake(duration, magnitude);
+        if (explodeParticle != null)
             Instantiate(explodeParticle, transform.position, Quaternion.identity);
-       Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position,explosionSize);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionSize);
         if (colliders != null)
         {
             for (int i = 0; i < colliders.Length; i++)
@@ -38,9 +43,10 @@ public class Explosive : Projectile
         {
             SoundManager.instance.PlaySFX("SFX_Explosion");
         }
-        
+
         Destroy(gameObject);
-   }
+    }
+
 
     public void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
     {
@@ -55,13 +61,12 @@ public class Explosive : Projectile
             print(cookPercent);
             animator.Play("Grenade", 0, cookPercent);
         }
+        
         timeTillExplode = (cookTime >= explodeTime) ? 0.01f : explodeTime - cookTime;
         print(timeTillExplode);
         explosionSize = explodeSize;
         damage = _Damage;
         playerNumber = _PlayerNumber;
-        damagesOnHit = false;
-        destroysOnHit = false;
         cameraShake = Camera.main.GetComponent<CameraShake>();
         initialForce = force;
         duration = cameraShakeDuration;
@@ -69,7 +74,28 @@ public class Explosive : Projectile
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
 
-        StartCoroutine("Explode");
+        if (damagesOnHit == false )
+        {
+            StartCoroutine("CoExplode");
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.gameObject.GetComponent<PlayerHealth>().playerNumber == playerNumber)
+            {
+                return;
+            }
+        }
+
+        if (damagesOnHit)
+        {
+            print("It damages on hit");
+            Explode();
+        }
     }
 }
 

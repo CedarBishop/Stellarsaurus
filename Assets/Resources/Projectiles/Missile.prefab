@@ -139,10 +139,11 @@ GameObject:
   - component: {fileID: 7202534769512080439}
   - component: {fileID: 7202534769512080438}
   - component: {fileID: 3293232359238586544}
-  - component: {fileID: 6371678020240817306}
   - component: {fileID: 8902518856300708324}
+  - component: {fileID: 3965171965178940760}
+  - component: {fileID: 867320134522484753}
   m_Layer: 0
-  m_Name: Null
+  m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 7202534769512080437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.353, y: -0.569, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 72376129060738649}
   m_Father: {fileID: 0}
@@ -202,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3d5fb67c517ff1948a366eef96715b15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6b9e9f8153d92445b479a72f55d296f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -228,28 +229,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6371678020240817306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202534769512080437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fd20485ffd7f84da48389dd32de60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagesOnHit: 0
-  destroysOnHit: 0
-  damage: 0
-  playerNumber: 0
 --- !u!58 &8902518856300708324
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -265,4 +250,41 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
+--- !u!114 &3965171965178940760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202534769512080437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72b742dbf24b21488ea0b94f0c79796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagesOnHit: 1
+  destroysOnHit: 1
+  damage: 0
+  playerNumber: 0
+  explodeParticle: {fileID: 3193550971113487539, guid: 4e154815f7475a44ab8fe31066c0886c,
+    type: 3}
+--- !u!95 &867320134522484753
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202534769512080437}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3d7c25a1bf50b04d86a7fa04fd8248b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
