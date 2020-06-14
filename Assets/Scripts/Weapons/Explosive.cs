@@ -51,16 +51,21 @@ public class Explosive : Projectile
     public void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
     {
         animator = GetComponent<Animator>();
-        if (cookTime >= explodeTime)
+
+        if (animator)
         {
-            animator.Play("Grenade",0, 0.99f);
+            if (cookTime >= explodeTime)
+            {
+                animator.Play("Grenade", 0, 0.99f);
+            }
+            else
+            {
+                float cookPercent = cookTime / explodeTime;
+                print(cookPercent);
+                animator.Play("Grenade", 0, cookPercent);
+            }
         }
-        else
-        {
-            float cookPercent = cookTime / explodeTime;
-            print(cookPercent);
-            animator.Play("Grenade", 0, cookPercent);
-        }
+        
         
         timeTillExplode = (cookTime >= explodeTime) ? 0.01f : explodeTime - cookTime;
         print(timeTillExplode);
