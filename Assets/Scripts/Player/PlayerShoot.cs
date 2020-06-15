@@ -339,6 +339,15 @@ public class PlayerShoot : MonoBehaviour
                     break;
 
 
+                case WeaponUseType.Destructable:
+
+                    Destructable destructable = Instantiate(projectileType,
+                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
+                        gunOriginTransform.rotation).GetComponent<Destructable>();
+                    destructable.InitialiseDestructable(playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude,currentWeapon.subProjectileAmount, currentWeapon.subProjectileForce);
+
+                    break;
+
                 default:
                     break;
             }
@@ -495,7 +504,7 @@ public class PlayerShoot : MonoBehaviour
         cameraShakeDuration = currentWeapon.cameraShakeDuration;
         cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
 
-        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable || currentWeapon.weaponUseType == WeaponUseType.Boomerang)
+        if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable || currentWeapon.weaponUseType == WeaponUseType.Boomerang || currentWeapon.weaponUseType == WeaponUseType.Destructable)
         {
             if (currentWeapon.projectileType != null)
             {

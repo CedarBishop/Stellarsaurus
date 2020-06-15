@@ -353,7 +353,7 @@ public class DesignMaster : EditorWindow
                 }
                
 
-                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable )
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Throwable || weaponTypes[i].weaponUseType == WeaponUseType.Destructable)
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Initial Force", EditorStyles.boldLabel);
@@ -454,6 +454,17 @@ public class DesignMaster : EditorWindow
                 {
                     GUILayout.Label("Melee Attack Duration", EditorStyles.boldLabel);
                     weaponTypes[i].duration = EditorGUILayout.FloatField(weaponTypes[i].duration);
+                    EditorGUILayout.Space(8);
+                }
+
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Destructable)
+                {
+                    GUILayout.Label("Sub-Projectile Amount", EditorStyles.boldLabel);
+                    weaponTypes[i].subProjectileAmount = EditorGUILayout.IntField(weaponTypes[i].subProjectileAmount);
+                    EditorGUILayout.Space(8);
+
+                    GUILayout.Label("Sub-Projectile Force", EditorStyles.boldLabel);
+                    weaponTypes[i].subProjectileForce = EditorGUILayout.FloatField(weaponTypes[i].subProjectileForce);
                     EditorGUILayout.Space(8);
                 }
 

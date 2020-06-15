@@ -40,7 +40,7 @@ public class Consumable : MonoBehaviour
                 break;
             case ConsumableType.SlowdownTime:
                 player.playerMovement.IsSpeedBoosted(true, amount);
-                JuiceManager.TimeSleep(duration, (amount > 0 )? amount: 1.0f);
+                JuiceManager.TimeSleep(duration, (amount > 0 )? 1/amount: 1.0f);
                 break;
 
             default:
