@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ConsumableType { DoubleJump, Healing, Shield, SuperShield, SpeedBoost, InfiniteAmmo}
+public enum ConsumableType { DoubleJump, Healing, Shield, SuperShield, SpeedBoost, InfiniteAmmo, SlowdownTime}
 
 public class Consumable : MonoBehaviour
 {
@@ -38,6 +38,11 @@ public class Consumable : MonoBehaviour
                 break;
             case ConsumableType.InfiniteAmmo:
                 break;
+            case ConsumableType.SlowdownTime:
+                player.playerMovement.IsSpeedBoosted(true, amount);
+                JuiceManager.TimeSleep(duration, (amount > 0 )? amount: 1.0f);
+                break;
+
             default:
                 break;
         }
@@ -75,6 +80,9 @@ public class Consumable : MonoBehaviour
                 player.playerMovement.IsSpeedBoosted(false,1.0f);
                 break;
             case ConsumableType.InfiniteAmmo:
+                break;
+            case ConsumableType.SlowdownTime:
+                player.playerMovement.IsSpeedBoosted(false, 1.0f);
                 break;
             default:
                 break;
