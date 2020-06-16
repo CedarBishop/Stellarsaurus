@@ -111,6 +111,8 @@ GameObject:
   m_Component:
   - component: {fileID: 16093657663787743}
   - component: {fileID: 7048489503243427660}
+  - component: {fileID: 3595246176927852288}
+  - component: {fileID: 1657278030973125528}
   m_Layer: 17
   m_Name: Gun
   m_TagString: Untagged
@@ -182,6 +184,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3595246176927852288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092492907066607546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e4d3916ca6f7c4b8b93feb9f398c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorControllers:
+  - {fileID: 9100000, guid: d3d7c25a1bf50b04d86a7fa04fd8248b, type: 2}
+--- !u!95 &1657278030973125528
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092492907066607546}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2655954609655052927
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +417,8 @@ MonoBehaviour:
     consumableType: 0
     duration: 0
     amount: 0
+    subProjectileAmount: 0
+    subProjectileForce: {x: 0, y: 0}
     meleeType: {fileID: 0}
   player: {fileID: 0}
   ammoCount: 0

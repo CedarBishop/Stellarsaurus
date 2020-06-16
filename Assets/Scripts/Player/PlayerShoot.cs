@@ -19,6 +19,7 @@ public class PlayerShoot : MonoBehaviour
     PlayerMovement playerMovement;
     CameraShake cameraShake;
     private PlayerAudio playerAudio;
+    private PlayerWeaponAnimation weaponAnimation;
 
     string weaponName;
     Sprite weaponSprite;
@@ -53,6 +54,7 @@ public class PlayerShoot : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         cameraShake = mainCamera.GetComponent<CameraShake>();
         playerAudio = GetComponent<PlayerAudio>();
+        weaponAnimation = gunSprite.GetComponent<PlayerWeaponAnimation>();
     }
 
     private void OnDestroy()
@@ -130,6 +132,10 @@ public class PlayerShoot : MonoBehaviour
                             }
                             else
                             {
+                                if (shootOnRelease == false)
+                                {
+                                    weaponAnimation.PlayAnimation(currentWeapon.weaponName);
+                                }
                                 cookTime += Time.deltaTime;
                                 shootOnRelease = true;
                             }
@@ -146,7 +152,7 @@ public class PlayerShoot : MonoBehaviour
         {
             semiLimiter = true;
             chargeUpTimer = 0;
-
+            weaponAnimation.StopAnimation();
             if (shootOnRelease)
             {
                 Shoot();
