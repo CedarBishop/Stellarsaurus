@@ -254,6 +254,17 @@
                 },
                 {
                     "name": "",
+                    "id": "278f62ff-aae5-4765-929f-5b1896277e91",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StartJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8edc78ee-b188-46c8-82c6-be004c010fe0",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -299,7 +310,7 @@
                 {
                     "name": "",
                     "id": "1d362567-0c44-454e-bd4a-552d8c295673",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -380,6 +391,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "EndJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b20efd6-ceb6-4906-ba76-99dd81142907",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "EndJump",
                     "isComposite": false,
                     "isPartOfComposite": false
