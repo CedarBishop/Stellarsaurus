@@ -27,6 +27,11 @@ public class Bullet : Projectile
             {
                 HitPlayer(collision.GetComponent<PlayerHealth>());
             }
+            // AI Damage
+            else if (collision.GetComponent<AI>())
+            {
+                HitAI(collision.GetComponent<AI>());
+            }
             // Environmental Object Damage
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
             {
@@ -53,11 +58,7 @@ public class Bullet : Projectile
                     EnvObjHealth.TakeDamage(damage);
                 }
             }
-            // AI Damage
-            else if (collision.GetComponent<AI>())
-            {
-                HitAI(collision.GetComponent<AI>());             
-            }
+           
         }
         if (destroysOnHit)
         {
