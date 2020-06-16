@@ -463,8 +463,7 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].subProjectileAmount = EditorGUILayout.IntField(weaponTypes[i].subProjectileAmount);
                     EditorGUILayout.Space(8);
 
-                    GUILayout.Label("Sub-Projectile Force", EditorStyles.boldLabel);
-                    weaponTypes[i].subProjectileForce = EditorGUILayout.FloatField(weaponTypes[i].subProjectileForce);
+                    weaponTypes[i].subProjectileForce = EditorGUILayout.Vector2Field("Sub-Projectile Force", weaponTypes[i].subProjectileForce);
                     EditorGUILayout.Space(8);
                 }
 

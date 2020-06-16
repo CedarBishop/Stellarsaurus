@@ -208,7 +208,7 @@ public class WeaponType
     public float amount;
 
     public int subProjectileAmount;
-    public float subProjectileForce;
+    public Vector2 subProjectileForce;
 
     public GameObject meleeType;
 

@@ -344,7 +344,7 @@ public class PlayerShoot : MonoBehaviour
                     Destructable destructable = Instantiate(projectileType,
                          new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation).GetComponent<Destructable>();
-                    destructable.InitialiseDestructable(playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude,currentWeapon.subProjectileAmount, currentWeapon.subProjectileForce);
+                    destructable.InitialiseDestructable(playerNumber, currentWeapon.initialForce, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude,currentWeapon.subProjectileAmount, currentWeapon.subProjectileForce.x, currentWeapon.subProjectileForce.y);
 
                     break;
 

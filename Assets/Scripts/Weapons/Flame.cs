@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flame : Bullet
 {
-	public override void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force, float Spread, bool spawnBulletShell)
+	public override void InitialiseProjectile(float Range, int _Damage, int _PlayerNumber, float force, float Spread, bool spawnBulletShell, float upForce = 0)
 	{
 		base.InitialiseProjectile(Range, _Damage, _PlayerNumber, force, Spread, spawnBulletShell);
 		destroysOnHit = false;

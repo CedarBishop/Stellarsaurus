@@ -71,7 +71,7 @@ public class Bullet : Projectile
         }
     }
 
-    public virtual void InitialiseProjectile (float Range, int _Damage, int _PlayerNumber, float force, float Spread, bool spawnBulletShell)
+    public virtual void InitialiseProjectile (float Range, int _Damage, int _PlayerNumber, float force, float Spread, bool spawnBulletShell, float upForce = 0)
     {
         startingPosition = new Vector2(transform.position.x, transform.position.y);
         range = Range;
@@ -88,6 +88,7 @@ public class Bullet : Projectile
 
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
+        rigidbody.AddForce(transform.up * upForce);
         StartCoroutine("DestroySelf");
         StartCoroutine("DistanceTracker");
 

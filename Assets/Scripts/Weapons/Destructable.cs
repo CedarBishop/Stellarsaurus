@@ -10,18 +10,20 @@ public class Destructable : Projectile
     private Rigidbody2D rigidbody;
 
     private int amountOfSubProjectiles;
-    private float forceOfSubProjectile;
+    private float horizontalForceOfSubProjectile;
+    private float verticalForceOfSubProjectile;
     private float shakeDuration;
     private float shakeMagnitude;
 
-    public void InitialiseDestructable(int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, int subProjectilesAmount, float subProjectileForce)
+    public void InitialiseDestructable(int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, int subProjectilesAmount, float horizontalSubProjectileForce, float verticalSubProjectileForce)
     {
         playerNumber = _PlayerNumber;
         initialForce = force;
         shakeDuration = cameraShakeDuration;
         shakeMagnitude = cameraShakeMagnitude;
         amountOfSubProjectiles = subProjectilesAmount;
-        forceOfSubProjectile = subProjectileForce;
+        horizontalForceOfSubProjectile = horizontalSubProjectileForce;
+        verticalForceOfSubProjectile = verticalSubProjectileForce;
         cameraShake = Camera.main.GetComponent<CameraShake>();
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
@@ -44,7 +46,12 @@ public class Destructable : Projectile
             for (int i = 0; i < amountOfSubProjectiles; i++)
             {
                 Bullet sub = Instantiate(subProjectileTypeToSpawn, transform.position, Quaternion.identity).GetComponent<Bullet>();
-                sub.InitialiseProjectile(20,damage,playerNumber,Random.Range(-forceOfSubProjectile,forceOfSubProjectile), 0, false);
+                sub.InitialiseProjectile(20,damage,playerNumber,Random.Range(-horizontalForceOfSubProjectile,horizontalForceOfSubProjectile), 0, false, Random.Range(-verticalForceOfSubProjectile, verticalForceOfSubProjectile));
+            }
+
+            if (cameraShake != null)
+            {
+                cameraShake.StartShake(shakeDuration, shakeMagnitude);
             }
             Destroy(gameObject);
         }
