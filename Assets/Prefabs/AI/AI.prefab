@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolController: {fileID: 9100000, guid: 362be957a185fe34dbfbc2407cd85157, type: 2}
   guardController: {fileID: 0}
-  flyerController: {fileID: 0}
+  flyerController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
   carrierController: {fileID: 0}
   groundLayer:
     serializedVersion: 2
