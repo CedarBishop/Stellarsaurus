@@ -132,9 +132,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRounds: 10
+  extractionPointReward: 15
+  lastPlayerAlivePoints: 0
+  playerKillsPointReward: 5
+  aiKillsPointReward: 1
+  roundTime: 0
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
+  playerMatchStats: []
 --- !u!114 &2378037744067400863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,9 +154,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRounds: 10
+  extractionPointReward: 15
+  lastPlayerAlivePoints: 5
+  playerKillsPointReward: 5
+  aiKillsPointReward: 1
+  roundTime: 0
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
+  playerMatchStats: []
 --- !u!114 &59959285128919413
 MonoBehaviour:
   m_ObjectHideFlags: 0

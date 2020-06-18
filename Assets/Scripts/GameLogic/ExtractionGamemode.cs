@@ -82,7 +82,21 @@ public class ExtractionGamemode : BaseGamemode
     public override void PlayerDied ()
     {
         base.PlayerDied();
-        if (playersStillAliveThisRound <= 0)
+
+        if (playersStillAliveThisRound == 1)
+        {
+            int winningPlayerNumber = 0;
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].isStillAlive)
+                {
+                    winningPlayerNumber = players[i].playerNumber;
+                }
+            }
+            AwardRoundWin(winningPlayerNumber);
+            EndRound(winningPlayerNumber);
+        }
+        else if (playersStillAliveThisRound < 1)
         {
             EndRound(0);
         }

@@ -7,6 +7,7 @@ public class BaseGamemode : MonoBehaviour
 
     public int numberOfRounds;
     public int extractionPointReward = 15;
+    public int lastPlayerAlivePoints;
     public int playerKillsPointReward = 5;
     public int aiKillsPointReward = 1;
     public float roundTime;
@@ -106,6 +107,7 @@ public class BaseGamemode : MonoBehaviour
             if (player.playerNumber == playerNumber)
             {
                 player.roundWins++;
+                player.points += lastPlayerAlivePoints;
             }
         }
     }
