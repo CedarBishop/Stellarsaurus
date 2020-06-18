@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
 
     public Text[] playerScoreTexts;
 
+    public Animator sceneTransistionAnimator;
+
     bool displayTimer;
 
     void Awake()
@@ -59,11 +61,12 @@ public class UIManager : MonoBehaviour
             gameUiParent.SetActive(true);
             mainMenuUiParent.SetActive(false);
         }
-        
+        sceneTransistionAnimator.SetTrigger("OpenDoor");
     }
 
     public void StartNewRound(int roundNumber)
     {
+        sceneTransistionAnimator.SetTrigger("OpenDoor");
         roundText.text = "Round " + roundNumber.ToString();
         StartCoroutine("DelayRoundTextFade");
         foreach (var item in playerScoreTexts)
@@ -80,6 +83,7 @@ public class UIManager : MonoBehaviour
 
     public void EndRound( int winningPlayerNumber, int roundNumber)
     {
+        sceneTransistionAnimator.SetTrigger("CloseDoor");
         if (winningPlayerNumber == 0)
         {
             roundText.text = "Nobody won round " + roundNumber.ToString();
@@ -92,6 +96,7 @@ public class UIManager : MonoBehaviour
 
     public void EndRound(List<PlayerMatchStats> playerMatchStats, int roundNumber)
     {
+        sceneTransistionAnimator.SetTrigger("CloseDoor");
         if (playerMatchStats == null || playerMatchStats.Count == 0)
         {
             return;
