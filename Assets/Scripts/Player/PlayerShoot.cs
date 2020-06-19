@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AimType { FreeAim, EightDir, FourDir}
+public enum Orthogonal {Up, Right, Down, Left }
 public class PlayerShoot : MonoBehaviour
 {
     public Transform gunOriginTransform;
     public SpriteRenderer gunSprite;
-
 
     [HideInInspector] public bool isGamepad;
     [HideInInspector] public int playerNumber;
@@ -20,6 +21,8 @@ public class PlayerShoot : MonoBehaviour
     CameraShake cameraShake;
     private PlayerAudio playerAudio;
     private PlayerWeaponAnimation weaponAnimation;
+
+    private AimType aimType;
 
     string weaponName;
     Sprite weaponSprite;
@@ -67,14 +70,51 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (isGamepad == false)
+        switch (aimType)
         {
-            Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 directionToTarget = target - new Vector2(transform.position.x, transform.position.y);
-            gunOriginTransform.right = TranslateToEightDirection(directionToTarget.normalized);
-          
-            //gunOriginTransform.right = directionToTarget;
+            case AimType.FreeAim:
+                if (isGamepad == false)
+                {
+                    Vector2 direction = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                    gunOriginTransform.right = direction;
+                }
+                break;
+            case AimType.EightDir:
+                if (isGamepad == false)
+                {
+                    Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 directionToTarget = target - new Vector2(transform.position.x, transform.position.y);
+                    gunOriginTransform.right = TranslateToEightDirection(directionToTarget.normalized);
+                }
+                break;
+            case AimType.FourDir:
+
+                switch (playerMovement.GetDirection())
+                {
+                    case Orthogonal.Up:
+                        gunOriginTransform.right = Vector2.up;
+                        gunSprite.flipY = false;
+                        break;
+                    case Orthogonal.Right:
+                        gunOriginTransform.right = Vector2.right;
+                        gunSprite.flipY = false;
+                        break;
+                    case Orthogonal.Down:
+                        gunOriginTransform.right = Vector2.down;
+                        gunSprite.flipY = true;
+                        break;
+                    case Orthogonal.Left:
+                        gunOriginTransform.right = new Vector2(-1, 0.01f);
+                        gunSprite.flipY = true;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
         }
+       
 
         if (isHoldingFireButton)
         {
@@ -165,16 +205,33 @@ public class PlayerShoot : MonoBehaviour
     }
 
     public void Aim(Vector2 v)
-    { 
-        if (isGamepad)
+    {
+        switch (aimType)
         {
-            if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
-            {
-                gunOriginTransform.right = TranslateToEightDirection(v);
-              
-                //gunOriginTransform.right = v;
-            }
+            case AimType.FreeAim:
+                if (isGamepad)
+                {
+                    if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
+                    {
+                        gunOriginTransform.right = v;
+                    }
+                }
+                break;
+            case AimType.EightDir:
+                if (isGamepad)
+                {
+                    if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
+                    {
+                        gunOriginTransform.right = TranslateToEightDirection(v);
+                    }
+                }
+                break;
+            case AimType.FourDir:
+                break;
+            default:
+                break;
         }
+        
     }
 
     Vector2 TranslateToEightDirection (Vector2 v)
@@ -549,5 +606,10 @@ public class PlayerShoot : MonoBehaviour
         currentWeapon = null;
         triggeredWeapon = null;
         ammoCount = 0;
+    }
+
+    public void SetAimType (AimType _AimType)
+    {
+        aimType = _AimType;
     }
 }

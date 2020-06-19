@@ -50,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     CameraController cameraController;
 
+    private Orthogonal orthogonal;
+    private float verticalAim;
+
 
     // Get components and initialise stats from design master here
     void Start()
@@ -68,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         cutJumpHeight = playerParams.cutJumpHeight;
         counterForce = playerParams.counterForce;
 
+        GetComponent<PlayerShoot>().SetAimType(playerParams.aimType);
         cameraController = Camera.main.GetComponent<CameraController>();
         if (cameraController != null)
         {
@@ -153,6 +157,29 @@ public class PlayerMovement : MonoBehaviour
     public void Move (float value)
     {
         horizontal = value;
+
+        if (horizontal > 0)
+        {
+            orthogonal = Orthogonal.Right;
+        }
+        else if (horizontal < 0)
+        {
+            orthogonal = Orthogonal.Left;
+        }
+    }
+
+    public void AimVertical (float value)
+    {
+        verticalAim = value;
+
+        if (verticalAim > 0)
+        {
+            orthogonal = Orthogonal.Up;
+        }
+        else if (verticalAim < 0)
+        {
+            orthogonal = Orthogonal.Down;
+        }
     }
 
     public void StartJump ()
@@ -260,6 +287,10 @@ public class PlayerMovement : MonoBehaviour
         isHoldingExtractionObject = value;
     }
 
+    public Orthogonal GetDirection ()
+    {
+        return orthogonal;
+    }
 }
 
 
@@ -276,4 +307,6 @@ public class PlayerParams
     public float jumpBufferTime;
     public float cutJumpHeight;
     public float counterForce;
+
+    public AimType aimType;
 }

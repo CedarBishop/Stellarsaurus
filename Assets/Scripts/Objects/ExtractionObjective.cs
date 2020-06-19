@@ -42,6 +42,11 @@ public class ExtractionObjective : MonoBehaviour
                 OnChargeComplete();
             }
         }
+
+        if (transform.position.y < -20)
+        {
+            transform.position = LevelManager.instance.extractionObjectSpawnPosition.position;
+        }
     }
 
     public Sprite OnPickup (int num)

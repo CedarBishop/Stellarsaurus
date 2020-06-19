@@ -161,5 +161,11 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.Pause();
     }
-    
+
+    void OnAimVertical(InputValue value)
+    {
+        if (playerMovement != null)
+            playerMovement.AimVertical(value.Get<float>());
+    }
+
 }
