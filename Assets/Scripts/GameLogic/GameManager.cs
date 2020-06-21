@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<PlayerInput> playerInputs = new List<PlayerInput>();
     [HideInInspector] public List<UIController> uIControllers = new List<UIController>();
 
-
     private BaseGamemode selectedGamemode;
 
     public BaseGamemode SelectedGamemode
@@ -29,6 +28,7 @@ public class GameManager : MonoBehaviour
     private FreeForAllGamemode freeForAllGamemode;
     private ExtractionGamemode extractionGamemode;
 
+    private Player[] players = new Player[4];
 
     // Sets up this class as a singleton
     void Awake()
@@ -52,6 +52,24 @@ public class GameManager : MonoBehaviour
     {
         inputManager.EnableJoining();
         SceneManager.activeSceneChanged += OnSceneChange;
+    }
+
+    public int AssignPlayerNumber (Player player)
+    {
+        int num = 0;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (num > 0)
+            {
+                continue;
+            }
+            if (players[i] == null)
+            {
+                players[i] = player;
+                num = i + 1;
+            }
+        }
+        return num;
     }
 
 
@@ -81,11 +99,25 @@ public class GameManager : MonoBehaviour
     // Removes player stats ui for the player that left and changes the count of players so that new players can join
     void OnPlayerLeft()
     {
-        foreach (PlayerStats player in playerStats)
+        print("Player Left");
+        for (int i = 0; i < playerStats.Count; i++)
         {
-            if (player.playerNumber == playerCount)
+            bool playerIsStillConnected = false;
+            for (int j = 0; j < players.Length; j++)
             {
-                playerStats.Remove(player);
+                if (players[j] == null)
+                {
+                    continue;
+                }
+                if (playerStats[i].playerNumber == players[j].playerNumber)
+                {
+                    playerIsStillConnected = true;
+                }
+            }
+
+            if (playerIsStillConnected == false)
+            {
+                playerStats.Remove(playerStats[i]);
             }
         }
         playerCount--;

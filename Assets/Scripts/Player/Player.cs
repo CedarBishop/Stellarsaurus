@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        playerNumber = GameManager.instance.playerCount;
+        playerNumber = GameManager.instance.AssignPlayerNumber(this);
         playerInput = GetComponent<PlayerInput>();
         uiController = GetComponent<UIController>();
         uiController.playerNumber = playerNumber;
