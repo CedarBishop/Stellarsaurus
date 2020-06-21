@@ -152,6 +152,7 @@ MonoBehaviour:
     smallJumpHeight: 0
     largeJumpHeight: 0
     jumpDetectionDistance: 0
+    swoopSpeed: 0
   health: 0
 --- !u!95 &2765672809849141196
 Animator:
@@ -163,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 2765672809849141197}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 362be957a185fe34dbfbc2407cd85157, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

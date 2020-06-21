@@ -638,7 +638,6 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Behaviour", EditorStyles.boldLabel);
                 aiTypes[i].aiBehaviour = (AIBehaviour)EditorGUILayout.EnumPopup(aiTypes[i].aiBehaviour);
 
-
                 if (aiTypes[i].aiBehaviour == AIBehaviour.Patrol)
                 {
                     EditorGUILayout.Space(16);
@@ -657,11 +656,23 @@ public class DesignMaster : EditorWindow
                     GUILayout.Label("Jump Detection Distance", EditorStyles.boldLabel);
                     aiTypes[i].jumpDetectionDistance = EditorGUILayout.Slider(aiTypes[i].jumpDetectionDistance,0.0f,5.0f);
                 }
-               
 
+                if (aiTypes[i].aiBehaviour == AIBehaviour.Fly)
+                {
+                    EditorGUILayout.Space(16);
+                    GUILayout.Label("Flyer", EditorStyles.boldLabel);
+                    EditorGUILayout.Space(8);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
+                    aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Wall Detection Distance", EditorStyles.boldLabel);
+                    aiTypes[i].jumpDetectionDistance = EditorGUILayout.Slider(aiTypes[i].jumpDetectionDistance, 0.0f, 5.0f);
+                }             
 
                 EditorGUILayout.Space(16);
-
 
                 if (GUILayout.Button("Delete AI"))
                 {
@@ -687,7 +698,6 @@ public class DesignMaster : EditorWindow
     void DisplayPlayerParams()
     {
         EditorGUILayout.BeginVertical();
-
 
         EditorGUILayout.Space(8);
 
@@ -852,13 +862,11 @@ public class DesignMaster : EditorWindow
         EditorGUILayout.Space(8);
         if (climbScenes != null)
         {
-
             if (climbScenes.Count != 0)
             {
                 for (int i = 0; i < climbScenes.Count; i++)
                 {
                     climbScenes[i] = (SceneAsset)EditorGUILayout.ObjectField(climbScenes[i], typeof(SceneAsset), true);
-
 
                     if (GUILayout.Button("Remove Level"))
                     {
@@ -867,10 +875,7 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                 }
             }
-
-
         }
-
 
         EditorGUILayout.Space(16);
 

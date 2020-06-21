@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
+    public event System.Action OnHit;
+
     public RuntimeAnimatorController patrolController;
     public RuntimeAnimatorController guardController;
     public RuntimeAnimatorController flyerController;
@@ -90,6 +92,13 @@ public class AI : MonoBehaviour
         if (health <= 0)
         {
             Death(playerNumber);
+        }
+        else
+        {
+            if (OnHit != null)
+            {
+                OnHit();
+            }
         }
         ParticleSystem p = Instantiate(bloodParticle, transform.position, Quaternion.identity);
         p.Play();
@@ -185,5 +194,7 @@ public class AIType
     public float smallJumpHeight;
     public float largeJumpHeight;
     public float jumpDetectionDistance;
+
+    public float swoopSpeed;
 
 }
