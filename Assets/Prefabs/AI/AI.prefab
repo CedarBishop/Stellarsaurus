@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2191916287108192164, guid: bfb0ef60761439544abc62faf93e5f3b,
+  m_Sprite: {fileID: 5723286569855862882, guid: 5de63d295c60a724d874826826fa0314,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -144,6 +144,8 @@ MonoBehaviour:
     attackCooldown: 0
     attackRange: 0
     attackSize: 0
+    colliderSize: {x: 0, y: 0}
+    colliderOffset: {x: 0, y: 0}
     viewingDistance: 0
     fieldOfView: 0
     hearingRadius: 0
@@ -154,6 +156,7 @@ MonoBehaviour:
     jumpDetectionDistance: 0
     swoopSpeed: 0
   health: 0
+  startingPosition: {x: 0, y: 0}
 --- !u!95 &2765672809849141196
 Animator:
   serializedVersion: 3
@@ -207,6 +210,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0}
-  m_Size: {x: 0.88, y: 0.78}
+  m_Offset: {x: 0.1, y: -0.5}
+  m_Size: {x: 1.2, y: 0.85}
   m_Direction: 1

@@ -614,6 +614,12 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Chance of Dropping Reward", EditorStyles.boldLabel);
                 aiTypes[i].chanceOfDroppingWeapon = EditorGUILayout.Slider(aiTypes[i].chanceOfDroppingWeapon, 0.0f, 1.0f);
 
+                EditorGUILayout.Space(8);
+                aiTypes[i].colliderOffset = EditorGUILayout.Vector2Field("Collider Offset", aiTypes[i].colliderOffset);
+
+                EditorGUILayout.Space(8);
+                aiTypes[i].colliderSize = EditorGUILayout.Vector2Field("Collider Size", aiTypes[i].colliderSize);
+
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Perception", EditorStyles.boldLabel);
                 EditorGUILayout.Space(8);
@@ -782,13 +788,9 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                 }
             }
-
-
         }
 
-
         EditorGUILayout.Space(16);
-
 
         GUILayout.Label("Elimination levels", EditorStyles.boldLabel);
         EditorGUILayout.Space(8);
@@ -845,13 +847,9 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                 }
             }
-
-
         }
 
-
         EditorGUILayout.Space(16);
-
 
         GUILayout.Label("Climb levels", EditorStyles.boldLabel);
         EditorGUILayout.Space(8);
@@ -900,8 +898,6 @@ public class DesignMaster : EditorWindow
 
         List<string> scenePaths = new List<string>();
 
-
-
         for (int i = 0; i < freeForAllScenes.Count; i++)
         {
             levels.freeForAllScenes.Add(freeForAllScenes[i].name);
@@ -943,12 +939,8 @@ public class DesignMaster : EditorWindow
             }
         }
 
-
-        
-
         // Set the Build Settings window Scene list
         EditorBuildSettings.scenes = editorBuildSettingsScenes.ToArray();
-
 
         return levels;
     }
@@ -984,9 +976,7 @@ public class DesignMaster : EditorWindow
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
 
-        File.WriteAllText(Application.dataPath + "/Resources/DesignMaster.txt", json);
-
-      
+        File.WriteAllText(Application.dataPath + "/Resources/DesignMaster.txt", json);      
     }
 
     static List<WeaponType> LoadFromJSON(out List <AIType> aITypes, out PlayerParams playerParams)
@@ -998,13 +988,9 @@ public class DesignMaster : EditorWindow
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
         aITypes = saveObject.savedAis;
         playerParams = saveObject.playerParams;
-        CompareAndLoadScenesFromBuildSettings(saveObject.levelPlaylist);
-
-        
-
+        CompareAndLoadScenesFromBuildSettings(saveObject.levelPlaylist);      
 
         return saveObject.savedWeapons;
-
 
     }
 

@@ -24,6 +24,7 @@ public class AI : MonoBehaviour
     private Perception perception;
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
+    private CapsuleCollider2D collider;
 
     private AIBehaviour behaviour;
 
@@ -37,6 +38,8 @@ public class AI : MonoBehaviour
         perception = GetComponent<Perception>();
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<CapsuleCollider2D>();
+
 
         aiType = aIType;
         spriteRenderer.sprite = aiType.aiSprite;
@@ -45,6 +48,9 @@ public class AI : MonoBehaviour
         perception.viewingDistance = aiType.viewingDistance;
         perception.fieldOfView = aiType.fieldOfView;
         perception.hearingRadius = aiType.hearingRadius;
+
+        collider.offset = aiType.colliderOffset;
+        collider.size = aiType.colliderSize;
 
         startingPosition = transform.position;
         behaviour = aiType.aiBehaviour;
@@ -183,6 +189,9 @@ public class AIType
     public float attackCooldown;
     public float attackRange;
     public float attackSize;
+
+    public Vector2 colliderSize;
+    public Vector2 colliderOffset;
 
     public float viewingDistance;
     public float fieldOfView;
