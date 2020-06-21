@@ -45,6 +45,17 @@ public class PterodactylSwoop : StateMachineBehaviour
     void Swoop ()
     {
         rigidbody.velocity = new Vector2((perception.isFacingRight)?movementSpeed: -movementSpeed, -swoopSpeed) * Time.fixedDeltaTime;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ai.aiType.attackSize);
+        if (colliders != null)
+        {
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Player"))
+                {
+                    collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
+                }
+            }
+        }
     }
 
     void WallCheck()

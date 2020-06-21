@@ -28,6 +28,7 @@ public class AI : MonoBehaviour
     private AIBehaviour behaviour;
 
     private bool isBurning;
+    [HideInInspector] public Vector2 startingPosition;
 
 
     public virtual void Initialise (AIType aIType)
@@ -45,7 +46,7 @@ public class AI : MonoBehaviour
         perception.fieldOfView = aiType.fieldOfView;
         perception.hearingRadius = aiType.hearingRadius;
 
-
+        startingPosition = transform.position;
         behaviour = aiType.aiBehaviour;
         switch (behaviour)
         {

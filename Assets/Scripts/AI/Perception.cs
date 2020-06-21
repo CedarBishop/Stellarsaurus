@@ -20,7 +20,7 @@ public class Perception : MonoBehaviour
 
     private void Start()
     {
-        isFacingRight = true;
+        isFacingRight = (Random.Range(0,2) > 0);
     }
 
     private void FixedUpdate()

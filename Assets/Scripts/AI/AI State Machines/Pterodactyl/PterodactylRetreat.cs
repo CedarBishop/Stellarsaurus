@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PterodactylRetreat : StateMachineBehaviour
 {
@@ -11,12 +12,9 @@ public class PterodactylRetreat : StateMachineBehaviour
     Rigidbody2D rigidbody;
     private float movementSpeed;
     private float swoopSpeed;
-    private float swoopTimer;
-
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        swoopTimer = Random.Range(5.0f, 10.0f);
         ai = animator.GetComponent<AI>();
         perception = animator.GetComponent<Perception>();
         _Animator = animator;
@@ -31,7 +29,12 @@ public class PterodactylRetreat : StateMachineBehaviour
     {
         Swoop();
         WallCheck();
-        SwoopCountdown();
+        CheckIfInAir();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex, AnimatorControllerPlayable controller)
+    {
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
     }
 
     void Swoop()
@@ -48,16 +51,11 @@ public class PterodactylRetreat : StateMachineBehaviour
         }
     }
 
-    void SwoopCountdown()
+    void CheckIfInAir()
     {
-        if (swoopTimer <= 0)
+        if (transform.position.y >= ai.startingPosition.y)
         {
             _Animator.SetTrigger("BackToPatrol");
-        }
-        else
-        {
-            swoopTimer -= Time.fixedDeltaTime;
-        }
-
+        }    
     }
 }
