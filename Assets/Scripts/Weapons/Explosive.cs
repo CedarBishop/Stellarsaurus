@@ -32,9 +32,13 @@ public class Explosive : Projectile
                 {
                     colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber, true);
                 }
-                if (colliders[i].GetComponent<AI>())
+                else if (colliders[i].GetComponent<AI>())
                 {
                     colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
+                }
+                else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
+                {
+                    colliders[i].GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
                 }
             }
         }

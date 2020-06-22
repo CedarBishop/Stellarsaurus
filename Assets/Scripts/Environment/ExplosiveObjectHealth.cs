@@ -23,6 +23,23 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
         //envObjHealth = GetComponent<EnvironmentalObjectHealth>();
     }
 
+    public override void TakeDamage(int damage, int playerNumber)
+    {
+        if (health - damage <= 0)
+        {
+            // Do fancy explosive barrel checks for damaging players
+            DamageCharactersWithinRadius(playerNumber);
+            ExplosiveDestructionSequence();
+        }
+        else
+        {
+            // Deal damage to object and update particles
+            UpdateParticles();
+        }
+        base.TakeDamage(damage, playerNumber);
+
+    }
+
     public void UpdateParticles()
     {
         if (hasSmokeEffect)
