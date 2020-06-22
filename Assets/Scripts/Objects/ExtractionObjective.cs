@@ -10,6 +10,8 @@ public class ExtractionObjective : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     private new CircleCollider2D collider;
+    private Animator animator;
+    private Animator weaponSpriteAnimator;
 
     private float timer;
     private bool chargeCompleted;
@@ -21,6 +23,8 @@ public class ExtractionObjective : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<CircleCollider2D>();
+        animator = GetComponent<Animator>();
+        animator.SetFloat("AnimSpeed",0.1f);
     }
 
     void Update()
@@ -30,10 +34,16 @@ public class ExtractionObjective : MonoBehaviour
             if (isHeld)
             {
                 timer += Time.deltaTime;
+                weaponSpriteAnimator.SetFloat("AnimSpeed", timer * 0.1f);
             }
             else
             {
+                if (timer <= 0)
+                {
+                    timer = 0;
+                }
                 timer -= (Time.deltaTime * chargeDownScaler);
+                animator.SetFloat("AnimSpeed", timer * 0.1f);
             }
 
             if (timer >= timeRequiredToCharge)
@@ -47,12 +57,13 @@ public class ExtractionObjective : MonoBehaviour
         {
             transform.position = LevelManager.instance.extractionObjectSpawnPosition.position;
         }
+         
     }
 
-    public Sprite OnPickup (int num)
+    public void OnPickup (int num, Animator playerWeaponAnimator)
     {
+        weaponSpriteAnimator = playerWeaponAnimator;
         isHeld = true;
-        Sprite sprite = spriteRenderer.sprite;
         playerNumber = num;
 
         spriteRenderer.enabled = false;
@@ -60,11 +71,12 @@ public class ExtractionObjective : MonoBehaviour
 
         transform.position = new Vector3(1000,1000,0);
 
-        return sprite;
     }
 
     public void OnDrop (Vector3 newPos)
     {
+        rigidbody.velocity = Vector2.zero;
+        weaponSpriteAnimator = null;
         isHeld = false;
         transform.position = newPos;
         spriteRenderer.enabled = true;

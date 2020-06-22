@@ -21,6 +21,7 @@ public class PlayerWeaponAnimation : MonoBehaviour
             if (item.name == weaponName)
             {
                 animator.runtimeAnimatorController = item;
+                print(animator.runtimeAnimatorController.name);
                 animator.Play(weaponName);
             }
             

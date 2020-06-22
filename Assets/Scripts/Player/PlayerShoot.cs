@@ -192,7 +192,10 @@ public class PlayerShoot : MonoBehaviour
         {
             semiLimiter = true;
             chargeUpTimer = 0;
-            weaponAnimation.StopAnimation();
+            if (extractionObjective == null)
+            {
+                weaponAnimation.StopAnimation();
+            }
             if (shootOnRelease)
             {
                 Shoot();
@@ -504,13 +507,15 @@ public class PlayerShoot : MonoBehaviour
         playerMovement.SetIsHoldingExtractionObject(false);
         extractionObjective = null;
         gunSprite.sprite = null;
+        weaponAnimation.StopAnimation();
     }
 
     void PickupExtractionObject()
     {
         playerMovement.SetIsHoldingExtractionObject(true);
         extractionObjective = triggeredExtractionObjective;
-        gunSprite.sprite = extractionObjective.OnPickup(playerNumber);
+        extractionObjective.OnPickup(playerNumber, weaponAnimation.GetComponent<Animator>());
+        weaponAnimation.PlayAnimation("Extraction");
     }
 
     IEnumerator DelayBetweenShots ()
