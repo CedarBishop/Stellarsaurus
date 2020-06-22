@@ -15,7 +15,7 @@ public class BaseGamemode : MonoBehaviour
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
     [HideInInspector] public int playersStillAliveThisRound;
-    public List<PlayerMatchStats> playerMatchStats = new List<PlayerMatchStats>();
+    [HideInInspector] public List<PlayerMatchStats> playerMatchStats = new List<PlayerMatchStats>();
 
     protected Player[] players;
     protected bool roundIsUnderway;
