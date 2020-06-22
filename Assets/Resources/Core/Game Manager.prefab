@@ -113,10 +113,11 @@ MonoBehaviour:
   levelSelector: {fileID: 4921186234686291158}
   playerCount: 0
   playerColours:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 1, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0.9921569, g: 0.25882354, b: 0.27450982, a: 1}
+  - {r: 0.990566, g: 0.2569865, b: 0.27487865, a: 1}
+  - {r: 1, g: 0.8630855, b: 0.12156862, a: 1}
+  - {r: 0.4039216, g: 0.85098046, b: 0.19607845, a: 1}
+  - {r: 0.050980397, g: 0.32156864, b: 0.8313726, a: 1}
   playerInputs: []
   uIControllers: []
 --- !u!114 &1283880972
@@ -136,7 +137,7 @@ MonoBehaviour:
   lastPlayerAlivePoints: 0
   playerKillsPointReward: 5
   aiKillsPointReward: 1
-  roundTime: 0
+  roundTime: 45
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
@@ -158,7 +159,7 @@ MonoBehaviour:
   lastPlayerAlivePoints: 5
   playerKillsPointReward: 5
   aiKillsPointReward: 1
-  roundTime: 0
+  roundTime: 45
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
       jumpBufferTime: 0
       cutJumpHeight: 0
       counterForce: 0
+      aimType: 0
     levelPlaylist:
       freeForAllScenes: []
       eliminationScenes: []

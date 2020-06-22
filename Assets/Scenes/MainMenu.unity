@@ -4883,6 +4883,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 421269320, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+      propertyPath: playerColours.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 421269320, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+      propertyPath: playerColours.Array.data[0].r
+      value: 0.050980397
+      objectReference: {fileID: 0}
+    - target: {fileID: 421269320, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+      propertyPath: playerColours.Array.data[0].g
+      value: 0.32156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 421269320, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+      propertyPath: playerColours.Array.data[0].b
+      value: 0.8313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 421269320, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+      propertyPath: playerColours.Array.data[2].g
+      value: 0.91266924
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378037744067400863, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
+        type: 3}
+      propertyPath: roundTime
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 8990490027761441408, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}
       propertyPath: m_LocalPosition.x
