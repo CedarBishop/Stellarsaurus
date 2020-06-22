@@ -19,7 +19,7 @@ public class EnvironmentalObjectHealth : MonoBehaviour
     }
 
     // Call this method from outside when an object in question takes damage.
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, int playerNumber)
     {
         health -= damage;
         if (SoundManager.instance != null)

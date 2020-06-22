@@ -35,28 +35,7 @@ public class Bullet : Projectile
             // Environmental Object Damage
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
             {
-                EnvironmentalObjectHealth EnvObjHealth = collision.GetComponent<EnvironmentalObjectHealth>();
-                // Check that object should explode
-                if (collision.GetComponent<ExplosiveObjectHealth>() != null)
-                {
-                    ExplosiveObjectHealth ExpObjHealth = collision.GetComponent<ExplosiveObjectHealth>();
-                    if (ExpObjHealth.health - damage <= 0)
-                    {
-                        // Do fancy explosive barrel checks for damaging players
-                        ExpObjHealth.DamageCharactersWithinRadius(playerNumber);
-                        ExpObjHealth.ExplosiveDestructionSequence();
-                    }
-                    else
-                    {
-                        // Deal damage to object and update particles
-                        ExpObjHealth.TakeDamage(damage);
-                        ExpObjHealth.UpdateParticles();
-                    }
-                }
-                else
-                {
-                    EnvObjHealth.TakeDamage(damage);
-                }
+                collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage,playerNumber);
             }
            
         }

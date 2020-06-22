@@ -37,9 +37,13 @@ public class Melee : MonoBehaviour
         {
             collision.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
         }
-        if (collision.GetComponent<AI>())
+        else if (collision.GetComponent<AI>())
         {
             collision.GetComponent<AI>().TakeDamage(playerNumber, damage);
+        }
+        else if (collision.GetComponent<EnvironmentalObjectHealth>())
+        {
+            collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
         }
     }
 
