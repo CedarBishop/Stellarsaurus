@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -101,11 +102,12 @@ public class UIManager : MonoBehaviour
         {
             return;
         }
+        
         for (int i = 0; i < playerMatchStats.Count; i++)
         {
-            playerScoreTexts[i].gameObject.SetActive(true);
-            playerScoreTexts[i].text = "P" + (i + 1) + ": " + playerMatchStats[i].points;
-            playerScoreTexts[i].color = GameManager.instance.playerColours[i];
+            playerScoreTexts[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
+            playerScoreTexts[playerMatchStats[i].playerNumber - 1].text = "P" + (playerMatchStats[i].playerNumber) + ": " + playerMatchStats[i].points;
+            playerScoreTexts[playerMatchStats[i].playerNumber - 1].color = GameManager.instance.playerColours[playerMatchStats[i].playerNumber - 1];
         }
     }
 
