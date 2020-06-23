@@ -132,11 +132,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 728843d0736679242b5933646f7210c0,
+        type: 3}
     - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3333334
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -146,7 +157,7 @@ PrefabInstance:
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.58
+      value: -3.42
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -212,6 +223,16 @@ PrefabInstance:
         type: 3}
       propertyPath: amountOfSpawns
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: minTimeBetweenSpawning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: maxTimeBetweenSpawning
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
@@ -300,11 +321,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 728843d0736679242b5933646f7210c0,
+        type: 3}
     - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3333334
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -380,6 +412,16 @@ PrefabInstance:
         type: 3}
       propertyPath: amountOfSpawns
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: minTimeBetweenSpawning
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: maxTimeBetweenSpawning
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
@@ -625,11 +667,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 728843d0736679242b5933646f7210c0,
+        type: 3}
     - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3333334
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -639,7 +692,7 @@ PrefabInstance:
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.32
+      value: 5.18
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -706,6 +759,16 @@ PrefabInstance:
       propertyPath: amountOfSpawns
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: minTimeBetweenSpawning
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: maxTimeBetweenSpawning
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &663683175
@@ -719,11 +782,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 728843d0736679242b5933646f7210c0,
+        type: 3}
     - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302052, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3333334
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -799,6 +873,16 @@ PrefabInstance:
         type: 3}
       propertyPath: amountOfSpawns
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: minTimeBetweenSpawning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: maxTimeBetweenSpawning
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
