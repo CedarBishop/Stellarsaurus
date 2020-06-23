@@ -393,7 +393,7 @@ public class PlayerShoot : MonoBehaviour
                     Consumable consumable = go.AddComponent<Consumable>();
 
                     // Activate Consumable effect with parameters of current weapon consumable
-                    consumable.Use(player, currentWeapon.consumableType, currentWeapon.duration, currentWeapon.amount);
+                    consumable.Use(player, currentWeapon.consumableType, currentWeapon.duration, currentWeapon.amount, currentWeapon.consumableEffectColor);
                     break;
 
                 case WeaponUseType.Boomerang:

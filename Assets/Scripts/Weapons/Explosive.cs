@@ -40,6 +40,10 @@ public class Explosive : Projectile
                 {
                     colliders[i].GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
                 }
+                else if (colliders[i].GetComponent<Window>())
+                {
+                    colliders[i].GetComponent<Window>().UpdateHealth(damage);
+                }
             }
         }
 

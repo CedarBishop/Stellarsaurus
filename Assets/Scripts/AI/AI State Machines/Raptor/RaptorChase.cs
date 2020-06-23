@@ -70,6 +70,7 @@ public class RaptorChase : StateMachineBehaviour
                 animator.SetBool("WithinAttackingDistance", false);
             }
 
+            animator.SetBool("TargetDetected", perception.detectsTarget);
         }
     }
 

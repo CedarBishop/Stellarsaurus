@@ -13,7 +13,7 @@ public class Consumable : MonoBehaviour
     private float timer;
     private bool isActive;
 
-    public virtual void Use( Player _Player, ConsumableType type, float duration, float amount)
+    public virtual void Use(Player _Player, ConsumableType type, float duration, float amount, Color color)
     {
         isActive = true;
         timer = duration;
@@ -46,6 +46,8 @@ public class Consumable : MonoBehaviour
             default:
                 break;
         }
+
+        player.playerMovement.GetComponent<SpriteRenderer>().color = color;
     }
 
     private void FixedUpdate()
@@ -87,7 +89,7 @@ public class Consumable : MonoBehaviour
             default:
                 break;
         }
-
+        player.playerMovement.GetComponent<SpriteRenderer>().color = Color.white;
         Destroy(gameObject);
     }
 }

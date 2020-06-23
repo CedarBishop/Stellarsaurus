@@ -206,6 +206,7 @@ public class WeaponType
     public ConsumableType consumableType;
     public float duration;
     public float amount;
+    public Color consumableEffectColor;
 
     public int subProjectileAmount;
     public Vector2 subProjectileForce;

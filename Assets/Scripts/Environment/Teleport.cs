@@ -39,6 +39,13 @@ public class Teleport : MonoBehaviour
             else
                 particles[1].Play();
         }
+
+        if (collision.GetComponent<Projectile>())
+        {
+            print(collision.GetComponent<Projectile>().range);
+            collision.GetComponent<Projectile>().range += Vector2.Distance(otherTeleporter.position, transform.position);
+            print(collision.GetComponent<Projectile>().range);
+        }
     }
 
     private bool CheckList(Rigidbody2D rb)

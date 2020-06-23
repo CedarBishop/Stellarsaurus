@@ -448,6 +448,10 @@ public class DesignMaster : EditorWindow
 
                     GUILayout.Label("Consumable Effect Amount", EditorStyles.boldLabel);
                     weaponTypes[i].amount = EditorGUILayout.FloatField(weaponTypes[i].amount);
+
+                    GUILayout.Label("Consumable Effect Colour", EditorStyles.boldLabel);
+                    weaponTypes[i].consumableEffectColor = EditorGUILayout.ColorField(weaponTypes[i].consumableEffectColor);
+                    EditorGUILayout.Space(8);
                 }
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.Melee)

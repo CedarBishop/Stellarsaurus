@@ -12,6 +12,6 @@ public class Projectile : MonoBehaviour
 
     protected Vector2 startingPosition;
     protected float initialForce;
-    protected float range;
+    public float range;
     protected float spreadRange;
 }
