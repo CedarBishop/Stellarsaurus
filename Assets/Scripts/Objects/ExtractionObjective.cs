@@ -7,15 +7,14 @@ public class ExtractionObjective : MonoBehaviour
     [Range(1.0f,60.0f)] public float timeRequiredToCharge;
     [Range(0.0f,1.0f)] public float chargeDownScaler;
 
-    public ParticleSystem[] particlesOnCharge;
-    public Transform particleParent;
+    public GameObject chargedParticle;
 
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     private new CircleCollider2D collider;
     private Animator animator;
     private Animator weaponSpriteAnimator;
-    private Transform playerTransform;
+    private PlayerShoot playerShoot;
 
     private float timer;
     private bool chargeCompleted;
@@ -65,13 +64,13 @@ public class ExtractionObjective : MonoBehaviour
          
     }
 
-    public void OnPickup (int num, Animator playerWeaponAnimator, Transform PlayerTransform)
+    public void OnPickup (int num, Animator playerWeaponAnimator, PlayerShoot player)
     {
         weaponSpriteAnimator = playerWeaponAnimator;
         isHeld = true;
         playerNumber = num;
 
-        playerTransform = PlayerTransform;
+        playerShoot = player;
 
         spriteRenderer.enabled = false;
         collider.enabled = false;
@@ -94,13 +93,13 @@ public class ExtractionObjective : MonoBehaviour
 
     void OnChargeComplete ()
     {
-        if (particlesOnCharge != null)
+        if (chargedParticle != null)
         {
-            foreach (var particle in particlesOnCharge)
+            GameObject go = Instantiate(chargedParticle,playerShoot.gunSprite.transform.position, Quaternion.identity);
+            ParticleSystem[] particles = go.GetComponentsInChildren<ParticleSystem>();
+            foreach (var particle in particles)
             {
-                particle.transform.position = playerTransform.position;
-                print(particle.transform.position);
-                //particle.startColor = GameManager.instance.playerColours[playerNumber - 1];
+                particle.startColor = GameManager.instance.playerColours[playerNumber - 1];
                 particle.Play();
             }
         }

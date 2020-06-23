@@ -186,10 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeRequiredToCharge: 9.6
   chargeDownScaler: 0.468
-  particlesOnCharge:
-  - {fileID: 3857584032156573790}
-  - {fileID: 3857584033430531557}
-  particleParent: {fileID: 9059662965772017121}
+  chargedParticle: {fileID: 3060554731406435672}
 --- !u!95 &7641617728935702690
 Animator:
   serializedVersion: 3
@@ -288,21 +285,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d610e37262aec840b5cff8ad801000f, type: 3}
+--- !u!1 &3060554731406435672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3434777047610815246, guid: 1d610e37262aec840b5cff8ad801000f,
+    type: 3}
+  m_PrefabInstance: {fileID: 419821949630207574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9059662965772017121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8676715339750607799, guid: 1d610e37262aec840b5cff8ad801000f,
-    type: 3}
-  m_PrefabInstance: {fileID: 419821949630207574}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3857584032156573790 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3484490800576312840, guid: 1d610e37262aec840b5cff8ad801000f,
-    type: 3}
-  m_PrefabInstance: {fileID: 419821949630207574}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3857584033430531557 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3484490799700687795, guid: 1d610e37262aec840b5cff8ad801000f,
     type: 3}
   m_PrefabInstance: {fileID: 419821949630207574}
   m_PrefabAsset: {fileID: 0}
