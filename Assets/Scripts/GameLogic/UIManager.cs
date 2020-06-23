@@ -223,13 +223,13 @@ public class UIManager : MonoBehaviour
     public void AddAmountToSfxVolume (float amount)
     {
         float volume = SoundManager.instance.SetSFXVolume(amount);
-        sfxVolumeText.text = "SFX Volume: " +  volume.ToString("F2");
+        sfxVolumeText.text = "SFX Volume: " +  (volume * 100).ToString("F0");
     }
 
     public void AddAmountToMusicVolume (float amount)
     {
         float volume = SoundManager.instance.SetMusicVolume(amount);
-        musicVolumeText.text = "Music Volume: " + volume.ToString("F2");
+        musicVolumeText.text = "Music Volume: " + (volume * 100).ToString("F0");
     }
 
     public void MainMenu ()

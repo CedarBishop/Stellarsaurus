@@ -159,6 +159,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         selectedGamemode.Exit();
+        selectedGamemode = null;
         SceneManager.LoadScene("MainMenu");        
         UnPause();
         StartCoroutine("CoEndMatch");
