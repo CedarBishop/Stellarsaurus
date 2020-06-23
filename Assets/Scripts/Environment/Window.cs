@@ -28,7 +28,13 @@ public class Window : MonoBehaviour
         {
             // Update the parant window health with how much this window segment just got damaged by
             UpdateHealth(collision.GetComponent<Projectile>().damage);
-        }     
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
+        {
+            // Update the parant window health with how much this window segment just got damaged by
+            UpdateHealth(collision.GetComponent<Projectile>().damage);
+        }
     }
 
     public void UpdateHealth(int damage)
