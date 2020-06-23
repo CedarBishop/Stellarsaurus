@@ -514,7 +514,7 @@ public class PlayerShoot : MonoBehaviour
     {
         playerMovement.SetIsHoldingExtractionObject(true);
         extractionObjective = triggeredExtractionObjective;
-        extractionObjective.OnPickup(playerNumber, weaponAnimation.GetComponent<Animator>());
+        extractionObjective.OnPickup(playerNumber, weaponAnimation.GetComponent<Animator>(), gunSprite.transform);
         weaponAnimation.PlayAnimation("Extraction");
     }
 

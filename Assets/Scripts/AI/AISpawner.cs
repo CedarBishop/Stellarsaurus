@@ -6,7 +6,8 @@ public class AISpawner : MonoBehaviour
 {
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
     public float timeBeforeSpawning;
-    public float timeBetweenSpawning;
+    public float minTimeBetweenSpawning;
+    public float maxTimeBetweenSpawning;
     public int amountOfSpawns;
 
     public List<AIType> ais = new List<AIType>();
@@ -30,7 +31,8 @@ public class AISpawner : MonoBehaviour
         {
             SpawnAI();
             x++;
-            yield return new WaitForSeconds(timeBetweenSpawning);
+            float time = Random.Range(minTimeBetweenSpawning, maxTimeBetweenSpawning);
+            yield return new WaitForSeconds(time);
         }
         animator.SetTrigger("SpawnerEnd");
         Destroy(gameObject,1.5f);

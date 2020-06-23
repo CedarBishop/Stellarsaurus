@@ -7,16 +7,21 @@ public class ExtractionObjective : MonoBehaviour
     [Range(1.0f,60.0f)] public float timeRequiredToCharge;
     [Range(0.0f,1.0f)] public float chargeDownScaler;
 
+    public ParticleSystem[] particlesOnCharge;
+    public Transform particleParent;
+
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     private new CircleCollider2D collider;
     private Animator animator;
     private Animator weaponSpriteAnimator;
+    private Transform playerTransform;
 
     private float timer;
     private bool chargeCompleted;
     private bool isHeld;
     private int playerNumber;
+
 
     private void Start()
     {
@@ -60,11 +65,13 @@ public class ExtractionObjective : MonoBehaviour
          
     }
 
-    public void OnPickup (int num, Animator playerWeaponAnimator)
+    public void OnPickup (int num, Animator playerWeaponAnimator, Transform PlayerTransform)
     {
         weaponSpriteAnimator = playerWeaponAnimator;
         isHeld = true;
         playerNumber = num;
+
+        playerTransform = PlayerTransform;
 
         spriteRenderer.enabled = false;
         collider.enabled = false;
@@ -87,6 +94,16 @@ public class ExtractionObjective : MonoBehaviour
 
     void OnChargeComplete ()
     {
+        if (particlesOnCharge != null)
+        {
+            foreach (var particle in particlesOnCharge)
+            {
+                particle.transform.position = playerTransform.position;
+                print(particle.transform.position);
+                //particle.startColor = GameManager.instance.playerColours[playerNumber - 1];
+                particle.Play();
+            }
+        }
         GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
     }
 }
