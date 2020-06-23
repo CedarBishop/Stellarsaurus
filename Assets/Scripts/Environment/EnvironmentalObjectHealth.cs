@@ -49,8 +49,14 @@ public class EnvironmentalObjectHealth : MonoBehaviour
         if (hasBeenDestroyed)
             return;
         hasBeenDestroyed = true;
-        Weapon temp = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
-        temp.Init(weaponTypes, WeaponSpawnType.FallFromSky);
+
+
+        if (weaponPrefab != null)
+        {
+            Weapon temp = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
+            temp.Init(weaponTypes, WeaponSpawnType.FallFromSky);
+        }
+        
         Destroy(gameObject);
     }
 }
