@@ -205,6 +205,11 @@ public class AIType
     public float largeJumpHeight;
     public float jumpDetectionDistance;
 
+    public Vector2 FiringPoint;
+    public AIProjectile projectile;
+    public float projectileForce;
+    public float bulletDeviation;
+
     public float swoopSpeed;
 
 }
