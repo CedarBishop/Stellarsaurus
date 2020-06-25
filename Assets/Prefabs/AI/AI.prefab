@@ -75,8 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5723286569855862882, guid: 5de63d295c60a724d874826826fa0314,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03478d8021d5d9b4faa29b8f9b1d4673, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolController: {fileID: 9100000, guid: 362be957a185fe34dbfbc2407cd85157, type: 2}
-  guardController: {fileID: 0}
+  guardController: {fileID: 9100000, guid: 10312a8c65440bd45b4fafd089a7b930, type: 2}
   flyerController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
   carrierController: {fileID: 0}
   groundLayer:
@@ -154,6 +153,10 @@ MonoBehaviour:
     smallJumpHeight: 0
     largeJumpHeight: 0
     jumpDetectionDistance: 0
+    FiringPoint: {x: 0, y: 0}
+    projectileName: 
+    projectileForce: 0
+    bulletDeviation: 0
     swoopSpeed: 0
   health: 0
   startingPosition: {x: 0, y: 0}
@@ -210,6 +213,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: -0.5}
-  m_Size: {x: 1.2, y: 0.85}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.88, y: 2.99}
   m_Direction: 1

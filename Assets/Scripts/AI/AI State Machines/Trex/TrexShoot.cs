@@ -10,6 +10,7 @@ public class TrexShoot : StateMachineBehaviour
     private float movementSpeed;
 
     private float shootTimer;
+    private AIProjectile aiProjectile;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -20,6 +21,7 @@ public class TrexShoot : StateMachineBehaviour
         _Animator = animator;
         movementSpeed = ai.aiType.movementSpeed;
         shootTimer = ai.aiType.attackCooldown;
+        aiProjectile = Resources.Load<AIProjectile>("AIProjectiles/" + ai.aiType.projectileName);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -49,9 +51,10 @@ public class TrexShoot : StateMachineBehaviour
 
     void Shoot ()
     {
+        Vector2 firingPos = new Vector2((perception.isFacingRight) ? ai.aiType.FiringPoint.x: -ai.aiType.FiringPoint.x, ai.aiType.FiringPoint.y);
         float deviation = ai.aiType.bulletDeviation;
-        Vector2 directionToTarget =  new Vector3(perception.targetTransform.position.x + Random.Range(-deviation,deviation), perception.targetTransform.position.y + Random.Range(-deviation, deviation), 0) - ai.transform.position;
-        AIProjectile projectile =  Instantiate(ai.aiType.projectile, ai.aiType.FiringPoint, Quaternion.identity);
+        Vector2 directionToTarget =  new Vector2(perception.targetTransform.position.x + Random.Range(-deviation,deviation), perception.targetTransform.position.y + Random.Range(-deviation, deviation)) -firingPos;
+        AIProjectile projectile =  Instantiate(aiProjectile, ai.aiType.FiringPoint, Quaternion.identity);
         projectile.InitialiseProjectile(ai.aiType.attackDamage,directionToTarget,ai.aiType.projectileForce,ai.aiType.attackRange);
     }
 }
