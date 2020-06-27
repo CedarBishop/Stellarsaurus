@@ -100,6 +100,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectsTarget: 0
   targetTransform: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 131072
+  playerFallThroughLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   detectionTag: Player
   hearingRadius: 2.6
   viewingDistance: 3.9
@@ -170,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 2765672809849141197}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

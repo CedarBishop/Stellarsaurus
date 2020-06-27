@@ -33,6 +33,8 @@ public class TrexPatrol : StateMachineBehaviour
         platformLayer = ai.platformLayer;
 
         wallDetectionDistance = ai.aiType.jumpDetectionDistance;
+
+        rigidbody.mass = 1000;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -40,7 +42,7 @@ public class TrexPatrol : StateMachineBehaviour
     {
         if (perception.detectsTarget)
         {
-            animator.SetBool("TargetDetected", perception.detectsTarget);
+            animator.SetBool("TargetDetected", true);
         }
         Move();
         CalculateWallAndLedge();
@@ -59,8 +61,8 @@ public class TrexPatrol : StateMachineBehaviour
         {           
               perception.isFacingRight = !perception.isFacingRight;        
         }
-        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 8, groundLayer) &&
-            !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 8, platformLayer))
+        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, groundLayer) &&
+            !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, platformLayer))
         {
             perception.isFacingRight = !perception.isFacingRight;
         }

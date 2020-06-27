@@ -6,6 +6,8 @@ public class Perception : MonoBehaviour
 {
     public bool detectsTarget;
     public Transform targetTransform;
+    public LayerMask playerLayer;
+    public LayerMask playerFallThroughLayer;
 
     public string detectionTag;
     [Range(0f, 20f)]
@@ -55,15 +57,25 @@ public class Perception : MonoBehaviour
         {
             float viewScaler = -0.5f;
             viewScaler += (i * (1.0f / ((float)numOfRays - 1)));
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance);
-            if (hit)
+            if (Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerLayer))
             {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerLayer);
+                if (hit.collider.CompareTag(detectionTag))
+                {
+                    targetTransform = hit.transform;
+                    return true;
+                }                
+            }
+            else if (Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerFallThroughLayer))
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerFallThroughLayer);
                 if (hit.collider.CompareTag(detectionTag))
                 {
                     targetTransform = hit.transform;
                     return true;
                 }
             }
+          
         }
 
 
