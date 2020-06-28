@@ -8,18 +8,18 @@ public class Explosive : Projectile
     protected float timeTillExplode = 3;
     protected float explosionSize = 2;
     public ParticleSystem explodeParticle;
-    CameraShake cameraShake;
-    float duration;
-    float magnitude;
+    protected CameraShake cameraShake;
+    protected float duration;
+    protected float magnitude;
     protected Rigidbody2D rigidbody;
-    Animator animator;
+    protected Animator animator;
     IEnumerator CoExplode ()
-   {
+    {
         yield return new WaitForSeconds(timeTillExplode);
         Explode();
     }
 
-    void Explode ()
+    protected void Explode ()
     {
         cameraShake.StartShake(duration, magnitude);
         if (explodeParticle != null)
@@ -71,7 +71,7 @@ public class Explosive : Projectile
     }
 
 
-    public void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
+    public virtual void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
     {
         animator = GetComponent<Animator>();
 
