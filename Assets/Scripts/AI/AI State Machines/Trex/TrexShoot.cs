@@ -46,7 +46,6 @@ public class TrexShoot : StateMachineBehaviour
         {
             shootTimer -= Time.deltaTime;
         }
-         Debug.Log(shootTimer);
         rigidbody.velocity = Vector2.zero;
 
         FaceTarget();

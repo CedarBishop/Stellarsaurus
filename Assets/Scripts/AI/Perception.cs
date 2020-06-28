@@ -6,8 +6,11 @@ public class Perception : MonoBehaviour
 {
     public bool detectsTarget;
     public Transform targetTransform;
+    public LayerMask groundLayer;
+    public LayerMask wallLayer;
+    public LayerMask platformLayer;
     public LayerMask playerLayer;
-    public LayerMask playerFallThroughLayer;
+    public LayerMask fallThroughLayer;
 
     public string detectionTag;
     [Range(0f, 20f)]
@@ -29,6 +32,10 @@ public class Perception : MonoBehaviour
     private void FixedUpdate()
     {
         detectsTarget = (Vision() || Hearing());
+        if (detectsTarget == false)
+        {
+            targetTransform = null;
+        }
     }
 
     private bool Hearing ()
@@ -56,29 +63,35 @@ public class Perception : MonoBehaviour
         for (int i = 0; i < numOfRays; i++)
         {
             float viewScaler = -0.5f;
-            viewScaler += (i * (1.0f / ((float)numOfRays - 1)));
-            if (Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerLayer))
+            viewScaler += (i * (1.0f / ((float)numOfRays - 1)));           
+
+            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance);
+
+            if (hit == null)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerLayer);
-                if (hit.collider.CompareTag(detectionTag))
-                {
-                    targetTransform = hit.transform;
-                    return true;
-                }                
+                continue;
             }
-            else if (Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerFallThroughLayer))
+
+            bool rayIsBlocked = false;
+            for (int j = 0; j < hit.Length; j++)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, playerFallThroughLayer);
-                if (hit.collider.CompareTag(detectionTag))
+                if (rayIsBlocked)
                 {
-                    targetTransform = hit.transform;
+                    continue;
+                }
+
+                if (hit[j].collider.gameObject.layer == groundLayer || hit[j].collider.gameObject.layer == wallLayer || hit[j].collider.gameObject.layer == platformLayer)
+                {
+                    rayIsBlocked = true;
+                }
+
+                if (hit[j].collider.CompareTag(detectionTag))
+                {
+                    targetTransform = hit[j].transform;
                     return true;
                 }
-            }
-          
+            }         
         }
-
-
         return false;
     }
 
