@@ -49,10 +49,10 @@ public class Explosive : Projectile
                 {
                     Tilemap tilemap = colliders[i].GetComponent<Tilemap>();
                     TileBase tile = tilemap.GetTile(new Vector3Int(Mathf.RoundToInt(transform.position.x - 1), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z)));
-                    Vector3Int upPos = new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y + 1), Mathf.RoundToInt(transform.position.z));
-                    Vector3Int downPos = new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y - 1), Mathf.RoundToInt(transform.position.z));
-                    Vector3Int leftPos = new Vector3Int(Mathf.RoundToInt(transform.position.x - 1), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
-                    Vector3Int rightPos = new Vector3Int(Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
+                    Vector3Int upPos = new Vector3Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y + 1), Mathf.FloorToInt(transform.position.z));
+                    Vector3Int downPos = new Vector3Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y - 1), Mathf.FloorToInt(transform.position.z));
+                    Vector3Int leftPos = new Vector3Int(Mathf.FloorToInt(transform.position.x - 1), Mathf.FloorToInt(transform.position.y), Mathf.FloorToInt(transform.position.z));
+                    Vector3Int rightPos = new Vector3Int(Mathf.FloorToInt(transform.position.x + 1), Mathf.FloorToInt(transform.position.y), Mathf.FloorToInt(transform.position.z));
                     tilemap.SetTile(upPos, null);
                     tilemap.SetTile(downPos, null);
                     tilemap.SetTile(leftPos, null);
