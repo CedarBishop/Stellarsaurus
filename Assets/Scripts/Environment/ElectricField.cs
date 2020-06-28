@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricField : MonoBehaviour
+public class ElectricField : DeathBarrier
 {
     [Range(1, 10)] public int size;
     
@@ -18,6 +18,7 @@ public class ElectricField : MonoBehaviour
 
     private void InitialiseField()
     {
+        Debug.Log("Derp");
         // Organise elec field length and which objects should be enabled.
         int end = 0;
         electricFields = GetComponentsInChildren<Transform>(true);
