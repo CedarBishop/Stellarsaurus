@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class DeathBarrier : MonoBehaviour
 {
-    [SerializeField] private Vector2 boxSize = new Vector2(1, 1);
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        Debug.Log("Hit");
+        if (collision.transform.GetComponent<Rigidbody2D>())
         {
-            Debug.Log("You are dead, not big surprise");
-            collision.transform.GetComponent<PlayerHealth>().HitByAI(10);
+            if (collision.transform.CompareTag("Player"))
+            {
+                Debug.Log("You are dead, not big surprise");
+                collision.transform.GetComponent<PlayerHealth>().HitByAI(10);
+            }
+            else if (collision.transform.GetComponent<EnvironmentalObjectHealth>())
+            {
+                collision.transform.GetComponent<EnvironmentalObjectHealth>().TakeDamage(10, -1);
+            }
+            else
+            {
+                Debug.Log(collision.transform.name + " hit " + name);
+            }
+
+
+            // Other objects (like enemy AI) will not get killed by the death barrier as of yet
+
         }
-        else
-            Debug.Log(collision.transform.name + " collided with " + name);     // Other objects (like enemy AI) will not get killed by the death barrier as of yet
     }
 
-    private void OnValidate()
-    {
-        GetComponent<BoxCollider2D>().size = boxSize;
-    }
 }
