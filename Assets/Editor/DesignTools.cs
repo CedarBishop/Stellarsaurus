@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using PlatformerPathFinding;
 
 public class DesignTools : Editor
 {
@@ -51,6 +52,13 @@ public class DesignTools : Editor
         if (SceneAsset.FindObjectOfType<Light2D>() == null)
         {
             PrefabUtility.InstantiatePrefab(Resources.Load("Core/Global Light"));
+        }
+        if (SceneAsset.FindObjectOfType<PathFindingGrid>() == null)
+        {
+             PrefabUtility.InstantiatePrefab(Resources.Load("Core/PathFindingGrid"));
+             PathFindingGrid grid = SceneAsset.FindObjectOfType<PathFindingGrid>();
+             grid.UnBuild();
+             grid.Build();
         }
     }
 
