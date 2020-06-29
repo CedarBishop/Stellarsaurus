@@ -20,9 +20,12 @@ public class Mine : Explosive
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Wall"))
         {
             isSet = true;
+            rigidbody.bodyType = RigidbodyType2D.Kinematic;
+            rigidbody.velocity = Vector2.zero;
+            rigidbody.angularVelocity = 0;
         }
     }
 
