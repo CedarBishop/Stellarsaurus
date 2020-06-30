@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         if (isGamepad)
         {
             if (playerShoot != null)
-                playerShoot.Aim(value.Get<Vector2>());
+                playerShoot.Aim(value.Get<Vector2>(), true);
         }
     }
 

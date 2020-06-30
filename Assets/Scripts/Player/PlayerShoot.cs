@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public enum AimType { FreeAim, EightDirection, FourDirection, HybridEightDirection}
 public enum Orthogonal {Up, Right, Down, Left }
@@ -48,6 +49,8 @@ public class PlayerShoot : MonoBehaviour
 
     float cookTime;
     bool shootOnRelease;
+
+    bool isAimingRightstick;
 
     void Start()
     {
@@ -124,6 +127,7 @@ public class PlayerShoot : MonoBehaviour
                 break;
         }
        
+        
 
         if (isHoldingFireButton)
         {
@@ -216,8 +220,18 @@ public class PlayerShoot : MonoBehaviour
 
     }
 
-    public void Aim(Vector2 v)
+    private void LateUpdate()
     {
+        isAimingRightstick = false;
+    }
+
+    public void Aim(Vector2 v, bool isRightstick = false)
+    {
+        if (isAimingRightstick && isRightstick == false)
+        {
+            return;
+        }
+        isAimingRightstick = isRightstick;
         switch (aimType)
         {
             case AimType.FreeAim:
