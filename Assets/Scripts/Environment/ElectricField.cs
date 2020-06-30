@@ -12,7 +12,7 @@ public class ElectricField : DeathBarrier
     private bool on = true;
 
     private Animator[] electricFields;
-    [SerializeField] private Transform topCoil;
+    private Transform topCoil;
 
     private BoxCollider2D boxCollider2D;
     
@@ -28,41 +28,71 @@ public class ElectricField : DeathBarrier
         ElectricFieldManager();
     }
 
-    private void InitialiseField()
-    {
-        // Organise elec field length and which objects should be enabled.
-        int end = 0;
+    //public void InitialiseField()   // Organise elec field length and which objects should be enabled.
+    //{
+    //    electricFields = GetComponentsInChildren<Animator>(true);
+
+    //    // Grab reference to top cap sprite
+    //    topCoil = electricFields[electricFields.Length - 1].transform;
+    //    for (int i = 1; i < electricFields.Length; i++)
+    //    {
+    //        if (i < size)   // Enable electric fields up till 'size'
+    //        {
+    //            electricFields[i].gameObject.SetActive(true);
+    //            electricFields[i].transform.localPosition = Vector3.up * i;
+    //            Debug.Log("enabling " + electricFields[i].name);
+    //        }
+    //        else    // Disable all unused electric fields
+    //        {
+    //            electricFields[i].gameObject.SetActive(false);
+    //        }
+    //    }
+    //    // Place top cap
+    //    electricFields[electricFields.Length - 1].gameObject.SetActive(true);
+    //    electricFields[electricFields.Length - 1].transform.localPosition = Vector3.up * size;
+
+    //    Debug.Log("placing " + electricFields[electricFields.Length - 1].name + " at " + electricFields[electricFields.Length - 1].transform.localPosition);
+    //    topCoil.localPosition = electricFields[electricFields.Length - 1].transform.localPosition;
+    //}
+
+    public void InitialiseField()   // Organise elec field length and which objects should be enabled.
+    {      
         electricFields = GetComponentsInChildren<Animator>(true);
-        for (int i = 1; i < electricFields.Length - 1; i++)
+
+        // Grab reference to top cap sprite
+        topCoil = transform.GetChild(transform.childCount - 1).transform;
+        for (int i = 1; i < electricFields.Length; i++)
         {
-            if (i < size)
+            if (i + 1 < size)   // Enable electric fields up till 'size'
             {
                 electricFields[i].gameObject.SetActive(true);
-                electricFields[i].transform.localPosition = Vector3.up * (i - 1);
+                electricFields[i].transform.localPosition = Vector3.up * i;
             }
             else    // Disable all unused electric fields
             {
-                if (end == 0)
-                    end = i - 1;
                 electricFields[i].gameObject.SetActive(false);
             }
         }
         // Place top cap
-        if (end == 0)
-            end = electricFields.Length - 2;
-
         electricFields[electricFields.Length - 1].gameObject.SetActive(true);
-        electricFields[electricFields.Length - 1].transform.localPosition = Vector3.up * end;
+        electricFields[electricFields.Length - 1].transform.localPosition = Vector3.up * (size - 1);
+        
         topCoil.localPosition = electricFields[electricFields.Length - 1].transform.localPosition;
 
-        electricFields = GetComponentsInChildren<Animator>(false);
+        if (size == 1)  // Final check to see if the size is one, in which case disable the animated cap (otherwise electricity will double up and look crowded)
+        {
+            electricFields[electricFields.Length - 1].gameObject.SetActive(false);
+        }
+
+        // Reset electric field array to toggle only active objects
+        electricFields = transform.GetComponentsInChildren<Animator>(false);
     }
 
-    private void CalculateHitbox()
+    public void CalculateHitbox()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
-        boxCollider2D.size = new Vector2(0.5f, size);
-        boxCollider2D.offset = new Vector2(0, (size - 1) / 2);
+        boxCollider2D.offset = new Vector2(0, (float)(size - 1) / 2);
+        boxCollider2D.size = new Vector2(0.5f, size - 0.5f);
     }
 
     private void InitialiseTimer()
