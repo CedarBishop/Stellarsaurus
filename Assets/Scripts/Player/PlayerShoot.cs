@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AimType { FreeAim, EightDir, FourDir}
+public enum AimType { FreeAim, EightDirection, FourDirection, HybridEightDirection}
 public enum Orthogonal {Up, Right, Down, Left }
 public class PlayerShoot : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class PlayerShoot : MonoBehaviour
     private PlayerAudio playerAudio;
     private PlayerWeaponAnimation weaponAnimation;
 
-    private AimType aimType;
+    [HideInInspector] public AimType aimType;
 
     string weaponName;
     Sprite weaponSprite;
@@ -79,7 +79,7 @@ public class PlayerShoot : MonoBehaviour
                     gunOriginTransform.right = direction;
                 }
                 break;
-            case AimType.EightDir:
+            case AimType.EightDirection:
                 if (isGamepad == false)
                 {
                     Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -87,7 +87,7 @@ public class PlayerShoot : MonoBehaviour
                     gunOriginTransform.right = TranslateToEightDirection(directionToTarget.normalized);
                 }
                 break;
-            case AimType.FourDir:
+            case AimType.FourDirection:
 
                 switch (playerMovement.GetDirection())
                 {
@@ -111,6 +111,15 @@ public class PlayerShoot : MonoBehaviour
                         break;
                 }
                 break;
+            case AimType.HybridEightDirection:
+                //if (isGamepad == false)
+                //{
+                //    Vector2 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //    Vector2 directionToTarget = target - new Vector2(transform.position.x, transform.position.y);
+                //    gunOriginTransform.right = TranslateToEightDirection(directionToTarget.normalized);
+                //}
+                break;
+
             default:
                 break;
         }
@@ -220,7 +229,7 @@ public class PlayerShoot : MonoBehaviour
                     }
                 }
                 break;
-            case AimType.EightDir:
+            case AimType.EightDirection:
                 if (isGamepad)
                 {
                     if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
@@ -229,7 +238,16 @@ public class PlayerShoot : MonoBehaviour
                     }
                 }
                 break;
-            case AimType.FourDir:
+            case AimType.FourDirection:
+                break;
+
+            case AimType.HybridEightDirection:
+
+                if (Mathf.Abs(v.x) > 0.5f || Mathf.Abs(v.y) > 0.5f)
+                {
+                    gunOriginTransform.right = TranslateToEightDirection(v);
+                }
+
                 break;
             default:
                 break;
@@ -254,8 +272,6 @@ public class PlayerShoot : MonoBehaviour
                 result = Vector2.down;
                 gunSprite.flipY = true;
             }
-
-
         }
         else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) < 0.25f)
         {

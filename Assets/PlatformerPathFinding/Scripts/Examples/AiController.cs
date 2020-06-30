@@ -11,10 +11,11 @@ namespace PlatformerPathFinding.Examples {
     /// The most important thing is agent.FindPath method.
     /// </summary>
     public class AiController : MonoBehaviour {
+        public Transform _goal;
         [SerializeField] PathFindingAgent _agent;
-        [SerializeField] Transform _goal;
         [SerializeField] float _stopDistance;
         [SerializeField] LayerMask _groundMask;
+        [SerializeField] LayerMask _platformMask;
         [SerializeField] float _nodeSize;
 
         [FormerlySerializedAs("_moveSpeed")] [SerializeField]
@@ -37,7 +38,18 @@ namespace PlatformerPathFinding.Examples {
 
         Vector2 GetAgentFloorPos() {
             RaycastHit2D hit = Physics2D.Raycast(_goal.position, Vector2.down, float.PositiveInfinity, _groundMask);
-            return hit.point + Vector2.up * _nodeSize / 2;
+            RaycastHit2D hit2 = Physics2D.Raycast(_goal.position, Vector2.down, float.PositiveInfinity, _platformMask);
+            Vector2 point = hit.point;
+            //if (Mathf.Abs(hit.point.y - transform.position.y) >= Mathf.Abs(hit2.point.y - transform.position.y))
+            //{
+            //    point = hit.point;
+            //}
+            //else
+            //{
+            //    point = hit2.point;
+            //}
+
+            return point + Vector2.up * _nodeSize / 2;
         }
 
         void UpdatePath() {

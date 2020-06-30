@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2765672809849141196}
   - component: {fileID: 1755103953086001632}
   - component: {fileID: -2742033159445282860}
+  - component: {fileID: 7696347152030521832}
+  - component: {fileID: 7841679475487439284}
   m_Layer: 16
   m_Name: AI
   m_TagString: Untagged
@@ -137,6 +139,8 @@ MonoBehaviour:
   guardController: {fileID: 9100000, guid: 10312a8c65440bd45b4fafd089a7b930, type: 2}
   flyerController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
   carrierController: {fileID: 0}
+  agent: {fileID: 7841679475487439284}
+  controller: {fileID: 7696347152030521832}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -231,3 +235,46 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.88, y: 2.99}
   m_Direction: 1
+--- !u!114 &7696347152030521832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765672809849141197}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c2cc50b8df50b44882bb0fc2cc9a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goal: {fileID: 0}
+  _agent: {fileID: 7841679475487439284}
+  _stopDistance: 2
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _platformMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _nodeSize: 1
+  _walkSpeed: 7
+  _jumpSpeed: 30
+  _fallSpeed: 40
+  _pathUpdateFrequency: 30
+--- !u!114 &7841679475487439284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765672809849141197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0294269d00c6ed4482a6b5ebc274c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _height: 1
+  _width: 1
+  _jumpStrength: 5
+  _fallLimit: 10
+  _drawPathGizmos: 1

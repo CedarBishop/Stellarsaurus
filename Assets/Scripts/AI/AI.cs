@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using PlatformerPathFinding;
+using PlatformerPathFinding.Examples;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +12,9 @@ public class AI : MonoBehaviour
     public RuntimeAnimatorController guardController;
     public RuntimeAnimatorController flyerController;
     public RuntimeAnimatorController carrierController;
+
+    public PathFindingAgent agent;
+    public AiController controller;
 
     public LayerMask groundLayer;
     public LayerMask platformLayer;
@@ -31,8 +36,9 @@ public class AI : MonoBehaviour
     private bool isBurning;
     [HideInInspector] public Vector2 startingPosition;
 
+    Transform[] targetsInMap;
 
-    public virtual void Initialise (AIType aIType)
+    public virtual void Initialise (AIType aIType, Transform[] transforms = null)
     {
         animator = GetComponent<Animator>();
         perception = GetComponent<Perception>();
@@ -54,19 +60,30 @@ public class AI : MonoBehaviour
 
         startingPosition = transform.position;
         behaviour = aiType.aiBehaviour;
+
+        targetsInMap = transforms;
         switch (behaviour)
         {
             case AIBehaviour.Patrol:
+                controller.enabled = false;
+                agent.enabled = false;
+                //agent.Init(FindObjectOfType<PathFindingGrid>());
                 animator.runtimeAnimatorController = patrolController;
                 animator.SetBool("CanAttack", true);
                 break;
             case AIBehaviour.Guard:
+                controller.enabled = false;
+                agent.enabled = false;
                 animator.runtimeAnimatorController = guardController;
                 break;
             case AIBehaviour.Fly:
+                controller.enabled = false;
+                agent.enabled = false;
                 animator.runtimeAnimatorController = flyerController;
                 break;
             case AIBehaviour.Carrier:
+                controller.enabled = false;
+                agent.enabled = false;
                 animator.runtimeAnimatorController = carrierController;
                 break;
             default:
@@ -172,6 +189,15 @@ public class AI : MonoBehaviour
     {
         yield return new WaitForSeconds(aiType.attackCooldown);
         animator.SetBool("CanAttack", true);
+    }
+
+    public void SetRandomGoal()
+    {
+        if (targetsInMap != null)
+        {
+
+        }
+        controller._goal = targetsInMap[Random.Range(0, targetsInMap.Length)];
     }
 }
 

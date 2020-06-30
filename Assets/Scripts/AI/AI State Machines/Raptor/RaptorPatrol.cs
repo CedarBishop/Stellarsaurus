@@ -35,14 +35,18 @@ public class RaptorPatrol : StateMachineBehaviour
         largeJumpHeight = ai.aiType.largeJumpHeight;
         jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
 
+        //ai.SetRandomGoal();
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //GetDistanceToNextTarget();
         if (perception.detectsTarget)
         {
             animator.SetBool("TargetDetected", perception.detectsTarget);
+            //ai.controller._goal = perception.targetTransform;
         }
         Move();
         CalculateWallAndLedge();
@@ -101,6 +105,14 @@ public class RaptorPatrol : StateMachineBehaviour
         {
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
+        }
+    }
+
+    void GetDistanceToNextTarget ()
+    {
+        if (Vector3.Distance(ai.controller._goal.transform.position, transform.position) < 0.1f)
+        {
+            ai.SetRandomGoal();
         }
     }
 

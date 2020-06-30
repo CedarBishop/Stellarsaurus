@@ -10,6 +10,8 @@ public class AISpawner : MonoBehaviour
     public float maxTimeBetweenSpawning;
     public int amountOfSpawns;
 
+    public Transform[] targetsInMap;
+
     public List<AIType> ais = new List<AIType>();
     private AI aiPrefab;
     private Animator animator;
@@ -44,7 +46,7 @@ public class AISpawner : MonoBehaviour
         if (ais.Count > 0)
         {
             AI ai = Instantiate(aiPrefab, transform.position, Quaternion.identity);
-            ai.Initialise(ais[Random.Range(0,ais.Count)]);
+            ai.Initialise(ais[Random.Range(0,ais.Count)], targetsInMap);
         }
    }
 }

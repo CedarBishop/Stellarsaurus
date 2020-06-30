@@ -168,4 +168,17 @@ public class Player : MonoBehaviour
             playerMovement.AimVertical(value.Get<float>());
     }
 
+    void OnMoveAiming (InputValue value)
+    {
+        print(value.Get<Vector2>());
+        if (playerShoot != null)
+        {
+            if (playerShoot.aimType != AimType.HybridEightDirection)
+            {
+                return;
+            }
+            playerShoot.Aim(value.Get<Vector2>());
+        }            
+    }
+
 }
