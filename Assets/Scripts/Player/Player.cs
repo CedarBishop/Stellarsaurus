@@ -170,7 +170,6 @@ public class Player : MonoBehaviour
 
     void OnMoveAiming (InputValue value)
     {
-        print(value.Get<Vector2>());
         if (playerShoot != null)
         {
             if (playerShoot.aimType != AimType.HybridEightDirection)

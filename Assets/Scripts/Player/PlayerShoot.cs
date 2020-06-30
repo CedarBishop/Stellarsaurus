@@ -501,6 +501,8 @@ public class PlayerShoot : MonoBehaviour
 
                 isTriggeringWeapon = false;
                 triggeredWeapon = null;
+
+                CheckIfConsumable();
             }
         }        
     }
@@ -553,6 +555,14 @@ public class PlayerShoot : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
+    }
+
+    void CheckIfConsumable ()
+    {
+        if (currentWeapon.weaponUseType == WeaponUseType.Consumable)
+        {
+            Shoot();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -624,7 +634,6 @@ public class PlayerShoot : MonoBehaviour
                 Debug.LogError(currentWeapon.weaponName + " Melee type has not been set");
             }
         }
-
     }
 
 
