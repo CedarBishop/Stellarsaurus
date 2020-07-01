@@ -5,10 +5,12 @@ using UnityEngine;
 public class Egg : MonoBehaviour
 {
     AIType aiTypeToHatch;
+    [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
     bool hasHatched;
-    public void Init (AIType ai)
+    public void Init ()
     {
-        aiTypeToHatch = ai;
+        List<AIType> ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
+        aiTypeToHatch = ais[Random.Range(0, ais.Count)];
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

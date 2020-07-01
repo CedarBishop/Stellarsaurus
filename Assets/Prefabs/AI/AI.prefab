@@ -138,7 +138,7 @@ MonoBehaviour:
   patrolController: {fileID: 9100000, guid: 362be957a185fe34dbfbc2407cd85157, type: 2}
   guardController: {fileID: 9100000, guid: 10312a8c65440bd45b4fafd089a7b930, type: 2}
   flyerController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
-  carrierController: {fileID: 0}
+  carrierController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
   agent: {fileID: 7841679475487439284}
   controller: {fileID: 7696347152030521832}
   groundLayer:
@@ -150,7 +150,12 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 8192
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 131072
   bloodParticle: {fileID: 8157379650156868562, guid: a8ef1dae9a131b14e9f7759c65cdb8f9,
+    type: 3}
+  eggPrefab: {fileID: 1042160443367734529, guid: c8f72e16bf751314fa7268270b801f69,
     type: 3}
   aiType:
     AIName: 

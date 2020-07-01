@@ -19,8 +19,10 @@ public class AI : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     public LayerMask wallLayer;
+    public LayerMask playerLayer;
 
     public ParticleSystem bloodParticle;
+    public Egg eggPrefab;
 
     [HideInInspector] public AIType aiType;
     [HideInInspector] public int health;
@@ -237,5 +239,6 @@ public class AIType
     public float bulletDeviation;
 
     public float swoopSpeed;
+
 
 }
