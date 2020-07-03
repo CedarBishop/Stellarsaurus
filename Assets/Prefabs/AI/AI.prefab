@@ -174,14 +174,17 @@ MonoBehaviour:
     hearingRadius: 0
     chanceOfDroppingWeapon: 0
     aiBehaviour: 0
-    smallJumpHeight: 0
-    largeJumpHeight: 0
-    jumpDetectionDistance: 0
+    jumpSpeed: 0
+    jumpStrength: 0
+    fallSpeed: 0
+    fallLimit: 0
+    wallDetectionDistance: 0
     FiringPoint: {x: 0, y: 0}
     projectileName: 
     projectileForce: 0
     bulletDeviation: 0
     swoopSpeed: 0
+    eggOffset: {x: 0, y: 0}
   health: 0
   startingPosition: {x: 0, y: 0}
 --- !u!95 &2765672809849141196
@@ -254,17 +257,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goal: {fileID: 0}
   _agent: {fileID: 7841679475487439284}
-  _stopDistance: 2
+  _stopDistance: 0
   _groundMask:
     serializedVersion: 2
     m_Bits: 256
-  _platformMask:
-    serializedVersion: 2
-    m_Bits: 0
   _nodeSize: 1
   _walkSpeed: 7
-  _jumpSpeed: 30
-  _fallSpeed: 40
+  _jumpSpeed: 25
+  _fallSpeed: 20
   _pathUpdateFrequency: 30
 --- !u!114 &7841679475487439284
 MonoBehaviour:
@@ -280,6 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _height: 1
   _width: 1
-  _jumpStrength: 5
+  _jumpStrength: 4
   _fallLimit: 10
   _drawPathGizmos: 1

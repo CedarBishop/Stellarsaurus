@@ -642,7 +642,7 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Wall Detection Distance", EditorStyles.boldLabel);
-                aiTypes[i].jumpDetectionDistance = EditorGUILayout.Slider(aiTypes[i].jumpDetectionDistance, 0.0f, 5.0f);
+                aiTypes[i].wallDetectionDistance = EditorGUILayout.Slider(aiTypes[i].wallDetectionDistance, 0.0f, 5.0f);
 
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Behaviours", EditorStyles.boldLabel);
@@ -652,52 +652,72 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Behaviour", EditorStyles.boldLabel);
                 aiTypes[i].aiBehaviour = (AIBehaviour)EditorGUILayout.EnumPopup(aiTypes[i].aiBehaviour);
 
-                if (aiTypes[i].aiBehaviour == AIBehaviour.Patrol)
+                switch (aiTypes[i].aiBehaviour)
                 {
-                    EditorGUILayout.Space(16);
-                    GUILayout.Label("Patrol", EditorStyles.boldLabel);
-                    EditorGUILayout.Space(8);
+                    case AIBehaviour.Patrol:
+                        EditorGUILayout.Space(16);
+                        GUILayout.Label("Patrol", EditorStyles.boldLabel);
+                        EditorGUILayout.Space(8);
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Small Jump Height", EditorStyles.boldLabel);
-                    aiTypes[i].smallJumpHeight = EditorGUILayout.FloatField(aiTypes[i].smallJumpHeight);
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Jump Speed", EditorStyles.boldLabel);
+                        aiTypes[i].jumpSpeed = EditorGUILayout.FloatField(aiTypes[i].jumpSpeed);
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Large Jump Height", EditorStyles.boldLabel);
-                    aiTypes[i].largeJumpHeight = EditorGUILayout.FloatField(aiTypes[i].largeJumpHeight);
-                }
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Jump Strength", EditorStyles.boldLabel);
+                        aiTypes[i].jumpStrength = EditorGUILayout.IntField(aiTypes[i].jumpStrength);
 
-                if (aiTypes[i].aiBehaviour == AIBehaviour.Fly)
-                {
-                    EditorGUILayout.Space(16);
-                    GUILayout.Label("Flyer", EditorStyles.boldLabel);
-                    EditorGUILayout.Space(8);
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Fall Speed", EditorStyles.boldLabel);
+                        aiTypes[i].fallSpeed = EditorGUILayout.FloatField(aiTypes[i].fallSpeed);
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
-                    aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
-                }
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Fall Limit", EditorStyles.boldLabel);
+                        aiTypes[i].fallLimit = EditorGUILayout.IntField(aiTypes[i].fallLimit);
+                        break;
+                    case AIBehaviour.Guard:
+                        EditorGUILayout.Space(16);
+                        GUILayout.Label("Guard", EditorStyles.boldLabel);
+                        EditorGUILayout.Space(8);
 
-                if (aiTypes[i].aiBehaviour == AIBehaviour.Guard)
-                {
-                    EditorGUILayout.Space(16);
-                    GUILayout.Label("Guard", EditorStyles.boldLabel);
-                    EditorGUILayout.Space(8);
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Projectile Name", EditorStyles.boldLabel);
+                        aiTypes[i].projectileName = EditorGUILayout.TextField(aiTypes[i].projectileName);
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Projectile Name", EditorStyles.boldLabel);
-                    aiTypes[i].projectileName = EditorGUILayout.TextField(aiTypes[i].projectileName);
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Projectile Force", EditorStyles.boldLabel);
+                        aiTypes[i].projectileForce = EditorGUILayout.FloatField(aiTypes[i].projectileForce);
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Projectile Force", EditorStyles.boldLabel);
-                    aiTypes[i].projectileForce = EditorGUILayout.FloatField(aiTypes[i].projectileForce);
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Projectile Deviation", EditorStyles.boldLabel);
+                        aiTypes[i].bulletDeviation = EditorGUILayout.FloatField(aiTypes[i].bulletDeviation);
 
-                    EditorGUILayout.Space(8);
-                    GUILayout.Label("Projectile Deviation", EditorStyles.boldLabel);
-                    aiTypes[i].bulletDeviation = EditorGUILayout.FloatField(aiTypes[i].bulletDeviation);
+                        EditorGUILayout.Space(8);
+                        aiTypes[i].FiringPoint = EditorGUILayout.Vector2Field("Projectile Firing Point", aiTypes[i].FiringPoint);
+                        break;
+                    case AIBehaviour.Fly:
+                        EditorGUILayout.Space(16);
+                        GUILayout.Label("Flyer", EditorStyles.boldLabel);
+                        EditorGUILayout.Space(8);
 
-                    EditorGUILayout.Space(8);
-                    aiTypes[i].FiringPoint = EditorGUILayout.Vector2Field("Projectile Firing Point", aiTypes[i].FiringPoint);
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
+                        aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
+                        break;
+                    case AIBehaviour.Carrier:
+                        EditorGUILayout.Space(16);
+                        GUILayout.Label("Carrier", EditorStyles.boldLabel);
+                        EditorGUILayout.Space(8);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
+                        aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
+
+                        EditorGUILayout.Space(8);
+                        aiTypes[i].eggOffset = EditorGUILayout.Vector2Field("Egg Offset", aiTypes[i].eggOffset);
+                        break;
+                    default:
+                        break;
                 }
 
                 EditorGUILayout.Space(16);

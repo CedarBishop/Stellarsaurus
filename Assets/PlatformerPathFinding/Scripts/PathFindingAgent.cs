@@ -5,13 +5,13 @@ using Vector2 = UnityEngine.Vector2;
 namespace PlatformerPathFinding {
     public class PathFindingAgent : MonoBehaviour {
         [Range(1, 20)]
-        [SerializeField] int _height;
+        public int _height;
         [Range(1, 20)]
-        [SerializeField] int _width;
+        public int _width;
         [Range(3, 50)]
-        [SerializeField] int _jumpStrength = 5;
+        public int _jumpStrength = 5;
         [Range(4, 100)]
-        [SerializeField] int _fallLimit = 10;
+        public int _fallLimit = 10;
         [SerializeField] bool _drawPathGizmos;
 
         PathFindingGrid _pathFindingGrid;

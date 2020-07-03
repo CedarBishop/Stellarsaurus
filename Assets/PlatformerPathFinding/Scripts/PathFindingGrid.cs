@@ -20,6 +20,8 @@ namespace PlatformerPathFinding {
         public void Init(IPathFindingRules pathFindingRules, AStarSearch search) {
             _pathFindingRules = pathFindingRules;
             _search = search;
+            UnBuild();
+            Build();
         }
 
         bool IsInsideGrid(int x, int y) {

@@ -64,14 +64,26 @@ public class AI : MonoBehaviour
         behaviour = aiType.aiBehaviour;
 
         targetsInMap = transforms;
+
+        
+
+
         switch (behaviour)
         {
             case AIBehaviour.Patrol:
-                controller.enabled = false;
-                agent.enabled = false;
-                //agent.Init(FindObjectOfType<PathFindingGrid>());
+                controller.enabled = true;
+                agent.enabled = true;
+                agent.Init(FindObjectOfType<PathFindingGrid>());
                 animator.runtimeAnimatorController = patrolController;
                 animator.SetBool("CanAttack", true);
+                Destroy(GetComponent<Rigidbody2D>());
+                GetComponent<Collider2D>().isTrigger = true;
+
+                agent._fallLimit = aiType.fallLimit;
+                agent._jumpStrength = (int)aiType.jumpStrength;
+                controller._walkSpeed = aiType.movementSpeed;
+                controller._jumpSpeed = aiType.jumpSpeed;
+                controller._fallSpeed = aiType.fallSpeed;
                 break;
             case AIBehaviour.Guard:
                 controller.enabled = false;
@@ -100,6 +112,11 @@ public class AI : MonoBehaviour
 
     void DirectionChecker ()
     {
+        if (rigidbody == null)
+        {
+            return;
+        }
+
         if (rigidbody.velocity.x > 0)
         {
             perception.isFacingRight = true;
@@ -229,10 +246,12 @@ public class AIType
 
     public AIBehaviour aiBehaviour;
 
-    public float smallJumpHeight;
-    public float largeJumpHeight;
-    public float jumpDetectionDistance;
+    public float jumpSpeed;
+    public int jumpStrength;
+    public float fallSpeed;
+    public int fallLimit;
 
+    public float wallDetectionDistance;
     public Vector2 FiringPoint;
     public string projectileName;
     public float projectileForce;
@@ -240,5 +259,6 @@ public class AIType
 
     public float swoopSpeed;
 
+    public Vector2 eggOffset;
 
 }

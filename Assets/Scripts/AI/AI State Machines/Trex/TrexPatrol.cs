@@ -32,7 +32,7 @@ public class TrexPatrol : StateMachineBehaviour
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
 
-        wallDetectionDistance = ai.aiType.jumpDetectionDistance;
+        wallDetectionDistance = ai.aiType.wallDetectionDistance;
 
         rigidbody.mass = 1000;
     }

@@ -45,6 +45,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -90,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3972253187095775973}
   - component: {fileID: 3972253187095775972}
+  - component: {fileID: 1683539417435122699}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -105,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3972253187095775974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.76, y: -7.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3972253186524990494}
@@ -124,8 +126,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0294269d00c6ed4482a6b5ebc274c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goalObject: {fileID: 0}
   _height: 2
   _width: 1
   _jumpStrength: 8
   _fallLimit: 30
+  _drawPathGizmos: 0
+--- !u!114 &1683539417435122699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972253187095775974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c2cc50b8df50b44882bb0fc2cc9a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goal: {fileID: 0}
+  _agent: {fileID: 3972253187095775972}
+  _stopDistance: 0
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _platformMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _nodeSize: 1
+  _walkSpeed: 7
+  _jumpSpeed: 30
+  _fallSpeed: 40
+  _pathUpdateFrequency: 30

@@ -15,14 +15,15 @@ namespace PlatformerPathFinding.Examples {
         [SerializeField] PathFindingAgent _agent;
         [SerializeField] float _stopDistance;
         [SerializeField] LayerMask _groundMask;
-        [SerializeField] LayerMask _platformMask;
         [SerializeField] float _nodeSize;
 
-        [FormerlySerializedAs("_moveSpeed")] [SerializeField]
-        float _walkSpeed;
+        private Perception perception;
+        private SpriteRenderer spriteRenderer;
 
-        [SerializeField] float _jumpSpeed;
-        [SerializeField] float _fallSpeed;
+        public float _walkSpeed;
+
+        public float _jumpSpeed;
+        public float _fallSpeed;
 
         [SerializeField] float _pathUpdateFrequency = 10f;
 
@@ -32,31 +33,30 @@ namespace PlatformerPathFinding.Examples {
         float _elapsedTime;
         float _updatePathTime;
 
-        void Start() {
+        void Start() 
+        {
             UpdatePath();
+            perception = GetComponent<Perception>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        Vector2 GetAgentFloorPos() {
+        Vector2 GetAgentFloorPos() 
+        {
             RaycastHit2D hit = Physics2D.Raycast(_goal.position, Vector2.down, float.PositiveInfinity, _groundMask);
-            RaycastHit2D hit2 = Physics2D.Raycast(_goal.position, Vector2.down, float.PositiveInfinity, _platformMask);
+
             Vector2 point = hit.point;
-            //if (Mathf.Abs(hit.point.y - transform.position.y) >= Mathf.Abs(hit2.point.y - transform.position.y))
-            //{
-            //    point = hit.point;
-            //}
-            //else
-            //{
-            //    point = hit2.point;
-            //}
+
 
             return point + Vector2.up * _nodeSize / 2;
         }
 
-        void UpdatePath() {
+        void UpdatePath() 
+        {
             var path = _agent.FindPath(GetAgentFloorPos());
-            if (path == null) {
+            if (path == null) 
+            {
                 Debug.Log("There is no path there.");
-
+                GetComponent<AI>().SetRandomGoal();
                 _movementTasks = null;
                 _pendingTask = null;
                 
@@ -71,35 +71,40 @@ namespace PlatformerPathFinding.Examples {
             if(_movementTasks.Count > 0)
                 _pendingTask = _movementTasks.Dequeue();
             
-            Debug.Log("UpdatePath(), time until next update: " + _updatePathTime);
+            //Debug.Log("UpdatePath(), time until next update: " + _updatePathTime);
         }
 
-        static float EstimatedDistance(IEnumerable<MovementTask> movementTasks) {
+        static float EstimatedDistance(IEnumerable<MovementTask> movementTasks) 
+        {
             return movementTasks.Sum(task => task.GetLength());
         }
 
-        public void SetPosition(Vector2 position) {
+        public void SetPosition(Vector2 position) 
+        {
             transform.position = position;
         }
 
-        public void SetLookDir(bool right) {
-            var scale = transform.localScale;
-            scale.x = right ? 1 : -1;
-            transform.localScale = scale;
+        public void SetLookDir(bool right) 
+        {
+            perception.isFacingRight = right;
+            spriteRenderer.flipX = !right;
         }
 
-        Queue<MovementTask> NodesToMoveTasks(IReadOnlyList<Node> path) {
+        Queue<MovementTask> NodesToMoveTasks(IReadOnlyList<Node> path) 
+        {
             var result = new Queue<MovementTask>(path.Count);
 
             Action<AiController> turnRight = aiController => aiController.SetLookDir(true);
             Action<AiController> turnLeft = aiController => aiController.SetLookDir(false);
 
-            for (var i = 1; i < path.Count; i++) {
+            for (var i = 1; i < path.Count; i++) 
+            {
                 var cur = path[i];
                 var prev = path[i - 1];
                 bool rightDir = cur.X - prev.X > 0;
                 MovementTask task;
-                switch (cur.Transition) {
+                switch (cur.Transition) 
+                {
                     case TransitionType.Jump:
                         result.Enqueue(new WaitTask(this, rightDir ? turnRight : turnLeft, 0.2f));
 
@@ -128,7 +133,8 @@ namespace PlatformerPathFinding.Examples {
             return result;
         }
 
-        void Update() {
+        void Update() 
+        {
             
             float dt = Time.deltaTime;
             _elapsedTime += dt;

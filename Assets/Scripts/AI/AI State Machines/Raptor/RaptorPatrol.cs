@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class RaptorPatrol : StateMachineBehaviour
 {
@@ -19,6 +20,8 @@ public class RaptorPatrol : StateMachineBehaviour
     private LayerMask platformLayer;
     private LayerMask wallLayer;
 
+    private float targetTimer;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -31,32 +34,30 @@ public class RaptorPatrol : StateMachineBehaviour
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
-        smallJumpHeight = ai.aiType.smallJumpHeight;
-        largeJumpHeight = ai.aiType.largeJumpHeight;
-        jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
+        //smallJumpHeight = ai.aiType.smallJumpHeight;
+        //largeJumpHeight = ai.aiType.largeJumpHeight;
+        //jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
+        targetTimer = 15;
 
-        //ai.SetRandomGoal();
+        ai.SetRandomGoal();
 
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //GetDistanceToNextTarget();
+        GetDistanceToNextTarget();
         if (perception.detectsTarget)
         {
             animator.SetBool("TargetDetected", perception.detectsTarget);
-            //ai.controller._goal = perception.targetTransform;
+            ai.controller._goal = perception.targetTransform;
         }
-        Move();
-        CalculateWallAndLedge();
+        //Move();
+        // CalculateWallAndLedge();
+        TargetCountdown();
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
 
-    }
 
     void Move()
     {
@@ -110,10 +111,25 @@ public class RaptorPatrol : StateMachineBehaviour
 
     void GetDistanceToNextTarget ()
     {
-        if (Vector3.Distance(ai.controller._goal.transform.position, transform.position) < 0.1f)
+        if (Vector3.Distance(ai.controller._goal.transform.position, transform.position) < 2f)
         {
+            targetTimer = 15;
             ai.SetRandomGoal();
         }
+    }
+
+    void TargetCountdown()
+    {
+        if (targetTimer <= 0)
+        {
+            ai.SetRandomGoal();
+            targetTimer = 15;
+        }
+        else
+        {
+            targetTimer -= Time.fixedDeltaTime;
+        }
+
     }
 
 }

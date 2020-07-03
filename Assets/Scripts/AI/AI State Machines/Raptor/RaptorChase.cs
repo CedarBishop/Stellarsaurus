@@ -31,10 +31,10 @@ public class RaptorChase : StateMachineBehaviour
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
-        smallJumpHeight = ai.aiType.smallJumpHeight;
-        largeJumpHeight = ai.aiType.largeJumpHeight;
-        targetTransform = perception.targetTransform;
-        jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
+       // smallJumpHeight = ai.aiType.smallJumpHeight;
+       // largeJumpHeight = ai.aiType.largeJumpHeight;
+       targetTransform = perception.targetTransform;
+       // jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
 
     }
 
@@ -43,17 +43,13 @@ public class RaptorChase : StateMachineBehaviour
     {
 
         TargetTracking(animator);
-        Chase();
-        CalculateWallAndLedge();
+        //Chase();
+        //CalculateWallAndLedge();
 
     }
 
     void TargetTracking(Animator animator)
-    {
-        if (targetTransform == null)
-        {
-            return;
-        }
+    {       
 
         if (perception.detectsTarget == false)
         {
@@ -61,6 +57,10 @@ public class RaptorChase : StateMachineBehaviour
         }
         else
         {
+            if (targetTransform == null)
+            {
+                return;
+            }
             if (Vector2.Distance(animator.transform.position, targetTransform.position) < (ai.aiType.attackRange))
             {
                 animator.SetBool("WithinAttackingDistance", true);

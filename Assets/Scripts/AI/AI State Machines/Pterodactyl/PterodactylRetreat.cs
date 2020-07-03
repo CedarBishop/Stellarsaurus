@@ -44,8 +44,8 @@ public class PterodactylRetreat : StateMachineBehaviour
 
     void WallCheck()
     {
-        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.jumpDetectionDistance, ai.wallLayer) ||
-           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.jumpDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
+        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.wallLayer) ||
+           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
         {
             perception.isFacingRight = !perception.isFacingRight;
         }
