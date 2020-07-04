@@ -22,6 +22,9 @@ public class Perception : MonoBehaviour
     [Range(4,12)]
     public int numOfRays = 4;
     public bool isFacingRight;
+    public float targetMemoryTime;
+
+    private float memoryTimer;
 
     private void Start()
     {
@@ -32,9 +35,23 @@ public class Perception : MonoBehaviour
     private void FixedUpdate()
     {
         detectsTarget = (Vision() || Hearing());
-        if (detectsTarget == false)
+        if (detectsTarget)
         {
-            targetTransform = null;
+            memoryTimer = targetMemoryTime;
+        }
+        else
+        {
+            if (memoryTimer <= 0)
+            {
+                if (targetTransform != null)
+                {
+                    targetTransform = null;
+                }                
+            }
+            else
+            {
+                memoryTimer -= Time.deltaTime;
+            }            
         }
     }
 

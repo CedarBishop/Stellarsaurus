@@ -641,6 +641,10 @@ public class DesignMaster : EditorWindow
                 aiTypes[i].hearingRadius = EditorGUILayout.Slider(aiTypes[i].hearingRadius,0.0f,20.0f);
 
                 EditorGUILayout.Space(8);
+                GUILayout.Label("Target Memory Time", EditorStyles.boldLabel);
+                aiTypes[i].targetMemoryTime = EditorGUILayout.Slider(aiTypes[i].targetMemoryTime, 0.0f, 10.0f);
+
+                EditorGUILayout.Space(8);
                 GUILayout.Label("Wall Detection Distance", EditorStyles.boldLabel);
                 aiTypes[i].wallDetectionDistance = EditorGUILayout.Slider(aiTypes[i].wallDetectionDistance, 0.0f, 5.0f);
 

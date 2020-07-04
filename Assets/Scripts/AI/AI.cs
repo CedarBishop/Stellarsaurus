@@ -56,6 +56,7 @@ public class AI : MonoBehaviour
         perception.viewingDistance = aiType.viewingDistance;
         perception.fieldOfView = aiType.fieldOfView;
         perception.hearingRadius = aiType.hearingRadius;
+        perception.targetMemoryTime = aiType.targetMemoryTime;
 
         collider.offset = aiType.colliderOffset;
         collider.size = aiType.colliderSize;
@@ -64,8 +65,6 @@ public class AI : MonoBehaviour
         behaviour = aiType.aiBehaviour;
 
         targetsInMap = transforms;
-
-        
 
 
         switch (behaviour)
@@ -241,6 +240,7 @@ public class AIType
     public float viewingDistance;
     public float fieldOfView;
     public float hearingRadius;
+    public float targetMemoryTime;
 
     public float chanceOfDroppingWeapon;
 
