@@ -250,6 +250,7 @@ public class AIType
     public int jumpStrength;
     public float fallSpeed;
     public int fallLimit;
+    public float targetResetTime;
 
     public float wallDetectionDistance;
     public Vector2 FiringPoint;

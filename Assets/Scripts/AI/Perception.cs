@@ -25,19 +25,20 @@ public class Perception : MonoBehaviour
     public float targetMemoryTime;
 
     private float memoryTimer;
-
+    private AI ai;
     private void Start()
     {
         int num = Random.Range(0,2);
         isFacingRight = (num > 0) ? true : false;
+        ai = GetComponent<AI>();   
     }
 
     private void FixedUpdate()
     {
-        detectsTarget = (Vision() || Hearing());
-        if (detectsTarget)
+        if ((Vision() || Hearing()))
         {
             memoryTimer = targetMemoryTime;
+            detectsTarget = true;
         }
         else
         {
@@ -45,6 +46,7 @@ public class Perception : MonoBehaviour
             {
                 if (targetTransform != null)
                 {
+                    detectsTarget = false;
                     targetTransform = null;
                 }                
             }
@@ -52,6 +54,12 @@ public class Perception : MonoBehaviour
             {
                 memoryTimer -= Time.deltaTime;
             }            
+        }
+
+        if (targetTransform == null && detectsTarget)
+        {
+            detectsTarget = false;
+            //ai.SetRandomGoal();
         }
     }
 

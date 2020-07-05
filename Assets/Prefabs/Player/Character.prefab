@@ -423,6 +423,7 @@ MonoBehaviour:
     subProjectileForce: {x: 0, y: 0}
     meleeType: {fileID: 0}
   player: {fileID: 0}
+  aimType: 0
   ammoCount: 0
 --- !u!114 &2327445293856462399
 MonoBehaviour:
@@ -437,6 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterParticle: {fileID: 8157379650156868562, guid: a8ef1dae9a131b14e9f7759c65cdb8f9,
+    type: 3}
+  shieldParticleSystem: {fileID: 1573176804134805683, guid: 424df20f4b4b8c4448e542e4564e8b8c,
     type: 3}
   playerNumber: 0
 --- !u!95 &1658128687321847298

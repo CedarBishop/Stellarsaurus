@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public ParticleSystem bloodSplatterParticle;
+    public ParticleSystem shieldParticleSystem;
 
     [HideInInspector]public int playerNumber;
     
@@ -18,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
 
     private bool hasShield;
     private int shieldBlocksRemaining;
+
+    private GameObject shieldParticle;
     
     void Start()
     {
@@ -153,11 +156,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void GainShield(bool value, int amount)
+    public void GainShield(int amount)
     {
-        hasShield = value;
+        hasShield = true;
         shieldBlocksRemaining = amount;
-         
+        shieldParticle = Instantiate(shieldParticleSystem, transform.position, Quaternion.identity).gameObject;
+        shieldParticle.transform.parent = transform;
     }
 
     public void UseShield()
@@ -165,7 +169,13 @@ public class PlayerHealth : MonoBehaviour
         shieldBlocksRemaining--;
         if (shieldBlocksRemaining <= 0)
         {
-            hasShield = false;
+            EndShield();
         }
+    }
+
+    public void EndShield()
+    {
+        hasShield = false;
+        Destroy(shieldParticle);
     }
 }

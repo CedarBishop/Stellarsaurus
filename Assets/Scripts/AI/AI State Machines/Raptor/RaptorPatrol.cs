@@ -37,7 +37,7 @@ public class RaptorPatrol : StateMachineBehaviour
         //smallJumpHeight = ai.aiType.smallJumpHeight;
         //largeJumpHeight = ai.aiType.largeJumpHeight;
         //jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
-        targetTimer = 15;
+        targetTimer = ai.aiType.targetResetTime;
 
         ai.SetRandomGoal();
 
@@ -113,7 +113,7 @@ public class RaptorPatrol : StateMachineBehaviour
     {
         if (Vector3.Distance(ai.controller._goal.transform.position, transform.position) < 2f)
         {
-            targetTimer = 15;
+            targetTimer = ai.aiType.targetResetTime;
             ai.SetRandomGoal();
         }
     }
@@ -123,7 +123,7 @@ public class RaptorPatrol : StateMachineBehaviour
         if (targetTimer <= 0)
         {
             ai.SetRandomGoal();
-            targetTimer = 15;
+            targetTimer = ai.aiType.targetResetTime;
         }
         else
         {

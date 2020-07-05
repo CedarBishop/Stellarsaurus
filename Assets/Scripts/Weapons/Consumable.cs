@@ -29,7 +29,7 @@ public class Consumable : MonoBehaviour
                 player.playerHealth.Heal((int)amount);
                 break;
             case ConsumableType.Shield:
-                player.playerHealth.GainShield(true, (int)amount);
+                player.playerHealth.GainShield((int)amount);
                 break;
             case ConsumableType.SuperShield:
                 break;
@@ -74,7 +74,7 @@ public class Consumable : MonoBehaviour
             case ConsumableType.Healing:
                 break;
             case ConsumableType.Shield:
-                player.playerHealth.GainShield(false, 0);
+                player.playerHealth.EndShield();
                 break;
             case ConsumableType.SuperShield:
                 break;

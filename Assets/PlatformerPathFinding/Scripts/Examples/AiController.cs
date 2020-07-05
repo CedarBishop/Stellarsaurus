@@ -135,7 +135,10 @@ namespace PlatformerPathFinding.Examples {
 
         void Update() 
         {
-            
+            if (_goal == null)
+            {
+                GetComponent<AI>().SetRandomGoal();
+            }
             float dt = Time.deltaTime;
             _elapsedTime += dt;
 

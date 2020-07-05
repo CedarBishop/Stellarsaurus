@@ -678,6 +678,10 @@ public class DesignMaster : EditorWindow
                         EditorGUILayout.Space(8);
                         GUILayout.Label("Fall Limit", EditorStyles.boldLabel);
                         aiTypes[i].fallLimit = EditorGUILayout.IntField(aiTypes[i].fallLimit);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Target Reset Time", EditorStyles.boldLabel);
+                        aiTypes[i].targetResetTime = EditorGUILayout.FloatField(aiTypes[i].targetResetTime);
                         break;
                     case AIBehaviour.Guard:
                         EditorGUILayout.Space(16);
