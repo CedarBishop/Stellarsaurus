@@ -360,6 +360,10 @@ public class PlayerShoot : MonoBehaviour
         {
             return;
         }
+        if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.2f))
+        {
+            return;
+        }
         if (canShoot)
         {
             switch (weaponUseType)
@@ -524,6 +528,11 @@ public class PlayerShoot : MonoBehaviour
 
     public void DropWeapon ()
     {
+        if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.2f))
+        {
+            return;
+        }
+
         Weapon weapon = Instantiate(
             LevelManager.instance.weaponPrefab,
              new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
@@ -597,7 +606,6 @@ public class PlayerShoot : MonoBehaviour
         gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
         firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
         
-
         if (currentWeapon.weaponUseType == WeaponUseType.Boomerang)
         {
             ammoCount = 1;
@@ -606,6 +614,7 @@ public class PlayerShoot : MonoBehaviour
         {
             ammoCount = triggeredWeapon.ammo;
         }
+
         fireRate = currentWeapon.fireRate;
         weaponUseType = currentWeapon.weaponUseType;
         knockback = currentWeapon.knockBack;
@@ -636,6 +645,16 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    bool AimCheck (Vector2 origin, float radius)
+    {
+        if (Physics2D.OverlapCircle(origin, radius, playerMovement.groundLayer) ||
+            Physics2D.OverlapCircle(origin, radius, playerMovement.wallLayer) ||
+            Physics2D.OverlapCircle(origin, radius, playerMovement.platformLayer))
+        {
+            return true;
+        }
+        return false;
+    }
 
     public void Disarm()
     {
