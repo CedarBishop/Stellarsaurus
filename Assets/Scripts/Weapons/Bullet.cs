@@ -6,8 +6,11 @@ public class Bullet : Projectile
 {
     public ParticleSystem destructionParticles;
     public GameObject muzzleFlash;
+    public TrailRenderer trailRenderer;
     public Rigidbody2D bulletShell;
     protected Rigidbody2D rigidbody;
+
+    private bool isActive = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +21,15 @@ public class Bullet : Projectile
                 return;
             }
         }
-
+        else if (collision.GetComponent<Teleport>())
+        {
+            print("Going through teleporter");
+            if (trailRenderer != null)
+            {
+                isActive = !isActive;
+                trailRenderer.gameObject.SetActive(isActive);
+            }
+        }
 
         if (damagesOnHit)
         {
@@ -36,11 +47,14 @@ public class Bullet : Projectile
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
             {
                 collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage,playerNumber);
-            }
-           
+            }           
         }
         if (destroysOnHit)
         {
+            if (collision.GetComponent<Teleport>())
+            {
+                return;
+            }
             if (destructionParticles != null)
             {
                 ParticleSystem p = Instantiate(destructionParticles, transform.position,Quaternion.identity);

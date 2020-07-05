@@ -77,13 +77,33 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
     public void DamageCharactersWithinRadius(int playerNumber)
     {
         // Check if players are around
-        players = FindObjectsOfType<PlayerHealth>();
-        foreach (PlayerHealth player in players)
+        //players = FindObjectsOfType<PlayerHealth>();
+        //foreach (PlayerHealth player in players)
+        //{
+        //    if (Vector2.Distance(transform.position, player.transform.position) <= range)
+        //    {
+        //        player.HitByPlayer(playerNumber, true);
+        //        Debug.Log(player.name + "died of explosion");
+        //    }
+        //}
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
+        if (colliders != null)
         {
-            if (Vector2.Distance(transform.position, player.transform.position) <= range)
+            for (int i = 0; i < colliders.Length; i++)
             {
-                player.HitByPlayer(playerNumber, true);
-                Debug.Log(player.name + "died of explosion");
+                if (colliders[i].GetComponent<PlayerHealth>())
+                {
+                    colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber, true);
+                }
+                //else if (colliders[i].GetComponent<AI>())
+                //{
+                //    colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
+                //}
+                //else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
+                //{
+                //    colliders[i].GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
+                //}
             }
         }
     }

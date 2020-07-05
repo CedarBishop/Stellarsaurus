@@ -35,18 +35,16 @@ public class Teleport : MonoBehaviour
                     particles = GetComponentsInChildren<ParticleSystem>();
                     particles[0].Play();
                 }
+
+                if (collision.GetComponent<Projectile>())
+                {
+                    collision.GetComponent<Projectile>().range += Vector2.Distance(otherTeleporter.position, transform.position);
+                }
             }
             // The "arrival" particle effect is the second child of the teleporter
             else
                 particles[1].Play();
-        }
-
-        if (collision.GetComponent<Projectile>())
-        {
-            print(collision.GetComponent<Projectile>().range);
-            collision.GetComponent<Projectile>().range += Vector2.Distance(otherTeleporter.position, transform.position);
-            print(collision.GetComponent<Projectile>().range);
-        }
+        }        
     }
 
     private bool CheckList(Rigidbody2D rb)

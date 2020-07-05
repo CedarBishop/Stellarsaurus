@@ -360,7 +360,7 @@ public class PlayerShoot : MonoBehaviour
         {
             return;
         }
-        if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.2f))
+        if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.1f))
         {
             return;
         }
@@ -528,7 +528,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void DropWeapon ()
     {
-        if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.2f))
+        if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.1f))
         {
             return;
         }
