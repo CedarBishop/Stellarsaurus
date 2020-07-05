@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     private int shieldBlocksRemaining;
 
     private GameObject shieldParticle;
+    private Material material;
     
     void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         health = playerParams.startingHealth;
         maxHealth = health;
+        material = GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
@@ -49,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         health -= damage;
+        StartCoroutine("FlashHurt");
         ParticleSystem p = Instantiate(bloodSplatterParticle,transform.position,Quaternion.identity);
         p.Play();
         Destroy(p.gameObject,3);
@@ -127,6 +130,7 @@ public class PlayerHealth : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
             health--;
+            StartCoroutine("FlashHurt");
             if (health <= 0)
             {
                 if (projectilePlayerNumber != playerNumber)
@@ -177,5 +181,13 @@ public class PlayerHealth : MonoBehaviour
     {
         hasShield = false;
         Destroy(shieldParticle);
+    }
+
+    IEnumerator FlashHurt ()
+    {
+        material.SetFloat("_IsHurt",1.0f);
+        yield return new WaitForSeconds(0.2f);
+        material.SetFloat("_IsHurt", 0.0f);
+
     }
 }

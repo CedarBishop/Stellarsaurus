@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   fieldOfView: 60
   numOfRays: 12
   isFacingRight: 1
+  targetMemoryTime: 0
 --- !u!114 &2765672809849141235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,12 +173,14 @@ MonoBehaviour:
     viewingDistance: 0
     fieldOfView: 0
     hearingRadius: 0
+    targetMemoryTime: 0
     chanceOfDroppingWeapon: 0
     aiBehaviour: 0
     jumpSpeed: 0
     jumpStrength: 0
     fallSpeed: 0
     fallLimit: 0
+    targetResetTime: 0
     wallDetectionDistance: 0
     FiringPoint: {x: 0, y: 0}
     projectileName: 

@@ -38,6 +38,8 @@ public class AI : MonoBehaviour
     private bool isBurning;
     [HideInInspector] public Vector2 startingPosition;
 
+    private Material material;
+
     Transform[] targetsInMap;
 
     public virtual void Initialise (AIType aIType, Transform[] transforms = null)
@@ -47,7 +49,7 @@ public class AI : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<CapsuleCollider2D>();
-
+        material = spriteRenderer.material;
 
         aiType = aIType;
         spriteRenderer.sprite = aiType.aiSprite;
@@ -131,6 +133,7 @@ public class AI : MonoBehaviour
     public virtual void TakeDamage (int playerNumber,int damage)
     {        
         health -= damage;
+        StartCoroutine("FlashHurt");
         if (health <= 0)
         {
             Death(playerNumber);
@@ -216,6 +219,14 @@ public class AI : MonoBehaviour
 
         }
         controller._goal = targetsInMap[Random.Range(0, targetsInMap.Length)];
+    }
+
+    IEnumerator FlashHurt()
+    {
+        material.SetFloat("_IsHurt", 1.0f);
+        yield return new WaitForSeconds(0.2f);
+        material.SetFloat("_IsHurt", 0.0f);
+
     }
 }
 
