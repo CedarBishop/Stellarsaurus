@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private CameraController cameraController;
     private UIController uiController;
 
+    private GhostMovement ghostMovement;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -178,6 +180,14 @@ public class Player : MonoBehaviour
             }
             playerShoot.Aim(value.Get<Vector2>());
         }            
+    }
+
+    void OnGhostMove (InputValue value)
+    {
+        if (ghostMovement != null)
+        {
+            ghostMovement.Move(value.Get<Vector2>());
+        }
     }
 
 }
