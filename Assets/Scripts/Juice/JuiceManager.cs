@@ -43,3 +43,11 @@ public class JuiceManager : MonoBehaviour
   
 
 }
+
+
+[System.Serializable]
+public class JuiceParams
+{
+    
+}
+
