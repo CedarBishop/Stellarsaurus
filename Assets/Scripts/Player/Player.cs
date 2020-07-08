@@ -8,19 +8,22 @@ public class Player : MonoBehaviour
 {
     public int playerNumber;
     public GameObject characterPrefab;
+    public GameObject ghostPrefab;
     public PlayerMovement playerMovement;
     public PlayerShoot playerShoot;
     public PlayerHealth playerHealth;
+    public GhostMovement ghostMovement;
+    public GhostGrab ghostGrab;
 
+    [HideInInspector]public string currentPlayerActionMap;
     [HideInInspector] public bool isStillAlive;
     [HideInInspector] public bool isGamepad;
 
     private PlayerInput playerInput;
     private GameObject currentCharacter;
+    private GameObject currentGhost;
     private CameraController cameraController;
     private UIController uiController;
-
-    private GhostMovement ghostMovement;
 
     private void Start()
     {
@@ -88,10 +91,17 @@ public class Player : MonoBehaviour
         {
             Destroy(currentCharacter);
         }
+        if (currentGhost != null)
+        {
+            Destroy(currentGhost);
+        }
         if (LevelManager.instance != null)
         {
             transform.position = LevelManager.instance.startingPositions[playerNumber - 1].position;
         }
+
+        currentPlayerActionMap = "Player";
+        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
 
         currentCharacter = Instantiate(characterPrefab,transform);
         playerMovement = currentCharacter.GetComponent<PlayerMovement>();
@@ -107,8 +117,11 @@ public class Player : MonoBehaviour
         isStillAlive = true;
     }
 
+
+
     public void CharacterDied(bool diedInCombat)
-    {      
+    {
+        Vector3 pos = currentCharacter.transform.position;
         if (currentCharacter != null)
         {
             if (cameraController != null)
@@ -132,8 +145,31 @@ public class Player : MonoBehaviour
             {
                 print("Called Player Died on gamemode");
                 GameManager.instance.SelectedGamemode.PlayerDied();
+                StartCoroutine("DelayGhostSpawn",pos);
             }            
         }        
+    }
+
+    IEnumerator DelayGhostSpawn(Vector3 pos)
+    {
+        yield return new WaitForSeconds(2);
+        CreateGhost(pos);
+    }
+
+    public void CreateGhost (Vector3 pos)
+    {
+        currentPlayerActionMap = "Ghost";
+        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+
+        currentGhost = Instantiate(ghostPrefab, pos, Quaternion.identity);
+        currentGhost.transform.parent = transform;
+        ghostMovement = currentGhost.GetComponent<GhostMovement>();
+        ghostGrab = currentGhost.GetComponent<GhostGrab>();
+        ghostMovement.playerNumber = playerNumber;
+        ghostGrab.playerNumber = playerNumber;
+        ghostGrab.player = this;
+        ghostGrab.isGamepad = isGamepad;
+
     }
 
     IEnumerator Respawn ()
@@ -187,6 +223,14 @@ public class Player : MonoBehaviour
         if (ghostMovement != null)
         {
             ghostMovement.Move(value.Get<Vector2>());
+        }
+    }
+
+    void OnGhostGrab ()
+    {
+        if (ghostGrab != null)
+        {
+            
         }
     }
 

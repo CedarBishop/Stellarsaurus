@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GhostMovement : MonoBehaviour
 {
+    public int playerNumber;
+
     public float movementSpeed;
     private Vector2 direction;
     private Rigidbody2D rigidbody;
@@ -22,5 +24,6 @@ public class GhostMovement : MonoBehaviour
     {
         Vector2 velocity = direction * movementSpeed * Time.fixedDeltaTime;
         rigidbody.AddForce(velocity);
+        rigidbody.AddForce((velocity * -0.2f));
     }
 }

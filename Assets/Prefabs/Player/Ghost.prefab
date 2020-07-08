@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7048489503243427660}
   - component: {fileID: 3595246176927852288}
   - component: {fileID: 1657278030973125528}
-  m_Layer: 17
+  m_Layer: 22
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,11 +128,10 @@ GameObject:
   - component: {fileID: 2655954609655052925}
   - component: {fileID: 2655954609655052924}
   - component: {fileID: 2655954609655052920}
-  - component: {fileID: 2327445293856462399}
   - component: {fileID: 704462935928681590}
   - component: {fileID: 8352555513574288784}
   - component: {fileID: 3773103590228270965}
-  m_Layer: 17
+  m_Layer: 22
   m_Name: Ghost
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -193,9 +192,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1061934801919521073, guid: 5055d74b2ceed3d47bd645017b0d4ae4,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0baf27b52b58b5b4ab93bf1a09b41709, type: 3}
+  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.68235296}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -226,23 +224,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2327445293856462399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655954609655052927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354e47dbf79780e45b40a26f06b729f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodSplatterParticle: {fileID: 8157379650156868562, guid: a8ef1dae9a131b14e9f7759c65cdb8f9,
-    type: 3}
-  shieldParticleSystem: {fileID: 1573176804134805683, guid: 424df20f4b4b8c4448e542e4564e8b8c,
-    type: 3}
-  playerNumber: 0
 --- !u!70 &704462935928681590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -271,7 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c17e6239741c54fa4a8f857b2b2188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  playerNumber: 0
+  movementSpeed: 200
 --- !u!114 &3773103590228270965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747b4b2a50a852e45801cc20e64fdc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectOriginTransform: {fileID: 0}
+  objectSprite: {fileID: 0}
+  isGamepad: 0
+  playerNumber: 0
+  player: {fileID: 0}
+  aimType: 0
 --- !u!1 &5800536179399466528
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2180012640987882278}
-  m_Layer: 17
+  m_Layer: 22
   m_Name: Gun Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
