@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     private int shieldBlocksRemaining;
 
     private GameObject shieldParticle;
-    private Material material;
+    public SpriteRenderer[] material;
     
     void Start()
     {
@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         health = playerParams.startingHealth;
         maxHealth = health;
-        material = GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
@@ -185,9 +184,11 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator FlashHurt ()
     {
-        material.SetFloat("_IsHurt",1.0f);
-        yield return new WaitForSeconds(0.2f);
-        material.SetFloat("_IsHurt", 0.0f);
-
+        for (int i = 0; i < material.Length; i++)
+        {
+            material[i].material.SetFloat("_IsHurt", 1.0f);
+            yield return new WaitForSeconds(0.2f);
+            material[i].material.SetFloat("_IsHurt", 0.0f);
+        }
     }
 }

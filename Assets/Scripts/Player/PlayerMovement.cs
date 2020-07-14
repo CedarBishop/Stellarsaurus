@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int playerNumber;
 
 
-    public RuntimeAnimatorController[] animatorControllers;
+    public RuntimeAnimatorController[] animatorControllersHead;
+    public RuntimeAnimatorController[] animatorControllersBody;
     public float groundMovementSpeed;
     public float airMovementSpeed;
     public float jumpHeight;
@@ -28,9 +29,11 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer shadowSprite;
     public ParticleSystem dustParticleFX;
 
-    private Animator animator;
+    public Animator animatorHead;
+    public Animator animatorBody;
     private new Rigidbody2D rigidbody;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRendererHead;
+    public SpriteRenderer spriteRendererBody;
     
     private PlayerParams playerParams;
     
@@ -57,10 +60,9 @@ public class PlayerMovement : MonoBehaviour
     // Get components and initialise stats from design master here
     void Start()
     {
-        animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();        
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator.runtimeAnimatorController = animatorControllers[playerNumber - 1];
+        animatorHead.runtimeAnimatorController = animatorControllersHead[playerNumber - 1];
+        animatorBody.runtimeAnimatorController = animatorControllersBody[playerNumber - 1];
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         groundMovementSpeed = playerParams.groundSpeed;
         airMovementSpeed = playerParams.airSpeed;
@@ -90,16 +92,27 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Sprite & animation Update starts here
-        animator.SetFloat("Horizontal", Mathf.Abs(rigidbody.velocity.x));
-        animator.SetFloat("Vertical", Mathf.Abs(rigidbody.velocity.y));
+        animatorHead.SetFloat("Horizontal", Mathf.Abs(rigidbody.velocity.x));
+        animatorBody.SetFloat("Horizontal", Mathf.Abs(rigidbody.velocity.x));
+        animatorHead.SetFloat("Vertical", Mathf.Abs(rigidbody.velocity.y));
+        animatorBody.SetFloat("Vertical", Mathf.Abs(rigidbody.velocity.y));
 
         if (gunOrigin.rotation.eulerAngles.z < -90 || gunOrigin.rotation.eulerAngles.z > 90)
         {
-            spriteRenderer.flipX = true;
+            spriteRendererHead.flipX = true;
         }
         else 
         {
-            spriteRenderer.flipX = false;
+            spriteRendererHead.flipX = false;
+        }
+
+        if (horizontal < 0)
+        {
+            spriteRendererBody.flipX = true;
+        }
+        else if( horizontal > 0)
+        {
+            spriteRendererBody.flipX = false;
         }
 
         // ends here

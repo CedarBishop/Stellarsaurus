@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Reskin2_Body
+  m_Controller: {fileID: 9100000, guid: 3f75a2221d5aac9498e25bb2f258a07e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1766160a835611b46a58aa6845f92658, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 571cbfc8422adc14885ca20b1a42bc30, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 61385fb5d140d4a4bb028f308a4f8a00, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bb3ca4c211d2b824c8584a889bf4ad16, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c8d347a12f9e55f44991d97dd3c54bda, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7022f023bb5e05e4f86b731578b7d6c4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 44dccfb98b3abad47b310907cb167f3d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bb378363048956a42b5cfcc7c53ac178, type: 2}
