@@ -168,8 +168,6 @@ public class Player : MonoBehaviour
         ghostMovement.playerNumber = playerNumber;
         ghostGrab.playerNumber = playerNumber;
         ghostGrab.player = this;
-        ghostGrab.isGamepad = isGamepad;
-
     }
 
     IEnumerator Respawn ()
