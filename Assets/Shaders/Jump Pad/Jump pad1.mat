@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Teleporter 1
+  m_Name: Jump pad1
   m_Shader: {fileID: -6465566751694194690, guid: e80475b671351e74c9579d087ddf82f8,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -31,3 +31,4 @@ Material:
     m_Floats: []
     m_Colors:
     - Color_53E73246: {r: 0.7165994, g: 2.9960785, b: 0.04705874, a: 1}
+    - _Color: {r: 0.22075, g: 2.3214443, b: 0.18615358, a: 1}

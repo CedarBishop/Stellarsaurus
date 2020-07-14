@@ -196,12 +196,11 @@ public class GameManager : MonoBehaviour
     // Tells all players to switch controls back to player
     public void UnPause ()
     {
-
         Time.timeScale = 1;
 
         foreach (PlayerInput player in playerInputs)
         {
-            player.SwitchCurrentActionMap("Player");
+            player.SwitchCurrentActionMap(player.GetComponent<Player>().currentPlayerActionMap);
         }
 
         UIManager.instance.UnPause();

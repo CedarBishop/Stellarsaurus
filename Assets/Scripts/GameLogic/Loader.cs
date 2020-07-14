@@ -7,10 +7,19 @@ public class Loader : MonoBehaviour
 {
     [HideInInspector]public SaveObject saveObject;
 
+    public bool isDebugDesignParams;
+
     private void Awake()
     {
 #if UNITY_EDITOR
+
         string file = Application.dataPath + "/Resources/DesignMaster.txt";
+
+        if (isDebugDesignParams)
+        {
+            file = Application.dataPath + "/Resources/DebugDesignMaster.txt";
+        }
+
         File.ReadAllText(file);
         saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
 #else

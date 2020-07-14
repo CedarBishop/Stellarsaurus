@@ -48,6 +48,8 @@ MonoBehaviour:
   playerNumber: 0
   characterPrefab: {fileID: 2655954609655052927, guid: 36c09dfe29d2f9345a3188bc8047fffb,
     type: 3}
+  ghostPrefab: {fileID: 2655954609655052927, guid: 179701b8db4cf61498184e531766f0af,
+    type: 3}
   playerMovement: {fileID: 0}
   playerShoot: {fileID: 0}
   playerHealth: {fileID: 0}
