@@ -7,17 +7,17 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance = null;
-    AudioSource musicAudioSource;
-    List<AudioSource> sfx = new List<AudioSource>();
+    
+    public AudioSourceController audioControllerPrefab;
+    public Queue<AudioSourceController> audioControllers = new Queue<AudioSourceController>();
+    public int sfxObjectPoolSize;    
 
     [SerializeField] private AudioClip mainMenuMusic;
     [SerializeField] private AudioClip gameMusic;
 
-    [SerializeField]
-    Sound[] sounds;
+    [SerializeField] Sound[] sounds;
 
-    public List<PlayerAudio> playerAudioList = new List<PlayerAudio>();
-
+    private AudioSource musicAudioSource;
     [Range(0.0f, 1.0f)] private float currentSfxVolume;
     [Range(0.0f, 1.0f)] private float currentMusicVolume;
 
@@ -38,17 +38,13 @@ public class SoundManager : MonoBehaviour
     {
         musicAudioSource = GetComponent<AudioSource>();
 
-
         currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
         musicAudioSource.volume = currentMusicVolume;
 
-
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < sfxObjectPoolSize; i++)
         {
-            GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
-            _go.transform.parent = transform;
-            sounds[i].SetSource(_go.AddComponent<AudioSource>());
-            sfx.Add(_go.GetComponent<AudioSource>());
+            AudioSourceController controller = Instantiate(audioControllerPrefab, transform);
+            audioControllers.Enqueue(controller);
         }
 
         currentSfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
@@ -94,10 +90,23 @@ public class SoundManager : MonoBehaviour
         {
             if (sounds[i].name == soundName)
             {
-                sounds[i].Play();
+                sounds[i].Play(audioControllers.Dequeue());
+                print(audioControllers.Count);
                 return;
             }
         }
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        audioControllers.Dequeue().Play(clip,currentSfxVolume, 1.0f);
+        print(audioControllers.Count);
+    }
+
+    public void PlaySFX(AudioClip clip, float volumeScaler, float pitch)
+    {
+        audioControllers.Dequeue().Play(clip, currentSfxVolume * volumeScaler, pitch);
+        print(audioControllers.Count);
     }
 
     public float SetMusicVolume(float value)
@@ -132,14 +141,9 @@ public class SoundManager : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("SfxVolume", currentSfxVolume);
-        foreach (AudioSource source in sfx)
+        foreach (Sound sound in sounds)
         {
-            source.volume = currentSfxVolume;
-        }
-
-        foreach (PlayerAudio audio in playerAudioList)
-        {
-            audio.SetVolume(currentSfxVolume);
+            sound.volume = currentSfxVolume;
         }
 
         return currentSfxVolume;
@@ -179,30 +183,17 @@ public class Sound
 {
     public string name;
     public AudioClip clip;
-    [HideInInspector] public AudioSource source;
     [Range(-3.0f, 3.0f)] public float pitch = 1;
     [Range(0.0f,1.0f)]public float volume = 1;
 
-
-    public void SetSource(AudioSource _source)
-    {
-        source = _source;
-        source.clip = clip;
-        source.pitch = pitch;
-
-    }
-
-
-
-    public void Play()
+    public void Play(AudioSourceController source)
     {
         if (clip == null || source == null)
         {
             return;
         }
 
-        source.Play();
-
+        source.Play(clip,volume,pitch);
     }
 
 

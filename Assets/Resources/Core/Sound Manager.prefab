@@ -44,80 +44,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0a4f2c5ea0f7d4b8dade24a4e6e89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioControllerPrefab: {fileID: 6221780010446405823, guid: c1b794514f4728044a0bce5b7170c236,
+    type: 3}
+  sfxObjectPoolSize: 100
   mainMenuMusic: {fileID: 8300000, guid: 791b30d6266023947b65cb24755c66d0, type: 3}
   gameMusic: {fileID: 8300000, guid: a08423281fa429a4cbc59f372e7172a6, type: 3}
   sounds:
   - name: SFX_JumpUp
     clip: {fileID: 8300000, guid: ea6ee8a5bf930404295c2f119c938eeb, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_JumpLand
     clip: {fileID: 8300000, guid: 230060b47467caf41a516849a48cb977, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_PlayerHurt
     clip: {fileID: 8300000, guid: 724dce5e309e51646978606bc9b2324b, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_Shot1
     clip: {fileID: 8300000, guid: f6586f2dca2721743a593c73a329883a, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_Shot2
     clip: {fileID: 8300000, guid: c84f0fb033ce6fc4f8810573694a7f79, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_Shot3
     clip: {fileID: 8300000, guid: 96d6d8accaf1e3e4d80c04bcf7e8cf46, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_MeleeSwing
     clip: {fileID: 8300000, guid: 6c2d79eb5a6379f458a9343902c91508, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_ShotLaser1
     clip: {fileID: 8300000, guid: 5a00bdea9e970904f9f8201fee56a2ef, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_Explosion
     clip: {fileID: 8300000, guid: 9130548c14a551046897f101f362d873, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_BulletToEnvironment
     clip: {fileID: 8300000, guid: 8658c9a80557ad74fb50df4bcd5d6904, type: 3}
-    source: {fileID: 0}
     pitch: 0.9
     volume: 1
   - name: SFX_DinasaurSpawn
     clip: {fileID: 8300000, guid: 6081fdcacf53f5f4b8f69a010cf67994, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_DinasaurBite
     clip: {fileID: 8300000, guid: d56e8265f2f63284887472722868ab75, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_ElectricFieldDamage
     clip: {fileID: 8300000, guid: 68466f0f95649eb49aee3a85b3243b7d, type: 3}
-    source: {fileID: 0}
     pitch: 1
     volume: 1
   - name: SFX_Teleport
     clip: {fileID: 8300000, guid: 3019c7ae16268a3439626076b5c55529, type: 3}
-    source: {fileID: 0}
     pitch: 0.9
     volume: 1
-  playerAudioList: []
 --- !u!82 &6978079196766835210
 AudioSource:
   m_ObjectHideFlags: 0

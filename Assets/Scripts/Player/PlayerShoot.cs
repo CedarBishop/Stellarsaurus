@@ -20,7 +20,6 @@ public class PlayerShoot : MonoBehaviour
     Camera mainCamera;
     PlayerMovement playerMovement;
     CameraShake cameraShake;
-    private PlayerAudio playerAudio;
     private PlayerWeaponAnimation weaponAnimation;
 
     [HideInInspector] public AimType aimType;
@@ -59,7 +58,6 @@ public class PlayerShoot : MonoBehaviour
         currentWeapon = null;
         playerMovement = GetComponent<PlayerMovement>();
         cameraShake = mainCamera.GetComponent<CameraShake>();
-        playerAudio = GetComponent<PlayerAudio>();
         weaponAnimation = gunSprite.GetComponent<PlayerWeaponAnimation>();
     }
 
@@ -459,7 +457,7 @@ public class PlayerShoot : MonoBehaviour
 
             if (currentWeapon.soundFX != null)
             {
-                playerAudio.PlaySFX(currentWeapon.soundFX);
+                SoundManager.instance.PlaySFX(currentWeapon.soundFX);
             }
 
             ammoCount--;
