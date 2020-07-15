@@ -14443,7 +14443,8 @@ GameObject:
   - component: {fileID: 8640615898143685328}
   - component: {fileID: 8640615898143685329}
   - component: {fileID: 8378499089518270367}
-  m_Layer: 8
+  - component: {fileID: 7676443570872467499}
+  m_Layer: 0
   m_Name: Explosive Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14581,9 +14582,28 @@ MonoBehaviour:
   health: 2
   healthMax: 0
   isExplosive: 1
+  weaponPrefab: {fileID: 0}
+  weaponsInThisLevel: []
   damage: 10
   range: 2
   hasSmokeEffect: 1
+--- !u!114 &7676443570872467499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640615898143685330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39853df8848f5ca40a1bc6ce476aa62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  methodsToCall:
+  - methodToCall: DamageCharactersWithinRadius
+    passPlayerNumber: 1
+  - methodToCall: ExplosiveDestructionSequence
+    passPlayerNumber: 0
 --- !u!1 &8640615899250154132
 GameObject:
   m_ObjectHideFlags: 0

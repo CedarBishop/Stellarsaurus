@@ -13,14 +13,12 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
 
     public bool hasSmokeEffect;
 
-    private EnvironmentalObjectHealth envObjHealth;
     private PlayerHealth[] players;
 
     // Start is called before the first frame update
     void Start()
     {
         players = FindObjectsOfType<PlayerHealth>();
-        //envObjHealth = GetComponent<EnvironmentalObjectHealth>();
     }
 
     public override void TakeDamage(int damage, int playerNumber)

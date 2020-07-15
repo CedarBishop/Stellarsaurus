@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 2987683498432540192}
   - component: {fileID: 2987683498432540195}
   - component: {fileID: 7641617728935702690}
+  - component: {fileID: 1343340909290696197}
   m_Layer: 19
   m_Name: Extraction Objective
   m_TagString: Extraction
@@ -206,6 +207,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1343340909290696197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987683498432540222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528863824f9cff34e8da90afe0d7589d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &419821949630207574
 PrefabInstance:
   m_ObjectHideFlags: 0

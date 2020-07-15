@@ -6,15 +6,15 @@ public class GhostGrab : MonoBehaviour
 {
     [HideInInspector] public int playerNumber;
 
-    public Transform objectOriginTransform;
+    public Transform holderTransform;
 
     [HideInInspector] public Player player;
 
     private Camera mainCamera;
     private GhostMovement ghostMovement;
-    private IGhostGrabbable grabbable;
-    private IGhostInteractable interactable;
-    private IGhostGrabbable heldObject;
+    public Grabbable grabbable;
+    public Interactable interactable;
+    public Grabbable heldObject;
 
 
     void Start()
@@ -23,20 +23,22 @@ public class GhostGrab : MonoBehaviour
         ghostMovement = GetComponent<GhostMovement>();
     }
   
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D (Collider2D other)
     {
-        interactable = other as IGhostInteractable;        
-        grabbable = other as IGhostGrabbable;
+        interactable = other.GetComponent<Interactable>();
+        grabbable = other.GetComponent<Grabbable>();
     }
 
     public void Grab ()
     {
         if (interactable != null)
         {
-            interactable.GhostInteract();
+            print("Ghost interact");
+            interactable.GhostInteract(playerNumber);
         }
         if (heldObject != null)
         {
+            print("Ghost drop");
             Drop();
             return;
         }
@@ -44,7 +46,8 @@ public class GhostGrab : MonoBehaviour
         {
             if (grabbable != null)
             {
-                grabbable.Grab();
+                print("Ghost grab");
+                grabbable.Grab(holderTransform);
                 heldObject = grabbable;
             }
         }
@@ -55,15 +58,4 @@ public class GhostGrab : MonoBehaviour
         heldObject.Drop();
         heldObject = null;
     }
-}
-
-public interface IGhostInteractable 
-{
-    void GhostInteract ();
-}
-
-public interface IGhostGrabbable
-{
-    void Grab();
-    void Drop();
 }

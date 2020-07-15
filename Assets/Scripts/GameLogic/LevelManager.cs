@@ -23,7 +23,9 @@ public class LevelManager : MonoBehaviour
     [Header("Doesn't spawn AI yet")]
     [Header("")]
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisInThisLevel;
-    public AI aiPrefab; 
+    public AI aiPrefab;
+
+    public bool debugGhost;
 
     [HideInInspector] public List<WeaponType> weaponTypes = new List<WeaponType>();
 

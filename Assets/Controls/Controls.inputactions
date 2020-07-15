@@ -849,6 +849,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "GhostGrab",
+                    "type": "Button",
+                    "id": "ab0250ad-9204-46ce-b8af-4229fafa7ac8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -926,6 +934,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "GhostMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "544ddf1b-ca62-404f-97cd-e7f98c6669b5",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GhostGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6de9047-5981-4860-9b58-09fe1af4720b",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "GhostGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1dd538b7-fdfc-427d-951a-86896ad8bd31",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "GhostGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

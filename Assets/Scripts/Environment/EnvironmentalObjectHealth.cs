@@ -58,5 +58,5 @@ public class EnvironmentalObjectHealth : MonoBehaviour
         }
         
         Destroy(gameObject);
-    }
+    }   
 }

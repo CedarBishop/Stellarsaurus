@@ -42,7 +42,15 @@ public class Player : MonoBehaviour
 
         cameraController = Camera.main.GetComponent<CameraController>();
 
-        CreateNewCharacter();
+        if (LevelManager.instance.debugGhost)
+        {
+            CreateGhost(transform.position);
+        }
+        else
+        {
+            CreateNewCharacter();
+        }
+        
     }
 
     void OnMove (InputValue value)
@@ -112,7 +120,6 @@ public class Player : MonoBehaviour
         playerHealth.playerNumber = playerNumber;
         playerShoot.playerNumber = playerNumber;
         playerMovement.playerNumber = playerNumber;
-
 
         isStillAlive = true;
     }
@@ -228,7 +235,7 @@ public class Player : MonoBehaviour
     {
         if (ghostGrab != null)
         {
-            
+            ghostGrab.Grab();
         }
     }
 

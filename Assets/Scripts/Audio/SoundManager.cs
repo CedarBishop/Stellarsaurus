@@ -91,7 +91,6 @@ public class SoundManager : MonoBehaviour
             if (sounds[i].name == soundName)
             {
                 sounds[i].Play(audioControllers.Dequeue());
-                print(audioControllers.Count);
                 return;
             }
         }
@@ -100,13 +99,11 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         audioControllers.Dequeue().Play(clip,currentSfxVolume, 1.0f);
-        print(audioControllers.Count);
     }
 
     public void PlaySFX(AudioClip clip, float volumeScaler, float pitch)
     {
         audioControllers.Dequeue().Play(clip, currentSfxVolume * volumeScaler, pitch);
-        print(audioControllers.Count);
     }
 
     public float SetMusicVolume(float value)
