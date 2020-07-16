@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     public AI aiPrefab;
 
     public bool debugGhost;
+    public bool isClimbLevel;
 
     [HideInInspector] public List<WeaponType> weaponTypes = new List<WeaponType>();
 
