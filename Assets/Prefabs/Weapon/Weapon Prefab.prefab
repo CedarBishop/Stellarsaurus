@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 9168677217926515299}
   - component: {fileID: 9168677217926515296}
   - component: {fileID: 2230875963379332808}
-  - component: {fileID: 8342756988548347715}
+  - component: {fileID: 6010520602041125607}
   m_Layer: 19
   m_Name: Weapon Prefab
   m_TagString: Weapon
@@ -220,7 +220,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8342756988548347715
+--- !u!114 &6010520602041125607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,18 +229,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9168677217926515297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 528863824f9cff34e8da90afe0d7589d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2

@@ -4,21 +4,41 @@ using UnityEngine;
 
 public class Grabbable : MonoBehaviour
 {
+    private bool isWeapon;
+    private Weapon weapon;
+    private WeaponType weaponType;
+    private bool hadRigidbody;
+    private float mass;
+
     public void Grab(Transform holderTransform)
     {
         transform.parent = holderTransform;
+
+        if (TryGetComponent<Weapon>(out Weapon _Weapon))
+        {
+            weapon = _Weapon;
+            weaponType = weapon.weaponType;
+        }
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
         {
-            rigidbody.gravityScale = 0;
+            hadRigidbody = true;
+            mass = rigidbody.mass;
+            Destroy(rigidbody);
         }
     }
 
     public void Drop()
     {
         transform.parent = null;
-        if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
+        if (isWeapon)
         {
-            rigidbody.gravityScale = 0;
+            weapon.OnDrop(weaponType,weaponType.ammoCount);
         }
+        if (hadRigidbody)
+        {
+            Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
+            rigidbody.mass = mass;
+        }
+
     }
 }
