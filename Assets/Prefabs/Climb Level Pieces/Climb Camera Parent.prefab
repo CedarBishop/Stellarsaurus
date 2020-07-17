@@ -538,12 +538,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 2
+  timeBeforeStarting: 3
   towerHeight: 15
   bottomPiece: {fileID: 4477339521527252943, guid: 22e0baccca0414a48b961c4cd7f8a01d,
     type: 3}
   middlePieces:
   - {fileID: 4445052784641095689, guid: 9b0b9f81ce0ef5a4c800f25a0c6ab2ab, type: 3}
   - {fileID: 7838983641197405030, guid: 59b9beaabdaa0f147a05f6b93cb52ab9, type: 3}
+  - {fileID: 7838983641197405030, guid: 2ef228019e0296d49af49175f149437a, type: 3}
+  - {fileID: 7838983641197405030, guid: b43af87d14aeac2439f2214df77e1439, type: 3}
   - {fileID: 7838983641197405030, guid: 59b9beaabdaa0f147a05f6b93cb52ab9, type: 3}
   topPiece: {fileID: 8448557628046760262, guid: 51c20634b09aba949949f88ecfaf4a54,
     type: 3}
