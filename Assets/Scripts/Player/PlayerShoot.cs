@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.InputSystem;
 
 public enum AimType { FreeAim, EightDirection, FourDirection, HybridEightDirection}
 public enum Orthogonal {Up, Right, Down, Left }
@@ -21,6 +22,7 @@ public class PlayerShoot : MonoBehaviour
     PlayerMovement playerMovement;
     CameraShake cameraShake;
     private PlayerWeaponAnimation weaponAnimation;
+    private Gamepad gamepad;
 
     [HideInInspector] public AimType aimType;
 
@@ -59,6 +61,7 @@ public class PlayerShoot : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         cameraShake = mainCamera.GetComponent<CameraShake>();
         weaponAnimation = gunSprite.GetComponent<PlayerWeaponAnimation>();
+        gamepad = Gamepad.current;
     }
 
     private void OnDestroy()
@@ -460,6 +463,11 @@ public class PlayerShoot : MonoBehaviour
                 SoundManager.instance.PlaySFX(currentWeapon.soundFX);
             }
 
+            if (isGamepad)
+            {
+                StartCoroutine("Haptic");
+            }
+
             ammoCount--;
             if (ammoCount <= 0)
             {
@@ -469,6 +477,15 @@ public class PlayerShoot : MonoBehaviour
             StartCoroutine("DelayBetweenShots");
         }
              
+    }
+
+    IEnumerator Haptic ()
+    {
+        gamepad.SetMotorSpeeds(0.5f,1.0f);
+        gamepad.ResumeHaptics();
+        yield return new WaitForSeconds(0.1f);
+        gamepad.PauseHaptics();
+        gamepad.ResetHaptics();
     }
 
     IEnumerator WeaponJitter()
