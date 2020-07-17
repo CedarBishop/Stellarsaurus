@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerHealth : MonoBehaviour
 {
     public ParticleSystem bloodSplatterParticle;
     public ParticleSystem shieldParticleSystem;
+    public SpriteRenderer[] material;
 
     [HideInInspector]public int playerNumber;
     
@@ -21,7 +22,9 @@ public class PlayerHealth : MonoBehaviour
     private int shieldBlocksRemaining;
 
     private GameObject shieldParticle;
-    public SpriteRenderer[] material;
+
+    private Gamepad gamepad;
+    private bool isGamepad;
     
     void Start()
     {
@@ -31,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         health = playerParams.startingHealth;
         maxHealth = health;
+        gamepad = Gamepad.current;
+        isGamepad = playerParent.isGamepad;
     }
 
     private void Update()
@@ -50,6 +55,10 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         health -= damage;
+        if (isGamepad)
+        {
+            StartCoroutine("Haptic");
+        }
         StartCoroutine("FlashHurt");
         ParticleSystem p = Instantiate(bloodSplatterParticle,transform.position,Quaternion.identity);
         p.Play();
@@ -82,6 +91,11 @@ public class PlayerHealth : MonoBehaviour
         }
         isAlive = false;
         health = 0;
+
+        if (isGamepad)
+        {
+            StartCoroutine("Haptic");
+        }
 
         JuiceManager.TimeSleep(0.5f,0.1f);
 
@@ -129,6 +143,10 @@ public class PlayerHealth : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
             health--;
+            if (isGamepad)
+            {
+                StartCoroutine("Haptic");
+            }
             StartCoroutine("FlashHurt");
             if (health <= 0)
             {
@@ -190,5 +208,14 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             material[i].material.SetFloat("_IsHurt", 0.0f);
         }
+    }
+
+    IEnumerator Haptic ()
+    {
+        gamepad.SetMotorSpeeds(0.5f,1.0f);
+        gamepad.ResumeHaptics();
+        yield return new WaitForSeconds(0.1f);
+        gamepad.PauseHaptics();
+        gamepad.ResetHaptics();
     }
 }
