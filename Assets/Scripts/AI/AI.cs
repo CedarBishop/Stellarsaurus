@@ -171,16 +171,26 @@ public class AI : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
     }
 
+    public void StopBurning ()
+    {
+        if (isBurning)
+        {
+            isBurning = false;
+            spriteRenderer.color = Color.white;
+        }
+    }
+
     IEnumerator Burning(int projectilePlayerNumber)
     {
+        yield return new WaitForSeconds(1.0f);
         while (health > 0)
         {
-            yield return new WaitForSeconds(1.0f);
             health--;
             if (health <= 0)
             {
                 Death(projectilePlayerNumber);
             }
+            yield return new WaitForSeconds(1.0f);
         }
     }
 

@@ -134,14 +134,29 @@ public class PlayerHealth : MonoBehaviour
 
         isBurning = true;
         StartCoroutine(Burning(projectilePlayerNumber));
-        GetComponent<SpriteRenderer>().color = Color.red;
+        foreach (var item in material)
+        {
+            item.color = Color.red;
+        }
+    }
+
+    public void StopBurning()
+    {
+        if (isBurning)
+        {
+            isBurning = false;
+            foreach (var item in material)
+            {
+                item.color = Color.white;
+            }
+        }
     }
 
     IEnumerator Burning(int projectilePlayerNumber)
     {
-        while (health > 0)
+        yield return new WaitForSeconds(1.0f);
+        while (health > 0 && isBurning)
         {
-            yield return new WaitForSeconds(1.0f);
             health--;
             if (isGamepad)
             {
@@ -159,6 +174,7 @@ public class PlayerHealth : MonoBehaviour
                 }
                 Death();
             }
+            yield return new WaitForSeconds(1.0f);
         }
     }
 
