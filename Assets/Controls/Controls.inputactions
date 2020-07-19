@@ -100,6 +100,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "StartFineAiming",
+                    "type": "Button",
+                    "id": "0c50151a-80a5-4a6c-accb-5c40aca9857d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "EndFineAiming",
+                    "type": "Button",
+                    "id": "984acb49-5dce-46ce-b250-d63d9b28ad73",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -228,17 +244,6 @@
                     "name": "",
                     "id": "b171d481-0bfe-4ccf-af49-06cf01f4bb03",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "StartJump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "278f62ff-aae5-4765-929f-5b1896277e91",
-                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -729,6 +734,50 @@
                     "action": "MoveAiming",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "168e89ab-54b2-4b56-9785-57ab1166c198",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StartFineAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bad9bdcd-2e04-48f1-811b-1d868bf8a466",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "StartFineAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b860d640-9c8e-48a3-ad9d-2bcb25c936e2",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "EndFineAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9202c1d-a06f-44cd-bd8a-a01c4afabcf8",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "EndFineAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

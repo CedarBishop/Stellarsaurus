@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
     private Orthogonal orthogonal;
     private float verticalAim;
 
+    private bool isFineAiming;
+
 
     // Get components and initialise stats from design master here
     void Start()
@@ -117,6 +119,10 @@ public class PlayerMovement : MonoBehaviour
 
         // ends here
 
+        if (isFineAiming)
+        {
+            horizontal = 0;
+        }
 
         // Grounded & jump logic update starts here
         bool wasGrounded = isGrounded;
@@ -224,6 +230,12 @@ public class PlayerMovement : MonoBehaviour
     {
         gameObject.layer = 17;
     }
+
+    public void SetFineAiming (bool value)
+    {
+        isFineAiming = value;
+    }
+
 
     void Jump ()
     {

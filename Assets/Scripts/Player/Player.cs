@@ -239,4 +239,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnStartFineAiming ()
+    {
+        if (playerMovement != null)
+            playerMovement.SetFineAiming(true);
+    }
+
+    void OnEndFineAiming()
+    {
+        if (playerMovement != null)
+            playerMovement.SetFineAiming(false);
+    }
+
 }

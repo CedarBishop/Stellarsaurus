@@ -228,10 +228,15 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator Haptic ()
     {
-        gamepad.SetMotorSpeeds(0.5f,1.0f);
+        gamepad.SetMotorSpeeds(0.5f, 1.0f);
         gamepad.ResumeHaptics();
         yield return new WaitForSeconds(0.1f);
         gamepad.PauseHaptics();
+        gamepad.ResetHaptics();
+    }
+
+    private void OnDestroy()
+    {
         gamepad.ResetHaptics();
     }
 }
