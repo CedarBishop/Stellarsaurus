@@ -8,13 +8,17 @@ public class JumpPad : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerMovement>())
+        if (collision.GetComponent<Rigidbody2D>())
         {
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+        }
+        if (collision.GetComponent<PlayerMovement>())
+        {
             collision.GetComponent<PlayerMovement>().OnJumpPadBoost();
         }
+        
     }
 
 }

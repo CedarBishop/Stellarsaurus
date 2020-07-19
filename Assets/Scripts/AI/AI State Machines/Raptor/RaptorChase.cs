@@ -31,10 +31,10 @@ public class RaptorChase : StateMachineBehaviour
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
-       // smallJumpHeight = ai.aiType.smallJumpHeight;
-       // largeJumpHeight = ai.aiType.largeJumpHeight;
+        smallJumpHeight = ai.aiType.smallJumpHeight;
+        largeJumpHeight = ai.aiType.largeJumpHeight;
        targetTransform = perception.targetTransform;
-       // jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
+       jumpDetectionDistance = ai.aiType.wallDetectionDistance;
 
     }
 
@@ -43,8 +43,8 @@ public class RaptorChase : StateMachineBehaviour
     {
 
         TargetTracking(animator);
-        //Chase();
-        //CalculateWallAndLedge();
+        Chase();
+        CalculateWallAndLedge();
 
     }
 

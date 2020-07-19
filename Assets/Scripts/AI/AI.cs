@@ -9,6 +9,7 @@ public class AI : MonoBehaviour
     public event System.Action OnHit;
 
     public RuntimeAnimatorController patrolController;
+    public RuntimeAnimatorController jumpPatrolController;
     public RuntimeAnimatorController guardController;
     public RuntimeAnimatorController flyerController;
     public RuntimeAnimatorController carrierController;
@@ -72,19 +73,11 @@ public class AI : MonoBehaviour
         switch (behaviour)
         {
             case AIBehaviour.Patrol:
-                controller.enabled = true;
-                agent.enabled = true;
-                agent.Init(FindObjectOfType<PathFindingGrid>());
+                controller.enabled = false;
+                agent.enabled = false;
                 animator.runtimeAnimatorController = patrolController;
                 animator.SetBool("CanAttack", true);
-                Destroy(GetComponent<Rigidbody2D>());
-                GetComponent<Collider2D>().isTrigger = true;
 
-                agent._fallLimit = aiType.fallLimit;
-                agent._jumpStrength = (int)aiType.jumpStrength;
-                controller._walkSpeed = aiType.movementSpeed;
-                controller._jumpSpeed = aiType.jumpSpeed;
-                controller._fallSpeed = aiType.fallSpeed;
                 break;
             case AIBehaviour.Guard:
                 controller.enabled = false;
@@ -100,6 +93,21 @@ public class AI : MonoBehaviour
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = carrierController;
+                break;
+            case AIBehaviour.JumpPatrol:
+                controller.enabled = true;
+                agent.enabled = true;
+                agent.Init(FindObjectOfType<PathFindingGrid>());
+                animator.runtimeAnimatorController = patrolController;
+                animator.SetBool("CanAttack", true);
+                Destroy(GetComponent<Rigidbody2D>());
+                GetComponent<Collider2D>().isTrigger = true;
+
+                agent._fallLimit = aiType.fallLimit;
+                agent._jumpStrength = (int)aiType.jumpStrength;
+                controller._walkSpeed = aiType.movementSpeed;
+                controller._jumpSpeed = aiType.jumpSpeed;
+                controller._fallSpeed = aiType.fallSpeed;
                 break;
             default:
                 break;
@@ -230,7 +238,7 @@ public class AI : MonoBehaviour
     }
 }
 
-public enum AIBehaviour { Patrol, Guard, Fly, Carrier }
+public enum AIBehaviour { Patrol, Guard, Fly, Carrier, JumpPatrol }
 
 [System.Serializable]
 public class AIType
@@ -256,6 +264,9 @@ public class AIType
     public float chanceOfDroppingWeapon;
 
     public AIBehaviour aiBehaviour;
+
+    public float smallJumpHeight;
+    public float largeJumpHeight;
 
     public float jumpSpeed;
     public int jumpStrength;

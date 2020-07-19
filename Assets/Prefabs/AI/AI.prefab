@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolController: {fileID: 9100000, guid: 362be957a185fe34dbfbc2407cd85157, type: 2}
+  jumpPatrolController: {fileID: 9100000, guid: 1fe7b9a4f40466b498e17e0f8b62640e,
+    type: 2}
   guardController: {fileID: 9100000, guid: 10312a8c65440bd45b4fafd089a7b930, type: 2}
   flyerController: {fileID: 9100000, guid: 8db40813563063048a6e1ef1ca6af9da, type: 2}
   carrierController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
@@ -176,6 +178,8 @@ MonoBehaviour:
     targetMemoryTime: 0
     chanceOfDroppingWeapon: 0
     aiBehaviour: 0
+    smallJumpHeight: 0
+    largeJumpHeight: 0
     jumpSpeed: 0
     jumpStrength: 0
     fallSpeed: 0

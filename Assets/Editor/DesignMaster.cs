@@ -678,24 +678,13 @@ public class DesignMaster : EditorWindow
                         EditorGUILayout.Space(8);
 
                         EditorGUILayout.Space(8);
-                        GUILayout.Label("Jump Speed", EditorStyles.boldLabel);
-                        aiTypes[i].jumpSpeed = EditorGUILayout.FloatField(aiTypes[i].jumpSpeed);
+                        GUILayout.Label("Small Jump Height", EditorStyles.boldLabel);
+                        aiTypes[i].smallJumpHeight = EditorGUILayout.FloatField(aiTypes[i].smallJumpHeight);
 
                         EditorGUILayout.Space(8);
-                        GUILayout.Label("Jump Strength", EditorStyles.boldLabel);
-                        aiTypes[i].jumpStrength = EditorGUILayout.IntField(aiTypes[i].jumpStrength);
+                        GUILayout.Label("Large Jump Height", EditorStyles.boldLabel);
+                        aiTypes[i].largeJumpHeight = EditorGUILayout.FloatField(aiTypes[i].largeJumpHeight);
 
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Fall Speed", EditorStyles.boldLabel);
-                        aiTypes[i].fallSpeed = EditorGUILayout.FloatField(aiTypes[i].fallSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Fall Limit", EditorStyles.boldLabel);
-                        aiTypes[i].fallLimit = EditorGUILayout.IntField(aiTypes[i].fallLimit);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Target Reset Time", EditorStyles.boldLabel);
-                        aiTypes[i].targetResetTime = EditorGUILayout.FloatField(aiTypes[i].targetResetTime);
                         break;
                     case AIBehaviour.Guard:
                         EditorGUILayout.Space(16);
@@ -737,6 +726,31 @@ public class DesignMaster : EditorWindow
 
                         EditorGUILayout.Space(8);
                         aiTypes[i].eggOffset = EditorGUILayout.Vector2Field("Egg Offset", aiTypes[i].eggOffset);
+                        break;
+                    case AIBehaviour.JumpPatrol:
+                        EditorGUILayout.Space(16);
+                        GUILayout.Label("Patrol", EditorStyles.boldLabel);
+                        EditorGUILayout.Space(8);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Jump Speed", EditorStyles.boldLabel);
+                        aiTypes[i].jumpSpeed = EditorGUILayout.FloatField(aiTypes[i].jumpSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Jump Strength", EditorStyles.boldLabel);
+                        aiTypes[i].jumpStrength = EditorGUILayout.IntField(aiTypes[i].jumpStrength);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Fall Speed", EditorStyles.boldLabel);
+                        aiTypes[i].fallSpeed = EditorGUILayout.FloatField(aiTypes[i].fallSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Fall Limit", EditorStyles.boldLabel);
+                        aiTypes[i].fallLimit = EditorGUILayout.IntField(aiTypes[i].fallLimit);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Target Reset Time", EditorStyles.boldLabel);
+                        aiTypes[i].targetResetTime = EditorGUILayout.FloatField(aiTypes[i].targetResetTime);
                         break;
                     default:
                         break;

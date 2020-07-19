@@ -20,7 +20,6 @@ public class RaptorPatrol : StateMachineBehaviour
     private LayerMask platformLayer;
     private LayerMask wallLayer;
 
-    private float targetTimer;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,27 +33,21 @@ public class RaptorPatrol : StateMachineBehaviour
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
-        //smallJumpHeight = ai.aiType.smallJumpHeight;
-        //largeJumpHeight = ai.aiType.largeJumpHeight;
-        //jumpDetectionDistance = ai.aiType.jumpDetectionDistance;
-        targetTimer = ai.aiType.targetResetTime;
-
-        ai.SetRandomGoal();
-
+        smallJumpHeight = ai.aiType.smallJumpHeight;
+        largeJumpHeight = ai.aiType.largeJumpHeight;
+        jumpDetectionDistance = ai.aiType.wallDetectionDistance;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GetDistanceToNextTarget();
         if (perception.detectsTarget)
         {
             animator.SetBool("TargetDetected", perception.detectsTarget);
             ai.controller._goal = perception.targetTransform;
         }
-        //Move();
-        // CalculateWallAndLedge();
-        TargetCountdown();
+        Move();
+         CalculateWallAndLedge();
     }
 
 
@@ -108,28 +101,4 @@ public class RaptorPatrol : StateMachineBehaviour
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpVelocity);
         }
     }
-
-    void GetDistanceToNextTarget ()
-    {
-        if (Vector3.Distance(ai.controller._goal.transform.position, transform.position) < 2f)
-        {
-            targetTimer = ai.aiType.targetResetTime;
-            ai.SetRandomGoal();
-        }
-    }
-
-    void TargetCountdown()
-    {
-        if (targetTimer <= 0)
-        {
-            ai.SetRandomGoal();
-            targetTimer = ai.aiType.targetResetTime;
-        }
-        else
-        {
-            targetTimer -= Time.fixedDeltaTime;
-        }
-
-    }
-
 }
