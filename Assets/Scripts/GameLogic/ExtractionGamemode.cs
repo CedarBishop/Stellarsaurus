@@ -83,7 +83,7 @@ public class ExtractionGamemode : BaseGamemode
     {
         base.PlayerDied();
 
-        if (playersStillAliveThisRound == 1)
+        /*if (playersStillAliveThisRound == 1)
         {
             int winningPlayerNumber = 0;
             for (int i = 0; i < players.Length; i++)
@@ -96,7 +96,7 @@ public class ExtractionGamemode : BaseGamemode
             AwardRoundWin(winningPlayerNumber);
             EndRound(winningPlayerNumber);
         }
-        else if (playersStillAliveThisRound < 1)
+        else */if (playersStillAliveThisRound < 1)
         {
             EndRound(0);
         }

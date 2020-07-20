@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     private CameraController cameraController;
     private UIController uiController;
 
+    private int headIndex;
+    private int bodyIndex;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -42,6 +45,9 @@ public class Player : MonoBehaviour
 
         cameraController = Camera.main.GetComponent<CameraController>();
 
+        headIndex = playerNumber - 1;
+        bodyIndex = playerNumber - 1;
+
         if (LevelManager.instance.debugGhost)
         {
             CreateGhost(transform.position);
@@ -49,49 +55,8 @@ public class Player : MonoBehaviour
         else
         {
             CreateNewCharacter();
-        }
-        
+        }        
     }
-
-    void OnMove (InputValue value)
-    {
-        if (playerMovement != null)
-            playerMovement.Move(value.Get<float>());
-    }
-
-    void OnAim(InputValue value)
-    {
-        if (isGamepad)
-        {
-            if (playerShoot != null)
-                playerShoot.Aim(value.Get<Vector2>(), true);
-        }
-    }
-
-    void OnStartFire ()
-    {
-        if(playerShoot != null)
-            playerShoot.StartFire();
-    }
-
-    void OnEndFire()
-    {
-        if (playerShoot != null)
-            playerShoot.EndFire();
-    }
-
-    void OnStartJump()
-    {
-        if (playerMovement != null)
-            playerMovement.StartJump();
-    }
-
-    void OnEndJump()
-    {
-        if (playerMovement != null)
-            playerMovement.EndJump();
-    }
-
 
     public void CreateNewCharacter()
     {
@@ -121,10 +86,11 @@ public class Player : MonoBehaviour
         playerShoot.playerNumber = playerNumber;
         playerMovement.playerNumber = playerNumber;
 
+        SetHeadIndex(headIndex);
+        SetBodyIndex(bodyIndex);
+
         isStillAlive = true;
     }
-
-
 
     public void CharacterDied(bool diedInCombat)
     {
@@ -182,7 +148,47 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(3);
         CreateNewCharacter();
     }
-   
+
+    void OnMove(InputValue value)
+    {
+        if (playerMovement != null)
+            playerMovement.Move(value.Get<float>());
+    }
+
+    void OnAim(InputValue value)
+    {
+        if (isGamepad)
+        {
+            if (playerShoot != null)
+                playerShoot.Aim(value.Get<Vector2>(), true);
+        }
+    }
+
+    void OnStartFire()
+    {
+        if (playerShoot != null)
+            playerShoot.StartFire();
+    }
+
+    void OnEndFire()
+    {
+        if (playerShoot != null)
+            playerShoot.EndFire();
+    }
+
+    void OnStartJump()
+    {
+        if (playerMovement != null)
+            playerMovement.StartJump();
+    }
+
+    void OnEndJump()
+    {
+        if (playerMovement != null)
+            playerMovement.EndJump();
+    }
+
+
     void OnStartFall ()
     {
         if (playerMovement != null)
@@ -197,7 +203,10 @@ public class Player : MonoBehaviour
 
     void OnGrab()
     {
-        playerShoot.Grab();
+        if (playerShoot != null)
+        {
+            playerShoot.Grab();
+        }        
     }
 
     void OnPause ()
@@ -251,4 +260,21 @@ public class Player : MonoBehaviour
             playerMovement.SetFineAiming(false);
     }
 
+    public void SetHeadIndex (int value)
+    {
+        headIndex = value;
+        if (playerMovement != null)
+        {
+            playerMovement.animatorHead.runtimeAnimatorController = playerMovement.animatorControllersHead[value];
+        }
+    }
+
+    public void SetBodyIndex (int value)
+    {
+        bodyIndex = value;
+        if (playerMovement != null)
+        {
+            playerMovement.animatorBody.runtimeAnimatorController = playerMovement.animatorControllersBody[value];
+        }
+    }
 }

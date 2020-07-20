@@ -79,7 +79,7 @@ SpriteRenderer:
   m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8051299050285305615
@@ -231,8 +231,6 @@ GameObject:
   - component: {fileID: 2655954609655052923}
   - component: {fileID: 2655954609655052918}
   - component: {fileID: 2327445293856462399}
-  - component: {fileID: 3255352822257205705}
-  - component: {fileID: 1290558070475489501}
   - component: {fileID: 704462935928681590}
   m_Layer: 17
   m_Name: Character
@@ -297,12 +295,12 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
   - {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
   - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
-  - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
+  - {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
   animatorControllersBody:
   - {fileID: 9100000, guid: 3f75a2221d5aac9498e25bb2f258a07e, type: 2}
   - {fileID: 22100000, guid: 346d937b6c93fea4d887eb471adb07b4, type: 2}
   - {fileID: 9100000, guid: 3f75a2221d5aac9498e25bb2f258a07e, type: 2}
-  - {fileID: 9100000, guid: 3f75a2221d5aac9498e25bb2f258a07e, type: 2}
+  - {fileID: 22100000, guid: 346d937b6c93fea4d887eb471adb07b4, type: 2}
   groundMovementSpeed: 450
   airMovementSpeed: 400
   jumpHeight: 15
@@ -399,118 +397,10 @@ MonoBehaviour:
     type: 3}
   shieldParticleSystem: {fileID: 1573176804134805683, guid: 424df20f4b4b8c4448e542e4564e8b8c,
     type: 3}
-  playerNumber: 0
   material:
   - {fileID: 8851182401280234316}
   - {fileID: 3238343033971622583}
---- !u!82 &3255352822257205705
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655954609655052927}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1290558070475489501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655954609655052927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293a8e9d765deba4985b52aaf0ff6d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!70 &704462935928681590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

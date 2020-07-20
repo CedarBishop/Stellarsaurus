@@ -63,8 +63,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();        
-        animatorHead.runtimeAnimatorController = animatorControllersHead[playerNumber - 1];
-        animatorBody.runtimeAnimatorController = animatorControllersBody[playerNumber - 1];
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         groundMovementSpeed = playerParams.groundSpeed;
         airMovementSpeed = playerParams.airSpeed;
