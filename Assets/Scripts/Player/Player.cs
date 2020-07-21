@@ -25,8 +25,10 @@ public class Player : MonoBehaviour
     private CameraController cameraController;
     private UIController uiController;
 
-    private int headIndex;
-    private int bodyIndex;
+    [HideInInspector] public int headIndex;
+    [HideInInspector] public int bodyIndex;
+
+     public bool isTriggeringCharacterCustomizer;
 
     private void Start()
     {
@@ -206,7 +208,13 @@ public class Player : MonoBehaviour
         if (playerShoot != null)
         {
             playerShoot.Grab();
-        }        
+        }
+        if (isTriggeringCharacterCustomizer)
+        {
+            currentPlayerActionMap = "Customization";
+            playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+            GetComponent<CustomizerController>().Init();
+        }
     }
 
     void OnPause ()
