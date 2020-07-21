@@ -8,6 +8,27 @@ TextureImporter:
   - first:
       213: -5882170695943828418
     second: Water_1
+  - first:
+      213: 7591774343886807129
+    second: Water_2
+  - first:
+      213: 8088830456793213489
+    second: Water_3
+  - first:
+      213: -7357801033019292489
+    second: Water_0
+  - first:
+      213: 1524258463018166010
+    second: Water_1
+  - first:
+      213: -7598062943989550527
+    second: Water_2
+  - first:
+      213: 4432197591406163036
+    second: Water_3
+  - first:
+      213: 4177692092066526168
+    second: Water_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +74,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -89,18 +110,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -109,22 +118,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
+        y: 0
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -12, y: -12}
-        - {x: -12, y: 9}
-        - {x: 12, y: 9}
-        - {x: 12, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 733fa0d9a6484f350800000000000000
-      internalID: 6049605792901559095
+      spriteID: 7b402ea91f6d3e990800000000000000
+      internalID: -7357801033019292489
       vertices: []
       indices: 
       edges: []
@@ -133,23 +138,82 @@ TextureImporter:
       name: Water_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 24
         y: 0
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -12, y: -12}
-        - {x: -12, y: 12}
-        - {x: 12, y: 12}
-        - {x: 12, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3c4e08cae45e5ea0800000000000000
-      internalID: -5882170695943828418
+      spriteID: af6a41a0ff0472510800000000000000
+      internalID: 1524258463018166010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142b17a32024e8690800000000000000
+      internalID: -7598062943989550527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c543b120a34528d30800000000000000
+      internalID: 4432197591406163036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d37598c2d42af930800000000000000
+      internalID: 4177692092066526168
       vertices: []
       indices: 
       edges: []
