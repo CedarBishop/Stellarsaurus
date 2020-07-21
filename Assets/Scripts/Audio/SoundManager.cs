@@ -91,6 +91,7 @@ public class SoundManager : MonoBehaviour
             if (sounds[i].name == soundName)
             {
                 sounds[i].Play(audioControllers.Dequeue());
+                CheckOutOfSources();
                 return;
             }
         }
@@ -99,11 +100,13 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         audioControllers.Dequeue().Play(clip,currentSfxVolume, 1.0f);
+        CheckOutOfSources();
     }
 
     public void PlaySFX(AudioClip clip, float volumeScaler, float pitch)
     {
         audioControllers.Dequeue().Play(clip, currentSfxVolume * volumeScaler, pitch);
+        CheckOutOfSources();
     }
 
     public float SetMusicVolume(float value)
@@ -171,6 +174,14 @@ public class SoundManager : MonoBehaviour
         if (musicAudioSource.isPlaying)
         {
             musicAudioSource.Stop();
+        }
+    }
+
+    void CheckOutOfSources ()
+    {
+        if (audioControllers.Count <= 1)
+        {
+            Debug.LogError("Out of audio source controller, increase buffer size");
         }
     }
 }
