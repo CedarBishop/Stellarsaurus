@@ -199,6 +199,8 @@ public class AI : MonoBehaviour
         if (GameManager.instance.SelectedGamemode != null)
         {
             GameManager.instance.SelectedGamemode.AwardAiKill(playerNumber);
+            ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, transform.position, Quaternion.identity);
+            scorePopup.Init(GameManager.instance.SelectedGamemode.aiKillsPointReward);
         }
 
         if (LevelManager.instance != null)

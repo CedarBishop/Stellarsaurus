@@ -177,7 +177,8 @@ MonoBehaviour:
   extractionObjectSpawnPosition: {fileID: 5663284396826747291}
   extractionObjective: {fileID: 2987683498432540195, guid: 32a5f89bf28b76f47a99723955a4afca,
     type: 3}
-  teleporterPairs: []
+  scorePopupPrefab: {fileID: 7326056292435943942, guid: 485a54fecefd1ac41bb4d20691a22774,
+    type: 3}
   weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
     type: 3}
   timeBetweenWeaponSpawns: 5
@@ -189,6 +190,8 @@ MonoBehaviour:
   aisInThisLevel: []
   aiPrefab: {fileID: 2765672809849141235, guid: 723051153006e9448bd94e2ffb423ca2,
     type: 3}
+  debugGhost: 0
+  isClimbLevel: 0
   weaponTypes: []
 --- !u!1 &7828744408156027752
 GameObject:

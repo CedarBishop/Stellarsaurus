@@ -89,8 +89,6 @@ public class ExtractionObjective : MonoBehaviour
         collider.enabled = true;
     }
 
-
-
     void OnChargeComplete ()
     {
         if (chargedParticle != null)
@@ -103,7 +101,12 @@ public class ExtractionObjective : MonoBehaviour
                 particle.Play();
             }
         }
-        GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
+            ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, transform.position, Quaternion.identity);
+            scorePopup.Init(GameManager.instance.SelectedGamemode.extractionPointReward);
+        }        
     }
 
     public void Grab(Transform holderTransform)

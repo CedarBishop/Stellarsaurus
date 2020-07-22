@@ -108,6 +108,8 @@ public class PlayerHealth : MonoBehaviour
             if (GameManager.instance.SelectedGamemode != null)
             {
                 GameManager.instance.AwardKill(projectilePlayerNumber);
+                ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, transform.position, Quaternion.identity);
+                scorePopup.Init(GameManager.instance.SelectedGamemode.playerKillsPointReward);
             }            
         }
         Death();

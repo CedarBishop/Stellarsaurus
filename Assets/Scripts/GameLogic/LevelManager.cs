@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public Transform[] startingPositions;
     public Transform extractionObjectSpawnPosition;
     public ExtractionObjective extractionObjective;
-    public TeleporterPairs[] teleporterPairs;
+    public ScorePopup scorePopupPrefab;
 
     [Header("Weapons")]
     [Header("")]
@@ -53,19 +53,8 @@ public class LevelManager : MonoBehaviour
 
                 StartCoroutine("SpawnWeapons");
             }
-        }
-
-
-        if (teleporterPairs != null)
-        {
-            for (int i = 0; i < teleporterPairs.Length; i++)
-            {
-                teleporterPairs[i].InitTeleporters(i);
-            }
-        }
-        
+        }        
     }
-
 
     IEnumerator SpawnWeapons()
     {
@@ -94,6 +83,3 @@ public struct SkyDrops
     public float maxX;
     public float y;
 }
-
-
-
