@@ -379,6 +379,11 @@ public class PlayerShoot : MonoBehaviour
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
+                    }
                     break;
 
                 case WeaponUseType.Multishot:
@@ -400,6 +405,11 @@ public class PlayerShoot : MonoBehaviour
                     playerMovement.Knockback(gunOriginTransform.right, knockback);
                     if (cameraShake != null)
                         cameraShake.StartShake(cameraShakeDuration, cameraShakeMagnitude);
+
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, currentWeapon.bulletsFiredPerShot);
+                    }
                     break;
 
                 case WeaponUseType.Throwable:
@@ -657,6 +667,12 @@ public class PlayerShoot : MonoBehaviour
             {
                 Debug.LogError(currentWeapon.weaponName + " Melee type has not been set");
             }
+        }
+
+
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.WeaponsPickedUp, 1);
         }
     }
 

@@ -251,6 +251,11 @@ public class PlayerMovement : MonoBehaviour
             ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);
             Destroy(p.gameObject, 1);
         }
+
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.Jumps, 1);
+        }
     }
 
     void Landing()

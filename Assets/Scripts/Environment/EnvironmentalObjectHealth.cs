@@ -42,6 +42,11 @@ public class EnvironmentalObjectHealth : MonoBehaviour
         {
             StartDestructionSequence();
         }
+
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.ObstaclesHit, 1);
+        }
     }
 
     public void StartDestructionSequence()

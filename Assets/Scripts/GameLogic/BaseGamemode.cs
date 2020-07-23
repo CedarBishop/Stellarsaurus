@@ -152,6 +152,17 @@ public class BaseGamemode : MonoBehaviour
         }
     }
 
+    public void AddToStats (int playerNumber, StatTypes statType, int amount)
+    {
+        foreach (var player in playerMatchStats)
+        {
+            if (player.playerNumber == playerNumber)
+            {
+                player.AddToMeaninglessStats(statType, amount);
+            }
+        }
+    }
+
     protected virtual void TimerIsOver ()
     {
 

@@ -47,7 +47,10 @@ public class Consumable : MonoBehaviour
                 break;
         }
 
-        player.playerMovement.GetComponent<SpriteRenderer>().color = color;
+        foreach (var renderer in player.playerHealth.spriteRenderers)
+        {
+            renderer.color = color;
+        }
     }
 
     private void FixedUpdate()
@@ -89,7 +92,10 @@ public class Consumable : MonoBehaviour
             default:
                 break;
         }
-        player.playerMovement.GetComponent<SpriteRenderer>().color = Color.white;
+        foreach (var renderer in player.playerHealth.spriteRenderers)
+        {
+            renderer.color = Color.white;
+        }
         Destroy(gameObject);
     }
 }

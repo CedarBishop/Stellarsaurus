@@ -124,10 +124,20 @@ public class Bullet : Projectile
     protected virtual void HitPlayer(PlayerHealth playerHealth)
     {
         playerHealth.HitByPlayer(playerNumber);
+
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.DamageDealt, damage);
+        }
     }
 
     protected virtual void HitAI (AI ai)
     {
         ai.TakeDamage(playerNumber,damage);
+
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.DamageDealt, damage);
+        }
     }
 }

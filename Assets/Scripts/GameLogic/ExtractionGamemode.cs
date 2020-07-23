@@ -38,7 +38,7 @@ public class ExtractionGamemode : BaseGamemode
             GameManager.instance.AwardMatchWin(playerNum);
         }
 
-        UIManager.instance.EndMatch(currentBestPlayers);
+        UIManager.instance.EndMatch(currentBestPlayers, playerMatchStats);
         StartCoroutine("DelayAtEndOfMatch");
     }
 

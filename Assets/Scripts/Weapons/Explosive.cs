@@ -32,10 +32,20 @@ public class Explosive : Projectile
                 if (colliders[i].GetComponent<PlayerHealth>())
                 {
                     colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber, true);
+
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.DamageDealt, damage);
+                    }
                 }
                 else if (colliders[i].GetComponent<AI>())
                 {
                     colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
+
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.DamageDealt, damage);
+                    }
                 }
                 else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
                 {

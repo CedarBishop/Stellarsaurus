@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public ParticleSystem bloodSplatterParticle;
     public ParticleSystem shieldParticleSystem;
-    public SpriteRenderer[] material;
+    public SpriteRenderer[] spriteRenderers;
 
     [HideInInspector]public int playerNumber;
     
@@ -136,7 +136,7 @@ public class PlayerHealth : MonoBehaviour
 
         isBurning = true;
         StartCoroutine(Burning(projectilePlayerNumber));
-        foreach (var item in material)
+        foreach (var item in spriteRenderers)
         {
             item.color = Color.red;
         }
@@ -147,7 +147,7 @@ public class PlayerHealth : MonoBehaviour
         if (isBurning)
         {
             isBurning = false;
-            foreach (var item in material)
+            foreach (var item in spriteRenderers)
             {
                 item.color = Color.white;
             }
@@ -182,6 +182,11 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber,StatTypes.Deaths, 1);
+        }
+
         playerParent.CharacterDied(true);
         Destroy(gameObject);
     }
@@ -220,11 +225,11 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator FlashHurt ()
     {
-        for (int i = 0; i < material.Length; i++)
+        for (int i = 0; i < spriteRenderers.Length; i++)
         {
-            material[i].material.SetFloat("_IsHurt", 1.0f);
+            spriteRenderers[i].material.SetFloat("_IsHurt", 1.0f);
             yield return new WaitForSeconds(0.2f);
-            material[i].material.SetFloat("_IsHurt", 0.0f);
+            spriteRenderers[i].material.SetFloat("_IsHurt", 0.0f);
         }
     }
 
