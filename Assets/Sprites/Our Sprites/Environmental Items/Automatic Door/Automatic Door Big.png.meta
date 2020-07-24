@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 25a475b3db951dc4cbaacac10b707979
+guid: a586bd0f4dbb7d748ba877c288205ee8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6965046867268320946
-    second: Automatic Door_0
+      213: 4721740256906804188
+    second: Automatic Door Big_0
   - first:
-      213: -8642502396174456080
-    second: Automatic Door_1
+      213: -4521588879408836251
+    second: Automatic Door Big_1
   - first:
-      213: 4171470460768277823
-    second: Automatic Door_2
+      213: -6679394358434177703
+    second: Automatic Door Big_2
   - first:
-      213: 4553319429287641605
-    second: Automatic Door_3
+      213: -4049614949935789380
+    second: Automatic Door Big_3
   - first:
-      213: 2761095675731896343
-    second: Automatic Door_4
+      213: 5072367333633459366
+    second: Automatic Door Big_4
   - first:
-      213: -906277704631777989
-    second: Automatic Door_5
+      213: -6902414589055392966
+    second: Automatic Door Big_5
   - first:
-      213: 9019575784748759676
-    second: Automatic Door_6
+      213: -6314811011816221503
+    second: Automatic Door Big_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -78,7 +78,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -104,228 +104,152 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Automatic Door_0
+      name: Automatic Door Big_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -3, y: -12}
-        - {x: -3, y: 12}
-        - {x: 3, y: 12}
-        - {x: 3, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2beb97f2931d8a060800000000000000
-      internalID: 6965046867268320946
+      spriteID: cdb779e2fbdf68140800000000000000
+      internalID: 4721740256906804188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Automatic Door_1
+      name: Automatic Door Big_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -3, y: 1}
-        - {x: -3, y: 12}
-        - {x: 3, y: 12}
-        - {x: 3, y: 1}
-      - - {x: -3, y: -12}
-        - {x: -3, y: -1}
-        - {x: 3, y: -1}
-        - {x: 3, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fa2f815cd9af0880800000000000000
-      internalID: -8642502396174456080
+      spriteID: 561da7eded61041c0800000000000000
+      internalID: -4521588879408836251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Automatic Door_2
+      name: Automatic Door Big_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -3, y: 12}
-        - {x: -3, y: 3}
-        - {x: 3, y: 3}
-        - {x: 3, y: 12}
-      - - {x: -3, y: -12}
-        - {x: -3, y: -3}
-        - {x: 3, y: -3}
-        - {x: 3, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f35d02d584a04e930800000000000000
-      internalID: 4171470460768277823
+      spriteID: 95d58ce48360e43a0800000000000000
+      internalID: -6679394358434177703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Automatic Door_3
+      name: Automatic Door Big_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -3, y: 5}
-        - {x: -3, y: 12}
-        - {x: 3, y: 12}
-        - {x: 3, y: 5}
-      - - {x: -3, y: -12}
-        - {x: -3, y: -5}
-        - {x: 3, y: -5}
-        - {x: 3, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 502039b75e3a03f30800000000000000
-      internalID: 4553319429287641605
+      spriteID: cba47f7a8a0ecc7c0800000000000000
+      internalID: -4049614949935789380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Automatic Door_4
+      name: Automatic Door Big_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -3, y: 7}
-        - {x: -3, y: 12}
-        - {x: 3, y: 12}
-        - {x: 3, y: 7}
-      - - {x: -3, y: -12}
-        - {x: -3, y: -7}
-        - {x: 3, y: -7}
-        - {x: 3, y: -12}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 718edde53e1615620800000000000000
-      internalID: 2761095675731896343
+      spriteID: 6a48483273ba46640800000000000000
+      internalID: 5072367333633459366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Automatic Door_5
+      name: Automatic Door Big_5
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -3, y: -12}
-        - {x: -3, y: -9}
-        - {x: 3, y: -9}
-        - {x: 3, y: -12}
-      - - {x: -3, y: 9}
-        - {x: -3, y: 12}
-        - {x: 3, y: 12}
-        - {x: 3, y: 9}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b350193ba314c63f0800000000000000
-      internalID: -906277704631777989
+      spriteID: a3321e67082b530a0800000000000000
+      internalID: -6902414589055392966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Automatic Door_6
+      name: Automatic Door Big_6
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -4, y: 11}
-        - {x: -4, y: 14}
-        - {x: 4, y: 14}
-        - {x: 4, y: 11}
-      - - {x: -4, y: -14}
-        - {x: -4, y: -11}
-        - {x: 4, y: -11}
-        - {x: 4, y: -14}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a3aa27368fb2d70800000000000000
-      internalID: 9019575784748759676
+      spriteID: 1c418f097d84d58a0800000000000000
+      internalID: -6314811011816221503
       vertices: []
       indices: 
       edges: []
