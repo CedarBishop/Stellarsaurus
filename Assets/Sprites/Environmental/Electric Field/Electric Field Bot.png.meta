@@ -1,27 +1,27 @@
 fileFormatVersion: 2
-guid: 3651225cffee1044fba5a3ac64cbc25f
+guid: 78ee5c3408d42a8408c33131f043a9c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1869278411723093442
-    second: Electric Field Top_0
+      213: -9071066822959822790
+    second: Electric Field Bot_0
   - first:
-      213: -5166210409492188853
-    second: Electric Field Top_1
+      213: 6239074008746336816
+    second: Electric Field Bot_1
   - first:
-      213: 6904554930412434934
-    second: Electric Field Top_2
+      213: 5233760426857072614
+    second: Electric Field Bot_2
   - first:
-      213: 8791032174721608892
-    second: Electric Field Top_3
+      213: -4869591555788695161
+    second: Electric Field Bot_3
   - first:
-      213: 6804496954768602755
-    second: Electric Field Top_4
+      213: 408563876633712160
+    second: Electric Field Bot_4
   - first:
-      213: 1114377379595252624
-    second: Electric Field Top_5
+      213: 3754760564920806539
+    second: Electric Field Bot_5
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -75,6 +75,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -128,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Electric Field Top_0
+      name: Electric Field Bot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3a40fa303dfe06e0800000000000000
-      internalID: -1869278411723093442
+      spriteID: a3806abf8c81d1280800000000000000
+      internalID: -9071066822959822790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Electric Field Top_1
+      name: Electric Field Bot_1
       rect:
         serializedVersion: 2
         x: 24
@@ -163,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b41fa4b110fed48b0800000000000000
-      internalID: -5166210409492188853
+      spriteID: 032a2b241c4a59650800000000000000
+      internalID: 6239074008746336816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Electric Field Top_2
+      name: Electric Field Bot_2
       rect:
         serializedVersion: 2
         x: 48
@@ -184,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f5b7679028e1df50800000000000000
-      internalID: 6904554930412434934
+      spriteID: 6e7005ae06d02a840800000000000000
+      internalID: 5233760426857072614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Electric Field Top_3
+      name: Electric Field Bot_3
       rect:
         serializedVersion: 2
         x: 72
@@ -205,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbcaf4f9f25000a70800000000000000
-      internalID: 8791032174721608892
+      spriteID: 78919fbb74cbb6cb0800000000000000
+      internalID: -4869591555788695161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Electric Field Top_4
+      name: Electric Field Bot_4
       rect:
         serializedVersion: 2
         x: 96
@@ -226,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 386b538bded6e6e50800000000000000
-      internalID: 6804496954768602755
+      spriteID: 0261fce5ea28ba500800000000000000
+      internalID: 408563876633712160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Electric Field Top_5
+      name: Electric Field Bot_5
       rect:
         serializedVersion: 2
         x: 120
@@ -247,8 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09371809250177f00800000000000000
-      internalID: 1114377379595252624
+      spriteID: b8cefb817d69b1430800000000000000
+      internalID: 3754760564920806539
       vertices: []
       indices: 
       edges: []

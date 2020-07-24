@@ -1,45 +1,45 @@
 fileFormatVersion: 2
-guid: 33ffb03af0afd134ab6b068b346cf622
+guid: 237da5aab80d0694fb3f6c01064c5c18
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2406121148560593618
-    second: Jump Pad_Emmision_0
+      213: 6288772141149509540
+    second: Teleporter_Emission_0
   - first:
-      213: -2719891792590563263
-    second: Jump Pad_Emmision_1
+      213: -5322909215016234368
+    second: Teleporter_Emission_1
   - first:
-      213: 1129336121045104971
-    second: Jump Pad_Emmision_2
+      213: 7801302590756280275
+    second: Teleporter_Emission_2
   - first:
-      213: -5196517770260145544
-    second: Jump Pad_Emmision_3
+      213: 6643754026248516457
+    second: Teleporter_Emission_3
   - first:
-      213: 613914046335210456
-    second: Jump Pad_Emmision_4
+      213: 9140785994100449797
+    second: Teleporter_Emission_4
   - first:
-      213: 932136510883807122
-    second: Jump Pad_Emmision_5
+      213: -618248469881432661
+    second: Teleporter_Emission_5
   - first:
-      213: -5423817840343519296
-    second: Jump Pad_Emmision_6
+      213: -8751622838712190168
+    second: Teleporter_Emission_6
   - first:
-      213: 6966775678798324471
-    second: Jump Pad_Emmision_7
+      213: 6792765095052359098
+    second: Teleporter_Emission_7
   - first:
-      213: -7086986498177490390
-    second: Jump Pad_Emmision_8
+      213: 2051004406454612122
+    second: Teleporter_Emission_8
   - first:
-      213: -606761569439040677
-    second: Jump Pad_Emmision_9
+      213: 188033232772293494
+    second: Teleporter_Emission_9
   - first:
-      213: -6685966084020701219
-    second: Jump Pad_Emmision_10
+      213: 7553612326144641929
+    second: Teleporter_Emission_10
   - first:
-      213: -2312437386849050503
-    second: Jump Pad_Emmision_11
+      213: -7993208734270949754
+    second: Teleporter_Emission_11
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -93,6 +93,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -146,13 +147,181 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump Pad_Emmision_0
+      name: Teleporter_Emission_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7d69a61f4364750800000000000000
+      internalID: 6288772141149509540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082dd4b554a3126b0800000000000000
+      internalID: -5322909215016234368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7dc5b8f5bc34c60800000000000000
+      internalID: 7801302590756280275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9633d95361b533c50800000000000000
+      internalID: 6643754026248516457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50229328e689ade70800000000000000
+      internalID: 9140785994100449797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5d9c1da4a8b67f0800000000000000
+      internalID: -618248469881432661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b3d52756dfb8680800000000000000
+      internalID: -8751622838712190168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5b4454ddfb44e50800000000000000
+      internalID: 6792765095052359098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teleporter_Emission_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +329,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d2528abf62446120800000000000000
-      internalID: 2406121148560593618
+      spriteID: a90fc7714a1a67c10800000000000000
+      internalID: 2051004406454612122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_Emmision_1
+      name: Teleporter_Emission_9
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +350,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 148932343d0014ad0800000000000000
-      internalID: -2719891792590563263
+      spriteID: 6736c5d9a370c9200800000000000000
+      internalID: 188033232772293494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_Emmision_2
+      name: Teleporter_Emission_10
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +371,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4939e6f7353caf00800000000000000
-      internalID: 1129336121045104971
+      spriteID: 98b0ddec362d3d860800000000000000
+      internalID: 7553612326144641929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_Emmision_3
+      name: Teleporter_Emission_11
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,176 +392,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87a93aace9242e7b0800000000000000
-      internalID: -5196517770260145544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d3de6e829f058800800000000000000
-      internalID: 613914046335210456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29fb66dc73d9fec00800000000000000
-      internalID: 932136510883807122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0cfe5eb296abab4b0800000000000000
-      internalID: -5423817840343519296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f2ea9c7195fea060800000000000000
-      internalID: 6966775678798324471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2224201457f5ad90800000000000000
-      internalID: -7086986498177490390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_9
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5b3a3e31995497f0800000000000000
-      internalID: -606761569439040677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_10
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd7f2a5354da633a0800000000000000
-      internalID: -6685966084020701219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump Pad_Emmision_11
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 970a78fc27298efd0800000000000000
-      internalID: -2312437386849050503
+      spriteID: 686fa3a810b621190800000000000000
+      internalID: -7993208734270949754
       vertices: []
       indices: 
       edges: []

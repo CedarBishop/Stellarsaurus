@@ -1,45 +1,45 @@
 fileFormatVersion: 2
-guid: e4642917745d441428c603c16101458c
+guid: 33ffb03af0afd134ab6b068b346cf622
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 940162856522310296
-    second: Jump Pad_0
+      213: 2406121148560593618
+    second: Jump Pad_Emmision_0
   - first:
-      213: -731693775126601159
-    second: Jump Pad_1
+      213: -2719891792590563263
+    second: Jump Pad_Emmision_1
   - first:
-      213: -4503592100430256257
-    second: Jump Pad_2
+      213: 1129336121045104971
+    second: Jump Pad_Emmision_2
   - first:
-      213: -779149588460170368
-    second: Jump Pad_3
+      213: -5196517770260145544
+    second: Jump Pad_Emmision_3
   - first:
-      213: 1176621865942076247
-    second: Jump Pad_4
+      213: 613914046335210456
+    second: Jump Pad_Emmision_4
   - first:
-      213: 39123243889630585
-    second: Jump Pad_5
+      213: 932136510883807122
+    second: Jump Pad_Emmision_5
   - first:
-      213: 8005419526241418433
-    second: Jump Pad_6
+      213: -5423817840343519296
+    second: Jump Pad_Emmision_6
   - first:
-      213: 3049431660546420652
-    second: Jump Pad_7
+      213: 6966775678798324471
+    second: Jump Pad_Emmision_7
   - first:
-      213: -5104539045567477174
-    second: Jump Pad_8
+      213: -7086986498177490390
+    second: Jump Pad_Emmision_8
   - first:
-      213: -6511676824663179052
-    second: Jump Pad_9
+      213: -606761569439040677
+    second: Jump Pad_Emmision_9
   - first:
-      213: 6613412723407821025
-    second: Jump Pad_10
+      213: -6685966084020701219
+    second: Jump Pad_Emmision_10
   - first:
-      213: -2293124524860672708
-    second: Jump Pad_11
+      213: -2312437386849050503
+    second: Jump Pad_Emmision_11
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -93,6 +93,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -146,7 +147,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump Pad_0
+      name: Jump Pad_Emmision_0
       rect:
         serializedVersion: 2
         x: 0
@@ -160,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 892670603212c0d00800000000000000
-      internalID: 940162856522310296
+      spriteID: 2d2528abf62446120800000000000000
+      internalID: 2406121148560593618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_1
+      name: Jump Pad_Emmision_1
       rect:
         serializedVersion: 2
         x: 32
@@ -181,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 932e631636088d5f0800000000000000
-      internalID: -731693775126601159
+      spriteID: 148932343d0014ad0800000000000000
+      internalID: -2719891792590563263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_2
+      name: Jump Pad_Emmision_2
       rect:
         serializedVersion: 2
         x: 64
@@ -202,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f77699088d60081c0800000000000000
-      internalID: -4503592100430256257
+      spriteID: b4939e6f7353caf00800000000000000
+      internalID: 1129336121045104971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_3
+      name: Jump Pad_Emmision_3
       rect:
         serializedVersion: 2
         x: 96
@@ -223,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08390f0d397ef25f0800000000000000
-      internalID: -779149588460170368
+      spriteID: 87a93aace9242e7b0800000000000000
+      internalID: -5196517770260145544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_4
+      name: Jump Pad_Emmision_4
       rect:
         serializedVersion: 2
         x: 128
@@ -244,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75b4f626a53345010800000000000000
-      internalID: 1176621865942076247
+      spriteID: 8d3de6e829f058800800000000000000
+      internalID: 613914046335210456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_5
+      name: Jump Pad_Emmision_5
       rect:
         serializedVersion: 2
         x: 160
@@ -265,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97d908e026efa8000800000000000000
-      internalID: 39123243889630585
+      spriteID: 29fb66dc73d9fec00800000000000000
+      internalID: 932136510883807122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_6
+      name: Jump Pad_Emmision_6
       rect:
         serializedVersion: 2
         x: 192
@@ -286,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cc789305a6f81f60800000000000000
-      internalID: 8005419526241418433
+      spriteID: 0cfe5eb296abab4b0800000000000000
+      internalID: -5423817840343519296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_7
+      name: Jump Pad_Emmision_7
       rect:
         serializedVersion: 2
         x: 224
@@ -307,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cafe2bd40f1c15a20800000000000000
-      internalID: 3049431660546420652
+      spriteID: 7f2ea9c7195fea060800000000000000
+      internalID: 6966775678798324471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_8
+      name: Jump Pad_Emmision_8
       rect:
         serializedVersion: 2
         x: 256
@@ -328,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4ac6d678c80929b0800000000000000
-      internalID: -5104539045567477174
+      spriteID: a2224201457f5ad90800000000000000
+      internalID: -7086986498177490390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_9
+      name: Jump Pad_Emmision_9
       rect:
         serializedVersion: 2
         x: 288
@@ -349,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d0cec5ad60e1a5a0800000000000000
-      internalID: -6511676824663179052
+      spriteID: b5b3a3e31995497f0800000000000000
+      internalID: -606761569439040677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_10
+      name: Jump Pad_Emmision_10
       rect:
         serializedVersion: 2
         x: 320
@@ -370,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e895c325df87cb50800000000000000
-      internalID: 6613412723407821025
+      spriteID: dd7f2a5354da633a0800000000000000
+      internalID: -6685966084020701219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump Pad_11
+      name: Jump Pad_Emmision_11
       rect:
         serializedVersion: 2
         x: 352
@@ -391,8 +392,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3571f5e46f2d20e0800000000000000
-      internalID: -2293124524860672708
+      spriteID: 970a78fc27298efd0800000000000000
+      internalID: -2312437386849050503
       vertices: []
       indices: 
       edges: []

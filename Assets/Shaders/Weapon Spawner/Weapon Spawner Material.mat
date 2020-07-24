@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ExplosiveBarrel
-  m_Shader: {fileID: -6465566751694194690, guid: e80475b671351e74c9579d087ddf82f8,
+  m_Name: Weapon Spawner Material
+  m_Shader: {fileID: -6465566751694194690, guid: 3ce7568c1216189468eafa8dcc575b60,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -21,14 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emmision:
-        m_Texture: {fileID: 2800000, guid: bceedb793e73fef42bac96a342581ce4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 74348b3b2a174624fbcb01dd3eac03f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: be19bdcaf827e3c4bac2e282c2f339a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0159f31bfab961d4c98b54440c383e3c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_53E73246: {r: 2.9960785, g: 1.7882353, b: 0.03137255, a: 1}
-    - _Color: {r: 2.1185462, g: 1.2644726, b: 0.022183731, a: 1}
+    - Color_E36B9CD7: {r: 0.4536157, g: 5.656854, b: 5.241595, a: 0}

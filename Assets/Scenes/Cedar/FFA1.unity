@@ -908,6 +908,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2742338638128226175, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347704810972686478, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7488435608735434571, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2,
         type: 3}
       propertyPath: m_Name
@@ -13794,6 +13804,11 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[191].second.m_AllTileFlags
       value: 1073741825
       objectReference: {fileID: 0}
+    - target: {fileID: 7488435609773737129, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7488435609773737131, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2,
         type: 3}
       propertyPath: m_Tiles.Array.size
@@ -14980,6 +14995,11 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[27].second.m_AllTileFlags
       value: 1073741825
       objectReference: {fileID: 0}
+    - target: {fileID: 8102329801858764349, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb4e21eb07a8ac4a9bf7d4689a592e2, type: 3}
 --- !u!1001 &790633895
@@ -15637,7 +15657,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

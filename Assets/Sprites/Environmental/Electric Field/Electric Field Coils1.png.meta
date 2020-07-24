@@ -1,27 +1,15 @@
 fileFormatVersion: 2
-guid: 694dd9ad650879d49b3f93460f691dee
+guid: 5be3c90bcb9cd8a4dbf947a8acd38e64
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3761691544758180275
-    second: Electric Field Mid_Emission_0
+      213: -5841063545496585835
+    second: Electric Field Coils1_0
   - first:
-      213: -2384608288852119123
-    second: Electric Field Mid_Emission_1
-  - first:
-      213: 2314196514447797126
-    second: Electric Field Mid_Emission_2
-  - first:
-      213: 4319706636089064222
-    second: Electric Field Mid_Emission_3
-  - first:
-      213: 5293252579279006593
-    second: Electric Field Mid_Emission_4
-  - first:
-      213: 5093166685127123221
-    second: Electric Field Mid_Emission_5
+      213: -384994134045676718
+    second: Electric Field Coils1_1
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -75,6 +63,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -128,7 +117,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Electric Field Mid_Emission_0
+      name: Electric Field Coils1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599313417af50fea0800000000000000
+      internalID: -5841063545496585835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electric Field Coils1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -142,113 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4629186879cbcbc0800000000000000
-      internalID: -3761691544758180275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Electric Field Mid_Emission_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da1748e356b28eed0800000000000000
-      internalID: -2384608288852119123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Electric Field Mid_Emission_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68bab10087dad1020800000000000000
-      internalID: 2314196514447797126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Electric Field Mid_Emission_3
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1b7cf97c4ea2fb30800000000000000
-      internalID: 4319706636089064222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Electric Field Mid_Emission_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18b685e0d29657940800000000000000
-      internalID: 5293252579279006593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Electric Field Mid_Emission_5
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5112bd88d109ea640800000000000000
-      internalID: 5093166685127123221
+      spriteID: 25b2997ffd938aaf0800000000000000
+      internalID: -384994134045676718
       vertices: []
       indices: 
       edges: []
