@@ -54,6 +54,7 @@ public class Loader : MonoBehaviour
             weapon.projectileType = Resources.Load<GameObject>("Projectiles/" + weapon.projectileName);
             weapon.meleeType = Resources.Load<GameObject>("Melees/" + weapon.projectileName);
             weapon.soundFX = Resources.Load<AudioClip>("Sounds/SFX/WeaponSFX/" + weapon.soundFxName);
+            weapon.lineRenderer = Resources.Load<GameObject>("Line Renderers/" + weapon.lineRendererName);
         }
         return weaponTypes;
     }

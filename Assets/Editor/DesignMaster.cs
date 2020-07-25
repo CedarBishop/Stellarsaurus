@@ -260,7 +260,7 @@ public class DesignMaster : EditorWindow
                 }
 
 
-                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee && weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee && weaponTypes[i].weaponUseType != WeaponUseType.Consumable && weaponTypes[i].weaponUseType != WeaponUseType.Laser)
                 {
                     if (weaponTypes[i].projectileType != null)
                     {
@@ -301,7 +301,7 @@ public class DesignMaster : EditorWindow
 
 
 
-                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee && weaponTypes[i].weaponUseType != WeaponUseType.Consumable)
+                if (weaponTypes[i].weaponUseType != WeaponUseType.Melee && weaponTypes[i].weaponUseType != WeaponUseType.Consumable && weaponTypes[i].weaponUseType != WeaponUseType.Laser)
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Projectile Type", EditorStyles.boldLabel);
@@ -408,7 +408,7 @@ public class DesignMaster : EditorWindow
 
                 }
 
-                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot)
+                if (weaponTypes[i].weaponUseType == WeaponUseType.SingleShot || weaponTypes[i].weaponUseType == WeaponUseType.Multishot || weaponTypes[i].weaponUseType == WeaponUseType.Laser)
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Self Inflicted Knockback", EditorStyles.boldLabel);
@@ -485,6 +485,20 @@ public class DesignMaster : EditorWindow
                     EditorGUILayout.Space(8);
                 }
 
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Laser)
+                {
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Line Renderer Prefab Name", EditorStyles.boldLabel);
+                    weaponTypes[i].lineRendererName = EditorGUILayout.TextField(weaponTypes[i].lineRendererName);
+                    //if (GUILayout.Button("Check Sprite Prefab"))
+                    //{
+                    //    CheckNullLineRenderer(i);
+                    //}
+
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Line Renderer Time To Live", EditorStyles.boldLabel);
+                    weaponTypes[i].lineRendererTimeToLive = EditorGUILayout.FloatField(weaponTypes[i].lineRendererTimeToLive);
+                }
 
                 EditorGUILayout.Space(16);
              
@@ -558,6 +572,17 @@ public class DesignMaster : EditorWindow
         }
     }
 
+    static void CheckNullLineRenderer(int i)
+    {
+        if (Resources.Load<Sprite>("Line Renderers/" + weaponTypes[i].lineRendererName) != null)
+        {
+            aiTypes[i].aiSprite = Resources.Load<Sprite>("Line Renderers/" + weaponTypes[i].lineRendererName);
+        }
+        else
+        {
+            aiTypes[i].aiSprite = Resources.Load<Sprite>("Line Renderers/Null");
+        }
+    }
 
     void CreateAI ()
     {

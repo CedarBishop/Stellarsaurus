@@ -164,7 +164,7 @@ public class Weapon : MonoBehaviour
 }
 
 
-public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable, Boomerang, Destructable }
+public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable, Boomerang, Destructable, Laser }
 
 public enum FireType {SemiAutomatic, Automatic, ChargeUp, WindUp, Cook}
 
@@ -212,5 +212,9 @@ public class WeaponType
     public Vector2 subProjectileForce;
 
     public GameObject meleeType;
+
+    public GameObject lineRenderer;
+    public string lineRendererName;
+    public float lineRendererTimeToLive;
 
 }

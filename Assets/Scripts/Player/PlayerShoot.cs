@@ -44,6 +44,9 @@ public class PlayerShoot : MonoBehaviour
     ExtractionObjective triggeredExtractionObjective;
     ExtractionObjective extractionObjective;
 
+    private LineRenderer currentLineRenderer;
+    private GameObject currentWeaponLineRenderer;
+
     bool isHoldingFireButton;
     bool semiLimiter;
     float chargeUpTimer;
@@ -215,6 +218,12 @@ public class PlayerShoot : MonoBehaviour
                 Shoot();
                 shootOnRelease = false;
             }
+
+            //if (currentLineRenderer != null)
+            //{
+            //    Destroy(currentLineRenderer.gameObject);
+            //    currentLineRenderer = null;
+            //}
 
             cookTime = 0;
         }
@@ -459,6 +468,36 @@ public class PlayerShoot : MonoBehaviour
 
                     break;
 
+                case WeaponUseType.Laser:
+
+                    RaycastHit2D[] hits = Physics2D.RaycastAll( transform.position, gunOriginTransform.right, currentWeapon.range);
+
+                    if (currentWeaponLineRenderer != null)
+                    {
+                        currentLineRenderer = Instantiate(currentWeaponLineRenderer, firingPoint, Quaternion.identity).GetComponent<LineRenderer>();
+                        currentLineRenderer.transform.right = gunOriginTransform.right;
+                        currentLineRenderer.SetPosition(0, new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0));
+                        currentLineRenderer.SetPosition(1,  transform.position + (gunOriginTransform.right * currentWeapon.range));
+
+                        Destroy(currentLineRenderer.gameObject, currentWeapon.lineRendererTimeToLive);
+                    }                    
+
+                    if (hits != null)
+                    {
+                        for (int i = 0; i < hits.Length; i++)
+                        {
+                            if (hits[i].collider.GetComponent<PlayerHealth>())
+                            {
+                                hits[i].collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                            }
+                            else if (hits[i].collider.GetComponent<AI>())
+                            {
+                                hits[i].collider.GetComponent<AI>().TakeDamage(playerNumber, currentWeapon.damage);
+                            }
+                        }
+                    }
+
+                    break;
                 default:
                     break;
             }
@@ -600,8 +639,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other)
-    {
-        
+    {        
         if (other.CompareTag("Weapon"))
         {            
             triggeredWeapon = other.GetComponentInParent<Weapon>();
@@ -645,6 +683,7 @@ public class PlayerShoot : MonoBehaviour
         knockback = currentWeapon.knockBack;
         cameraShakeDuration = currentWeapon.cameraShakeDuration;
         cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
+        currentWeaponLineRenderer = currentWeapon.lineRenderer;
 
         if (currentWeapon.weaponUseType == WeaponUseType.SingleShot || currentWeapon.weaponUseType == WeaponUseType.Multishot || currentWeapon.weaponUseType == WeaponUseType.Throwable || currentWeapon.weaponUseType == WeaponUseType.Boomerang || currentWeapon.weaponUseType == WeaponUseType.Destructable)
         {
@@ -700,6 +739,7 @@ public class PlayerShoot : MonoBehaviour
         currentWeapon = null;
         triggeredWeapon = null;
         ammoCount = 0;
+        currentWeaponLineRenderer = null;
     }
 
     public void SetAimType (AimType _AimType)

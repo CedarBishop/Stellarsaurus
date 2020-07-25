@@ -34,7 +34,8 @@ public class PlayerMatchStats
     public int obstaclesHit;
     public int damageDealt;
     public int bulletsFired;
-
+    public int totalHealthRegained;
+    public int suicides;
 
     public void AddToMeaninglessStats (StatTypes statType, int amount)
     {
