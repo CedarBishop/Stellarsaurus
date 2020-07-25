@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.InputSystem;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public enum AimType { FreeAim, EightDirection, FourDirection, HybridEightDirection}
 public enum Orthogonal {Up, Right, Down, Left }
@@ -666,8 +666,8 @@ public class PlayerShoot : MonoBehaviour
     public void InitializeWeapon ()
     {
         weaponName = currentWeapon.weaponName;
-        gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
-        firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
+        
+        SetupWeaponSprite();
         
         if (currentWeapon.weaponUseType == WeaponUseType.Boomerang)
         {
@@ -708,10 +708,35 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-
         if (GameManager.instance.SelectedGamemode != null)
         {
             GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.WeaponsPickedUp, 1);
+        }
+    }
+
+    void SetupWeaponSprite ()
+    {
+        if (currentWeapon.weaponSpritePrefab != null)
+        {
+            gunSprite.sprite = currentWeapon.weaponSpritePrefab.weaponSprite;
+            firingPoint = currentWeapon.weaponSpritePrefab.firingPoint.position;
+            if (currentWeapon.weaponSpritePrefab.weaponSpriteMaterial != null)
+                gunSprite.material = currentWeapon.weaponSpritePrefab.weaponSpriteMaterial;
+
+            if (currentWeapon.weaponSpritePrefab.light != null)
+            {
+                GameObject go = new GameObject("weapon light");
+                go.transform.parent = transform;
+                Light2D light = go.AddComponent<Light2D>();
+                light.color = currentWeapon.weaponSpritePrefab.light.color;
+                light.intensity = currentWeapon.weaponSpritePrefab.light.intensity;
+                light.pointLightOuterRadius = currentWeapon.weaponSpritePrefab.light.pointLightOuterRadius;
+                go.transform.localPosition = currentWeapon.weaponSpritePrefab.lightTransform.position;
+            }
+        }
+        else
+        {
+            Debug.LogError(currentWeapon.weaponName + " sprite has not been set");
         }
     }
 

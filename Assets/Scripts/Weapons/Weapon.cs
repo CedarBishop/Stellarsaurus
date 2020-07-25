@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 [RequireComponent(typeof(SpriteRenderer))]
 
@@ -45,24 +46,48 @@ public class Weapon : MonoBehaviour
 
     public void OnDrop(WeaponType weapon, int Ammo)
     {
-
         weaponType = weapon;
         StartCoroutine("DestroySelf");
         ammo = Ammo;
         Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * 500);
         isDropped = true;
+        SetupWeaponSprite();
+    }
+
+
+    private void SetupWeaponSprite ()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (weaponType.weaponSpritePrefab != null)
         {
             spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
+
+            if (weaponType.weaponSpritePrefab.weaponSpriteMaterial != null)
+                spriteRenderer.material = weaponType.weaponSpritePrefab.weaponSpriteMaterial;
+
+            BoxCollider2D collider = GetComponent<BoxCollider2D>();
+            childTrigger.size = weaponType.weaponSpritePrefab.collider.size;
+            childTrigger.offset = weaponType.weaponSpritePrefab.collider.offset;
+            collider.size = weaponType.weaponSpritePrefab.collider.size;
+            collider.offset = weaponType.weaponSpritePrefab.collider.offset;
+
+            if (weaponType.weaponSpritePrefab.light != null)
+            {
+                GameObject go = new GameObject("weapon light");
+                go.transform.parent = transform;
+                Light2D light = go.AddComponent<Light2D>();
+                light.color = weaponType.weaponSpritePrefab.light.color;
+                light.intensity = weaponType.weaponSpritePrefab.light.intensity;
+                light.pointLightOuterRadius = weaponType.weaponSpritePrefab.light.pointLightOuterRadius;
+                go.transform.localPosition = weaponType.weaponSpritePrefab.lightTransform.position;                
+            }
         }
         else
         {
             Debug.LogError(weaponType.weaponName + " sprite has not been set");
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDropped)
@@ -113,22 +138,7 @@ public class Weapon : MonoBehaviour
     {
         int randomNum = Random.Range(0,weaponTypes.Count);
         weaponType = weaponTypes[randomNum];
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (weaponType.weaponSpritePrefab != null)
-        {
-            spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
-            BoxCollider2D collider = GetComponent<BoxCollider2D>();
-            childTrigger.size = weaponType.weaponSpritePrefab.collider.size;
-            childTrigger.offset = weaponType.weaponSpritePrefab.collider.offset;
-            collider.size = weaponType.weaponSpritePrefab.collider.size;
-            collider.offset = weaponType.weaponSpritePrefab.collider.offset;
-        }
-        else
-        {
-            Debug.LogError(weaponType.weaponName + " sprite has not been set");
-        }
-
+        SetupWeaponSprite();
     }
 
     void SpawnPointSetup ()
@@ -217,5 +227,6 @@ public class WeaponType
     public string lineRendererGuid;
     public string lineRendererName;
     public float lineRendererTimeToLive;
+
 
 }
