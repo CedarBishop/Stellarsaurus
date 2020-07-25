@@ -56,6 +56,8 @@ public class PlayerShoot : MonoBehaviour
 
     bool isAimingRightstick;
 
+    private List<GameObject> objectsToDestoryOnWeaponDestroy = new List<GameObject>();
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -726,12 +728,22 @@ public class PlayerShoot : MonoBehaviour
             if (currentWeapon.weaponSpritePrefab.light != null)
             {
                 GameObject go = new GameObject("weapon light");
-                go.transform.parent = transform;
+                go.transform.parent = gunSprite.transform;
                 Light2D light = go.AddComponent<Light2D>();
                 light.color = currentWeapon.weaponSpritePrefab.light.color;
                 light.intensity = currentWeapon.weaponSpritePrefab.light.intensity;
                 light.pointLightOuterRadius = currentWeapon.weaponSpritePrefab.light.pointLightOuterRadius;
                 go.transform.localPosition = currentWeapon.weaponSpritePrefab.lightTransform.position;
+                objectsToDestoryOnWeaponDestroy.Add(go);
+            }
+
+            if (currentWeapon.weaponSpritePrefab.particle != null)
+            {
+                ParticleSystem go = Instantiate(currentWeapon.weaponSpritePrefab.particle).GetComponent<ParticleSystem>();
+                go.transform.parent = gunSprite.transform;
+                go.transform.localPosition = currentWeapon.weaponSpritePrefab.particleTransform.position;
+                go.Play();
+                objectsToDestoryOnWeaponDestroy.Add(go.gameObject);
             }
         }
         else
@@ -765,6 +777,15 @@ public class PlayerShoot : MonoBehaviour
         triggeredWeapon = null;
         ammoCount = 0;
         currentWeaponLineRenderer = null;
+
+        if (objectsToDestoryOnWeaponDestroy != null)
+        {
+            foreach (var item in objectsToDestoryOnWeaponDestroy)
+            {
+                Destroy(item);
+            }
+            objectsToDestoryOnWeaponDestroy.Clear();
+        }
     }
 
     public void SetAimType (AimType _AimType)

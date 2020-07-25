@@ -82,6 +82,14 @@ public class Weapon : MonoBehaviour
                 light.pointLightOuterRadius = weaponType.weaponSpritePrefab.light.pointLightOuterRadius;
                 go.transform.localPosition = weaponType.weaponSpritePrefab.lightTransform.position;                
             }
+
+            if (weaponType.weaponSpritePrefab.particle != null)
+            {
+                ParticleSystem go = Instantiate(weaponType.weaponSpritePrefab.particle).GetComponent<ParticleSystem>();
+                go.transform.parent = transform;
+                go.transform.localPosition = weaponType.weaponSpritePrefab.particleTransform.position;
+                go.Play();
+            }
         }
         else
         {

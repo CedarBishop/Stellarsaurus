@@ -11,7 +11,7 @@ public class WeaponSpritePrefab : MonoBehaviour
     public Material weaponSpriteMaterial;
     public Light2D light;
     public Transform lightTransform;
-    public ParticleSystem particle;
+    public GameObject particle;
     public Transform particleTransform;
 
 
