@@ -214,6 +214,7 @@ public class WeaponType
     public GameObject meleeType;
 
     public GameObject lineRenderer;
+    public string lineRendererGuid;
     public string lineRendererName;
     public float lineRendererTimeToLive;
 

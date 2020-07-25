@@ -286,8 +286,7 @@ public class DesignMaster : EditorWindow
                 weaponTypes[i].spritePrefabName = EditorGUILayout.TextField( weaponTypes[i].spritePrefabName);
                 if (GUILayout.Button("Check Sprite Prefab"))
                 {
-                    CheckNullWeaponSprite(i);                 
-                    
+                    CheckNullWeaponSprite(i);                    
                 }
 
                 EditorGUILayout.Space(8);
@@ -489,11 +488,7 @@ public class DesignMaster : EditorWindow
                 {
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Line Renderer Prefab Name", EditorStyles.boldLabel);
-                    weaponTypes[i].lineRendererName = EditorGUILayout.TextField(weaponTypes[i].lineRendererName);
-                    //if (GUILayout.Button("Check Sprite Prefab"))
-                    //{
-                    //    CheckNullLineRenderer(i);
-                    //}
+                    weaponTypes[i].lineRenderer = (GameObject)EditorGUILayout.ObjectField(weaponTypes[i].lineRenderer, typeof(GameObject));                    
 
                     EditorGUILayout.Space(8);
                     GUILayout.Label("Line Renderer Time To Live", EditorStyles.boldLabel);
@@ -569,18 +564,6 @@ public class DesignMaster : EditorWindow
         else
         {
             aiTypes[i].aiSprite = Resources.Load<Sprite>("Ai Sprites/Null");
-        }
-    }
-
-    static void CheckNullLineRenderer(int i)
-    {
-        if (Resources.Load<Sprite>("Line Renderers/" + weaponTypes[i].lineRendererName) != null)
-        {
-            aiTypes[i].aiSprite = Resources.Load<Sprite>("Line Renderers/" + weaponTypes[i].lineRendererName);
-        }
-        else
-        {
-            aiTypes[i].aiSprite = Resources.Load<Sprite>("Line Renderers/Null");
         }
     }
 
@@ -1111,6 +1094,11 @@ public class DesignMaster : EditorWindow
                 weaponTypes[i].soundFxGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(weaponTypes[i].soundFX));
                 weaponTypes[i].soundFxName = weaponTypes[i].soundFX.name;
             }
+            if (weaponTypes[i].lineRenderer != null)
+            {
+                weaponTypes[i].lineRendererGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(weaponTypes[i].lineRenderer));
+                weaponTypes[i].lineRendererName = weaponTypes[i].lineRenderer.name;
+            }
             
         }
     }
@@ -1120,6 +1108,7 @@ public class DesignMaster : EditorWindow
         for (int i = 0; i < weaponTypes.Count; i++)
         {
             weaponTypes[i].soundFX = AssetDatabase.LoadAssetAtPath<AudioClip>(AssetDatabase.GUIDToAssetPath(weaponTypes[i].soundFxGuid));
+            weaponTypes[i].lineRenderer = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(weaponTypes[i].lineRendererGuid));
         }
     }
 
