@@ -274,6 +274,8 @@ public class Player : MonoBehaviour
         if (playerMovement != null)
         {
             playerMovement.animatorHead.runtimeAnimatorController = playerMovement.animatorControllersHead[value];
+            playerMovement.animatorBody.Play("Blend Tree");
+            playerMovement.animatorHead.Play("Blend Tree");
         }
     }
 
@@ -283,6 +285,8 @@ public class Player : MonoBehaviour
         if (playerMovement != null)
         {
             playerMovement.animatorBody.runtimeAnimatorController = playerMovement.animatorControllersBody[value];
+            playerMovement.animatorBody.Play("Blend Tree");
+            playerMovement.animatorHead.Play("Blend Tree");
         }
     }
 }

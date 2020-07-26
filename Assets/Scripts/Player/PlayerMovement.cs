@@ -117,11 +117,6 @@ public class PlayerMovement : MonoBehaviour
 
         // ends here
 
-        if (isFineAiming)
-        {
-            horizontal = 0;
-        }
-
         // Grounded & jump logic update starts here
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, groundLayer) ||
@@ -166,8 +161,11 @@ public class PlayerMovement : MonoBehaviour
 
         rigidbody.velocity = velocity;
         rigidbody.AddForce(new Vector2(rigidbody.velocity.x * -counterForce, 0));
-    
-    
+
+        if (isFineAiming)
+        {
+            rigidbody.velocity = new Vector2(0, rigidbody.velocity.y);
+        }
         //ends here
     }
 
