@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StatTypes { Jumps, WeaponsPickedUp, Deaths, ObstaclesHit, DamageDealt, BulletsFired }
+public enum StatTypes { Jumps, WeaponsPickedUp, Deaths, ObstaclesHit, DamageDealt, BulletsFired, HealthRegained, Suicides, ExplosivesUsed, FlamesShot }
 
 [System.Serializable]
 public class PlayerMatchStats
@@ -36,6 +36,8 @@ public class PlayerMatchStats
     public int bulletsFired;
     public int totalHealthRegained;
     public int suicides;
+    public int explosivesUsed;
+    public int flamesShot;
 
     public void AddToMeaninglessStats (StatTypes statType, int amount)
     {
@@ -57,6 +59,18 @@ public class PlayerMatchStats
                 damageDealt += amount;
                 break;
             case StatTypes.BulletsFired:
+                bulletsFired += amount;
+                break;
+            case StatTypes.HealthRegained:
+                deaths += amount;
+                break;
+            case StatTypes.Suicides:
+                obstaclesHit += amount;
+                break;
+            case StatTypes.ExplosivesUsed:
+                damageDealt += amount;
+                break;
+            case StatTypes.FlamesShot:
                 bulletsFired += amount;
                 break;
             default:
