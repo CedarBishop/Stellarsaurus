@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     
     public Loader loader;
     public LevelSelector levelSelector;
+    public AchievementChecker achievementChecker;
     public int playerCount = 0;
     public Color[] playerColours;
 
@@ -168,7 +169,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CoEndMatch()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(10.1f);
         Player[] players = FindObjectsOfType<Player>();
         foreach (Player player in players)
         {

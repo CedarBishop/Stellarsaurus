@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
+public enum UIState { MainMenu, Game, Pause, MatchEnd}
+
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance = null;
@@ -16,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuParent;
     public GameObject pauseMainParent;
     public GameObject settingParent;
+    public GameObject matchEndParent;
     public Cursor cursorPrefab;
 
     public Text sfxVolumeText;
@@ -25,6 +28,8 @@ public class UIManager : MonoBehaviour
     public Button quitButton;
 
     public Text[] playerScoreTexts;
+
+    public PlayerPanel[] playerPanels;
 
     public Animator sceneTransistionAnimator;
 
@@ -48,21 +53,43 @@ public class UIManager : MonoBehaviour
 
         if (inMainMenu)
         {
-            pauseMenuParent.SetActive(false);
-            pauseMainParent.SetActive(false);
-            settingParent.SetActive(false);
-            gameUiParent.SetActive(false);
-            mainMenuUiParent.SetActive(true);
+            SetUIState(UIState.MainMenu);
         }
         else
         {
-            pauseMenuParent.SetActive(false);
-            pauseMainParent.SetActive(false);
-            settingParent.SetActive(false);
-            gameUiParent.SetActive(true);
-            mainMenuUiParent.SetActive(false);
+            SetUIState(UIState.Game);
         }
         sceneTransistionAnimator.SetTrigger("OpenDoor");
+    }
+
+    public void SetUIState (UIState uiState)
+    {
+        pauseMenuParent.SetActive(false);
+        pauseMainParent.SetActive(false);
+        settingParent.SetActive(false);
+        gameUiParent.SetActive(false);
+        mainMenuUiParent.SetActive(false);
+        matchEndParent.SetActive(false);
+
+        switch (uiState)
+        {
+            case UIState.MainMenu:
+                mainMenuUiParent.SetActive(true);
+                break;
+            case UIState.Game:
+                gameUiParent.SetActive(true);
+                break;
+            case UIState.Pause:
+                pauseMenuParent.SetActive(true);
+                pauseMainParent.SetActive(true);
+                break;
+            case UIState.MatchEnd:
+                matchEndParent.SetActive(true);
+                break;
+            default:
+                break;
+        }
+
     }
 
     public void StartNewRound(int roundNumber)
@@ -82,6 +109,7 @@ public class UIManager : MonoBehaviour
         roundText.text = "";
     }
 
+    // End round Free for all calls
     public void EndRound( int winningPlayerNumber, int roundNumber)
     {
         sceneTransistionAnimator.SetTrigger("CloseDoor");
@@ -95,6 +123,7 @@ public class UIManager : MonoBehaviour
         }        
     }
 
+    // End Round Extraction calls
     public void EndRound(List<PlayerMatchStats> playerMatchStats, int roundNumber)
     {
         sceneTransistionAnimator.SetTrigger("CloseDoor");
@@ -102,15 +131,9 @@ public class UIManager : MonoBehaviour
         {
             return;
         }
-        
-        //for (int i = 0; i < playerMatchStats.Count; i++)
-        //{
-        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
-        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].text = "P" + (playerMatchStats[i].playerNumber) + ": " + playerMatchStats[i].points;
-        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].color = GameManager.instance.playerColours[playerMatchStats[i].playerNumber - 1];
-        //}
     }
 
+    // End Match Free for all calls
     public void EndMatch(List<int> winningPlayerNumbers)
     {
         string str = "";
@@ -131,42 +154,53 @@ public class UIManager : MonoBehaviour
         roundText.text = str;
     }
 
+    // End Match Extraction calls
     public void EndMatch(List<int> winningPlayerNumbers, List<PlayerMatchStats> playerMatchStats)
     {
-        string str = "";
-        if (winningPlayerNumbers.Count == 1)
-        {
-            str = "Player " + winningPlayerNumbers[0].ToString() + " won the match";
-        }
-        else if (winningPlayerNumbers.Count > 1)
-        {            
-            for (int i = 0; i < winningPlayerNumbers.Count - 1; i++) 
-            {
-                str += "Player " + winningPlayerNumbers[i].ToString() + " and ";
-            }
-            str += "Player " + winningPlayerNumbers[winningPlayerNumbers.Count - 1].ToString() + " won the match";
+        //string str = "";
+        //if (winningPlayerNumbers.Count == 1)
+        //{
+        //    str = "Player " + winningPlayerNumbers[0].ToString() + " won the match";
+        //}
+        //else if (winningPlayerNumbers.Count > 1)
+        //{            
+        //    for (int i = 0; i < winningPlayerNumbers.Count - 1; i++) 
+        //    {
+        //        str += "Player " + winningPlayerNumbers[i].ToString() + " and ";
+        //    }
+        //    str += "Player " + winningPlayerNumbers[winningPlayerNumbers.Count - 1].ToString() + " won the match";
 
+        //}
+
+        //roundText.text = str;
+
+
+        //for (int i = 0; i < playerMatchStats.Count; i++)
+        //{
+        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
+        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].text = "P" + (playerMatchStats[i].playerNumber) + ": " + playerMatchStats[i].points;
+        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].color = GameManager.instance.playerColours[playerMatchStats[i].playerNumber - 1];
+        //}
+
+        SetUIState(UIState.MatchEnd);
+
+        foreach (var item in playerPanels)
+        {
+            item.gameObject.SetActive(false);
         }
 
         for (int i = 0; i < playerMatchStats.Count; i++)
         {
-            playerScoreTexts[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
-            playerScoreTexts[playerMatchStats[i].playerNumber - 1].text = "P" + (playerMatchStats[i].playerNumber) + ": " + playerMatchStats[i].points;
-            playerScoreTexts[playerMatchStats[i].playerNumber - 1].color = GameManager.instance.playerColours[playerMatchStats[i].playerNumber - 1];
+            playerPanels[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
+            playerPanels[playerMatchStats[i].playerNumber - 1].Initialise(playerMatchStats[i]);
         }
-
-        roundText.text = str;
     }
 
     public void Pause (List<UIController> controllers)
     {
         bool inMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
 
-        pauseMenuParent.SetActive(true);
-        pauseMainParent.SetActive(true);
-        settingParent.SetActive(false);
-        gameUiParent.SetActive(false);
-        mainMenuUiParent.SetActive(false);
+        SetUIState(UIState.Pause);
 
         if (inMainMenu)
         {
@@ -178,7 +212,6 @@ public class UIManager : MonoBehaviour
             mainMenuButton.gameObject.SetActive(true);
             quitButton.gameObject.SetActive(false);
         }
-
 
         for (int i = 0; i < controllers.Count; i++)
         {
@@ -198,19 +231,11 @@ public class UIManager : MonoBehaviour
 
         if (inMainMenu)
         {
-            pauseMenuParent.SetActive(false);
-            pauseMainParent.SetActive(false);
-            settingParent.SetActive(false);
-            gameUiParent.SetActive(false);
-            mainMenuUiParent.SetActive(true);
+            SetUIState(UIState.MainMenu);
         }
         else
         {
-            pauseMenuParent.SetActive(false);
-            pauseMainParent.SetActive(false);
-            settingParent.SetActive(false);
-            gameUiParent.SetActive(true);
-            mainMenuUiParent.SetActive(false);
+            SetUIState(UIState.Game);
         }
 
     }
