@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Teleporter
+  m_Name: Crate 1
   m_Shader: {fileID: -6465566751694194690, guid: e80475b671351e74c9579d087ddf82f8,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -21,14 +21,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emmision:
-        m_Texture: {fileID: 2800000, guid: 237da5aab80d0694fb3f6c01064c5c18, type: 3}
+        m_Texture: {fileID: 2800000, guid: eaf6704e6608ef147ba4180eb450b433, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7f06fafbca7701345bbf20e7f7a0cee5, type: 3}
+        m_Texture: {fileID: 2800000, guid: bfea5733d0a29eb459ee8b6185c6dcc3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_53E73246: {r: 0.04705874, g: 2.866907, b: 2.9960785, a: 1}
-    - _Color: {r: 0.07209716, g: 1.0592737, b: 1.0093603, a: 1}
+    - Color_53E73246: {r: 0.09411765, g: 5.992157, b: 5.772549, a: 1}
+    - _Color: {r: 4, g: 0, b: 2.2565403, a: 1}
