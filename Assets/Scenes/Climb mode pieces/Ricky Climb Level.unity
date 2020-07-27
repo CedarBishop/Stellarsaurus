@@ -1283,7 +1283,7 @@ PrefabInstance:
     - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
       propertyPath: middlePieces.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
@@ -1321,6 +1321,34 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7838983641197405030, guid: 3044ffc26e005bb4e88aa5857f517e1d,
         type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[4]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 6de9c27078159ca43a61220fe764d7bf,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: towerHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[5]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 4950ff4a258756748b960307a8abf5ec,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[6]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 33cb805ea0bbdc4499a420309ecff4b0,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: climbSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5178551633026370881, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
       propertyPath: m_AnchorMax.x
