@@ -42,16 +42,20 @@ public class FreeForAllGamemode : BaseGamemode
 
     public override void StartRound()
     {
-        base.StartRound();
-
-        playersStillAliveThisRound = numOfPlayers;
-        UIManager.instance.StartNewRound(roundNumber);
-
         foreach (Player player in players)
         {
             player.CreateNewCharacter();
         }
 
+        base.StartRound();        
+    }
+
+    protected override void RoundStartImplementation()
+    {
+        base.RoundStartImplementation();
+
+        playersStillAliveThisRound = numOfPlayers;
+        UIManager.instance.StartNewRound(roundNumber);        
     }
 
     public override void EndRound (int winningPlayerNumber)

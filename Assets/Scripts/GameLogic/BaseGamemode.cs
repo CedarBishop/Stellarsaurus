@@ -11,6 +11,7 @@ public class BaseGamemode : MonoBehaviour
     public int playerKillsPointReward = 5;
     public int aiKillsPointReward = 1;
     public float roundTime;
+    public float roundStandbyTime = 3;
 
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
@@ -74,6 +75,25 @@ public class BaseGamemode : MonoBehaviour
 
     public virtual void StartRound ()
     {
+        foreach (var player in players)
+        {
+            player.SwitchToStandbyActionMap();
+        }
+        StartCoroutine("DelayAtStartOfRound");
+    }
+
+    IEnumerator DelayAtStartOfRound ()
+    {
+        yield return new WaitForSeconds(roundStandbyTime);
+        RoundStartImplementation();
+    }
+
+    protected virtual void RoundStartImplementation ()
+    {
+        foreach (var player in players)
+        {
+            player.SwitchToPlayerActionMap();
+        }
         timer = roundTime;
         roundIsUnderway = true;
     }

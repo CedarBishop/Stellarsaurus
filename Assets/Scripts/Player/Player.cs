@@ -151,6 +151,18 @@ public class Player : MonoBehaviour
         CreateNewCharacter();
     }
 
+    public void SwitchToStandbyActionMap()
+    {
+        currentPlayerActionMap = "Standby";
+        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+    }
+
+    public void SwitchToPlayerActionMap()
+    {
+        currentPlayerActionMap = "Player";
+        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+    }
+
     void OnMove(InputValue value)
     {
         if (playerMovement != null)

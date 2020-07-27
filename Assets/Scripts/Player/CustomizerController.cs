@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CustomizerController : MonoBehaviour
 {
-    private PlayerInput playerInput;
     private Player player;
 
     private int currentHeadIndex;
@@ -16,7 +14,6 @@ public class CustomizerController : MonoBehaviour
     void Start ()
     {
         player = GetComponent<Player>();
-        playerInput = GetComponent<PlayerInput>();
     }    
 
     public void Init ()
@@ -25,14 +22,11 @@ public class CustomizerController : MonoBehaviour
         currentBodyIndex = player.bodyIndex;
         headArrayLength = player.playerMovement.animatorControllersHead.Length; 
         bodyArrayLength = player.playerMovement.animatorControllersBody.Length;
-        print("Customiser Init");
     }
 
     void OnExit ()
     {
-        player.currentPlayerActionMap = "Player";
-        playerInput.SwitchCurrentActionMap(player.currentPlayerActionMap);
-        print("Exit");
+        player.SwitchToPlayerActionMap();
     }
 
     void OnHeadForward ()

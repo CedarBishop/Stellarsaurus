@@ -44,16 +44,22 @@ public class ExtractionGamemode : BaseGamemode
 
     public override void StartRound()
     {
-        base.StartRound();
-        UIManager.instance.EnableTimer(true);
-
-        playersStillAliveThisRound = numOfPlayers;
-        UIManager.instance.StartNewRound(roundNumber);
-
         foreach (Player player in players)
         {
             player.CreateNewCharacter();
         }
+
+        base.StartRound();
+    }
+
+    protected override void RoundStartImplementation()
+    {
+        base.RoundStartImplementation();
+
+        UIManager.instance.EnableTimer(true);
+
+        playersStillAliveThisRound = numOfPlayers;
+        UIManager.instance.StartNewRound(roundNumber);        
 
         LevelManager.instance.SpawnExtractionObject();
     }
