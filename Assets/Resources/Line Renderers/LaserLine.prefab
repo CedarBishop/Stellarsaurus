@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 725406429828462244}
   - component: {fileID: 725406429828462245}
   m_Layer: 0
-  m_Name: Line
+  m_Name: LaserLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ LineRenderer:
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 3
+    numCapVertices: 4
     alignment: 0
     textureMode: 0
     shadowBias: 0
