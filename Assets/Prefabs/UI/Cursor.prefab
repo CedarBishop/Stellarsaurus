@@ -61,10 +61,11 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89907d32f6086b341b9996a1379b6c6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 500
   sprites:
-  - {fileID: 21300000, guid: 89907d32f6086b341b9996a1379b6c6d, type: 3}
-  - {fileID: 21300000, guid: 8de02e9756a893843ad21427e977d319, type: 3}
-  - {fileID: 21300000, guid: 9d19f7a108130724894bdea0d8c5cdfd, type: 3}
-  - {fileID: 21300000, guid: 2a1dfacabfcb0a044847327592205581, type: 3}
+  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
+  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
+  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
+  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
