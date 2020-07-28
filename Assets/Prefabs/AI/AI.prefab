@@ -102,21 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectsTarget: 0
   targetTransform: {fileID: 0}
-  groundLayer:
+  enemyLayer:
     serializedVersion: 2
-    m_Bits: 256
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 8192
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 131072
-  fallThroughLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 69632
   detectionTag: Player
   hearingRadius: 2.6
   viewingDistance: 3.9

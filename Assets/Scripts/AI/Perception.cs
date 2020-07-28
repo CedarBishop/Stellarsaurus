@@ -6,11 +6,7 @@ public class Perception : MonoBehaviour
 {
     public bool detectsTarget;
     public Transform targetTransform;
-    public LayerMask groundLayer;
-    public LayerMask wallLayer;
-    public LayerMask platformLayer;
-    public LayerMask playerLayer;
-    public LayerMask fallThroughLayer;
+    public LayerMask enemyLayer;
 
     public string detectionTag;
     [Range(0f, 20f)]
@@ -26,11 +22,14 @@ public class Perception : MonoBehaviour
 
     private float memoryTimer;
     private AI ai;
+    private bool[] raycastsHitTarget;
+
     private void Start()
     {
         int num = Random.Range(0,2);
         isFacingRight = (num > 0) ? true : false;
-        ai = GetComponent<AI>();   
+        ai = GetComponent<AI>();
+        raycastsHitTarget = new bool[numOfRays];
     }
 
     private void FixedUpdate()
@@ -59,7 +58,7 @@ public class Perception : MonoBehaviour
         if (targetTransform == null && detectsTarget)
         {
             detectsTarget = false;
-            //ai.SetRandomGoal();
+            ai.SetRandomGoal();
         }
     }
 
@@ -85,39 +84,28 @@ public class Perception : MonoBehaviour
 
     private bool Vision ()
     {
+        bool hitTarget = false;
         for (int i = 0; i < numOfRays; i++)
         {
             float viewScaler = -0.5f;
             viewScaler += (i * (1.0f / ((float)numOfRays - 1)));           
 
-            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionFromAngle(fieldOfView * viewScaler), viewingDistance, ~enemyLayer);
 
-            if (hit == null)
+            if (hit)
             {
-                continue;
-            }
-
-            bool rayIsBlocked = false;
-            for (int j = 0; j < hit.Length; j++)
-            {
-                if (rayIsBlocked)
+                if (hit.collider.CompareTag(detectionTag))
                 {
-                    continue;
+                    hitTarget = true;
+                    raycastsHitTarget[i] = true;
                 }
-
-                if (hit[j].collider.gameObject.layer == groundLayer || hit[j].collider.gameObject.layer == wallLayer || hit[j].collider.gameObject.layer == platformLayer)
+                else
                 {
-                    rayIsBlocked = true;
+                    raycastsHitTarget[i] = false;
                 }
-
-                if (hit[j].collider.CompareTag(detectionTag))
-                {
-                    targetTransform = hit[j].transform;
-                    return true;
-                }
-            }         
+            }      
         }
-        return false;
+        return hitTarget;
     }
 
     private Vector3 DirectionFromAngle (float angle)
@@ -128,16 +116,22 @@ public class Perception : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, hearingRadius);
         Gizmos.color = Color.red;
 
         for (int i = 0; i < numOfRays; i++)
         {
+            Gizmos.color = (raycastsHitTarget[i])? Color.green: Color.red;
             float viewScaler = -0.5f;
             viewScaler += (i *(1.0f / ((float)numOfRays - 1)));
             Gizmos.DrawLine(transform.position, transform.position + (DirectionFromAngle(fieldOfView * viewScaler) * viewingDistance));
         }            
+    }
+
+    private void OnValidate()
+    {
+        raycastsHitTarget = new bool[numOfRays];
     }
 
 
