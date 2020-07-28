@@ -1363,7 +1363,7 @@ PrefabInstance:
     - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
       propertyPath: middlePieces.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
@@ -1429,6 +1429,48 @@ PrefabInstance:
       propertyPath: climbSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[7]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 271e4e94c731b364ca115937562000c1,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[8]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 1377d7c73ecd02340b1f9dd8583313ae,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[9]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 5ea4b951bc7d5324e9196035295a97db,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[10]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 3044ffc26e005bb4e88aa5857f517e1d,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[11]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 6de9c27078159ca43a61220fe764d7bf,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[12]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 4950ff4a258756748b960307a8abf5ec,
+        type: 3}
+    - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: middlePieces.Array.data[13]
+      value: 
+      objectReference: {fileID: 7838983641197405030, guid: 33cb805ea0bbdc4499a420309ecff4b0,
+        type: 3}
     - target: {fileID: 5178551633026370881, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
       propertyPath: m_AnchorMax.x
