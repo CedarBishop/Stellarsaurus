@@ -98,7 +98,7 @@ public class AI : MonoBehaviour
                 controller.enabled = true;
                 agent.enabled = true;
                 agent.Init(FindObjectOfType<PathFindingGrid>());
-                animator.runtimeAnimatorController = patrolController;
+                animator.runtimeAnimatorController = jumpPatrolController;
                 animator.SetBool("CanAttack", true);
                 Destroy(GetComponent<Rigidbody2D>());
                 GetComponent<Collider2D>().isTrigger = true;

@@ -103,6 +103,7 @@ public class UIManager : MonoBehaviour
     public void StartNewRound(int roundNumber)
     {
         sceneTransistionAnimator.SetTrigger("OpenDoor");
+        print("Start new round");
         roundText.text = "Round " + roundNumber.ToString();
         StartCoroutine("DelayRoundTextFade");
         foreach (var item in playerScoreTexts)
@@ -135,6 +136,7 @@ public class UIManager : MonoBehaviour
     public void EndRound(List<PlayerMatchStats> playerMatchStats, int roundNumber)
     {
         sceneTransistionAnimator.SetTrigger("CloseDoor");
+        print("close door");
         if (playerMatchStats == null || playerMatchStats.Count == 0)
         {
             return;
