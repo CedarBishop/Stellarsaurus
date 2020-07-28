@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CoEndMatch()
     {
-        yield return new WaitForSeconds(10.1f);
+        yield return new WaitForSeconds(0.1f);
         Player[] players = FindObjectsOfType<Player>();
         foreach (Player player in players)
         {

@@ -19,7 +19,7 @@ public class BaseGamemode : MonoBehaviour
     [HideInInspector] public List<PlayerMatchStats> playerMatchStats = new List<PlayerMatchStats>();
 
     protected Player[] players;
-    protected bool roundIsUnderway;
+    public bool roundIsUnderway;
     protected float timer;
 
     private void Start()

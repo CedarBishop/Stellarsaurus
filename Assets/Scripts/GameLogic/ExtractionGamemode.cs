@@ -39,7 +39,7 @@ public class ExtractionGamemode : BaseGamemode
         }
 
         UIManager.instance.EndMatch(currentBestPlayers, playerMatchStats);
-        StartCoroutine("DelayAtEndOfMatch");
+        //StartCoroutine("DelayAtEndOfMatch");
     }
 
     public override void StartRound()

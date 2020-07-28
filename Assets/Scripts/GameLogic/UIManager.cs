@@ -35,6 +35,12 @@ public class UIManager : MonoBehaviour
 
     bool displayTimer;
 
+    private UIState currentUIState;
+    public UIState CurrentUIState
+    {
+        get { return currentUIState; }
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -64,6 +70,8 @@ public class UIManager : MonoBehaviour
 
     public void SetUIState (UIState uiState)
     {
+        currentUIState = uiState;
+
         pauseMenuParent.SetActive(false);
         pauseMainParent.SetActive(false);
         settingParent.SetActive(false);
@@ -274,6 +282,11 @@ public class UIManager : MonoBehaviour
         settingParent.SetActive(false);
     }
 
+    public void EndMatch ()
+    {
+        GameManager.instance.EndMatch();
+    }
+
     public void AddAmountToSfxVolume (float amount)
     {
         float volume = SoundManager.instance.SetSFXVolume(amount);
@@ -284,11 +297,6 @@ public class UIManager : MonoBehaviour
     {
         float volume = SoundManager.instance.SetMusicVolume(amount);
         musicVolumeText.text = "Music Volume: " + (volume * 100).ToString("F0");
-    }
-
-    public void MainMenu ()
-    {
-        GameManager.instance.EndMatch();
     }
 
     public void OpenFeedback()

@@ -133,6 +133,14 @@ public class Player : MonoBehaviour
 
     public void CreateGhost (Vector3 pos)
     {
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            if (GameManager.instance.SelectedGamemode.roundIsUnderway == false)
+            {
+                return;
+            }
+        }
+
         currentPlayerActionMap = "Ghost";
         playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
 

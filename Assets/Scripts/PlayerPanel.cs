@@ -14,6 +14,11 @@ public class PlayerPanel : MonoBehaviour
     public GameObject[] achievementParents;
     public Text[] achievementTexts;
     public Image[] achievementSprites;
+    public float timeBeforeMovingToNextSlide;
+
+
+    private List<Achievements> achievements;
+    private int[] indexes;
 
     public void Initialise (PlayerMatchStats playerMatchStats)
     {
@@ -25,7 +30,15 @@ public class PlayerPanel : MonoBehaviour
         aiKillsText.text = "Total AI Kills: " + playerMatchStats.playerKills;
         roundWinsText.text = "Total Round Wins: " + playerMatchStats.roundWins + playerMatchStats.extractions;
 
-        List <Achievements> achievements = GameManager.instance.achievementChecker.GetAchievements(playerMatchStats.playerNumber);
+        achievements = GameManager.instance.achievementChecker.GetAchievements(playerMatchStats.playerNumber);
+
+        IListExtensions.Shuffle<Achievements>(achievements);
+
+        indexes = new int[achievementParents.Length];
+        for (int i = 0; i < indexes.Length; i++)
+        {
+            indexes[i] = i;
+        }
 
         foreach (var item in achievementParents)
         {
@@ -41,23 +54,55 @@ public class PlayerPanel : MonoBehaviour
         {
             for (int i = 0; i < achievementParents.Length; i++)
             {
-                int randNum = Random.Range(0, achievements.Count);
                 achievementParents[i].SetActive(true);
-                achievementTexts[i].text = achievements[randNum].achievementName;
-                achievementSprites[i].sprite = achievements[randNum].sprite;
-                achievements.RemoveAt(randNum);
+                achievementTexts[i].text = achievements[i].achievementName;
+                achievementSprites[i].sprite = achievements[i].sprite;
             }
+            StartCoroutine("NextSlide");
         }
         else
         {
             for (int i = 0; i < achievements.Count; i++)
             {
-                int randNum = Random.Range(0, achievements.Count);
                 achievementParents[i].SetActive(true);
-                achievementTexts[i].text = achievements[randNum].achievementName;
-                achievementSprites[i].sprite = achievements[randNum].sprite;
-                achievements.RemoveAt(randNum);
+                achievementTexts[i].text = achievements[i].achievementName;
+                achievementSprites[i].sprite = achievements[i].sprite;
             }
+        }
+    }
+
+    IEnumerator NextSlide ()
+    {
+        while (UIManager.instance.CurrentUIState == UIState.MatchEnd)
+        {
+            yield return new WaitForSeconds(timeBeforeMovingToNextSlide);
+            for (int i = 0; i < indexes.Length; i++)
+            {
+                indexes[i]++;
+                indexes[i] %= achievements.Count;
+                achievementTexts[i].text = achievements[indexes[i]].achievementName;
+                achievementSprites[i].sprite = achievements[indexes[i]].sprite;
+            }
+        }
+    }
+}
+
+
+public static class IListExtensions
+{
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
         }
     }
 }
