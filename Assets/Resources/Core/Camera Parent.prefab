@@ -302,6 +302,20 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 4362119951789293873}
   m_ConfineScreenEdges: 0
   m_Damping: 1
+--- !u!114 &2329172481973550622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5132443181752612929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 4
+  m_AspectRatio: 1.7
 --- !u!1 &5809856925086070458
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +491,20 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &1378372790073505210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234868395035605577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 4
+  m_AspectRatio: 1.7
 --- !u!1001 &621781708688180145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,6 +687,18 @@ PrefabInstance:
 --- !u!224 &3692904184085809035 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4296108457331573818, guid: e9dad5466eb1efa4ab73aee1c8292370,
+    type: 3}
+  m_PrefabInstance: {fileID: 621781708688180145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8234868395035605577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8856647558345390584, guid: e9dad5466eb1efa4ab73aee1c8292370,
+    type: 3}
+  m_PrefabInstance: {fileID: 621781708688180145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5132443181752612929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5736208009366649840, guid: e9dad5466eb1efa4ab73aee1c8292370,
     type: 3}
   m_PrefabInstance: {fileID: 621781708688180145}
   m_PrefabAsset: {fileID: 0}
