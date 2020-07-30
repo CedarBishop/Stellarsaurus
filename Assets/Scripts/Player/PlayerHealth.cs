@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y < -13)
+        if (transform.position.y < -50)
         {
             Debug.Log("Player fell off the map");
             Death();
@@ -91,6 +91,14 @@ public class PlayerHealth : MonoBehaviour
         }
         isAlive = false;
         health = 0;
+
+        if (projectilePlayerNumber == playerNumber)
+        {
+            if (GameManager.instance.SelectedGamemode != null)
+            {
+                GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.Suicides, 1);
+            }
+        }
 
         if (isGamepad)
         {

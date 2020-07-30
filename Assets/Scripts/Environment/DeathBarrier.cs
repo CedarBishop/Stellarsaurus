@@ -12,7 +12,7 @@ public class DeathBarrier : MonoBehaviour
             if (collision.transform.CompareTag("Player"))
             {
                 Debug.Log("You are dead, not big surprise");
-                collision.transform.GetComponent<PlayerHealth>().HitByAI(10);
+                collision.transform.GetComponent<PlayerHealth>().HitByPlayer(collision.gameObject.GetComponent<PlayerHealth>().playerNumber, true);
             }
             else if (collision.transform.GetComponent<EnvironmentalObjectHealth>())
             {

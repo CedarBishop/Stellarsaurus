@@ -10,9 +10,12 @@ public class ClimbCamera : MonoBehaviour
     public int towerHeight;
     public Grid bottomPiece;
     public Grid[] middlePieces;
+    public Grid[] twentyBlockMiddlePieces;
     public Grid topPiece;
+    public Vector2Int chanceOfTwentyBlockPiece;
 
     private bool isClimbing;
+    private float currentYPosition;
 
     private void Start()
     {
@@ -22,7 +25,7 @@ public class ClimbCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position.y >= (towerHeight * 10) + 5)
+        if (transform.position.y >= currentYPosition + 5)
         {
             return;
         }
@@ -36,13 +39,41 @@ public class ClimbCamera : MonoBehaviour
     void GenerateTower ()
     {
         Instantiate(bottomPiece, new Vector3(0, 0, 0), Quaternion.identity);
-
-        for (int i = 1; i < towerHeight; i++)
+        currentYPosition = 10;
+        for (int i = 0; i < towerHeight; i++)
         {
-            Instantiate(middlePieces[Random.Range(0, middlePieces.Length)], new Vector3(0, i * 10, 0 ), Quaternion.identity);
+            if (twentyBlockMiddlePieces == null)
+            {
+                // ten tall peices
+                Instantiate(middlePieces[Random.Range(0, middlePieces.Length)], new Vector3(0, currentYPosition, 0), Quaternion.identity);
+                currentYPosition += 10;
+            }
+            else if (middlePieces == null)
+            {
+                // twenty tall peices
+                Instantiate(twentyBlockMiddlePieces[Random.Range(0, twentyBlockMiddlePieces.Length)], new Vector3(0, currentYPosition, 0), Quaternion.identity);
+                currentYPosition += 20;
+            }
+            else
+            {
+                int num = Random.Range(0, chanceOfTwentyBlockPiece.y);
+                if (num < chanceOfTwentyBlockPiece.x)
+                {
+                    // twenty tall peices
+                    Instantiate(twentyBlockMiddlePieces[Random.Range(0, twentyBlockMiddlePieces.Length)], new Vector3(0, currentYPosition, 0), Quaternion.identity);
+                    currentYPosition += 20;
+                }
+                else
+                {
+                    // ten tall peices
+                    Instantiate(middlePieces[Random.Range(0, middlePieces.Length)], new Vector3(0, currentYPosition, 0), Quaternion.identity);
+                    currentYPosition += 10;
+                }
+            }
+                       
         }
         
-        Instantiate(topPiece, new Vector3(0, towerHeight * 10, 0), Quaternion.identity);
+        Instantiate(topPiece, new Vector3(0, currentYPosition, 0), Quaternion.identity);
     }
 
     IEnumerator StartClimbing ()
