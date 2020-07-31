@@ -56,8 +56,7 @@ public class PlayerShoot : MonoBehaviour
     bool shootOnRelease;
 
     bool isAimingRightstick;
-
-    private RuntimeAnimatorController currentWeaponAnimController;
+    bool isFiring;
 
     private List<GameObject> objectsToDestoryOnWeaponDestroy = new List<GameObject>();
 
@@ -137,7 +136,6 @@ public class PlayerShoot : MonoBehaviour
         }
        
         
-
         if (isHoldingFireButton)
         {
             if (currentWeapon != null)
@@ -164,12 +162,13 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 semiLimiter = false;
                                 Shoot();
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.attackAnimName);
                             }
                             else
                             {
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.chargeAnimName);
                                 chargeUpTimer += Time.deltaTime;
                             }
-
                         }
                         break;
                     case FireType.WindUp:
@@ -177,9 +176,15 @@ public class PlayerShoot : MonoBehaviour
                         if (chargeUpTimer >= currentWeapon.chargeUpTime)
                         {
                             Shoot();
+                            if (isFiring == false)
+                            {
+                                isFiring = true;
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.attackAnimName);
+                            }
                         }
                         else
                         {
+                            weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.chargeAnimName);
                             chargeUpTimer += Time.deltaTime;
                         }
                         break;
@@ -214,6 +219,7 @@ public class PlayerShoot : MonoBehaviour
         {
             semiLimiter = true;
             chargeUpTimer = 0;
+            isFiring = false;
             if (extractionObjective == null)
             {
                 weaponAnimation.StopAnimation();
@@ -775,6 +781,7 @@ public class PlayerShoot : MonoBehaviour
     }
     public void DestroyWeapon()
     {
+        weaponAnimation.StopAnimation();
         gunSprite.sprite = null;
         currentWeapon = null;
         triggeredWeapon = null;

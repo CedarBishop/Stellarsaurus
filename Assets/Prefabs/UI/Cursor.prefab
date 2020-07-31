@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89541eb8c30076b4da67055f816b9e38, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -87,9 +87,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8dcfea18869a9e489a73fc6a0496ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 500
-  sprites:
-  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
-  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
-  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
-  - {fileID: 21300000, guid: adf9bc63b6dfcb3479f0da8b1c7264e9, type: 3}
+  movementSpeed: 250

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Cursor : MonoBehaviour
 {
     public float movementSpeed;
-    public Sprite[] sprites;
     int playerNumber;
     private Image image;
     private UIController controller;
@@ -19,7 +18,7 @@ public class Cursor : MonoBehaviour
         controller = Controller;
         playerNumber = controller.playerNumber;
         image = GetComponent<Image>();
-        image.sprite = sprites[playerNumber - 1];
+        image.color = GameManager.instance.playerColours[playerNumber - 1];
 
         controller.SetCursor(this);
         GameObject pauseMenu = UIManager.instance.pauseMenuParent;
