@@ -196,9 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e4d3916ca6f7c4b8b93feb9f398c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animatorControllers:
-  - {fileID: 9100000, guid: d3d7c25a1bf50b04d86a7fa04fd8248b, type: 2}
-  - {fileID: 9100000, guid: d2224f0eb5a6cc44f9c3b275f3f84448, type: 2}
+  extractionAnimator: {fileID: 9100000, guid: d2224f0eb5a6cc44f9c3b275f3f84448, type: 2}
 --- !u!95 &1657278030973125528
 Animator:
   serializedVersion: 3
@@ -378,6 +376,10 @@ MonoBehaviour:
     subProjectileAmount: 0
     subProjectileForce: {x: 0, y: 0}
     meleeType: {fileID: 0}
+    lineRenderer: {fileID: 0}
+    lineRendererGuid: 
+    lineRendererName: 
+    lineRendererTimeToLive: 0
   player: {fileID: 0}
   aimType: 0
   ammoCount: 0

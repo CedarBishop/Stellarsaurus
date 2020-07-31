@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class PlayerWeaponAnimation : MonoBehaviour
 {
-    private Animator animator;
+    public RuntimeAnimatorController extractionAnimator;
 
-    public RuntimeAnimatorController[] animatorControllers;
+    private Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-
-    public void PlayAnimation (string weaponName)
+    public void PlayAnimation (RuntimeAnimatorController controller, string clipName)
     {
-        foreach (var item in animatorControllers)
+        if (controller == null || string.IsNullOrEmpty(clipName))
         {
-            if (item.name == weaponName)
-            {
-                animator.runtimeAnimatorController = item;
-                print(animator.runtimeAnimatorController.name);
-                animator.Play(weaponName);
-            }
-            
+            return;
         }
+
+        animator.runtimeAnimatorController = controller;
+        animator.Play(clipName);
+    }
+
+    public void PlayExtractionAnimation ()
+    {
+        if (extractionAnimator == null)
+        {
+            return;
+        }
+
+        animator.runtimeAnimatorController = extractionAnimator;
+        animator.Play("Extraction");
     }
 
     public void StopAnimation ()

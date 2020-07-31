@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.InputSystem.XR.Haptics;
 
 public enum AimType { FreeAim, EightDirection, FourDirection, HybridEightDirection}
 public enum Orthogonal {Up, Right, Down, Left }
@@ -55,6 +56,8 @@ public class PlayerShoot : MonoBehaviour
     bool shootOnRelease;
 
     bool isAimingRightstick;
+
+    private RuntimeAnimatorController currentWeaponAnimController;
 
     private List<GameObject> objectsToDestoryOnWeaponDestroy = new List<GameObject>();
 
@@ -193,7 +196,7 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 if (shootOnRelease == false)
                                 {
-                                    weaponAnimation.PlayAnimation(currentWeapon.weaponName);
+                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.chargeAnimName);
                                 }
                                 cookTime += Time.deltaTime;
                                 shootOnRelease = true;
@@ -622,7 +625,7 @@ public class PlayerShoot : MonoBehaviour
         playerMovement.SetIsHoldingExtractionObject(true);
         extractionObjective = triggeredExtractionObjective;
         extractionObjective.OnPickup(playerNumber, weaponAnimation.GetComponent<Animator>(), this);
-        weaponAnimation.PlayAnimation("Extraction");
+        weaponAnimation.PlayExtractionAnimation();
     }
 
     IEnumerator DelayBetweenShots ()

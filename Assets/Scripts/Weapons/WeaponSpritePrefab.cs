@@ -13,6 +13,10 @@ public class WeaponSpritePrefab : MonoBehaviour
     public Transform lightTransform;
     public GameObject particle;
     public Transform particleTransform;
+    public RuntimeAnimatorController animatorController;
+    public string idleAnimName;
+    public string chargeAnimName;
+    public string attackAnimName;
 
 
     private void OnValidate()
