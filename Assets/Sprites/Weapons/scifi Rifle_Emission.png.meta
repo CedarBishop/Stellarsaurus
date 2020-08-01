@@ -1,103 +1,55 @@
 fileFormatVersion: 2
-guid: 1c740bb3c6141d948b332c133f482c3e
+guid: 9390ec62903586f42827c07a5f668318
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1717105041032495498
-    second: scifi Rifle_0
+      213: 2612653814603939982
+    second: scifi Rifle_Emission_0
   - first:
-      213: 2158023145608924155
-    second: scifi Rifle_1
+      213: -3767413396351177332
+    second: scifi Rifle_Emission_1
   - first:
-      213: -8306863201867197064
-    second: scifi Rifle_2
+      213: 4001869038930174547
+    second: scifi Rifle_Emission_2
   - first:
-      213: -384636512475798561
-    second: scifi Rifle_3
+      213: 777847015234123631
+    second: scifi Rifle_Emission_3
   - first:
-      213: 7965054243961426273
-    second: scifi Rifle_4
+      213: 44582209907573420
+    second: scifi Rifle_Emission_4
   - first:
-      213: -3259689876819863587
-    second: scifi Rifle_5
+      213: -7988948752280954156
+    second: scifi Rifle_Emission_5
   - first:
-      213: 4052369047395799547
-    second: scifi Rifle_6
+      213: 324718582685096964
+    second: scifi Rifle_Emission_6
   - first:
-      213: 664756185443966931
-    second: scifi Rifle_7
+      213: -6666972262545437247
+    second: scifi Rifle_Emission_7
   - first:
-      213: -2135022518353920292
-    second: scifi Rifle_8
+      213: -8482418207788071519
+    second: scifi Rifle_Emission_8
   - first:
-      213: 4235216487758690787
-    second: scifi Rifle_9
+      213: -161221755531684385
+    second: scifi Rifle_Emission_9
   - first:
-      213: 1991807307971367278
-    second: scifi Rifle_10
+      213: -3243159380082765150
+    second: scifi Rifle_Emission_10
   - first:
-      213: 3748931242389230297
-    second: scifi Rifle_11
+      213: 2997979717521451246
+    second: scifi Rifle_Emission_11
   - first:
-      213: -6138100410090853323
-    second: scifi Rifle_12
+      213: 7850832659131237562
+    second: scifi Rifle_Emission_12
   - first:
-      213: 5218571372570186261
-    second: scifi Rifle_13
+      213: 638524174747742587
+    second: scifi Rifle_Emission_13
   - first:
-      213: -4182852082078736083
-    second: scifi Rifle_14
+      213: -4118036732828732757
+    second: scifi Rifle_Emission_14
   - first:
-      213: 2460959968282974436
-    second: scifi Rifle_15
-  - first:
-      213: -8769560050785105858
-    second: scifi Rifle_16
-  - first:
-      213: -2211995894790244061
-    second: scifi Rifle_17
-  - first:
-      213: -4388053919547711520
-    second: scifi Rifle_18
-  - first:
-      213: -6154379842606591878
-    second: scifi Rifle_19
-  - first:
-      213: -113133765844371506
-    second: scifi Rifle_20
-  - first:
-      213: 4796777433882089193
-    second: scifi Rifle_21
-  - first:
-      213: -566609579577849363
-    second: scifi Rifle_22
-  - first:
-      213: -9122422570358863831
-    second: scifi Rifle_23
-  - first:
-      213: 1221741340878085246
-    second: scifi Rifle_24
-  - first:
-      213: 6507685254056469895
-    second: scifi Rifle_25
-  - first:
-      213: 4928367248838495593
-    second: scifi Rifle_26
-  - first:
-      213: 8658140121783526697
-    second: scifi Rifle_27
-  - first:
-      213: 7755937407083527553
-    second: scifi Rifle_28
-  - first:
-      213: 1964585431290959905
-    second: scifi Rifle_29
-  - first:
-      213: -6850953265661198961
-    second: scifi Rifle_30
-  - first:
-      213: -5040977938926429691
-    second: scifi Rifle_31
+      213: -1487744355458089886
+    second: scifi Rifle_Emission_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -153,7 +105,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -179,35 +131,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scifi Rifle_0
+      name: scifi Rifle_Emission_0
       rect:
         serializedVersion: 2
         x: 0
@@ -221,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8146ccefe164d710800000000000000
-      internalID: 1717105041032495498
+      spriteID: e80898c4dc2024420800000000000000
+      internalID: 2612653814603939982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_1
+      name: scifi Rifle_Emission_1
       rect:
         serializedVersion: 2
         x: 32
@@ -242,14 +170,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfb47130e96d2fd10800000000000000
-      internalID: 2158023145608924155
+      spriteID: c8da0740a7577bbc0800000000000000
+      internalID: -3767413396351177332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_2
+      name: scifi Rifle_Emission_2
       rect:
         serializedVersion: 2
         x: 64
@@ -263,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87511f6fde718bc80800000000000000
-      internalID: -8306863201867197064
+      spriteID: 352211720be798730800000000000000
+      internalID: 4001869038930174547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_3
+      name: scifi Rifle_Emission_3
       rect:
         serializedVersion: 2
         x: 96
@@ -284,14 +212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd32c3a312f79aaf0800000000000000
-      internalID: -384636512475798561
+      spriteID: f67b0a83db77bca00800000000000000
+      internalID: 777847015234123631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_4
+      name: scifi Rifle_Emission_4
       rect:
         serializedVersion: 2
         x: 128
@@ -305,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 161d90c52ae898e60800000000000000
-      internalID: 7965054243961426273
+      spriteID: ca2c7d0a8436e9000800000000000000
+      internalID: 44582209907573420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_5
+      name: scifi Rifle_Emission_5
       rect:
         serializedVersion: 2
         x: 160
@@ -326,14 +254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd7173ed35143c2d0800000000000000
-      internalID: -3259689876819863587
+      spriteID: 4da5e73ef6d812190800000000000000
+      internalID: -7988948752280954156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_6
+      name: scifi Rifle_Emission_6
       rect:
         serializedVersion: 2
         x: 192
@@ -347,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf190d0ad28ec3830800000000000000
-      internalID: 4052369047395799547
+      spriteID: 40cd9ec94d1a18400800000000000000
+      internalID: 324718582685096964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_7
+      name: scifi Rifle_Emission_7
       rect:
         serializedVersion: 2
         x: 224
@@ -368,14 +296,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3df91a78a30b93900800000000000000
-      internalID: 664756185443966931
+      spriteID: 1cdc893ec082a73a0800000000000000
+      internalID: -6666972262545437247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_8
+      name: scifi Rifle_Emission_8
       rect:
         serializedVersion: 2
         x: 256
@@ -389,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdefd06d450ee52e0800000000000000
-      internalID: -2135022518353920292
+      spriteID: 1a58c70f495684a80800000000000000
+      internalID: -8482418207788071519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_9
+      name: scifi Rifle_Emission_9
       rect:
         serializedVersion: 2
         x: 288
@@ -410,14 +338,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e9fbbbd4f286ca30800000000000000
-      internalID: 4235216487758690787
+      spriteID: fd51873eaa933cdf0800000000000000
+      internalID: -161221755531684385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_10
+      name: scifi Rifle_Emission_10
       rect:
         serializedVersion: 2
         x: 320
@@ -431,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6119ac813254ab10800000000000000
-      internalID: 1991807307971367278
+      spriteID: 2a2d0301abbfdf2d0800000000000000
+      internalID: -3243159380082765150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_11
+      name: scifi Rifle_Emission_11
       rect:
         serializedVersion: 2
         x: 352
@@ -452,14 +380,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d259fd2a11e60430800000000000000
-      internalID: 3748931242389230297
+      spriteID: ee821ba4ba6fa9920800000000000000
+      internalID: 2997979717521451246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_12
+      name: scifi Rifle_Emission_12
       rect:
         serializedVersion: 2
         x: 384
@@ -473,14 +401,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53cead4b23611daa0800000000000000
-      internalID: -6138100410090853323
+      spriteID: ab48d8e35b2c3fc60800000000000000
+      internalID: 7850832659131237562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_13
+      name: scifi Rifle_Emission_13
       rect:
         serializedVersion: 2
         x: 416
@@ -494,14 +422,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5129111a3071c6840800000000000000
-      internalID: 5218571372570186261
+      spriteID: b71b6589a5e7cd800800000000000000
+      internalID: 638524174747742587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_14
+      name: scifi Rifle_Emission_14
       rect:
         serializedVersion: 2
         x: 448
@@ -515,14 +443,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d21a1bb613683f5c0800000000000000
-      internalID: -4182852082078736083
+      spriteID: ba2bbb7e86bc9d6c0800000000000000
+      internalID: -4118036732828732757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scifi Rifle_15
+      name: scifi Rifle_Emission_15
       rect:
         serializedVersion: 2
         x: 480
@@ -536,8 +464,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e896fb6d06172220800000000000000
-      internalID: 2460959968282974436
+      spriteID: 26cf35024687a5be0800000000000000
+      internalID: -1487744355458089886
       vertices: []
       indices: 
       edges: []
