@@ -85,7 +85,6 @@ public class Cursor : MonoBehaviour
             {
                 continue;
             }
-            print(image.rectTransform.position);
             if (Vector3.Distance(transform.position, button.transform.position) < 40)
             {
                 highlightedButton = button;
