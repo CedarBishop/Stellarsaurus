@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class Cursor : MonoBehaviour
 {
     public float movementSpeed;
-    int playerNumber;
+    
+    private int playerNumber;
+    
     private Image image;
     private UIController controller;
-    Button[] buttons;
-    Button highlightedButton;
+    private Button[] buttons;
+    private Button highlightedButton;
 
     public void Initialise (UIController Controller)
     {
@@ -28,7 +30,6 @@ public class Cursor : MonoBehaviour
     public void Move (Vector2 direction)
     {
         CheckScreenBorder();
-
         transform.Translate(direction * Time.unscaledDeltaTime * movementSpeed);
     }
 
@@ -84,12 +85,12 @@ public class Cursor : MonoBehaviour
             {
                 continue;
             }
-
-            if (Vector3.Distance(transform.position, button.transform.position) < 30 /*image.sprite.bounds.Intersects(button.image.sprite.bounds)*/)
+            print(image.rectTransform.position);
+            if (Vector3.Distance(transform.position, button.transform.position) < 40)
             {
                 highlightedButton = button;
                 isHighlightingButton = true;
-                button.image.color = Color.red;
+                button.image.color = button.colors.highlightedColor;
             }
         }
         if (isHighlightingButton == false)
@@ -97,7 +98,7 @@ public class Cursor : MonoBehaviour
             highlightedButton = null;
             foreach (var button in buttons)
             {
-                button.image.color = Color.white;
+                button.image.color = button.colors.normalColor;
             }
         }
     }
