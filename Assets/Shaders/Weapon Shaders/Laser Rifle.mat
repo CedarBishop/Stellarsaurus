@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Flamethrower Material
-  m_Shader: {fileID: -6465566751694194690, guid: 3eb2db784b9f5de4996d531459cfc330,
+  m_Name: Laser Rifle
+  m_Shader: {fileID: -6465566751694194690, guid: 7422e391ebaef5946a7c685623d0e6f6,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -21,13 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emmision:
-        m_Texture: {fileID: 2800000, guid: 9c0d8b9cc50a3b049895c88ff15e0b01, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9390ec62903586f42827c07a5f668318, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d64647449ed523646a50c88e96c79e45, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1c740bb3c6141d948b332c133f482c3e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_E36B9CD7: {r: 1.4980392, g: 1.2784314, b: 0, a: 1}
+    - Color_E36B9CD7: {r: 2.1185474, g: 0.35493988, b: 0.022183742, a: 1}

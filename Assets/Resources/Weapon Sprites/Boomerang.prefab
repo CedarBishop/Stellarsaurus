@@ -99,6 +99,15 @@ MonoBehaviour:
   weaponSprite: {fileID: 21300000, guid: ad24d957e7503c643998af4339d0cd06, type: 3}
   collider: {fileID: 2474800776550221545}
   firingPoint: {fileID: 5959265708712006691}
+  weaponSpriteMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  light: {fileID: 0}
+  lightTransform: {fileID: 0}
+  particle: {fileID: 0}
+  particleTransform: {fileID: 0}
+  animatorController: {fileID: 0}
+  idleAnimName: 
+  chargeAnimName: 
+  attackAnimName: 
 --- !u!61 &2474800776550221545
 BoxCollider2D:
   m_ObjectHideFlags: 0

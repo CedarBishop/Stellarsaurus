@@ -129,6 +129,15 @@ MonoBehaviour:
   weaponSprite: {fileID: 21300000, guid: 3618e6ce1df96ae49adbeeb6d059f07d, type: 3}
   collider: {fileID: 5688897800238116164}
   firingPoint: {fileID: 8838638735230382951}
+  weaponSpriteMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  light: {fileID: 0}
+  lightTransform: {fileID: 0}
+  particle: {fileID: 0}
+  particleTransform: {fileID: 0}
+  animatorController: {fileID: 0}
+  idleAnimName: 
+  chargeAnimName: 
+  attackAnimName: 
 --- !u!61 &5688897800238116164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +155,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 1.3333334, y: 1.3333334}
     newSize: {x: 1.75, y: 0.734375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -138,9 +138,9 @@ MonoBehaviour:
   particle: {fileID: 0}
   particleTransform: {fileID: 0}
   animatorController: {fileID: 22100000, guid: 1bf02d01fce4d7842bfd5c98471e5c03, type: 2}
-  idleAnimName: Laser_Idle
-  chargeAnimName: Laser_Charge
-  attackAnimName: Laser_Attack
+  idleAnimName: Minigun_Idle
+  chargeAnimName: Minigun_Charge
+  attackAnimName: Minigun_Attack
 --- !u!61 &5360371681018308554
 BoxCollider2D:
   m_ObjectHideFlags: 0
