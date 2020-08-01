@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Experimental.Rendering.Universal;
-using UnityEngine.InputSystem.XR.Haptics;
 
 public enum AimType { FreeAim, EightDirection, FourDirection, HybridEightDirection}
 public enum Orthogonal {Up, Right, Down, Left }
@@ -162,11 +160,11 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 semiLimiter = false;
                                 Shoot();
-                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.attackAnimName);
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.attackAnimName);
                             }
                             else
                             {
-                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.chargeAnimName);
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
                                 chargeUpTimer += Time.deltaTime;
                             }
                         }
@@ -179,12 +177,12 @@ public class PlayerShoot : MonoBehaviour
                             if (isFiring == false)
                             {
                                 isFiring = true;
-                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.attackAnimName);
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.attackAnimName);
                             }
                         }
                         else
                         {
-                            weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.chargeAnimName);
+                            weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
                             chargeUpTimer += Time.deltaTime;
                         }
                         break;
@@ -201,7 +199,7 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 if (shootOnRelease == false)
                                 {
-                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.animatorController, currentWeapon.weaponSpritePrefab.chargeAnimName);
+                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
                                 }
                                 cookTime += Time.deltaTime;
                                 shootOnRelease = true;
@@ -222,7 +220,8 @@ public class PlayerShoot : MonoBehaviour
             isFiring = false;
             if (extractionObjective == null)
             {
-                weaponAnimation.StopAnimation();
+                if (currentWeapon != null)
+                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.idleAnimName);
             }
             if (shootOnRelease)
             {
@@ -535,8 +534,7 @@ public class PlayerShoot : MonoBehaviour
             }
 
             StartCoroutine("DelayBetweenShots");
-        }
-             
+        }             
     }
 
     IEnumerator Haptic ()
@@ -754,6 +752,9 @@ public class PlayerShoot : MonoBehaviour
                 go.Play();
                 objectsToDestoryOnWeaponDestroy.Add(go.gameObject);
             }
+            
+            weaponAnimation.Init(currentWeapon.weaponSpritePrefab.animatorController);
+            weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.idleAnimName);
         }
         else
         {
@@ -779,6 +780,7 @@ public class PlayerShoot : MonoBehaviour
             DropWeapon();
         }
     }
+
     public void DestroyWeapon()
     {
         weaponAnimation.StopAnimation();

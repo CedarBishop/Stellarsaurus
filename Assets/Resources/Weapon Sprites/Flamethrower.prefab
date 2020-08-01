@@ -179,10 +179,10 @@ MonoBehaviour:
   lightTransform: {fileID: 9204050913886781935}
   particle: {fileID: 0}
   particleTransform: {fileID: 0}
-  animatorController: {fileID: 22100000, guid: 825faaac8b34c77449c2e1c3aaec916f, type: 2}
-  idleAnimName: Minigun_Idle
-  chargeAnimName: Minigun_Charge
-  attackAnimName: Minigun_Attack
+  animatorController: {fileID: 9100000, guid: 27d529949d4f2384cb07b6b5ed079788, type: 2}
+  idleAnimName: Flamethrower_Idle
+  chargeAnimName: Flamethrower_Charge
+  attackAnimName: Flamethrower_Attack
 --- !u!61 &4556956931380362196
 BoxCollider2D:
   m_ObjectHideFlags: 0

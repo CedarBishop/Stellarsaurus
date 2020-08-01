@@ -13,14 +13,27 @@ public class PlayerWeaponAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void PlayAnimation (RuntimeAnimatorController controller, string clipName)
+    public void Init (RuntimeAnimatorController controller)
     {
-        if (controller == null || string.IsNullOrEmpty(clipName))
+        if (controller == null )
         {
             return;
         }
 
         animator.runtimeAnimatorController = controller;
+    }
+
+    public void PlayAnimation (string clipName)
+    {
+        if (string.IsNullOrEmpty(clipName))
+        {
+            return;
+        }
+        if (animator.runtimeAnimatorController == null)
+        {
+            return;
+        }
+
         animator.Play(clipName);
     }
 

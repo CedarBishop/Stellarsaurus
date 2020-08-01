@@ -4121,12 +4121,17 @@ PrefabInstance:
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[1]
-      value: Rifle
+      value: Flamethrower
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: respawnTime
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
+      value: Minigun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
