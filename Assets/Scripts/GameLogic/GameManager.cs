@@ -159,12 +159,12 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+
         selectedGamemode.Exit();
         selectedGamemode = null;
         SceneManager.LoadScene("MainMenu");        
         UnPause();
         StartCoroutine("CoEndMatch");
-
     }
 
     IEnumerator CoEndMatch()
@@ -182,6 +182,11 @@ public class GameManager : MonoBehaviour
     // Also tells the UI manager to bring up the pause menu and cursors
     public void Pause ()
     {
+        if (UIManager.instance.CurrentUIState == UIState.MatchEnd)
+        {
+            return;
+        }
+
         Time.timeScale = 0;
 
         foreach (PlayerInput player in playerInputs)
@@ -197,6 +202,10 @@ public class GameManager : MonoBehaviour
     // Tells all players to switch controls back to player
     public void UnPause ()
     {
+        if (UIManager.instance.CurrentUIState == UIState.MatchEnd)
+        {
+            return;
+        }
         Time.timeScale = 1;
 
         foreach (PlayerInput player in playerInputs)
