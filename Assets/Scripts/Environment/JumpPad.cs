@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
@@ -8,6 +6,10 @@ public class JumpPad : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<GhostMovement>())
+        {
+            return;
+        }
         if (collision.GetComponent<Rigidbody2D>())
         {
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
@@ -17,8 +19,6 @@ public class JumpPad : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>())
         {
             collision.GetComponent<PlayerMovement>().OnJumpPadBoost();
-        }
-        
+        }        
     }
-
 }

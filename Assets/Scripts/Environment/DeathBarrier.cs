@@ -9,7 +9,7 @@ public class DeathBarrier : MonoBehaviour
         Debug.Log("Hit");
         if (collision.transform.GetComponent<Rigidbody2D>())
         {
-            if (collision.transform.CompareTag("Player"))
+            if (collision.transform.GetComponent<PlayerHealth>())
             {
                 Debug.Log("You are dead, not big surprise");
                 collision.transform.GetComponent<PlayerHealth>().HitByPlayer(collision.gameObject.GetComponent<PlayerHealth>().playerNumber, true);
@@ -22,10 +22,7 @@ public class DeathBarrier : MonoBehaviour
             {
                 Debug.Log(collision.transform.name + " hit " + name);
             }
-
-
             // Other objects (like enemy AI) will not get killed by the death barrier as of yet
-
         }
     }
 
