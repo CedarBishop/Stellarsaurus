@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StatTypes { Jumps, WeaponsPickedUp, Deaths, ObstaclesHit, DamageDealt, BulletsFired, HealthRegained, Suicides, ExplosivesUsed, FlamesShot }
+public enum StatTypes { Jumps, WeaponsPickedUp, Deaths, ObstaclesHit, DamageDealt, BulletsFired, HealthRegained, Suicides, ExplosivesUsed, FlamesShot, BulletsHit }
 
 [System.Serializable]
 public class PlayerMatchStats
@@ -38,6 +38,7 @@ public class PlayerMatchStats
     public int suicides;
     public int explosivesUsed;
     public int flamesShot;
+    public int bulletsHit;
 
     public void AddToMeaninglessStats (StatTypes statType, int amount)
     {

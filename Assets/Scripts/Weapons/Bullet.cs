@@ -47,7 +47,9 @@ public class Bullet : Projectile
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
             {
                 collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage,playerNumber);
-            }           
+            }
+
+            OnHit();
         }
         if (destroysOnHit)
         {
@@ -102,7 +104,9 @@ public class Bullet : Projectile
                 shell.AddForce((Vector3.up + (transform.right * -1)) * Random.Range(80.0f, 200.0f));
                 shell.AddTorque(Random.Range(0.0f, 0.5f), ForceMode2D.Impulse);
             }
-        }       
+        }
+
+        OnSpawn();
     }
 
     IEnumerator DistanceTracker()

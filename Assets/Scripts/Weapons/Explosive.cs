@@ -37,6 +37,8 @@ public class Explosive : Projectile
                     {
                         GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.DamageDealt, damage);
                     }
+
+                    OnHit();
                 }
                 else if (colliders[i].GetComponent<AI>())
                 {
@@ -46,6 +48,7 @@ public class Explosive : Projectile
                     {
                         GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.DamageDealt, damage);
                     }
+                    OnHit();
                 }
                 else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
                 {
@@ -111,6 +114,8 @@ public class Explosive : Projectile
         magnitude = cameraShakeMagnitude;
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
+
+        OnSpawn();
 
         if (damagesOnHit == false )
         {

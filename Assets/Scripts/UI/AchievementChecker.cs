@@ -19,60 +19,62 @@ public class AchievementChecker : MonoBehaviour
                 {
                     thisPlayerStats = stat;
 
-                    foreach (var achievement in achievementObjects)
+                    foreach (var item in achievementObjects)
                     {
+                        Achievements achievement = item;
                         switch (achievement.stat)
                         {
                             case StatTypes.Jumps:
-                                if (thisPlayerStats.jumps >= achievement.amountToGainAchievement)
+
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.jumps))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.WeaponsPickedUp:
-                                if (thisPlayerStats.weaponsPickedUp >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.weaponsPickedUp))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.Deaths:
-                                if (thisPlayerStats.deaths >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.deaths))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.ObstaclesHit:
-                                if (thisPlayerStats.obstaclesHit >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.obstaclesHit))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.DamageDealt:
-                                if (thisPlayerStats.damageDealt >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.damageDealt))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.BulletsFired:
-                                if (thisPlayerStats.bulletsFired >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.bulletsFired))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.HealthRegained:
-                                if (thisPlayerStats.totalHealthRegained >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.totalHealthRegained))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.Suicides:
-                                if (thisPlayerStats.suicides >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.suicides))
                                 {
                                     achievements.Add(achievement);
                                 }
                                 break;
                             case StatTypes.ExplosivesUsed:
-                                if (thisPlayerStats.explosivesUsed >= achievement.amountToGainAchievement)
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.explosivesUsed))
                                 {
                                     achievements.Add(achievement);
                                 }
@@ -90,4 +92,23 @@ public class AchievementChecker : MonoBehaviour
         return achievements;
     }
 
+
+    bool CheckAchievementLevel (ref Achievements achievement, int amount)
+    {
+        if (amount >= achievement.bronzeAmountToGainAchievement)
+        {
+            achievement.achievementLevel = AchievementLevel.Bronze;
+            if (amount >= achievement.silverAmountToGainAchievement)
+            {
+                achievement.achievementLevel = AchievementLevel.Silver;
+                if (amount >= achievement.goldAmountToGainAchievement)
+                {
+                    achievement.achievementLevel = AchievementLevel.Gold;
+                }
+            }
+            return true;
+        }
+
+        return false;
+    }
 }

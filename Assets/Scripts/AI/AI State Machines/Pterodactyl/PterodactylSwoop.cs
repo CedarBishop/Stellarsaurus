@@ -50,7 +50,7 @@ public class PterodactylSwoop : StateMachineBehaviour
         {
             foreach (var collider in colliders)
             {
-                if (collider.CompareTag("Player"))
+                if (collider.GetComponent<PlayerHealth>())
                 {
                     collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
                 }
