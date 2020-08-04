@@ -38,8 +38,7 @@ public class ExtractionGamemode : BaseGamemode
             GameManager.instance.AwardMatchWin(playerNum);
         }
 
-        UIManager.instance.EndMatch(currentBestPlayers, playerMatchStats);
-        //StartCoroutine("DelayAtEndOfMatch");
+        UIManager.instance.EndMatch(GameMode.Extraction, playerMatchStats);
     }
 
     public override void StartRound()
@@ -89,7 +88,7 @@ public class ExtractionGamemode : BaseGamemode
     {
         base.PlayerDied();
 
-        /*if (playersStillAliveThisRound == 1)
+        if (playersStillAliveThisRound == 1)
         {
             int winningPlayerNumber = 0;
             for (int i = 0; i < players.Length; i++)
@@ -102,7 +101,7 @@ public class ExtractionGamemode : BaseGamemode
             AwardRoundWin(winningPlayerNumber);
             EndRound(winningPlayerNumber);
         }
-        else */if (playersStillAliveThisRound < 1)
+        else if (playersStillAliveThisRound < 1)
         {
             EndRound(0);
         }
@@ -110,7 +109,7 @@ public class ExtractionGamemode : BaseGamemode
 
     IEnumerator DelayBetweenRounds()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(timeBetweenRounds);
         GameManager.instance.levelSelector.GoToLevel(GameMode.Extraction, StartRound);
     }
 

@@ -26,14 +26,32 @@ public class PlayerPanel : MonoBehaviour
     private List<Achievements> achievements;
     private int[] indexes;
 
-    public void Initialise (PlayerMatchStats playerMatchStats)
+    public void Initialise (GameMode gamemode,PlayerMatchStats playerMatchStats)
     {
         panelBackgroundImage.color = GameManager.instance.playerColours[playerMatchStats.playerNumber - 1];
 
         playerNumberText.text = "Player " + playerMatchStats.playerNumber.ToString();
-        playerPointsText.text = "Total Points: " + playerMatchStats.points;
+
+        switch (gamemode)
+        {
+            case GameMode.FreeForAll:
+                playerPointsText.text = "Total Round Wins: " + playerMatchStats.roundWins;
+                roundWinsText.text = "";
+                break;
+            case GameMode.Elimination:
+                break;
+            case GameMode.Extraction:
+                playerPointsText.text = "Total Points: " + playerMatchStats.points;
+                roundWinsText.text = "Total Round Wins: " + playerMatchStats.roundWins + playerMatchStats.extractions;
+                break;
+            case GameMode.Climb:
+                break;
+            default:
+                break;
+        }
+
         playerKillsText.text = "Total Player Kills: " + playerMatchStats.playerKills;
-        aiKillsText.text = "Total AI Kills: " + playerMatchStats.playerKills;
+        aiKillsText.text = "Total AI Kills: " + playerMatchStats.aiKills;
 
         if (playerMatchStats.bulletsFired == 0)
         {
@@ -44,7 +62,6 @@ public class PlayerPanel : MonoBehaviour
             accuracyText.text = "Accuracy: " + ((playerMatchStats.bulletsHit / playerMatchStats.bulletsFired) * 100).ToString() + "%";
         }
         
-        roundWinsText.text = "Total Round Wins: " + playerMatchStats.roundWins + playerMatchStats.extractions;
 
         achievements = GameManager.instance.achievementChecker.GetAchievements(playerMatchStats.playerNumber);
 
