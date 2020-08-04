@@ -1,91 +1,49 @@
 fileFormatVersion: 2
-guid: eb57d0db17a6ffe429bc1245f09ebb12
+guid: a600db0d7f92dfa45a2eedfdba315568
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2687059700381489111
-    second: Player-Spaceman2_Body_0
+      213: -2246125788179747190
+    second: Player-spaceperson3-head_0
   - first:
-      213: -8314315909787160497
-    second: Player-Spaceman2_Body_1
+      213: 303502247655265023
+    second: Player-spaceperson3-head_1
   - first:
-      213: -4291333883764969821
-    second: Player-Spaceman2_Body_2
+      213: -4862041500585057342
+    second: Player-spaceperson3-head_2
   - first:
-      213: -8121988242947043137
-    second: Player-Spaceman2_Body_3
+      213: -8155926490456729576
+    second: Player-spaceperson3-head_3
   - first:
-      213: -6945907802931373869
-    second: Player-Spaceman2_Body_4
+      213: 377128886002648828
+    second: Player-spaceperson3-head_4
   - first:
-      213: 2335604506072046776
-    second: Player-Spaceman2_Body_5
+      213: -8213995158268994828
+    second: Player-spaceperson3-head_5
   - first:
-      213: -2445963637602700704
-    second: Player-Spaceman2_Body_6
+      213: 4833415483876523825
+    second: Player-spaceperson3-head_6
   - first:
-      213: 3007675938498901883
-    second: Player-Spaceman2_Body_7
+      213: -5604922387494583091
+    second: Player-spaceperson3-head_7
   - first:
-      213: -486288248203594533
-    second: Player-Spaceman2_Body_8
+      213: 4645549775133957379
+    second: Player-spaceperson3-head_8
   - first:
-      213: 5699069333402602840
-    second: Player-Spaceman2_Body_9
+      213: -2425373154790758304
+    second: Player-spaceperson3-head_9
   - first:
-      213: -5892700625960702308
-    second: Player-Spaceman2_Body_10
+      213: -5540230776840806427
+    second: Player-spaceperson3-head_10
   - first:
-      213: 1388162146720551491
-    second: Player-Spaceman2_Body_11
+      213: 4819271849784555112
+    second: Player-spaceperson3-head_11
   - first:
-      213: 8911835500689405292
-    second: Player-Spaceman2_Body_12
+      213: 6813247964769668862
+    second: Player-spaceperson3-head_12
   - first:
-      213: 1908325006706329793
-    second: Player-Spaceman2_Body_13
-  - first:
-      213: 8250359100752451103
-    second: Player-Spaceman2_Body_0
-  - first:
-      213: -7066344682133028491
-    second: Player-Spaceman2_Body_1
-  - first:
-      213: 6753085590072057657
-    second: Player-Spaceman2_Body_2
-  - first:
-      213: -7478893561510731072
-    second: Player-Spaceman2_Body_3
-  - first:
-      213: -4045655014338040333
-    second: Player-Spaceman2_Body_4
-  - first:
-      213: -2425938932765639885
-    second: Player-Spaceman2_Body_5
-  - first:
-      213: -4292400130001584818
-    second: Player-Spaceman2_Body_6
-  - first:
-      213: 359098592701689990
-    second: Player-Spaceman2_Body_7
-  - first:
-      213: 7138803278700302340
-    second: Player-Spaceman2_Body_8
-  - first:
-      213: 4471808196930074
-    second: Player-Spaceman2_Body_9
-  - first:
-      213: -2622019866223577772
-    second: Player-Spaceman2_Body_10
-  - first:
-      213: 3875024017119629342
-    second: Player-Spaceman2_Body_11
-  - first:
-      213: -3834286781447083140
-    second: Player-Spaceman2_Body_12
-  - first:
-      213: -1197458281110684192
-    second: Player-Spaceman2_Body_13
+      213: 1878504129871463460
+    second: Player-spaceperson3-head_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -167,11 +125,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_0
+      name: Player-spaceperson3-head_0
       rect:
         serializedVersion: 2
         x: 0
@@ -185,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f16d2cdc3e92f7270800000000000000
-      internalID: 8250359100752451103
+      spriteID: a8ea3b20f7824d0e0800000000000000
+      internalID: -2246125788179747190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_1
+      name: Player-spaceperson3-head_1
       rect:
         serializedVersion: 2
         x: 32
@@ -206,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5718df063fc4fed90800000000000000
-      internalID: -7066344682133028491
+      spriteID: ff2560cafa1463400800000000000000
+      internalID: 303502247655265023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_2
+      name: Player-spaceperson3-head_2
       rect:
         serializedVersion: 2
         x: 64
@@ -227,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93fdd069097c7bd50800000000000000
-      internalID: 6753085590072057657
+      spriteID: 2c3ab62f30f868cb0800000000000000
+      internalID: -4862041500585057342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_3
+      name: Player-spaceperson3-head_3
       rect:
         serializedVersion: 2
         x: 96
@@ -248,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c262314ee1a53890800000000000000
-      internalID: -7478893561510731072
+      spriteID: 818d022a11450de80800000000000000
+      internalID: -8155926490456729576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_4
+      name: Player-spaceperson3-head_4
       rect:
         serializedVersion: 2
         x: 128
@@ -269,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fd6a920332fad7c0800000000000000
-      internalID: -4045655014338040333
+      spriteID: cf60ab449b4db3500800000000000000
+      internalID: 377128886002648828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_5
+      name: Player-spaceperson3-head_5
       rect:
         serializedVersion: 2
         x: 160
@@ -290,14 +260,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33bb6b1d465555ed0800000000000000
-      internalID: -2425938932765639885
+      spriteID: 4fa19945ce6020e80800000000000000
+      internalID: -8213995158268994828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_6
+      name: Player-spaceperson3-head_6
       rect:
         serializedVersion: 2
         x: 192
@@ -311,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4d3a69e2d45e64c0800000000000000
-      internalID: -4292400130001584818
+      spriteID: 13f355826cdb31340800000000000000
+      internalID: 4833415483876523825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_7
+      name: Player-spaceperson3-head_7
       rect:
         serializedVersion: 2
         x: 224
@@ -332,14 +302,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 680b3597446cbf400800000000000000
-      internalID: 359098592701689990
+      spriteID: dc440c3e8c05732b0800000000000000
+      internalID: -5604922387494583091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_8
+      name: Player-spaceperson3-head_8
       rect:
         serializedVersion: 2
         x: 256
@@ -353,14 +323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 400535c42cf121360800000000000000
-      internalID: 7138803278700302340
+      spriteID: 30d514548ee487040800000000000000
+      internalID: 4645549775133957379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_9
+      name: Player-spaceperson3-head_9
       rect:
         serializedVersion: 2
         x: 288
@@ -374,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1ae41bf513ef0000800000000000000
-      internalID: 4471808196930074
+      spriteID: 068ade447f7575ed0800000000000000
+      internalID: -2425373154790758304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_10
+      name: Player-spaceperson3-head_10
       rect:
         serializedVersion: 2
         x: 320
@@ -395,14 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 455f9bfd2d6bc9bd0800000000000000
-      internalID: -2622019866223577772
+      spriteID: 5ef97bc36752d13b0800000000000000
+      internalID: -5540230776840806427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_11
+      name: Player-spaceperson3-head_11
       rect:
         serializedVersion: 2
         x: 352
@@ -416,14 +386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e10d58410d9d6c530800000000000000
-      internalID: 3875024017119629342
+      spriteID: 866b27ab63e71e240800000000000000
+      internalID: 4819271849784555112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_12
+      name: Player-spaceperson3-head_12
       rect:
         serializedVersion: 2
         x: 384
@@ -437,14 +407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7beed8bc70e9cac0800000000000000
-      internalID: -3834286781447083140
+      spriteID: efecfb20de48d8e50800000000000000
+      internalID: 6813247964769668862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player-Spaceman2_Body_13
+      name: Player-spaceperson3-head_13
       rect:
         serializedVersion: 2
         x: 416
@@ -458,8 +428,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ed3c09a906c16fe0800000000000000
-      internalID: -1197458281110684192
+      spriteID: 424c71aad89c11a10800000000000000
+      internalID: 1878504129871463460
       vertices: []
       indices: 
       edges: []
