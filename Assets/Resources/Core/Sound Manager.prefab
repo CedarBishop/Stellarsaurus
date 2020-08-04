@@ -94,7 +94,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6081fdcacf53f5f4b8f69a010cf67994, type: 3}
     pitch: 1
     volume: 1
-  - name: SFX_DinasaurBite
+  - name: SFX_RaptorBite
     clip: {fileID: 8300000, guid: d56e8265f2f63284887472722868ab75, type: 3}
     pitch: 1
     volume: 1
@@ -106,6 +106,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3019c7ae16268a3439626076b5c55529, type: 3}
     pitch: 0.9
     volume: 1
+  - name: SFX_ElectricFieldAmbient
+    clip: {fileID: 8300000, guid: 1049fa14c977bcf45b0af35268edca21, type: 3}
+    pitch: 0.9
+    volume: 0.327
 --- !u!82 &6978079196766835210
 AudioSource:
   m_ObjectHideFlags: 0
