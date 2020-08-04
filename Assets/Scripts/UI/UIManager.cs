@@ -141,55 +141,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // End Match Free for all calls
-    public void EndMatch(List<int> winningPlayerNumbers)
+    public void EndMatch(GameMode gamemode, List<PlayerMatchStats> playerMatchStats)
     {
-        string str = "";
-        if (winningPlayerNumbers.Count == 1)
-        {
-            str = "Player " + winningPlayerNumbers[0].ToString() + " won the match";
-        }
-        else if (winningPlayerNumbers.Count > 1)
-        {
-            for (int i = 0; i < winningPlayerNumbers.Count - 1; i++)
-            {
-                str += "Player " + winningPlayerNumbers[i].ToString() + " and ";
-            }
-            str += "Player " + winningPlayerNumbers[winningPlayerNumbers.Count - 1].ToString() + " won the match";
-
-        }
-
-        roundText.text = str;
-    }
-
-    // End Match Extraction calls
-    public void EndMatch(List<int> winningPlayerNumbers, List<PlayerMatchStats> playerMatchStats)
-    {
-        //string str = "";
-        //if (winningPlayerNumbers.Count == 1)
-        //{
-        //    str = "Player " + winningPlayerNumbers[0].ToString() + " won the match";
-        //}
-        //else if (winningPlayerNumbers.Count > 1)
-        //{            
-        //    for (int i = 0; i < winningPlayerNumbers.Count - 1; i++) 
-        //    {
-        //        str += "Player " + winningPlayerNumbers[i].ToString() + " and ";
-        //    }
-        //    str += "Player " + winningPlayerNumbers[winningPlayerNumbers.Count - 1].ToString() + " won the match";
-
-        //}
-
-        //roundText.text = str;
-
-
-        //for (int i = 0; i < playerMatchStats.Count; i++)
-        //{
-        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
-        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].text = "P" + (playerMatchStats[i].playerNumber) + ": " + playerMatchStats[i].points;
-        //    playerScoreTexts[playerMatchStats[i].playerNumber - 1].color = GameManager.instance.playerColours[playerMatchStats[i].playerNumber - 1];
-        //}
-
         SetUIState(UIState.MatchEnd);
 
         foreach (var item in playerPanels)
@@ -200,7 +153,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < playerMatchStats.Count; i++)
         {
             playerPanels[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
-            playerPanels[playerMatchStats[i].playerNumber - 1].Initialise(playerMatchStats[i]);
+            playerPanels[playerMatchStats[i].playerNumber - 1].Initialise(gamemode, playerMatchStats[i]);
         }
     }
 
@@ -245,7 +198,6 @@ public class UIManager : MonoBehaviour
         {
             SetUIState(UIState.Game);
         }
-
     }
 
     public void EnableTimer (bool value)

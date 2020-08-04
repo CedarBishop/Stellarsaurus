@@ -96,9 +96,10 @@ public class Player : MonoBehaviour
 
     public void CharacterDied(bool diedInCombat)
     {
-        Vector3 pos = currentCharacter.transform.position;
+        Vector3 pos = Vector3.zero;
         if (currentCharacter != null)
         {
+            pos = currentCharacter.transform.position;
             if (cameraController != null)
             {
                 cameraController.playersInGame.Remove(playerMovement);

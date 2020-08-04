@@ -36,8 +36,8 @@ public class FreeForAllGamemode : BaseGamemode
             GameManager.instance.AwardMatchWin(playerNum);
         }
 
-        UIManager.instance.EndMatch(currentBestPlayers);
-        StartCoroutine("DelayAtEndOfMatch");
+        UIManager.instance.EndMatch(GameMode.FreeForAll, playerMatchStats);
+        //StartCoroutine("DelayAtEndOfMatch");
     }
 
     public override void StartRound()
@@ -60,7 +60,7 @@ public class FreeForAllGamemode : BaseGamemode
 
     public override void EndRound (int winningPlayerNumber)
     {
-        if ( roundIsUnderway == false)
+        if (roundIsUnderway == false)
         {
             return;
         }
@@ -76,7 +76,6 @@ public class FreeForAllGamemode : BaseGamemode
             print("End Round");
             StartCoroutine("DelayBetweenRounds");
         }
-
     }
 
 
@@ -105,7 +104,7 @@ public class FreeForAllGamemode : BaseGamemode
 
     IEnumerator DelayBetweenRounds ()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(timeBetweenRounds);
         GameManager.instance.levelSelector.GoToLevel(GameMode.FreeForAll, StartRound);
     }
 

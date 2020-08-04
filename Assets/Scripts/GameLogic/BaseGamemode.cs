@@ -12,6 +12,7 @@ public class BaseGamemode : MonoBehaviour
     public int aiKillsPointReward = 1;
     public float roundTime;
     public float roundStandbyTime = 3;
+    public float timeBetweenRounds = 2;
 
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
@@ -110,7 +111,8 @@ public class BaseGamemode : MonoBehaviour
 
     public virtual void PlayerWonRound(int playerNumber)
     {
-
+        EndRound(playerNumber);
+        AwardRoundWin(playerNumber);
     }
 
     public virtual void Exit()
