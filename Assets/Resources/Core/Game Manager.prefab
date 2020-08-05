@@ -115,11 +115,10 @@ MonoBehaviour:
   achievementChecker: {fileID: 4165762727034207345}
   playerCount: 0
   playerColours:
-  - {r: 0.9921569, g: 0.25882354, b: 0.27450982, a: 1}
+  - {r: 0.0498, g: 0.3209923, b: 0.83, a: 1}
   - {r: 0.990566, g: 0.2569865, b: 0.27487865, a: 1}
   - {r: 1, g: 0.8630855, b: 0.12156862, a: 1}
   - {r: 0.4039216, g: 0.85098046, b: 0.19607845, a: 1}
-  - {r: 0.050980397, g: 0.32156864, b: 0.8313726, a: 1}
   playerInputs: []
   uIControllers: []
 --- !u!114 &1283880972
@@ -141,10 +140,12 @@ MonoBehaviour:
   aiKillsPointReward: 1
   roundTime: 45
   roundStandbyTime: 1
+  timeBetweenRounds: 2
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
   playerMatchStats: []
+  roundIsUnderway: 0
 --- !u!114 &2378037744067400863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,10 +165,12 @@ MonoBehaviour:
   aiKillsPointReward: 1
   roundTime: 45
   roundStandbyTime: 1
+  timeBetweenRounds: 2
   numOfPlayers: 0
   roundNumber: 0
   playersStillAliveThisRound: 0
   playerMatchStats: []
+  roundIsUnderway: 0
 --- !u!114 &59959285128919413
 MonoBehaviour:
   m_ObjectHideFlags: 0

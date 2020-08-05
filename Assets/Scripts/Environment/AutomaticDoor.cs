@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutomaticDoor : MonoBehaviour
 {
+    [HideInInspector]public bool isOpen;
     private int objectsInRange;
     private Animator animator;
     [SerializeField] private BoxCollider2D boxCollider2D;
@@ -22,6 +23,7 @@ public class AutomaticDoor : MonoBehaviour
             animator.SetBool("isOpen", true);
             Debug.Log(animator.GetBool("isOpen"));
             boxCollider2D.enabled = false;
+            isOpen = true;
         }
     }
 
@@ -34,6 +36,7 @@ public class AutomaticDoor : MonoBehaviour
             {
                 animator.SetBool("isOpen", false);
                 boxCollider2D.enabled = true;
+                isOpen = false;
             }
         }
     }

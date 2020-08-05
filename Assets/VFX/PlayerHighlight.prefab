@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 0158ddf83bdd9264d88ff6795b36083d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.3254902}
   m_FlipX: 0
@@ -162,6 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4258498214387975508}
+  - component: {fileID: 2120970690606658957}
   m_Layer: 0
   m_Name: PlayerHighlight
   m_TagString: Untagged
@@ -186,6 +187,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2120970690606658957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258498214387975509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babdeed945dc4894eb08092baac0f762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowSpriteRenderer: {fileID: 4258498215312067334}
+  highlightBeamSpriteRenderer: {fileID: 420338777}
+  light: {fileID: 1003070097}
+  timeTillDestroy: 3
 --- !u!1 &4258498215312067333
 GameObject:
   m_ObjectHideFlags: 0

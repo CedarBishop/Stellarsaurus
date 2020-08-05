@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerHealth playerHealth;
     public GhostMovement ghostMovement;
     public GhostGrab ghostGrab;
+    public PlayerHighlight playerHighlightPrefab;
 
     [HideInInspector]public string currentPlayerActionMap;
     [HideInInspector] public bool isStillAlive;
@@ -90,6 +91,12 @@ public class Player : MonoBehaviour
 
         SetHeadIndex(headIndex);
         SetBodyIndex(bodyIndex);
+
+        if (playerHighlightPrefab != null)
+        {
+            PlayerHighlight highlight = Instantiate(playerHighlightPrefab,transform.position,Quaternion.identity);
+            highlight.Initialise(playerNumber);
+        }
 
         isStillAlive = true;
     }

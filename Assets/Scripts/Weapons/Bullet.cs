@@ -30,6 +30,13 @@ public class Bullet : Projectile
                 trailRenderer.gameObject.SetActive(isActive);
             }
         }
+        else if (collision.GetComponent<AutomaticDoor>())
+        {
+            if (collision.GetComponent<AutomaticDoor>().isOpen)
+            {
+                return;
+            }
+        }
 
         if (damagesOnHit)
         {
