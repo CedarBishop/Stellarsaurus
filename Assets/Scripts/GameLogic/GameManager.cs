@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     private ExtractionGamemode extractionGamemode;
 
     private Player[] players = new Player[4];
+    private bool firstKeyboardPlayerHasJoined;
+    private bool secondKeyboardPlayerHasJoined;
 
     // Sets up this class as a singleton
     void Awake()
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour
     void OnPlayerJoined()
     {
         playerCount++;
-        playerStats.Add(new PlayerStats(playerCount));
+        playerStats.Add(new PlayerStats(playerCount));        
     }
 
     // called by player input manager when device leaves
@@ -243,5 +245,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (secondKeyboardPlayerHasJoined == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad0))
+            {
+                secondKeyboardPlayerHasJoined = true;
+                inputManager.JoinPlayer(playerCount, playerCount,"SecondKeyboard", Keyboard.current);
+            }
+        }
+        if (firstKeyboardPlayerHasJoined == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                firstKeyboardPlayerHasJoined = true;
+                inputManager.JoinPlayer(playerCount, playerCount, "Keyboard & Mouse", Keyboard.current);
+            }
+        }
+    }
 
 }

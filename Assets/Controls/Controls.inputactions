@@ -169,7 +169,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -180,7 +180,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -242,6 +242,17 @@
                 },
                 {
                     "name": "",
+                    "id": "07716d3a-4d95-48ea-8fac-2222224f5497",
+                    "path": "<Keyboard>/numpad0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "StartJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b171d481-0bfe-4ccf-af49-06cf01f4bb03",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -286,11 +297,11 @@
                 },
                 {
                     "name": "",
-                    "id": "a1e927b1-0d22-4da9-bd5a-e5014acab01a",
-                    "path": "<Keyboard>/x",
+                    "id": "f91ce773-16b7-44d2-9298-bda450444581",
+                    "path": "<Keyboard>/numpad4",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "StartFire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -331,10 +342,10 @@
                 {
                     "name": "",
                     "id": "372fdcd7-bf62-4dbf-b1d4-fa6a2c093ba5",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/numpad5",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -374,6 +385,17 @@
                 },
                 {
                     "name": "",
+                    "id": "19e0a7cd-0708-4dcd-b6e9-10b928575c2f",
+                    "path": "<Keyboard>/home",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1e464f20-9d2e-448a-8b9a-a6a71dcf4138",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -385,19 +407,19 @@
                 },
                 {
                     "name": "",
-                    "id": "888aa26e-dc21-40be-9ea1-c3baaadcfbf4",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "b5f36acc-9a67-41d2-b3c4-cd3138f5d6b2",
+                    "path": "<Keyboard>/numpad0",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "SecondKeyboard",
                     "action": "EndJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "0b20efd6-ceb6-4906-ba76-99dd81142907",
-                    "path": "<Gamepad>/leftTrigger",
+                    "id": "888aa26e-dc21-40be-9ea1-c3baaadcfbf4",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -433,7 +455,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "StartFall",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -455,7 +477,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "EndFall",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -506,11 +528,11 @@
                 },
                 {
                     "name": "",
-                    "id": "3b57c00c-6215-4277-a8ea-9236e720cbd6",
-                    "path": "<Keyboard>/x",
+                    "id": "cabf5045-aeba-4c03-a917-46be58ab32ff",
+                    "path": "<Keyboard>/numpad4",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "EndFire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -565,7 +587,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "AimVertical",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -576,7 +598,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "AimVertical",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -697,7 +719,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "MoveAiming",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -708,7 +730,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "MoveAiming",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -719,7 +741,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "MoveAiming",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -730,7 +752,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "SecondKeyboard",
                     "action": "MoveAiming",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -759,6 +781,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7b58afd1-90ea-45c7-adc4-56462281a3d7",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "StartFineAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b860d640-9c8e-48a3-ad9d-2bcb25c936e2",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -775,6 +808,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "EndFineAiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00f453c8-178c-41fe-b1d7-dcf3f7f0fcf5",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
                     "action": "EndFineAiming",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -876,6 +920,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4454157c-3cb7-4ced-9cf6-8fab8bdcc305",
+                    "path": "<Keyboard>/home",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "UnPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6b1ab794-c4b7-4dea-8dd0-4c83ad3d4735",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
@@ -909,17 +964,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "4aecfafd-b262-439b-af7e-8315687df91a",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GhostMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "e855b342-882e-404c-aa2e-4e5f04dc7961",
@@ -976,6 +1020,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "2D Vector",
+                    "id": "458cd16a-9be4-4d8b-a099-633de6eda224",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GhostMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "9d2a7068-37f7-47ba-a4df-696fa27b0d0c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "GhostMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "069756bf-784d-4680-a2e4-2c4281d193c3",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "GhostMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "51827a16-7d83-461e-ba92-52b8ec1e11f1",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "GhostMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f51fac82-9e55-4475-b316-dbd30d946261",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "GhostMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "cb848f90-d9ac-4d62-9c01-f284e00cc392",
                     "path": "<Gamepad>/leftStick",
@@ -1004,6 +1103,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "GhostGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19dc0e01-b5a2-4bea-820e-a32c61cdff0b",
+                    "path": "<Keyboard>/numpad5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
                     "action": "GhostGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1099,6 +1209,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a4db6341-fd0f-404d-b79c-17adefee712e",
+                    "path": "<Keyboard>/numpad5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fb1c70d0-1135-4eb9-a0c2-348470ab9504",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -1132,6 +1253,17 @@
                 },
                 {
                     "name": "",
+                    "id": "8132136c-b154-49bf-ada4-4969cb14b25f",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "HeadForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fdb55228-5d2d-4cd6-b8df-366b376f8aee",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
@@ -1148,6 +1280,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "HeadBackward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7311f0bb-219d-4dc3-bddf-7a3cc3c19f02",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
                     "action": "HeadBackward",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1176,6 +1319,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ae3a982a-12e6-4179-b03f-f05d712ad23b",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "BodyForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "acd15474-69ec-48b6-9dea-dc122bf008e9",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
@@ -1188,10 +1342,21 @@
                 {
                     "name": "",
                     "id": "7cefde72-322d-4d3c-a21d-aa4fac8e08ef",
-                    "path": "<SwitchProControllerHID>/buttonEast",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "BodyBackward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf9236b0-8cc6-4109-926f-98e14841d83a",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
                     "action": "BodyBackward",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1214,6 +1379,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c61e47e-5f45-47c6-b947-b4c525546827",
+                    "path": "<Keyboard>/home",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1255,6 +1431,17 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93b91922-dd92-4b07-a322-989dd76b8f56",
+                    "path": "<Keyboard>/home",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SecondKeyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -1282,6 +1469,17 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "SecondKeyboard",
+            "bindingGroup": "SecondKeyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }
