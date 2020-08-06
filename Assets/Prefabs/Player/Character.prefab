@@ -293,12 +293,12 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 6c70f1229e37bbd4ba5b188dd14a27bf, type: 2}
   - {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
   - {fileID: 22100000, guid: ff254dbe130ac7e4b9a7628e12400a78, type: 2}
-  - {fileID: 22100000, guid: 25f2fa75608a1674a98a31571c786b27, type: 2}
+  - {fileID: 22100000, guid: e73766a68061e9e4cbbdf9006d7971bc, type: 2}
   animatorControllersBody:
   - {fileID: 9100000, guid: 3f75a2221d5aac9498e25bb2f258a07e, type: 2}
   - {fileID: 22100000, guid: 346d937b6c93fea4d887eb471adb07b4, type: 2}
   - {fileID: 22100000, guid: 05ce7470032f4af4da9157c49010b474, type: 2}
-  - {fileID: 22100000, guid: 346d937b6c93fea4d887eb471adb07b4, type: 2}
+  - {fileID: 22100000, guid: 89f6cdc9ae60cd849a3105e1e42cba52, type: 2}
   groundMovementSpeed: 450
   airMovementSpeed: 400
   jumpHeight: 15
@@ -512,7 +512,7 @@ Animator:
   m_GameObject: {fileID: 2928727679900518740}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 05ce7470032f4af4da9157c49010b474, type: 2}
+  m_Controller: {fileID: 22100000, guid: 89f6cdc9ae60cd849a3105e1e42cba52, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -615,7 +615,7 @@ Animator:
   m_GameObject: {fileID: 4332605245749046623}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: ff254dbe130ac7e4b9a7628e12400a78, type: 2}
+  m_Controller: {fileID: 22100000, guid: e73766a68061e9e4cbbdf9006d7971bc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
