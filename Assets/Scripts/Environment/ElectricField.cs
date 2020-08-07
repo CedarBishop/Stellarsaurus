@@ -129,5 +129,13 @@ public class ElectricField : DeathBarrier
             i.gameObject.SetActive(!i.gameObject.activeSelf);
         }
         boxCollider2D.enabled = !boxCollider2D.enabled;
+
+        if (boxCollider2D.enabled)
+        {
+            if (SoundManager.instance != null)
+                SoundManager.instance.PlayExclusiveSFX("SFX_ElectricFieldAmbient");
+
+            print("Called play exclusive");
+        }
     }
 }

@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip gameMusic;
 
     [SerializeField] Sound[] sounds;
-
+    [SerializeField] Sound[] exclusiveSounds;
     private AudioSource musicAudioSource;
     [Range(0.0f, 1.0f)] private float currentSfxVolume;
     [Range(0.0f, 1.0f)] private float currentMusicVolume;
@@ -47,9 +47,15 @@ public class SoundManager : MonoBehaviour
             audioControllers.Enqueue(controller);
         }
 
+        for (int i = 0; i < exclusiveSounds.Length; i++)
+        {
+            GameObject _go = new GameObject("Sound_" + i + "_" + exclusiveSounds[i].name);
+            _go.transform.parent = transform;
+            exclusiveSounds[i].audioSource = _go.AddComponent<AudioSource>();
+        }
+        
         currentSfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
         SetSFXVolume(currentSfxVolume);
-
 
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
@@ -61,7 +67,6 @@ public class SoundManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnSceneChange;
-
     }
 
     private void OnSceneChange(Scene oldScene, Scene newScene)
@@ -90,7 +95,7 @@ public class SoundManager : MonoBehaviour
         {
             if (sounds[i].name == soundName)
             {
-                sounds[i].Play(audioControllers.Dequeue());
+                sounds[i].Play(audioControllers.Dequeue(), currentSfxVolume);
                 CheckOutOfSources();
                 return;
             }
@@ -107,6 +112,19 @@ public class SoundManager : MonoBehaviour
     {
         audioControllers.Dequeue().Play(clip, currentSfxVolume * volumeScaler, pitch);
         CheckOutOfSources();
+    }
+
+    public void PlayExclusiveSFX (string soundName)
+    {
+        for (int i = 0; i < exclusiveSounds.Length; i++)
+        {
+            if (exclusiveSounds[i].name == soundName)
+            {
+                exclusiveSounds[i].PlayExclusive(currentSfxVolume);
+                print("Play Exclusive SFX");
+                return;
+            }
+        }
     }
 
     public float SetMusicVolume(float value)
@@ -141,10 +159,6 @@ public class SoundManager : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("SfxVolume", currentSfxVolume);
-        foreach (Sound sound in sounds)
-        {
-            sound.volume = currentSfxVolume;
-        }
 
         return currentSfxVolume;
     }
@@ -193,15 +207,31 @@ public class Sound
     public AudioClip clip;
     [Range(-3.0f, 3.0f)] public float pitch = 1;
     [Range(0.0f,1.0f)]public float volume = 1;
+    public AudioSource audioSource;
 
-    public void Play(AudioSourceController source)
+    public void Play(AudioSourceController source, float currentSfx)
     {
         if (clip == null || source == null)
         {
             return;
         }
 
-        source.Play(clip,volume,pitch);
+        source.Play(clip,volume * currentSfx,pitch);
+    }
+
+    public void PlayExclusive (float currentSfxVolume)
+    {
+        if (clip == null || audioSource == null)
+        {
+            Debug.Log("Clip or source is null");
+            return;
+        }
+        Debug.Log("Play Exclusive" + clip.name);
+
+        audioSource.clip = clip;
+        audioSource.volume = volume * currentSfxVolume;
+        audioSource.pitch = pitch;
+        audioSource.Play();
     }
 
 
