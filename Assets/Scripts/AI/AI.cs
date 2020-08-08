@@ -26,7 +26,10 @@ public class AI : MonoBehaviour
     public Egg eggPrefab;
 
     [HideInInspector] public AIType aiType;
+    [HideInInspector] public PathFindingGrid pathFindingGrid;
+    [HideInInspector] public AStar aStar;
     [HideInInspector] public int health;
+    [HideInInspector] public Vector2 startingPosition;
 
     private Animator animator;
     private Perception perception;
@@ -37,11 +40,10 @@ public class AI : MonoBehaviour
     private AIBehaviour behaviour;
 
     private bool isBurning;
-    [HideInInspector] public Vector2 startingPosition;
 
     private Material material;
 
-    Transform[] targetsInMap;
+    private Transform[] targetsInMap;
 
     public virtual void Initialise (AIType aIType, Transform[] transforms = null)
     {
@@ -51,6 +53,8 @@ public class AI : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<CapsuleCollider2D>();
         material = spriteRenderer.material;
+        aStar = FindObjectOfType<AStar>();
+        pathFindingGrid = aStar.GetComponent<PathFindingGrid>();
 
         aiType = aIType;
         spriteRenderer.sprite = aiType.aiSprite;

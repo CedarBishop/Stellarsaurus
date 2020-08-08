@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace PlatformerPathFinding {
     public class PathFindingGrid : MonoBehaviour {
-        [SerializeField] int _gridSizeX;
-        [SerializeField] int _gridSizeY;
+        public int _gridSizeX;
+        public int _gridSizeY;
         [SerializeField] float _nodeSize;
         [SerializeField] LayerMask _collisionLayerMask;
         [SerializeField] bool _drawGrid = true;
@@ -24,7 +24,7 @@ namespace PlatformerPathFinding {
             Build();
         }
 
-        bool IsInsideGrid(int x, int y) {
+        public bool IsInsideGrid(int x, int y) {
             return x >= 0 && y >= 0 && x < _gridSizeX && y < _gridSizeY;
         }
 
@@ -55,6 +55,7 @@ namespace PlatformerPathFinding {
             return _search.Search(start, goal, _pathFindingRules, agent);
         }
 
+
         Vector2 GetBottomLeftNodePosition() {
             var pos = transform.position;
             return new Vector2(pos.x - (_gridSizeX / 2f - .5f) * _nodeSize,
@@ -72,17 +73,31 @@ namespace PlatformerPathFinding {
             }
         }
 
-        bool IsOccupiedCell(Vector2 worldPos) {
+        public bool IsOccupiedCell(Vector2 worldPos) {
             return Physics2D.OverlapBox(worldPos, new Vector2(_nodeSize, _nodeSize) - Vector2.one * 0.05f, 0,
                 _collisionLayerMask);
         }
 
-        Node WorldPositionToNode(Vector2 worldPos) {
+        public Node WorldPositionToNode(Vector2 worldPos) {
             Vector2 bottomLeftNode = GetBottomLeftNodePosition();
             int x = Mathf.Clamp(Mathf.RoundToInt((worldPos.x - bottomLeftNode.x) / _nodeSize), 0, _gridSizeX - 1),
                 y = Mathf.Clamp(Mathf.RoundToInt((worldPos.y - bottomLeftNode.y) / _nodeSize), 0, _gridSizeY - 1);
 
             return GetNode(x, y);
+        }
+
+        public bool IsValidNeighbour (int x, int y , out Node neighbour)
+        {
+            neighbour = GetNode(x,y);
+            if (neighbour != null)
+            {
+                if (!IsOccupiedCell(neighbour.worldPosition))
+                {
+                    return true;
+                }               
+            }
+
+            return false;
         }
     }
 }

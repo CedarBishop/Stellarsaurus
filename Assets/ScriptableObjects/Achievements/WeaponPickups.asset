@@ -15,4 +15,7 @@ MonoBehaviour:
   achievementName: pickups
   sprite: {fileID: 21300000, guid: e215638f9aa126242bf2067d3c7e4858, type: 3}
   stat: 1
-  amountToGainAchievement: 0
+  achievementLevel: 0
+  bronzeAmountToGainAchievement: 5
+  silverAmountToGainAchievement: 10
+  goldAmountToGainAchievement: 15

@@ -4,33 +4,34 @@ namespace PlatformerPathFinding {
     [System.Serializable]
     public class Node : IHeapItem<Node> {
 
-        [SerializeField] bool _isEmpty;
-        [SerializeField] Vector2 _worldPosition;
-        [SerializeField] int _x;
-        [SerializeField] int _y;
+        public bool isEmpty;
+        public Vector2 worldPosition;
+        public int x;
+        public int y;
+        public Node cameFromNode;
 
-        public bool IsEmpty => _isEmpty;
-        public Vector2 WorldPosition => _worldPosition;
+        public bool IsEmpty => isEmpty;
+        public Vector2 WorldPosition => worldPosition;
 
-        public int X => _x;
-        public int Y => _y;
+        public int X => x;
+        public int Y => y;
 
         // Distance from starting node
         public int GCost { get; set; }
 
         // Distance to end node. (Heuristic).
-        public int HCost { private get; set; }
+        public int HCost { get; set; }
 
         // Total cost.
         int FCost => GCost + HCost;
 
         public Node Parent { get; set; }
         
-        public Node(bool isEmpty, Vector2 worldPosition, int x, int y) {
-            _isEmpty = isEmpty;
-            _worldPosition = worldPosition;
-            _x = x;
-            _y = y;
+        public Node(bool _isEmpty, Vector2 _worldPosition, int _x, int _y) {
+            this.isEmpty = _isEmpty;
+            this.worldPosition = _worldPosition;
+            this.x = _x;
+            this.y = _y;
         }
 
         public TransitionType Transition { get; set; }

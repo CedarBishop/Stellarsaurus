@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlatformerPathFinding;
 
 public class PterodactylFly : StateMachineBehaviour
 {
-    AI ai;
-    Perception perception;
-    Rigidbody2D rigidbody;
-    Transform transform;
-    Animator _Animator;
+    private AI ai;
+    private Perception perception;
+    private Rigidbody2D rigidbody;
+    private Transform transform;
+    private Animator _Animator;
+    private PathFindingGrid grid;
+    private AStar aStar;
 
-    float movementSpeed;
-    float swoopTimer;
+    private float movementSpeed;
+    private float swoopTimer;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -23,8 +26,8 @@ public class PterodactylFly : StateMachineBehaviour
         movementSpeed = ai.aiType.movementSpeed;
         transform = ai.transform;
         _Animator = animator;
-
-        
+        grid = ai.pathFindingGrid;
+        aStar = ai.aStar;        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
