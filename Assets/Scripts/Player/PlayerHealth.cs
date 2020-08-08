@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
     private Gamepad gamepad;
     private bool isGamepad;
+    private bool hapticIsActive;
     
     void Start()
     {
@@ -245,13 +246,18 @@ public class PlayerHealth : MonoBehaviour
     {
         gamepad.SetMotorSpeeds(0.5f, 1.0f);
         gamepad.ResumeHaptics();
+        hapticIsActive = true;
         yield return new WaitForSeconds(0.1f);
         gamepad.PauseHaptics();
         gamepad.ResetHaptics();
+        hapticIsActive = false;
     }
 
     private void OnDestroy()
     {
-        gamepad.ResetHaptics();
+        if (hapticIsActive)
+        {
+            gamepad.ResetHaptics();
+        }        
     }
 }

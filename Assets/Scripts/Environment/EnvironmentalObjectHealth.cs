@@ -9,6 +9,7 @@ public class EnvironmentalObjectHealth : MonoBehaviour
     bool hasBeenDestroyed = false;
     [HideInInspector] public int healthMax;
 
+    public float timeBeforeDestroyed;
     public bool isExplosive;
 
 
@@ -62,6 +63,6 @@ public class EnvironmentalObjectHealth : MonoBehaviour
             temp.Init(weaponTypes, WeaponSpawnType.FallFromSky);
         }
         
-        Destroy(gameObject);
+        Destroy(gameObject, timeBeforeDestroyed);
     }   
 }

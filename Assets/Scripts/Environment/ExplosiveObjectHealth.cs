@@ -59,8 +59,7 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
             {
                 SoundManager.instance.PlaySFX("SFX_Explosion");
             }
-        }
-        Destroy(gameObject);
+        }        
     }
 
     public void DamageCharactersWithinRadius(int playerNumber)
@@ -71,6 +70,13 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
         }
 
         hasExploded = true;
+        StartCoroutine("CoDestruction", playerNumber);
+        GetComponent<SpriteRenderer>().enabled = false;        
+    }
+
+    IEnumerator CoDestruction (int playerNumber)
+    {
+        yield return new WaitForSeconds(timeBeforeDestroyed * 0.9f);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
         if (colliders != null)
@@ -97,7 +103,7 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
         }
     }
 
-    // DDraws a circle in the editor with a radius of the explosion
+    // Draws a circle in the editor with a radius of the explosion
     private void OnDrawGizmosSelected()
     {
         if (isExplosive)
