@@ -6,20 +6,11 @@ using UnityEditor;
 public class ExplosiveObjectHealth : EnvironmentalObjectHealth
 {
     [Header("Explosive Settings")]
-
     public int damage;
-
     public float range;
-
     public bool hasSmokeEffect;
 
-    private PlayerHealth[] players;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        players = FindObjectsOfType<PlayerHealth>();
-    }
+    private bool hasExploded;
 
     public override void TakeDamage(int damage, int playerNumber)
     {
@@ -34,8 +25,8 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
             // Deal damage to object and update particles
             UpdateParticles();
         }
-        base.TakeDamage(damage, playerNumber);
 
+        base.TakeDamage(damage, playerNumber);
     }
 
     public void UpdateParticles()
@@ -74,16 +65,12 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
 
     public void DamageCharactersWithinRadius(int playerNumber)
     {
-        // Check if players are around
-        //players = FindObjectsOfType<PlayerHealth>();
-        //foreach (PlayerHealth player in players)
-        //{
-        //    if (Vector2.Distance(transform.position, player.transform.position) <= range)
-        //    {
-        //        player.HitByPlayer(playerNumber, true);
-        //        Debug.Log(player.name + "died of explosion");
-        //    }
-        //}
+        if (hasExploded)
+        {
+            return;
+        }
+
+        hasExploded = true;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
         if (colliders != null)
@@ -94,14 +81,18 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
                 {
                     colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber, true);
                 }
-                //else if (colliders[i].GetComponent<AI>())
-                //{
-                //    colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
-                //}
-                //else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
-                //{
-                //    colliders[i].GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
-                //}
+                else if (colliders[i].GetComponent<AI>())
+                {
+                    colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
+                }
+                else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
+                {
+                    if (colliders[i].gameObject == gameObject)
+                    {
+                        continue;
+                    }
+                    colliders[i].GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
+                }
             }
         }
     }
