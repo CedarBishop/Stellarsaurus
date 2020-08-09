@@ -6,63 +6,71 @@ using PlatformerPathFinding;
 public class PterodactylFly : StateMachineBehaviour
 {
     private AI ai;
-    private Perception perception;
     private Rigidbody2D rigidbody;
     private Transform transform;
     private Animator _Animator;
-    private PathFindingGrid grid;
     private AStar aStar;
 
     private float movementSpeed;
     private float swoopTimer;
+    private List<Node> path;
+    private int pathIndex;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        swoopTimer = Random.Range(5.0f, 20.0f);
+        swoopTimer = Random.Range(10, 20);
         ai = animator.GetComponent<AI>();
-        perception = ai.GetComponent<Perception>();
         rigidbody = ai.GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = 0;
         movementSpeed = ai.aiType.movementSpeed;
         transform = ai.transform;
         _Animator = animator;
-        grid = ai.pathFindingGrid;
-        aStar = ai.aStar;        
+        aStar = ai.aStar;
+
+        FindNewPath();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Move();
-        WallCheck();
+        CheckIfReachedTarget();
+
         SwoopCountdown();
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    void Move ()
     {
-
+        Vector2 currentPos = transform.position;
+        Vector2 direction = (path[pathIndex].worldPosition - currentPos).normalized;
+        rigidbody.velocity = direction * movementSpeed * Time.fixedDeltaTime;
     }
 
-    void Move()
+    void CheckIfReachedTarget ()
     {
-        if (perception.isFacingRight)
+        if (Vector2.Distance(path[pathIndex].worldPosition, transform.position) < 0.1f)
         {
-            rigidbody.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);
-        }
-        else
-        {
-            rigidbody.velocity = new Vector2(-movementSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);
+            if (pathIndex < path.Count - 1)
+            {
+                pathIndex++;
+            }
+            else
+            {
+                FindNewPath();
+            }
         }
     }
 
-    void WallCheck()
+    void FindNewPath()
     {
-        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.wallLayer) ||
-           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
+        Transform target = ai.SetRandomGoal();
+        if (target == null)
         {
-            perception.isFacingRight = !perception.isFacingRight;
-        }           
+            Debug.Log("Ptero new target is null");
+            return;
+        }
+
+        path = aStar.FindPath(transform.position, target.position);
+        pathIndex = 0;
     }
 
     void SwoopCountdown ()
@@ -74,8 +82,6 @@ public class PterodactylFly : StateMachineBehaviour
         else
         {
             swoopTimer -= Time.fixedDeltaTime;
-        }
-       
+        }       
     }
-
 }

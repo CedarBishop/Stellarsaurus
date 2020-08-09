@@ -179,9 +179,16 @@ MonoBehaviour:
     projectileForce: 0
     bulletDeviation: 0
     swoopSpeed: 0
+    pathFindingSwoopSpeed: 0
+    retreatSpeed: 0
+    minTimeBetweenSwoop: 0
+    maxTimeBetweenSwoop: 0
     eggOffset: {x: 0, y: 0}
+  pathFindingGrid: {fileID: 0}
+  aStar: {fileID: 0}
   health: 0
   startingPosition: {x: 0, y: 0}
+  pteroGroundTargets: []
 --- !u!95 &2765672809849141196
 Animator:
   serializedVersion: 3

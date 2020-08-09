@@ -11,7 +11,7 @@ public class PterodactylRetreat : StateMachineBehaviour
     Transform transform;
     Rigidbody2D rigidbody;
     private float movementSpeed;
-    private float swoopSpeed;
+    private float retreatSpeed;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,7 +21,7 @@ public class PterodactylRetreat : StateMachineBehaviour
         movementSpeed = ai.aiType.movementSpeed;
         transform = animator.transform;
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        swoopSpeed = ai.aiType.swoopSpeed;
+        retreatSpeed = ai.aiType.retreatSpeed;
     }
 
 
@@ -39,7 +39,7 @@ public class PterodactylRetreat : StateMachineBehaviour
 
     void Swoop()
     {
-        rigidbody.velocity = new Vector2((perception.isFacingRight) ? movementSpeed : -movementSpeed, swoopSpeed) * Time.fixedDeltaTime;
+        rigidbody.velocity = new Vector2((perception.isFacingRight) ? movementSpeed : -movementSpeed, retreatSpeed) * Time.fixedDeltaTime;
     }
 
     void WallCheck()

@@ -44,8 +44,11 @@ public class AI : MonoBehaviour
     private Material material;
 
     private Transform[] targetsInMap;
+    private Transform[] pteroAirTargets;
+    [HideInInspector] public Transform[] pteroGroundTargets;
 
-    public virtual void Initialise (AIType aIType, Transform[] transforms = null)
+
+    public virtual void Initialise (AIType aIType, Transform[] transforms = null, Transform[] pteroGround = null, Transform[] pteroAir = null)
     {
         animator = GetComponent<Animator>();
         perception = GetComponent<Perception>();
@@ -72,6 +75,8 @@ public class AI : MonoBehaviour
         behaviour = aiType.aiBehaviour;
 
         targetsInMap = transforms;
+        pteroAirTargets = pteroAir;
+        pteroGroundTargets = pteroGround;
 
 
         switch (behaviour)
@@ -92,6 +97,7 @@ public class AI : MonoBehaviour
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = flyerController;
+                collider.isTrigger = true;
                 break;
             case AIBehaviour.Carrier:
                 controller.enabled = false;
@@ -236,13 +242,37 @@ public class AI : MonoBehaviour
         animator.SetBool("CanAttack", true);
     }
 
-    public void SetRandomGoal()
+    public Transform SetRandomGoal()
     {
-        if (targetsInMap != null)
+        switch (behaviour)
         {
-
+            case AIBehaviour.Patrol:
+                break;
+            case AIBehaviour.Guard:
+                break;
+            case AIBehaviour.Fly:
+                if (pteroAirTargets != null)
+                {
+                    return pteroAirTargets[Random.Range(0, pteroAirTargets.Length)];
+                }
+                break;
+            case AIBehaviour.Carrier:
+                if (pteroAirTargets != null)
+                {
+                    return pteroAirTargets[Random.Range(0, pteroAirTargets.Length)];
+                }
+                break;
+            case AIBehaviour.JumpPatrol:
+                if (targetsInMap != null)
+                {
+                    controller._goal = targetsInMap[Random.Range(0, targetsInMap.Length)];
+                }
+                break;
+            default:
+                break;
         }
-        controller._goal = targetsInMap[Random.Range(0, targetsInMap.Length)];
+
+        return null;        
     }
 
     IEnumerator FlashHurt()
@@ -250,7 +280,6 @@ public class AI : MonoBehaviour
         material.SetFloat("_IsHurt", 1.0f);
         yield return new WaitForSeconds(0.2f);
         material.SetFloat("_IsHurt", 0.0f);
-
     }
 }
 
@@ -297,6 +326,10 @@ public class AIType
     public float bulletDeviation;
 
     public float swoopSpeed;
+    public float pathFindingSwoopSpeed;
+    public float retreatSpeed;
+    public float minTimeBetweenSwoop;
+    public float maxTimeBetweenSwoop;
 
     public Vector2 eggOffset;
 

@@ -722,6 +722,22 @@ public class DesignMaster : EditorWindow
                         EditorGUILayout.Space(8);
                         GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
                         aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Pathfinding Swoop Speed", EditorStyles.boldLabel);
+                        aiTypes[i].pathFindingSwoopSpeed = EditorGUILayout.FloatField(aiTypes[i].pathFindingSwoopSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Retreat Speed", EditorStyles.boldLabel);
+                        aiTypes[i].retreatSpeed = EditorGUILayout.FloatField(aiTypes[i].retreatSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Min Time BetweenSwoop", EditorStyles.boldLabel);
+                        aiTypes[i].minTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].minTimeBetweenSwoop, 0 , 50);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Max Time BetweenSwoop", EditorStyles.boldLabel);
+                        aiTypes[i].maxTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].maxTimeBetweenSwoop, 0 ,50);
                         break;
                     case AIBehaviour.Carrier:
                         EditorGUILayout.Space(16);
@@ -731,6 +747,22 @@ public class DesignMaster : EditorWindow
                         EditorGUILayout.Space(8);
                         GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
                         aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Pathfinding Swoop Speed", EditorStyles.boldLabel);
+                        aiTypes[i].pathFindingSwoopSpeed = EditorGUILayout.FloatField(aiTypes[i].pathFindingSwoopSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Retreat Speed", EditorStyles.boldLabel);
+                        aiTypes[i].retreatSpeed = EditorGUILayout.FloatField(aiTypes[i].retreatSpeed);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Min Time BetweenSwoop", EditorStyles.boldLabel);
+                        aiTypes[i].minTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].minTimeBetweenSwoop, 0, 50);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Max Time BetweenSwoop", EditorStyles.boldLabel);
+                        aiTypes[i].maxTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].maxTimeBetweenSwoop, 0, 50);
 
                         EditorGUILayout.Space(8);
                         aiTypes[i].eggOffset = EditorGUILayout.Vector2Field("Egg Offset", aiTypes[i].eggOffset);

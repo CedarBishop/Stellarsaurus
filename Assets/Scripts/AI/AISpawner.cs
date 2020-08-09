@@ -11,6 +11,8 @@ public class AISpawner : MonoBehaviour
     public int amountOfSpawns;
 
     public Transform[] targetsInMap;
+    public Transform[] pteroAirTargets;
+    public Transform[] pteroGroundTargets;
 
     public List<AIType> ais = new List<AIType>();
     private AI aiPrefab;
@@ -46,7 +48,7 @@ public class AISpawner : MonoBehaviour
         if (ais.Count > 0)
         {
             AI ai = Instantiate(aiPrefab, transform.position, Quaternion.identity);
-            ai.Initialise(ais[Random.Range(0,ais.Count)], targetsInMap);
+            ai.Initialise(ais[Random.Range(0,ais.Count)], targetsInMap, pteroGroundTargets, pteroAirTargets);
         }
    }
 }
