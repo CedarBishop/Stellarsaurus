@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public Weapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
     public SkyDrops randomWeaponSpawnPositionParameters;
+    public bool shouldWeaponsFallFromSky;
 
     [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
 
@@ -50,8 +51,10 @@ public class LevelManager : MonoBehaviour
             if (weaponsInThisLevel.Length > 0)
             {
                 weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsInThisLevel);
-
-                StartCoroutine("SpawnWeapons");
+                if (shouldWeaponsFallFromSky)
+                {
+                    StartCoroutine("SpawnWeapons");
+                }
             }
         }        
     }

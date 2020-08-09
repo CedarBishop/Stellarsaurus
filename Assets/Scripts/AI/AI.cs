@@ -35,7 +35,7 @@ public class AI : MonoBehaviour
     private Perception perception;
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
-    private CapsuleCollider2D collider;
+    private PolygonCollider2D collider;
 
     private AIBehaviour behaviour;
 
@@ -54,7 +54,7 @@ public class AI : MonoBehaviour
         perception = GetComponent<Perception>();
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider = GetComponent<CapsuleCollider2D>();
+        collider = GetComponent<PolygonCollider2D>();
         material = spriteRenderer.material;
         aStar = FindObjectOfType<AStar>();
         pathFindingGrid = aStar.GetComponent<PathFindingGrid>();
@@ -68,8 +68,9 @@ public class AI : MonoBehaviour
         perception.hearingRadius = aiType.hearingRadius;
         perception.targetMemoryTime = aiType.targetMemoryTime;
 
-        collider.offset = aiType.colliderOffset;
-        collider.size = aiType.colliderSize;
+        //collider.offset = aiType.colliderOffset;
+        //collider.size = aiType.colliderSize;
+        
 
         startingPosition = transform.position;
         behaviour = aiType.aiBehaviour;
@@ -82,6 +83,7 @@ public class AI : MonoBehaviour
         switch (behaviour)
         {
             case AIBehaviour.Patrol:
+                RefreshCollider(false);
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = patrolController;
@@ -89,29 +91,32 @@ public class AI : MonoBehaviour
 
                 break;
             case AIBehaviour.Guard:
+                RefreshCollider(false);
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = guardController;
                 break;
             case AIBehaviour.Fly:
+                RefreshCollider(true);
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = flyerController;
                 collider.isTrigger = true;
                 break;
             case AIBehaviour.Carrier:
+                RefreshCollider(true);
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = carrierController;
                 break;
             case AIBehaviour.JumpPatrol:
+                RefreshCollider(true);
                 controller.enabled = true;
                 agent.enabled = true;
                 agent.Init(FindObjectOfType<PathFindingGrid>());
                 animator.runtimeAnimatorController = jumpPatrolController;
                 animator.SetBool("CanAttack", true);
                 Destroy(GetComponent<Rigidbody2D>());
-                GetComponent<Collider2D>().isTrigger = true;
 
                 agent._fallLimit = aiType.fallLimit;
                 agent._jumpStrength = (int)aiType.jumpStrength;
@@ -148,6 +153,13 @@ public class AI : MonoBehaviour
         }
     }
 
+    public void RefreshCollider (bool isTrigger)
+    {
+        Destroy(collider);
+        collider = gameObject.AddComponent<PolygonCollider2D>();
+        collider.isTrigger = isTrigger;
+    }
+
     public virtual void TakeDamage (int playerNumber,int damage)
     {        
         health -= damage;
@@ -178,7 +190,7 @@ public class AI : MonoBehaviour
 
         isBurning = true;
         StartCoroutine(Burning(projectilePlayerNumber));
-        GetComponent<SpriteRenderer>().color = Color.red;
+        spriteRenderer.color = Color.red;
     }
 
     public void StopBurning ()
@@ -297,9 +309,6 @@ public class AIType
     public float attackCooldown;
     public float attackRange;
     public float attackSize;
-
-    public Vector2 colliderSize;
-    public Vector2 colliderOffset;
 
     public float viewingDistance;
     public float fieldOfView;

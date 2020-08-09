@@ -26,7 +26,7 @@ public class PterodactylFly : StateMachineBehaviour
         transform = ai.transform;
         _Animator = animator;
         aStar = ai.aStar;
-
+        ai.RefreshCollider(true);
         FindNewPath();
     }
 

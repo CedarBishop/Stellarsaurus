@@ -22,6 +22,7 @@ public class PterodactylRetreat : StateMachineBehaviour
         transform = animator.transform;
         rigidbody = animator.GetComponent<Rigidbody2D>();
         retreatSpeed = ai.aiType.retreatSpeed;
+        ai.RefreshCollider(true);
     }
 
 

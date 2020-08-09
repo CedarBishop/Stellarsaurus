@@ -640,12 +640,6 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Chance of Dropping Reward", EditorStyles.boldLabel);
                 aiTypes[i].chanceOfDroppingWeapon = EditorGUILayout.Slider(aiTypes[i].chanceOfDroppingWeapon, 0.0f, 1.0f);
 
-                EditorGUILayout.Space(8);
-                aiTypes[i].colliderOffset = EditorGUILayout.Vector2Field("Collider Offset", aiTypes[i].colliderOffset);
-
-                EditorGUILayout.Space(8);
-                aiTypes[i].colliderSize = EditorGUILayout.Vector2Field("Collider Size", aiTypes[i].colliderSize);
-
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Perception", EditorStyles.boldLabel);
                 EditorGUILayout.Space(8);
