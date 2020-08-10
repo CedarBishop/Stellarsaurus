@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRounds: 10
-  extractionPointReward: 15
-  lastPlayerAlivePoints: 0
-  playerKillsPointReward: 5
-  aiKillsPointReward: 1
+  extractionPointReward: 30
+  lastPlayerAlivePoints: 10
+  playerKillsPointReward: 10
+  aiKillsPointReward: 3
   roundTime: 45
   roundStandbyTime: 1
   timeBetweenRounds: 2
@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRounds: 10
-  extractionPointReward: 15
-  lastPlayerAlivePoints: 5
-  playerKillsPointReward: 5
-  aiKillsPointReward: 1
+  extractionPointReward: 30
+  lastPlayerAlivePoints: 10
+  playerKillsPointReward: 10
+  aiKillsPointReward: 3
   roundTime: 45
   roundStandbyTime: 1
   timeBetweenRounds: 2
