@@ -44,9 +44,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0012132525}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.19244844
 --- !u!1 &7202534769512080437
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,5 +196,6 @@ MonoBehaviour:
   damage: 0
   playerNumber: 0
   range: 0
+  damagesTileMap: 0
   explodeParticle: {fileID: 3193550971113487539, guid: 4e154815f7475a44ab8fe31066c0886c,
     type: 3}
