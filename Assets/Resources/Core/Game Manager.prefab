@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4921186234686291158}
   - component: {fileID: 4071635882641137301}
   - component: {fileID: 4165762727034207345}
+  - component: {fileID: 4237187014967582501}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -105,6 +106,7 @@ MonoBehaviour:
   loader: {fileID: 59959285128919413}
   levelSelector: {fileID: 4921186234686291158}
   achievementChecker: {fileID: 4165762727034207345}
+  controlSchemeSpriteHandler: {fileID: 4237187014967582501}
   playerCount: 0
   playerColours:
   - {r: 0.0498, g: 0.3209923, b: 0.83, a: 1}
@@ -242,3 +244,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a8eaa130c907c042a6a1c2a9d4f4593, type: 2}
   - {fileID: 11400000, guid: fd85002b2b9079448935f7b7d03b1454, type: 2}
   - {fileID: 11400000, guid: 2be871003478eff4daf85bc5a7e92c1e, type: 2}
+--- !u!114 &4237187014967582501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4caa71d5e949074c8c2d31bbd974f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamepadButtonSprites: []
+  firstKeyboardButtonSprites: []
+  secondKeyboardButtonSprites: []

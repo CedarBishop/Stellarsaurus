@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem bloodSplatterParticle;
     public ParticleSystem shieldParticleSystem;
     public SpriteRenderer[] spriteRenderers;
+    public PlayerBattery playerBattery;
 
     [HideInInspector]public int playerNumber;
     
@@ -37,6 +38,11 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = health;
         gamepad = Gamepad.current;
         isGamepad = playerParent.isGamepad;
+        if (playerBattery != null)
+        {
+            playerBattery.gameObject.SetActive(true);
+            playerBattery.Initialise(playerNumber);
+        } 
     }
 
     private void Update()
@@ -63,6 +69,11 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine("FlashHurt");
         ParticleSystem p = Instantiate(bloodSplatterParticle,transform.position,Quaternion.identity);
         p.Play();
+        if (playerBattery != null)
+        {
+            playerBattery.gameObject.SetActive(true);
+            playerBattery.UpdateHealth(health);
+        }
         Destroy(p.gameObject,3);
         if (health <= 0)
         {
@@ -169,6 +180,11 @@ public class PlayerHealth : MonoBehaviour
         while (health > 0 && isBurning)
         {
             health--;
+            if (playerBattery != null)
+            {
+                playerBattery.gameObject.SetActive(true);
+                playerBattery.UpdateHealth(health);
+            }
             if (isGamepad)
             {
                 StartCoroutine("Haptic");
@@ -203,6 +219,11 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int healingAmount)
     {
         health += healingAmount;
+        if (playerBattery != null)
+        {
+            playerBattery.gameObject.SetActive(true);
+            playerBattery.UpdateHealth(health);
+        }
         if (health > maxHealth)
         {
             health = maxHealth;

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Loader loader;
     public LevelSelector levelSelector;
     public AchievementChecker achievementChecker;
+    public ControlSchemeSpriteHandler controlSchemeSpriteHandler;
     public int playerCount = 0;
     public Color[] playerColours;
 
