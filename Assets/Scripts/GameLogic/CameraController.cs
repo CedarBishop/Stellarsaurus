@@ -97,16 +97,21 @@ public class CameraController : MonoBehaviour
 
                     xBounds = (distX > xBounds) ? distX : xBounds;
                     yBounds = (distY > yBounds) ? distY : yBounds;
+
+                    // catches when the players are all in the same line, prevents unwanted camera zooming
+                    if (xBounds == 0)
+                        xBounds = 0.1f;
+                    if (yBounds == 0)
+                        yBounds = 0.1f;
                 }
             }
             targetBounds = new Vector2(xBounds, yBounds);
-
             float screenRatio = (float)Screen.width / (float)Screen.height;
             float targetRatio = targetBounds.x / targetBounds.y;
             //Debug.Log("Screen Ratio: " + screenRatio +
             //          "\nTarget Ratio: " + targetRatio);
-            if (targetRatio > 100)
-                targetRatio = 100;
+            if (targetRatio > 1000)
+                targetRatio = 1000;
             
             if (screenRatio >= targetRatio)
             {
