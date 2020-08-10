@@ -14,11 +14,12 @@ public class JumpPad : MonoBehaviour
         {
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+            //rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+            rb.velocity = Quaternion.Euler(0, 0, transform.rotation.z) * new Vector2(rb.velocity.x, jumpVelocity) * Vector2.up;
+            if (collision.GetComponent<PlayerMovement>())
+            {
+                collision.GetComponent<PlayerMovement>().OnJumpPadBoost();
+            }
         }
-        if (collision.GetComponent<PlayerMovement>())
-        {
-            collision.GetComponent<PlayerMovement>().OnJumpPadBoost();
-        }        
     }
 }

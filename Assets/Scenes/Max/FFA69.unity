@@ -65151,6 +65151,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+--- !u!1001 &637545564
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.33875293
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.94087535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215905, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 39.602
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215906, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: m_Name
+      value: Jump Pad (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348289607830215910, guid: 59b924730f30adb49a54c4b3516137e1,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59b924730f30adb49a54c4b3516137e1, type: 3}
 --- !u!1001 &872759684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65767,6 +65841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: respawnTime
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
+      value: AK47
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
