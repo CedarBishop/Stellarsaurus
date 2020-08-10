@@ -103,7 +103,6 @@ public class CameraController : MonoBehaviour
 
             float screenRatio = (float)Screen.width / (float)Screen.height;
             float targetRatio = targetBounds.x / targetBounds.y;
-
             //Debug.Log("Screen Ratio: " + screenRatio +
             //          "\nTarget Ratio: " + targetRatio);
             if (targetRatio > 100)
