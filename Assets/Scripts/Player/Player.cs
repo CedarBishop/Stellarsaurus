@@ -29,7 +29,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public int headIndex;
     [HideInInspector] public int bodyIndex;
 
-     public bool isTriggeringCharacterCustomizer;
+    public bool isTriggeringCharacterCustomizer;
+
+    private bool isSpawningGhost;
 
     private void Start()
     {
@@ -99,6 +101,7 @@ public class Player : MonoBehaviour
         }
 
         isStillAlive = true;
+        isSpawningGhost = false;
     }
 
     public void CharacterDied(bool diedInCombat)
@@ -135,8 +138,12 @@ public class Player : MonoBehaviour
 
     IEnumerator DelayGhostSpawn(Vector3 pos)
     {
+        isSpawningGhost = true;
         yield return new WaitForSeconds(2);
-        CreateGhost(pos);
+        if (isSpawningGhost)
+        {
+            CreateGhost(pos);
+        }
     }
 
     public void CreateGhost (Vector3 pos)
