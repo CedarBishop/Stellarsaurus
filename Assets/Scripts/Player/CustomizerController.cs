@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CustomizerController : MonoBehaviour
 {
+    [HideInInspector] public CharacterCustomization customization;
+
     private Player player;
 
     private int currentHeadIndex;
@@ -16,17 +18,25 @@ public class CustomizerController : MonoBehaviour
         player = GetComponent<Player>();
     }    
 
-    public void Init ()
-    {
+    public void Init (string controlScheme)
+    {        
         currentHeadIndex = player.headIndex;
         currentBodyIndex = player.bodyIndex;
         headArrayLength = player.playerMovement.animatorControllersHead.Length; 
         bodyArrayLength = player.playerMovement.animatorControllersBody.Length;
+        if (customization != null)
+        {
+            customization.Enter(currentHeadIndex, currentBodyIndex, controlScheme);
+        }
     }
 
     void OnExit ()
     {
         player.SwitchToPlayerActionMap();
+        if (customization != null)
+        {
+            customization.Exit();
+        }
     }
 
     void OnHeadForward ()
@@ -35,6 +45,8 @@ public class CustomizerController : MonoBehaviour
         currentHeadIndex %= headArrayLength;
         player.SetHeadIndex(currentHeadIndex);
         print("Head:" + (currentHeadIndex + 1));
+
+        UpdateCustomiserUI();
     }
 
     void OnHeadBackward ()
@@ -46,6 +58,8 @@ public class CustomizerController : MonoBehaviour
         }
         player.SetHeadIndex(currentHeadIndex);
         print("Head:" + (currentHeadIndex + 1));
+
+        UpdateCustomiserUI();
     }
 
     void OnBodyForward ()
@@ -54,6 +68,8 @@ public class CustomizerController : MonoBehaviour
         currentBodyIndex %= bodyArrayLength;
         player.SetBodyIndex(currentBodyIndex);
         print("Body:" + (currentBodyIndex + 1));
+
+        UpdateCustomiserUI();
     }
 
     void OnBodyBackward ()
@@ -65,5 +81,16 @@ public class CustomizerController : MonoBehaviour
         }
         player.SetBodyIndex(currentBodyIndex);
         print("Body:" + (currentBodyIndex + 1));
+
+        UpdateCustomiserUI();
+    }
+
+    void UpdateCustomiserUI()
+    {
+        if (customization != null)
+        {
+            customization.SetHead(currentHeadIndex);
+            customization.SetBody(currentBodyIndex);
+        }
     }
 }

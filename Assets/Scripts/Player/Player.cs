@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
         {
             currentPlayerActionMap = "Customization";
             playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
-            GetComponent<CustomizerController>().Init();
+            GetComponent<CustomizerController>().Init(playerInput.currentControlScheme);
         }
     }
 
