@@ -326,6 +326,9 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 4096
+  windowLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   gunOrigin: {fileID: 2180012640987882278}
   shadowSprite: {fileID: 7108118315063263377}
   dustParticleFX: {fileID: 5660791939826079308, guid: 484bb44b0f4621a46a4f78439a0ce220,

@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask wallLayer;
     public LayerMask enemyLayer;
     public LayerMask obstacleLayer;
+    public LayerMask windowLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
     public ParticleSystem dustParticleFX;
@@ -124,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, groundLayer) ||
             Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, enemyLayer) ||
             Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, obstacleLayer) ||
+            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, windowLayer) ||
             Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, platformLayer);
 
         if (wasGrounded == false && isGrounded == true)
