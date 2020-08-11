@@ -16234,6 +16234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathFindingGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 4330250555554901529, guid: 2b500b2bd5f7dc342a1a8aea8b58cd07,
+        type: 3}
+      propertyPath: _drawGrid
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4330250555554901534, guid: 2b500b2bd5f7dc342a1a8aea8b58cd07,
         type: 3}
       propertyPath: m_LocalPosition.x
