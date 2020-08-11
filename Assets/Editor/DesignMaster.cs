@@ -603,14 +603,14 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Name", EditorStyles.boldLabel);
                 aiTypes[i].AIName = EditorGUILayout.TextField(aiTypes[i].AIName);
 
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                aiTypes[i].spriteName = EditorGUILayout.TextField(aiTypes[i].spriteName);
+                //EditorGUILayout.Space(8);
+                //GUILayout.Label("Sprite", EditorStyles.boldLabel);
+                //aiTypes[i].spriteName = EditorGUILayout.TextField(aiTypes[i].spriteName);
 
-                if (GUILayout.Button("Check Sprite Prefab"))
-                {
-                    CheckAISprite(i);
-                }
+                //if (GUILayout.Button("Check Sprite Prefab"))
+                //{
+                //    CheckAISprite(i);
+                //}
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Health", EditorStyles.boldLabel);

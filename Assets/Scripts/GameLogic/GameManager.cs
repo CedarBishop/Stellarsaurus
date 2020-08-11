@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
 
         selectedGamemode.Exit();
         selectedGamemode = null;
-        SceneManager.LoadScene("MainMenu");        
+        SceneManager.LoadScene(0);        
         UnPause();
         StartCoroutine("CoEndMatch");
     }
