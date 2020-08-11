@@ -21,7 +21,9 @@ public class PlayerBattery : MonoBehaviour
         health = 3;
         spriteRenderer = GetComponent<SpriteRenderer>();
         batteryMaterial = spriteRenderer.material;
+        print("Battery Initialise: " + playerNumber);
         batteryMaterial.SetColor("PlayerColor", GameManager.instance.playerColours[playerNumber - 1]);
+        batteryMaterial.SetFloat("HealthValue", health);
         timer = timeBeforeDeactivates;
     }
 
