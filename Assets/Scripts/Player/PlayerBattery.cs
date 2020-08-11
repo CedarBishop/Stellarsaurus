@@ -7,7 +7,7 @@ public class PlayerBattery : MonoBehaviour
 {
     private int playerNumber;
     private int health;
-    private Image batteryImage;
+    private SpriteRenderer spriteRenderer;
     private Material batteryMaterial;
 
     public Sprite[] healthSprites;
@@ -19,16 +19,20 @@ public class PlayerBattery : MonoBehaviour
     {
         playerNumber = playerNum;
         health = 3;
-        batteryImage.GetComponent<Image>();
-        batteryMaterial = batteryImage.material;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        batteryMaterial = spriteRenderer.material;
         batteryMaterial.SetColor("PlayerColor", GameManager.instance.playerColours[playerNumber - 1]);
         timer = timeBeforeDeactivates;
     }
 
     public void UpdateHealth (int value)
     {
+        if (value < 0 && value >= healthSprites.Length)
+        {
+            return;
+        }
         health = value;
-        batteryImage.sprite = healthSprites[health - 1];
+        spriteRenderer.sprite = healthSprites[playerNumber - 1];
         batteryMaterial.SetFloat("HealthValue", health);
         timer = timeBeforeDeactivates;
     }
