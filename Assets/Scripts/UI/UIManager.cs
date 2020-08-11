@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMainParent;
     public GameObject settingParent;
     public GameObject matchEndParent;
+    public GameObject FeedbackUrlConfirmation;                 //confirmation to open Feedback Url in browser
+    public GameObject TwitterUrlConfirmation;                  //confirmation to open Feedback Url in browser
+    public GameObject IGUrlConfirmation;                       //confirmation to open Feedback Url in browser
     public Cursor cursorPrefab;
 
     public Text sfxVolumeText;
@@ -78,6 +81,9 @@ public class UIManager : MonoBehaviour
         gameUiParent.SetActive(false);
         mainMenuUiParent.SetActive(false);
         matchEndParent.SetActive(false);
+        FeedbackUrlConfirmation.SetActive(false);
+        TwitterUrlConfirmation.SetActive(false);
+        IGUrlConfirmation.SetActive(false);
 
         switch (uiState)
         {
@@ -251,9 +257,18 @@ public class UIManager : MonoBehaviour
         musicVolumeText.text = "Music Volume: " + (volume * 100).ToString("F0");
     }
 
-    public void OpenFeedback()
+    public void OpenConfirmation(GameObject confirmation)
     {
-        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSdkB1fXMsRKr_n1OCdBN4P_Odjr9SBpwggDe6NBPKXx2OxEQA/viewform");
+        confirmation.SetActive(true);
+    }
+    public void CloseConfirmation(GameObject confirmation)
+    {
+        confirmation.SetActive(false);
+    }
+
+    public void OpenUrl(string url)
+    {
+        Application.OpenURL(url);
     }
 
     public void ButtonPause()
