@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2516117274683177303}
   - component: {fileID: 8648897565078361726}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 191383968176859835}
   - component: {fileID: 5350767333440696549}
   - component: {fileID: 6187190740202127169}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   healthMax: 0
+  timeBeforeDestroyed: 0
   isExplosive: 0
   weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
     type: 3}

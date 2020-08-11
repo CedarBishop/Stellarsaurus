@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask platformLayer;
     public LayerMask playerLayer;
     public LayerMask wallLayer;
+    public LayerMask enemyLayer;
+    public LayerMask obstacleLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
     public ParticleSystem dustParticleFX;
@@ -120,6 +122,8 @@ public class PlayerMovement : MonoBehaviour
         // Grounded & jump logic update starts here
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, groundLayer) ||
+            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, enemyLayer) ||
+            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, obstacleLayer) ||
             Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, platformLayer);
 
         if (wasGrounded == false && isGrounded == true)

@@ -221,7 +221,15 @@ public class PlayerShoot : MonoBehaviour
             if (extractionObjective == null)
             {
                 if (currentWeapon != null)
-                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.idleAnimName);
+                {
+                    if (currentWeapon.weaponSpritePrefab != null)
+                    {
+                        if (!string.IsNullOrEmpty(currentWeapon.weaponSpritePrefab.idleAnimName))
+                        {
+                            weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.idleAnimName);
+                        }
+                    }
+                }
             }
             if (shootOnRelease)
             {
