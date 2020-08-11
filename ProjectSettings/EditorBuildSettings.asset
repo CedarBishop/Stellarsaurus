@@ -27,38 +27,53 @@ EditorBuildSettings:
     path: Assets/Scenes/FreeForAll/MH_FFA3.unity
     guid: 39e4f440b2beb214fbd0b7af4389f1b9
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA4.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA4_Bridges.unity
     guid: b4b7c4e0a1dcf944c9ef5c17a31b66ea
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA5.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA5_Teleporter.unity
     guid: d1b69162066f9eb46a820ca65cd7c83b
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA7.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA7_Hop.unity
     guid: 2b5ab84ea44418a49bcfd29efdbe384f
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA8.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA8_Claws.unity
     guid: 5cb1278439c843045a419b14b362dff2
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA9.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA9_Rise.unity
     guid: ead3305627ccc8148beff289dac9222b
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA10.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA10_Trapped.unity
     guid: 71e26909fc99ccd4399990c04118d6c8
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA11.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA11_Electric.unity
     guid: fd65c92a64e8b9347978cad8747f980e
   - enabled: 1
-    path: Assets/Scenes/FreeForAll/RW_FFA12.unity
+    path: Assets/Scenes/FreeForAll/RW_FFA12_Doors.unity
     guid: b3a7c20d08b79bd43a69aa4da25cbebf
-  - enabled: 0
+  - enabled: 1
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/FreeForAll/IK_FFA_trenches.unity
+    guid: 170414033d5951644babd77eb29edf21
+  - enabled: 1
+    path: Assets/Scenes/FreeForAll/MH_FFA_Pit.unity
+    guid: cf93ec6ffa79a484b8e68c527584cd25
+  - enabled: 1
+    path: Assets/Scenes/FreeForAll/RW_FFA13_Fire.unity
+    guid: 202e55284c5ca784daaee13c9cc32e8f
+  - enabled: 1
+    path: Assets/Scenes/FreeForAll/RW_FFA14_Cage.unity
+    guid: 342742fa502ff224db1be1bb46ad8d63
+  - enabled: 1
+    path: Assets/Scenes/FreeForAll/RW_FFA15_Dogfight.unity
+    guid: d0e80e0ee75fab949b9826276c3a05be
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a2c003b59ea4a124b91d1bf13be1c5c5,
       type: 2}
