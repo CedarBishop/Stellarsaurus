@@ -24,7 +24,11 @@ public class Explosive : Projectile
     {
         cameraShake.StartShake(duration, magnitude);
         if (explodeParticle != null)
-            Instantiate(explodeParticle, transform.position, Quaternion.identity);
+        {
+            GameObject go = Instantiate(explodeParticle, transform.position, Quaternion.identity).gameObject;
+            Destroy(go, 2);
+        }
+            
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionSize);
         if (colliders != null)
         {
