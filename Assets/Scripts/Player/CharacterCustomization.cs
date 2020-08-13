@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CharacterCustomization : MonoBehaviour
@@ -16,19 +17,27 @@ public class CharacterCustomization : MonoBehaviour
     public Image nextHeadImage;
     public Image previousBodyImage;
     public Image nextBodyImage;
+    public Image buttonToInteract;
 
     public Sprite[] headSprites;
     public Sprite[] bodySprites;
+
+    private bool isInUse;
 
     private void Start()
     {
         uiDisplay.SetActive(false);
         inCustomiserParent.SetActive(false);
         outOfCustomiserParent.SetActive(true);
+        isInUse = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isInUse)
+        {
+            return;
+        }
         if (collision.GetComponentInParent<Player>())
         {
             Player player = collision.GetComponentInParent<Player>();
@@ -36,6 +45,9 @@ public class CharacterCustomization : MonoBehaviour
             CustomizerController controller = player.GetComponent<CustomizerController>();
             controller.customization = this;
             uiDisplay.SetActive(true);
+            inCustomiserParent.SetActive(false);
+            outOfCustomiserParent.SetActive(true);
+            buttonToInteract.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Grab, player.GetComponent<PlayerInput>().currentControlScheme);
         }
     }
 
@@ -54,6 +66,7 @@ public class CharacterCustomization : MonoBehaviour
     public void Enter (int headNum, int bodyNum, string controlScheme)
     {
         print("Enter");
+        isInUse = true;
         inCustomiserParent.SetActive(true);
         outOfCustomiserParent.SetActive(false);
         previousHeadImage.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Down, controlScheme);
@@ -67,6 +80,7 @@ public class CharacterCustomization : MonoBehaviour
 
     public void Exit ()
     {
+        isInUse = false;
         inCustomiserParent.SetActive(false);
         outOfCustomiserParent.SetActive(true);
     }

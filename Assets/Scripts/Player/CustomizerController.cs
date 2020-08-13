@@ -52,10 +52,11 @@ public class CustomizerController : MonoBehaviour
     void OnHeadBackward ()
     {
         currentHeadIndex--;
-        if (currentHeadIndex <= 0)
+        if (currentHeadIndex <= -1)
         {
             currentHeadIndex = headArrayLength - 1;
         }
+
         player.SetHeadIndex(currentHeadIndex);
         print("Head:" + (currentHeadIndex + 1));
 
@@ -75,7 +76,7 @@ public class CustomizerController : MonoBehaviour
     void OnBodyBackward ()
     {
         currentBodyIndex--;
-        if (currentBodyIndex <= 0)
+        if (currentBodyIndex <= -1)
         {
             currentBodyIndex = bodyArrayLength - 1;
         }
