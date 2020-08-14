@@ -115,6 +115,7 @@ public class AI : MonoBehaviour
                 agent.enabled = true;
                 agent.Init(FindObjectOfType<PathFindingGrid>());
                 animator.runtimeAnimatorController = jumpPatrolController;
+                perception.isUsingAIController = true;
                 animator.SetBool("CanAttack", true);
                 Destroy(GetComponent<Rigidbody2D>());
 

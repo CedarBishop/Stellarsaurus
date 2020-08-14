@@ -19,7 +19,7 @@ public class Perception : MonoBehaviour
     public int numOfRays = 4;
     public bool isFacingRight;
     public float targetMemoryTime;
-
+    public bool isUsingAIController;
     private float memoryTimer;
     private AI ai;
     private bool[] raycastsHitTarget;
@@ -54,11 +54,13 @@ public class Perception : MonoBehaviour
                 memoryTimer -= Time.deltaTime;
             }            
         }
-
-        if (targetTransform == null && detectsTarget)
+        if (isUsingAIController)
         {
-            detectsTarget = false;
-            ai.SetRandomGoal();
+            if (targetTransform == null && detectsTarget)
+            {
+                detectsTarget = false;
+                ai.SetRandomGoal();
+            }
         }
     }
 
@@ -97,6 +99,8 @@ public class Perception : MonoBehaviour
                 if (hit.collider.CompareTag(detectionTag))
                 {
                     hitTarget = true;
+                    print("Saw target");
+                    targetTransform = hit.transform;
                     raycastsHitTarget[i] = true;
                 }
                 else
