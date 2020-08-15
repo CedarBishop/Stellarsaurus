@@ -1363,7 +1363,7 @@ PrefabInstance:
     - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
       propertyPath: middlePieces.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1469151693161805445, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
@@ -1484,6 +1484,11 @@ PrefabInstance:
     - target: {fileID: 5178551633026370881, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178551633026370881, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5203010175888610665, guid: 0fde2f1cb20d68646ae6daf2bcc1c824,
