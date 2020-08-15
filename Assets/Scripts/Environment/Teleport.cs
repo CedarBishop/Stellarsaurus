@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Teleport : MonoBehaviour
 {
     public Transform otherTeleporter;
-    ParticleSystem[] particles;
+    protected ParticleSystem[] particles;
     [HideInInspector] public List<Rigidbody2D> recentlyTeleported;
     private Teleport otherTeleportScript;
 
@@ -14,11 +13,19 @@ public class Teleport : MonoBehaviour
     private void Awake()
     {
         particles = GetComponentsInChildren<ParticleSystem>();
+        if (otherTeleporter == null)
+        {
+            return;
+        }
         otherTeleportScript = otherTeleporter.GetComponent<Teleport>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (otherTeleporter == null)
+        {
+            return;
+        }
         if (collision.GetComponent<Rigidbody2D>())
         {
             Rigidbody2D collisionRb = collision.GetComponent<Rigidbody2D>();
@@ -47,7 +54,7 @@ public class Teleport : MonoBehaviour
         }        
     }
 
-    private bool CheckList(Rigidbody2D rb)
+    protected bool CheckList(Rigidbody2D rb)
     {
         // Check the list of recorded rigidbodies to see if entered rigidbody has just been teleported over
         foreach (Rigidbody2D rbListItem in recentlyTeleported)
@@ -63,6 +70,15 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        OnExit(collision);
+    }
+
+    protected void OnExit (Collider2D collision)
+    {
+        if (otherTeleporter == null)
+        {
+            return;
+        }
         recentlyTeleported.Remove(collision.GetComponent<Rigidbody2D>());
     }
 
