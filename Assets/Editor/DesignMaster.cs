@@ -354,7 +354,7 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].range = EditorGUILayout.FloatField(weaponTypes[i].range);
                 }
 
-                if (weaponTypes[i].weaponUseType == WeaponUseType.Throwable || weaponTypes[i].weaponUseType == WeaponUseType.Boomerang)
+                if (weaponTypes[i].weaponUseType == WeaponUseType.Boomerang)
                 {
                     weaponTypes[i].ammoCount = 1;
                 }
