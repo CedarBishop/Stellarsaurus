@@ -104,8 +104,8 @@ MonoBehaviour:
   particle: {fileID: 0}
   particleTransform: {fileID: 0}
   animatorController: {fileID: 9100000, guid: d3d7c25a1bf50b04d86a7fa04fd8248b, type: 2}
-  idleAnimName: 
-  chargeAnimName: Grenade
+  idleAnimName: Grenade_Idle
+  chargeAnimName: Grenade_Charge
   attackAnimName: 
 --- !u!61 &5202935386339110345
 BoxCollider2D:

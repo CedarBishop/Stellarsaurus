@@ -7,6 +7,11 @@ public class LobbyTeleport : MonoBehaviour
     public Transform arenaSpawnPoint;
     protected ParticleSystem[] particles;
 
+    public Camera lobbyCamera;
+    public Camera arenaCamera;
+
+    private bool hasActivatedCamera;
+
     private void Start()
     {
         particles = GetComponentsInChildren<ParticleSystem>();
@@ -42,6 +47,20 @@ public class LobbyTeleport : MonoBehaviour
             PlayerShoot player = collision.GetComponent<PlayerShoot>();
             LevelManager.instance.startingPositions[player.playerNumber - 1].position = arenaSpawnPoint.position;
             player.DestroyWeapon();
+            ActivateCameras();
         }
+    }
+
+
+    private void ActivateCameras ()
+    {
+        if (arenaCamera == null || lobbyCamera == null)
+        {
+            return;
+        }
+
+        arenaCamera.gameObject.SetActive(true);
+        lobbyCamera.rect = new Rect(new Vector2(0,0),new Vector2(1,0.35f));
+        lobbyCamera.orthographicSize = 5.5f;
     }
 }

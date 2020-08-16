@@ -24,7 +24,12 @@ public class Destructable : Projectile
         amountOfSubProjectiles = subProjectilesAmount;
         horizontalForceOfSubProjectile = horizontalSubProjectileForce;
         verticalForceOfSubProjectile = verticalSubProjectileForce;
-        cameraShake = Camera.main.GetComponent<CameraShake>();
+
+        if (Camera.main != null)
+        {
+            cameraShake = Camera.main.GetComponent<CameraShake>();
+        }
+        
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * initialForce);
 

@@ -77,7 +77,11 @@ public class PlayerMovement : MonoBehaviour
         counterForce = playerParams.counterForce;
 
         GetComponent<PlayerShoot>().SetAimType(playerParams.aimType);
-        cameraController = Camera.main.GetComponent<CameraController>();
+        if (LevelManager.instance.isLobby == false)
+        {
+            cameraController = Camera.main.GetComponent<CameraController>();
+        }
+        
         if (cameraController != null)
         {
             cameraController.playersInGame.Add(this);

@@ -1,14 +1,24 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
     public Transform cameraAnchor;
+    public bool isInLobby;
 
     public void StartShake(float duration, float magnitude)
     {
-        StartCoroutine(Shake(duration, magnitude));
+        if (isInLobby)
+        {
+            StartCoroutine(Shake(duration/2, magnitude/2));
+        }
+        else
+        {
+            StartCoroutine(Shake(duration, magnitude));
+        }
+        
     }
 
 

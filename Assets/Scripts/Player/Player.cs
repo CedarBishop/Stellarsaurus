@@ -47,8 +47,10 @@ public class Player : MonoBehaviour
             isGamepad = true;
             uiController.isGamepad = true;
         }
-
-        cameraController = Camera.main.GetComponent<CameraController>();
+        if (Camera.main != null)
+        {
+            cameraController = Camera.main.GetComponent<CameraController>();
+        }        
 
         headIndex = playerNumber - 1;
         bodyIndex = playerNumber - 1;

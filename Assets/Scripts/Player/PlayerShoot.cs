@@ -64,7 +64,14 @@ public class PlayerShoot : MonoBehaviour
         canShoot = true;
         currentWeapon = null;
         playerMovement = GetComponent<PlayerMovement>();
-        cameraShake = mainCamera.GetComponent<CameraShake>();
+        if (cameraShake == null)
+        {
+            if (Camera.main != null)
+            {
+                cameraShake = Camera.main.GetComponent<CameraShake>();
+            }
+        }
+        
         weaponAnimation = gunSprite.GetComponent<PlayerWeaponAnimation>();
         gamepad = Gamepad.current;
     }
@@ -391,6 +398,14 @@ public class PlayerShoot : MonoBehaviour
         if (AimCheck(new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y)), 0.1f))
         {
             return;
+        }
+
+        if (cameraShake == null)
+        {
+            if (Camera.main != null)
+            {
+                cameraShake = Camera.main.GetComponent<CameraShake>();
+            }
         }
         if (canShoot)
         {

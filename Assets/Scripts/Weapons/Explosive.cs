@@ -117,6 +117,7 @@ public class Explosive : Projectile
         damage = _Damage;
         playerNumber = _PlayerNumber;
         cameraShake = Camera.main.GetComponent<CameraShake>();
+        
         initialForce = force;
         duration = cameraShakeDuration;
         magnitude = cameraShakeMagnitude;
