@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
         }
         if (firstKeyboardPlayerHasJoined == false)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 firstKeyboardPlayerHasJoined = true;
                 inputManager.JoinPlayer(playerCount, playerCount, "Keyboard & Mouse", Keyboard.current);

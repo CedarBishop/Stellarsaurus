@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
 
     Vector2 movementDirection;
     bool isMoving;
-    [HideInInspector] public bool isGamepad;
+    [HideInInspector] public bool usesMouse;
 
     private void Start()
     {
@@ -23,6 +23,11 @@ public class UIController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         GameManager.instance.playerInputs.Add(playerInput);
         GameManager.instance.uIControllers.Add(this);
+
+        if (playerInput.currentControlScheme == "Keyboard & Mouse")
+        {
+            usesMouse = true;
+        }
     }
 
     private void OnDestroy()
@@ -39,7 +44,7 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (isGamepad)
+        if (usesMouse == false)
         {
             if (isMoving)
             {
