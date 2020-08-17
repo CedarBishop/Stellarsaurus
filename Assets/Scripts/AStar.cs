@@ -60,7 +60,6 @@ public class AStar : MonoBehaviour
             openList.Remove(currentNode);
             closedList.Add(currentNode);
 
-            print(currentNode.worldPosition);
 
             foreach (Node neighbour in GetNeighbours(currentNode))
             {

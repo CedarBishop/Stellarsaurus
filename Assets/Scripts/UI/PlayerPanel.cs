@@ -59,7 +59,8 @@ public class PlayerPanel : MonoBehaviour
         }
         else
         {
-            accuracyText.text = "Accuracy: " + ((playerMatchStats.bulletsHit / playerMatchStats.bulletsFired) * 100).ToString() + "%";
+            float accuracy = (((float)playerMatchStats.bulletsHit / (float)playerMatchStats.bulletsFired) * 100);
+            accuracyText.text = "Accuracy: " + accuracy.ToString("F1") + "%";
         }
         
 

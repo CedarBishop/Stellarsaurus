@@ -73,6 +73,10 @@ public class PlayerMatchStats
                 break;
             case StatTypes.FlamesShot:
                 bulletsFired += amount;
+                flamesShot += amount;
+                break;
+            case StatTypes.BulletsHit:
+                bulletsHit += amount;
                 break;
             default:
                 break;
