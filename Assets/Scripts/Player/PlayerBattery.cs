@@ -22,19 +22,19 @@ public class PlayerBattery : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         batteryMaterial = spriteRenderer.material;
         print("Battery Initialise: " + playerNumber);
-        batteryMaterial.SetColor("PlayerColor", GameManager.instance.playerColours[playerNumber - 1]);
+        batteryMaterial.SetColor("_PlayerColor", GameManager.instance.playerColours[playerNumber - 1]);
         batteryMaterial.SetFloat("HealthValue", health);
         timer = timeBeforeDeactivates;
     }
 
     public void UpdateHealth (int value)
     {
-        if (value < 0 && value >= healthSprites.Length)
+        if (value <= 0 || value >= healthSprites.Length)
         {
             return;
         }
         health = value;
-        spriteRenderer.sprite = healthSprites[playerNumber - 1];
+        spriteRenderer.sprite = healthSprites[health - 1];
         batteryMaterial.SetFloat("HealthValue", health);
         timer = timeBeforeDeactivates;
     }

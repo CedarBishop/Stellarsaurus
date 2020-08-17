@@ -27,8 +27,11 @@ public class WaterZone : MonoBehaviour
         if (collision.GetComponent<AI>())
         {
             collision.GetComponent<AI>().StopBurning();
-        }
+        }       
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (collision.GetComponent<Flame>())
         {
             Destroy(collision.gameObject);
