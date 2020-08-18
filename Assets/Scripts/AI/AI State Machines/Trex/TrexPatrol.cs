@@ -48,7 +48,7 @@ public class TrexPatrol : StateMachineBehaviour
         {           
               perception.isFacingRight = !perception.isFacingRight;        
         }
-        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, groundLayer) ||
+        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, groundLayer) &&
             !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, platformLayer))
         {
             perception.isFacingRight = !perception.isFacingRight;
