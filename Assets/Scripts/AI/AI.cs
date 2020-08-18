@@ -25,6 +25,8 @@ public class AI : MonoBehaviour
     public ParticleSystem bloodParticle;
     public Egg eggPrefab;
 
+    public Transform aimOrigin;
+
     [HideInInspector] public AIType aiType;
     [HideInInspector] public PathFindingGrid pathFindingGrid;
     [HideInInspector] public AStar aStar;

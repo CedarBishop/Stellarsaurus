@@ -14,9 +14,8 @@ public class TrexShoot : StateMachineBehaviour
     private AIProjectile aiProjectile;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody;
+    private Transform aimOrigin;
 
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ai = animator.GetComponent<AI>();
@@ -27,9 +26,9 @@ public class TrexShoot : StateMachineBehaviour
         aiProjectile = Resources.Load<AIProjectile>("AIProjectiles/" + ai.aiType.projectileName);
         rigidbody = ai.GetComponent<Rigidbody2D>();
         spriteRenderer = ai.GetComponent<SpriteRenderer>();
+        aimOrigin = ai.aimOrigin;
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (perception.detectsTarget == false)
@@ -51,11 +50,7 @@ public class TrexShoot : StateMachineBehaviour
         FaceTarget();
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
 
-    }
 
     void FaceTarget ()
     {

@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float cutJumpHeight = 0.5f;
 
     public Vector2 groundCheckOffset;
-    public float groundCheckRadius;
+    public Vector2 groundCheckSize;
 
     public LayerMask groundLayer;
     public LayerMask platformLayer;
@@ -125,11 +125,11 @@ public class PlayerMovement : MonoBehaviour
 
         // Grounded & jump logic update starts here
         bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, groundLayer) ||
-            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, enemyLayer) ||
-            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, obstacleLayer) ||
-            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, windowLayer) ||
-            Physics2D.OverlapCircle(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckRadius, platformLayer);
+        isGrounded = Physics2D.OverlapBox(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckSize, 0, groundLayer) ||
+            Physics2D.OverlapBox(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckSize, 0, enemyLayer) ||
+            Physics2D.OverlapBox(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckSize, 0, obstacleLayer) ||
+            Physics2D.OverlapBox(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckSize, 0, windowLayer) ||
+            Physics2D.OverlapBox(groundCheckOffset + new Vector2(transform.position.x, transform.position.y), groundCheckSize, 0, platformLayer);
 
         if (wasGrounded == false && isGrounded == true)
         {
@@ -312,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + new Vector3(groundCheckOffset.x, groundCheckOffset.y, 0), groundCheckRadius);
+        Gizmos.DrawWireCube(transform.position + new Vector3(groundCheckOffset.x, groundCheckOffset.y, 0), new Vector3(groundCheckSize.x, groundCheckSize.y));
     }
 
     public void OnJumpPadBoost ()
