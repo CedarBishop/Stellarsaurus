@@ -18986,7 +18986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -973.9654, y: -540.0598}
+  m_AnchoredPosition: {x: -971.9099, y: -543.00946}
   m_SizeDelta: {x: -1519.9363, y: -644.385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881377735
@@ -19021,15 +19021,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '^
-
-    |
-
-    Customise Character
-
-    ^
-
-    |'
+  m_Text: Customise Yourself
 --- !u!222 &881377736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19058,7 +19050,7 @@ PrefabInstance:
     - target: {fileID: 5843478451002246886, guid: 203445092665d8246bc96133834db3b7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.02
+      value: -4.01
       objectReference: {fileID: 0}
     - target: {fileID: 5843478451002246886, guid: 203445092665d8246bc96133834db3b7,
         type: 3}
