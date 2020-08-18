@@ -307,7 +307,7 @@ MonoBehaviour:
   jumpBufferTime: 0.2
   cutJumpHeight: 0.5
   groundCheckOffset: {x: -0.06, y: -0.61}
-  groundCheckRadius: 0.1
+  groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -331,7 +331,9 @@ MonoBehaviour:
     m_Bits: 32768
   gunOrigin: {fileID: 2180012640987882278}
   shadowSprite: {fileID: 7108118315063263377}
-  dustParticleFX: {fileID: 5660791939826079308, guid: 484bb44b0f4621a46a4f78439a0ce220,
+  jumpParticle: {fileID: 5660791939826079308, guid: 484bb44b0f4621a46a4f78439a0ce220,
+    type: 3}
+  landingParticle: {fileID: 5660791939826079308, guid: 484bb44b0f4621a46a4f78439a0ce220,
     type: 3}
   animatorHead: {fileID: 2277477149072895390}
   animatorBody: {fileID: 1554709800222172083}

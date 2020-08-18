@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Egg : MonoBehaviour
 {
-    AIType aiTypeToHatch;
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
-    bool hasHatched;
+
+    public Transform[] jumpRaptorTargets;
+    public Transform[] pteroGroundTargets;
+    public Transform[] pteroAirTargets;
+    
+    private AIType aiTypeToHatch;
+    private bool hasHatched;
+    
     public void Init ()
     {
         List<AIType> ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
@@ -30,7 +36,7 @@ public class Egg : MonoBehaviour
 
         hasHatched = true;
         AI ai = Instantiate(LevelManager.instance.aiPrefab, transform.position, Quaternion.identity);
-        ai.Initialise(aiTypeToHatch);
+        ai.Initialise(aiTypeToHatch, jumpRaptorTargets, pteroGroundTargets, pteroAirTargets);
         Destroy(gameObject);
     }    
 }
