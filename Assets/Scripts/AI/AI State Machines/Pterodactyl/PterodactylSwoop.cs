@@ -23,7 +23,6 @@ public class PterodactylSwoop : StateMachineBehaviour
     private int pathIndex;
     private AStar aStar;
 
-
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {       
         ai = animator.GetComponent<AI>();
@@ -32,7 +31,7 @@ public class PterodactylSwoop : StateMachineBehaviour
         movementSpeed = ai.aiType.movementSpeed;
         transform = animator.transform;
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        aStar = ai.aStar;
+        aStar = ai.aStar;        
         ai.OnHit += Retreat;
         swoopSpeed = ai.aiType.swoopSpeed;
         pathFindingSwoopSpeed = ai.aiType.pathFindingSwoopSpeed;
@@ -47,6 +46,11 @@ public class PterodactylSwoop : StateMachineBehaviour
     }
 
     private void OnDestroy()
+    {
+        ai.OnHit -= Retreat;
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ai.OnHit -= Retreat;
     }
