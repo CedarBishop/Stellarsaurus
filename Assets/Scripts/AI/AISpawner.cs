@@ -14,7 +14,7 @@ public class AISpawner : MonoBehaviour
 
     public Transform[] targetsInMap;
     public Transform[] pteroAirTargets;
-    public Transform[] pteroGroundTargets;
+    public PairTargets[] pteroGroundTargets;
 
     public List<AIType> ais = new List<AIType>();
     private AI aiPrefab;

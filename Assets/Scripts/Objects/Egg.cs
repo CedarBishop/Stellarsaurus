@@ -7,7 +7,7 @@ public class Egg : MonoBehaviour
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
 
     public Transform[] jumpRaptorTargets;
-    public Transform[] pteroGroundTargets;
+    public PairTargets[] pteroGroundTargets;
     public Transform[] pteroAirTargets;
     
     private AIType aiTypeToHatch;

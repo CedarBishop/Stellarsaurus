@@ -1927,12 +1927,12 @@ PrefabInstance:
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08778736
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6671467
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -1997,7 +1997,7 @@ PrefabInstance:
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: pteroGroundTargets.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -2067,6 +2067,26 @@ PrefabInstance:
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: pteroGroundTargets.Array.data[3]
+      value: 
+      objectReference: {fileID: 790338756}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: pteroGroundTargets.Array.data[0].targetOne
+      value: 
+      objectReference: {fileID: 1312971582}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: pteroGroundTargets.Array.data[0].targetTwo
+      value: 
+      objectReference: {fileID: 690553013}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: pteroGroundTargets.Array.data[1].targetOne
+      value: 
+      objectReference: {fileID: 856973154}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: pteroGroundTargets.Array.data[1].targetTwo
       value: 
       objectReference: {fileID: 790338756}
     m_RemovedComponents: []
@@ -4544,7 +4564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395745931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.40454, y: 0.025814533, z: 0.90234375}
+  m_LocalPosition: {x: -8.40454, y: 2.1, z: 0.90234375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 131726478}

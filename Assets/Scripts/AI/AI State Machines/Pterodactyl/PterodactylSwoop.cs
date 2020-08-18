@@ -76,16 +76,20 @@ public class PterodactylSwoop : StateMachineBehaviour
     {
         if (ai.pteroGroundTargets != null)
         {
-            if (ai.pteroGroundTargets.Length >= 2)
+            if (ai.pteroGroundTargets.Length >= 1)
             {
-                int randStart = Random.Range(0, ai.pteroGroundTargets.Length);
-                int randEnd = 0;
-                do
+                PairTargets targets = ai.pteroGroundTargets[Random.Range(0, ai.pteroGroundTargets.Length)];
+                if (Vector2.Distance(transform.position, targets.targetOne.position) <= Vector2.Distance(transform.position, targets.targetTwo.position))
                 {
-                    randEnd = Random.Range(0, ai.pteroGroundTargets.Length);
-                } while (randEnd == randStart);
-                startGround = ai.pteroGroundTargets[randStart];
-                endGround = ai.pteroGroundTargets[randEnd];
+                    startGround = targets.targetOne;
+                    endGround = targets.targetTwo;
+                }
+                else
+                {
+                    startGround = targets.targetTwo;
+                    endGround = targets.targetOne;
+                }
+                
                 if (startGround != null && endGround != null)
                 {
                     return true;

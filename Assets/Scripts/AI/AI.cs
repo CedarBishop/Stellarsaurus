@@ -45,10 +45,10 @@ public class AI : MonoBehaviour
 
     private Transform[] targetsInMap;
     private Transform[] pteroAirTargets;
-    [HideInInspector] public Transform[] pteroGroundTargets;
+    [HideInInspector] public PairTargets[] pteroGroundTargets;
 
 
-    public virtual void Initialise (AIType aIType, Transform[] transforms = null, Transform[] pteroGround = null, Transform[] pteroAir = null)
+    public virtual void Initialise (AIType aIType, Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null)
     {
         animator = GetComponent<Animator>();
         perception = GetComponent<Perception>();
@@ -66,11 +66,7 @@ public class AI : MonoBehaviour
         perception.viewingDistance = aiType.viewingDistance;
         perception.fieldOfView = aiType.fieldOfView;
         perception.hearingRadius = aiType.hearingRadius;
-        perception.targetMemoryTime = aiType.targetMemoryTime;
-
-        //collider.offset = aiType.colliderOffset;
-        //collider.size = aiType.colliderSize;
-        
+        perception.targetMemoryTime = aiType.targetMemoryTime;        
 
         startingPosition = transform.position;
         behaviour = aiType.aiBehaviour;
@@ -78,7 +74,6 @@ public class AI : MonoBehaviour
         targetsInMap = transforms;
         pteroAirTargets = pteroAir;
         pteroGroundTargets = pteroGround;
-
 
         switch (behaviour)
         {
