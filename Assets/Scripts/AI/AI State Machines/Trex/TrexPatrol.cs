@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TrexPatrol : StateMachineBehaviour
 {
     private AI ai;
     private Perception perception;
-    private Animator _Animator;
     private Transform transform;
     private Rigidbody2D rigidbody;
 
@@ -17,14 +14,11 @@ public class TrexPatrol : StateMachineBehaviour
     private float movementSpeed;
     private float wallDetectionDistance;
 
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ai = animator.GetComponent<AI>();
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        _Animator = animator;
         movementSpeed = ai.aiType.movementSpeed;
         transform = animator.transform;
 
@@ -37,7 +31,6 @@ public class TrexPatrol : StateMachineBehaviour
         rigidbody.mass = 1000;
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (perception.detectsTarget)
@@ -48,12 +41,6 @@ public class TrexPatrol : StateMachineBehaviour
         CalculateWallAndLedge();
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
-
     void CalculateWallAndLedge()
     {
         if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, wallDetectionDistance, groundLayer) ||
@@ -61,7 +48,7 @@ public class TrexPatrol : StateMachineBehaviour
         {           
               perception.isFacingRight = !perception.isFacingRight;        
         }
-        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, groundLayer) &&
+        if (!Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, groundLayer) ||
             !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, platformLayer))
         {
             perception.isFacingRight = !perception.isFacingRight;
@@ -79,6 +66,4 @@ public class TrexPatrol : StateMachineBehaviour
             rigidbody.velocity = new Vector2(-movementSpeed * Time.fixedDeltaTime, rigidbody.velocity.y);
         }
     }
-
-
 }

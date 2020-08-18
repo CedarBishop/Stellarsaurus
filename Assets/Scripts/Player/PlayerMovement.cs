@@ -30,16 +30,17 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask windowLayer;
     public Transform gunOrigin;
     public SpriteRenderer shadowSprite;
-    public ParticleSystem dustParticleFX;
+    public ParticleSystem jumpParticle;
+    public ParticleSystem landingParticle;
 
     public Animator animatorHead;
     public Animator animatorBody;
-    private new Rigidbody2D rigidbody;
     public SpriteRenderer spriteRendererHead;
     public SpriteRenderer spriteRendererBody;
     
-    private PlayerParams playerParams;
+    private new Rigidbody2D rigidbody;
     
+    private PlayerParams playerParams;
     private float kyoteTimer;
     private float jumpBufferTimer;
     private bool isGrounded;
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     // Get components and initialise stats from design master here
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();        
+        rigidbody = GetComponent<Rigidbody2D>();
         playerParams = GameManager.instance.loader.saveObject.playerParams;
         groundMovementSpeed = playerParams.groundSpeed;
         airMovementSpeed = playerParams.airSpeed;
@@ -168,7 +169,10 @@ public class PlayerMovement : MonoBehaviour
             * Time.fixedDeltaTime, rigidbody.velocity.y);
 
         rigidbody.velocity = velocity;
-        rigidbody.AddForce(new Vector2(rigidbody.velocity.x * -counterForce, 0));
+        if (!isJumpBoosted)
+        {
+            rigidbody.AddForce(new Vector2(rigidbody.velocity.x * -counterForce, 0));
+        }
 
         if (isFineAiming)
         {
@@ -252,9 +256,9 @@ public class PlayerMovement : MonoBehaviour
         {
             SoundManager.instance.PlaySFX("SFX_JumpUp");
         }
-        if (dustParticleFX != null)
+        if (jumpParticle != null)
         {
-            ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);
+            ParticleSystem p = Instantiate(jumpParticle, transform.position, Quaternion.identity);
             Destroy(p.gameObject, 1);
         }
 
@@ -270,9 +274,9 @@ public class PlayerMovement : MonoBehaviour
         {
             SoundManager.instance.PlaySFX("SFX_JumpLand");
         }
-        if (dustParticleFX != null)
+        if (jumpParticle != null)
         {
-            ParticleSystem p = Instantiate(dustParticleFX, transform.position, Quaternion.identity);
+            ParticleSystem p = Instantiate(landingParticle, transform.position, Quaternion.identity);
             Destroy(p.gameObject, 1);
         }
     }
