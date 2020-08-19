@@ -87,7 +87,7 @@ public class TrexShoot : StateMachineBehaviour
             return;
         }
 
-        AIProjectile projectile =  Instantiate(aiProjectile, firingPos, Quaternion.identity);
+        AIProjectile projectile =  Instantiate(aiProjectile, firingPos, aimOrigin.rotation);
         projectile.InitialiseProjectile(ai.aiType.attackDamage,directionToTarget,ai.aiType.projectileForce,ai.aiType.attackRange);
     }
 }
