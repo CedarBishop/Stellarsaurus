@@ -26,6 +26,9 @@ public class AI : MonoBehaviour
     public Egg eggPrefab;
 
     public Transform aimOrigin;
+    public SpriteRenderer aimSpriteRenderer;
+
+    public Sprite trexArmSprite;
 
     [HideInInspector] public AIType aiType;
     [HideInInspector] public PathFindingGrid pathFindingGrid;
@@ -77,6 +80,8 @@ public class AI : MonoBehaviour
         pteroAirTargets = pteroAir;
         pteroGroundTargets = pteroGround;
 
+        aimSpriteRenderer.enabled = false;
+
         switch (behaviour)
         {
             case AIBehaviour.Patrol:
@@ -92,6 +97,8 @@ public class AI : MonoBehaviour
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = guardController;
+                aimSpriteRenderer.enabled = true;
+                aimSpriteRenderer.sprite = trexArmSprite;
                 break;
             case AIBehaviour.Fly:
                 RefreshCollider(true);

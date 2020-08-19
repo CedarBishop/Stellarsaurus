@@ -1,27 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
+﻿using UnityEngine;
 
 public class TrexShoot : StateMachineBehaviour
 {
     private AI ai;
     private Perception perception;
-    private Animator _Animator;
-    private float movementSpeed;
-
-    private float shootTimer;
     private AIProjectile aiProjectile;
-    SpriteRenderer spriteRenderer;
-    Rigidbody2D rigidbody;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidbody;
     private Transform aimOrigin;
+
+    private Vector2 directionToTarget;
+    private Vector2 firingPos;
+    private float shootTimer;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ai = animator.GetComponent<AI>();
         perception = animator.GetComponent<Perception>();
-        _Animator = animator;
-        movementSpeed = ai.aiType.movementSpeed;
         shootTimer = ai.aiType.attackCooldown;
         aiProjectile = Resources.Load<AIProjectile>("AIProjectiles/" + ai.aiType.projectileName);
         rigidbody = ai.GetComponent<Rigidbody2D>();
@@ -48,9 +43,8 @@ public class TrexShoot : StateMachineBehaviour
         rigidbody.velocity = Vector2.zero;
 
         FaceTarget();
+        AimAtTarget();
     }
-
-
 
     void FaceTarget ()
     {
@@ -63,13 +57,27 @@ public class TrexShoot : StateMachineBehaviour
         {
             perception.isFacingRight = false;
             spriteRenderer.flipX = true;
+            ai.aimSpriteRenderer.flipX = true;
         }
         else
         {
             perception.isFacingRight = true;
             spriteRenderer.flipX = false;
+            ai.aimSpriteRenderer.flipX = false;
+        }
+    }
+
+    void AimAtTarget ()
+    {
+        if (perception.targetTransform == null)
+        {
+            return;
         }
 
+        firingPos = new Vector2(((perception.isFacingRight) ? ai.aiType.FiringPoint.x : -ai.aiType.FiringPoint.x) + ai.transform.position.x, ai.aiType.FiringPoint.y + ai.transform.position.y);
+        float deviation = ai.aiType.bulletDeviation;
+        directionToTarget = new Vector2(perception.targetTransform.position.x + Random.Range(-deviation, deviation), perception.targetTransform.position.y + Random.Range(-deviation, deviation)) - firingPos;
+        aimOrigin.transform.right = Vector3.Slerp(aimOrigin.transform.right, ((perception.isFacingRight) ? 1: -1) * new Vector3(directionToTarget.x, directionToTarget.y, 0), 3 * Time.fixedDeltaTime);
     }
 
     void Shoot ()
@@ -79,9 +87,6 @@ public class TrexShoot : StateMachineBehaviour
             return;
         }
 
-        Vector2 firingPos = new Vector2(((perception.isFacingRight) ? ai.aiType.FiringPoint.x: -ai.aiType.FiringPoint.x) + ai.transform.position.x, ai.aiType.FiringPoint.y + ai.transform.position.y);
-        float deviation = ai.aiType.bulletDeviation;
-        Vector2 directionToTarget =  new Vector2(perception.targetTransform.position.x + Random.Range(-deviation,deviation), perception.targetTransform.position.y + Random.Range(-deviation, deviation)) -firingPos;
         AIProjectile projectile =  Instantiate(aiProjectile, firingPos, Quaternion.identity);
         projectile.InitialiseProjectile(ai.aiType.attackDamage,directionToTarget,ai.aiType.projectileForce,ai.aiType.attackRange);
     }

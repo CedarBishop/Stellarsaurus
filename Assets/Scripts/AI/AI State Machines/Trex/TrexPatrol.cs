@@ -6,10 +6,11 @@ public class TrexPatrol : StateMachineBehaviour
     private Perception perception;
     private Transform transform;
     private Rigidbody2D rigidbody;
+    private Transform aimOrigin;
 
-    LayerMask groundLayer;
-    LayerMask wallLayer;
-    LayerMask platformLayer;
+    private LayerMask groundLayer;
+    private LayerMask wallLayer;
+    private LayerMask platformLayer;
 
     private float movementSpeed;
     private float wallDetectionDistance;
@@ -21,6 +22,8 @@ public class TrexPatrol : StateMachineBehaviour
         rigidbody = animator.GetComponent<Rigidbody2D>();
         movementSpeed = ai.aiType.movementSpeed;
         transform = animator.transform;
+        aimOrigin = ai.aimOrigin;
+        aimOrigin.transform.rotation = Quaternion.Euler(0,0,0);
 
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
@@ -39,6 +42,7 @@ public class TrexPatrol : StateMachineBehaviour
         }
         Move();
         CalculateWallAndLedge();
+        UpdateArmSprite();
     }
 
     void CalculateWallAndLedge()
@@ -52,6 +56,18 @@ public class TrexPatrol : StateMachineBehaviour
             !Physics2D.Raycast(transform.position, (perception.isFacingRight) ? new Vector2(1, -1) : new Vector2(-1, -1), 4, platformLayer))
         {
             perception.isFacingRight = !perception.isFacingRight;
+        }
+    }
+
+    void UpdateArmSprite ()
+    {
+        if (perception.isFacingRight)
+        {
+            ai.aimSpriteRenderer.flipX = false;
+        }
+        else
+        {
+            ai.aimSpriteRenderer.flipX = true;
         }
     }
 
