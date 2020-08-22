@@ -10,8 +10,9 @@ public class EnvironmentalObjectHealth : MonoBehaviour
     [HideInInspector] public int healthMax;
 
     public float timeBeforeDestroyed;
+    public bool isDecorative;
     public bool isExplosive;
-
+    private ParticleSystem debrisParticles;
 
     private ExplosiveObjectHealth explosiveObjectHealth;
 
@@ -27,6 +28,10 @@ public class EnvironmentalObjectHealth : MonoBehaviour
         if (weaponsInThisLevel.Length > 0)
         {
             weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsInThisLevel);
+        }
+        if (GetComponentInChildren<ParticleSystem>())
+        {
+            debrisParticles = GetComponentInChildren<ParticleSystem>();
         }
     }
 
@@ -44,9 +49,12 @@ public class EnvironmentalObjectHealth : MonoBehaviour
             StartDestructionSequence();
         }
 
-        if (GameManager.instance.SelectedGamemode != null)
+        if (!isDecorative)
         {
-            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.ObstaclesHit, 1);
+            if (GameManager.instance.SelectedGamemode != null)
+            {
+                GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.ObstaclesHit, 1);
+            }
         }
     }
 
@@ -62,7 +70,24 @@ public class EnvironmentalObjectHealth : MonoBehaviour
             Weapon temp = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
             temp.Init(weaponTypes, WeaponSpawnType.FallFromSky);
         }
+
+        if (debrisParticles != null)
+        {
+            ParticleDeathSequence();
+        }
         
         Destroy(gameObject, timeBeforeDestroyed);
-    }   
+    }
+
+    private void ParticleDeathSequence()
+    {
+        // Play particle system
+        debrisParticles.Play();
+
+        // Set timer to delete particle system
+        debrisParticles.GetComponent<ParticleDestruction>().DestroyParticle();
+
+        // Move particle system outside of this window
+        debrisParticles.transform.parent = null;
+    }
 }

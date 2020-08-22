@@ -53,16 +53,33 @@ public class Bullet : Projectile
             // Environmental Object Damage
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
             {
-                collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage,playerNumber);
+                collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
+                Debug.Log("Bullet found Enviro Obj");
             }
 
-            OnHit();
+            // All these checks are to ensure that hittiing a decorative environmental object doesn't add any stats to the player's achievements
+            if (collision.GetComponent<EnvironmentalObjectHealth>() == null)
+            {
+                OnHit();
+            }
+            else if (!collision.GetComponent<EnvironmentalObjectHealth>().isDecorative)
+            {
+                OnHit();
+            }
         }
         if (destroysOnHit)
         {
             if (collision.GetComponent<Teleport>())
             {
                 return;
+            }
+            // Check to see if it hit a decorative environmental object, and if so, not delete the bullet.
+            if (collision.GetComponent<EnvironmentalObjectHealth>())
+            {
+                if (collision.GetComponent<EnvironmentalObjectHealth>().isDecorative)
+                {
+                    return;
+                }
             }
             if (destructionParticles != null)
             {

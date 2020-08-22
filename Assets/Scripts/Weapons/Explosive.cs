@@ -77,7 +77,7 @@ public class Explosive : Projectile
                         tilemap.SetTile(downPos, null);
                         tilemap.SetTile(leftPos, null);
                         tilemap.SetTile(rightPos, null);
-                    }                  
+                    }
 
                 }
             }
