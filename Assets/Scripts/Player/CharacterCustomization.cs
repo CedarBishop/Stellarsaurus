@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,6 +10,7 @@ public class CharacterCustomization : MonoBehaviour
     public GameObject outOfCustomiserParent;
     public Text headText;
     public Text bodyText;
+    public Image backgroundImage;
     public Image headImage;
     public Image bodyImage;
     public Image previousHeadImage;
@@ -24,6 +24,8 @@ public class CharacterCustomization : MonoBehaviour
 
     private bool isInUse;
 
+    private List<Player> triggeredPlayers = new List<Player>();
+
     private void Start()
     {
         uiDisplay.SetActive(false);
@@ -34,41 +36,68 @@ public class CharacterCustomization : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isInUse)
-        {
-            return;
-        }
+        
         if (collision.GetComponentInParent<Player>())
         {
             Player player = collision.GetComponentInParent<Player>();
+            triggeredPlayers.Add(player);
             player.isTriggeringCharacterCustomizer = transform;
             CustomizerController controller = player.GetComponent<CustomizerController>();
             controller.customization = this;
-            uiDisplay.SetActive(true);
-            inCustomiserParent.SetActive(false);
-            outOfCustomiserParent.SetActive(true);
-            buttonToInteract.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Grab, player.GetComponent<PlayerInput>().currentControlScheme);
+
+            if (isInUse)
+            {
+                return;
+            }
+
+            Setup(player);            
         }
     }
-
+    
     private void OnTriggerExit2D(Collider2D collision)
-    {
+    {        
         if (collision.GetComponentInParent<Player>())
         {
             Player player = collision.GetComponentInParent<Player>();
+            triggeredPlayers.Remove(player);
             player.isTriggeringCharacterCustomizer = false;
             CustomizerController controller = player.GetComponent<CustomizerController>();
             controller.customization = null;
+
+            if (isInUse)
+            {
+                return;
+            }
+
+            if (triggeredPlayers != null)
+            {
+                if (triggeredPlayers.Count >= 1)
+                {
+                    Setup(triggeredPlayers[0]);
+                    return;
+                }
+            }
+
             uiDisplay.SetActive(false);
         }
     }
 
-    public void Enter (int headNum, int bodyNum, string controlScheme)
+    void Setup(Player player)
+    {
+        SetBackgroundImageColor(player.playerNumber);
+        uiDisplay.SetActive(true);
+        inCustomiserParent.SetActive(false);
+        outOfCustomiserParent.SetActive(true);
+        buttonToInteract.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Grab, player.GetComponent<PlayerInput>().currentControlScheme);
+    }
+
+    public void Enter (int headNum, int bodyNum, string controlScheme, int playerNumber)
     {
         print("Enter");
         isInUse = true;
         inCustomiserParent.SetActive(true);
         outOfCustomiserParent.SetActive(false);
+        SetBackgroundImageColor(playerNumber);
         previousHeadImage.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Down, controlScheme);
         nextHeadImage.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Up, controlScheme);
         previousBodyImage.sprite = GameManager.instance.controlSchemeSpriteHandler.GetControlSprite(ControlActions.Left, controlScheme);
@@ -95,5 +124,12 @@ public class CharacterCustomization : MonoBehaviour
     {
         bodyText.text = "Body " + (num + 1).ToString();
         bodyImage.sprite = bodySprites[num];
+    }
+
+    void SetBackgroundImageColor (int playerNumber)
+    {
+        Color color = GameManager.instance.playerColours[playerNumber - 1];
+        color.a = 0.5f;
+        backgroundImage.color = color;
     }
 }

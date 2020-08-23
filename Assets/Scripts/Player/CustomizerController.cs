@@ -26,7 +26,7 @@ public class CustomizerController : MonoBehaviour
         bodyArrayLength = player.playerMovement.animatorControllersBody.Length;
         if (customization != null)
         {
-            customization.Enter(currentHeadIndex, currentBodyIndex, controlScheme);
+            customization.Enter(currentHeadIndex, currentBodyIndex, controlScheme, player.playerNumber);
         }
     }
 
