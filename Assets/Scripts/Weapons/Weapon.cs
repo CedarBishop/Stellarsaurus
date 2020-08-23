@@ -79,7 +79,10 @@ public class Weapon : MonoBehaviour
                 Light2D light = go.AddComponent<Light2D>();
                 light.color = weaponType.weaponSpritePrefab.light.color;
                 light.intensity = weaponType.weaponSpritePrefab.light.intensity;
+                light.lightType = weaponType.weaponSpritePrefab.light.lightType;
+                light.pointLightInnerRadius = weaponType.weaponSpritePrefab.light.pointLightInnerRadius;
                 light.pointLightOuterRadius = weaponType.weaponSpritePrefab.light.pointLightOuterRadius;
+
                 go.transform.localPosition = weaponType.weaponSpritePrefab.lightTransform.position;                
             }
 

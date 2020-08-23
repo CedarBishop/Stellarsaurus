@@ -762,6 +762,8 @@ public class PlayerShoot : MonoBehaviour
                 Light2D light = go.AddComponent<Light2D>();
                 light.color = currentWeapon.weaponSpritePrefab.light.color;
                 light.intensity = currentWeapon.weaponSpritePrefab.light.intensity;
+                light.lightType = currentWeapon.weaponSpritePrefab.light.lightType;
+                light.pointLightInnerRadius = currentWeapon.weaponSpritePrefab.light.pointLightInnerRadius;
                 light.pointLightOuterRadius = currentWeapon.weaponSpritePrefab.light.pointLightOuterRadius;
                 go.transform.localPosition = currentWeapon.weaponSpritePrefab.lightTransform.position;
                 objectsToDestoryOnWeaponDestroy.Add(go);
