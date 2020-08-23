@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 6781352925786315616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3203125, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7638445397612428288}
   m_Father: {fileID: 0}
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a2ab4577d0963c49a948fc18fbfbab8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef54ed596e8510342a89c1ea0c0b3d7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3859e0a097cc9ce4d871e1da08c17bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 21300000, guid: 5a2ab4577d0963c49a948fc18fbfbab8, type: 3}
+  weaponSprite: {fileID: 21300000, guid: ef54ed596e8510342a89c1ea0c0b3d7e, type: 3}
   collider: {fileID: 2603280876861395588}
   firingPoint: {fileID: 7638445397612428288}
   weaponSpriteMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -151,16 +151,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0019655284}
+  m_Offset: {x: 0, y: -0.054}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.083333336}
+    oldSize: {x: 1.3333334, y: 1.3333334}
     newSize: {x: 0.9, y: 0.76}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.08723402}
+  m_Size: {x: 0.2, y: 1}
   m_EdgeRadius: 0

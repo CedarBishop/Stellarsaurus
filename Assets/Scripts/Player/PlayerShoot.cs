@@ -527,6 +527,10 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 hits[i].collider.GetComponent<AI>().TakeDamage(playerNumber, currentWeapon.damage);
                             }
+                            else if (hits[i].collider.GetComponent<EnvironmentalObjectHealth>())
+                            {
+                                hits[i].collider.GetComponent<EnvironmentalObjectHealth>().TakeDamage(currentWeapon.damage, playerNumber);
+                            }
                         }
                     }
 
