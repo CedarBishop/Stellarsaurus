@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public ParticleSystem bloodSplatterParticle;
     public ParticleSystem shieldParticleSystem;
+    public ParticleSystem healParticle;
     public SpriteRenderer[] spriteRenderers;
     public PlayerBattery playerBattery;
 
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     private int shieldBlocksRemaining;
 
     private GameObject shieldParticle;
+    private Consumable currentShieldConsumable;
 
     private Gamepad gamepad;
     private bool isGamepad;
@@ -228,10 +230,23 @@ public class PlayerHealth : MonoBehaviour
         {
             health = maxHealth;
         }
+
+        if (healParticle != null)
+        {
+            ParticleSystem particle = Instantiate(healParticle, transform);
+            Destroy(particle.gameObject, 3);
+        }
     }
 
-    public void GainShield(int amount)
+
+    public void GainShield(int amount, Consumable consumable)
     {
+        if (currentShieldConsumable != null)
+        {
+            Destroy(currentShieldConsumable.gameObject);
+        }
+        currentShieldConsumable = consumable;
+
         hasShield = true;
         shieldBlocksRemaining = amount;
         shieldParticle = Instantiate(shieldParticleSystem, transform.position, Quaternion.identity).gameObject;
@@ -249,6 +264,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void EndShield()
     {
+        currentShieldConsumable = null;
         hasShield = false;
         Destroy(shieldParticle);
     }

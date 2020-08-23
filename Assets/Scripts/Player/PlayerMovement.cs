@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer shadowSprite;
     public ParticleSystem jumpParticle;
     public ParticleSystem landingParticle;
+    public ParticleSystem speedBoostParticle;
+    public ParticleSystem doubleJumpParticle;
 
     public Animator animatorHead;
     public Animator animatorBody;
@@ -61,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
     private float verticalAim;
 
     private bool isFineAiming;
+    private ParticleSystem speedBoostParticleInstance;
+    private ParticleSystem doubleJumpParticleInstance;
+    private Consumable currentSpeedBoostConsumable;
+    private Consumable currentDoubleJumpConsumable;
 
 
     // Get components and initialise stats from design master here
@@ -298,15 +304,61 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.AddForce(reverseDirection * magnitude);
     }
 
-    public void CanDoubleJump(bool value)
+    public void CanDoubleJump(bool value, Consumable consumable)
     {
+        if (currentDoubleJumpConsumable != null)
+        {
+            Destroy(currentDoubleJumpConsumable.gameObject);
+        }
+        currentDoubleJumpConsumable = consumable;
+
+
         canDoubleJump = value;
+        
+        if (value)
+        {
+            if (doubleJumpParticle != null)
+            {
+                doubleJumpParticleInstance = Instantiate(doubleJumpParticle, transform);
+            }
+        }
+        else
+        {
+            if (doubleJumpParticleInstance != null)
+            {
+                Destroy(doubleJumpParticleInstance.gameObject);
+            }
+            currentDoubleJumpConsumable = null;
+        }
     }
 
-    public void IsSpeedBoosted(bool value, float boostAmount)
+    public void IsSpeedBoosted(bool value, float boostAmount, Consumable consumable)
     {
+        if (currentSpeedBoostConsumable != null)
+        {
+            Destroy(currentSpeedBoostConsumable.gameObject);
+        }
+        currentSpeedBoostConsumable = consumable;
+
         isSpeedBoosted = value;
         speedBoostAmount = boostAmount;
+
+        if (value)
+        {
+            if (speedBoostParticle != null)
+            {
+                speedBoostParticleInstance = Instantiate(speedBoostParticle, transform);
+            }
+        }
+        else
+        {
+            if (speedBoostParticleInstance != null)
+            {
+                Destroy(speedBoostParticleInstance.gameObject);
+            }
+
+            currentSpeedBoostConsumable = null;
+        }
     }
 
     private void OnDrawGizmosSelected()
