@@ -47,6 +47,7 @@ public class AI : MonoBehaviour
     private bool isBurning;
 
     private Material material;
+    private Material aimSpriteMaterial;
 
     private Transform[] targetsInMap;
     private Transform[] pteroAirTargets;
@@ -99,6 +100,7 @@ public class AI : MonoBehaviour
                 animator.runtimeAnimatorController = guardController;
                 aimSpriteRenderer.enabled = true;
                 aimSpriteRenderer.sprite = trexArmSprite;
+                aimSpriteMaterial = aimSpriteRenderer.material;
                 break;
             case AIBehaviour.Fly:
                 RefreshCollider(true);
@@ -294,9 +296,13 @@ public class AI : MonoBehaviour
 
     IEnumerator FlashHurt()
     {
+        if (aimSpriteMaterial != null)
+            aimSpriteMaterial.SetFloat("_IsHurt", 1.0f);
         material.SetFloat("_IsHurt", 1.0f);
         yield return new WaitForSeconds(0.2f);
         material.SetFloat("_IsHurt", 0.0f);
+        if (aimSpriteMaterial != null)
+            aimSpriteMaterial.SetFloat("_IsHurt", 0.0f);
     }
 }
 
