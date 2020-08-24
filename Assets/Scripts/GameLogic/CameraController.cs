@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera cvc;
     [SerializeField] private float cameraZoomSpeed;
     [SerializeField] private float minZoom;
+    [SerializeField] private float sizeBuffer;
 
     private Camera mainCam;
 
@@ -116,13 +117,13 @@ public class CameraController : MonoBehaviour
             if (screenRatio >= targetRatio)
             {
                 //cvc.m_Lens.OrthographicSize = (targetBounds.y / 2);
-                cvc.m_Lens.OrthographicSize = Mathf.Lerp(cvc.m_Lens.OrthographicSize, (targetBounds.y / 2) + 3, cameraZoomSpeed * Time.deltaTime);
+                cvc.m_Lens.OrthographicSize = Mathf.Lerp(cvc.m_Lens.OrthographicSize, (targetBounds.y / 2) + sizeBuffer, cameraZoomSpeed * Time.deltaTime);
             }
             else
             {
                 float differenceInSize = targetRatio / screenRatio;
                 //cvc.m_Lens.OrthographicSize = (targetBounds.y / 2 * differenceInSize);
-                cvc.m_Lens.OrthographicSize = Mathf.Lerp(cvc.m_Lens.OrthographicSize, (targetBounds.y / 2 * differenceInSize) + 3, cameraZoomSpeed * Time.deltaTime);
+                cvc.m_Lens.OrthographicSize = Mathf.Lerp(cvc.m_Lens.OrthographicSize, (targetBounds.y / 2 * differenceInSize) + sizeBuffer, cameraZoomSpeed * Time.deltaTime);
             }
         }
         if (cvc.m_Lens.OrthographicSize < minZoom)
