@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mine : Explosive
 {
+    public SpriteRenderer triggerSprite;
     private bool isSet = false;
     private Material material;
 
@@ -20,16 +21,25 @@ public class Mine : Explosive
         rigidbody.AddForce(transform.right * initialForce);
         material = GetComponent<SpriteRenderer>().material;
         material.SetColor("_Color",Color.white);
+        triggerSprite.enabled = false;
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.GetComponent<Weapon>())
+        {
+            if (isSet)
+            {
+                Explode();
+            }
+        }
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Wall"))
         {
             if (isSet == false)
             {
                 StartCoroutine("Pulsate");
+                triggerSprite.enabled = true;
             }
             isSet = true;
             rigidbody.bodyType = RigidbodyType2D.Kinematic;
@@ -45,7 +55,7 @@ public class Mine : Explosive
             return;
         }
 
-        if (collision.GetComponent<PlayerMovement>() || collision.GetComponent<AI>())
+        if (collision.GetComponent<PlayerMovement>() || collision.GetComponent<AI>() || collision.GetComponent<Projectile>() || collision.GetComponent<Flame>())
         {
             Explode();
         }
