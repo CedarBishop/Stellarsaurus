@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    public List<PlayerMovement> playersInGame = new List<PlayerMovement>();
+    public List<Transform> playersInGame = new List<Transform>();
     public Transform tracker;
     private Vector3 middlePoint;
     public CinemachineVirtualCamera cvc;
@@ -41,9 +41,9 @@ public class CameraController : MonoBehaviour
         if (playersInGame.Count != 0)
         {
             middlePoint = Vector2.zero;
-            foreach (PlayerMovement pm in playersInGame)     // for each player, add their positions together then divide for the middle point.
+            foreach (Transform pm in playersInGame)     // for each player, add their positions together then divide for the middle point.
             {
-                middlePoint += pm.transform.position;
+                middlePoint += pm.position;
             }
             middlePoint /= playersInGame.Count;
 
@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
         {
             for (int m = i; m < playersInGame.Count; m++)
             {
-                temp = Vector2.Distance(playersInGame[i].transform.position, playersInGame[m].transform.position);
+                temp = Vector2.Distance(playersInGame[i].position, playersInGame[m].position);
                 //float distX = Mathf.Abs(playersInGame[i].transform.position.x - playersInGame[m].transform.position.x);
                 //float distY = Mathf.Abs(playersInGame[i].transform.position.y - playersInGame[m].transform.position.y);
 
@@ -93,8 +93,8 @@ public class CameraController : MonoBehaviour
             {
                 for (int m = i; m < playersInGame.Count; m++)
                 {
-                    float distX = Mathf.Abs(playersInGame[i].transform.position.x - playersInGame[m].transform.position.x);
-                    float distY = Mathf.Abs(playersInGame[i].transform.position.y - playersInGame[m].transform.position.y);
+                    float distX = Mathf.Abs(playersInGame[i].position.x - playersInGame[m].position.x);
+                    float distY = Mathf.Abs(playersInGame[i].position.y - playersInGame[m].position.y);
 
                     xBounds = (distX > xBounds) ? distX : xBounds;
                     yBounds = (distY > yBounds) ? distY : yBounds;

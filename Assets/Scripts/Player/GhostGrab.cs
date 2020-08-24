@@ -10,7 +10,7 @@ public class GhostGrab : MonoBehaviour
 
     [HideInInspector] public Player player;
 
-    private Camera mainCamera;
+    private CameraController camerController;
     private GhostMovement ghostMovement;
     public Grabbable grabbable;
     public Interactable interactable;
@@ -19,14 +19,25 @@ public class GhostGrab : MonoBehaviour
 
     void Start()
     {
-        mainCamera = Camera.main;
+        camerController = Camera.main.GetComponent<CameraController>();
         ghostMovement = GetComponent<GhostMovement>();
+
+        camerController.playersInGame.Add(transform);
     }
-  
+
+    private void OnDestroy()
+    {
+        camerController.playersInGame.Remove(transform);
+    }
+
     private void OnTriggerStay2D (Collider2D other)
     {
         interactable = other.GetComponent<Interactable>();
-        grabbable = other.GetComponent<Grabbable>();
+        if (other.GetComponent<Grabbable>())
+        {
+            grabbable = other.GetComponent<Grabbable>();
+        }
+        
     }
 
     public void Grab ()
@@ -39,6 +50,8 @@ public class GhostGrab : MonoBehaviour
         if (heldObject != null)
         {
             print("Ghost drop");
+
+            
             Drop();
             return;
         }

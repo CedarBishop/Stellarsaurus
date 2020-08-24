@@ -44,13 +44,16 @@ public class Weapon : MonoBehaviour
         weaponSpawner = _WeaponSpawner;
     }
 
-    public void OnDrop(WeaponType weapon, int Ammo)
+    public void OnDrop(WeaponType weapon, int Ammo, bool shouldThrow = true)
     {
         weaponType = weapon;
         StartCoroutine("DestroySelf");
         ammo = Ammo;
         Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
-        rigidbody.AddForce(transform.right * 500);
+        if (shouldThrow)
+        {
+            rigidbody.AddForce(transform.right * 500);
+        }
         isDropped = true;
         SetupWeaponSprite();
     }

@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (cameraController != null)
         {
-            cameraController.playersInGame.Add(this);
+            cameraController.playersInGame.Add(transform);
         }
     }
 
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (cameraController != null)
         {
-            cameraController.playersInGame.Remove(this);
+            cameraController.playersInGame.Remove(transform);
         }
     }
 

@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             pos = currentCharacter.transform.position;
             if (cameraController != null)
             {
-                cameraController.playersInGame.Remove(playerMovement);
+                cameraController.playersInGame.Remove(playerMovement.transform);
             }
             Destroy(currentCharacter);
         }
@@ -165,6 +165,7 @@ public class Player : MonoBehaviour
         ghostMovement = currentGhost.GetComponent<GhostMovement>();
         ghostGrab = currentGhost.GetComponent<GhostGrab>();
         ghostMovement.playerNumber = playerNumber;
+        ghostMovement.headAnimNumber = headIndex;
         ghostGrab.playerNumber = playerNumber;
         ghostGrab.player = this;
     }
