@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
             {
                 cameraController.playersInGame.Remove(playerMovement.transform);
             }
-            Destroy(currentCharacter);
+            Destroy(currentCharacter,0.1f);
         }
 
         if (GameManager.instance.SelectedGamemode == null)
