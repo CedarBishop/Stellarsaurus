@@ -23,6 +23,8 @@ public class PterodactylSwoop : StateMachineBehaviour
     private int pathIndex;
     private AStar aStar;
 
+    private float timerTillCanHitAgain;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {       
         ai = animator.GetComponent<AI>();
@@ -162,17 +164,26 @@ public class PterodactylSwoop : StateMachineBehaviour
 
     void Damage()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ai.aiType.attackSize);
-        if (colliders != null)
+        if (timerTillCanHitAgain <= 0)
         {
-            foreach (var collider in colliders)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ai.aiType.attackSize);
+            if (colliders != null)
             {
-                if (collider.GetComponent<PlayerHealth>())
+                foreach (var collider in colliders)
                 {
-                    collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
+                    if (collider.GetComponent<PlayerHealth>())
+                    {
+                        collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
+                        timerTillCanHitAgain = 2;
+                    }
                 }
             }
         }
+        else
+        {
+            timerTillCanHitAgain -= Time.fixedDeltaTime;
+        }
+        
     }
 
     void WallCheck()

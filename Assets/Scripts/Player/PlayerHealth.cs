@@ -58,6 +58,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void HitByAI(int damage)
     {
+        if (isAlive == false)  // Already dead so cant be killed again
+        {
+            return;
+        }
         if (hasShield)
         {
             UseShield();
@@ -69,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine("Haptic");
         }
         StartCoroutine("FlashHurt");
-        ParticleSystem p = Instantiate(bloodSplatterParticle,transform.position,Quaternion.identity);
+        ParticleSystem p = Instantiate(bloodSplatterParticle, transform.position, Quaternion.identity);
         p.Play();
         if (playerBattery != null)
         {
@@ -79,10 +83,10 @@ public class PlayerHealth : MonoBehaviour
         Destroy(p.gameObject,3);
         if (health <= 0)
         {
+            isAlive = false;
             Death();
         }
     }
-
 
     public void HitByPlayer (int projectilePlayerNumber, bool canHurtSelf = false)
     {
@@ -118,6 +122,8 @@ public class PlayerHealth : MonoBehaviour
         {
             StartCoroutine("Haptic");
         }
+
+        StartCoroutine("FlashHurt");
 
         JuiceManager.TimeSleep(0.5f,0.1f);
 
@@ -191,7 +197,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 StartCoroutine("Haptic");
             }
-            StartCoroutine("FlashHurt");
             if (health <= 0)
             {
                 if (projectilePlayerNumber != playerNumber)
@@ -212,6 +217,11 @@ public class PlayerHealth : MonoBehaviour
         if (GameManager.instance.SelectedGamemode != null)
         {
             GameManager.instance.SelectedGamemode.AddToStats(playerNumber,StatTypes.Deaths, 1);
+        }
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            spriteRenderers[i].material.SetFloat("_IsGlitching", 1.0f);
         }
 
         playerParent.CharacterDied(true);
