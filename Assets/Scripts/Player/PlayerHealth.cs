@@ -215,7 +215,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         playerParent.CharacterDied(true);
-        Destroy(gameObject);
     }
 
     public void Heal(int healingAmount)
@@ -295,6 +294,6 @@ public class PlayerHealth : MonoBehaviour
         if (hapticIsActive)
         {
             gamepad.ResetHaptics();
-        }        
+        }
     }
 }
