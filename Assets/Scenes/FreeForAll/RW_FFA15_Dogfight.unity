@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -65068,6 +65068,46 @@ PrefabInstance:
         type: 3}
       propertyPath: orthographic size
       value: 15.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: 12.179367
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -11.670212
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -11.683592
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -6.9199095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 12.412969
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -6.8773746
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 12.412982
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362119951789293873, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: 12.131026
       objectReference: {fileID: 0}
     - target: {fileID: 7243913491450375024, guid: 9481e4b3c7a0ed443b1fb165b6f32407,
         type: 3}
