@@ -104,7 +104,7 @@ public class ExtractionObjective : MonoBehaviour
         if (GameManager.instance.SelectedGamemode != null)
         {
             GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
-            ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, transform.position, Quaternion.identity);
+            ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, playerShoot.gunSprite.transform.position, Quaternion.identity);
             scorePopup.Init(GameManager.instance.SelectedGamemode.extractionPointReward);
         }        
     }

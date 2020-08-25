@@ -91,6 +91,8 @@ public class FreeForAllGamemode : BaseGamemode
                 if (players[i].isStillAlive)
                 {
                     winningPlayerNumber = players[i].playerNumber;
+                    ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, players[i].playerMovement.transform.position, Quaternion.identity);
+                    scorePopup.Init(lastPlayerAlivePoints);
                 }
             }
             AwardRoundWin(winningPlayerNumber);

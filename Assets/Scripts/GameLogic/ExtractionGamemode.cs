@@ -90,12 +90,16 @@ public class ExtractionGamemode : BaseGamemode
 
         if (playersStillAliveThisRound == 1)
         {
+
+
             int winningPlayerNumber = 0;
             for (int i = 0; i < players.Length; i++)
             {
                 if (players[i].isStillAlive)
                 {
                     winningPlayerNumber = players[i].playerNumber;
+                    ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, players[i].playerMovement.transform.position, Quaternion.identity);
+                    scorePopup.Init(lastPlayerAlivePoints);
                 }
             }
             AwardRoundWin(winningPlayerNumber);
