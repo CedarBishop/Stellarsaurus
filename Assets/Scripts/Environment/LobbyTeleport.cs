@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class LobbyTeleport : MonoBehaviour
 {
-    public Transform arenaSpawnPoint;
+    public Transform[] newSpawnPoints;
     protected ParticleSystem[] particles;
 
     public Camera lobbyCamera;
     public Camera arenaCamera;
-
-    private bool hasActivatedCamera;
 
     private void Start()
     {
@@ -19,13 +17,13 @@ public class LobbyTeleport : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (arenaSpawnPoint == null)
+        if (newSpawnPoints == null)
         {
             return;
         }
         if (collision.GetComponent<Rigidbody2D>())
         {
-            collision.transform.position = arenaSpawnPoint.position;
+            collision.transform.position = newSpawnPoints[0].position;
             if (particles != null)
             {
                 particles[0].Play();
@@ -38,14 +36,15 @@ public class LobbyTeleport : MonoBehaviour
             }
             if (particles[1] != null)
             {
-                particles[1].transform.position = arenaSpawnPoint.position;
+                particles[1].transform.position = newSpawnPoints[0].position;
                 particles[1].Play();
             }              
         }
         if (collision.GetComponent<PlayerShoot>())
         {
             PlayerShoot player = collision.GetComponent<PlayerShoot>();
-            LevelManager.instance.startingPositions[player.playerNumber - 1].position = arenaSpawnPoint.position;
+            LevelManager.instance.startingPositions[player.playerNumber - 1].position = newSpawnPoints[player.playerNumber - 1].position;
+            player.transform.position = newSpawnPoints[player.playerNumber - 1].position;
             player.DestroyWeapon();
             ActivateCameras();
         }
