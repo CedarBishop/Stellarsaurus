@@ -8,7 +8,7 @@ public class Mine : Explosive
     private bool isSet = false;
     private Material material;
 
-    public override void InitExplosive(float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
+    public override void InitExplosive(float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, string explosionSFXName, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
     {
         explosionSize = explodeSize;
         damage = _Damage;
@@ -22,6 +22,7 @@ public class Mine : Explosive
         material = GetComponent<SpriteRenderer>().material;
         material.SetColor("_Color",Color.white);
         triggerSprite.enabled = false;
+        sfxName = explosionSFXName;
 
     }
 

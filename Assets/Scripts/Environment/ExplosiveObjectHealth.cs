@@ -57,7 +57,7 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
 
             if (SoundManager.instance != null)
             {
-                SoundManager.instance.PlaySFX("SFX_Explosion");
+                SoundManager.instance.PlaySFX("SFX_BarrelExplosion");
             }
         }        
     }

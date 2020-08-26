@@ -14,12 +14,15 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip mainMenuMusic;
     [SerializeField] private AudioClip gameMusic;
+    [SerializeField] private AudioClip transistionMusic;
 
     [SerializeField] Sound[] sounds;
     [SerializeField] Sound[] exclusiveSounds;
     private AudioSource musicAudioSource;
     [Range(0.0f, 1.0f)] private float currentSfxVolume;
     [Range(0.0f, 1.0f)] private float currentMusicVolume;
+
+    private bool isMainMenu;
 
     private void Awake()
     {
@@ -57,13 +60,15 @@ public class SoundManager : MonoBehaviour
         currentSfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
         SetSFXVolume(currentSfxVolume);
 
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             PlayMusic(true);
+            isMainMenu = true;
         }
         else
         {
             PlayMusic(false);
+            isMainMenu = false;
         }
 
         SceneManager.activeSceneChanged += OnSceneChange;
@@ -74,14 +79,38 @@ public class SoundManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             PlayMusic(true);
+            isMainMenu = true;
         }
         else 
         {
-            if (musicAudioSource.clip != gameMusic)
+            if (isMainMenu)
             {
-                PlayMusic(false);
+                StartCoroutine("TransistionToGameMusic");
+                isMainMenu = false;
             }
+            else
+            {
+                if (musicAudioSource.clip != gameMusic)
+                {
+                    PlayMusic(false);
+                    isMainMenu = false;
+                }
+            }
+           
         }
+    }
+
+    IEnumerator TransistionToGameMusic ()
+    {
+        float delay = 0;
+        if (transistionMusic != null)
+        {
+            delay = transistionMusic.length;
+            musicAudioSource.clip = transistionMusic;
+            musicAudioSource.Play();
+        }
+        yield return new WaitForSeconds(delay);
+        PlayMusic(false);
     }
 
     private void OnDestroy()
@@ -95,6 +124,10 @@ public class SoundManager : MonoBehaviour
         {
             if (sounds[i].name == soundName)
             {
+                if (sounds[i].clip == null)
+                {
+                    return;
+                }
                 sounds[i].Play(audioControllers.Dequeue(), currentSfxVolume);
                 CheckOutOfSources();
                 return;

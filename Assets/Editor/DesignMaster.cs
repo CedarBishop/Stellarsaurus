@@ -441,8 +441,13 @@ public class DesignMaster : EditorWindow
                     weaponTypes[i].explosionSize = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionSize);
                     EditorGUILayout.Space(8);
 
+                    EditorGUILayout.Space(8);
+                    GUILayout.Label("Explosion Sound FX Name", EditorStyles.boldLabel);
+                    weaponTypes[i].explosionSFXName = EditorGUILayout.TextField(weaponTypes[i].explosionSFXName);
+
                     GUILayout.Label("Explosion Time", EditorStyles.boldLabel);
                     weaponTypes[i].explosionTime = EditorGUILayout.DelayedFloatField(weaponTypes[i].explosionTime);
+
                 }
 
                 if (weaponTypes[i].weaponUseType == WeaponUseType.Consumable)

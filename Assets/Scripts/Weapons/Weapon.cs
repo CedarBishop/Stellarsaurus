@@ -226,6 +226,7 @@ public class WeaponType
     public float sprayAmount;
     public float explosionSize;
     public float explosionTime;
+    public string explosionSFXName;
 
     public ConsumableType consumableType;
     public float duration;

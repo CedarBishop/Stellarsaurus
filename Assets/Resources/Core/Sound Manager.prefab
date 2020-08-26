@@ -49,6 +49,7 @@ MonoBehaviour:
   sfxObjectPoolSize: 100
   mainMenuMusic: {fileID: 8300000, guid: 791b30d6266023947b65cb24755c66d0, type: 3}
   gameMusic: {fileID: 8300000, guid: c571147e723dfde4b962dff7c009127f, type: 3}
+  transistionMusic: {fileID: 8300000, guid: 9073e1a9fceeeb64b976b5c6c2f64abc, type: 3}
   sounds:
   - name: SFX_JumpUp
     clip: {fileID: 8300000, guid: ea6ee8a5bf930404295c2f119c938eeb, type: 3}
@@ -65,18 +66,18 @@ MonoBehaviour:
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
-  - name: SFX_Shot1
-    clip: {fileID: 8300000, guid: f6586f2dca2721743a593c73a329883a, type: 3}
+  - name: SFX_UIHover
+    clip: {fileID: 8300000, guid: 8fb06c3c4f25fd54d996700ed9803876, type: 3}
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
-  - name: SFX_Shot2
-    clip: {fileID: 8300000, guid: c84f0fb033ce6fc4f8810573694a7f79, type: 3}
+  - name: SFX_UIChoose
+    clip: {fileID: 8300000, guid: b9728c4e318ffc647bcd5e4e1637e25b, type: 3}
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
-  - name: SFX_Shot3
-    clip: {fileID: 8300000, guid: 96d6d8accaf1e3e4d80c04bcf7e8cf46, type: 3}
+  - name: SFX_GlassBreak
+    clip: {fileID: 8300000, guid: e6c6b37b67b09b34faf282281a767831, type: 3}
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
@@ -85,19 +86,19 @@ MonoBehaviour:
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
-  - name: SFX_ShotLaser1
-    clip: {fileID: 8300000, guid: 5a00bdea9e970904f9f8201fee56a2ef, type: 3}
+  - name: SFX_GrenadeExplosion
+    clip: {fileID: 8300000, guid: 1d6b5c5015438ba479e0af64b8cba77c, type: 3}
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
-  - name: SFX_Explosion
-    clip: {fileID: 8300000, guid: 9130548c14a551046897f101f362d873, type: 3}
+  - name: SFX_BarrelExplosion
+    clip: {fileID: 8300000, guid: 1d6b5c5015438ba479e0af64b8cba77c, type: 3}
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
   - name: SFX_BulletToEnvironment
     clip: {fileID: 8300000, guid: 8658c9a80557ad74fb50df4bcd5d6904, type: 3}
-    pitch: 0.9
+    pitch: 1
     volume: 1
     audioSource: {fileID: 0}
   - name: SFX_DinasaurSpawn
@@ -117,6 +118,51 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: SFX_Teleport
     clip: {fileID: 8300000, guid: 3019c7ae16268a3439626076b5c55529, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_PlayerBurn
+    clip: {fileID: 8300000, guid: 724dce5e309e51646978606bc9b2324b, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_DinoBurn
+    clip: {fileID: 8300000, guid: 6081fdcacf53f5f4b8f69a010cf67994, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_Disarm
+    clip: {fileID: 8300000, guid: 3019c7ae16268a3439626076b5c55529, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_WeaponPickup
+    clip: {fileID: 8300000, guid: 4274b92c76f14a54aa052c34b975f239, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_BulletShellDrop
+    clip: {fileID: 8300000, guid: dc585f2ecfd68244cae90e8ffd475d7c, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_ObjectDrop
+    clip: {fileID: 8300000, guid: 4275253b6eddaa34892e899a4c72007c, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_GrenadeExplosion
+    clip: {fileID: 8300000, guid: 9130548c14a551046897f101f362d873, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_RocketExplosion
+    clip: {fileID: 8300000, guid: 465c8e0c867249f4e8d867a16c035d86, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_MineExplosion
+    clip: {fileID: 8300000, guid: 9130548c14a551046897f101f362d873, type: 3}
     pitch: 0.9
     volume: 1
     audioSource: {fileID: 0}

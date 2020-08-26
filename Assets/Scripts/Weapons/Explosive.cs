@@ -14,6 +14,8 @@ public class Explosive : Projectile
     protected float magnitude;
     protected Rigidbody2D rigidbody;
     protected Animator animator;
+    protected string sfxName;
+
     IEnumerator CoExplode ()
     {
         yield return new WaitForSeconds(timeTillExplode);
@@ -85,14 +87,14 @@ public class Explosive : Projectile
 
         if (SoundManager.instance != null)
         {
-            SoundManager.instance.PlaySFX("SFX_Explosion");
+            SoundManager.instance.PlaySFX(sfxName);
         }
 
         Destroy(gameObject);
     }
 
 
-    public virtual void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
+    public virtual void InitExplosive (float explodeTime, float explodeSize, int _Damage, int _PlayerNumber, float force, string explosionSFXName,float cameraShakeDuration, float cameraShakeMagnitude, float cookTime = 0)
     {
         animator = GetComponent<Animator>();
 
@@ -117,7 +119,7 @@ public class Explosive : Projectile
         damage = _Damage;
         playerNumber = _PlayerNumber;
         cameraShake = Camera.main.GetComponent<CameraShake>();
-        
+        sfxName = explosionSFXName;
         initialForce = force;
         duration = cameraShakeDuration;
         magnitude = cameraShakeMagnitude;
