@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 535c8c2eccc2ee3469cb78781e04e2a8, type: 2}
+    - target: {fileID: 8690183177652790541, guid: 510ec5363aef25a4e96948227c518bc3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.196
+      objectReference: {fileID: 0}
     - target: {fileID: 8690183177652790542, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
@@ -20,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.25
+      value: 0.29166666
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
@@ -50,13 +55,13 @@ PrefabInstance:
     - target: {fileID: 8690183178308944307, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Name
-      value: Stalactite 3
+      value: Stalactite 1
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944318, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7868633158675956393, guid: 98158623bcfcc464ba702812c0827a25,
+      objectReference: {fileID: -8787843385998105733, guid: 98158623bcfcc464ba702812c0827a25,
         type: 3}
     - target: {fileID: 8690183178308944319, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}

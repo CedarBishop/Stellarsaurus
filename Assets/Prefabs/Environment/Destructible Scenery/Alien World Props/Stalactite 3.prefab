@@ -12,51 +12,56 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 535c8c2eccc2ee3469cb78781e04e2a8, type: 2}
+    - target: {fileID: 8690183177652790541, guid: 510ec5363aef25a4e96948227c518bc3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1972
+      objectReference: {fileID: 0}
     - target: {fileID: 8690183177652790542, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.7083333
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.45833334
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.22916667
+      value: 0.4375
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.7083333
+      value: 0.5416667
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944305, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.45833334
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944307, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Name
-      value: Rock Small 2
+      value: Stalactite 3
       objectReference: {fileID: 0}
     - target: {fileID: 8690183178308944318, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7825032800629940922, guid: 98158623bcfcc464ba702812c0827a25,
+      objectReference: {fileID: -7868633158675956393, guid: 98158623bcfcc464ba702812c0827a25,
         type: 3}
     - target: {fileID: 8690183178308944319, guid: 510ec5363aef25a4e96948227c518bc3,
         type: 3}
