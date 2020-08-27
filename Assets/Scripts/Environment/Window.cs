@@ -39,6 +39,11 @@ public class Window : MonoBehaviour
 
     public void UpdateHealth(int damage)
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_GlassBreak");
+        }
+
         health -= damage;
         if (health <= 0)
             DeathSequence();

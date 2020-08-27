@@ -23,6 +23,11 @@ public class LobbyTeleport : MonoBehaviour
         }
         if (collision.GetComponent<Rigidbody2D>())
         {
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_Teleport");
+            }
+
             collision.transform.position = newSpawnPoints[0].position;
             if (particles != null)
             {

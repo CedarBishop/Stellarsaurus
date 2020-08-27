@@ -14,6 +14,11 @@ public class ExitTeleporter : MonoBehaviour
     {
         if (collision.GetComponent<PlayerMovement>())
         {
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_Teleport");
+            }
+
             particles[0].Play();
             Application.Quit();
         }

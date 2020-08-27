@@ -24,6 +24,10 @@ public class RaptorAttack : StateMachineBehaviour
 
     void Attack (Animator animator)
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_RaptorBite");
+        }
         Collider2D[] colliders = Physics2D.OverlapCircleAll(animator.transform.position + (((perception.isFacingRight)? (Vector3.right): Vector3.left) * ai.aiType.attackRange), ai.aiType.attackSize);
 
         if (colliders != null)
