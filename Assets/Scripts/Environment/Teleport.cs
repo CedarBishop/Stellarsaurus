@@ -28,6 +28,11 @@ public class Teleport : MonoBehaviour
         }
         if (collision.GetComponent<Rigidbody2D>())
         {
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_Teleport");
+            }
+
             Rigidbody2D collisionRb = collision.GetComponent<Rigidbody2D>();
             //if not on the check list (ie. is entering a tele)...
             if (!CheckList(collisionRb))

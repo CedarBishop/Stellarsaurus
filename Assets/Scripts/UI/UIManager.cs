@@ -242,6 +242,10 @@ public class UIManager : MonoBehaviour
 
     public void EndMatch ()
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_UIChoose");
+        }
         GameManager.instance.EndMatch();
     }
 

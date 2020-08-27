@@ -608,7 +608,12 @@ public class PlayerShoot : MonoBehaviour
 
                 CheckIfConsumable();
             }
-        }        
+        }
+
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_WeaponPickup");
+        }
     }
 
     public void Grab(WeaponType type)
@@ -623,6 +628,11 @@ public class PlayerShoot : MonoBehaviour
         }
         currentWeapon = type;
         InitializeWeapon();
+
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_WeaponPickup");
+        }
     }
 
 

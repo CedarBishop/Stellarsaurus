@@ -72,7 +72,7 @@ public class Cursor : MonoBehaviour
         }
         if (SoundManager.instance != null)
         {
-            SoundManager.instance.PlaySFX("SFX_JumpLand");
+            SoundManager.instance.PlaySFX("SFX_UIChoose");
         }
     }
 
@@ -90,6 +90,10 @@ public class Cursor : MonoBehaviour
                 highlightedButton = button;
                 isHighlightingButton = true;
                 button.image.color = button.colors.highlightedColor;
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.PlaySFX("SFX_UIHover");
+                }
             }
         }
         if (isHighlightingButton == false)

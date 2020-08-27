@@ -14,6 +14,12 @@ public class AI : MonoBehaviour
     public RuntimeAnimatorController flyerController;
     public RuntimeAnimatorController carrierController;
 
+    public Material patrolMaterial;
+    public Material jumpPatrolMaterial;
+    public Material guardMaterial;
+    public Material flyerMaterial;
+    public Material carrierMaterial;
+
     public PathFindingAgent agent;
     public AiController controller;
 
@@ -90,6 +96,7 @@ public class AI : MonoBehaviour
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = patrolController;
+                spriteRenderer.material = patrolMaterial;
                 animator.SetBool("CanAttack", true);
 
                 break;
@@ -101,6 +108,7 @@ public class AI : MonoBehaviour
                 aimSpriteRenderer.enabled = true;
                 aimSpriteRenderer.sprite = trexArmSprite;
                 aimSpriteMaterial = aimSpriteRenderer.material;
+                spriteRenderer.material = guardMaterial;
                 break;
             case AIBehaviour.Fly:
                 RefreshCollider(true);
@@ -108,12 +116,14 @@ public class AI : MonoBehaviour
                 agent.enabled = false;
                 animator.runtimeAnimatorController = flyerController;
                 collider.isTrigger = true;
+                spriteRenderer.material = flyerMaterial;
                 break;
             case AIBehaviour.Carrier:
                 RefreshCollider(true);
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = carrierController;
+                spriteRenderer.material = carrierMaterial;
                 break;
             case AIBehaviour.JumpPatrol:
                 RefreshCollider(true);
@@ -124,6 +134,7 @@ public class AI : MonoBehaviour
                 perception.isUsingAIController = true;
                 animator.SetBool("CanAttack", true);
                 Destroy(GetComponent<Rigidbody2D>());
+                spriteRenderer.material = jumpPatrolMaterial;
 
                 agent._fallLimit = aiType.fallLimit;
                 agent._jumpStrength = (int)aiType.jumpStrength;
@@ -133,6 +144,11 @@ public class AI : MonoBehaviour
                 break;
             default:
                 break;
+        }
+
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_DinasaurSpawn");
         }
     }
 
@@ -215,6 +231,10 @@ public class AI : MonoBehaviour
         while (health > 0)
         {
             health--;
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_DinoBurn");
+            }
             if (health <= 0)
             {
                 Death(projectilePlayerNumber);

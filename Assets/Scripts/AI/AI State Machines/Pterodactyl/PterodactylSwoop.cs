@@ -175,6 +175,11 @@ public class PterodactylSwoop : StateMachineBehaviour
                     {
                         collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
                         timerTillCanHitAgain = 2;
+
+                        if (SoundManager.instance != null)
+                        {
+                            SoundManager.instance.PlaySFX("SFX_RaptorBite");
+                        }
                     }
                 }
             }
