@@ -128,6 +128,11 @@ public class Explosive : Projectile
 
         OnSpawn();
 
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.ExplosivesUsed, 1);
+        }
+
         if (damagesOnHit == false )
         {
             StartCoroutine("CoExplode");

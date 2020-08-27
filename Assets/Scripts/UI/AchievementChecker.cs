@@ -80,6 +80,10 @@ public class AchievementChecker : MonoBehaviour
                                 }
                                 break;
                             case StatTypes.FlamesShot:
+                                if (CheckAchievementLevel(ref achievement, thisPlayerStats.flamesShot))
+                                {
+                                    achievements.Add(achievement);
+                                }
                                 break;
                             default:
                                 break;

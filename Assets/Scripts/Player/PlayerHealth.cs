@@ -245,6 +245,11 @@ public class PlayerHealth : MonoBehaviour
             ParticleSystem particle = Instantiate(healParticle, transform);
             Destroy(particle.gameObject, 3);
         }
+
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.HealthRegained, 1);
+        }
     }
 
 

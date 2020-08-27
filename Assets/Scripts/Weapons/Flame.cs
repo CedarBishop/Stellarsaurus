@@ -9,6 +9,11 @@ public class Flame : Bullet
 		base.InitialiseProjectile(Range, _Damage, _PlayerNumber, force, Spread, spawnBulletShell);
 		destroysOnHit = false;
 		transform.rotation = Quaternion.identity;
+
+		if (GameManager.instance.SelectedGamemode != null)
+		{
+			GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.FlamesShot, 1);
+		}
 	}
 
 	protected override void HitPlayer(PlayerHealth playerHealth)
