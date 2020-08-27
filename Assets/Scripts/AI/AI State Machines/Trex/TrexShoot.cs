@@ -89,5 +89,10 @@ public class TrexShoot : StateMachineBehaviour
 
         AIProjectile projectile =  Instantiate(aiProjectile, firingPos, aimOrigin.rotation);
         projectile.InitialiseProjectile(ai.aiType.attackDamage,directionToTarget,ai.aiType.projectileForce,ai.aiType.attackRange);
+
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_AILaser");
+        }
     }
 }

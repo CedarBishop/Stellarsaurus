@@ -184,7 +184,11 @@ public class AI : MonoBehaviour
     }
 
     public virtual void TakeDamage (int playerNumber,int damage)
-    {        
+    {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_DinoHurt");
+        }
         health -= damage;
         StartCoroutine("FlashHurt");
         if (health <= 0)

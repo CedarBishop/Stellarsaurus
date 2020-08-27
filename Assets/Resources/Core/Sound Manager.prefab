@@ -166,6 +166,26 @@ MonoBehaviour:
     pitch: 0.9
     volume: 1
     audioSource: {fileID: 0}
+  - name: SFX_Extraction
+    clip: {fileID: 8300000, guid: 3019c7ae16268a3439626076b5c55529, type: 3}
+    pitch: 0.9
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_DinoHurt
+    clip: {fileID: 8300000, guid: 724dce5e309e51646978606bc9b2324b, type: 3}
+    pitch: 0.9
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_AILaser
+    clip: {fileID: 8300000, guid: 5a00bdea9e970904f9f8201fee56a2ef, type: 3}
+    pitch: 0.9
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_Jumppad
+    clip: {fileID: 8300000, guid: 9490154b66ef07848b09d799cf206ae1, type: 3}
+    pitch: 0.9
+    volume: 1
+    audioSource: {fileID: 0}
   exclusiveSounds:
   - name: SFX_ElectricFieldAmbient
     clip: {fileID: 8300000, guid: 1049fa14c977bcf45b0af35268edca21, type: 3}

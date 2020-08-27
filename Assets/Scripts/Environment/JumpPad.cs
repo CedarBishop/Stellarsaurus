@@ -19,6 +19,11 @@ public class JumpPad : MonoBehaviour
             {
                 collision.GetComponent<PlayerMovement>().OnJumpPadBoost();
             }
+
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_Jumppad");
+            }
         }
     }
 }

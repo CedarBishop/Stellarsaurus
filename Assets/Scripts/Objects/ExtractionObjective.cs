@@ -106,7 +106,12 @@ public class ExtractionObjective : MonoBehaviour
             GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
             ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, playerShoot.gunSprite.transform.position, Quaternion.identity);
             scorePopup.Init(GameManager.instance.SelectedGamemode.extractionPointReward);
-        }        
+        }
+
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX("SFX_Extraction");
+        }
     }
 
     public void Grab(Transform holderTransform)
