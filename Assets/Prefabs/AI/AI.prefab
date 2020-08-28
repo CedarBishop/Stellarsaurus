@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
+  - {fileID: 2100000, guid: 6d9f887fe84d97348a5ba61c2cfd17aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,7 +138,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
+  - {fileID: 2100000, guid: 6ea9b1992eba0aa40a636afbb4abfae6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,11 +213,11 @@ MonoBehaviour:
   guardController: {fileID: 9100000, guid: 10312a8c65440bd45b4fafd089a7b930, type: 2}
   flyerController: {fileID: 9100000, guid: 8db40813563063048a6e1ef1ca6af9da, type: 2}
   carrierController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
-  patrolMaterial: {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
-  jumpPatrolMaterial: {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
-  guardMaterial: {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
-  flyerMaterial: {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
-  carrierMaterial: {fileID: 2100000, guid: 6cb1a0406c22c6047bbf26e71298f85c, type: 2}
+  patrolMaterial: {fileID: 2100000, guid: fe3fc2c153d7b884da85125f5ed7f78f, type: 2}
+  jumpPatrolMaterial: {fileID: 2100000, guid: fe3fc2c153d7b884da85125f5ed7f78f, type: 2}
+  guardMaterial: {fileID: 2100000, guid: 6ea9b1992eba0aa40a636afbb4abfae6, type: 2}
+  flyerMaterial: {fileID: 2100000, guid: 026f722a303d5e44e8c4705125f1d17a, type: 2}
+  carrierMaterial: {fileID: 2100000, guid: 026f722a303d5e44e8c4705125f1d17a, type: 2}
   agent: {fileID: 7841679475487439284}
   controller: {fileID: 7696347152030521832}
   groundLayer:

@@ -67,7 +67,6 @@ public class AI : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<PolygonCollider2D>();
-        material = spriteRenderer.material;
         aStar = FindObjectOfType<AStar>();
         pathFindingGrid = aStar.GetComponent<PathFindingGrid>();
 
@@ -145,6 +144,8 @@ public class AI : MonoBehaviour
             default:
                 break;
         }
+
+        material = spriteRenderer.material;
 
         if (SoundManager.instance != null)
         {
