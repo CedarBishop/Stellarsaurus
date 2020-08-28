@@ -201,6 +201,11 @@ MonoBehaviour:
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
+  - name: SFX_LaserChargeDown
+    clip: {fileID: 8300000, guid: ec843217f2d9cba48b2f5ca9b859bbfc, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
   exclusiveSounds:
   - name: SFX_ElectricFieldAmbient
     clip: {fileID: 8300000, guid: 1049fa14c977bcf45b0af35268edca21, type: 3}

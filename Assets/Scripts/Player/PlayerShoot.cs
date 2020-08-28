@@ -58,6 +58,7 @@ public class PlayerShoot : MonoBehaviour
 
     private List<GameObject> objectsToDestoryOnWeaponDestroy = new List<GameObject>();
     private AudioSourceController chargeUpWeaponAudioController;
+    private AudioSourceController chargeDownWeaponAudioController;
 
 
     void Start()
@@ -230,7 +231,11 @@ public class PlayerShoot : MonoBehaviour
                         break;
                     default:
                         break;
+
+                       
                 }
+
+                StopChargeDownSound();
             }          
 
         }
@@ -422,6 +427,9 @@ public class PlayerShoot : MonoBehaviour
                 cameraShake = Camera.main.GetComponent<CameraShake>();
             }
         }
+
+        StopChargeUpSound();
+        StartChargeDownSound();
         if (canShoot)
         {
             switch (weaponUseType)
@@ -906,6 +914,24 @@ public class PlayerShoot : MonoBehaviour
         {
             chargeUpWeaponAudioController.StopPlaying();
             chargeUpWeaponAudioController = null;
+            StartChargeDownSound();
+        }
+    }
+
+    void StartChargeDownSound()
+    {
+        if (SoundManager.instance != null)
+        {
+            chargeDownWeaponAudioController = SoundManager.instance.PlaySFX(currentWeapon.chargeDownSound);
+        }
+    }
+
+    void StopChargeDownSound()
+    {
+        if (chargeDownWeaponAudioController != null)
+        {
+            chargeDownWeaponAudioController.StopPlaying();
+            chargeDownWeaponAudioController = null;
         }
     }
 }
