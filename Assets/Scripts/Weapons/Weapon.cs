@@ -214,6 +214,7 @@ public class WeaponType
     public FireType fireType;
     public float chargeUpTime;
     public string chargeUpSound;
+    public string chargeDownSound;
     public float cameraShakeDuration;
     public float cameraShakeMagnitude;
     public float knockBack;
