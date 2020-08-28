@@ -475,6 +475,11 @@ public class PlayerShoot : MonoBehaviour
                         gunOriginTransform.rotation);
                     Explosive explosive = g.GetComponent<Explosive>();
                     explosive.InitExplosive(currentWeapon.explosionTime, currentWeapon.explosionSize,currentWeapon.damage,playerNumber, currentWeapon.initialForce, currentWeapon.explosionSFXName, currentWeapon.cameraShakeDuration, currentWeapon.cameraShakeMagnitude, cookTime);
+
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
+                    }
                     break;
 
                 case WeaponUseType.Melee:       
@@ -504,6 +509,10 @@ public class PlayerShoot : MonoBehaviour
                          new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
                         gunOriginTransform.rotation).GetComponent<Boomerang>();
                     boomerang.InitialiseBoomerang(currentWeapon, playerNumber, this);
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
+                    }
                     break;
 
 
@@ -537,16 +546,33 @@ public class PlayerShoot : MonoBehaviour
                             if (hits[i].collider.GetComponent<PlayerHealth>())
                             {
                                 hits[i].collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
+                                if (GameManager.instance.SelectedGamemode != null)
+                                {
+                                    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
+                                }
                             }
                             else if (hits[i].collider.GetComponent<AI>())
                             {
                                 hits[i].collider.GetComponent<AI>().TakeDamage(playerNumber, currentWeapon.damage);
+                                if (GameManager.instance.SelectedGamemode != null)
+                                {
+                                    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
+                                }
                             }
                             else if (hits[i].collider.GetComponent<EnvironmentalObjectHealth>())
                             {
                                 hits[i].collider.GetComponent<EnvironmentalObjectHealth>().TakeDamage(currentWeapon.damage, playerNumber);
+                                if (GameManager.instance.SelectedGamemode != null)
+                                {
+                                    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
+                                }
                             }
                         }
+                    }
+
+                    if (GameManager.instance.SelectedGamemode != null)
+                    {
+                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
                     }
 
                     break;

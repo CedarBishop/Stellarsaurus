@@ -17,10 +17,7 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnSpawn ()
     {
-        if (GameManager.instance.SelectedGamemode != null)
-        {
-            GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
-        }
+        
     }
 
     protected virtual void OnHit()
