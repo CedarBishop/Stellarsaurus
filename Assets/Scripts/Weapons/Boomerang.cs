@@ -93,8 +93,12 @@ public class Boomerang : Projectile
         }
         else if (collision.GetComponent<EnvironmentalObjectHealth>())
         {
-            collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
-            isReturning = true;
+            EnvironmentalObjectHealth objectHealth = collision.GetComponent<EnvironmentalObjectHealth>();
+            objectHealth.TakeDamage(damage, playerNumber);
+            if (objectHealth.isDecorative == false)
+            {
+                isReturning = true;
+            }            
             if (Camera.main.TryGetComponent(out CameraShake cameraShake))
             {
                 cameraShake.StartShake(weaponType.cameraShakeDuration, weaponType.cameraShakeMagnitude);

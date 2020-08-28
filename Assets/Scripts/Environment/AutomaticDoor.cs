@@ -17,7 +17,7 @@ public class AutomaticDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Projectile") || collision.gameObject.layer != LayerMask.NameToLayer("NonPlayerCollider"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Projectile") && collision.gameObject.layer != LayerMask.NameToLayer("NonPlayerCollider"))
         {
             objectsInRange++;
             animator.SetBool("isOpen", true);
@@ -29,7 +29,7 @@ public class AutomaticDoor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Projectile") || collision.gameObject.layer != LayerMask.NameToLayer("NonPlayerCollider"))
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Projectile") && collision.gameObject.layer != LayerMask.NameToLayer("NonPlayerCollider"))
         {
             objectsInRange--;
             if (objectsInRange == 0)
