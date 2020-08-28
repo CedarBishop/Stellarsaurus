@@ -215,6 +215,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jump Pad NC
       objectReference: {fileID: 0}
+    - target: {fileID: 9120818830809489288, guid: cacc61b261cc7584eb207eb0df623d9a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cacc61b261cc7584eb207eb0df623d9a, type: 3}
 --- !u!4 &3969599949283643018 stripped

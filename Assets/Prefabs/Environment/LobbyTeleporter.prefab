@@ -4775,7 +4775,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4876,7 +4876,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 6292824489877327052, guid: 7f06fafbca7701345bbf20e7f7a0cee5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4975,7 +4975,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e201be21f2bac547a1eaa3b28db39ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaSpawnPoint: {fileID: 0}
+  newSpawnPoints: []
+  lobbyCamera: {fileID: 0}
+  arenaCamera: {fileID: 0}
 --- !u!1 &816364328718490492
 GameObject:
   m_ObjectHideFlags: 0
@@ -9706,7 +9708,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -14533,7 +14535,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1000
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -19287,7 +19289,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
