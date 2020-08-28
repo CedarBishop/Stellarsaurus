@@ -25,12 +25,16 @@ public class AudioSourceController : MonoBehaviour
         StartCoroutine("CoPlay");
     }
 
+    public void StopPlaying ()
+    {
+        source.Stop();
+        StopCoroutine("CoPlay");
+        SoundManager.instance.audioControllers.Enqueue(this);
+    }
+
     IEnumerator CoPlay ()
     {
         yield return new WaitForSeconds(duration);
         SoundManager.instance.audioControllers.Enqueue(this);
     }
-
-
-   
 }

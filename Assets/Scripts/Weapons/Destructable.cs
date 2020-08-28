@@ -48,6 +48,11 @@ public class Destructable : Projectile
 
         if (subProjectileTypeToSpawn != null)
         {
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_MolotovCocktail");
+            }
+
             for (int i = 0; i < amountOfSubProjectiles; i++)
             {
                 Bullet sub = Instantiate(subProjectileTypeToSpawn, transform.position, Quaternion.identity).GetComponent<Bullet>();
