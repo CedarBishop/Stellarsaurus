@@ -118,7 +118,7 @@ public class SoundManager : MonoBehaviour
         SceneManager.activeSceneChanged -= OnSceneChange;
     }
 
-    public void PlaySFX(string soundName)
+    public AudioSourceController PlaySFX(string soundName)
     {
         for (int i = 0; i < sounds.Length; i++)
         {
@@ -126,13 +126,15 @@ public class SoundManager : MonoBehaviour
             {
                 if (sounds[i].clip == null)
                 {
-                    return;
+                    return null;
                 }
-                sounds[i].Play(audioControllers.Dequeue(), currentSfxVolume);
+                AudioSourceController controller = audioControllers.Dequeue();
+                sounds[i].Play(controller, currentSfxVolume);
                 CheckOutOfSources();
-                return;
+                return controller;
             }
         }
+        return null;
     }
 
     public void PlaySFX(AudioClip clip)
@@ -222,6 +224,11 @@ public class SoundManager : MonoBehaviour
         {
             musicAudioSource.Stop();
         }
+    }
+
+    public void StopSFX()
+    {
+
     }
 
     void CheckOutOfSources ()

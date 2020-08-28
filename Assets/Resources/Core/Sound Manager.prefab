@@ -163,7 +163,7 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: SFX_MineExplosion
     clip: {fileID: 8300000, guid: 9130548c14a551046897f101f362d873, type: 3}
-    pitch: 0.9
+    pitch: 1
     volume: 1
     audioSource: {fileID: 0}
   - name: SFX_Extraction
@@ -173,17 +173,32 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: SFX_DinoHurt
     clip: {fileID: 8300000, guid: 724dce5e309e51646978606bc9b2324b, type: 3}
-    pitch: 0.9
+    pitch: 1
     volume: 1
     audioSource: {fileID: 0}
   - name: SFX_AILaser
     clip: {fileID: 8300000, guid: 5a00bdea9e970904f9f8201fee56a2ef, type: 3}
-    pitch: 0.9
+    pitch: 1
     volume: 1
     audioSource: {fileID: 0}
   - name: SFX_Jumppad
     clip: {fileID: 8300000, guid: 9490154b66ef07848b09d799cf206ae1, type: 3}
-    pitch: 0.9
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_LaserChargeUp
+    clip: {fileID: 8300000, guid: d26223a57378e0a4da9c1b4e9e0c9151, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_FlamethrowerStart
+    clip: {fileID: 8300000, guid: 3477a6114eb30b24bad9477d72d742ba, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_MolotovCocktail
+    clip: {fileID: 8300000, guid: de05dc4848d02e243a76b356fd48a261, type: 3}
+    pitch: 1
     volume: 1
     audioSource: {fileID: 0}
   exclusiveSounds:

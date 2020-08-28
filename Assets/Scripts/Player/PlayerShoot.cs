@@ -57,6 +57,8 @@ public class PlayerShoot : MonoBehaviour
     bool isFiring;
 
     private List<GameObject> objectsToDestoryOnWeaponDestroy = new List<GameObject>();
+    private AudioSourceController chargeUpWeaponAudioController;
+
 
     void Start()
     {
@@ -145,7 +147,6 @@ public class PlayerShoot : MonoBehaviour
         {
             if (currentWeapon != null)
             {
-
                 switch (currentWeapon.fireType)
                 {
                     case FireType.SemiAutomatic:
@@ -162,16 +163,22 @@ public class PlayerShoot : MonoBehaviour
                         break;
                     case FireType.ChargeUp:
                         if (semiLimiter)
-                        {
+                        {                            
                             if (chargeUpTimer >= currentWeapon.chargeUpTime)
                             {
                                 semiLimiter = false;
                                 Shoot();
-                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.attackAnimName);
+                                if (currentWeapon.weaponSpritePrefab != null)
+                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.attackAnimName);
                             }
                             else
                             {
-                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
+                                if (chargeUpWeaponAudioController == null)
+                                {
+                                    StartChargeUpSound();
+                                }
+                                if (currentWeapon.weaponSpritePrefab != null)
+                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
                                 chargeUpTimer += Time.deltaTime;
                             }
                         }
@@ -184,12 +191,18 @@ public class PlayerShoot : MonoBehaviour
                             if (isFiring == false)
                             {
                                 isFiring = true;
-                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.attackAnimName);
+                                if (currentWeapon.weaponSpritePrefab != null)
+                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.attackAnimName);
                             }
                         }
                         else
                         {
-                            weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
+                            if (chargeUpWeaponAudioController == null)
+                            {
+                                StartChargeUpSound();
+                            }
+                            if (currentWeapon.weaponSpritePrefab != null)
+                                weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
                             chargeUpTimer += Time.deltaTime;
                         }
                         break;
@@ -206,7 +219,8 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 if (shootOnRelease == false)
                                 {
-                                    weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
+                                    if (currentWeapon.weaponSpritePrefab != null)
+                                        weaponAnimation.PlayAnimation(currentWeapon.weaponSpritePrefab.chargeAnimName);
                                 }
                                 cookTime += Time.deltaTime;
                                 shootOnRelease = true;
@@ -224,6 +238,7 @@ public class PlayerShoot : MonoBehaviour
         {
             semiLimiter = true;
             chargeUpTimer = 0;
+            StopChargeUpSound();
             isFiring = false;
             if (extractionObjective == null)
             {
@@ -849,5 +864,22 @@ public class PlayerShoot : MonoBehaviour
     public void SetAimType (AimType _AimType)
     {
         aimType = _AimType;
+    }
+
+    void StartChargeUpSound ()
+    {
+        if (SoundManager.instance != null)
+        {
+            chargeUpWeaponAudioController = SoundManager.instance.PlaySFX(currentWeapon.chargeUpSound);
+        }
+    }
+
+    void StopChargeUpSound ()
+    {
+        if (chargeUpWeaponAudioController != null)
+        {
+            chargeUpWeaponAudioController.StopPlaying();
+            chargeUpWeaponAudioController = null;
+        }
     }
 }

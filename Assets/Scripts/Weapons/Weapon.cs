@@ -213,6 +213,7 @@ public class WeaponType
     public float spread;
     public FireType fireType;
     public float chargeUpTime;
+    public string chargeUpSound;
     public float cameraShakeDuration;
     public float cameraShakeMagnitude;
     public float knockBack;

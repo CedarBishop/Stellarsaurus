@@ -340,6 +340,10 @@ public class DesignMaster : EditorWindow
                         EditorGUILayout.Space(8);
                         GUILayout.Label("Charge Up Time", EditorStyles.boldLabel);
                         weaponTypes[i].chargeUpTime = EditorGUILayout.FloatField(weaponTypes[i].chargeUpTime);
+
+                        EditorGUILayout.Space(8);
+                        GUILayout.Label("Charge Up Sound FX Name", EditorStyles.boldLabel);
+                        weaponTypes[i].chargeUpSound = EditorGUILayout.TextField(weaponTypes[i].chargeUpSound);
                     }
 
                     if (weaponTypes[i].weaponUseType != WeaponUseType.Boomerang && weaponTypes[i].weaponUseType != WeaponUseType.Throwable)

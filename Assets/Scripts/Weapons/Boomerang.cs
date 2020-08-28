@@ -91,6 +91,15 @@ public class Boomerang : Projectile
                 cameraShake.StartShake(weaponType.cameraShakeDuration, weaponType.cameraShakeMagnitude);
             }
         }
+        else if (collision.GetComponent<EnvironmentalObjectHealth>())
+        {
+            collision.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerNumber);
+            isReturning = true;
+            if (Camera.main.TryGetComponent(out CameraShake cameraShake))
+            {
+                cameraShake.StartShake(weaponType.cameraShakeDuration, weaponType.cameraShakeMagnitude);
+            }
+        }
         else if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
             isReturning = true;
