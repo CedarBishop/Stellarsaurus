@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
         {
             SetUIState(UIState.Game);
         }
+        sceneTransistionAnimator.gameObject.SetActive(true);
         sceneTransistionAnimator.SetTrigger("OpenDoor");
     }
 
