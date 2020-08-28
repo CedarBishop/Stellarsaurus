@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -727171402680812853, guid: 71408311290ce3c4d8db042806b4bfd4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -231,6 +231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Extraction Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 3484490799700687792, guid: 1d610e37262aec840b5cff8ad801000f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 3484490799700687795, guid: 1d610e37262aec840b5cff8ad801000f,
         type: 3}
       propertyPath: playOnAwake
@@ -240,6 +245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484490800576312841, guid: 1d610e37262aec840b5cff8ad801000f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8676715339750607799, guid: 1d610e37262aec840b5cff8ad801000f,
         type: 3}

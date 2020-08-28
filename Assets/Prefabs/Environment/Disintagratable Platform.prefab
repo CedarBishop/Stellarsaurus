@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 7211634985263262417, guid: 27d96917a28596843ac16fe295821dc4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,7 +99,7 @@ MonoBehaviour:
   objectTags:
   - Player
   - Enemy
-  timeTillDestroyCollider: 2
+  timeTillDestroy: 0
   animationTime: 2.1
 --- !u!61 &6336260678988904811
 BoxCollider2D:

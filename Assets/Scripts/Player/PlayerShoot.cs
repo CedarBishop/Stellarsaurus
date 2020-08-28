@@ -594,6 +594,11 @@ public class PlayerShoot : MonoBehaviour
         else if (isTriggeringExtractionObjective)
         {
             PickupExtractionObject();
+
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_WeaponPickup");
+            }
         }
         else if (isTriggeringWeapon)
         {
@@ -607,13 +612,15 @@ public class PlayerShoot : MonoBehaviour
                 triggeredWeapon = null;
 
                 CheckIfConsumable();
+
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.PlaySFX("SFX_WeaponPickup");
+                }
             }
         }
 
-        if (SoundManager.instance != null)
-        {
-            SoundManager.instance.PlaySFX("SFX_WeaponPickup");
-        }
+
     }
 
     public void Grab(WeaponType type)
