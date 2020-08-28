@@ -15,7 +15,7 @@ public class Cursor : MonoBehaviour
     private Button[] buttons;
     private Button highlightedButton;
 
-    public void Initialise (UIController Controller)
+    public void Initialise (UIController Controller, GameObject menuParent)
     {
         controller = Controller;
         playerNumber = controller.playerNumber;
@@ -23,8 +23,7 @@ public class Cursor : MonoBehaviour
         image.color = GameManager.instance.playerColours[playerNumber - 1];
 
         controller.SetCursor(this);
-        GameObject pauseMenu = UIManager.instance.pauseMenuParent;
-        buttons = pauseMenu.GetComponentsInChildren<Button>(true);
+        buttons = menuParent.GetComponentsInChildren<Button>(true);
     }
 
     public void Move (Vector2 direction)

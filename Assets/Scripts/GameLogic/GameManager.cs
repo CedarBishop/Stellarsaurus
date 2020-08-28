@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-
+        OnEndMatchEnd();
         selectedGamemode.Exit();
         selectedGamemode = null;
         SceneManager.LoadScene(0);        
@@ -197,9 +197,31 @@ public class GameManager : MonoBehaviour
             player.SwitchCurrentActionMap("UI");
         }
 
-
         UIManager.instance.Pause(uIControllers);       
 
+    }
+
+    public void OnEndMatchStart ()
+    {
+        Time.timeScale = 0;
+        foreach (PlayerInput player in playerInputs)
+        {
+            player.SwitchCurrentActionMap("UI");
+        }
+
+        UIManager.instance.SpawnCursors(uIControllers, UIManager.instance.matchEndParent.transform);
+    }
+
+    public void OnEndMatchEnd ()
+    {
+        Time.timeScale = 1;
+
+        foreach (PlayerInput player in playerInputs)
+        {
+            player.SwitchCurrentActionMap(player.GetComponent<Player>().currentPlayerActionMap);
+        }
+
+        UIManager.instance.DestroyCursors();
     }
 
     // Tells all players to switch controls back to player

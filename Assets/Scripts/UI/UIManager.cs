@@ -161,6 +161,8 @@ public class UIManager : MonoBehaviour
             playerPanels[playerMatchStats[i].playerNumber - 1].gameObject.SetActive(true);
             playerPanels[playerMatchStats[i].playerNumber - 1].Initialise(gamemode, playerMatchStats[i]);
         }
+
+        GameManager.instance.OnEndMatchStart();
     }
 
     public void Pause (List<UIController> controllers)
@@ -180,10 +182,23 @@ public class UIManager : MonoBehaviour
             quitButton.gameObject.SetActive(false);
         }
 
+        SpawnCursors(controllers, pauseMenuParent.transform);
+    }
+
+    public void SpawnCursors (List<UIController> controllers, Transform parent)
+    {
         for (int i = 0; i < controllers.Count; i++)
         {
-            Cursor c = Instantiate(cursorPrefab, pauseMenuParent.transform);
-            c.Initialise(controllers[i]);
+            Cursor c = Instantiate(cursorPrefab, parent);
+            c.Initialise(controllers[i], parent.gameObject);
+        }
+    }
+
+    public void DestroyCursors ()
+    {
+        foreach (var cursor in FindObjectsOfType<Cursor>())
+        {
+            Destroy(cursor.gameObject);
         }
     }
 
@@ -191,10 +206,7 @@ public class UIManager : MonoBehaviour
     {
         bool inMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
 
-        foreach (var cursor in FindObjectsOfType<Cursor>())
-        {
-            Destroy(cursor.gameObject);
-        }
+        DestroyCursors();
 
         if (inMainMenu)
         {
