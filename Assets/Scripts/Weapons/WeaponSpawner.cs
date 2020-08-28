@@ -11,25 +11,28 @@ public class WeaponSpawner : MonoBehaviour
 
     private void Start()
     {
+        if (weaponsAtThisSpawnPoint == null)
+        {
+            return;
+        }
+        if (weaponsAtThisSpawnPoint.Length == 0)
+        {
+            return;
+        }
         weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsAtThisSpawnPoint);
         InitWeapon();
     }
-
 
     void InitWeapon ()
     {
         Weapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
         weapon.Init(weaponTypes, WeaponSpawnType.Spawnpoint, this);
-
     }
-
-
 
     public void SpawnedWeaponIsGrabbed ()
     {
         StartCoroutine("DelayWeaponRespawn");
     }
-
 
     IEnumerator DelayWeaponRespawn()
     {
