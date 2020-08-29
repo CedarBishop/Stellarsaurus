@@ -44,7 +44,6 @@ public class PterodactylSwoop : StateMachineBehaviour
         {
             FindNewPath();
         }
-        ai.RefreshCollider(true);
     }
 
     private void OnDestroy()

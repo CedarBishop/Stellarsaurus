@@ -39,14 +39,11 @@ public class DesignMaster : EditorWindow
         isDebug = true;
         Init("Debug Design Master");
     }
-
-
     
     static void Init(string title)
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster),false, title, true);
         weaponTypes = LoadFromJSON(isDebug,out aiTypes, out player);
-
 
         for (int i = 0; i < weaponTypes.Count; i++)
         {
@@ -61,11 +58,6 @@ public class DesignMaster : EditorWindow
                 CheckNullProjectile(i);
             }
 
-        }
-
-        for (int i = 0; i < aiTypes.Count; i++)
-        {
-            CheckAISprite(i);
         }
 
         LoadFromGuids();
@@ -125,11 +117,6 @@ public class DesignMaster : EditorWindow
                 {
                     CheckNullProjectile(i);
                 }
-            }
-
-            for (int i = 0; i < aiTypes.Count; i++)
-            {
-                CheckAISprite(i);
             }
 
             LoadFromGuids();
@@ -568,18 +555,6 @@ public class DesignMaster : EditorWindow
         }
     }
 
-    static void CheckAISprite(int i)
-    {
-        if (Resources.Load<Sprite>("Ai Sprites/" + aiTypes[i].spriteName) != null)
-        {
-            aiTypes[i].aiSprite = Resources.Load<Sprite>("Ai Sprites/" + aiTypes[i].spriteName);
-        }
-        else
-        {
-            aiTypes[i].aiSprite = Resources.Load<Sprite>("Ai Sprites/Null");
-        }
-    }
-
     void CreateAI ()
     {
         AIType ai = new AIType();
@@ -596,17 +571,7 @@ public class DesignMaster : EditorWindow
 
                 EditorGUILayout.BeginVertical();
 
-
-
                 GUILayout.Label(aiTypes[i].AIName, EditorStyles.boldLabel);
-
-                if (aiTypes[i].aiSprite != null)
-                {
-                    if (aiTypes[i].aiSprite != null)
-                    {               
-                        GUILayout.Box(aiTypes[i].aiSprite.texture );
-                    }
-                }
 
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Universal Parameters", EditorStyles.boldLabel);
@@ -615,15 +580,6 @@ public class DesignMaster : EditorWindow
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Name", EditorStyles.boldLabel);
                 aiTypes[i].AIName = EditorGUILayout.TextField(aiTypes[i].AIName);
-
-                //EditorGUILayout.Space(8);
-                //GUILayout.Label("Sprite", EditorStyles.boldLabel);
-                //aiTypes[i].spriteName = EditorGUILayout.TextField(aiTypes[i].spriteName);
-
-                //if (GUILayout.Button("Check Sprite Prefab"))
-                //{
-                //    CheckAISprite(i);
-                //}
 
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Health", EditorStyles.boldLabel);
@@ -676,6 +632,12 @@ public class DesignMaster : EditorWindow
                 EditorGUILayout.Space(8);
                 GUILayout.Label("Wall Detection Distance", EditorStyles.boldLabel);
                 aiTypes[i].wallDetectionDistance = EditorGUILayout.Slider(aiTypes[i].wallDetectionDistance, 0.0f, 5.0f);
+
+                EditorGUILayout.Space(8);
+                aiTypes[i].colliderSize = EditorGUILayout.Vector2Field("Collider Size", aiTypes[i].colliderSize);
+
+                EditorGUILayout.Space(8);
+                aiTypes[i].colliderOffset = EditorGUILayout.Vector2Field("Collider Offset", aiTypes[i].colliderOffset);
 
                 EditorGUILayout.Space(16);
                 GUILayout.Label("Behaviours", EditorStyles.boldLabel);

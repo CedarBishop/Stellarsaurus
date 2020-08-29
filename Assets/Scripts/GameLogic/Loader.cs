@@ -76,11 +76,6 @@ public class Loader : MonoBehaviour
                 }
             }
         }
-
-        foreach (AIType ai in aiTypes)
-        {
-            ai.aiSprite = Resources.Load<Sprite>("Ai Sprites/" + ai.spriteName);
-        }
         return aiTypes;
     }
 }

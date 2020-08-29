@@ -1,7 +1,6 @@
 ﻿using PlatformerPathFinding;
 using PlatformerPathFinding.Examples;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AI : MonoBehaviour
@@ -46,7 +45,7 @@ public class AI : MonoBehaviour
     private Perception perception;
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
-    private PolygonCollider2D collider;
+    private BoxCollider2D collider;
 
     private AIBehaviour behaviour;
 
@@ -66,12 +65,11 @@ public class AI : MonoBehaviour
         perception = GetComponent<Perception>();
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider = GetComponent<PolygonCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
         aStar = FindObjectOfType<AStar>();
         pathFindingGrid = aStar.GetComponent<PathFindingGrid>();
 
         aiType = aIType;
-        spriteRenderer.sprite = aiType.aiSprite;
         health = aiType.health;
 
         perception.viewingDistance = aiType.viewingDistance;
@@ -88,10 +86,13 @@ public class AI : MonoBehaviour
 
         aimSpriteRenderer.enabled = false;
 
+        collider.size = aiType.colliderSize;
+        collider.offset = aiType.colliderOffset;
+
         switch (behaviour)
         {
             case AIBehaviour.Patrol:
-                RefreshCollider(false);
+                collider.isTrigger = false;
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = patrolController;
@@ -100,7 +101,7 @@ public class AI : MonoBehaviour
 
                 break;
             case AIBehaviour.Guard:
-                RefreshCollider(false);
+                collider.isTrigger = false;
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = guardController;
@@ -110,7 +111,7 @@ public class AI : MonoBehaviour
                 spriteRenderer.material = guardMaterial;
                 break;
             case AIBehaviour.Fly:
-                RefreshCollider(true);
+                collider.isTrigger = true;
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = flyerController;
@@ -118,14 +119,14 @@ public class AI : MonoBehaviour
                 spriteRenderer.material = flyerMaterial;
                 break;
             case AIBehaviour.Carrier:
-                RefreshCollider(true);
+                collider.isTrigger = true;
                 controller.enabled = false;
                 agent.enabled = false;
                 animator.runtimeAnimatorController = carrierController;
                 spriteRenderer.material = carrierMaterial;
                 break;
             case AIBehaviour.JumpPatrol:
-                RefreshCollider(true);
+                collider.isTrigger = true;
                 controller.enabled = true;
                 agent.enabled = true;
                 agent.Init(FindObjectOfType<PathFindingGrid>());
@@ -175,13 +176,6 @@ public class AI : MonoBehaviour
             perception.isFacingRight = false;
             spriteRenderer.flipX = true;
         }
-    }
-
-    public void RefreshCollider (bool isTrigger)
-    {
-        Destroy(collider);
-        collider = gameObject.AddComponent<PolygonCollider2D>();
-        collider.isTrigger = isTrigger;
     }
 
     public virtual void TakeDamage (int playerNumber,int damage)
@@ -337,14 +331,15 @@ public enum AIBehaviour { Patrol, Guard, Fly, Carrier, JumpPatrol }
 public class AIType
 {
     public string AIName;
-    public Sprite aiSprite;
-    public string spriteName;
     public int health;
     public float movementSpeed;
     public int attackDamage;
     public float attackCooldown;
     public float attackRange;
     public float attackSize;
+
+    public Vector2 colliderSize;
+    public Vector2 colliderOffset;
 
     public float viewingDistance;
     public float fieldOfView;
