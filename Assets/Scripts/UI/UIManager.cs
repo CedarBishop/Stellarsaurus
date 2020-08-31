@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
 public enum UIState { MainMenu, Game, Pause, MatchEnd}
 
@@ -18,6 +17,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuParent;
     public GameObject pauseMainParent;
     public GameObject settingParent;
+    public GameObject howToPlayerParent;
+    public GameObject controlsParent;
+    public GameObject creditsParent;
     public GameObject matchEndParent;
     public GameObject FeedbackUrlConfirmation;                 //confirmation to open Feedback Url in browser
     public GameObject TwitterUrlConfirmation;                  //confirmation to open Feedback Url in browser
@@ -85,6 +87,9 @@ public class UIManager : MonoBehaviour
         FeedbackUrlConfirmation.SetActive(false);
         TwitterUrlConfirmation.SetActive(false);
         IGUrlConfirmation.SetActive(false);
+        howToPlayerParent.SetActive(false);
+        controlsParent.SetActive(false);
+        creditsParent.SetActive(false);
 
         switch (uiState)
         {
@@ -247,10 +252,13 @@ public class UIManager : MonoBehaviour
         AddAmountToSfxVolume(0);
     }
 
-    public void CloseSettings ()
+    public void ReturnToPauseMain ()
     {
         pauseMainParent.SetActive(true);
         settingParent.SetActive(false);
+        controlsParent.SetActive(false);
+        howToPlayerParent.SetActive(false);
+        creditsParent.SetActive(false);
     }
 
     public void EndMatch ()
@@ -301,5 +309,25 @@ public class UIManager : MonoBehaviour
     public void ToggleFullscreen ()
     {
         Screen.fullScreen = !Screen.fullScreen;
+    }
+
+    public void Credits ()
+    {
+        pauseMainParent.SetActive(false);
+        creditsParent.SetActive(true);
+    }
+
+    public void Controls ()
+    {
+        pauseMainParent.SetActive(false);
+        howToPlayerParent.SetActive(false);
+        controlsParent.SetActive(true);
+    }
+
+    public void HowToPlay ()
+    {
+        pauseMainParent.SetActive(false);
+        controlsParent.SetActive(false);
+        howToPlayerParent.SetActive(true);
     }
 }
