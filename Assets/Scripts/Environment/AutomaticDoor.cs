@@ -24,6 +24,10 @@ public class AutomaticDoor : MonoBehaviour
             Debug.Log(animator.GetBool("isOpen"));
             boxCollider2D.enabled = false;
             isOpen = true;
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySFX("SFX_DoorOpen");
+            }
         }
     }
 
@@ -37,6 +41,10 @@ public class AutomaticDoor : MonoBehaviour
                 animator.SetBool("isOpen", false);
                 boxCollider2D.enabled = true;
                 isOpen = false;
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.PlaySFX("SFX_DoorOpen");
+                }
             }
         }
     }

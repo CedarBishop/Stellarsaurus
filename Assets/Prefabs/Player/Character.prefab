@@ -337,7 +337,8 @@ MonoBehaviour:
     type: 3}
   speedBoostParticle: {fileID: 8031758237771158466, guid: 807bf40f01cf2bc4780b4dc34b0123f4,
     type: 3}
-  doubleJumpParticle: {fileID: 0}
+  doubleJumpParticle: {fileID: 2690728670520604233, guid: 714936f14f7cec842adb9b563a2fce22,
+    type: 3}
   animatorHead: {fileID: 2277477149072895390}
   animatorBody: {fileID: 1554709800222172083}
   spriteRendererHead: {fileID: 8851182401280234316}
@@ -373,6 +374,8 @@ MonoBehaviour:
     spread: 0
     fireType: 0
     chargeUpTime: 0
+    chargeUpSound: 
+    chargeDownSound: 
     cameraShakeDuration: 0
     cameraShakeMagnitude: 0
     knockBack: 0

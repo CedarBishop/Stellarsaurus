@@ -49,7 +49,10 @@ public class Consumable : MonoBehaviour
 
         foreach (var renderer in player.playerHealth.spriteRenderers)
         {
-            renderer.color = color;
+            if (color != Color.white)
+            {
+                renderer.color = color;
+            }
         }
     }
 

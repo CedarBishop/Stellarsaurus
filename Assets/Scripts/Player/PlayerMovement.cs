@@ -319,7 +319,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (doubleJumpParticle != null)
             {
-                doubleJumpParticleInstance = Instantiate(doubleJumpParticle, transform);
+                doubleJumpParticleInstance = Instantiate(doubleJumpParticle, transform.position + (Vector3.down * 0.7f), Quaternion.identity);
+                doubleJumpParticleInstance.transform.parent = transform;
             }
         }
         else
