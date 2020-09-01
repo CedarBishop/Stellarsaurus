@@ -15,25 +15,30 @@ public class AISpawner : MonoBehaviour
     public Transform[] targetsInMap;
     public Transform[] pteroAirTargets;
     public PairTargets[] pteroGroundTargets;
+    public ParticleSystem[] particles;
 
     public List<AIType> ais = new List<AIType>();
     private AI aiPrefab;
-    private Animator animator;
+
 
     void Start()
     {
         ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
         aiPrefab = LevelManager.instance.aiPrefab;
-        animator = GetComponent<Animator>();
-        StartCoroutine("DelayAnimation");
+        StartCoroutine("DelayParticles");
         StartCoroutine("DelaySpawn");
     }
 
-
-    IEnumerator DelayAnimation ()
+    IEnumerator DelayParticles ()
     {
         yield return new WaitForSeconds(timeBeforeSpriteAppears);
-        animator.Play("Spawner_Open");
+        if (particles != null)
+        {
+            foreach (var particle in particles)
+            {
+                particle.Play();
+            }
+        }
     }
     IEnumerator DelaySpawn()
     {
@@ -46,13 +51,18 @@ public class AISpawner : MonoBehaviour
             float time = Random.Range(minTimeBetweenSpawning, maxTimeBetweenSpawning);
             yield return new WaitForSeconds(time);
         }
-        animator.SetTrigger("SpawnerEnd");
+        if (particles != null)
+        {
+            foreach (var particle in particles)
+            {
+                particle.Stop();
+            }
+        }
         Destroy(gameObject,1.5f);
     }
 
    void SpawnAI ()
-   {
-        
+   {        
         if (ais.Count > 0)
         {
             AI ai = Instantiate(aiPrefab, transform.position, Quaternion.identity);
