@@ -115,6 +115,9 @@ public class Player : MonoBehaviour
             {
                 cameraController.playersInGame.Remove(playerMovement.transform);
             }
+            playerMovement.enabled = false;
+            playerShoot.enabled = false;
+            playerHealth.enabled = false;
             Destroy(currentCharacter,0.1f);
         }
 

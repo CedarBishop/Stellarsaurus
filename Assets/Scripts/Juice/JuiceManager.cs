@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class JuiceManager : MonoBehaviour
 {
     static bool timeIsSlowed;
     static float timer;
     static float time;
-    static Volume volume;
-    static float volumeValue;
 
     void Start()
     {
@@ -33,19 +31,29 @@ public class JuiceManager : MonoBehaviour
     }
 
 
-    public static void TimeSleep (float realTimeDuration, float timescale)
+    public static void TimeSleep (float realTimeDuration, float timescale, bool activateSlowMoTint)
     {
         timeIsSlowed = true;
         Time.timeScale = timescale;
         timer = realTimeDuration;
         time = realTimeDuration * timescale;
-        volume = FindObjectOfType<Volume>();
+        if (activateSlowMoTint)
+        {
+            if (UIManager.instance != null)
+            {
+                UIManager.instance.slowMoTint.gameObject.SetActive(true);
+            }
+        }
     }
 
     static void StopSleep ()
     {
         timeIsSlowed = false;
         Time.timeScale = 1.0f;
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.slowMoTint.gameObject.SetActive(false);
+        }
     }
 
 }

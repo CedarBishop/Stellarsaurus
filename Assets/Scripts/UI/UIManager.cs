@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     public GameObject TwitterUrlConfirmation;                  //confirmation to open Feedback Url in browser
     public GameObject IGUrlConfirmation;                       //confirmation to open Feedback Url in browser
     public Cursor cursorPrefab;
+    public Image slowMoTint;
 
     public Text sfxVolumeText;
     public Text musicVolumeText;
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
         }
         sceneTransistionAnimator.gameObject.SetActive(true);
         sceneTransistionAnimator.SetTrigger("OpenDoor");
+        slowMoTint.gameObject.SetActive(false);
     }
 
     public void SetUIState (UIState uiState)

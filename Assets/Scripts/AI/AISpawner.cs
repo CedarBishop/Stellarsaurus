@@ -49,15 +49,19 @@ public class AISpawner : MonoBehaviour
             SpawnAI();
             x++;
             float time = Random.Range(minTimeBetweenSpawning, maxTimeBetweenSpawning);
+            if (x >= amountOfSpawns)
+            {
+                if (particles != null)
+                {
+                    foreach (var particle in particles)
+                    {
+                        particle.Stop();
+                    }
+                }
+            }
             yield return new WaitForSeconds(time);
         }
-        if (particles != null)
-        {
-            foreach (var particle in particles)
-            {
-                particle.Stop();
-            }
-        }
+        
         Destroy(gameObject,1.5f);
     }
 
