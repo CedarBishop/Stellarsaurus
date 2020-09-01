@@ -206,6 +206,16 @@ MonoBehaviour:
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
+  - name: SFX_MinigunChargeUp
+    clip: {fileID: 8300000, guid: 2bf83e162fd8dc049b353d68888befca, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
+  - name: SFX_DoorOpen
+    clip: {fileID: 8300000, guid: 29bd9782665832b4198064b4533fe84c, type: 3}
+    pitch: 1
+    volume: 1
+    audioSource: {fileID: 0}
   exclusiveSounds:
   - name: SFX_ElectricFieldAmbient
     clip: {fileID: 8300000, guid: 1049fa14c977bcf45b0af35268edca21, type: 3}
