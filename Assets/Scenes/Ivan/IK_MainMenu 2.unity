@@ -19203,6 +19203,10 @@ PrefabInstance:
       propertyPath: playerColours.Array.data[2].g
       value: 0.91266924
       objectReference: {fileID: 0}
+    - target: {fileID: 1283880972, guid: 3d4a26609ef8d0e409a63fbe05c048e8, type: 3}
+      propertyPath: roundStandbyTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2378037744067400863, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}
       propertyPath: roundTime
@@ -19217,6 +19221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lastPlayerAlivePoints
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378037744067400863, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
+        type: 3}
+      propertyPath: roundStandbyTime
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8990490027761441408, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}
