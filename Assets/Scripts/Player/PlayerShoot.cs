@@ -545,8 +545,8 @@ public class PlayerShoot : MonoBehaviour
                         currentLineRenderer.SetPosition(1,  transform.position + (gunOriginTransform.right * currentWeapon.range));
 
                         Destroy(currentLineRenderer.gameObject, currentWeapon.lineRendererTimeToLive);
-                    }                    
-
+                    }
+                    bool shouldAddHitStat = false;
                     if (hits != null)
                     {
                         for (int i = 0; i < hits.Length; i++)
@@ -554,26 +554,25 @@ public class PlayerShoot : MonoBehaviour
                             if (hits[i].collider.GetComponent<PlayerHealth>())
                             {
                                 hits[i].collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
-                                if (GameManager.instance.SelectedGamemode != null)
-                                {
-                                    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
-                                }
+                                shouldAddHitStat = true;
                             }
                             else if (hits[i].collider.GetComponent<AI>())
                             {
                                 hits[i].collider.GetComponent<AI>().TakeDamage(playerNumber, currentWeapon.damage);
-                                if (GameManager.instance.SelectedGamemode != null)
-                                {
-                                    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
-                                }
+                                shouldAddHitStat = true;
                             }
                             else if (hits[i].collider.GetComponent<EnvironmentalObjectHealth>())
                             {
                                 hits[i].collider.GetComponent<EnvironmentalObjectHealth>().TakeDamage(currentWeapon.damage, playerNumber);
-                                if (GameManager.instance.SelectedGamemode != null)
-                                {
-                                    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
-                                }
+                                shouldAddHitStat = true;
+                            }
+                        }
+
+                        if (shouldAddHitStat)
+                        {
+                            if (GameManager.instance.SelectedGamemode != null)
+                            {
+                                GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsHit, 1);
                             }
                         }
                     }
