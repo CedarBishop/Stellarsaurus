@@ -832,6 +832,14 @@ public class DesignMaster : EditorWindow
         player.counterForce = EditorGUILayout.Slider(player.counterForce, 0.0f, 3.0f);
         EditorGUILayout.Space(8);
 
+        GUILayout.Label("Player Hit Slow Mo Duration", EditorStyles.boldLabel);
+        player.playerHitSlowMoDuration = EditorGUILayout.Slider(player.playerHitSlowMoDuration, 0.0f, 3.0f);
+        EditorGUILayout.Space(8);
+
+        GUILayout.Label("Player Hit Slow Mo TimeScale", EditorStyles.boldLabel);
+        player.playerHitTimeScale = EditorGUILayout.Slider(player.playerHitTimeScale, 0.0f, 3.0f);
+        EditorGUILayout.Space(8);
+
         GUILayout.Label("Aim Type", EditorStyles.boldLabel);
         player.aimType = (AimType)EditorGUILayout.EnumPopup(player.aimType);
         EditorGUILayout.Space(8);

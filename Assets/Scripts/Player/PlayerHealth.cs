@@ -124,8 +124,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         StartCoroutine("FlashHurt");
-
-        JuiceManager.TimeSleep(0.5f,0.1f);
+        JuiceManager.TimeSleep(playerParams.playerHitSlowMoDuration,playerParams.playerHitTimeScale);
 
         ParticleSystem p = Instantiate(bloodSplatterParticle, transform.position, Quaternion.identity);
         p.Play();

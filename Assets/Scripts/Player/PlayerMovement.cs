@@ -381,6 +381,11 @@ public class PlayerMovement : MonoBehaviour
     {
         return orthogonal;
     }
+
+    public PlayerParams GetPlayerParams()
+    {
+        return playerParams;
+    }
 }
 
 
@@ -397,6 +402,8 @@ public class PlayerParams
     public float jumpBufferTime;
     public float cutJumpHeight;
     public float counterForce;
+    public float playerHitTimeScale;
+    public float playerHitSlowMoDuration;
 
     public AimType aimType;
 }
