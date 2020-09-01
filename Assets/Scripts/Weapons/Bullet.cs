@@ -62,10 +62,6 @@ public class Bullet : Projectile
             {
                 OnHit();
             }
-            else if (!collision.GetComponent<EnvironmentalObjectHealth>().isDecorative)
-            {
-                OnHit();
-            }
         }
         if (destroysOnHit)
         {
