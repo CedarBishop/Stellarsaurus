@@ -594,7 +594,7 @@ public class PlayerShoot : MonoBehaviour
 
             if (currentWeapon.soundFX != null)
             {
-                SoundManager.instance.PlaySFX(currentWeapon.soundFX);
+                SoundManager.instance.PlaySFX(currentWeapon.soundFX, currentWeapon.soundFxVolume, currentWeapon.soundFxPitch);
             }
 
             if (isGamepad)

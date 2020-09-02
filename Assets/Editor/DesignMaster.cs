@@ -280,8 +280,15 @@ public class DesignMaster : EditorWindow
                 GUILayout.Label("Sound FX", EditorStyles.boldLabel);
                 weaponTypes[i].soundFX = (AudioClip)EditorGUILayout.ObjectField(weaponTypes[i].soundFX, typeof(AudioClip));
 
+                EditorGUILayout.Space(8);
+                GUILayout.Label("Sound FX Volume", EditorStyles.boldLabel);
+                weaponTypes[i].soundFxVolume = EditorGUILayout.Slider(weaponTypes[i].soundFxVolume, 0.0f, 1.0f);
 
                 EditorGUILayout.Space(8);
+                GUILayout.Label("Sound FX Pitch", EditorStyles.boldLabel);
+                weaponTypes[i].soundFxPitch = EditorGUILayout.Slider(weaponTypes[i].soundFxPitch, -3.0f, 3.0f);
+
+                EditorGUILayout.Space(16);
                 GUILayout.Label("Weapon Type", EditorStyles.boldLabel);
                 weaponTypes[i].weaponUseType = (WeaponUseType)EditorGUILayout.EnumPopup(weaponTypes[i].weaponUseType);
 

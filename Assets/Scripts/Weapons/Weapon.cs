@@ -223,6 +223,8 @@ public class WeaponType
     public AudioClip soundFX;
     public string soundFxGuid;
     public string soundFxName;
+    public float soundFxVolume;
+    public float soundFxPitch;
 
     public int bulletsFiredPerShot;
     public float sprayAmount;

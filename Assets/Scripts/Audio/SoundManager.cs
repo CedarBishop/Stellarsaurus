@@ -139,8 +139,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
-        audioControllers.Dequeue().Play(clip,currentSfxVolume, 1.0f);
-        CheckOutOfSources();
+        PlaySFX(clip,currentSfxVolume, 1.0f);
     }
 
     public void PlaySFX(AudioClip clip, float volumeScaler, float pitch)
