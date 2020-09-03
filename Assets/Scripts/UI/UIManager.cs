@@ -73,7 +73,8 @@ public class UIManager : MonoBehaviour
         }
         sceneTransistionAnimator.gameObject.SetActive(true);
         sceneTransistionAnimator.SetTrigger("OpenDoor");
-        SoundManager.instance.PlaySFX("SFX_DoorOpen");                  //to play transition door sound at the beginning
+        if (SoundManager.instance != null)
+            SoundManager.instance.PlaySFX("SFX_DoorOpen");                  //to play transition door sound at the beginning
         slowMoTint.gameObject.SetActive(false);
     }
 

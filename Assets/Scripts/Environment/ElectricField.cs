@@ -28,33 +28,6 @@ public class ElectricField : DeathBarrier
         ElectricFieldManager();
     }
 
-    //public void InitialiseField()   // Organise elec field length and which objects should be enabled.
-    //{
-    //    electricFields = GetComponentsInChildren<Animator>(true);
-
-    //    // Grab reference to top cap sprite
-    //    topCoil = electricFields[electricFields.Length - 1].transform;
-    //    for (int i = 1; i < electricFields.Length; i++)
-    //    {
-    //        if (i < size)   // Enable electric fields up till 'size'
-    //        {
-    //            electricFields[i].gameObject.SetActive(true);
-    //            electricFields[i].transform.localPosition = Vector3.up * i;
-    //            Debug.Log("enabling " + electricFields[i].name);
-    //        }
-    //        else    // Disable all unused electric fields
-    //        {
-    //            electricFields[i].gameObject.SetActive(false);
-    //        }
-    //    }
-    //    // Place top cap
-    //    electricFields[electricFields.Length - 1].gameObject.SetActive(true);
-    //    electricFields[electricFields.Length - 1].transform.localPosition = Vector3.up * size;
-
-    //    Debug.Log("placing " + electricFields[electricFields.Length - 1].name + " at " + electricFields[electricFields.Length - 1].transform.localPosition);
-    //    topCoil.localPosition = electricFields[electricFields.Length - 1].transform.localPosition;
-    //}
-
     public void InitialiseField()   // Organise elec field length and which objects should be enabled.
     {      
         electricFields = GetComponentsInChildren<Animator>(true);

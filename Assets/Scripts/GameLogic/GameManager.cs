@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     private bool firstKeyboardPlayerHasJoined;
     private bool secondKeyboardPlayerHasJoined;
 
+    private int firstKeyboardPlayerNumber = 0;
+    private int secondKeyboardPlayerNumber = 0;
+
     // Sets up this class as a singleton
     void Awake()
     {
@@ -70,6 +73,23 @@ public class GameManager : MonoBehaviour
             if (players[i] == null)
             {
                 players[i] = player;
+                num = i + 1;
+            }
+        }
+        return num;
+    }
+
+    public int AssignPlayerNumber ()
+    {
+        int num = 0;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (num > 0)
+            {
+                continue;
+            }
+            if (players[i] == null)
+            {
                 num = i + 1;
             }
         }
@@ -275,7 +295,8 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Keypad0))
             {
                 secondKeyboardPlayerHasJoined = true;
-                inputManager.JoinPlayer(playerCount, playerCount,"SecondKeyboard", Keyboard.current);
+                inputManager.JoinPlayer(AssignPlayerNumber() -1, AssignPlayerNumber() - 1, "SecondKeyboard", Keyboard.current);
+                secondKeyboardPlayerNumber = AssignPlayerNumber();
             }
         }
         if (firstKeyboardPlayerHasJoined == false)
@@ -283,8 +304,23 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 firstKeyboardPlayerHasJoined = true;
-                inputManager.JoinPlayer(playerCount, playerCount, "Keyboard & Mouse", Keyboard.current);
+                inputManager.JoinPlayer(AssignPlayerNumber() - 1, AssignPlayerNumber() - 1, "Keyboard & Mouse", Keyboard.current);
+                firstKeyboardPlayerNumber = AssignPlayerNumber();
             }
+        }
+    }
+
+    public void Disconnect(int playerNumber)
+    {
+        if (playerNumber == firstKeyboardPlayerNumber)
+        {
+            firstKeyboardPlayerHasJoined = false;
+            firstKeyboardPlayerNumber = 0;
+        }
+        if (playerNumber == secondKeyboardPlayerNumber)
+        {
+            secondKeyboardPlayerHasJoined = false;
+            secondKeyboardPlayerNumber = 0;
         }
     }
 

@@ -11,6 +11,13 @@ public class DeathBarrier : MonoBehaviour
         {
             if (collision.transform.GetComponent<PlayerHealth>())
             {
+                if (GetComponent<ElectricField>())
+                {
+                    if (SoundManager.instance != null)
+                    {
+                        SoundManager.instance.PlaySFX("SFX_ElectricFieldDamage");
+                    }
+                }
                 Debug.Log("You are dead, not big surprise");
                 collision.transform.GetComponent<PlayerHealth>().HitByPlayer(collision.gameObject.GetComponent<PlayerHealth>().playerNumber, true);
             }

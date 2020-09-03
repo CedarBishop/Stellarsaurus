@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ExitTeleporter : MonoBehaviour
 {
@@ -14,13 +15,22 @@ public class ExitTeleporter : MonoBehaviour
     {
         if (collision.GetComponent<PlayerMovement>())
         {
+            particles[0].Play();
             if (SoundManager.instance != null)
             {
                 SoundManager.instance.PlaySFX("SFX_Teleport");
             }
-
-            particles[0].Play();
-            Application.Quit();
+            if (GameManager.instance.playerCount <= 1)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                Player player = collision.GetComponentInParent<Player>();
+                int num = player.playerNumber;
+                Destroy(player.gameObject);
+                GameManager.instance.Disconnect(num);
+            }
         }
     }
 }
