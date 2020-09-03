@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour
         }
         sceneTransistionAnimator.gameObject.SetActive(true);
         sceneTransistionAnimator.SetTrigger("OpenDoor");
+        SoundManager.instance.PlaySFX("SFX_DoorOpen");                  //to play transition door sound at the beginning
         slowMoTint.gameObject.SetActive(false);
     }
 
@@ -134,6 +135,7 @@ public class UIManager : MonoBehaviour
     // End round Free for all calls
     public void EndRound( int winningPlayerNumber, int roundNumber)
     {
+        SoundManager.instance.PlaySFX("SFX_DoorOpen");                  //to play transition door sound at the end of round
         sceneTransistionAnimator.SetTrigger("CloseDoor");
         if (winningPlayerNumber == 0)
         {

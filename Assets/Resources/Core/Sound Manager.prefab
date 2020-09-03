@@ -216,6 +216,11 @@ MonoBehaviour:
     pitch: 1
     volume: 1
     audioSource: {fileID: 0}
+  - name: SFX_SceneTransition
+    clip: {fileID: 8300000, guid: bac7260b75138c84a9a4ab5b1d5812b3, type: 3}
+    pitch: -1.02
+    volume: 1
+    audioSource: {fileID: 0}
   exclusiveSounds:
   - name: SFX_ElectricFieldAmbient
     clip: {fileID: 8300000, guid: 1049fa14c977bcf45b0af35268edca21, type: 3}
