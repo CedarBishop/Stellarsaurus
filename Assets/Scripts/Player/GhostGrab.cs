@@ -19,10 +19,14 @@ public class GhostGrab : MonoBehaviour
 
     void Start()
     {
-        camerController = Camera.main.GetComponent<CameraController>();
+        if (Camera.main != null)
+        {
+            camerController = Camera.main.GetComponent<CameraController>();
+            camerController.playersInGame.Add(transform);
+        }
+
         ghostMovement = GetComponent<GhostMovement>();
 
-        camerController.playersInGame.Add(transform);
     }
 
     private void OnDestroy()

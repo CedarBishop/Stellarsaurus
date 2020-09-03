@@ -21,7 +21,6 @@ public class AutomaticDoor : MonoBehaviour
         {
             objectsInRange++;
             animator.SetBool("isOpen", true);
-            Debug.Log(animator.GetBool("isOpen"));
             boxCollider2D.enabled = false;
             isOpen = true;
             if (SoundManager.instance != null)

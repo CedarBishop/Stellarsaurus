@@ -99,7 +99,6 @@ public class Perception : MonoBehaviour
                 if (hit.collider.CompareTag(detectionTag))
                 {
                     hitTarget = true;
-                    print("Saw target");
                     targetTransform = hit.transform;
                     raycastsHitTarget[i] = true;
                 }
