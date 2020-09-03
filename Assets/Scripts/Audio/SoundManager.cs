@@ -24,6 +24,8 @@ public class SoundManager : MonoBehaviour
 
     private bool isMainMenu;
 
+    const float VOLUME_SCALER = 0.5f;
+
     private void Awake()
     {
         if (instance == null)
@@ -41,8 +43,8 @@ public class SoundManager : MonoBehaviour
     {
         musicAudioSource = GetComponent<AudioSource>();
 
-        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        musicAudioSource.volume = currentMusicVolume;
+        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        musicAudioSource.volume = currentMusicVolume * VOLUME_SCALER;
 
         for (int i = 0; i < sfxObjectPoolSize; i++)
         {
@@ -57,7 +59,7 @@ public class SoundManager : MonoBehaviour
             exclusiveSounds[i].audioSource = _go.AddComponent<AudioSource>();
         }
         
-        currentSfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
+        currentSfxVolume = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
         SetSFXVolume(currentSfxVolume);
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -129,7 +131,7 @@ public class SoundManager : MonoBehaviour
                     return null;
                 }
                 AudioSourceController controller = audioControllers.Dequeue();
-                sounds[i].Play(controller, currentSfxVolume);
+                sounds[i].Play(controller, currentSfxVolume * VOLUME_SCALER);
                 CheckOutOfSources();
                 return controller;
             }
@@ -139,12 +141,12 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
-        PlaySFX(clip,currentSfxVolume, 1.0f);
+        PlaySFX(clip,currentSfxVolume , 1.0f);
     }
 
     public void PlaySFX(AudioClip clip, float volumeScaler, float pitch)
     {
-        audioControllers.Dequeue().Play(clip, currentSfxVolume * volumeScaler, pitch);
+        audioControllers.Dequeue().Play(clip, currentSfxVolume * volumeScaler * VOLUME_SCALER, pitch);
         CheckOutOfSources();
     }
 
@@ -154,7 +156,7 @@ public class SoundManager : MonoBehaviour
         {
             if (exclusiveSounds[i].name == soundName)
             {
-                exclusiveSounds[i].PlayExclusive(currentSfxVolume);
+                exclusiveSounds[i].PlayExclusive(currentSfxVolume * VOLUME_SCALER);
                 print("Play Exclusive SFX");
                 return;
             }
@@ -175,7 +177,7 @@ public class SoundManager : MonoBehaviour
 
         print(currentMusicVolume);
         PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
-        musicAudioSource.volume = currentMusicVolume;
+        musicAudioSource.volume = currentMusicVolume * VOLUME_SCALER;
         return currentMusicVolume;
     }
 
@@ -223,11 +225,6 @@ public class SoundManager : MonoBehaviour
         {
             musicAudioSource.Stop();
         }
-    }
-
-    public void StopSFX()
-    {
-
     }
 
     void CheckOutOfSources ()
