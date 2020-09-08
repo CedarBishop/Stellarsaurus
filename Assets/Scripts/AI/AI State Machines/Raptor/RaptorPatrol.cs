@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.Interactions;
 
 public class RaptorPatrol : StateMachineBehaviour
 {
-    AI ai;
+    Raptor ai;
     Perception perception;
     Rigidbody2D rigidbody;
 
@@ -24,18 +24,18 @@ public class RaptorPatrol : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Raptor>();
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         movementSpeed *= Random.Range(0.8f,1.2f);
         transform = animator.transform;
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
-        smallJumpHeight = ai.aiType.smallJumpHeight;
-        largeJumpHeight = ai.aiType.largeJumpHeight;
-        jumpDetectionDistance = ai.aiType.wallDetectionDistance;
+        smallJumpHeight = ai.smallJumpHeight;
+        largeJumpHeight = ai.largeJumpHeight;
+        jumpDetectionDistance = ai.wallDetectionDistance;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -44,7 +44,6 @@ public class RaptorPatrol : StateMachineBehaviour
         if (perception.detectsTarget)
         {
             animator.SetBool("TargetDetected", perception.detectsTarget);
-            ai.controller._goal = perception.targetTransform;
         }
         Move();
          CalculateWallAndLedge();

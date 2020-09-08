@@ -14,10 +14,7 @@ public class Dinosaur : MonoBehaviour
     public float attackRange;
     public float attackSize;
     public float wallDetectionDistance;
-    public float chanceOfDroppingWeapon;
-
-    public PathFindingAgent agent;
-    public AiController controller;
+    [Range(0.0f,1.0f)]public float chanceOfDroppingWeapon;
 
     public LayerMask groundLayer;
     public LayerMask platformLayer;
@@ -43,6 +40,7 @@ public class Dinosaur : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = spriteRenderer.material;
+        pathFindingGrid = FindObjectOfType<PathFindingGrid>();
 
         if (SoundManager.instance != null)
         {

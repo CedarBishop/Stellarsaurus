@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CarrierEntry : StateMachineBehaviour
 {
-    AI ai;
+    Carrier ai;
     Perception perception;
     Rigidbody2D rigidbody;
     Transform transform;
@@ -16,14 +14,14 @@ public class CarrierEntry : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Carrier>();
         perception = ai.GetComponent<Perception>();
         rigidbody = ai.GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = 0;
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         transform = ai.transform;
 
-        egg = Instantiate(ai.eggPrefab, new Vector2(transform.position.x,transform.position.y) + ai.aiType.eggOffset, Quaternion.identity);
+        egg = Instantiate(ai.eggPrefab, new Vector2(transform.position.x,transform.position.y) + ai.eggOffset, Quaternion.identity);
         egg.transform.parent = transform;
         eggCollider = egg.GetComponent<Collider2D>();
         eggCollider.enabled = false;
@@ -63,8 +61,8 @@ public class CarrierEntry : StateMachineBehaviour
 
     void WallCheck()
     {
-        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.wallLayer) ||
-           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
+        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.wallDetectionDistance, ai.wallLayer) ||
+           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
         {
             perception.isFacingRight = !perception.isFacingRight;
         }

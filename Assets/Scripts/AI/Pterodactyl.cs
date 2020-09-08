@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using PlatformerPathFinding;
-using PlatformerPathFinding.Examples;
 
 public class Pterodactyl : Dinosaur
 {
@@ -14,7 +12,6 @@ public class Pterodactyl : Dinosaur
 
     protected Transform[] pteroAirTargets;
     [HideInInspector] public PairTargets[] pteroGroundTargets;
-    [HideInInspector] public PathFindingGrid pathFindingGrid;
     [HideInInspector] public AStar aStar;
     [HideInInspector] public Vector2 startingPosition;
 
@@ -22,8 +19,7 @@ public class Pterodactyl : Dinosaur
     {
         base.Initialise(transforms, pteroGround, pteroAir);
 
-        aStar = FindObjectOfType<AStar>();
-        pathFindingGrid = aStar.GetComponent<PathFindingGrid>();
+        aStar = pathFindingGrid.GetComponent<AStar>();
         startingPosition = transform.position;
     }
 

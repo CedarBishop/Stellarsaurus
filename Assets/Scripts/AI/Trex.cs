@@ -6,8 +6,10 @@ public class Trex : Dinosaur
 {
     public Transform aimOrigin;
     public SpriteRenderer aimSpriteRenderer;
-
-    public Sprite trexArmSprite;
+    public AIProjectile projectile;
+    public float projectileForce;
+    public float projectileDeviation;
+    public Transform projectileFiringPoint;
 
     public override void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null)
     {

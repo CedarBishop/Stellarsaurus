@@ -5,7 +5,7 @@ using PlatformerPathFinding;
 
 public class PterodactylFly : StateMachineBehaviour
 {
-    private AI ai;
+    private Pterodactyl ai;
     private Rigidbody2D rigidbody;
     private Transform transform;
     private Animator _Animator;
@@ -19,10 +19,9 @@ public class PterodactylFly : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         swoopTimer = Random.Range(10, 20);
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Pterodactyl>();
         rigidbody = ai.GetComponent<Rigidbody2D>();
-        rigidbody.gravityScale = 0;
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         transform = ai.transform;
         _Animator = animator;
         aStar = ai.aStar;

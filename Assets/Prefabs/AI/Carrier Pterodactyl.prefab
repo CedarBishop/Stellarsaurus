@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 2765672809849141232}
   - component: {fileID: 2765672809849141233}
   - component: {fileID: 2765672809849141234}
-  - component: {fileID: 2765672809849141235}
   - component: {fileID: 2765672809849141196}
   - component: {fileID: 1755103953086001632}
-  - component: {fileID: 7696347152030521832}
-  - component: {fileID: 7841679475487439284}
   - component: {fileID: 1533116529804060533}
+  - component: {fileID: 4056662257992560302}
   m_Layer: 16
   m_Name: Carrier Pterodactyl
   m_TagString: Untagged
@@ -56,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea9b1992eba0aa40a636afbb4abfae6, type: 2}
+  - {fileID: 2100000, guid: 026f722a303d5e44e8c4705125f1d17a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,96 +105,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1114112
   detectionTag: Player
-  hearingRadius: 2.6
-  viewingDistance: 3.9
+  hearingRadius: 2
+  viewingDistance: 4
   fieldOfView: 60
   numOfRays: 12
   isFacingRight: 1
-  targetMemoryTime: 0
+  targetMemoryTime: 2
   isUsingAIController: 0
---- !u!114 &2765672809849141235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765672809849141197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded261f867555e848af831cea17bd1f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolController: {fileID: 9100000, guid: 362be957a185fe34dbfbc2407cd85157, type: 2}
-  jumpPatrolController: {fileID: 9100000, guid: 1fe7b9a4f40466b498e17e0f8b62640e,
-    type: 2}
-  guardController: {fileID: 9100000, guid: 10312a8c65440bd45b4fafd089a7b930, type: 2}
-  flyerController: {fileID: 9100000, guid: 8db40813563063048a6e1ef1ca6af9da, type: 2}
-  carrierController: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
-  patrolMaterial: {fileID: 2100000, guid: fe3fc2c153d7b884da85125f5ed7f78f, type: 2}
-  jumpPatrolMaterial: {fileID: 2100000, guid: fe3fc2c153d7b884da85125f5ed7f78f, type: 2}
-  guardMaterial: {fileID: 2100000, guid: 6ea9b1992eba0aa40a636afbb4abfae6, type: 2}
-  flyerMaterial: {fileID: 2100000, guid: 026f722a303d5e44e8c4705125f1d17a, type: 2}
-  carrierMaterial: {fileID: 2100000, guid: 026f722a303d5e44e8c4705125f1d17a, type: 2}
-  agent: {fileID: 7841679475487439284}
-  controller: {fileID: 7696347152030521832}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 8192
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 131072
-  bloodParticle: {fileID: 8157379650156868562, guid: 520a614993acb91478aeea159d07e97a,
-    type: 3}
-  eggPrefab: {fileID: 1042160443367734529, guid: c8f72e16bf751314fa7268270b801f69,
-    type: 3}
-  aimOrigin: {fileID: 0}
-  aimSpriteRenderer: {fileID: 0}
-  trexArmSprite: {fileID: 21300000, guid: 74f41d803b5348e479260853d3f1425d, type: 3}
-  aiType:
-    AIName: 
-    health: 0
-    movementSpeed: 0
-    attackDamage: 0
-    attackCooldown: 0
-    attackRange: 0
-    attackSize: 0
-    colliderSize: {x: 0, y: 0}
-    colliderOffset: {x: 0, y: 0}
-    viewingDistance: 0
-    fieldOfView: 0
-    hearingRadius: 0
-    targetMemoryTime: 0
-    chanceOfDroppingWeapon: 0
-    aiBehaviour: 0
-    smallJumpHeight: 0
-    largeJumpHeight: 0
-    jumpSpeed: 0
-    jumpStrength: 0
-    fallSpeed: 0
-    fallLimit: 0
-    targetResetTime: 0
-    wallDetectionDistance: 0
-    FiringPoint: {x: 0, y: 0}
-    projectileName: 
-    projectileForce: 0
-    bulletDeviation: 0
-    swoopSpeed: 0
-    pathFindingSwoopSpeed: 0
-    retreatSpeed: 0
-    minTimeBetweenSwoop: 0
-    maxTimeBetweenSwoop: 0
-    eggOffset: {x: 0, y: 0}
-  pathFindingGrid: {fileID: 0}
-  aStar: {fileID: 0}
-  health: 0
-  startingPosition: {x: 0, y: 0}
-  pteroGroundTargets: []
 --- !u!95 &2765672809849141196
 Animator:
   serializedVersion: 3
@@ -207,7 +122,7 @@ Animator:
   m_GameObject: {fileID: 2765672809849141197}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3be6d3b5631cf28489049da7e2713283, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -231,52 +146,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 17cdb869cebf49d449a91c0419584301, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7696347152030521832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765672809849141197}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c2cc50b8df50b44882bb0fc2cc9a59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goal: {fileID: 0}
-  _agent: {fileID: 7841679475487439284}
-  _stopDistance: 0
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 256
-  _nodeSize: 1
-  _walkSpeed: 7
-  _jumpSpeed: 25
-  _fallSpeed: 20
-  _pathUpdateFrequency: 30
---- !u!114 &7841679475487439284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765672809849141197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0294269d00c6ed4482a6b5ebc274c3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _height: 1
-  _width: 1
-  _jumpStrength: 4
-  _fallLimit: 10
-  _drawPathGizmos: 1
 --- !u!61 &1533116529804060533
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -287,7 +162,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.2, y: -0.4}
@@ -303,3 +178,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4056662257992560302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765672809849141197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05532e934aca31842845a9ce3d9b3c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  movementSpeed: 125
+  attackDamage: 1
+  attackCooldown: 2
+  attackRange: 2
+  attackSize: 1
+  wallDetectionDistance: 2
+  chanceOfDroppingWeapon: 0.713
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 131072
+  bloodParticle: {fileID: 8157379650156868562, guid: 520a614993acb91478aeea159d07e97a,
+    type: 3}
+  pathFindingGrid: {fileID: 0}
+  swoopSpeed: 100
+  pathFindingSwoopSpeed: 200
+  retreatSpeed: 100
+  minTimeBetweenSwoop: 10
+  maxTimeBetweenSwoop: 20
+  pteroGroundTargets: []
+  pathFindingGrid: {fileID: 0}
+  aStar: {fileID: 0}
+  startingPosition: {x: 0, y: 0}
+  eggPrefab: {fileID: 1042160443367734529, guid: c8f72e16bf751314fa7268270b801f69,
+    type: 3}
+  eggOffset: {x: 0, y: -1}

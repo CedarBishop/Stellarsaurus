@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpRaptorPatrol : StateMachineBehaviour
 {
-    AI ai;
+    JumpRaptor ai;
     Perception perception;
     Transform transform;
 
@@ -12,11 +12,11 @@ public class JumpRaptorPatrol : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<JumpRaptor>();
         perception = animator.GetComponent<Perception>();
         transform = animator.transform;
 
-        targetTimer = ai.aiType.targetResetTime;
+        targetTimer = ai.targetResetTime;
 
         ai.SetRandomGoal();
     }
@@ -37,7 +37,7 @@ public class JumpRaptorPatrol : StateMachineBehaviour
     {
         if (Vector3.Distance(ai.controller._goal.transform.position, transform.position) < 2f)
         {
-            targetTimer = ai.aiType.targetResetTime;
+            targetTimer = ai.targetResetTime;
             ai.SetRandomGoal();
         }
     }
@@ -47,7 +47,7 @@ public class JumpRaptorPatrol : StateMachineBehaviour
         if (targetTimer <= 0)
         {
             ai.SetRandomGoal();
-            targetTimer = ai.aiType.targetResetTime;
+            targetTimer = ai.targetResetTime;
         }
         else
         {

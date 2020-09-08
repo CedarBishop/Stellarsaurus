@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RaptorChase : StateMachineBehaviour
 {
-    AI ai;
+    Raptor ai;
     Perception perception;
     Rigidbody2D rigidbody;
     Transform targetTransform;
@@ -19,29 +19,26 @@ public class RaptorChase : StateMachineBehaviour
     float largeJumpHeight;
     float jumpDetectionDistance;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Raptor>();
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         movementSpeed *= Random.Range(0.8f,1.2f);
         transform = animator.transform;
         groundLayer = ai.groundLayer;
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
-        smallJumpHeight = ai.aiType.smallJumpHeight;
-        largeJumpHeight = ai.aiType.largeJumpHeight;
+        smallJumpHeight = ai.smallJumpHeight;
+        largeJumpHeight = ai.largeJumpHeight;
        targetTransform = perception.targetTransform;
-       jumpDetectionDistance = ai.aiType.wallDetectionDistance;
+       jumpDetectionDistance = ai.wallDetectionDistance;
 
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         TargetTracking(animator);
         Chase();
         CalculateWallAndLedge();
@@ -61,7 +58,7 @@ public class RaptorChase : StateMachineBehaviour
             {
                 return;
             }
-            if (Vector2.Distance(animator.transform.position, targetTransform.position) < (ai.aiType.attackRange))
+            if (Vector2.Distance(animator.transform.position, targetTransform.position) < (ai.attackRange))
             {
                 animator.SetBool("WithinAttackingDistance", true);
             }
@@ -81,7 +78,7 @@ public class RaptorChase : StateMachineBehaviour
             return;
         }
 
-        if (Mathf.Abs(targetTransform.position.x - transform.position.x) < (ai.aiType.attackRange * 0.75f))
+        if (Mathf.Abs(targetTransform.position.x - transform.position.x) < (ai.attackRange * 0.75f))
         {
             return;
         }
