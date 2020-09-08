@@ -184,4 +184,9 @@ public class Dinosaur : MonoBehaviour
         if (aimSpriteMaterial != null)
             aimSpriteMaterial.SetFloat("_IsHurt", 0.0f);
     }
+
+    public virtual Transform SetRandomGoal()
+    {
+        return null;
+    }
 }

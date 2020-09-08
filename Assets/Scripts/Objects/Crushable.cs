@@ -19,13 +19,13 @@ public class Crushable : MonoBehaviour
                 }
             }
         }
-        else if (collision.gameObject.GetComponent<AI>())
+        else if (collision.gameObject.GetComponent<Dinosaur>())
         {
             if (GetComponent<Rigidbody2D>())
             {
                 if (GetComponent<Rigidbody2D>().velocity.y <= fallSpeedToKill)
                 {
-                    collision.gameObject.GetComponent<AI>().TakeDamage(0, damage);
+                    collision.gameObject.GetComponent<Dinosaur>().TakeDamage(0, damage);
                 }
             }
         }

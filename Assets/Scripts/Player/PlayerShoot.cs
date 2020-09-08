@@ -556,9 +556,9 @@ public class PlayerShoot : MonoBehaviour
                                 hits[i].collider.GetComponent<PlayerHealth>().HitByPlayer(playerNumber);
                                 shouldAddHitStat = true;
                             }
-                            else if (hits[i].collider.GetComponent<AI>())
+                            else if (hits[i].collider.GetComponent<Dinosaur>())
                             {
-                                hits[i].collider.GetComponent<AI>().TakeDamage(playerNumber, currentWeapon.damage);
+                                hits[i].collider.GetComponent<Dinosaur>().TakeDamage(playerNumber, currentWeapon.damage);
                                 shouldAddHitStat = true;
                             }
                             else if (hits[i].collider.GetComponent<EnvironmentalObjectHealth>())

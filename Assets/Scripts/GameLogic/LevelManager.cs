@@ -24,7 +24,6 @@ public class LevelManager : MonoBehaviour
     [Header("Doesn't spawn AI yet")]
     [Header("")]
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisInThisLevel;
-    public AI aiPrefab;
 
     public bool debugGhost;
     public bool isClimbLevel;

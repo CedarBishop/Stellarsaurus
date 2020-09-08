@@ -21,10 +21,13 @@ public class Pterodactyl : Dinosaur
 
         aStar = pathFindingGrid.GetComponent<AStar>();
         startingPosition = transform.position;
+
+        pteroGroundTargets = pteroGround;
+        pteroAirTargets = pteroAir;
     }
 
 
-    public Transform SetRandomGoal()
+    public override Transform SetRandomGoal()
     {
         if (pteroAirTargets != null)
         {

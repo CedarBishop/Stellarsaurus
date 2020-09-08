@@ -13662,6 +13662,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: aisSpawned.Array.data[0]
       value: Trex
       objectReference: {fileID: 0}
@@ -13675,6 +13685,12 @@ PrefabInstance:
       propertyPath: timeBeforeSpawning
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6718884237547636821, guid: a795379854263404a9bfb1eccba2ae0a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &293702716

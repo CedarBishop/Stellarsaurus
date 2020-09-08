@@ -24,9 +24,9 @@ public class WaterZone : MonoBehaviour
         {
             collision.GetComponent<PlayerHealth>().StopBurning();
         }
-        if (collision.GetComponent<AI>())
+        if (collision.GetComponent<Dinosaur>())
         {
-            collision.GetComponent<AI>().StopBurning();
+            collision.GetComponent<Dinosaur>().StopBurning();
         }       
     }
 

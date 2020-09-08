@@ -17,7 +17,6 @@ public class CarrierEntry : StateMachineBehaviour
         ai = animator.GetComponent<Carrier>();
         perception = ai.GetComponent<Perception>();
         rigidbody = ai.GetComponent<Rigidbody2D>();
-        rigidbody.gravityScale = 0;
         movementSpeed = ai.movementSpeed;
         transform = ai.transform;
 
@@ -25,8 +24,6 @@ public class CarrierEntry : StateMachineBehaviour
         egg.transform.parent = transform;
         eggCollider = egg.GetComponent<Collider2D>();
         eggCollider.enabled = false;
-       
-        egg.Init();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

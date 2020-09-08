@@ -20,9 +20,10 @@ public class JumpRaptor : Dinosaur
         agent.Init(FindObjectOfType<PathFindingGrid>());
         animator.SetBool("CanAttack", true);
         Destroy(rigidbody);
+        targets = transforms;
     }
 
-    public Transform SetRandomGoal()
+    public override Transform SetRandomGoal()
     {
         if (targets != null)
         {

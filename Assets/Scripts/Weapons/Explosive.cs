@@ -47,9 +47,9 @@ public class Explosive : Projectile
 
                     OnHit();
                 }
-                else if (colliders[i].GetComponent<AI>())
+                else if (colliders[i].GetComponent<Dinosaur>())
                 {
-                    colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
+                    colliders[i].GetComponent<Dinosaur>().TakeDamage(playerNumber, damage);
 
                     if (GameManager.instance.SelectedGamemode != null)
                     {

@@ -5,20 +5,14 @@ using UnityEngine;
 public class Egg : MonoBehaviour
 {
     [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
+    public Dinosaur dinosaurToSpawn;
 
     public Transform[] jumpRaptorTargets;
     public PairTargets[] pteroGroundTargets;
     public Transform[] pteroAirTargets;
     
-    private AIType aiTypeToHatch;
     private bool hasHatched;
     
-    public void Init ()
-    {
-        List<AIType> ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
-        aiTypeToHatch = ais[Random.Range(0, ais.Count)];
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
@@ -35,8 +29,8 @@ public class Egg : MonoBehaviour
         }
 
         hasHatched = true;
-        AI ai = Instantiate(LevelManager.instance.aiPrefab, transform.position, Quaternion.identity);
-        ai.Initialise(aiTypeToHatch, jumpRaptorTargets, pteroGroundTargets, pteroAirTargets);
+        Dinosaur dinosaur = Instantiate(dinosaurToSpawn, transform.position, Quaternion.identity);
+        dinosaur.Initialise(jumpRaptorTargets, pteroGroundTargets, pteroAirTargets);
         Destroy(gameObject);
     }    
 }

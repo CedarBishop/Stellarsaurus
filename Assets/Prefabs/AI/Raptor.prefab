@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2765672809849141234}
   - component: {fileID: 2765672809849141196}
   - component: {fileID: 1755103953086001632}
-  - component: {fileID: 1533116529804060533}
   - component: {fileID: 6009857931453281885}
+  - component: {fileID: 6621774137797421766}
   m_Layer: 16
   m_Name: Raptor
   m_TagString: Untagged
@@ -152,32 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1533116529804060533
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765672809849141197}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 0.8333333}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.85}
-  m_EdgeRadius: 0
 --- !u!114 &6009857931453281885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +189,19 @@ MonoBehaviour:
   pathFindingGrid: {fileID: 0}
   smallJumpHeight: 2
   largeJumpHeight: 3
+--- !u!70 &6621774137797421766
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765672809849141197}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.3333334, y: 0.8333333}
+  m_Direction: 1

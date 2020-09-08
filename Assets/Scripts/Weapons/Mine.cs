@@ -56,7 +56,7 @@ public class Mine : Explosive
             return;
         }
 
-        if (collision.GetComponent<PlayerMovement>() || collision.GetComponent<AI>() || collision.GetComponent<Projectile>() || collision.GetComponent<Flame>())
+        if (collision.GetComponent<PlayerMovement>() || collision.GetComponent<Dinosaur>() || collision.GetComponent<Projectile>() || collision.GetComponent<Flame>())
         {
             Explode();
         }

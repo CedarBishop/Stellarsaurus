@@ -17,14 +17,9 @@ public class AISpawner : MonoBehaviour
     public PairTargets[] pteroGroundTargets;
     public ParticleSystem[] particles;
 
-    public List<AIType> ais = new List<AIType>();
-    private AI aiPrefab;
-
 
     void Start()
     {
-        ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
-        aiPrefab = LevelManager.instance.aiPrefab;
         StartCoroutine("DelayParticles");
         StartCoroutine("DelaySpawn");
     }
@@ -67,11 +62,6 @@ public class AISpawner : MonoBehaviour
 
    void SpawnAI ()
    {
-        //if (ais.Count > 0)
-        //{
-        //    AI ai = Instantiate(aiPrefab, transform.position, Quaternion.identity);
-        //    ai.Initialise(ais[Random.Range(0,ais.Count)], targetsInMap, pteroGroundTargets, pteroAirTargets);
-        //}
         if (dinosaursSpawned.Length > 0)
         {
             Dinosaur dinosaur = Instantiate(dinosaursSpawned[Random.Range(0, dinosaursSpawned.Length)], transform.position, Quaternion.identity);
