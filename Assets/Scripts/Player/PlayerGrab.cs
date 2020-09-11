@@ -26,7 +26,7 @@ public class PlayerGrab : MonoBehaviour
     public void Drop()
     {
         Vector2 firingPoint = playerShoot.currentWeapon.weaponSpritePrefab.firingPoint.position;
-        Weapon weapon = Instantiate(
+        OldWeapon weapon = Instantiate(
             LevelManager.instance.weaponPrefab,
              new Vector3(playerShoot.gunSprite.transform.position.x + (playerShoot.gunOriginTransform.right.x * firingPoint.x), playerShoot.gunSprite.transform.position.y + (playerShoot.gunOriginTransform.right.y * firingPoint.y), 0),
             playerShoot.gunOriginTransform.rotation

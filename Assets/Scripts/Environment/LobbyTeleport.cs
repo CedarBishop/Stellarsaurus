@@ -53,7 +53,7 @@ public class LobbyTeleport : MonoBehaviour
             player.DestroyWeapon();
             ActivateCameras();
         }
-        if (collision.GetComponent<Weapon>())
+        if (collision.GetComponent<OldWeapon>())
         {
             Destroy(collision.gameObject);
         }

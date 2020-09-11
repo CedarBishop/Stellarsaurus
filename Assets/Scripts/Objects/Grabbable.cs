@@ -16,7 +16,7 @@ public class Grabbable : MonoBehaviour
         transform.parent = _HolderTransform;
         isHeld = true;
         holderTransform = _HolderTransform;
-        if (TryGetComponent<Weapon>(out Weapon weapon))
+        if (TryGetComponent<OldWeapon>(out OldWeapon weapon))
         {
             weaponType = weapon.weaponType;
             ammo = weaponType.ammoCount;
@@ -46,7 +46,7 @@ public class Grabbable : MonoBehaviour
         
         if (weaponType != null)
         {
-            Weapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
+            OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
             weapon.OnDrop(weaponType, ammo, false);
             Destroy(gameObject);
         }

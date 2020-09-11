@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("Weapons")]
     [Header("")]
-    public Weapon weaponPrefab;
+    public OldWeapon weaponPrefab;
     public float timeBetweenWeaponSpawns;
     public SkyDrops randomWeaponSpawnPositionParameters;
     public bool shouldWeaponsFallFromSky;
@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
     {
         while (true)
         {
-            Weapon weapon = Instantiate(weaponPrefab,
+            OldWeapon weapon = Instantiate(weaponPrefab,
                 new Vector2(Random.Range(randomWeaponSpawnPositionParameters.minX,
                 randomWeaponSpawnPositionParameters.maxX),
                 randomWeaponSpawnPositionParameters.y),

@@ -152,7 +152,7 @@ public class Dinosaur : MonoBehaviour
                 float rand = Random.Range(0.0f, 1.0f);
                 if (rand < chanceOfDroppingWeapon)
                 {
-                    Weapon weapon = Instantiate(LevelManager.instance.weaponPrefab,
+                    OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab,
                     transform.position,
                     Quaternion.identity);
                     weapon.Init(LevelManager.instance.weaponTypes, WeaponSpawnType.FallFromSky);

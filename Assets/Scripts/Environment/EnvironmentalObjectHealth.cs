@@ -17,7 +17,7 @@ public class EnvironmentalObjectHealth : MonoBehaviour
     private ExplosiveObjectHealth explosiveObjectHealth;
 
     [Header("Item Drop")]
-    public Weapon weaponPrefab;
+    public OldWeapon weaponPrefab;
     [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
     private List<WeaponType> weaponTypes; 
 
@@ -67,7 +67,7 @@ public class EnvironmentalObjectHealth : MonoBehaviour
 
         if (weaponPrefab != null)
         {
-            Weapon temp = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
+            OldWeapon temp = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
             temp.Init(weaponTypes, WeaponSpawnType.FallFromSky);
         }
 

@@ -32,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
     Melee meleeType;
     [HideInInspector] public int ammoCount;
     bool isTriggeringWeapon;
-    Weapon triggeredWeapon;
+    OldWeapon triggeredWeapon;
     WeaponUseType weaponUseType;
     Vector3 firingPoint;
     float knockback;
@@ -698,7 +698,7 @@ public class PlayerShoot : MonoBehaviour
             return;
         }
 
-        Weapon weapon = Instantiate(
+        OldWeapon weapon = Instantiate(
             LevelManager.instance.weaponPrefab,
              new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.y), 0),
             gunOriginTransform.rotation
@@ -743,7 +743,7 @@ public class PlayerShoot : MonoBehaviour
     {        
         if (other.CompareTag("Weapon"))
         {            
-            triggeredWeapon = other.GetComponentInParent<Weapon>();
+            triggeredWeapon = other.GetComponentInParent<OldWeapon>();
             isTriggeringWeapon = true;
         }
         else

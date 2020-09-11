@@ -28,7 +28,7 @@ public class Mine : Explosive
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Weapon>())
+        if (collision.gameObject.GetComponent<OldWeapon>())
         {
             if (isSet)
             {

@@ -25,7 +25,7 @@ public class WeaponSpawner : MonoBehaviour
 
     void InitWeapon ()
     {
-        Weapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
+        OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
         weapon.Init(weaponTypes, WeaponSpawnType.Spawnpoint, this);
     }
 
