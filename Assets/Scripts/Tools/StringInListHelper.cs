@@ -40,22 +40,6 @@ public static class StringInListHelper
         return names;       
     }
 
-    public static string[] AllAiNames ()
-    {
-        string file = Application.dataPath + "/Resources/DesignMaster.txt";
-        File.ReadAllText(file);
-        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
-
-
-        string[] names = new string[saveObject.savedAis.Count];
-        for (int i = 0; i < names.Length; i++)
-        {
-            names[i] = saveObject.savedAis[i].AIName;
-        }
-
-        return names;
-    }
-
 #endif
 }
 

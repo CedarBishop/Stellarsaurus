@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
-using UnityEditor.VersionControl;
-using System.Linq;
-using System;
 
-public enum DisplayOptions { Weapons, AI, Player, Levels, Juice}
+public enum DisplayOptions { Weapons, Player, Levels, Juice}
 
 public class DesignMaster : EditorWindow
 {
@@ -16,7 +12,6 @@ public class DesignMaster : EditorWindow
     static float spacing;
     static bool isDebug;
     [SerializeField] static List<WeaponType> weaponTypes = new List<WeaponType>();
-    [SerializeField] static List<AIType> aiTypes = new List<AIType>();
     [SerializeField] static PlayerParams player;
     [SerializeField] static List<SceneAsset> freeForAllScenes = new List<SceneAsset>();
     [SerializeField] static List<SceneAsset> eliminationScenes = new List<SceneAsset>();
@@ -43,7 +38,7 @@ public class DesignMaster : EditorWindow
     static void Init(string title)
     {
         DesignMaster designMaster = (DesignMaster)EditorWindow.GetWindow(typeof(DesignMaster),false, title, true);
-        weaponTypes = LoadFromJSON(isDebug,out aiTypes, out player);
+        weaponTypes = LoadFromJSON(isDebug, out player);
 
         for (int i = 0; i < weaponTypes.Count; i++)
         {
@@ -84,12 +79,6 @@ public class DesignMaster : EditorWindow
                 }
                 EditorGUILayout.EndVertical();
                 break;
-            case DisplayOptions.AI:
-                EditorGUILayout.BeginVertical();
-                if (GUILayout.Button("Create New AI Type"))
-                {
-                    CreateAI();
-                }
                 EditorGUILayout.EndVertical();
                 break;
             case DisplayOptions.Player:
@@ -104,7 +93,7 @@ public class DesignMaster : EditorWindow
         EditorGUILayout.BeginVertical();
         if (GUILayout.Button("Load"))
         {
-            weaponTypes = LoadFromJSON(isDebug, out aiTypes, out player);
+            weaponTypes = LoadFromJSON(isDebug, out player);
             for (int i = 0; i < weaponTypes.Count; i++)
             {
                 CheckNullWeaponSprite(i);
@@ -138,12 +127,6 @@ public class DesignMaster : EditorWindow
         if (GUILayout.Button("Weapons"))
         {
             displayOptions = DisplayOptions.Weapons;
-        }
-        EditorGUILayout.EndVertical();
-        EditorGUILayout.BeginVertical();
-        if (GUILayout.Button("AI"))
-        {
-            displayOptions = DisplayOptions.AI;
         }
         EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical();
@@ -191,9 +174,6 @@ public class DesignMaster : EditorWindow
         {
             case DisplayOptions.Weapons:
                 DisplayWeaponTypes();
-                break;
-            case DisplayOptions.AI:
-                DisplayAITypes();
                 break;
             case DisplayOptions.Player:
                 DisplayPlayerParams();
@@ -562,239 +542,6 @@ public class DesignMaster : EditorWindow
         }
     }
 
-    void CreateAI ()
-    {
-        AIType ai = new AIType();
-        ai.AIName = "New AI";
-        aiTypes.Add(ai);
-    }
-
-    void DisplayAITypes()
-    {
-        if (aiTypes != null)
-        {
-            for (int i = 0; i < aiTypes.Count; i++)
-            {
-
-                EditorGUILayout.BeginVertical();
-
-                GUILayout.Label(aiTypes[i].AIName, EditorStyles.boldLabel);
-
-                EditorGUILayout.Space(16);
-                GUILayout.Label("Universal Parameters", EditorStyles.boldLabel);
-                EditorGUILayout.Space(8);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Name", EditorStyles.boldLabel);
-                aiTypes[i].AIName = EditorGUILayout.TextField(aiTypes[i].AIName);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Health", EditorStyles.boldLabel);
-                aiTypes[i].health = EditorGUILayout.IntField(aiTypes[i].health);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Movement Speed", EditorStyles.boldLabel);
-                aiTypes[i].movementSpeed = EditorGUILayout.FloatField(aiTypes[i].movementSpeed);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Attack Damage", EditorStyles.boldLabel);
-                aiTypes[i].attackDamage = EditorGUILayout.IntField(aiTypes[i].attackDamage);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Attack Cooldown", EditorStyles.boldLabel);
-                aiTypes[i].attackCooldown = EditorGUILayout.FloatField(aiTypes[i].attackCooldown);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Attack Range", EditorStyles.boldLabel);
-                aiTypes[i].attackRange = EditorGUILayout.FloatField(aiTypes[i].attackRange);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Attack Size", EditorStyles.boldLabel);
-                aiTypes[i].attackSize = EditorGUILayout.FloatField(aiTypes[i].attackSize);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Chance of Dropping Reward", EditorStyles.boldLabel);
-                aiTypes[i].chanceOfDroppingWeapon = EditorGUILayout.Slider(aiTypes[i].chanceOfDroppingWeapon, 0.0f, 1.0f);
-
-                EditorGUILayout.Space(16);
-                GUILayout.Label("Perception", EditorStyles.boldLabel);
-                EditorGUILayout.Space(8);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Viewing Distance", EditorStyles.boldLabel);
-                aiTypes[i].viewingDistance = EditorGUILayout.Slider(aiTypes[i].viewingDistance, 0.0f, 20.0f);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Field of View", EditorStyles.boldLabel);
-                aiTypes[i].fieldOfView = EditorGUILayout.Slider(aiTypes[i].fieldOfView, 0.0f, 360.0f);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Hearing Radius", EditorStyles.boldLabel);
-                aiTypes[i].hearingRadius = EditorGUILayout.Slider(aiTypes[i].hearingRadius,0.0f,20.0f);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Target Memory Time", EditorStyles.boldLabel);
-                aiTypes[i].targetMemoryTime = EditorGUILayout.Slider(aiTypes[i].targetMemoryTime, 0.0f, 10.0f);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Wall Detection Distance", EditorStyles.boldLabel);
-                aiTypes[i].wallDetectionDistance = EditorGUILayout.Slider(aiTypes[i].wallDetectionDistance, 0.0f, 5.0f);
-
-                EditorGUILayout.Space(8);
-                aiTypes[i].colliderSize = EditorGUILayout.Vector2Field("Collider Size", aiTypes[i].colliderSize);
-
-                EditorGUILayout.Space(8);
-                aiTypes[i].colliderOffset = EditorGUILayout.Vector2Field("Collider Offset", aiTypes[i].colliderOffset);
-
-                EditorGUILayout.Space(16);
-                GUILayout.Label("Behaviours", EditorStyles.boldLabel);
-                EditorGUILayout.Space(8);
-
-                EditorGUILayout.Space(8);
-                GUILayout.Label("Behaviour", EditorStyles.boldLabel);
-                aiTypes[i].aiBehaviour = (AIBehaviour)EditorGUILayout.EnumPopup(aiTypes[i].aiBehaviour);
-
-                switch (aiTypes[i].aiBehaviour)
-                {
-                    case AIBehaviour.Patrol:
-                        EditorGUILayout.Space(16);
-                        GUILayout.Label("Patrol", EditorStyles.boldLabel);
-                        EditorGUILayout.Space(8);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Small Jump Height", EditorStyles.boldLabel);
-                        aiTypes[i].smallJumpHeight = EditorGUILayout.FloatField(aiTypes[i].smallJumpHeight);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Large Jump Height", EditorStyles.boldLabel);
-                        aiTypes[i].largeJumpHeight = EditorGUILayout.FloatField(aiTypes[i].largeJumpHeight);
-
-                        break;
-                    case AIBehaviour.Guard:
-                        EditorGUILayout.Space(16);
-                        GUILayout.Label("Guard", EditorStyles.boldLabel);
-                        EditorGUILayout.Space(8);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Projectile Name", EditorStyles.boldLabel);
-                        aiTypes[i].projectileName = EditorGUILayout.TextField(aiTypes[i].projectileName);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Projectile Force", EditorStyles.boldLabel);
-                        aiTypes[i].projectileForce = EditorGUILayout.FloatField(aiTypes[i].projectileForce);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Projectile Deviation", EditorStyles.boldLabel);
-                        aiTypes[i].bulletDeviation = EditorGUILayout.FloatField(aiTypes[i].bulletDeviation);
-
-                        EditorGUILayout.Space(8);
-                        aiTypes[i].FiringPoint = EditorGUILayout.Vector2Field("Projectile Firing Point", aiTypes[i].FiringPoint);
-                        break;
-                    case AIBehaviour.Fly:
-                        EditorGUILayout.Space(16);
-                        GUILayout.Label("Flyer", EditorStyles.boldLabel);
-                        EditorGUILayout.Space(8);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
-                        aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Pathfinding Swoop Speed", EditorStyles.boldLabel);
-                        aiTypes[i].pathFindingSwoopSpeed = EditorGUILayout.FloatField(aiTypes[i].pathFindingSwoopSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Retreat Speed", EditorStyles.boldLabel);
-                        aiTypes[i].retreatSpeed = EditorGUILayout.FloatField(aiTypes[i].retreatSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Min Time BetweenSwoop", EditorStyles.boldLabel);
-                        aiTypes[i].minTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].minTimeBetweenSwoop, 0 , 50);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Max Time BetweenSwoop", EditorStyles.boldLabel);
-                        aiTypes[i].maxTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].maxTimeBetweenSwoop, 0 ,50);
-                        break;
-                    case AIBehaviour.Carrier:
-                        EditorGUILayout.Space(16);
-                        GUILayout.Label("Carrier", EditorStyles.boldLabel);
-                        EditorGUILayout.Space(8);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Swoop Speed", EditorStyles.boldLabel);
-                        aiTypes[i].swoopSpeed = EditorGUILayout.FloatField(aiTypes[i].swoopSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Pathfinding Swoop Speed", EditorStyles.boldLabel);
-                        aiTypes[i].pathFindingSwoopSpeed = EditorGUILayout.FloatField(aiTypes[i].pathFindingSwoopSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Retreat Speed", EditorStyles.boldLabel);
-                        aiTypes[i].retreatSpeed = EditorGUILayout.FloatField(aiTypes[i].retreatSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Min Time BetweenSwoop", EditorStyles.boldLabel);
-                        aiTypes[i].minTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].minTimeBetweenSwoop, 0, 50);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Max Time BetweenSwoop", EditorStyles.boldLabel);
-                        aiTypes[i].maxTimeBetweenSwoop = EditorGUILayout.Slider(aiTypes[i].maxTimeBetweenSwoop, 0, 50);
-
-                        EditorGUILayout.Space(8);
-                        aiTypes[i].eggOffset = EditorGUILayout.Vector2Field("Egg Offset", aiTypes[i].eggOffset);
-                        break;
-                    case AIBehaviour.JumpPatrol:
-                        EditorGUILayout.Space(16);
-                        GUILayout.Label("Patrol", EditorStyles.boldLabel);
-                        EditorGUILayout.Space(8);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Jump Speed", EditorStyles.boldLabel);
-                        aiTypes[i].jumpSpeed = EditorGUILayout.FloatField(aiTypes[i].jumpSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Jump Strength", EditorStyles.boldLabel);
-                        aiTypes[i].jumpStrength = EditorGUILayout.IntField(aiTypes[i].jumpStrength);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Fall Speed", EditorStyles.boldLabel);
-                        aiTypes[i].fallSpeed = EditorGUILayout.FloatField(aiTypes[i].fallSpeed);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Fall Limit", EditorStyles.boldLabel);
-                        aiTypes[i].fallLimit = EditorGUILayout.IntField(aiTypes[i].fallLimit);
-
-                        EditorGUILayout.Space(8);
-                        GUILayout.Label("Target Reset Time", EditorStyles.boldLabel);
-                        aiTypes[i].targetResetTime = EditorGUILayout.FloatField(aiTypes[i].targetResetTime);
-                        break;
-                    default:
-                        break;
-                }
-
-                EditorGUILayout.Space(16);
-
-                if (GUILayout.Button("Delete AI"))
-                {
-                    aiTypes.Remove(aiTypes[i]);
-                }
-
-                EditorGUILayout.EndVertical();
-
-                EditorGUILayout.Space(spacing);
-
-                if ((i + 1) % (displayPerRow) == 0)
-                {
-                    EditorGUILayout.EndHorizontal();
-                    EditorGUILayout.Space(20);
-                    EditorGUILayout.BeginHorizontal();
-                }
-            }
-
-        }
-    }
-
-
     void DisplayPlayerParams()
     {
         EditorGUILayout.BeginVertical();
@@ -1134,7 +881,7 @@ public class DesignMaster : EditorWindow
         SetGuids();
 
         LevelPlaylist levels = CreateLevelPlaylistObject();
-        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes,savedAis = aiTypes, playerParams = player, levelPlaylist = levels };
+        SaveObject saveObject = new SaveObject() { savedWeapons = weaponTypes, playerParams = player, levelPlaylist = levels };
         string json = JsonUtility.ToJson(saveObject);
         Debug.Log(json);
 
@@ -1148,7 +895,7 @@ public class DesignMaster : EditorWindow
         File.WriteAllText(file, json);      
     }
 
-    static List<WeaponType> LoadFromJSON(bool isDebug, out List <AIType> aITypes, out PlayerParams playerParams)
+    static List<WeaponType> LoadFromJSON(bool isDebug, out PlayerParams playerParams)
     {
  
         string file = Application.dataPath + "/Resources/DesignMaster.txt";
@@ -1161,7 +908,6 @@ public class DesignMaster : EditorWindow
         File.ReadAllText(file);
         Debug.Log(File.ReadAllText(file));
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(File.ReadAllText(file));
-        aITypes = saveObject.savedAis;
         playerParams = saveObject.playerParams;
         CompareAndLoadScenesFromBuildSettings(saveObject.levelPlaylist);      
 
@@ -1222,6 +968,4 @@ public class DesignMaster : EditorWindow
 
         }
     }
-
-
 }

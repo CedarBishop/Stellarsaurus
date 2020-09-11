@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AISpawner : MonoBehaviour
 {
-    [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
     public Dinosaur[] dinosaursSpawned;
     public float timeBeforeSpawning;
     public float timeBeforeSpriteAppears;

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -404,6 +404,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 10
       objectReference: {fileID: 0}
@@ -442,6 +452,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &32306993
@@ -13739,6 +13755,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 10
       objectReference: {fileID: 0}
@@ -13797,6 +13823,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &118178468
@@ -13878,6 +13910,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 15
       objectReference: {fileID: 0}
@@ -13921,6 +13963,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &123462091
@@ -16087,6 +16135,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 15
       objectReference: {fileID: 0}
@@ -16125,6 +16183,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1 &412851512
@@ -16448,6 +16512,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 10
       objectReference: {fileID: 0}
@@ -16491,6 +16565,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!4 &559688866 stripped
@@ -17208,6 +17288,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 15
       objectReference: {fileID: 0}
@@ -17266,6 +17356,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1 &778547349
@@ -19909,6 +20005,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 15
       objectReference: {fileID: 0}
@@ -19972,6 +20078,12 @@ PrefabInstance:
       propertyPath: targetsInMap.Array.data[3]
       value: 
       objectReference: {fileID: 1730298954}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1 &1416929352
@@ -20389,11 +20501,16 @@ PrefabInstance:
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: aisSpawned.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: pteroAirTargets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
@@ -20481,6 +20598,18 @@ PrefabInstance:
       propertyPath: pteroGroundTargets.Array.data[4]
       value: 
       objectReference: {fileID: 694594551}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 7737837673290033133, guid: ed4849db780bb614ab5b94500927441b,
+        type: 3}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[1]
+      value: 
+      objectReference: {fileID: 4056662257992560302, guid: f26758976d755ab49af317df462e3294,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1 &1599373453
@@ -21178,6 +21307,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 10
       objectReference: {fileID: 0}
@@ -21241,6 +21380,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: Raptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 6009857931453281885, guid: 1e5d6620d0d3d3c4f9ecbdabec5e7d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1 &1728529558
