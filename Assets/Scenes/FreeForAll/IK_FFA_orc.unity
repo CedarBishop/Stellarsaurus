@@ -185,7 +185,7 @@ Transform:
   - {fileID: 588373870}
   - {fileID: 209270431}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &209270431 stripped
 Transform:
@@ -318,6 +318,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 5
       objectReference: {fileID: 0}
@@ -381,6 +391,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: JumpRaptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 881605204713911796, guid: 95359a2855dc9624cb2394d9036079c2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1 &333230688
@@ -462,7 +478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &343309022
 PrefabInstance:
@@ -732,6 +748,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 30
       objectReference: {fileID: 0}
@@ -795,6 +821,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: JumpRaptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 881605204713911796, guid: 95359a2855dc9624cb2394d9036079c2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &474884101
@@ -1007,7 +1039,7 @@ PrefabInstance:
     - target: {fileID: 3500073728741610687, guid: acfde40a78b2bae439c8f78f4afcdb6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3500073728741610687, guid: acfde40a78b2bae439c8f78f4afcdb6d,
         type: 3}
@@ -1736,7 +1768,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &634312058
 GameObject:
@@ -1782,7 +1814,7 @@ Transform:
   - {fileID: 1226972581}
   - {fileID: 1613895320}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &636619902
 PrefabInstance:
@@ -1879,6 +1911,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 30
       objectReference: {fileID: 0}
@@ -1942,6 +1984,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: JumpRaptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 881605204713911796, guid: 95359a2855dc9624cb2394d9036079c2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &663683175
@@ -2039,6 +2087,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
+      propertyPath: dinosaursSpawned.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: aisSpawned.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
       propertyPath: timeBeforeSpawning
       value: 5
       objectReference: {fileID: 0}
@@ -2102,6 +2160,12 @@ PrefabInstance:
       propertyPath: aisSpawned.Array.data[0]
       value: JumpRaptor
       objectReference: {fileID: 0}
+    - target: {fileID: 5536187730568302058, guid: 691c1d957f9404547bbec99711d70c09,
+        type: 3}
+      propertyPath: dinosaursSpawned.Array.data[0]
+      value: 
+      objectReference: {fileID: 881605204713911796, guid: 95359a2855dc9624cb2394d9036079c2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691c1d957f9404547bbec99711d70c09, type: 3}
 --- !u!1001 &903926998
@@ -3162,7 +3226,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1792056300
 GameObject:

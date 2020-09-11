@@ -56,7 +56,7 @@ namespace PlatformerPathFinding.Examples {
             if (path == null) 
             {
                 Debug.Log("There is no path there.");
-                GetComponent<AI>().SetRandomGoal();
+                GetComponent<Dinosaur>().SetRandomGoal();
                 _movementTasks = null;
                 _pendingTask = null;
                 
@@ -137,7 +137,7 @@ namespace PlatformerPathFinding.Examples {
         {
             if (_goal == null)
             {
-                GetComponent<AI>().SetRandomGoal();
+                GetComponent<Dinosaur>().SetRandomGoal();
             }
             float dt = Time.deltaTime;
             _elapsedTime += dt;

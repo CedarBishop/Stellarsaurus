@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class AISpawner : MonoBehaviour
 {
-    [StringInList(typeof(StringInListHelper), "AllAiNames")] public string[] aisSpawned;
+    public Dinosaur[] dinosaursSpawned;
     public float timeBeforeSpawning;
     public float timeBeforeSpriteAppears;
     public float minTimeBetweenSpawning;
@@ -17,14 +16,9 @@ public class AISpawner : MonoBehaviour
     public PairTargets[] pteroGroundTargets;
     public ParticleSystem[] particles;
 
-    public List<AIType> ais = new List<AIType>();
-    private AI aiPrefab;
-
 
     void Start()
     {
-        ais = GameManager.instance.loader.GetAIsByName(aisSpawned);
-        aiPrefab = LevelManager.instance.aiPrefab;
         StartCoroutine("DelayParticles");
         StartCoroutine("DelaySpawn");
     }
@@ -66,11 +60,11 @@ public class AISpawner : MonoBehaviour
     }
 
    void SpawnAI ()
-   {        
-        if (ais.Count > 0)
+   {
+        if (dinosaursSpawned.Length > 0)
         {
-            AI ai = Instantiate(aiPrefab, transform.position, Quaternion.identity);
-            ai.Initialise(ais[Random.Range(0,ais.Count)], targetsInMap, pteroGroundTargets, pteroAirTargets);
+            Dinosaur dinosaur = Instantiate(dinosaursSpawned[Random.Range(0, dinosaursSpawned.Length)], transform.position, Quaternion.identity);
+            dinosaur.Initialise(targetsInMap, pteroGroundTargets, pteroAirTargets);
         }
    }
 }

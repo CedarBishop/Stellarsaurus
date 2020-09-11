@@ -58,33 +58,12 @@ public class Loader : MonoBehaviour
         }
         return weaponTypes;
     }
-
-    public List<AIType> GetAIsByName(string[] aiNames)
-    {
-        List<AIType> aiTypes = new List<AIType>();
-
-        if (aiNames != null)
-        {
-            for (int i = 0; i < aiNames.Length; i++)
-            {
-                for (int j = 0; j < saveObject.savedAis.Count; j++)
-                {
-                    if (aiNames[i] == saveObject.savedAis[j].AIName)
-                    {
-                        aiTypes.Add(saveObject.savedAis[j]);
-                    }
-                }
-            }
-        }
-        return aiTypes;
-    }
 }
 
 [System.Serializable]
 public class SaveObject
 {
     public List<WeaponType> savedWeapons;
-    public List<AIType> savedAis;
     public PlayerParams playerParams;
     public LevelPlaylist levelPlaylist;
 }

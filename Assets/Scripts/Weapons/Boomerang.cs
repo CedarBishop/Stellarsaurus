@@ -82,9 +82,9 @@ public class Boomerang : Projectile
                 
             }
         }
-        else if (collision.GetComponent<AI>())
+        else if (collision.GetComponent<Dinosaur>())
         {
-            collision.GetComponent<AI>().TakeDamage(playerNumber, damage);
+            collision.GetComponent<Dinosaur>().TakeDamage(playerNumber, damage);
             isReturning = true;
             if (Camera.main.TryGetComponent(out CameraShake cameraShake))
             {

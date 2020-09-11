@@ -87,9 +87,9 @@ public class ExplosiveObjectHealth : EnvironmentalObjectHealth
                 {
                     colliders[i].GetComponent<PlayerHealth>().HitByPlayer(playerNumber, true);
                 }
-                else if (colliders[i].GetComponent<AI>())
+                else if (colliders[i].GetComponent<Dinosaur>())
                 {
-                    colliders[i].GetComponent<AI>().TakeDamage(playerNumber, damage);
+                    colliders[i].GetComponent<Dinosaur>().TakeDamage(playerNumber, damage);
                 }
                 else if (colliders[i].GetComponent<EnvironmentalObjectHealth>())
                 {

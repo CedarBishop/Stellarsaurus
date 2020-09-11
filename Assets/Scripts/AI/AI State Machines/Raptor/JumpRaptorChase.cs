@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class JumpRaptorChase : StateMachineBehaviour
 {
-    AI ai;
+    JumpRaptor ai;
     Perception perception;
     Transform targetTransform;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<JumpRaptor>();
         perception = animator.GetComponent<Perception>();
         targetTransform = perception.targetTransform;
     }
@@ -33,7 +33,7 @@ public class JumpRaptorChase : StateMachineBehaviour
             {
                 return;
             }
-            if (Vector2.Distance(animator.transform.position, targetTransform.position) < (ai.aiType.attackRange))
+            if (Vector2.Distance(animator.transform.position, targetTransform.position) < (ai.attackRange))
             {
                 animator.SetBool("WithinAttackingDistance", true);
             }

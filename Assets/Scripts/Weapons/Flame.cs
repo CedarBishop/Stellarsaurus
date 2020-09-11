@@ -22,7 +22,7 @@ public class Flame : Bullet
 		playerHealth.HitByFlame(playerNumber, true);
 	}
 
-	protected override void HitAI(AI ai)
+	protected override void HitAI(Dinosaur ai)
 	{
 		print("Flame Hit Ai");
 		ai.HitByFlame(playerNumber);

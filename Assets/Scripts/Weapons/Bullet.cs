@@ -46,9 +46,9 @@ public class Bullet : Projectile
                 HitPlayer(collision.GetComponent<PlayerHealth>());
             }
             // AI Damage
-            else if (collision.GetComponent<AI>())
+            else if (collision.GetComponent<Dinosaur>())
             {
-                HitAI(collision.GetComponent<AI>());
+                HitAI(collision.GetComponent<Dinosaur>());
             }
             // Environmental Object Damage
             else if (collision.GetComponent<EnvironmentalObjectHealth>())
@@ -155,7 +155,7 @@ public class Bullet : Projectile
         }
     }
 
-    protected virtual void HitAI (AI ai)
+    protected virtual void HitAI (Dinosaur ai)
     {
         ai.TakeDamage(playerNumber,damage);
 

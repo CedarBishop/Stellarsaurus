@@ -5,7 +5,7 @@ using UnityEngine.Animations;
 
 public class PterodactylRetreat : StateMachineBehaviour
 {
-    AI ai;
+    Pterodactyl ai;
     Perception perception;
     Animator _Animator;
     Transform transform;
@@ -15,13 +15,13 @@ public class PterodactylRetreat : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Pterodactyl>();
         perception = animator.GetComponent<Perception>();
         _Animator = animator;
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         transform = animator.transform;
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        retreatSpeed = ai.aiType.retreatSpeed;
+        retreatSpeed = ai.retreatSpeed;
     }
 
 
@@ -44,8 +44,8 @@ public class PterodactylRetreat : StateMachineBehaviour
 
     void WallCheck()
     {
-        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.wallLayer) ||
-           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
+        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.wallDetectionDistance, ai.wallLayer) ||
+           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
         {
             perception.isFacingRight = !perception.isFacingRight;
         }

@@ -2,7 +2,7 @@
 
 public class TrexPatrol : StateMachineBehaviour
 {
-    private AI ai;
+    private Trex ai;
     private Perception perception;
     private Transform transform;
     private Rigidbody2D rigidbody;
@@ -17,10 +17,10 @@ public class TrexPatrol : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Trex>();
         perception = animator.GetComponent<Perception>();
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         transform = animator.transform;
         aimOrigin = ai.aimOrigin;
         aimOrigin.transform.rotation = Quaternion.Euler(0,0,0);
@@ -29,9 +29,7 @@ public class TrexPatrol : StateMachineBehaviour
         wallLayer = ai.wallLayer;
         platformLayer = ai.platformLayer;
 
-        wallDetectionDistance = ai.aiType.wallDetectionDistance;
-
-        rigidbody.mass = 1000;
+        wallDetectionDistance = ai.wallDetectionDistance;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

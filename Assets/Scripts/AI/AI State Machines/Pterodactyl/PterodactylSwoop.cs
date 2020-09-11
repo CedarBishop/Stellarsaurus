@@ -5,7 +5,7 @@ using PlatformerPathFinding;
 
 public class PterodactylSwoop : StateMachineBehaviour
 {
-    AI ai;
+    Pterodactyl ai;
     Perception perception;
     Animator _Animator;
     Transform transform;
@@ -27,16 +27,16 @@ public class PterodactylSwoop : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {       
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Pterodactyl>();
         perception = animator.GetComponent<Perception>();
         _Animator = animator;
-        movementSpeed = ai.aiType.movementSpeed;
+        movementSpeed = ai.movementSpeed;
         transform = animator.transform;
         rigidbody = animator.GetComponent<Rigidbody2D>();
         aStar = ai.aStar;        
         ai.OnHit += Retreat;
-        swoopSpeed = ai.aiType.swoopSpeed;
-        pathFindingSwoopSpeed = ai.aiType.pathFindingSwoopSpeed;
+        swoopSpeed = ai.swoopSpeed;
+        pathFindingSwoopSpeed = ai.pathFindingSwoopSpeed;
 
         hasTwoTargets = SetStartAndEnd();
         reachedFirstTarget = false;
@@ -165,14 +165,14 @@ public class PterodactylSwoop : StateMachineBehaviour
     {
         if (timerTillCanHitAgain <= 0)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ai.aiType.attackSize);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ai.attackSize);
             if (colliders != null)
             {
                 foreach (var collider in colliders)
                 {
                     if (collider.GetComponent<PlayerHealth>())
                     {
-                        collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
+                        collider.GetComponent<PlayerHealth>().HitByAI(ai.attackDamage);
                         timerTillCanHitAgain = 2;
 
                         if (SoundManager.instance != null)
@@ -192,8 +192,8 @@ public class PterodactylSwoop : StateMachineBehaviour
 
     void WallCheck()
     {
-        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.wallLayer) ||
-           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.aiType.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
+        if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.wallDetectionDistance, ai.wallLayer) ||
+           (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), (perception.isFacingRight) ? Vector2.right : Vector2.left, ai.wallDetectionDistance, ai.groundLayer)))   // Check if there is a wall in front of the ai
         {
             Retreat();
         }

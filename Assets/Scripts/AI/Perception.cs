@@ -21,14 +21,14 @@ public class Perception : MonoBehaviour
     public float targetMemoryTime;
     public bool isUsingAIController;
     private float memoryTimer;
-    private AI ai;
+    private Dinosaur ai;
     private bool[] raycastsHitTarget;
 
     private void Start()
     {
         int num = Random.Range(0,2);
         isFacingRight = (num > 0) ? true : false;
-        ai = GetComponent<AI>();
+        ai = GetComponent<Dinosaur>();
         raycastsHitTarget = new bool[numOfRays];
     }
 

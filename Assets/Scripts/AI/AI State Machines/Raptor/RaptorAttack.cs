@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class RaptorAttack : StateMachineBehaviour
 {
-    private AI ai;
+    private Raptor ai;
     private Perception perception;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ai = animator.GetComponent<AI>();
+        ai = animator.GetComponent<Raptor>();
         perception = animator.GetComponent<Perception>();
         Attack(animator);
     }
-
-
-
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
-
 
     void Attack (Animator animator)
     {
@@ -28,7 +20,7 @@ public class RaptorAttack : StateMachineBehaviour
         {
             SoundManager.instance.PlaySFX("SFX_RaptorBite");
         }
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(animator.transform.position + (((perception.isFacingRight)? (Vector3.right): Vector3.left) * ai.aiType.attackRange), ai.aiType.attackSize);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(animator.transform.position + (((perception.isFacingRight)? (Vector3.right): Vector3.left) * ai.attackRange), ai.attackSize);
 
         if (colliders != null)
         {
@@ -36,11 +28,10 @@ public class RaptorAttack : StateMachineBehaviour
             {
                 if (collider.GetComponent<PlayerHealth>())
                 {
-                    collider.GetComponent<PlayerHealth>().HitByAI(ai.aiType.attackDamage);
+                    collider.GetComponent<PlayerHealth>().HitByAI(ai.attackDamage);
                 }
             }
-        }      
-        
+        }              
         
         animator.SetBool("CanAttack",false);
         ai.StartAttackCooldown();
