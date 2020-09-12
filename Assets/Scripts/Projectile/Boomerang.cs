@@ -6,7 +6,7 @@ using UnityEngine;
 public class Boomerang : Projectile
 {
 
-    private PlayerShoot player;
+    private OldPlayerShoot player;
     private Vector3 target;
     private bool isReturning;
     private float lerpSpeed;
@@ -15,7 +15,7 @@ public class Boomerang : Projectile
     private Animator animator;
     
 
-    public void InitialiseBoomerang (WeaponType type, int playerNum, PlayerShoot playerShoot)
+    public void InitialiseBoomerang (WeaponType type, int playerNum, OldPlayerShoot playerShoot)
     {
         weaponType = type;
         isReturning = false;
@@ -59,9 +59,9 @@ public class Boomerang : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerShoot>())
+        if (collision.GetComponent<OldPlayerShoot>())
         {
-            PlayerShoot ps = collision.GetComponent<PlayerShoot>();
+            OldPlayerShoot ps = collision.GetComponent<OldPlayerShoot>();
             if (ps == player)
             {
                 if (isReturning)

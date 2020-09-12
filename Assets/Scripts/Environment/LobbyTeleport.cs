@@ -45,9 +45,9 @@ public class LobbyTeleport : MonoBehaviour
                 particles[1].Play();
             }              
         }
-        if (collision.GetComponent<PlayerShoot>())
+        if (collision.GetComponent<OldPlayerShoot>())
         {
-            PlayerShoot player = collision.GetComponent<PlayerShoot>();
+            OldPlayerShoot player = collision.GetComponent<OldPlayerShoot>();
             LevelManager.instance.startingPositions[player.playerNumber - 1].position = newSpawnPoints[player.playerNumber - 1].position;
             player.transform.position = newSpawnPoints[player.playerNumber - 1].position;
             player.DestroyWeapon();

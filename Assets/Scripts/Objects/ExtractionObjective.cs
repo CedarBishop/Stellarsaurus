@@ -64,9 +64,8 @@ public class ExtractionObjective : MonoBehaviour
          
     }
 
-    public void OnPickup (int num, Animator playerWeaponAnimator, PlayerShoot player)
+    public void OnPickup (int num, PlayerShoot player)
     {
-        weaponSpriteAnimator = playerWeaponAnimator;
         isHeld = true;
         playerNumber = num;
 

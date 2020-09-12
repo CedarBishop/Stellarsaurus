@@ -6,20 +6,31 @@ public class Weapon : MonoBehaviour
 {
     public string projectileName;
     public GameObject projectilePrefab;
-    public FireType fireType;
     public float fireRate;
     public int ammo;
     public float range;
     public int damage;
     public float initialForce;
     public float spread;
-    public AudioClip weaponFireSound;
-
-
-
-    public Transform aimCheckPosition;
+    public string weaponFireSound;
+    public float jitter;
+    public float selfInflictedKnockback;
+    public float cameraShakeDuration;
+    public float cameraShakeMagnitude;
+    public Transform firingPoint;
     public LayerMask aimCheckLayerMask;
     public float aimCheckRadius;
+
+
+    public FireType fireType;
+    // Charge, wind and Cook fire type parameters
+    public string chargeUpSound;
+    public string chargeDownSound;
+    public float chargeUpTime;
+    public float explosionTime;
+
+    [HideInInspector] public bool canShoot;
+
 
     private bool isHeld;
     private bool isDropped;
@@ -27,6 +38,7 @@ public class Weapon : MonoBehaviour
     private float target;
     private bool isGoingUp;
     private WeaponSpawner weaponSpawner = null;
+    private Rigidbody2D rigidbody;
 
 
     public void InitBySpawner(WeaponSpawner spawner)
@@ -51,7 +63,12 @@ public class Weapon : MonoBehaviour
 
         isHeld = true;
         transform.parent = newParent;
+        canShoot = true;
 
+        if (rigidbody != null)
+        {
+            Destroy(rigidbody);
+        }
 
         return true;
     }
@@ -63,26 +80,43 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-
+        rigidbody = gameObject.AddComponent<Rigidbody2D>();
+        rigidbody.AddForce(transform.right * 500);
+        isDropped = true;
     }
 
-    public virtual void Shoot ()
+    public virtual bool Shoot (int playerNumber)
     {
         if (ammo <= 0)
         {
-            return;
+            return false;
         }
         if (AimCheck())
         {
-            return;
+            return false;
         }
+
+        if (canShoot == false)
+        {
+            return false;
+        }
+
+        ShootLogic(playerNumber);
 
         if (SoundManager.instance != null)
         {
             SoundManager.instance.PlaySFX(weaponFireSound);
         }
 
-        
+
+        PostShootChecks();
+
+        return true;
+    }
+
+    protected virtual void ShootLogic (int playerNumber)
+    {
+
     }
 
     protected virtual void PostShootChecks ()
@@ -100,9 +134,9 @@ public class Weapon : MonoBehaviour
     }
 
 
-    protected bool AimCheck()
+    public bool AimCheck()
     {
-        if (Physics2D.OverlapCircle(aimCheckPosition.position, aimCheckRadius, aimCheckLayerMask))
+        if (Physics2D.OverlapCircle(firingPoint.position, aimCheckRadius, aimCheckLayerMask))
         {
             return true;
         }
@@ -113,9 +147,9 @@ public class Weapon : MonoBehaviour
     {
         if (isDropped)
         {
-            if (collision.GetComponent<PlayerShoot>())
+            if (collision.GetComponent<OldPlayerShoot>())
             {
-                collision.GetComponent<PlayerShoot>().Disarm();
+                collision.GetComponent<OldPlayerShoot>().Disarm();
             }
         }
 
@@ -127,6 +161,13 @@ public class Weapon : MonoBehaviour
         {
             isDropped = false;
         }
+    }
+
+    IEnumerator DelayBetweenShots()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
     private void FixedUpdate()

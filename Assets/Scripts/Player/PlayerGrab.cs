@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerGrab : MonoBehaviour
 {
-    PlayerShoot playerShoot;
+    OldPlayerShoot playerShoot;
 
     private void Start()
     {
-        playerShoot = GetComponent<PlayerShoot>();
+        playerShoot = GetComponent<OldPlayerShoot>();
     }
 
 

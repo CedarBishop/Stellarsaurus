@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject characterPrefab;
     public GameObject ghostPrefab;
     public PlayerMovement playerMovement;
-    public PlayerShoot playerShoot;
+    public OldPlayerShoot playerShoot;
     public PlayerHealth playerHealth;
     public GhostMovement ghostMovement;
     public GhostGrab ghostGrab;
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
 
         currentCharacter = Instantiate(characterPrefab,transform);
         playerMovement = currentCharacter.GetComponent<PlayerMovement>();
-        playerShoot = currentCharacter.GetComponent<PlayerShoot>();
+        playerShoot = currentCharacter.GetComponent<OldPlayerShoot>();
         playerHealth = currentCharacter.GetComponent<PlayerHealth>();
         playerShoot.isGamepad = isGamepad;
         playerShoot.player = this;

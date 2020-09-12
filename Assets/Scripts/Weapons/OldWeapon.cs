@@ -106,9 +106,9 @@ public class OldWeapon : MonoBehaviour
     {
         if (isDropped)
         {
-            if (collision.GetComponent<PlayerShoot>())
+            if (collision.GetComponent<OldPlayerShoot>())
             {
-                collision.GetComponent<PlayerShoot>().Disarm();
+                collision.GetComponent<OldPlayerShoot>().Disarm();
             }
         }
 
