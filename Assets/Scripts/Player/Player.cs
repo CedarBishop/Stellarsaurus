@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject characterPrefab;
     public GameObject ghostPrefab;
     public PlayerMovement playerMovement;
-    public OldPlayerShoot playerShoot;
+    public PlayerShoot playerShoot;
     public PlayerHealth playerHealth;
     public GhostMovement ghostMovement;
     public GhostGrab ghostGrab;
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
 
         currentCharacter = Instantiate(characterPrefab,transform);
         playerMovement = currentCharacter.GetComponent<PlayerMovement>();
-        playerShoot = currentCharacter.GetComponent<OldPlayerShoot>();
+        playerShoot = currentCharacter.GetComponent<PlayerShoot>();
         playerHealth = currentCharacter.GetComponent<PlayerHealth>();
         playerShoot.isGamepad = isGamepad;
         playerShoot.player = this;
@@ -272,10 +272,10 @@ public class Player : MonoBehaviour
     {
         if (playerShoot != null)
         {
-            if (playerShoot.aimType != AimType.HybridEightDirection)
-            {
-                return;
-            }
+            //if (playerShoot.aimType != AimType.HybridEightDirection)
+            //{
+            //    return;
+            //}
             playerShoot.Aim(value.Get<Vector2>());
         }            
     }

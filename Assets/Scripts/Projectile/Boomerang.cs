@@ -1,23 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boomerang : Projectile
 {
 
-    private OldPlayerShoot player;
+    private PlayerShoot player;
     private Vector3 target;
     private bool isReturning;
     private float lerpSpeed;
 
     private WeaponType weaponType;
     private Animator animator;
-    
 
-    public void InitialiseBoomerang (WeaponType type, int playerNum, OldPlayerShoot playerShoot)
+    private bool isThrown;
+
+    public void InitialiseBoomerang (int playerNum, PlayerShoot playerShoot)
     {
-        weaponType = type;
         isReturning = false;
         damage = weaponType.damage;
         range = weaponType.range;
@@ -27,34 +24,38 @@ public class Boomerang : Projectile
         animator = GetComponent<Animator>();
         animator.Play("Thrown");
         target = transform.position + (transform.right * range);
+        isThrown = true;
     }
 
     private void FixedUpdate()
     {
-        if (isReturning == false)
+        if (isThrown)
         {
-            if (Vector3.Distance(target, transform.position) < 0.1f)
+            if (isReturning == false)
             {
-                isReturning = true;
+                if (Vector3.Distance(target, transform.position) < 0.1f)
+                {
+                    isReturning = true;
+                }
+                else
+                {
+                    transform.position = Vector3.Lerp(transform.position, target, lerpSpeed * Time.fixedDeltaTime);
+
+                }
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, target, lerpSpeed * Time.fixedDeltaTime);
-                
+                if (player == null)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.fixedDeltaTime);
+                }
+
             }
-        }
-        else
-        {
-            if (player == null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                transform.position = Vector3.Lerp(transform.position, player.transform.position, lerpSpeed * Time.fixedDeltaTime);
-            }
-            
-        }
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -513,14 +513,14 @@ public class OldPlayerShoot : MonoBehaviour
 
                 case WeaponUseType.Boomerang:
 
-                    Boomerang boomerang = Instantiate(projectileType,
-                         new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
-                        gunOriginTransform.rotation).GetComponent<Boomerang>();
-                    boomerang.InitialiseBoomerang(currentWeapon, playerNumber, this);
-                    if (GameManager.instance.SelectedGamemode != null)
-                    {
-                        GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
-                    }
+                    //Boomerang boomerang = Instantiate(projectileType,
+                    //     new Vector3(gunSprite.transform.position.x + (gunOriginTransform.right.x * firingPoint.x), (gunSprite.transform.position.y + (gunOriginTransform.right.y * firingPoint.x) + firingPoint.y), 0),
+                    //    gunOriginTransform.rotation).GetComponent<Boomerang>();
+                    //boomerang.InitialiseBoomerang(currentWeapon, playerNumber, this);
+                    //if (GameManager.instance.SelectedGamemode != null)
+                    //{
+                    //    GameManager.instance.SelectedGamemode.AddToStats(playerNumber, StatTypes.BulletsFired, 1);
+                    //}
                     break;
 
 

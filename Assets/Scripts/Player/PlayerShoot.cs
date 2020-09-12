@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     public Transform gunOriginTransform;
-    public SpriteRenderer gunSprite;
+    public Transform gunParentTransform;
 
     [HideInInspector] public bool isGamepad;
     [HideInInspector] public int playerNumber;
@@ -22,6 +22,7 @@ public class PlayerShoot : MonoBehaviour
     private Weapon triggeredWeapon;
     private bool isTriggeringWeapon;
     private bool isTriggeringExtractionObjective;
+    private SpriteRenderer gunSpriteRenderer;
 
     private ExtractionObjective triggeredExtractionObjective;
     private ExtractionObjective extractionObjective;
@@ -29,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
     private bool isHoldingFireButton;
     private bool semiLimiter;
 
-    private float cookTime;
+    [HideInInspector] public float cookTime;
     private bool shootOnRelease;
 
     // Firing Type Variables
@@ -44,6 +45,9 @@ public class PlayerShoot : MonoBehaviour
 
     private float cameraShakeDuration;
     private float cameraShakeMagnitude;
+
+    private bool currentFlipX;
+    private bool currentFlipY;
 
 
     void Start()
@@ -196,12 +200,12 @@ public class PlayerShoot : MonoBehaviour
             if (v.y > 0)
             {
                 result = Vector2.up;
-                gunSprite.flipY = false;
+                currentFlipY = false;
             }
             else
             {
                 result = Vector2.down;
-                gunSprite.flipY = true;
+                currentFlipY = true;
             }
         }
         else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) < 0.25f)
@@ -210,12 +214,12 @@ public class PlayerShoot : MonoBehaviour
             if (v.x > 0)
             {
                 result = Vector2.right;
-                gunSprite.flipY = false;
+                currentFlipY = false;
             }
             else
             {
                 result = new Vector2(-1, 0.01f);
-                gunSprite.flipY = true;
+                currentFlipY = true;
             }
         }
         else if (Mathf.Abs(v.x) > 0.25f && Mathf.Abs(v.y) > 0.25f)
@@ -225,25 +229,25 @@ public class PlayerShoot : MonoBehaviour
             {
                 // down left
                 result = new Vector2(-1, -1);
-                gunSprite.flipY = true;
+                currentFlipY = true;
             }
             else if (v.x > 0.25f && v.y < -0.25f)
             {
                 // down right
                 result = new Vector2(1, -1);
-                gunSprite.flipY = false;
+                currentFlipY = false;
             }
             else if (v.x > 0.25f && v.y > 0.25f)
             {
                 // up right
                 result = new Vector2(1, 1);
-                gunSprite.flipY = false;
+                currentFlipY = false;
             }
             else if (v.x < -0.25f && v.y > 0.25f)
             {
                 // up left
                 result = new Vector2(-1, 1);
-                gunSprite.flipY = true;
+                currentFlipY = true;
             }
 
         }
@@ -253,6 +257,11 @@ public class PlayerShoot : MonoBehaviour
         }
 
 
+
+        if (gunSpriteRenderer != null)
+        {
+            gunSpriteRenderer.flipY = currentFlipY;
+        }
         return result;
     }
 
@@ -274,9 +283,13 @@ public class PlayerShoot : MonoBehaviour
             return;
         }
 
-        if (currentWeapon.Shoot(playerNumber))
+        if (currentWeapon.Shoot())
         {
-            StartCoroutine("Haptic");
+            if (gamepad != null)
+            {
+                StartCoroutine("Haptic");
+            }
+
             StartCoroutine("WeaponJitter");
             CameraShake();
         }
@@ -293,10 +306,13 @@ public class PlayerShoot : MonoBehaviour
 
     IEnumerator WeaponJitter()
     {
-        Vector3 originalPosition = gunSprite.transform.localPosition;
-        gunSprite.transform.localPosition += (gunSprite.transform.right * -1) * currentWeapon.jitter;
-        yield return new WaitForSeconds(0.03f);
-        gunSprite.transform.localPosition = originalPosition;
+        if (gunSpriteRenderer != null)
+        {
+            Vector3 originalPosition = gunSpriteRenderer.transform.localPosition;
+            gunSpriteRenderer.transform.localPosition += (gunSpriteRenderer.transform.right * -1) * currentWeapon.jitter;
+            yield return new WaitForSeconds(0.03f);
+            gunSpriteRenderer.transform.localPosition = originalPosition;
+        }
     }
 
     void CameraShake()
@@ -356,10 +372,11 @@ public class PlayerShoot : MonoBehaviour
         {
             return;
         }
-        currentWeapon.Pickup(gunOriginTransform);
+        currentWeapon.Pickup(this);
 
         cameraShakeDuration = currentWeapon.cameraShakeDuration;
         cameraShakeMagnitude = currentWeapon.cameraShakeMagnitude;
+        gunSpriteRenderer = currentWeapon.GetComponent<SpriteRenderer>();
 
         switch (currentWeapon.fireType)
         {
@@ -393,6 +410,12 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    public void OnWeaponDestroy ()
+    {
+        gunSpriteRenderer = null;
+        StopCoroutine("WeaponJitter");
+    }
+
     public void DropWeapon()
     {
         if (currentWeapon.AimCheck())
@@ -402,11 +425,12 @@ public class PlayerShoot : MonoBehaviour
 
         currentWeapon.Drop();
         currentWeapon = null;
+        gunSpriteRenderer = null;
     }
 
     public void DropExtractionObject()
     {
-        extractionObjective.OnDrop(gunSprite.transform.position);
+        extractionObjective.OnDrop(gunSpriteRenderer.transform.position);
         playerMovement.SetIsHoldingExtractionObject(false);
         extractionObjective = null;
     }

@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         cutJumpHeight = playerParams.cutJumpHeight;
         counterForce = playerParams.counterForce;
 
-        GetComponent<OldPlayerShoot>().SetAimType(playerParams.aimType);
+        //GetComponent<OldPlayerShoot>().SetAimType(playerParams.aimType);
 
         cameraController = Camera.main.GetComponent<CameraController>();
         

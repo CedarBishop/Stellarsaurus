@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public string projectileName;
     public GameObject projectilePrefab;
     public float fireRate;
     public int ammo;
@@ -12,7 +11,7 @@ public class Weapon : MonoBehaviour
     public int damage;
     public float initialForce;
     public float spread;
-    public string weaponFireSound;
+    public AudioClip weaponFireSound;
     public float jitter;
     public float selfInflictedKnockback;
     public float cameraShakeDuration;
@@ -24,6 +23,7 @@ public class Weapon : MonoBehaviour
 
     public FireType fireType;
     // Charge, wind and Cook fire type parameters
+    [Header("Charge Specific parameters")]
     public string chargeUpSound;
     public string chargeDownSound;
     public float chargeUpTime;
@@ -39,16 +39,27 @@ public class Weapon : MonoBehaviour
     private bool isGoingUp;
     private WeaponSpawner weaponSpawner = null;
     private Rigidbody2D rigidbody;
+    private Collider2D collider;
 
+    protected PlayerShoot playerShoot;
+
+
+    private void Awake()
+    {
+        collider = GetComponent<Collider2D>();
+    }
 
     public void InitBySpawner(WeaponSpawner spawner)
     {
         isInSpawner = true;
         weaponSpawner = spawner;
+        collider.enabled = false;
+        target += 0.3f;
+        isGoingUp = true;
     }
 
 
-    public virtual bool Pickup(Transform newParent)
+    public virtual bool Pickup(PlayerShoot player)
     {
         if (isHeld)
         {
@@ -60,15 +71,19 @@ public class Weapon : MonoBehaviour
             isInSpawner = false;
             weaponSpawner.SpawnedWeaponIsGrabbed();
         }
-
+        playerShoot = player;
         isHeld = true;
-        transform.parent = newParent;
+        transform.parent = playerShoot.gunParentTransform;
         canShoot = true;
+        transform.position = playerShoot.gunParentTransform.position;
+        transform.right = playerShoot.gunOriginTransform.right;
 
         if (rigidbody != null)
         {
             Destroy(rigidbody);
         }
+
+        collider.enabled = false;
 
         return true;
     }
@@ -79,13 +94,15 @@ public class Weapon : MonoBehaviour
         {
             return;
         }
-
+        transform.parent = null;
+        playerShoot = null;
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * 500);
         isDropped = true;
+        collider.enabled = true;
     }
 
-    public virtual bool Shoot (int playerNumber)
+    public virtual bool Shoot ()
     {
         if (ammo <= 0)
         {
@@ -101,7 +118,7 @@ public class Weapon : MonoBehaviour
             return false;
         }
 
-        ShootLogic(playerNumber);
+        ShootLogic();
 
         if (SoundManager.instance != null)
         {
@@ -114,9 +131,12 @@ public class Weapon : MonoBehaviour
         return true;
     }
 
-    protected virtual void ShootLogic (int playerNumber)
+    protected virtual void ShootLogic ()
     {
-
+        if (playerShoot == null)
+        {
+            return;
+        }
     }
 
     protected virtual void PostShootChecks ()
@@ -126,10 +146,13 @@ public class Weapon : MonoBehaviour
         {
             DestroyWeapon();
         }
+
+        StartCoroutine("DelayBetweenShots");
     }
 
     protected void DestroyWeapon()
     {
+        playerShoot.OnWeaponDestroy();
         Destroy(gameObject);
     }
 
@@ -170,28 +193,28 @@ public class Weapon : MonoBehaviour
         canShoot = true;
     }
 
-    private void FixedUpdate()
-    {
-        if (isInSpawner)
-        {
-            if (Mathf.Abs(target - transform.position.y) < 0.01f)
-            {
-                if (isGoingUp)
-                {
-                    target -= 0.3f;
-                    isGoingUp = false;
-                }
-                else
-                {
-                    target += 0.3f;
-                    isGoingUp = true;
-                }
+    //private void FixedUpdate()
+    //{
+    //    if (isInSpawner)
+    //    {
+    //        if (Mathf.Abs(target - transform.position.y) < 0.01f)
+    //        {
+    //            if (isGoingUp)
+    //            {
+    //                target -= 0.3f;
+    //                isGoingUp = false;
+    //            }
+    //            else
+    //            {
+    //                target += 0.3f;
+    //                isGoingUp = true;
+    //            }
 
-            }
-            else
-            {
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, target, 2 * Time.fixedDeltaTime), transform.position.z);
-            }
-        }
-    }
+    //        }
+    //        else
+    //        {
+    //            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, target, 2 * Time.fixedDeltaTime), transform.position.z);
+    //        }
+    //    }
+    //}
 }
