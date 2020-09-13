@@ -100,6 +100,7 @@ public class Weapon : MonoBehaviour
         rigidbody.AddForce(transform.right * 500);
         isDropped = true;
         collider.enabled = true;
+        isHeld = false;
     }
 
     public virtual bool Shoot ()
@@ -193,28 +194,46 @@ public class Weapon : MonoBehaviour
         canShoot = true;
     }
 
-    //private void FixedUpdate()
-    //{
-    //    if (isInSpawner)
-    //    {
-    //        if (Mathf.Abs(target - transform.position.y) < 0.01f)
-    //        {
-    //            if (isGoingUp)
-    //            {
-    //                target -= 0.3f;
-    //                isGoingUp = false;
-    //            }
-    //            else
-    //            {
-    //                target += 0.3f;
-    //                isGoingUp = true;
-    //            }
+    private void FixedUpdate()
+    {
+        //SpawnerMovement();
+        UpdateRotation();
+    }
 
-    //        }
-    //        else
-    //        {
-    //            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, target, 2 * Time.fixedDeltaTime), transform.position.z);
-    //        }
-    //    }
-    //}
+
+    void SpawnerMovement()
+    {
+        if (isInSpawner)
+        {
+            if (Mathf.Abs(target - transform.position.y) < 0.01f)
+            {
+                if (isGoingUp)
+                {
+                    target -= 0.3f;
+                    isGoingUp = false;
+                }
+                else
+                {
+                    target += 0.3f;
+                    isGoingUp = true;
+                }
+
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, target, 2 * Time.fixedDeltaTime), transform.position.z);
+            }
+        }
+    }
+
+    void UpdateRotation ()
+    {
+        if (isHeld)
+        {
+            if (playerShoot != null)
+            {
+                transform.right = playerShoot.gunOriginTransform.transform.right;
+            }
+        }
+    }
 }

@@ -258,7 +258,7 @@ public class PlayerShoot : MonoBehaviour
 
 
 
-        if (gunSpriteRenderer != null)
+        if (gunSpriteRenderer != null && currentWeapon != null)
         {
             gunSpriteRenderer.flipY = currentFlipY;
         }

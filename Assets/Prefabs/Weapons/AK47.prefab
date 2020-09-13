@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900617755413283444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0.691, y: 0.092, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4969773175729986998}
@@ -74,7 +74,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0092380345, y: 0.00369519}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -85,7 +85,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2697451, y: 0.60092485}
   m_EdgeRadius: 0
 --- !u!1 &9168677217926515297
 GameObject:
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6010520602041125607}
   - component: {fileID: 3119871374797929676}
   m_Layer: 19
-  m_Name: Pistol
+  m_Name: AK47
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: eeb4d8b969ebb9e4ca8ff9ddab104688, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 485e3b68e6415644baaab5023ba481ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,18 +186,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0036951303, y: -0.0018475056}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.3333334}
+    oldSize: {x: 1.3333334, y: 0.6666667}
     newSize: {x: 1.3333334, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2512696, y: 0.55288815}
   m_EdgeRadius: 0
 --- !u!114 &6010520602041125607
 MonoBehaviour:
@@ -225,23 +225,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7202534769512080437, guid: 9a853e0535855fc42843bae8897cc716,
     type: 3}
-  fireRate: 0.4
-  ammo: 6
-  range: 10
-  damage: 1
+  fireRate: 0.1
+  ammo: 8
+  range: 20
+  damage: 2
   initialForce: 1000
-  spread: 1
-  weaponFireSound: {fileID: 8300000, guid: 6c7239693ad4c0946a63b69a3b9942a0, type: 3}
+  spread: 8
+  weaponFireSound: {fileID: 8300000, guid: c84f0fb033ce6fc4f8810573694a7f79, type: 3}
   jitter: 0.5
-  selfInflictedKnockback: 100
+  selfInflictedKnockback: 250
   cameraShakeDuration: 0.1
-  cameraShakeMagnitude: 1
+  cameraShakeMagnitude: 2
   firingPoint: {fileID: 2484749199843270676}
   aimCheckLayerMask:
     serializedVersion: 2
     m_Bits: 8960
   aimCheckRadius: 0.1
-  fireType: 0
+  fireType: 1
   chargeUpSound: 
   chargeDownSound: 
   chargeUpTime: 0

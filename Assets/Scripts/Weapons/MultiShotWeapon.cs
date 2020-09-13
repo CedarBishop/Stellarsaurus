@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MultiShotWeapon : Weapon
 {
+    [Header("Multishot Variables")]
     public int bulletsFiredPerShot;
     public float sprayAmount;
     protected override void ShootLogic()
