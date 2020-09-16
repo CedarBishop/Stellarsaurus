@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900617755413283444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.691, y: 0.092, z: 0}
+  m_LocalPosition: {x: 0.008, y: -0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4969773175729986998}
@@ -74,7 +74,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0092380345, y: 0.00369519}
+  m_Offset: {x: 0.001018554, y: 0.002364874}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -85,7 +85,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2697451, y: 0.60092485}
+  m_Size: {x: 0.5268437, y: 0.52632356}
   m_EdgeRadius: 0
 --- !u!1 &9168677217926515297
 GameObject:
@@ -97,11 +97,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4969773175729986998}
   - component: {fileID: 9168677217926515299}
-  - component: {fileID: 2230875963379332808}
   - component: {fileID: 6010520602041125607}
-  - component: {fileID: 3119871374797929676}
+  - component: {fileID: 5524560479004423827}
+  - component: {fileID: 6550758213085174645}
   m_Layer: 19
-  m_Name: AK47
+  m_Name: Grenade
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 485e3b68e6415644baaab5023ba481ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6b9e9f8153d92445b479a72f55d296f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,32 +173,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2230875963379332808
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9168677217926515297}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: c815dc24c84a31c43a9e12db2e769531, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0036951303, y: -0.0018475056}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 0.6666667}
-    newSize: {x: 1.3333334, y: 1.3333334}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2512696, y: 0.55288815}
-  m_EdgeRadius: 0
 --- !u!114 &6010520602041125607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +185,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528863824f9cff34e8da90afe0d7589d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3119871374797929676
+--- !u!60 &5524560479004423827
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168677217926515297}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.6666667, y: 0.6666667}
+    newSize: {x: 1.3333334, y: 1.3333334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.20833334, y: 0.2916667}
+      - {x: 0.083333336, y: 0.33333334}
+      - {x: -0.083333336, y: 0.33333334}
+      - {x: -0.2916667, y: 0.20833334}
+      - {x: -0.33333334, y: 0.16666667}
+      - {x: -0.33333334, y: -0.083333336}
+      - {x: -0.25, y: -0.33333334}
+      - {x: 0.125, y: -0.33333334}
+      - {x: 0.2916667, y: -0.20833334}
+      - {x: 0.33333334, y: -0.083333336}
+      - {x: 0.33333334, y: 0.083333336}
+--- !u!114 &6550758213085174645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,31 +230,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 9168677217926515297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd2aebc341783d48b4ef00eb024286c, type: 3}
+  m_Script: {fileID: 11500000, guid: 39f79ac578c9b5a469f76babd075d028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 7202534769512080437, guid: 9a853e0535855fc42843bae8897cc716,
+  projectilePrefab: {fileID: 7202534769512080437, guid: 15129a18301b1d14f894798aa46568cf,
     type: 3}
-  fireRate: 0.1
-  ammo: 8
-  range: 20
-  damage: 2
-  initialForce: 1000
-  spread: 8
+  fireRate: 1
+  ammo: 1
+  range: 0
+  damage: 5
+  initialForce: 700
+  spread: 0
   weaponFireSound: {fileID: 8300000, guid: c84f0fb033ce6fc4f8810573694a7f79, type: 3}
-  jitter: 0.5
-  selfInflictedKnockback: 250
+  jitter: 0
+  selfInflictedKnockback: 0
   cameraShakeDuration: 0.1
-  cameraShakeMagnitude: 2
+  cameraShakeMagnitude: 3
   firingPoint: {fileID: 2484749199843270676}
   aimCheckLayerMask:
     serializedVersion: 2
     m_Bits: 8960
   aimCheckRadius: 0.1
-  fireType: 1
-  isChargeUp: 0
+  fireType: 4
   chargeUpSound: 
   chargeDownSound: 
   chargeUpTime: 0
-  explosionTime: 0
+  explosionTime: 1.75
+  isCookFireType: 1
+  isChargeUpFireType: 0
   canShoot: 0
+  explosionSFXName: SFX_GrenadeExplosion
+  explosionSize: 2

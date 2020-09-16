@@ -13,7 +13,6 @@ public class LaserWeapon : Weapon
         if (lineRenderer != null)
         {
             LineRenderer currentLineRenderer = Instantiate(lineRenderer, transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y), Quaternion.identity).GetComponent<LineRenderer>();
-            currentLineRenderer.transform.right = playerShoot.gunOriginTransform.right;
             currentLineRenderer.SetPosition(0, transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y));
             currentLineRenderer.SetPosition(1, transform.position + ((firingPoint.localPosition * transform.right.x * transform.right.y) * range));
 

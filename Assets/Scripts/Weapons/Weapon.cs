@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -24,10 +25,14 @@ public class Weapon : MonoBehaviour
     public FireType fireType;
     // Charge, wind and Cook fire type parameters
     [Header("Charge Specific parameters")]
-    public string chargeUpSound;
-    public string chargeDownSound;
-    public float chargeUpTime;
-    public float explosionTime;
+    [ConditionalHide("isChargeUpFireType")] public string chargeUpSound;
+    [ConditionalHide("isChargeUpFireType")] public string chargeDownSound;
+    [ConditionalHide("isChargeUpFireType")] public float chargeUpTime;
+    [ConditionalHide("isCookFireType")] public float explosionTime;
+    
+    //These are booleans are use to check if the charge params should be hidden or not
+    [HideInInspector]public bool isCookFireType;
+    [HideInInspector]public bool isChargeUpFireType;
 
     [HideInInspector] public bool canShoot;
 
@@ -58,6 +63,29 @@ public class Weapon : MonoBehaviour
         isGoingUp = true;
     }
 
+    private void OnValidate()
+    {
+        isCookFireType = false;
+        isChargeUpFireType = false;
+        switch (fireType)
+        {
+            case FireType.SemiAutomatic:
+                break;
+            case FireType.Automatic:
+                break;
+            case FireType.ChargeUp:
+                isChargeUpFireType = true;
+                break;
+            case FireType.WindUp:
+                isChargeUpFireType = true;
+                break;
+            case FireType.Cook:
+                isCookFireType = true;
+                break;
+            default:
+                break;
+        }
+    }
 
     public virtual bool Pickup(PlayerShoot player)
     {

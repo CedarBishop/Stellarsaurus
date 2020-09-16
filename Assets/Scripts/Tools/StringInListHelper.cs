@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using UnityEditor.Experimental;
 
 public static class StringInListHelper
 {
@@ -40,6 +41,18 @@ public static class StringInListHelper
         return names;       
     }
 
+    public static string[] AllWeaponPrefabs()
+    {
+        string[] paths = AssetDatabase.GetAssetPathsFromAssetBundle("weaponprefabs");
+        if (paths != null)
+        {
+            for (int i = 0; i < paths.Length; i++)
+            {
+                paths[i] = Path.GetFileName(paths[i]);
+            }
+        }
+        return paths;
+    }
 #endif
 }
 
