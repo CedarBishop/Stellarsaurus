@@ -9,7 +9,7 @@ public class SingleShotWeapon : Weapon
         base.ShootLogic();
 
         Bullet projectile = Instantiate(projectilePrefab,
-        transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y),
+        firingPoint.transform.position,
         transform.rotation).GetComponent<Bullet>();
         projectile.InitialiseProjectile(range, damage, playerShoot.playerNumber, initialForce, spread, true);
     }

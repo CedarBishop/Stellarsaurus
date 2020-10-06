@@ -11,7 +11,7 @@ public class ExplosiveWeapon : Weapon
 		base.ShootLogic();
 
         Explosive explosive = Instantiate(projectilePrefab,
-        transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y),
+        firingPoint.transform.position,
         transform.rotation).GetComponent<Explosive>();
         explosive.InitExplosive(explosionTime, explosionSize, damage, playerShoot.playerNumber ,
             initialForce, explosionSFXName, cameraShakeDuration, cameraShakeMagnitude, playerShoot.cookTime);

@@ -108,9 +108,6 @@ public class Boomerang : Projectile
         else if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
             isReturning = true;
-        }
-        
+        }        
     }
-
-
 }

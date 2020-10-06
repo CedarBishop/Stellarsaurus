@@ -37,6 +37,8 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public bool canShoot;
 
 
+    private float destroyTimer;
+    private float destroyTime = 5;
     private bool isHeld;
     private bool isDropped;
     protected bool isInSpawner;
@@ -126,6 +128,7 @@ public class Weapon : MonoBehaviour
         playerShoot = null;
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * 500);
+        destroyTimer = destroyTime;
         isDropped = true;
         collider.enabled = true;
         isHeld = false;
@@ -226,6 +229,7 @@ public class Weapon : MonoBehaviour
     {
         //SpawnerMovement();
         UpdateRotation();
+        DestroyTimer();
     }
 
 
@@ -253,6 +257,22 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
+    void DestroyTimer()
+    {
+        if (isHeld == false && isInSpawner == false)
+        {
+            if (destroyTimer <= 0.0f)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                destroyTimer -= Time.fixedDeltaTime;
+            }
+        }
+    }
+
 
     void UpdateRotation ()
     {

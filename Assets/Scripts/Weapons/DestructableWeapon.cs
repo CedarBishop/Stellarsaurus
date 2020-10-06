@@ -9,7 +9,7 @@ public class DestructableWeapon : Weapon
         base.ShootLogic();
 
         Destructable destructable = Instantiate(projectilePrefab,
-        transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y),
+        firingPoint.transform.position,
         transform.rotation).GetComponent<Destructable>();
         destructable.InitialiseDestructable(playerShoot.playerNumber, initialForce, cameraShakeDuration, cameraShakeMagnitude, subProjectileAmount, subProjectileForce.x, subProjectileForce.y);
 

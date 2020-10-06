@@ -17,7 +17,7 @@ public class MultiShotWeapon : Weapon
 
             transform.rotation = Quaternion.Euler(0, 0, baseZRotation);
             Bullet multiProjectile = Instantiate(projectilePrefab,
-                transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y),
+                firingPoint.transform.position,
                 transform.rotation).GetComponent<Bullet>();
             multiProjectile.InitialiseProjectile(range, damage, playerShoot.playerNumber, initialForce, sprayAmount, (i == 0));
 

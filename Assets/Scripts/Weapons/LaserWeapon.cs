@@ -8,13 +8,13 @@ public class LaserWeapon : Weapon
     {
         base.ShootLogic();
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y), playerShoot.gunOriginTransform.right, range);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(firingPoint.transform.position, playerShoot.gunOriginTransform.right, range);
 
         if (lineRenderer != null)
         {
             LineRenderer currentLineRenderer = Instantiate(lineRenderer, transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y), Quaternion.identity).GetComponent<LineRenderer>();
-            currentLineRenderer.SetPosition(0, transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y));
-            currentLineRenderer.SetPosition(1, transform.position + ((firingPoint.localPosition * transform.right.x * transform.right.y) * range));
+            currentLineRenderer.SetPosition(0, firingPoint.transform.position);
+            currentLineRenderer.SetPosition(1, firingPoint.transform.position + ((range * transform.right)));
 
             Destroy(currentLineRenderer.gameObject, lineRendererTimeToLive);
         }
