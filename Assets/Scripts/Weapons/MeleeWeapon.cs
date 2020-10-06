@@ -11,7 +11,7 @@ public class MeleeWeapon : Weapon
         base.ShootLogic();
 
         GameObject go = Instantiate(projectilePrefab,
-             transform.position + (firingPoint.localPosition * transform.right.x * transform.right.y),
+             firingPoint.transform.position,
              transform.rotation);
         Melee melee = go.GetComponent<Melee>();
         melee.Init(playerShoot.playerNumber, damage, duration);
