@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
+    [Header("Melee Variables")]
     public float duration;
     protected override void ShootLogic()
     {

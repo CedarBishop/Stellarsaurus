@@ -2,6 +2,7 @@
 
 public class LaserWeapon : Weapon
 {
+    [Header("Laser Variables")]
     public LineRenderer lineRenderer;
     public float lineRendererTimeToLive;
     protected override void ShootLogic()

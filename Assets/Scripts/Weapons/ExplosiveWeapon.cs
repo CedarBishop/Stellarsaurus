@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExplosiveWeapon : Weapon
 {
+    [Header("Explosive Variables")]
     public string explosionSFXName;
     public float explosionSize;
 	protected override void ShootLogic()

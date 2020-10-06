@@ -2,6 +2,7 @@
 
 public class DestructableWeapon : Weapon
 {
+    [Header("Destructable Variables")]
     public int subProjectileAmount;
     public Vector2 subProjectileForce;
     protected override void ShootLogic()

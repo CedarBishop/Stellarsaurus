@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ConsumablePotion : Weapon
 {
-    ConsumableType consumableType;
+    [Header("Consumable Variables")]
+    public ConsumableType consumableType;
     public float duration;
     public float amount;
     public Color effectColor;
