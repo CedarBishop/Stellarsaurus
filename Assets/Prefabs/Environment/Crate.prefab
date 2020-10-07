@@ -223,12 +223,12 @@ MonoBehaviour:
   timeBeforeDestroyed: 0
   isDecorative: 0
   isExplosive: 0
-  weaponPrefab: {fileID: 9168677217926515296, guid: 8e4b79e44141ed84196947e9e70ba481,
-    type: 3}
-  weaponsInThisLevel:
-  - Slowdown Time
-  - Speed Boost
-  - Double Jump
+  consumables:
+  - {fileID: 2444430586675094296, guid: ac4c23f1b9fd46d499e97a67ab9281f0, type: 3}
+  - {fileID: 5218143211910720476, guid: df6de0c7d12fe6e40a1c3edb07fad133, type: 3}
+  - {fileID: 2935939723309180364, guid: 7f015de7be670834c8391bc99759c706, type: 3}
+  - {fileID: 29555985816541655, guid: dd042f65434f3ee449d404d267c49b4c, type: 3}
+  - {fileID: 6038843788919133509, guid: 1102e30ffeeff2842ac5ce90d86a4a71, type: 3}
 --- !u!114 &5350767333440696549
 MonoBehaviour:
   m_ObjectHideFlags: 0

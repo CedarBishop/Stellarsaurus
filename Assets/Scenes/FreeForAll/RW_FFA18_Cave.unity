@@ -201,6 +201,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -218,6 +228,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -451,6 +505,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Revolver
       objectReference: {fileID: 0}
@@ -463,6 +527,28 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 472a94e369771004b8aeb923af431a5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Grenade.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Revolver.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -894,6 +980,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -911,6 +1007,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -988,6 +1128,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -1005,6 +1155,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -65941,6 +66135,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -65958,6 +66162,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -95641,6 +95889,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -95658,6 +95916,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -95954,6 +96256,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Revolver
       objectReference: {fileID: 0}
@@ -95966,6 +96278,28 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 472a94e369771004b8aeb923af431a5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Grenade.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Revolver.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -96555,6 +96889,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -96572,6 +96916,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -96787,6 +97175,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -96804,6 +97202,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -96881,6 +97323,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -96898,6 +97350,50 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[3]
       value: Molotov Cocktail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: ec5586e722064a248b8aa67ffc4c308d,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 8948715711858639992, guid: cd7c6aab0eb445641b11a2042d8066b5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Flamethrower.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Molotov Cocktail.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -97163,6 +97659,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Revolver
       objectReference: {fileID: 0}
@@ -97175,6 +97681,28 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 472a94e369771004b8aeb923af431a5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Grenade.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Revolver.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -106963,6 +107491,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Grenade
       objectReference: {fileID: 0}
@@ -106975,6 +107513,28 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 472a94e369771004b8aeb923af431a5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Grenade.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Revolver.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}

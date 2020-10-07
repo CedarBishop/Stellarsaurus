@@ -50,7 +50,6 @@ public class LobbyTeleport : MonoBehaviour
             PlayerShoot player = collision.GetComponent<PlayerShoot>();
             LevelManager.instance.startingPositions[player.playerNumber - 1].position = newSpawnPoints[player.playerNumber - 1].position;
             player.transform.position = newSpawnPoints[player.playerNumber - 1].position;
-            player.DestroyWeapon();
             ActivateCameras();
         }
         if (collision.GetComponent<Weapon>())

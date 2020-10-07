@@ -67,3 +67,57 @@ public class SaveObject
     public PlayerParams playerParams;
     public LevelPlaylist levelPlaylist;
 }
+
+[System.Serializable]
+public class WeaponType
+{
+    public WeaponUseType weaponUseType;
+    public string weaponName;
+    public string spritePrefabName;
+    public WeaponSpritePrefab weaponSpritePrefab;
+    public string projectileName;
+    public GameObject projectileType;
+    public float fireRate;
+    public int ammoCount;
+    public float range;
+    public int damage;
+    public float initialForce;
+    public float spread;
+    public FireType fireType;
+    public float chargeUpTime;
+    public string chargeUpSound;
+    public string chargeDownSound;
+    public float cameraShakeDuration;
+    public float cameraShakeMagnitude;
+    public float knockBack;
+    public float recoilJitter;
+
+    public AudioClip soundFX;
+    public string soundFxGuid;
+    public string soundFxName;
+    public float soundFxVolume;
+    public float soundFxPitch;
+
+    public int bulletsFiredPerShot;
+    public float sprayAmount;
+    public float explosionSize;
+    public float explosionTime;
+    public string explosionSFXName;
+
+    public ConsumableType consumableType;
+    public float duration;
+    public float amount;
+    public Color consumableEffectColor;
+
+    public int subProjectileAmount;
+    public Vector2 subProjectileForce;
+
+    public GameObject meleeType;
+
+    public GameObject lineRenderer;
+    public string lineRendererGuid;
+    public string lineRendererName;
+    public float lineRendererTimeToLive;
+}
+
+public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee, Consumable, Boomerang, Destructable, Laser }

@@ -13,7 +13,6 @@ public class ExtractionObjective : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private new CircleCollider2D collider;
     private Animator animator;
-    private Animator weaponSpriteAnimator;
     private PlayerShoot playerShoot;
 
     private float timer;
@@ -38,7 +37,7 @@ public class ExtractionObjective : MonoBehaviour
             if (isHeld)
             {
                 timer += Time.deltaTime;
-                weaponSpriteAnimator.SetFloat("AnimSpeed", timer * 0.1f);
+                animator.SetFloat("AnimSpeed", timer * 0.1f);
             }
             else
             {
@@ -57,43 +56,50 @@ public class ExtractionObjective : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -20)
+        if (transform.position.y < -30)
         {
             transform.position = LevelManager.instance.extractionObjectSpawnPosition.position;
         }
          
     }
 
-    public void OnPickup (int num, Animator playerWeaponAnimator, PlayerShoot player)
+    public void OnPickup (int num, PlayerShoot player)
     {
-        weaponSpriteAnimator = playerWeaponAnimator;
         isHeld = true;
         playerNumber = num;
 
         playerShoot = player;
 
-        spriteRenderer.enabled = false;
         collider.enabled = false;
 
-        transform.position = new Vector3(1000,1000,0);
+        if (rigidbody != null)
+        {
+            Destroy(rigidbody);
+        }
+        transform.position = player.gunParentTransform.position;
+        transform.parent = player.gunParentTransform;
 
     }
 
-    public void OnDrop (Vector3 newPos)
+    public void OnDrop ()
     {
-        rigidbody.velocity = Vector2.zero;
-        weaponSpriteAnimator = null;
         isHeld = false;
-        transform.position = newPos;
         spriteRenderer.enabled = true;
         collider.enabled = true;
+        playerShoot = null;
+        if (rigidbody == null)
+        {
+            rigidbody = gameObject.AddComponent<Rigidbody2D>();
+        }
+        rigidbody.velocity = Vector2.zero;
+        transform.parent = null;
     }
 
     void OnChargeComplete ()
     {
         if (chargedParticle != null)
         {
-            GameObject go = Instantiate(chargedParticle,playerShoot.gunSprite.transform.position, Quaternion.identity);
+            GameObject go = Instantiate(chargedParticle,transform.position, Quaternion.identity);
             ParticleSystem[] particles = go.GetComponentsInChildren<ParticleSystem>();
             foreach (var particle in particles)
             {
@@ -104,7 +110,7 @@ public class ExtractionObjective : MonoBehaviour
         if (GameManager.instance.SelectedGamemode != null)
         {
             GameManager.instance.SelectedGamemode.AwardExtraction(playerNumber);
-            ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, playerShoot.gunSprite.transform.position, Quaternion.identity);
+            ScorePopup scorePopup = Instantiate(LevelManager.instance.scorePopupPrefab, playerShoot.gunOriginTransform.transform.position, Quaternion.identity);
             scorePopup.Init(GameManager.instance.SelectedGamemode.extractionPointReward);
         }
 

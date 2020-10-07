@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Grabbable : MonoBehaviour
 {
-    private WeaponType weaponType = null;
-    private int ammo;
     private bool hadRigidbody;
     private float mass;
     private float gravityScale;
@@ -16,12 +14,6 @@ public class Grabbable : MonoBehaviour
         transform.parent = _HolderTransform;
         isHeld = true;
         holderTransform = _HolderTransform;
-        if (TryGetComponent<Weapon>(out Weapon weapon))
-        {
-            weaponType = weapon.weaponType;
-            ammo = weaponType.ammoCount;
-
-        }
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
         {
             hadRigidbody = true;
@@ -44,13 +36,7 @@ public class Grabbable : MonoBehaviour
         transform.parent = null;
         isHeld = false;
         
-        if (weaponType != null)
-        {
-            Weapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
-            weapon.OnDrop(weaponType, ammo, false);
-            Destroy(gameObject);
-        }
-        else if (hadRigidbody)
+        if (hadRigidbody)
         {
             Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
             rigidbody.mass = mass;

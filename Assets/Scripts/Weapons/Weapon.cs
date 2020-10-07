@@ -1,107 +1,203 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
-
-[RequireComponent(typeof(SpriteRenderer))]
 
 public class Weapon : MonoBehaviour
 {
-    List<WeaponType> weaponTypes;
-    
-    public WeaponType weaponType;
+    public GameObject projectilePrefab;
+    public float fireRate;
     public int ammo;
-    public BoxCollider2D childTrigger;
+    public float range;
+    public int damage;
+    public float initialForce;
+    public float spread;
+    public AudioClip weaponFireSound;
+    public float jitter;
+    public float selfInflictedKnockback;
+    public float cameraShakeDuration;
+    public float cameraShakeMagnitude;
+    public Transform firingPoint;
+    public LayerMask aimCheckLayerMask;
+    public float aimCheckRadius;
 
-    private SpriteRenderer spriteRenderer;
-    private WeaponSpawnType weaponSpawnType;
-    private WeaponSpawner weaponSpawner = null;
-    private bool isGoingUp;
-    private float target;
+
+    public FireType fireType;
+    // Charge, wind and Cook fire type parameters
+    [Header("Charge Specific parameters")]
+    [ConditionalHide("isChargeUpFireType")] public string chargeUpSound;
+    [ConditionalHide("isChargeUpFireType")] public string chargeDownSound;
+    [ConditionalHide("isChargeUpFireType")] public float chargeUpTime;
+    [ConditionalHide("isCookFireType")] public float explosionTime;
+    
+    //These are booleans are use to check if the charge params should be hidden or not
+    [HideInInspector]public bool isCookFireType;
+    [HideInInspector]public bool isChargeUpFireType;
+
+    [HideInInspector] public bool canShoot;
+
+
+    private float destroyTimer;
+    private float destroyTime = 5;
+    private bool isHeld;
     private bool isDropped;
+    protected bool isInSpawner;
+    private float target;
+    private bool isGoingUp;
+    private WeaponSpawner weaponSpawner = null;
+    private Rigidbody2D rigidbody;
+    private Collider2D collider;
 
-    public void Init (List<WeaponType> weapons, WeaponSpawnType spawnType, WeaponSpawner _WeaponSpawner = null)
+    protected PlayerShoot playerShoot;
+
+
+    private void Awake()
     {
-        weaponTypes = weapons;
-        ChooseWeaponType();
-        switch (spawnType)
+        collider = GetComponent<Collider2D>();
+    }
+
+    public void InitBySpawner(WeaponSpawner spawner)
+    {
+        isInSpawner = true;
+        weaponSpawner = spawner;
+        collider.enabled = false;
+        target += 0.3f;
+        isGoingUp = true;
+    }
+
+    private void OnValidate()
+    {
+        isCookFireType = false;
+        isChargeUpFireType = false;
+        switch (fireType)
         {
-            case WeaponSpawnType.FallFromSky:
-                StartCoroutine("DestroySelf");
-                gameObject.AddComponent<Rigidbody2D>();
+            case FireType.SemiAutomatic:
                 break;
-            case WeaponSpawnType.Spawnpoint:
-                SpawnPointSetup();
+            case FireType.Automatic:
                 break;
-            case WeaponSpawnType.Treasure:
+            case FireType.ChargeUp:
+                isChargeUpFireType = true;
+                break;
+            case FireType.WindUp:
+                isChargeUpFireType = true;
+                break;
+            case FireType.Cook:
+                isCookFireType = true;
                 break;
             default:
                 break;
         }
-      
-        ammo = weaponType.ammoCount;
-        weaponSpawnType = spawnType;
-        weaponSpawner = _WeaponSpawner;
     }
 
-    public void OnDrop(WeaponType weapon, int Ammo, bool shouldThrow = true)
+    public virtual bool Pickup(PlayerShoot player)
     {
-        weaponType = weapon;
-        StartCoroutine("DestroySelf");
-        ammo = Ammo;
-        Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
-        if (shouldThrow)
+        if (isHeld)
         {
-            rigidbody.AddForce(transform.right * 500);
+            return false;
         }
+
+        if (isInSpawner)
+        {
+            isInSpawner = false;
+            weaponSpawner.SpawnedWeaponIsGrabbed();
+        }
+        playerShoot = player;
+        isHeld = true;
+        transform.parent = playerShoot.gunParentTransform;
+        canShoot = true;
+        transform.position = playerShoot.gunParentTransform.position;
+        transform.right = playerShoot.gunOriginTransform.right;
+
+        if (rigidbody != null)
+        {
+            Destroy(rigidbody);
+        }
+
+        collider.enabled = false;
+
+        return true;
+    }
+
+    public virtual void Drop ()
+    {
+        if (isHeld == false)
+        {
+            return;
+        }
+        transform.parent = null;
+        playerShoot = null;
+        rigidbody = gameObject.AddComponent<Rigidbody2D>();
+        rigidbody.AddForce(transform.right * 500);
+        destroyTimer = destroyTime;
         isDropped = true;
-        SetupWeaponSprite();
+        collider.enabled = true;
+        isHeld = false;
     }
 
-
-    private void SetupWeaponSprite ()
+    public virtual bool Shoot ()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (weaponType.weaponSpritePrefab != null)
+        if (ammo <= 0)
         {
-            spriteRenderer.sprite = weaponType.weaponSpritePrefab.weaponSprite;
-
-            if (weaponType.weaponSpritePrefab.weaponSpriteMaterial != null)
-                spriteRenderer.material = weaponType.weaponSpritePrefab.weaponSpriteMaterial;
-
-            BoxCollider2D collider = GetComponent<BoxCollider2D>();
-            childTrigger.size = weaponType.weaponSpritePrefab.collider.size;
-            childTrigger.offset = weaponType.weaponSpritePrefab.collider.offset;
-            collider.size = weaponType.weaponSpritePrefab.collider.size;
-            collider.offset = weaponType.weaponSpritePrefab.collider.offset;
-
-            if (weaponType.weaponSpritePrefab.light != null)
-            {
-                GameObject go = new GameObject("weapon light");
-                go.transform.parent = transform;
-                Light2D light = go.AddComponent<Light2D>();
-                light.color = weaponType.weaponSpritePrefab.light.color;
-                light.intensity = weaponType.weaponSpritePrefab.light.intensity;
-                light.lightType = weaponType.weaponSpritePrefab.light.lightType;
-                light.pointLightInnerRadius = weaponType.weaponSpritePrefab.light.pointLightInnerRadius;
-                light.pointLightOuterRadius = weaponType.weaponSpritePrefab.light.pointLightOuterRadius;
-
-                go.transform.localPosition = weaponType.weaponSpritePrefab.lightTransform.position;                
-            }
-
-            if (weaponType.weaponSpritePrefab.particle != null)
-            {
-                ParticleSystem go = Instantiate(weaponType.weaponSpritePrefab.particle).GetComponent<ParticleSystem>();
-                go.transform.parent = transform;
-                go.transform.localPosition = weaponType.weaponSpritePrefab.particleTransform.position;
-                go.Play();
-            }
+            return false;
         }
-        else
+        if (AimCheck())
         {
-            Debug.LogError(weaponType.weaponName + " sprite has not been set");
+            return false;
+        }
+
+        if (canShoot == false)
+        {
+            return false;
+        }
+
+        ShootLogic();
+
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySFX(weaponFireSound);
+        }
+
+
+        PostShootChecks();
+
+        return true;
+    }
+
+    protected virtual void ShootLogic ()
+    {
+        if (playerShoot == null)
+        {
+            return;
         }
     }
+
+    protected virtual void PostShootChecks ()
+    {
+        ammo--;
+        if (ammo <= 0)
+        {
+            DestroyWeapon();
+        }
+
+        StartCoroutine("DelayBetweenShots");
+    }
+
+    protected void DestroyWeapon()
+    {
+        playerShoot.OnWeaponDestroy();
+        Destroy(gameObject);
+    }
+
+
+    public bool AimCheck()
+    {
+        if (Physics2D.OverlapCircle(firingPoint.position, aimCheckRadius, aimCheckLayerMask))
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDropped)
@@ -122,11 +218,26 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    IEnumerator DelayBetweenShots()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
+    }
+
     private void FixedUpdate()
     {
-        if (weaponSpawnType == WeaponSpawnType.Spawnpoint)
+        //SpawnerMovement();
+        UpdateRotation();
+        DestroyTimer();
+    }
+
+
+    void SpawnerMovement()
+    {
+        if (isInSpawner)
         {
-            if ( Mathf.Abs(target - transform.position.y) < 0.01f)
+            if (Mathf.Abs(target - transform.position.y) < 0.01f)
             {
                 if (isGoingUp)
                 {
@@ -142,110 +253,38 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y,target, 2 * Time.fixedDeltaTime), transform.position.z);
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, target, 2 * Time.fixedDeltaTime), transform.position.z);
+            }
+        }
+    }
+
+    void DestroyTimer()
+    {
+        if (isHeld == false && isInSpawner == false)
+        {
+            if (destroyTimer <= 0.0f)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                destroyTimer -= Time.fixedDeltaTime;
             }
         }
     }
 
 
-    void ChooseWeaponType()
+    void UpdateRotation ()
     {
-        int randomNum = Random.Range(0,weaponTypes.Count);
-        weaponType = weaponTypes[randomNum];
-        SetupWeaponSprite();
-    }
-
-    void SpawnPointSetup ()
-    {
-        isGoingUp = true;
-        target = transform.position.y + 0.2f;
-    }
-
-
-    IEnumerator DestroySelf ()
-    {
-        yield return new WaitForSeconds(10);
-        Destroy(gameObject);
-    }
-
-    public void OnPickup ()
-    {
-        switch (weaponSpawnType)
+        if (isHeld)
         {
-            case WeaponSpawnType.FallFromSky:
-                break;
-            case WeaponSpawnType.Spawnpoint:
-                weaponSpawner.SpawnedWeaponIsGrabbed();
-                break;
-            case WeaponSpawnType.Treasure:
-                break;
-            default:
-                break;
+            if (playerShoot != null)
+            {
+                transform.right = playerShoot.gunOriginTransform.transform.right;
+            }
         }
-
-        Destroy(gameObject);
     }
 }
 
 
-public enum WeaponUseType { SingleShot, Multishot, Throwable, Melee ,Consumable, Boomerang, Destructable, Laser }
-
-public enum FireType {SemiAutomatic, Automatic, ChargeUp, WindUp, Cook}
-
-public enum WeaponSpawnType {FallFromSky, Spawnpoint, Treasure }
-
-
-
-[System.Serializable]
-public class WeaponType
-{
-    public WeaponUseType weaponUseType;
-    public string weaponName;
-    public string spritePrefabName;
-    public WeaponSpritePrefab weaponSpritePrefab;
-    public string projectileName;
-    public GameObject projectileType;
-    public float fireRate;
-    public int ammoCount;
-    public float range;
-    public int damage;
-    public float initialForce;
-    public float spread;
-    public FireType fireType;
-    public float chargeUpTime;
-    public string chargeUpSound;
-    public string chargeDownSound;
-    public float cameraShakeDuration;
-    public float cameraShakeMagnitude;
-    public float knockBack;
-    public float recoilJitter;
-
-    public AudioClip soundFX;
-    public string soundFxGuid;
-    public string soundFxName;
-    public float soundFxVolume;
-    public float soundFxPitch;
-
-    public int bulletsFiredPerShot;
-    public float sprayAmount;
-    public float explosionSize;
-    public float explosionTime;
-    public string explosionSFXName;
-
-    public ConsumableType consumableType;
-    public float duration;
-    public float amount;
-    public Color consumableEffectColor;
-
-    public int subProjectileAmount;
-    public Vector2 subProjectileForce;
-
-    public GameObject meleeType;
-
-    public GameObject lineRenderer;
-    public string lineRendererGuid;
-    public string lineRendererName;
-    public float lineRendererTimeToLive;
-
-
-}
+public enum FireType { SemiAutomatic, Automatic, ChargeUp, WindUp, Cook }

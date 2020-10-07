@@ -59,9 +59,6 @@ public class PlayerMovement : MonoBehaviour
 
     CameraController cameraController;
 
-    private Orthogonal orthogonal;
-    private float verticalAim;
-
     private bool isFineAiming;
     private ParticleSystem speedBoostParticleInstance;
     private ParticleSystem doubleJumpParticleInstance;
@@ -83,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         cutJumpHeight = playerParams.cutJumpHeight;
         counterForce = playerParams.counterForce;
 
-        GetComponent<PlayerShoot>().SetAimType(playerParams.aimType);
+        //GetComponent<OldPlayerShoot>().SetAimType(playerParams.aimType);
 
         cameraController = Camera.main.GetComponent<CameraController>();
         
@@ -190,29 +187,6 @@ public class PlayerMovement : MonoBehaviour
     public void Move (float value)
     {
         horizontal = value;
-
-        if (horizontal > 0)
-        {
-            orthogonal = Orthogonal.Right;
-        }
-        else if (horizontal < 0)
-        {
-            orthogonal = Orthogonal.Left;
-        }
-    }
-
-    public void AimVertical (float value)
-    {
-        verticalAim = value;
-
-        if (verticalAim > 0)
-        {
-            orthogonal = Orthogonal.Up;
-        }
-        else if (verticalAim < 0)
-        {
-            orthogonal = Orthogonal.Down;
-        }
     }
 
     public void StartJump ()
@@ -378,11 +352,6 @@ public class PlayerMovement : MonoBehaviour
         isHoldingExtractionObject = value;
     }
 
-    public Orthogonal GetDirection ()
-    {
-        return orthogonal;
-    }
-
     public PlayerParams GetPlayerParams()
     {
         return playerParams;
@@ -405,6 +374,4 @@ public class PlayerParams
     public float counterForce;
     public float playerHitTimeScale;
     public float playerHitSlowMoDuration;
-
-    public AimType aimType;
 }

@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -478,7 +478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &343309022
 PrefabInstance:
@@ -1882,7 +1882,7 @@ PrefabInstance:
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -2058,7 +2058,7 @@ PrefabInstance:
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5536187730568302053, guid: 691c1d957f9404547bbec99711d70c09,
         type: 3}
@@ -2242,6 +2242,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: Grenade
       objectReference: {fileID: 0}
@@ -2259,6 +2269,39 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[1]
       value: Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 5f646693143788f4ab67815e3e7078dc,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Sniper.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Grenade.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -2336,6 +2379,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[1]
       value: Shotgun
       objectReference: {fileID: 0}
@@ -2343,6 +2396,39 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: SMG
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 07d890fb0f10fa34ebf4fc34578e3400,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 4664813186758255351, guid: 2deeedc4b011f70408b29234841255d8,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Pistol.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Shotgun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: AK47.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -2450,6 +2536,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Pistol
       objectReference: {fileID: 0}
@@ -2462,6 +2558,39 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: SMG
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 07d890fb0f10fa34ebf4fc34578e3400,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 4664813186758255351, guid: 2deeedc4b011f70408b29234841255d8,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Pistol.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Shotgun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: AK47.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -3226,7 +3355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1792056300
 GameObject:
@@ -8621,7 +8750,7 @@ PrefabInstance:
     - target: {fileID: 4330250555554901534, guid: 2b500b2bd5f7dc342a1a8aea8b58cd07,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4330250555554901534, guid: 2b500b2bd5f7dc342a1a8aea8b58cd07,
         type: 3}
@@ -8709,6 +8838,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Minigun
       objectReference: {fileID: 0}
@@ -8726,6 +8865,61 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[4]
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 4664813186758255351, guid: 2deeedc4b011f70408b29234841255d8,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[3]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 472a94e369771004b8aeb923af431a5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[4]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Minigun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Shotgun.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[3]
+      value: Revolver.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[4]
+      value: Grenade.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -8833,6 +9027,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[2]
       value: Grenade
       objectReference: {fileID: 0}
@@ -8850,6 +9054,39 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[1]
       value: Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[1]
+      value: 
+      objectReference: {fileID: 3119871374797929676, guid: 5f646693143788f4ab67815e3e7078dc,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[2]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 6af618e59fe15f74b95d471163c28d67,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: AK47.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[1]
+      value: Sniper.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[2]
+      value: Grenade.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -9687,7 +9924,7 @@ PrefabInstance:
     - target: {fileID: 8990490027761441408, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8990490027761441408, guid: 3d4a26609ef8d0e409a63fbe05c048e8,
         type: 3}

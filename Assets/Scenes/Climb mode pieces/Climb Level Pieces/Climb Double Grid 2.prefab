@@ -4607,7 +4607,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 16
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4922,7 +4922,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4931,7 +4931,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5390,9 +5390,8 @@ Tilemap:
       type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 1106775453257986249, guid: 1901168c8a222bc488fb544125761e23,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 5
     m_Data: {fileID: -2758436213726061980, guid: 1901168c8a222bc488fb544125761e23,
       type: 3}
@@ -5400,13 +5399,14 @@ Tilemap:
     m_Data: {fileID: 7208983769179540774, guid: 1901168c8a222bc488fb544125761e23,
       type: 3}
   - m_RefCount: 1
+    m_Data: {fileID: 1106775453257986249, guid: 1901168c8a222bc488fb544125761e23,
+      type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: 4475889830554798069, guid: 1901168c8a222bc488fb544125761e23,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1236227780461346912, guid: 1901168c8a222bc488fb544125761e23,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -486230617266033969, guid: 1901168c8a222bc488fb544125761e23,
       type: 3}
@@ -5803,6 +5803,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: respawnTime
       value: 0
       objectReference: {fileID: 0}
@@ -5810,6 +5820,17 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Rocket Launcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 4257171bb9630224199f01e62f52f2a8,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Rocket Launcher.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
@@ -6178,6 +6199,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
+      propertyPath: weaponSelection.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
       propertyPath: respawnTime
       value: 0
       objectReference: {fileID: 0}
@@ -6185,6 +6216,17 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
       value: Rocket Launcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelection.Array.data[0]
+      value: 
+      objectReference: {fileID: 6550758213085174645, guid: 4257171bb9630224199f01e62f52f2a8,
+        type: 3}
+    - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
+        type: 3}
+      propertyPath: weaponSelectionPaths.Array.data[0]
+      value: Rocket Launcher.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}
