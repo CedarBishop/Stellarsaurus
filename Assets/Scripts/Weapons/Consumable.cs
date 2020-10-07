@@ -8,18 +8,40 @@ public class Consumable : MonoBehaviour
 {
     private Player player;
 
-    private ConsumableType consumableType;
+    public ConsumableType consumableType;
+    public Color color;
+    public float duration;
+    public float amount;
 
     private float timer;
     private bool isActive;
+    private Collider2D collider;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidbody;
 
-    public virtual void Use(Player _Player, ConsumableType type, float duration, float amount, Color color)
+    private void Start()
+    {
+        collider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        timer = duration;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerShoot>())
+        {
+            player = collision.GetComponent<PlayerShoot>().player;
+            Destroy(collider);
+            Destroy(rigidbody);
+            spriteRenderer.enabled = false;
+            Use();
+        }
+    }
+
+    public virtual void Use()
     {
         isActive = true;
-        timer = duration;
-        player = _Player;
-        consumableType = type;
-
         switch (consumableType)
         {
             case ConsumableType.DoubleJump:
@@ -58,9 +80,9 @@ public class Consumable : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timer -= Time.fixedDeltaTime;
         if (isActive)
         {
+            timer -= Time.fixedDeltaTime;
             if (timer <= 0.0f)
             {
                 Deactivate();

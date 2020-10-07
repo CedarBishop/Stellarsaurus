@@ -202,9 +202,9 @@ public class Weapon : MonoBehaviour
     {
         if (isDropped)
         {
-            if (collision.GetComponent<OldPlayerShoot>())
+            if (collision.GetComponent<PlayerShoot>())
             {
-                collision.GetComponent<OldPlayerShoot>().Disarm();
+                collision.GetComponent<PlayerShoot>().Disarm();
             }
         }
 
@@ -285,3 +285,6 @@ public class Weapon : MonoBehaviour
         }
     }
 }
+
+
+public enum FireType { SemiAutomatic, Automatic, ChargeUp, WindUp, Cook }

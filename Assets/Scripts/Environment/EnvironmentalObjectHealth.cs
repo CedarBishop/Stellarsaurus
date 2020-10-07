@@ -14,21 +14,11 @@ public class EnvironmentalObjectHealth : MonoBehaviour
     public bool isExplosive;
     private ParticleSystem debrisParticles;
 
-    private ExplosiveObjectHealth explosiveObjectHealth;
-
-    [Header("Item Drop")]
-    public OldWeapon weaponPrefab;
-    [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsInThisLevel;
-    private List<WeaponType> weaponTypes; 
+    public List<Consumable> consumables;
 
     private void Start()
     {
         healthMax = health;
-        ExplosiveObjectHealth test = GetComponent<ExplosiveObjectHealth>();
-        if (weaponsInThisLevel.Length > 0)
-        {
-            weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsInThisLevel);
-        }
         if (GetComponentInChildren<ParticleSystem>())
         {
             debrisParticles = GetComponentInChildren<ParticleSystem>();
@@ -64,11 +54,9 @@ public class EnvironmentalObjectHealth : MonoBehaviour
             return;
         hasBeenDestroyed = true;
 
-
-        if (weaponPrefab != null)
+        if (consumables != null)
         {
-            OldWeapon temp = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
-            temp.Init(weaponTypes, WeaponSpawnType.FallFromSky);
+            Instantiate(consumables[Random.Range(0,consumables.Count)],transform.position, Quaternion.identity);
         }
 
         if (debrisParticles != null)

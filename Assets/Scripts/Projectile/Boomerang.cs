@@ -60,14 +60,14 @@ public class Boomerang : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<OldPlayerShoot>())
+        if (collision.GetComponent<PlayerShoot>())
         {
-            OldPlayerShoot ps = collision.GetComponent<OldPlayerShoot>();
+            PlayerShoot ps = collision.GetComponent<PlayerShoot>();
             if (ps == player)
             {
                 if (isReturning)
                 {
-                    ps.Grab(weaponType);
+                    //ps.Grab(weaponType);
                     Destroy(gameObject);
                 }
 

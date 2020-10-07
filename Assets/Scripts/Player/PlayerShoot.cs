@@ -430,7 +430,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void DropExtractionObject()
     {
-        extractionObjective.OnDrop(gunSpriteRenderer.transform.position);
+        extractionObjective.OnDrop();
         playerMovement.SetIsHoldingExtractionObject(false);
         extractionObjective = null;
     }
@@ -459,12 +459,30 @@ public class PlayerShoot : MonoBehaviour
             isTriggeringWeapon = false;
             triggeredWeapon = null;
         }
+        //if (other.CompareTag("Extraction"))
+        //{
+        //    triggeredExtractionObjective = other.GetComponentInParent<ExtractionObjective>();
+        //    isTriggeringExtractionObjective = true;
+        //}
+        //else
+        //{
+        //    isTriggeringExtractionObjective = false;
+        //    triggeredExtractionObjective = null;
+        //}
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.CompareTag("Extraction"))
         {
             triggeredExtractionObjective = other.GetComponentInParent<ExtractionObjective>();
             isTriggeringExtractionObjective = true;
         }
-        else
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Extraction"))
         {
             isTriggeringExtractionObjective = false;
             triggeredExtractionObjective = null;

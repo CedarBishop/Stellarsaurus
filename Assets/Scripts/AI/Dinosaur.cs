@@ -145,20 +145,20 @@ public class Dinosaur : MonoBehaviour
             scorePopup.Init(GameManager.instance.SelectedGamemode.aiKillsPointReward);
         }
 
-        if (LevelManager.instance != null)
-        {
-            if (LevelManager.instance.weaponTypes.Count > 0)
-            {
-                float rand = Random.Range(0.0f, 1.0f);
-                if (rand < chanceOfDroppingWeapon)
-                {
-                    OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab,
-                    transform.position,
-                    Quaternion.identity);
-                    weapon.Init(LevelManager.instance.weaponTypes, WeaponSpawnType.FallFromSky);
-                }
-            }
-        }
+        //if (LevelManager.instance != null)
+        //{
+        //    if (LevelManager.instance.weaponTypes.Count > 0)
+        //    {
+        //        float rand = Random.Range(0.0f, 1.0f);
+        //        if (rand < chanceOfDroppingWeapon)
+        //        {
+        //            OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab,
+        //            transform.position,
+        //            Quaternion.identity);
+        //            weapon.Init(LevelManager.instance.weaponTypes, WeaponSpawnType.FallFromSky);
+        //        }
+        //    }
+        //}
 
         Destroy(gameObject);
     }

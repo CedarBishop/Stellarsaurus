@@ -262,20 +262,10 @@ public class Player : MonoBehaviour
         GameManager.instance.Pause();
     }
 
-    void OnAimVertical(InputValue value)
-    {
-        if (playerMovement != null)
-            playerMovement.AimVertical(value.Get<float>());
-    }
-
     void OnMoveAiming (InputValue value)
     {
         if (playerShoot != null)
         {
-            //if (playerShoot.aimType != AimType.HybridEightDirection)
-            //{
-            //    return;
-            //}
             playerShoot.Aim(value.Get<Vector2>());
         }            
     }

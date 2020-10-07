@@ -11,19 +11,9 @@ public class WeaponSpawner : MonoBehaviour
     [StringInList(typeof(StringInListHelper), "AllWeaponPrefabs")] public string[] weaponSelectionPaths;
     public float respawnTime = 5;
 
-    //private List<WeaponType> weaponTypes = new List<WeaponType>();
 
     private void Start()
     {
-        //if (weaponsAtThisSpawnPoint == null)
-        //{
-        //    return;
-        //}
-        //if (weaponsAtThisSpawnPoint.Length == 0)
-        //{
-        //    return;
-        //}
-        //weaponTypes = GameManager.instance.loader.GetWeaponsByNames(weaponsAtThisSpawnPoint);
 #if UNITY_EDITOR
         LoadWeaponFromPath();
 #endif
@@ -36,8 +26,11 @@ public class WeaponSpawner : MonoBehaviour
         {
             return;
         }
-        //OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab, transform.position, Quaternion.identity);
-        //weapon.Init(weaponTypes, WeaponSpawnType.Spawnpoint, this);
+        if (weaponSelection.Count == 0)
+        {
+            return;
+        }
+
         Weapon weapon = Instantiate(weaponSelection[Random.Range(0, weaponSelection.Count)], transform.position,Quaternion.identity);
         weapon.InitBySpawner(this);
     }
