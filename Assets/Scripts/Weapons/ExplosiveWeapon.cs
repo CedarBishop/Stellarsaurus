@@ -14,12 +14,12 @@ public class ExplosiveWeapon : Weapon
         Explosive explosive = Instantiate(projectilePrefab,
         firingPoint.transform.position,
         transform.rotation).GetComponent<Explosive>();
-        explosive.InitExplosive(explosionTime, explosionSize, damage, playerShoot.playerNumber ,
-            initialForce, explosionSFXName, cameraShakeDuration, cameraShakeMagnitude, playerShoot.cookTime);
+        explosive.InitExplosive(explosionTime, explosionSize, damage, player.playerNumber ,
+            initialForce, explosionSFXName, cameraShakeDuration, cameraShakeMagnitude, player.cookTime);
 
         if (GameManager.instance.SelectedGamemode != null)
         {
-            GameManager.instance.SelectedGamemode.AddToStats(playerShoot.playerNumber, StatTypes.BulletsFired, 1);
+            GameManager.instance.SelectedGamemode.AddToStats(player.playerNumber, StatTypes.BulletsFired, 1);
         }
     }
 }

@@ -25598,34 +25598,34 @@ PrefabInstance:
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[0]
-      value: AK47
+      value: Boomerang
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponsAtThisSpawnPoint.Array.data[1]
-      value: Minigun
+      value: Boomerang
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponSelection.Array.data[0]
       value: 
-      objectReference: {fileID: 3119871374797929676, guid: dc6c07a1ae683c04cbbf2efdbdc83d5c,
+      objectReference: {fileID: 2645644248941954063, guid: f4cbfa630279ec8459fa4b17c56417fd,
         type: 3}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponSelection.Array.data[1]
       value: 
-      objectReference: {fileID: 3119871374797929676, guid: c45d177bcb22a5f468b98842102bbda5,
+      objectReference: {fileID: 2645644248941954063, guid: f4cbfa630279ec8459fa4b17c56417fd,
         type: 3}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponSelectionPaths.Array.data[0]
-      value: AK47.prefab
+      value: Boomerang.prefab
       objectReference: {fileID: 0}
     - target: {fileID: 5232053794741897103, guid: c5e9f23d149b3ae42a45903196de330c,
         type: 3}
       propertyPath: weaponSelectionPaths.Array.data[1]
-      value: Minigun.prefab
+      value: Boomerang.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e9f23d149b3ae42a45903196de330c, type: 3}

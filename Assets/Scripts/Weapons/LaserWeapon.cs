@@ -9,7 +9,7 @@ public class LaserWeapon : Weapon
     {
         base.ShootLogic();
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(firingPoint.transform.position, playerShoot.gunOriginTransform.right, range);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(firingPoint.transform.position, player.gunOriginTransform.right, range);
 
         if (lineRenderer != null)
         {
@@ -26,17 +26,17 @@ public class LaserWeapon : Weapon
             {
                 if (hits[i].collider.GetComponent<PlayerHealth>())
                 {
-                    hits[i].collider.GetComponent<PlayerHealth>().HitByPlayer(playerShoot.playerNumber);
+                    hits[i].collider.GetComponent<PlayerHealth>().HitByPlayer(player.playerNumber);
                     shouldAddHitStat = true;
                 }
                 else if (hits[i].collider.GetComponent<Dinosaur>())
                 {
-                    hits[i].collider.GetComponent<Dinosaur>().TakeDamage(playerShoot.playerNumber, damage);
+                    hits[i].collider.GetComponent<Dinosaur>().TakeDamage(player.playerNumber, damage);
                     shouldAddHitStat = true;
                 }
                 else if (hits[i].collider.GetComponent<EnvironmentalObjectHealth>())
                 {
-                    hits[i].collider.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, playerShoot.playerNumber);
+                    hits[i].collider.GetComponent<EnvironmentalObjectHealth>().TakeDamage(damage, player.playerNumber);
                     shouldAddHitStat = true;
                 }
             }
@@ -45,14 +45,14 @@ public class LaserWeapon : Weapon
             {
                 if (GameManager.instance.SelectedGamemode != null)
                 {
-                    GameManager.instance.SelectedGamemode.AddToStats(playerShoot.playerNumber, StatTypes.BulletsHit, 1);
+                    GameManager.instance.SelectedGamemode.AddToStats(player.playerNumber, StatTypes.BulletsHit, 1);
                 }
             }
         }
 
         if (GameManager.instance.SelectedGamemode != null)
         {
-            GameManager.instance.SelectedGamemode.AddToStats(playerShoot.playerNumber, StatTypes.BulletsFired, 1);
+            GameManager.instance.SelectedGamemode.AddToStats(player.playerNumber, StatTypes.BulletsFired, 1);
         }
     }
 }

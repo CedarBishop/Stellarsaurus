@@ -14,6 +14,6 @@ public class MeleeWeapon : Weapon
              firingPoint.transform.position,
              transform.rotation);
         Melee melee = go.GetComponent<Melee>();
-        melee.Init(playerShoot.playerNumber, damage, duration);
+        melee.Init(player.playerNumber, damage, duration);
     }
 }

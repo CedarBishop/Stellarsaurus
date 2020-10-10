@@ -19,7 +19,7 @@ public class MultiShotWeapon : Weapon
             Bullet multiProjectile = Instantiate(projectilePrefab,
                 firingPoint.transform.position,
                 transform.rotation).GetComponent<Bullet>();
-            multiProjectile.InitialiseProjectile(range, damage, playerShoot.playerNumber, initialForce, sprayAmount, (i == 0));
+            multiProjectile.InitialiseProjectile(range, damage, player.playerNumber, initialForce, sprayAmount, (i == 0));
 
             baseZRotation += sprayAmount;
 

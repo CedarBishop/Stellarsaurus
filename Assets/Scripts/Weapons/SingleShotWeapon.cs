@@ -11,6 +11,6 @@ public class SingleShotWeapon : Weapon
         Bullet projectile = Instantiate(projectilePrefab,
         firingPoint.transform.position,
         transform.rotation).GetComponent<Bullet>();
-        projectile.InitialiseProjectile(range, damage, playerShoot.playerNumber, initialForce, spread, true);
+        projectile.InitialiseProjectile(range, damage, player.playerNumber, initialForce, spread, true);
     }
 }

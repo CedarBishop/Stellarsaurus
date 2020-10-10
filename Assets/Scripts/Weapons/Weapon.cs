@@ -37,18 +37,20 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public bool canShoot;
 
 
-    private float destroyTimer;
-    private float destroyTime = 5;
-    private bool isHeld;
-    private bool isDropped;
+    protected float destroyTimer;
+    protected float destroyTime = 5;
+    protected bool isHeld;
+    protected bool isDropped;
     protected bool isInSpawner;
     private float target;
     private bool isGoingUp;
     private WeaponSpawner weaponSpawner = null;
-    private Rigidbody2D rigidbody;
-    private Collider2D collider;
+    protected Rigidbody2D rigidbody;
+    protected Collider2D collider;
 
-    protected PlayerShoot playerShoot;
+    protected PlayerShoot player;
+    protected float dropForce = 500.0f;
+    protected int playerNumber;
 
 
     private void Awake()
@@ -101,12 +103,13 @@ public class Weapon : MonoBehaviour
             isInSpawner = false;
             weaponSpawner.SpawnedWeaponIsGrabbed();
         }
-        playerShoot = player;
+        this.player = player;
+        playerNumber = player.playerNumber;
         isHeld = true;
-        transform.parent = playerShoot.gunParentTransform;
+        transform.parent = this.player.gunParentTransform;
         canShoot = true;
-        transform.position = playerShoot.gunParentTransform.position;
-        transform.right = playerShoot.gunOriginTransform.right;
+        transform.position = this.player.gunParentTransform.position;
+        transform.right = this.player.gunOriginTransform.right;
 
         if (rigidbody != null)
         {
@@ -125,7 +128,7 @@ public class Weapon : MonoBehaviour
             return;
         }
         transform.parent = null;
-        playerShoot = null;
+        player = null;
         rigidbody = gameObject.AddComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.right * 500);
         destroyTimer = destroyTime;
@@ -165,7 +168,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void ShootLogic ()
     {
-        if (playerShoot == null)
+        if (player == null)
         {
             return;
         }
@@ -184,7 +187,7 @@ public class Weapon : MonoBehaviour
 
     protected void DestroyWeapon()
     {
-        playerShoot.OnWeaponDestroy();
+        player.OnWeaponDestroy();
         Destroy(gameObject);
     }
 
@@ -202,10 +205,11 @@ public class Weapon : MonoBehaviour
     {
         if (isDropped)
         {
-            if (collision.GetComponent<PlayerShoot>())
-            {
-                collision.GetComponent<PlayerShoot>().Disarm();
-            }
+            //if (collision.GetComponent<PlayerShoot>())
+            //{
+            //    collision.GetComponent<PlayerShoot>().Disarm();
+            //    isDropped = false;
+            //}
         }
 
     }
@@ -225,7 +229,7 @@ public class Weapon : MonoBehaviour
         canShoot = true;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         //SpawnerMovement();
         UpdateRotation();
@@ -273,14 +277,13 @@ public class Weapon : MonoBehaviour
         }
     }
 
-
     void UpdateRotation ()
     {
         if (isHeld)
         {
-            if (playerShoot != null)
+            if (player != null)
             {
-                transform.right = playerShoot.gunOriginTransform.transform.right;
+                transform.right = player.gunOriginTransform.transform.right;
             }
         }
     }
