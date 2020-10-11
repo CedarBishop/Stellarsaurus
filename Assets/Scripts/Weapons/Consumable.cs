@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public enum ConsumableType { DoubleJump, Healing, Shield, SuperShield, SpeedBoos
 
 public class Consumable : MonoBehaviour
 {
+    public event Action OnPickUp;
+
     private Player player;
 
     public ConsumableType consumableType;
@@ -29,6 +32,10 @@ public class Consumable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isActive)
+        {
+            return;
+        }
         if (collision.GetComponent<PlayerShoot>())
         {
             player = collision.GetComponent<PlayerShoot>().player;
@@ -41,6 +48,10 @@ public class Consumable : MonoBehaviour
 
     public virtual void Use()
     {
+        if (OnPickUp != null)
+        {
+            OnPickUp();
+        }
         isActive = true;
         switch (consumableType)
         {

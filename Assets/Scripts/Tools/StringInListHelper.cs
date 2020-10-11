@@ -53,6 +53,19 @@ public static class StringInListHelper
         }
         return paths;
     }
+
+    public static string[] AllConsumablePrefabs()
+    {
+        string[] paths = AssetDatabase.GetAssetPathsFromAssetBundle("consumableprefabs");
+        if (paths != null)
+        {
+            for (int i = 0; i < paths.Length; i++)
+            {
+                paths[i] = Path.GetFileName(paths[i]);
+            }
+        }
+        return paths;
+    }
 #endif
 }
 
