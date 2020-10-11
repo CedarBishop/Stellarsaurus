@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 6010520602041125607}
   - component: {fileID: 5524560479004423827}
   - component: {fileID: 6550758213085174645}
+  - component: {fileID: 2130337992392121821}
   m_Layer: 19
   m_Name: Grenade
   m_TagString: Weapon
@@ -256,8 +257,30 @@ MonoBehaviour:
   chargeDownSound: 
   chargeUpTime: 0
   explosionTime: 1.75
+  idleAnimationName: Grenade_Idle
+  chargeUpAnimation: Grenade_Charge
+  attackAnimation: 
   isCookFireType: 1
   isChargeUpFireType: 0
   canShoot: 0
   explosionSFXName: SFX_GrenadeExplosion
   explosionSize: 2
+--- !u!95 &2130337992392121821
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168677217926515297}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3d7c25a1bf50b04d86a7fa04fd8248b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
