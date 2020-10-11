@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
 {
-    [StringInList(typeof(StringInListHelper), "AllWeaponNames")] public string[] weaponsAtThisSpawnPoint;
     public List<Weapon> weaponSelection = new List<Weapon>();
 
     [StringInList(typeof(StringInListHelper), "AllWeaponPrefabs")] public string[] weaponSelectionPaths;
