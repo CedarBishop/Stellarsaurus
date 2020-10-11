@@ -94,6 +94,7 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 semiLimiter = false;
                                 Shoot();
+                                currentWeapon.ChangeChargeState(ChargeState.Attack);
                             }
                             else
                             {
@@ -102,6 +103,7 @@ public class PlayerShoot : MonoBehaviour
                                     StartChargeUpSound();
                                 }
                                 chargeUpTimer += Time.deltaTime;
+                                currentWeapon.ChangeChargeState(ChargeState.ChargeUp);
                             }
                         }
                         break;
@@ -113,6 +115,7 @@ public class PlayerShoot : MonoBehaviour
                             if (isFiring == false)
                             {
                                 isFiring = true;
+                                currentWeapon.ChangeChargeState(ChargeState.Attack);
                             }
                         }
                         else
@@ -122,6 +125,7 @@ public class PlayerShoot : MonoBehaviour
                                 StartChargeUpSound();
                             }
                             chargeUpTimer += Time.deltaTime;
+                            currentWeapon.ChangeChargeState(ChargeState.ChargeUp);
                         }
                         break;
                     case FireType.Cook:
@@ -139,6 +143,7 @@ public class PlayerShoot : MonoBehaviour
 
                                 cookTime += Time.deltaTime;
                                 shootOnRelease = true;
+                                currentWeapon.ChangeChargeState(ChargeState.ChargeUp);
                             }
 
                         }

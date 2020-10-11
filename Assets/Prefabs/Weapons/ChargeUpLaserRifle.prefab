@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 6010520602041125607}
   - component: {fileID: 3793923753914256742}
   - component: {fileID: 3062064621570432911}
+  - component: {fileID: 4127386152449475279}
   m_Layer: 19
   m_Name: ChargeUpLaserRifle
   m_TagString: Weapon
@@ -220,6 +221,9 @@ MonoBehaviour:
   chargeDownSound: SFX_LaserChargeDown
   chargeUpTime: 1
   explosionTime: 0
+  idleAnimationName: Laser_Idle
+  chargeUpAnimation: Laser_Charge
+  attackAnimation: Laser_Attack
   isCookFireType: 0
   isChargeUpFireType: 1
   canShoot: 0
@@ -256,3 +260,22 @@ PolygonCollider2D:
       - {x: 0.5833334, y: -0.2916667}
       - {x: 0.5833334, y: 0.33333334}
       - {x: -0.6666667, y: 0.33333334}
+--- !u!95 &4127386152449475279
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168677217926515297}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dca74c043c9fd57419cff2c7cd6fb0f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

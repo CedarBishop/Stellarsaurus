@@ -30,6 +30,12 @@ public class Weapon : MonoBehaviour
     [ConditionalHide("isChargeUpFireType")] public float chargeUpTime;
     [ConditionalHide("isCookFireType")] public float explosionTime;
     
+    public string idleAnimationName;
+    public string chargeUpAnimation;
+    public string attackAnimation;
+
+    private Animator animator;
+
     //These are booleans are use to check if the charge params should be hidden or not
     [HideInInspector]public bool isCookFireType;
     [HideInInspector]public bool isChargeUpFireType;
@@ -55,6 +61,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
     }
 
@@ -205,11 +212,11 @@ public class Weapon : MonoBehaviour
     {
         if (isDropped)
         {
-            //if (collision.GetComponent<PlayerShoot>())
-            //{
-            //    collision.GetComponent<PlayerShoot>().Disarm();
-            //    isDropped = false;
-            //}
+            if (collision.GetComponent<PlayerShoot>())
+            {
+                collision.GetComponent<PlayerShoot>().Disarm();
+                isDropped = false;
+            }
         }
 
     }
@@ -287,7 +294,35 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
+    public void ChangeChargeState(ChargeState chargeState)
+    {
+        if (animator == null)
+        {
+            return;
+        }
+        switch (chargeState)
+        {
+            case ChargeState.Idle:
+                if (!string.IsNullOrEmpty(idleAnimationName))
+                    animator.Play(idleAnimationName);
+                break;
+            case ChargeState.ChargeUp:
+                if (!string.IsNullOrEmpty(chargeUpAnimation))
+                    animator.Play(chargeUpAnimation);
+                break;
+            case ChargeState.Attack:
+                if (!string.IsNullOrEmpty(attackAnimation))
+                    animator.Play(attackAnimation);
+                break;
+            case ChargeState.ChargeDown:
+                break;
+            default:
+                break;
+        }
+    }
+    
 }
 
-
+public enum ChargeState { Idle, ChargeUp, Attack, ChargeDown}
 public enum FireType { SemiAutomatic, Automatic, ChargeUp, WindUp, Cook }

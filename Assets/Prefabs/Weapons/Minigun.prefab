@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2230875963379332808}
   - component: {fileID: 6010520602041125607}
   - component: {fileID: 3119871374797929676}
+  - component: {fileID: 3795554931581356919}
   m_Layer: 19
   m_Name: Minigun
   m_TagString: Weapon
@@ -247,6 +248,28 @@ MonoBehaviour:
   chargeDownSound: 
   chargeUpTime: 1
   explosionTime: 0
+  idleAnimationName: Minigun_Idle
+  chargeUpAnimation: Minigun_Charge
+  attackAnimation: Minigun_Attack
   isCookFireType: 0
   isChargeUpFireType: 1
   canShoot: 0
+--- !u!95 &3795554931581356919
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168677217926515297}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c681cd81518b5e488194c138e23d557, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
