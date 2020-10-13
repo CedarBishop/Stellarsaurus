@@ -70,7 +70,7 @@ public class Weapon : MonoBehaviour
         isInSpawner = true;
         weaponSpawner = spawner;
         collider.enabled = false;
-        target += 0.3f;
+        target = transform.position.y + 0.15f;
         isGoingUp = true;
     }
 
@@ -238,7 +238,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        //SpawnerMovement();
+        SpawnerMovement();
         UpdateRotation();
         DestroyTimer();
     }
