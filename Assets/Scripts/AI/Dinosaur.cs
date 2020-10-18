@@ -42,6 +42,7 @@ public class Dinosaur : MonoBehaviour
         material = spriteRenderer.material;
         pathFindingGrid = FindObjectOfType<PathFindingGrid>();
 
+        animator.SetBool("CanAttack", true);
         if (SoundManager.instance != null)
         {
             SoundManager.instance.PlaySFX("SFX_DinasaurSpawn");

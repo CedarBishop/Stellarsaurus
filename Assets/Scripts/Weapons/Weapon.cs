@@ -6,9 +6,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public float fireRate;
+    [Tooltip("The amount of time imbetween shots")] public float fireRate;
     public int ammo;
-    public float range;
+    [Tooltip("The distance in metres the projectiles will travel")] public float range;
     public int damage;
     public float initialForce;
     public float spread;

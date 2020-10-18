@@ -47,6 +47,7 @@ public class BoomerangWeapon : Weapon
         transform.parent = null;
         collider.enabled = true;
         player.currentWeapon = null;
+        ammo--;
     }
 
 
