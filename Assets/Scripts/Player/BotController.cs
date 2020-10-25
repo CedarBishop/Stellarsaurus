@@ -4,6 +4,28 @@ using UnityEngine;
 
 public class BotController : Controller
 {
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        playerNumber = GameManager.instance.AssignPlayerNumber(this);
+        if (Camera.main != null)
+        {
+            cameraController = Camera.main.GetComponent<CameraController>();
+        }
+
+        headIndex = playerNumber - 1;
+        bodyIndex = playerNumber - 1;
+
+        if (LevelManager.instance.debugGhost)
+        {
+            CreateGhost(transform.position);
+        }
+        else
+        {
+            CreateNewCharacter();
+        }
+    }
     void OnMove(float value)
     {
         if (playerMovement != null)

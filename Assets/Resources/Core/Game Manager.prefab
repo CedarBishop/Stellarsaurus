@@ -107,6 +107,8 @@ MonoBehaviour:
   levelSelector: {fileID: 4921186234686291158}
   achievementChecker: {fileID: 4165762727034207345}
   controlSchemeSpriteHandler: {fileID: 4237187014967582501}
+  botPrefab: {fileID: 1168665681556907617, guid: 353db33c672e8d14e92efd132c124e13,
+    type: 3}
   playerCount: 0
   playerColours:
   - {r: 0.0498, g: 0.3209923, b: 0.83, a: 1}
@@ -179,7 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveObject:
     savedWeapons: []
-    savedAis: []
     playerParams:
       startingHealth: 0
       groundSpeed: 0
@@ -190,7 +191,8 @@ MonoBehaviour:
       jumpBufferTime: 0
       cutJumpHeight: 0
       counterForce: 0
-      aimType: 0
+      playerHitTimeScale: 0
+      playerHitSlowMoDuration: 0
     levelPlaylist:
       freeForAllScenes: []
       eliminationScenes: []

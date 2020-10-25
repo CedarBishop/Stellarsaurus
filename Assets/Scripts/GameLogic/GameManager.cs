@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public LevelSelector levelSelector;
     public AchievementChecker achievementChecker;
     public ControlSchemeSpriteHandler controlSchemeSpriteHandler;
+    public BotController botPrefab;
     public int playerCount = 0;
     public Color[] playerColours;
 
@@ -54,12 +55,18 @@ public class GameManager : MonoBehaviour
         extractionGamemode = GetComponent<ExtractionGamemode>();
     }
 
-
     private void Start()
     {
         inputManager.EnableJoining();
         SceneManager.activeSceneChanged += OnSceneChange;
+        //StartCoroutine("TestSpawnBot");
     }
+
+    //IEnumerator TestSpawnBot()
+    //{
+    //    yield return new WaitForSeconds(3);
+    //    SpawnBot();
+    //}
 
     public int AssignPlayerNumber (Controller player)
     {
@@ -103,7 +110,10 @@ public class GameManager : MonoBehaviour
     {
         if (newScene.buildIndex == 0)
         {
-            inputManager.EnableJoining();
+            if (playerCount < 4)
+            {
+                inputManager.EnableJoining();
+            }
         }
         else
         {
@@ -116,7 +126,11 @@ public class GameManager : MonoBehaviour
     void OnPlayerJoined()
     {
         playerCount++;
-        playerStats.Add(new PlayerStats(playerCount));        
+        playerStats.Add(new PlayerStats(playerCount));
+        if (playerCount >= 4)
+        {
+            inputManager.DisableJoining();
+        }
     }
 
     // called by player input manager when device leaves
@@ -145,7 +159,15 @@ public class GameManager : MonoBehaviour
             }
         }
         playerCount--;
-        
+
+        if (playerCount < 4)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                inputManager.EnableJoining();
+            }
+        }
+
     }
 
     // Called by game starter to start the match
@@ -198,6 +220,12 @@ public class GameManager : MonoBehaviour
         {
             player.CreateNewCharacter();
         }
+    }
+
+    public void SpawnBot ()
+    {
+        OnPlayerJoined();
+        Instantiate(botPrefab);
     }
 
     // Called when a player presses the pause button

@@ -41,7 +41,6 @@ public class Controller : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         uiController = GetComponent<UIController>();
         uiController.playerNumber = playerNumber;
-
         if (playerInput.currentControlScheme == "Gamepad")
         {
             isGamepad = true;
@@ -80,7 +79,8 @@ public class Controller : MonoBehaviour
         }
 
         currentPlayerActionMap = "Player";
-        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+        if (playerInput != null)
+            playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
 
         currentCharacter = Instantiate(characterPrefab,transform);
         playerMovement = currentCharacter.GetComponent<PlayerMovement>();
@@ -161,7 +161,8 @@ public class Controller : MonoBehaviour
         }
 
         currentPlayerActionMap = "Ghost";
-        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+        if(playerInput != null)
+            playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
 
         currentGhost = Instantiate(ghostPrefab, pos, Quaternion.identity);
         currentGhost.transform.parent = transform;
@@ -182,13 +183,15 @@ public class Controller : MonoBehaviour
     public void SwitchToStandbyActionMap()
     {
         currentPlayerActionMap = "Standby";
-        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+        if(playerInput != null)
+            playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
     }
 
     public void SwitchToPlayerActionMap()
     {
         currentPlayerActionMap = "Player";
-        playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
+        if (playerInput != null)
+            playerInput.SwitchCurrentActionMap(currentPlayerActionMap);
     }   
 
     public void SetHeadIndex (int value)
