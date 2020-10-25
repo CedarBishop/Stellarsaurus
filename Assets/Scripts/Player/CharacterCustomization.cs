@@ -24,7 +24,7 @@ public class CharacterCustomization : MonoBehaviour
 
     private bool isInUse;
 
-    private List<Player> triggeredPlayers = new List<Player>();
+    private List<Controller> triggeredPlayers = new List<Controller>();
 
     private void Start()
     {
@@ -37,9 +37,9 @@ public class CharacterCustomization : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.GetComponentInParent<Player>())
+        if (collision.GetComponentInParent<Controller>())
         {
-            Player player = collision.GetComponentInParent<Player>();
+            Controller player = collision.GetComponentInParent<Controller>();
             triggeredPlayers.Add(player);
             player.isTriggeringCharacterCustomizer = transform;
             CustomizerController controller = player.GetComponent<CustomizerController>();
@@ -56,9 +56,9 @@ public class CharacterCustomization : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {        
-        if (collision.GetComponentInParent<Player>())
+        if (collision.GetComponentInParent<Controller>())
         {
-            Player player = collision.GetComponentInParent<Player>();
+            Controller player = collision.GetComponentInParent<Controller>();
             triggeredPlayers.Remove(player);
             player.isTriggeringCharacterCustomizer = false;
             CustomizerController controller = player.GetComponent<CustomizerController>();
@@ -82,7 +82,7 @@ public class CharacterCustomization : MonoBehaviour
         }
     }
 
-    void Setup(Player player)
+    void Setup(Controller player)
     {
         SetBackgroundImageColor(player.playerNumber);
         uiDisplay.SetActive(true);

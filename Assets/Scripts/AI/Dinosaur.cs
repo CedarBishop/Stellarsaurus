@@ -32,8 +32,10 @@ public class Dinosaur : MonoBehaviour
     protected bool isBurning;
     protected Material aimSpriteMaterial;
 
+    protected Weapon[] weaponsToSwawnOnDeath;
 
-    public virtual void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null)
+
+    public virtual void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null, Weapon[] weapons = null)
     {
         animator = GetComponent<Animator>();
         perception = GetComponent<Perception>();
@@ -41,6 +43,7 @@ public class Dinosaur : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = spriteRenderer.material;
         pathFindingGrid = FindObjectOfType<PathFindingGrid>();
+        weaponsToSwawnOnDeath = weapons;
 
         animator.SetBool("CanAttack", true);
         if (SoundManager.instance != null)
@@ -94,7 +97,7 @@ public class Dinosaur : MonoBehaviour
         }
         ParticleSystem p = Instantiate(bloodParticle, transform.position, Quaternion.identity);
         p.Play();
-        Destroy(p, 1);
+        Destroy(p, 2);
     }
 
 
@@ -146,20 +149,7 @@ public class Dinosaur : MonoBehaviour
             scorePopup.Init(GameManager.instance.SelectedGamemode.aiKillsPointReward);
         }
 
-        //if (LevelManager.instance != null)
-        //{
-        //    if (LevelManager.instance.weaponTypes.Count > 0)
-        //    {
-        //        float rand = Random.Range(0.0f, 1.0f);
-        //        if (rand < chanceOfDroppingWeapon)
-        //        {
-        //            OldWeapon weapon = Instantiate(LevelManager.instance.weaponPrefab,
-        //            transform.position,
-        //            Quaternion.identity);
-        //            weapon.Init(LevelManager.instance.weaponTypes, WeaponSpawnType.FallFromSky);
-        //        }
-        //    }
-        //}
+        SpawnWeapon();       
 
         Destroy(gameObject);
     }
@@ -189,5 +179,32 @@ public class Dinosaur : MonoBehaviour
     public virtual Transform SetRandomGoal()
     {
         return null;
+    }
+
+    protected void SpawnWeapon ()
+    {
+        float rand = Random.Range(0.0f, 1.0f);
+        if (rand < chanceOfDroppingWeapon)
+        {
+            print("Should spawn weapon");
+            Weapon weaponPrefab;
+            if (weaponsToSwawnOnDeath.Length == 0)
+            {
+                return;
+            }
+            else if (weaponsToSwawnOnDeath.Length == 1)
+            {
+                weaponPrefab = weaponsToSwawnOnDeath[0];
+            }
+            else
+            {
+                weaponPrefab = weaponsToSwawnOnDeath[Random.Range(0, weaponsToSwawnOnDeath.Length)];
+            }
+            
+            Weapon weapon = Instantiate(weaponPrefab,
+            transform.position,
+            Quaternion.identity);
+            print(weapon.name);
+        }
     }
 }

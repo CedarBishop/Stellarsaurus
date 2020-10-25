@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
 
     [HideInInspector]public int playerNumber;
     
-    private Player playerParent;
+    private Controller playerParent;
     private PlayerParams playerParams;
     
     private int health;
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
     
     void Start()
     {
-        playerParent = GetComponentInParent<Player>();
+        playerParent = GetComponentInParent<Controller>();
         isAlive = true;
 
         playerParams = GameManager.instance.loader.saveObject.playerParams;

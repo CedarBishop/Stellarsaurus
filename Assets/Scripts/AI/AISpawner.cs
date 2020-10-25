@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System.Diagnostics;
 
 public class AISpawner : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class AISpawner : MonoBehaviour
     public Transform[] pteroAirTargets;
     public PairTargets[] pteroGroundTargets;
     public ParticleSystem[] particles;
+    [HideInInspector] public Weapon[] weaponsSpawnedOnDinoDeath;
+    [StringInList(typeof(StringInListHelper), "AllWeaponPrefabs")] public string[] weaponSelectionPaths;
 
 
     void Start()
@@ -22,6 +26,14 @@ public class AISpawner : MonoBehaviour
         StartCoroutine("DelayParticles");
         StartCoroutine("DelaySpawn");
     }
+
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        LoadWeaponFromPath();
+#endif
+    }
+
 
     IEnumerator DelayParticles ()
     {
@@ -64,7 +76,19 @@ public class AISpawner : MonoBehaviour
         if (dinosaursSpawned.Length > 0)
         {
             Dinosaur dinosaur = Instantiate(dinosaursSpawned[Random.Range(0, dinosaursSpawned.Length)], transform.position, Quaternion.identity);
-            dinosaur.Initialise(targetsInMap, pteroGroundTargets, pteroAirTargets);
+            dinosaur.Initialise(targetsInMap, pteroGroundTargets, pteroAirTargets, weaponsSpawnedOnDinoDeath);
         }
    }
+
+    void LoadWeaponFromPath()
+    {
+        if (weaponSelectionPaths != null)
+        {
+            weaponsSpawnedOnDinoDeath = new Weapon[weaponSelectionPaths.Length];
+            for (int i = 0; i < weaponSelectionPaths.Length; i++)
+            {
+                weaponsSpawnedOnDinoDeath[i] = (AssetDatabase.LoadAssetAtPath<Weapon>("Assets/Prefabs/Weapons/" + weaponSelectionPaths[i]));
+            }
+        }
+    }
 }

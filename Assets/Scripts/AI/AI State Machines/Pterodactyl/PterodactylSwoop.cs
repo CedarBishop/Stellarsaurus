@@ -46,11 +46,6 @@ public class PterodactylSwoop : StateMachineBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        ai.OnHit -= Retreat;
-    }
-
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ai.OnHit -= Retreat;

@@ -26,7 +26,7 @@ public class ExitTeleporter : MonoBehaviour
             }
             else
             {
-                Player player = collision.GetComponentInParent<Player>();
+                Controller player = collision.GetComponentInParent<Controller>();
                 int num = player.playerNumber;
                 Destroy(player.gameObject);
                 GameManager.instance.Disconnect(num);

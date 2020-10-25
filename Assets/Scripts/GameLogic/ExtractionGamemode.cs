@@ -43,7 +43,7 @@ public class ExtractionGamemode : BaseGamemode
 
     public override void StartRound()
     {
-        foreach (Player player in players)
+        foreach (Controller player in players)
         {
             player.CreateNewCharacter();
         }

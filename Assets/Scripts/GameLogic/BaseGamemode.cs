@@ -19,7 +19,7 @@ public class BaseGamemode : MonoBehaviour
     [HideInInspector] public int playersStillAliveThisRound;
     [HideInInspector] public List<PlayerMatchStats> playerMatchStats = new List<PlayerMatchStats>();
 
-    protected Player[] players;
+    protected Controller[] players;
     public bool roundIsUnderway;
     protected float timer;
 
@@ -32,7 +32,7 @@ public class BaseGamemode : MonoBehaviour
     {
         Debug.Log("Base start match");
 
-        players = FindObjectsOfType<Player>();
+        players = FindObjectsOfType<Controller>();
         numOfPlayers = GameManager.instance.playerCount;
         roundNumber = 1;
 
@@ -43,7 +43,7 @@ public class BaseGamemode : MonoBehaviour
 
         playersStillAliveThisRound = numOfPlayers;
 
-        foreach (Player player in players)
+        foreach (Controller player in players)
         {
             player.CharacterDied(false);
         }

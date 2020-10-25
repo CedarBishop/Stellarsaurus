@@ -15,7 +15,7 @@ public class Pterodactyl : Dinosaur
     [HideInInspector] public AStar aStar;
     [HideInInspector] public Vector2 startingPosition;
 
-    public override void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null)
+    public override void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null, Weapon[] weapons = null)
     {
         base.Initialise(transforms, pteroGround, pteroAir);
 

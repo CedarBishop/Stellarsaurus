@@ -10,7 +10,7 @@ public class PlayerShoot : MonoBehaviour
     [HideInInspector] public bool isGamepad;
     [HideInInspector] public int playerNumber;
     public Weapon currentWeapon;
-    [HideInInspector] public Player player;
+    [HideInInspector] public Controller player;
 
     private Camera mainCamera;
     private CameraShake cameraShake;

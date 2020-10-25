@@ -6,7 +6,7 @@ public class CustomizerController : MonoBehaviour
 {
     [HideInInspector] public CharacterCustomization customization;
 
-    private Player player;
+    private Controller player;
 
     private int currentHeadIndex;
     private int currentBodyIndex;
@@ -15,7 +15,7 @@ public class CustomizerController : MonoBehaviour
 
     void Start ()
     {
-        player = GetComponent<Player>();
+        player = GetComponent<Controller>();
     }    
 
     public void Init (string controlScheme)

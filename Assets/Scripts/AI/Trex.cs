@@ -11,7 +11,7 @@ public class Trex : Dinosaur
     public float projectileDeviation;
     public Transform projectileFiringPoint;
 
-    public override void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null)
+    public override void Initialise(Transform[] transforms = null, PairTargets[] pteroGround = null, Transform[] pteroAir = null, Weapon[] weapons = null)
     {
         base.Initialise(transforms, pteroGround, pteroAir);
 

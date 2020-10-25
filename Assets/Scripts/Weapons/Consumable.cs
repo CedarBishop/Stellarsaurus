@@ -9,7 +9,7 @@ public class Consumable : MonoBehaviour
 {
     public event Action OnPickUp;
 
-    private Player player;
+    private Controller player;
 
     public ConsumableType consumableType;
     public Color color;

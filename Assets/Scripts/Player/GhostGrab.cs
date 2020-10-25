@@ -8,7 +8,7 @@ public class GhostGrab : MonoBehaviour
 
     public Transform holderTransform;
 
-    [HideInInspector] public Player player;
+    [HideInInspector] public Controller player;
 
     private CameraController camerController;
     private GhostMovement ghostMovement;

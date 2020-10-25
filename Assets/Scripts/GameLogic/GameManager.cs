@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private FreeForAllGamemode freeForAllGamemode;
     private ExtractionGamemode extractionGamemode;
 
-    private Player[] players = new Player[4];
+    private Controller[] players = new Controller[4];
     private bool firstKeyboardPlayerHasJoined;
     private bool secondKeyboardPlayerHasJoined;
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         SceneManager.activeSceneChanged += OnSceneChange;
     }
 
-    public int AssignPlayerNumber (Player player)
+    public int AssignPlayerNumber (Controller player)
     {
         int num = 0;
         for (int i = 0; i < players.Length; i++)
@@ -193,8 +193,8 @@ public class GameManager : MonoBehaviour
     IEnumerator CoEndMatch()
     {
         yield return new WaitForSeconds(0.1f);
-        Player[] players = FindObjectsOfType<Player>();
-        foreach (Player player in players)
+        Controller[] players = FindObjectsOfType<Controller>();
+        foreach (Controller player in players)
         {
             player.CreateNewCharacter();
         }
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
 
         foreach (PlayerInput player in playerInputs)
         {
-            player.SwitchCurrentActionMap(player.GetComponent<Player>().currentPlayerActionMap);
+            player.SwitchCurrentActionMap(player.GetComponent<Controller>().currentPlayerActionMap);
         }
 
         UIManager.instance.DestroyCursors();
@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
 
         foreach (PlayerInput player in playerInputs)
         {
-            player.SwitchCurrentActionMap(player.GetComponent<Player>().currentPlayerActionMap);
+            player.SwitchCurrentActionMap(player.GetComponent<Controller>().currentPlayerActionMap);
         }
 
         UIManager.instance.UnPause();
