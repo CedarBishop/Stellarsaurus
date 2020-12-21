@@ -26,13 +26,21 @@ public class BotController : Controller
             CreateNewCharacter();
         }
     }
-    void OnMove(float value)
+
+    public override void CreateNewCharacter()
+    {
+        base.CreateNewCharacter();
+
+        GetComponentInChildren<PlayerMovement>().gameObject.AddComponent<BotBrain>();
+    }
+
+    public void OnMove(float value)
     {
         if (playerMovement != null)
             playerMovement.Move(value);
     }
 
-    void OnAim(Vector2 value)
+    public void OnAim(Vector2 value)
     {
         if (isGamepad)
         {
@@ -41,27 +49,35 @@ public class BotController : Controller
         }
     }
 
-    void OnStartFire()
+    public void OnStartFire()
     {
         if (playerShoot != null)
             playerShoot.StartFire();
     }
 
-    void OnEndFire()
+    public void OnEndFire()
     {
         if (playerShoot != null)
             playerShoot.EndFire();
     }
 
-    void OnStartJump()
+    public void OnStartJump()
     {
         if (playerMovement != null)
             playerMovement.StartJump();
     }
 
-    void OnEndJump()
+    public void OnEndJump()
     {
         if (playerMovement != null)
             playerMovement.EndJump();
+    }
+
+    public void OnGrab()
+    {
+        if (playerShoot != null)
+        {
+            playerShoot.Grab();
+        }
     }
 }

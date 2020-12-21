@@ -79,8 +79,6 @@ public class DesignMaster : EditorWindow
                 }
                 EditorGUILayout.EndVertical();
                 break;
-                EditorGUILayout.EndVertical();
-                break;
             case DisplayOptions.Player:
                 break;
             case DisplayOptions.Levels:

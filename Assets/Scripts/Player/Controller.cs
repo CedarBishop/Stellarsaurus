@@ -63,7 +63,7 @@ public class Controller : MonoBehaviour
         }        
     }
 
-    public void CreateNewCharacter()
+    public virtual void CreateNewCharacter()
     {
         if (currentCharacter != null)
         {
