@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class BotController : Controller
 {
+    public RuntimeAnimatorController aiController;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
 
         playerNumber = GameManager.instance.AssignPlayerNumber(this);
+        if (playerNumber == 0)
+        {
+            Destroy(gameObject);
+        }
         if (Camera.main != null)
         {
             cameraController = Camera.main.GetComponent<CameraController>();
@@ -31,7 +37,8 @@ public class BotController : Controller
     {
         base.CreateNewCharacter();
 
-        GetComponentInChildren<PlayerMovement>().gameObject.AddComponent<BotBrain>();
+        BotBrain botBrain = GetComponentInChildren<PlayerMovement>().gameObject.AddComponent<BotBrain>();
+        botBrain.aiController = aiController;
     }
 
     public void OnMove(float value)
@@ -42,11 +49,8 @@ public class BotController : Controller
 
     public void OnAim(Vector2 value)
     {
-        if (isGamepad)
-        {
-            if (playerShoot != null)
-                playerShoot.Aim(value, true);
-        }
+        if (playerShoot != null)
+            playerShoot.Aim(value, true);
     }
 
     public void OnStartFire()

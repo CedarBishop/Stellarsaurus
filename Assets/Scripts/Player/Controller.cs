@@ -38,6 +38,11 @@ public class Controller : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         playerNumber = GameManager.instance.AssignPlayerNumber(this);
+        if (playerNumber == 0)
+        {
+            Destroy(gameObject);
+        }
+
         playerInput = GetComponent<PlayerInput>();
         uiController = GetComponent<UIController>();
         uiController.playerNumber = playerNumber;

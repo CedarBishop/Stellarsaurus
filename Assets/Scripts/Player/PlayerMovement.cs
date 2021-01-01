@@ -44,8 +44,8 @@ public class PlayerMovement : MonoBehaviour
     
     private PlayerParams playerParams;
     private float kyoteTimer;
-    private float jumpBufferTimer;
-    private bool isGrounded;
+    [HideInInspector]public float jumpBufferTimer;
+    [HideInInspector]public bool isGrounded;
     private float horizontal;
     private float counterForce;
     private bool isHoldingJumpKey;

@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     public bool debugGhost;
     public bool isClimbLevel;
 
+    public int numOfBots;
+
     private void Awake()
     {
         if (instance == null)
@@ -24,6 +26,20 @@ public class LevelManager : MonoBehaviour
         else if (instance != null)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (GameManager.instance.SelectedGamemode == null)
+        {
+            if (numOfBots > 0)
+            {
+                for (int i = 0; i < numOfBots; i++)
+                {
+                    GameManager.instance.SpawnBot();
+                }
+            }
         }
     }
 

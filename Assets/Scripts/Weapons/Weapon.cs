@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
 
     protected float destroyTimer;
     protected float destroyTime = 5;
-    protected bool isHeld;
+    [HideInInspector]public bool isHeld;
     protected bool isDropped;
     protected bool isInSpawner;
     private float target;
