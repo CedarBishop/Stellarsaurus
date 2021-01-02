@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 421269320}
   - component: {fileID: 1283880972}
   - component: {fileID: 2378037744067400863}
+  - component: {fileID: 8782593883567309835}
   - component: {fileID: 59959285128919413}
   - component: {fileID: 4921186234686291158}
   - component: {fileID: 4071635882641137301}
@@ -161,6 +162,31 @@ MonoBehaviour:
   aiKillsPointReward: 3
   roundTime: 45
   roundStandbyTime: 1
+  timeBetweenRounds: 2
+  numOfPlayers: 0
+  roundNumber: 0
+  playersStillAliveThisRound: 0
+  playerMatchStats: []
+  roundIsUnderway: 0
+--- !u!114 &8782593883567309835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990490027761441423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ac77fd25c88b4fbd582f58bbe5c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRounds: 0
+  extractionPointReward: 15
+  lastPlayerAlivePoints: 0
+  playerKillsPointReward: 5
+  aiKillsPointReward: 1
+  roundTime: 0
+  roundStandbyTime: 3
   timeBetweenRounds: 2
   numOfPlayers: 0
   roundNumber: 0

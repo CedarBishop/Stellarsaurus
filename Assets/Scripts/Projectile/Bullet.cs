@@ -65,6 +65,13 @@ public class Bullet : Projectile
         }
         if (destroysOnHit)
         {
+            if (GameManager.instance.SelectedGamemode != null)
+            {
+                if (GameManager.instance.SelectedGamemode.noFriendlyFire)
+                {
+                    return;
+                }
+            }
             if (collision.GetComponent<Teleport>())
             {
                 return;

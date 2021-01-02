@@ -14,6 +14,8 @@ public class BaseGamemode : MonoBehaviour
     public float roundStandbyTime = 3;
     public float timeBetweenRounds = 2;
 
+    public bool noFriendlyFire;
+
     [HideInInspector] public int numOfPlayers;
     [HideInInspector] public int roundNumber;
     [HideInInspector] public int playersStillAliveThisRound;

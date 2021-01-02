@@ -90,6 +90,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void HitByPlayer (int projectilePlayerNumber, bool canHurtSelf = false)
     {
+        if (GameManager.instance.SelectedGamemode != null)
+        {
+            if(GameManager.instance.SelectedGamemode.noFriendlyFire)
+            {
+                return;
+            }
+        }
         if (hasShield)
         {
             UseShield();
